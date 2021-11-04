@@ -1,0 +1,1331 @@
+openapi: 3.0.1
+info:
+  description: This provides the REST API for Pulsar Packages operations
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Pulsar Packages REST API
+  version: v3
+servers:
+- url: /admin/v3
+tags:
+- name: packages
+paths:
+  /packages/{type}/{tenant}/{namespace}:
+    get:
+      operationId: listPackages
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageMetadata'
+          description: Return all the specified type package names in the specified
+            namespace.
+        "412":
+          content: {}
+          description: The package type is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Get all the specified type packages in a namespace.
+      tags:
+      - packages
+  /packages/{type}/{tenant}/{namespace}/{packageName}:
+    get:
+      operationId: listPackageVersion
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: packageName
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: Return the package versions of the specified package.
+        "404":
+          content: {}
+          description: The specified package is not existent.
+        "412":
+          content: {}
+          description: The package name is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Get all the versions of a package.
+      tags:
+      - packages
+  /packages/{type}/{tenant}/{namespace}/{packageName}/{version}:
+    delete:
+      operationId: delete
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: packageName
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: Delete the specified package successfully.
+        "404":
+          content: {}
+          description: The specified package is not existent.
+        "412":
+          content: {}
+          description: The package name is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Delete a package with the package name.
+      tags:
+      - packages
+    get:
+      operationId: download
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: packageName
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamingOutput'
+          description: Download the specified package successfully.
+        "404":
+          content: {}
+          description: The specified package is not existent.
+        "412":
+          content: {}
+          description: The package name is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Download a package with the package name.
+      tags:
+      - packages
+    post:
+      operationId: upload
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: packageName
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: Upload the specified package successfully.
+        "412":
+          content: {}
+          description: The package name is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Upload a package.
+      tags:
+      - packages
+  /packages/{type}/{tenant}/{namespace}/{packageName}/{version}/metadata:
+    get:
+      operationId: getMeta
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: packageName
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageMetadata'
+          description: Return the metadata of the specified package.
+        "404":
+          content: {}
+          description: The specified package is not existent.
+        "412":
+          content: {}
+          description: The package name is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Get the metadata of a package.
+      tags:
+      - packages
+    put:
+      operationId: updateMeta
+      parameters:
+      - in: path
+        name: type
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: tenant
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: namespace
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: packageName
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: version
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: Update the metadata of the specified package successfully.
+        "404":
+          content: {}
+          description: The specified package is not existent.
+        "412":
+          content: {}
+          description: The package name is illegal.
+        "500":
+          content: {}
+          description: Internal server error.
+      summary: Update the metadata of a package.
+      tags:
+      - packages
+components:
+  schemas:
+    Annotation:
+      type: object
+    AnnotationIntrospector:
+      type: object
+    ArrayBuilders:
+      properties:
+        booleanBuilder:
+          type: object
+        byteBuilder:
+          type: object
+        shortBuilder:
+          type: object
+        intBuilder:
+          type: object
+        longBuilder:
+          type: object
+        floatBuilder:
+          type: object
+        doubleBuilder:
+          type: object
+      type: object
+    AuthenticationDataHttps:
+      properties:
+        subscription:
+          type: string
+        tlsCertificates:
+          items:
+            $ref: '#/components/schemas/X509Certificate'
+          type: array
+        httpAuthType:
+          type: string
+        peerAddress:
+          type: object
+        commandData:
+          type: string
+      type: object
+    Base64Variant:
+      properties:
+        paddingChar:
+          type: string
+        paddingByte:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+        name:
+          type: string
+        maxLineLength:
+          format: int32
+          type: integer
+      type: object
+    BooleanBuilder:
+      type: object
+    ByteBuilder:
+      type: object
+    CharacterEscapes:
+      properties:
+        escapeCodesForAscii:
+          items:
+            format: int32
+            type: integer
+          type: array
+      type: object
+    ClassIntrospector:
+      type: object
+    ClassLoader:
+      properties:
+        parent:
+          $ref: '#/components/schemas/ClassLoader'
+        name:
+          type: string
+        unnamedModule:
+          $ref: '#/components/schemas/Module'
+        registeredAsParallelCapable:
+          type: boolean
+        definedPackages:
+          items:
+            $ref: '#/components/schemas/Package'
+          type: array
+      type: object
+    CompletableFuture:
+      properties:
+        done:
+          type: boolean
+        completedExceptionally:
+          type: boolean
+        numberOfDependents:
+          format: int32
+          type: integer
+        cancelled:
+          type: boolean
+      type: object
+    CompletableFutureClusterData:
+      properties:
+        done:
+          type: boolean
+        completedExceptionally:
+          type: boolean
+        numberOfDependents:
+          format: int32
+          type: integer
+        cancelled:
+          type: boolean
+      type: object
+    ContextAttributes:
+      type: object
+    Currency:
+      properties:
+        currencyCode:
+          type: string
+        defaultFractionDigits:
+          format: int32
+          type: integer
+        numericCode:
+          format: int32
+          type: integer
+        displayName:
+          type: string
+        symbol:
+          type: string
+        numericCodeAsString:
+          type: string
+      type: object
+    DateFormat:
+      properties:
+        calendar:
+          format: date-time
+          type: string
+        numberFormat:
+          $ref: '#/components/schemas/NumberFormat'
+        timeZone:
+          $ref: '#/components/schemas/TimeZone'
+        lenient:
+          type: boolean
+      type: object
+    DeserializationConfig:
+      properties:
+        problemHandlers:
+          type: object
+        defaultPropertyInclusion:
+          $ref: '#/components/schemas/Value'
+        nodeFactory:
+          type: object
+        annotationIntrospector:
+          type: object
+        deserializationFeatures:
+          format: int32
+          type: integer
+        fullRootName:
+          $ref: '#/components/schemas/PropertyName'
+        subtypeResolver:
+          type: object
+        defaultVisibilityChecker:
+          type: object
+        attributes:
+          type: object
+        rootName:
+          type: string
+        propertyNamingStrategy:
+          type: object
+        typeFactory:
+          $ref: '#/components/schemas/TypeFactory'
+        dateFormat:
+          $ref: '#/components/schemas/DateFormat'
+        base64Variant:
+          $ref: '#/components/schemas/Base64Variant'
+        handlerInstantiator:
+          type: object
+        annotationProcessingEnabled:
+          type: boolean
+        classIntrospector:
+          type: object
+        timeZone:
+          $ref: '#/components/schemas/TimeZone'
+        locale:
+          $ref: '#/components/schemas/Locale'
+      type: object
+    DeserializationContext:
+      properties:
+        typeFactory:
+          $ref: '#/components/schemas/TypeFactory'
+        nodeFactory:
+          type: object
+        annotationIntrospector:
+          type: object
+        contextualType:
+          $ref: '#/components/schemas/JavaType'
+        deserializationFeatures:
+          format: int32
+          type: integer
+        base64Variant:
+          $ref: '#/components/schemas/Base64Variant'
+        arrayBuilders:
+          $ref: '#/components/schemas/ArrayBuilders'
+        timeZone:
+          $ref: '#/components/schemas/TimeZone'
+        locale:
+          $ref: '#/components/schemas/Locale'
+        factory:
+          type: object
+        config:
+          $ref: '#/components/schemas/DeserializationConfig'
+        parser:
+          $ref: '#/components/schemas/JsonParser'
+      type: object
+    DeserializerFactory:
+      type: object
+    DoubleBuilder:
+      type: object
+    FilterProvider:
+      type: object
+    FloatBuilder:
+      type: object
+    FormatSchema:
+      properties:
+        schemaType:
+          type: string
+      type: object
+    HandlerInstantiator:
+      type: object
+    InjectableValues:
+      type: object
+    InputDecorator:
+      type: object
+    IntBuilder:
+      type: object
+    JavaType:
+      properties:
+        javaLangObject:
+          type: boolean
+        arrayType:
+          type: boolean
+        throwable:
+          type: boolean
+        collectionLikeType:
+          type: boolean
+        mapLikeType:
+          type: boolean
+        referencedType:
+          $ref: '#/components/schemas/JavaType'
+        valueHandler:
+          properties: {}
+          type: object
+        typeHandler:
+          properties: {}
+          type: object
+        contentValueHandler:
+          properties: {}
+          type: object
+        contentTypeHandler:
+          properties: {}
+          type: object
+        erasedSignature:
+          type: string
+        containerType:
+          type: boolean
+        bindings:
+          $ref: '#/components/schemas/TypeBindings'
+        keyType:
+          $ref: '#/components/schemas/JavaType'
+        concrete:
+          type: boolean
+        contentType:
+          $ref: '#/components/schemas/JavaType'
+        enumType:
+          type: boolean
+        interface:
+          type: boolean
+        primitive:
+          type: boolean
+        interfaces:
+          items:
+            $ref: '#/components/schemas/JavaType'
+          type: array
+        genericSignature:
+          type: string
+        final:
+          type: boolean
+        abstract:
+          type: boolean
+        superClass:
+          $ref: '#/components/schemas/JavaType'
+        typeName:
+          type: string
+        referenceType:
+          type: boolean
+      type: object
+    JsonFactory:
+      properties:
+        codec:
+          $ref: '#/components/schemas/ObjectCodec'
+        inputDecorator:
+          type: object
+        characterEscapes:
+          $ref: '#/components/schemas/CharacterEscapes'
+        outputDecorator:
+          type: object
+        rootValueSeparator:
+          type: string
+        formatName:
+          type: string
+      type: object
+    JsonGenerator:
+      properties:
+        closed:
+          type: boolean
+        codec:
+          $ref: '#/components/schemas/ObjectCodec'
+        characterEscapes:
+          $ref: '#/components/schemas/CharacterEscapes'
+        currentValue:
+          properties: {}
+          type: object
+        featureMask:
+          format: int32
+          type: integer
+        formatFeatures:
+          format: int32
+          type: integer
+        prettyPrinter:
+          type: object
+        outputContext:
+          $ref: '#/components/schemas/JsonStreamContext'
+        outputTarget:
+          properties: {}
+          type: object
+        highestEscapedChar:
+          format: int32
+          type: integer
+        outputBuffered:
+          format: int32
+          type: integer
+        schema:
+          $ref: '#/components/schemas/FormatSchema'
+      type: object
+    JsonLocation:
+      properties:
+        byteOffset:
+          format: int64
+          type: integer
+        sourceRef:
+          properties: {}
+          type: object
+        lineNr:
+          format: int32
+          type: integer
+        columnNr:
+          format: int32
+          type: integer
+        charOffset:
+          format: int64
+          type: integer
+      type: object
+    JsonNodeFactory:
+      type: object
+    JsonParser:
+      properties:
+        closed:
+          type: boolean
+        currentLocation:
+          $ref: '#/components/schemas/JsonLocation'
+        codec:
+          $ref: '#/components/schemas/ObjectCodec'
+        binaryValue:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+        currentValue:
+          properties: {}
+          type: object
+        parsingContext:
+          $ref: '#/components/schemas/JsonStreamContext'
+        tokenLocation:
+          $ref: '#/components/schemas/JsonLocation'
+        inputSource:
+          properties: {}
+          type: object
+        featureMask:
+          format: int32
+          type: integer
+        formatFeatures:
+          format: int32
+          type: integer
+        currentToken:
+          enum:
+          - NOT_AVAILABLE
+          - START_OBJECT
+          - END_OBJECT
+          - START_ARRAY
+          - END_ARRAY
+          - FIELD_NAME
+          - VALUE_EMBEDDED_OBJECT
+          - VALUE_STRING
+          - VALUE_NUMBER_INT
+          - VALUE_NUMBER_FLOAT
+          - VALUE_TRUE
+          - VALUE_FALSE
+          - VALUE_NULL
+          type: string
+        currentTokenId:
+          format: int32
+          type: integer
+        expectedStartArrayToken:
+          type: boolean
+        expectedStartObjectToken:
+          type: boolean
+        lastClearedToken:
+          enum:
+          - NOT_AVAILABLE
+          - START_OBJECT
+          - END_OBJECT
+          - START_ARRAY
+          - END_ARRAY
+          - FIELD_NAME
+          - VALUE_EMBEDDED_OBJECT
+          - VALUE_STRING
+          - VALUE_NUMBER_INT
+          - VALUE_NUMBER_FLOAT
+          - VALUE_TRUE
+          - VALUE_FALSE
+          - VALUE_NULL
+          type: string
+        currentName:
+          type: string
+        textOffset:
+          format: int32
+          type: integer
+        numberValue:
+          type: object
+        numberType:
+          enum:
+          - INT
+          - LONG
+          - BIG_INTEGER
+          - FLOAT
+          - DOUBLE
+          - BIG_DECIMAL
+          type: string
+        bigIntegerValue:
+          type: integer
+        decimalValue:
+          type: number
+        embeddedObject:
+          properties: {}
+          type: object
+        valueAsInt:
+          format: int32
+          type: integer
+        valueAsLong:
+          format: int64
+          type: integer
+        valueAsDouble:
+          format: double
+          type: number
+        valueAsBoolean:
+          type: boolean
+        valueAsString:
+          type: string
+        objectId:
+          properties: {}
+          type: object
+        typeId:
+          properties: {}
+          type: object
+        text:
+          type: string
+        textCharacters:
+          items:
+            type: string
+          type: array
+        textLength:
+          format: int32
+          type: integer
+        booleanValue:
+          type: boolean
+        byteValue:
+          format: byte
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+        doubleValue:
+          format: double
+          type: number
+        floatValue:
+          format: float
+          type: number
+        longValue:
+          format: int64
+          type: integer
+        shortValue:
+          format: int32
+          type: integer
+        intValue:
+          format: int32
+          type: integer
+        schema:
+          $ref: '#/components/schemas/FormatSchema'
+      type: object
+    JsonSerializer:
+      properties:
+        unwrappingSerializer:
+          type: boolean
+      type: object
+    JsonSerializerObject:
+      properties:
+        unwrappingSerializer:
+          type: boolean
+        delegatee:
+          $ref: '#/components/schemas/JsonSerializerObject'
+      type: object
+    JsonStreamContext:
+      properties:
+        currentValue:
+          properties: {}
+          type: object
+        currentName:
+          type: string
+        typeDesc:
+          type: string
+        entryCount:
+          format: int32
+          type: integer
+        parent:
+          $ref: '#/components/schemas/JsonStreamContext'
+        currentIndex:
+          format: int32
+          type: integer
+      type: object
+    LinkedNode:
+      type: object
+    LinkedNodeDeserializationProblemHandler:
+      type: object
+    Locale:
+      properties:
+        script:
+          type: string
+        country:
+          type: string
+        variant:
+          type: string
+        extensionKeys:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        unicodeLocaleAttributes:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        unicodeLocaleKeys:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        iso3Language:
+          type: string
+        iso3Country:
+          type: string
+        displayLanguage:
+          type: string
+        displayScript:
+          type: string
+        displayCountry:
+          type: string
+        displayVariant:
+          type: string
+        displayName:
+          type: string
+        language:
+          type: string
+      type: object
+    LongBuilder:
+      type: object
+    Module:
+      properties:
+        layer:
+          type: object
+        name:
+          type: string
+        descriptor:
+          $ref: '#/components/schemas/ModuleDescriptor'
+        classLoader:
+          $ref: '#/components/schemas/ClassLoader'
+        annotations:
+          items:
+            $ref: '#/components/schemas/Annotation'
+          type: array
+        declaredAnnotations:
+          items:
+            $ref: '#/components/schemas/Annotation'
+          type: array
+        named:
+          type: boolean
+        packages:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+      type: object
+    ModuleDescriptor:
+      properties:
+        open:
+          type: boolean
+        automatic:
+          type: boolean
+      type: object
+    ModuleLayer:
+      type: object
+    Number:
+      type: object
+    NumberFormat:
+      properties:
+        groupingUsed:
+          type: boolean
+        parseIntegerOnly:
+          type: boolean
+        maximumIntegerDigits:
+          format: int32
+          type: integer
+        minimumIntegerDigits:
+          format: int32
+          type: integer
+        maximumFractionDigits:
+          format: int32
+          type: integer
+        minimumFractionDigits:
+          format: int32
+          type: integer
+        currency:
+          $ref: '#/components/schemas/Currency'
+        roundingMode:
+          enum:
+          - UP
+          - DOWN
+          - CEILING
+          - FLOOR
+          - HALF_UP
+          - HALF_DOWN
+          - HALF_EVEN
+          - UNNECESSARY
+          type: string
+      type: object
+    ObjectCodec:
+      properties:
+        jsonFactory:
+          $ref: '#/components/schemas/JsonFactory'
+        factory:
+          $ref: '#/components/schemas/JsonFactory'
+      type: object
+    ObjectMapper:
+      properties:
+        jsonFactory:
+          $ref: '#/components/schemas/JsonFactory'
+        serializationConfig:
+          $ref: '#/components/schemas/SerializationConfig'
+        deserializationConfig:
+          $ref: '#/components/schemas/DeserializationConfig'
+        deserializationContext:
+          $ref: '#/components/schemas/DeserializationContext'
+        serializerFactory:
+          type: object
+        serializerProvider:
+          $ref: '#/components/schemas/SerializerProvider'
+        serializerProviderInstance:
+          $ref: '#/components/schemas/SerializerProvider'
+        visibilityChecker:
+          type: object
+        subtypeResolver:
+          type: object
+        propertyNamingStrategy:
+          type: object
+        typeFactory:
+          $ref: '#/components/schemas/TypeFactory'
+        nodeFactory:
+          type: object
+        dateFormat:
+          $ref: '#/components/schemas/DateFormat'
+        injectableValues:
+          type: object
+        factory:
+          $ref: '#/components/schemas/JsonFactory'
+      type: object
+    OutputDecorator:
+      type: object
+    Package:
+      properties:
+        name:
+          type: string
+        specificationTitle:
+          type: string
+        specificationVersion:
+          type: string
+        specificationVendor:
+          type: string
+        implementationTitle:
+          type: string
+        implementationVersion:
+          type: string
+        implementationVendor:
+          type: string
+        annotations:
+          items:
+            $ref: '#/components/schemas/Annotation'
+          type: array
+        declaredAnnotations:
+          items:
+            $ref: '#/components/schemas/Annotation'
+          type: array
+        sealed:
+          type: boolean
+      type: object
+    PackageMetadata:
+      example:
+        createTime: 0
+        modificationTime: 6
+        contact: contact
+        description: description
+        properties:
+          key: properties
+      properties:
+        description:
+          type: string
+        contact:
+          type: string
+        createTime:
+          format: int64
+          type: integer
+        modificationTime:
+          format: int64
+          type: integer
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    PrettyPrinter:
+      type: object
+    Principal:
+      properties:
+        name:
+          type: string
+      type: object
+    PropertyName:
+      properties:
+        namespace:
+          type: string
+        empty:
+          type: boolean
+        simpleName:
+          type: string
+      type: object
+    PropertyNamingStrategy:
+      type: object
+    PublicKey:
+      properties:
+        format:
+          type: string
+        algorithm:
+          type: string
+        encoded:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+      type: object
+    SerializationConfig:
+      properties:
+        defaultPropertyInclusion:
+          $ref: '#/components/schemas/Value'
+        filterProvider:
+          type: object
+        defaultPrettyPrinter:
+          type: object
+        annotationIntrospector:
+          type: object
+        serializationInclusion:
+          enum:
+          - ALWAYS
+          - NON_NULL
+          - NON_ABSENT
+          - NON_EMPTY
+          - NON_DEFAULT
+          - USE_DEFAULTS
+          type: string
+        serializationFeatures:
+          format: int32
+          type: integer
+        fullRootName:
+          $ref: '#/components/schemas/PropertyName'
+        subtypeResolver:
+          type: object
+        defaultVisibilityChecker:
+          type: object
+        attributes:
+          type: object
+        rootName:
+          type: string
+        propertyNamingStrategy:
+          type: object
+        typeFactory:
+          $ref: '#/components/schemas/TypeFactory'
+        dateFormat:
+          $ref: '#/components/schemas/DateFormat'
+        base64Variant:
+          $ref: '#/components/schemas/Base64Variant'
+        handlerInstantiator:
+          type: object
+        annotationProcessingEnabled:
+          type: boolean
+        classIntrospector:
+          type: object
+        timeZone:
+          $ref: '#/components/schemas/TimeZone'
+        locale:
+          $ref: '#/components/schemas/Locale'
+      type: object
+    SerializerFactory:
+      type: object
+    SerializerProvider:
+      properties:
+        filterProvider:
+          type: object
+        defaultNullKeySerializer:
+          $ref: '#/components/schemas/JsonSerializerObject'
+        defaultNullValueSerializer:
+          $ref: '#/components/schemas/JsonSerializerObject'
+        typeFactory:
+          $ref: '#/components/schemas/TypeFactory'
+        annotationIntrospector:
+          type: object
+        timeZone:
+          $ref: '#/components/schemas/TimeZone'
+        locale:
+          $ref: '#/components/schemas/Locale'
+        config:
+          $ref: '#/components/schemas/SerializationConfig'
+        generator:
+          $ref: '#/components/schemas/JsonGenerator'
+      type: object
+    ShortBuilder:
+      type: object
+    SocketAddress:
+      type: object
+    StreamingOutput:
+      type: object
+    SubtypeResolver:
+      type: object
+    TimeZone:
+      properties:
+        displayName:
+          type: string
+        id:
+          type: string
+        dstsavings:
+          format: int32
+          type: integer
+        rawOffset:
+          format: int32
+          type: integer
+      type: object
+    TypeBindings:
+      properties:
+        empty:
+          type: boolean
+        typeParameters:
+          items:
+            $ref: '#/components/schemas/JavaType'
+          type: array
+      type: object
+    TypeFactory:
+      properties:
+        classLoader:
+          $ref: '#/components/schemas/ClassLoader'
+      type: object
+    Value:
+      properties:
+        contentInclusion:
+          enum:
+          - ALWAYS
+          - NON_NULL
+          - NON_ABSENT
+          - NON_EMPTY
+          - NON_DEFAULT
+          - USE_DEFAULTS
+          type: string
+        valueInclusion:
+          enum:
+          - ALWAYS
+          - NON_NULL
+          - NON_ABSENT
+          - NON_EMPTY
+          - NON_DEFAULT
+          - USE_DEFAULTS
+          type: string
+      type: object
+    VisibilityChecker:
+      type: object
+    VisibilityCheckerObject:
+      type: object
+    X500Principal:
+      properties:
+        name:
+          type: string
+        encoded:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+      type: object
+    X509Certificate:
+      properties:
+        type:
+          type: string
+        subjectX500Principal:
+          $ref: '#/components/schemas/X500Principal'
+        issuerX500Principal:
+          $ref: '#/components/schemas/X500Principal'
+        subjectAlternativeNames:
+          items:
+            items:
+              properties: {}
+              type: object
+            type: array
+          type: array
+        issuerAlternativeNames:
+          items:
+            items:
+              properties: {}
+              type: object
+            type: array
+          type: array
+        keyUsage:
+          items:
+            type: boolean
+          type: array
+        version:
+          format: int32
+          type: integer
+        issuerDN:
+          $ref: '#/components/schemas/Principal'
+        subjectDN:
+          $ref: '#/components/schemas/Principal'
+        signature:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+        basicConstraints:
+          format: int32
+          type: integer
+        sigAlgName:
+          type: string
+        serialNumber:
+          type: integer
+        notBefore:
+          format: date-time
+          type: string
+        notAfter:
+          format: date-time
+          type: string
+        tbscertificate:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+        sigAlgOID:
+          type: string
+        sigAlgParams:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+        issuerUniqueID:
+          items:
+            type: boolean
+          type: array
+        subjectUniqueID:
+          items:
+            type: boolean
+          type: array
+        extendedKeyUsage:
+          items:
+            type: string
+          type: array
+        criticalExtensionOIDs:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        nonCriticalExtensionOIDs:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        encoded:
+          items:
+            format: byte
+            pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+            type: string
+          type: array
+        publicKey:
+          $ref: '#/components/schemas/PublicKey'
+      type: object
+x-original-swagger-version: "2.0"
