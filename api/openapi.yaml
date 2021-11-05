@@ -13929,11 +13929,15 @@ components:
       type: object
     BacklogQuota:
       example:
-        limit: 6
+        limitTime: 1
+        limitSize: 6
         policy: producer_request_hold
       properties:
-        limit:
+        limitSize:
           format: int64
+          type: integer
+        limitTime:
+          format: int32
           type: integer
         policy:
           enum:
@@ -13995,7 +13999,7 @@ components:
         boundaries:
         - boundaries
         - boundaries
-        numBundles: 1
+        numBundles: 5
       properties:
         boundaries:
           items:
@@ -14198,7 +14202,7 @@ components:
       type: object
     DelayedDeliveryPolicies:
       example:
-        tickTime: 4
+        tickTime: 7
         active: true
       properties:
         active:
@@ -14217,9 +14221,9 @@ components:
       type: object
     DispatchRate:
       example:
-        dispatchThrottlingRateInMsg: 5
+        dispatchThrottlingRateInMsg: 2
         relativeToPublishRate: true
-        ratePeriodInSecond: 2
+        ratePeriodInSecond: 7
         dispatchThrottlingRateInByte: 5
       properties:
         dispatchThrottlingRateInByte:
@@ -14321,7 +14325,7 @@ components:
     InactiveTopicPolicies:
       example:
         inactiveTopicDeleteMode: delete_when_no_subscriptions
-        maxInactiveDurationSeconds: 7
+        maxInactiveDurationSeconds: 1
         deleteWhileInactive: true
       properties:
         deleteWhileInactive:
@@ -14949,29 +14953,29 @@ components:
       type: object
     OffloadPolicies:
       example:
-        managedLedgerOffloadThresholdInBytes: 6
+        managedLedgerOffloadThresholdInBytes: 1
         fileSystemProfilePath: fileSystemProfilePath
         gcsManagedLedgerOffloadRegion: gcsManagedLedgerOffloadRegion
-        managedLedgerOffloadPrefetchRounds: 6
+        managedLedgerOffloadPrefetchRounds: 3
         gcsDriver: true
         s3ManagedLedgerOffloadRoleSessionName: s3ManagedLedgerOffloadRoleSessionName
-        gcsManagedLedgerOffloadReadBufferSizeInBytes: 9
-        managedLedgerOffloadMaxBlockSizeInBytes: 8
+        gcsManagedLedgerOffloadReadBufferSizeInBytes: 6
+        managedLedgerOffloadMaxBlockSizeInBytes: 9
         s3ManagedLedgerOffloadBucket: s3ManagedLedgerOffloadBucket
         s3ManagedLedgerOffloadRegion: s3ManagedLedgerOffloadRegion
         gcsManagedLedgerOffloadServiceAccountKeyFile: gcsManagedLedgerOffloadServiceAccountKeyFile
         managedLedgerOffloadServiceEndpoint: managedLedgerOffloadServiceEndpoint
-        managedLedgerOffloadReadBufferSizeInBytes: 3
+        managedLedgerOffloadReadBufferSizeInBytes: 6
         fileSystemDriver: true
         fileSystemURI: fileSystemURI
         gcsManagedLedgerOffloadBucket: gcsManagedLedgerOffloadBucket
-        s3ManagedLedgerOffloadMaxBlockSizeInBytes: 1
-        s3ManagedLedgerOffloadReadBufferSizeInBytes: 2
-        managedLedgerOffloadMaxThreads: 9
+        s3ManagedLedgerOffloadMaxBlockSizeInBytes: 2
+        s3ManagedLedgerOffloadReadBufferSizeInBytes: 6
+        managedLedgerOffloadMaxThreads: 6
         offloadersDirectory: offloadersDirectory
         s3Driver: true
         gcsManagedLedgerOffloadMaxBlockSizeInBytes: 9
-        managedLedgerOffloadDeletionLagInMillis: 6
+        managedLedgerOffloadDeletionLagInMillis: 8
         s3ManagedLedgerOffloadRole: s3ManagedLedgerOffloadRole
         managedLedgerOffloadRegion: managedLedgerOffloadRegion
         managedLedgerOffloadDriver: managedLedgerOffloadDriver
@@ -15105,10 +15109,10 @@ components:
       type: object
     PersistencePolicies:
       example:
-        bookkeeperWriteQuorum: 6
-        bookkeeperAckQuorum: 6
-        bookkeeperEnsemble: 5
-        managedLedgerMaxMarkDeleteRate: 3.353193347011243
+        bookkeeperWriteQuorum: 3
+        bookkeeperAckQuorum: 5
+        bookkeeperEnsemble: 6
+        managedLedgerMaxMarkDeleteRate: 3.0937452626664474
       properties:
         bookkeeperAckQuorum:
           format: int32
@@ -15261,29 +15265,30 @@ components:
       example:
         backlog_quota_map:
           key:
-            limit: 6
+            limitTime: 1
+            limitSize: 6
             policy: producer_request_hold
-        message_ttl_in_seconds: 4
+        message_ttl_in_seconds: 5
         clusterSubscribeRate:
           key:
-            ratePeriodInSecond: 7
-            subscribeThrottlingRatePerConsumer: 9
-        max_consumers_per_topic: 1
+            ratePeriodInSecond: 9
+            subscribeThrottlingRatePerConsumer: 3
+        max_consumers_per_topic: 6
         autoTopicCreationOverride:
           defaultNumPartitions: 0
           allowAutoTopicCreation: true
           topicType: topicType
         publishMaxMessageRate:
           key:
-            publishThrottlingRateInMsg: 7
-            publishThrottlingRateInByte: 3
+            publishThrottlingRateInMsg: 0
+            publishThrottlingRateInByte: 7
         replicatorDispatchRate:
           key:
-            dispatchThrottlingRateInMsg: 5
+            dispatchThrottlingRateInMsg: 2
             relativeToPublishRate: true
-            ratePeriodInSecond: 2
+            ratePeriodInSecond: 7
             dispatchThrottlingRateInByte: 5
-        subscription_expiration_time_minutes: 6
+        subscription_expiration_time_minutes: 0
         auth_policies:
           subscription_auth_roles:
             key:
@@ -15301,92 +15306,92 @@ components:
         max_consumers_per_subscription: 1
         subscription_auth_mode: None
         is_allow_auto_update_schema: true
-        max_producers_per_topic: 6
+        max_producers_per_topic: 7
         schema_auto_update_compatibility_strategy: AutoUpdateDisabled
         latency_stats_sample_rate:
           key: 1
         schema_validation_enforced: true
         inactive_topic_policies:
           inactiveTopicDeleteMode: delete_when_no_subscriptions
-          maxInactiveDurationSeconds: 7
+          maxInactiveDurationSeconds: 1
           deleteWhileInactive: true
         offload_policies:
-          managedLedgerOffloadThresholdInBytes: 6
+          managedLedgerOffloadThresholdInBytes: 1
           fileSystemProfilePath: fileSystemProfilePath
           gcsManagedLedgerOffloadRegion: gcsManagedLedgerOffloadRegion
-          managedLedgerOffloadPrefetchRounds: 6
+          managedLedgerOffloadPrefetchRounds: 3
           gcsDriver: true
           s3ManagedLedgerOffloadRoleSessionName: s3ManagedLedgerOffloadRoleSessionName
-          gcsManagedLedgerOffloadReadBufferSizeInBytes: 9
-          managedLedgerOffloadMaxBlockSizeInBytes: 8
+          gcsManagedLedgerOffloadReadBufferSizeInBytes: 6
+          managedLedgerOffloadMaxBlockSizeInBytes: 9
           s3ManagedLedgerOffloadBucket: s3ManagedLedgerOffloadBucket
           s3ManagedLedgerOffloadRegion: s3ManagedLedgerOffloadRegion
           gcsManagedLedgerOffloadServiceAccountKeyFile: gcsManagedLedgerOffloadServiceAccountKeyFile
           managedLedgerOffloadServiceEndpoint: managedLedgerOffloadServiceEndpoint
-          managedLedgerOffloadReadBufferSizeInBytes: 3
+          managedLedgerOffloadReadBufferSizeInBytes: 6
           fileSystemDriver: true
           fileSystemURI: fileSystemURI
           gcsManagedLedgerOffloadBucket: gcsManagedLedgerOffloadBucket
-          s3ManagedLedgerOffloadMaxBlockSizeInBytes: 1
-          s3ManagedLedgerOffloadReadBufferSizeInBytes: 2
-          managedLedgerOffloadMaxThreads: 9
+          s3ManagedLedgerOffloadMaxBlockSizeInBytes: 2
+          s3ManagedLedgerOffloadReadBufferSizeInBytes: 6
+          managedLedgerOffloadMaxThreads: 6
           offloadersDirectory: offloadersDirectory
           s3Driver: true
           gcsManagedLedgerOffloadMaxBlockSizeInBytes: 9
-          managedLedgerOffloadDeletionLagInMillis: 6
+          managedLedgerOffloadDeletionLagInMillis: 8
           s3ManagedLedgerOffloadRole: s3ManagedLedgerOffloadRole
           managedLedgerOffloadRegion: managedLedgerOffloadRegion
           managedLedgerOffloadDriver: managedLedgerOffloadDriver
           managedLedgerOffloadBucket: managedLedgerOffloadBucket
           s3ManagedLedgerOffloadServiceEndpoint: s3ManagedLedgerOffloadServiceEndpoint
-        max_unacked_messages_per_consumer: 7
+        max_unacked_messages_per_consumer: 1
         offload_threshold: 6
-        compaction_threshold: 3
+        compaction_threshold: 2
         autoSubscriptionCreationOverride:
           allowAutoSubscriptionCreation: true
         subscriptionDispatchRate:
           key:
-            dispatchThrottlingRateInMsg: 5
+            dispatchThrottlingRateInMsg: 2
             relativeToPublishRate: true
-            ratePeriodInSecond: 2
+            ratePeriodInSecond: 7
             dispatchThrottlingRateInByte: 5
-        deduplicationSnapshotIntervalSeconds: 2
+        deduplicationSnapshotIntervalSeconds: 4
         clusterDispatchRate:
           key:
-            dispatchThrottlingRateInMsg: 5
+            dispatchThrottlingRateInMsg: 2
             relativeToPublishRate: true
-            ratePeriodInSecond: 2
+            ratePeriodInSecond: 7
             dispatchThrottlingRateInByte: 5
         schema_compatibility_strategy: UNDEFINED
         deduplicationEnabled: true
         encryption_required: true
-        max_unacked_messages_per_subscription: 1
-        offload_deletion_lag_ms: 5
+        max_unacked_messages_per_subscription: 4
+        offload_deletion_lag_ms: 9
         replication_clusters:
         - replication_clusters
         - replication_clusters
         retention_policies:
-          retentionSizeInMB: 0
-          retentionTimeInMinutes: 7
+          retentionSizeInMB: 7
+          retentionTimeInMinutes: 6
         deleted: true
         topicDispatchRate:
           key:
-            dispatchThrottlingRateInMsg: 5
+            dispatchThrottlingRateInMsg: 2
             relativeToPublishRate: true
-            ratePeriodInSecond: 2
+            ratePeriodInSecond: 7
             dispatchThrottlingRateInByte: 5
         bundles:
           boundaries:
           - boundaries
           - boundaries
-          numBundles: 1
+          numBundles: 5
         persistence:
-          bookkeeperWriteQuorum: 6
-          bookkeeperAckQuorum: 6
-          bookkeeperEnsemble: 5
-          managedLedgerMaxMarkDeleteRate: 3.353193347011243
+          bookkeeperWriteQuorum: 3
+          bookkeeperAckQuorum: 5
+          bookkeeperEnsemble: 6
+          managedLedgerMaxMarkDeleteRate: 3.0937452626664474
         delayed_delivery_policies:
-          tickTime: 4
+          tickTime: 7
           active: true
       properties:
         auth_policies:
@@ -15726,8 +15731,8 @@ components:
       type: object
     PublishRate:
       example:
-        publishThrottlingRateInMsg: 7
-        publishThrottlingRateInByte: 3
+        publishThrottlingRateInMsg: 0
+        publishThrottlingRateInByte: 7
       properties:
         publishThrottlingRateInByte:
           format: int64
@@ -15906,8 +15911,8 @@ components:
       type: object
     RetentionPolicies:
       example:
-        retentionSizeInMB: 0
-        retentionTimeInMinutes: 7
+        retentionSizeInMB: 7
+        retentionTimeInMinutes: 6
       properties:
         retentionSizeInMB:
           format: int64
@@ -15920,8 +15925,8 @@ components:
       type: object
     SubscribeRate:
       example:
-        ratePeriodInSecond: 7
-        subscribeThrottlingRatePerConsumer: 9
+        ratePeriodInSecond: 9
+        subscribeThrottlingRatePerConsumer: 3
       properties:
         ratePeriodInSecond:
           format: int32

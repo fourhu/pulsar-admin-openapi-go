@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Limit** | Pointer to **int64** |  | [optional] 
+**LimitSize** | Pointer to **int64** |  | [optional] 
+**LimitTime** | Pointer to **int32** |  | [optional] 
 **Policy** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -26,30 +27,55 @@ NewBacklogQuotaWithDefaults instantiates a new BacklogQuota object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetLimit
+### GetLimitSize
 
-`func (o *BacklogQuota) GetLimit() int64`
+`func (o *BacklogQuota) GetLimitSize() int64`
 
-GetLimit returns the Limit field if non-nil, zero value otherwise.
+GetLimitSize returns the LimitSize field if non-nil, zero value otherwise.
 
-### GetLimitOk
+### GetLimitSizeOk
 
-`func (o *BacklogQuota) GetLimitOk() (*int64, bool)`
+`func (o *BacklogQuota) GetLimitSizeOk() (*int64, bool)`
 
-GetLimitOk returns a tuple with the Limit field if it's non-nil, zero value otherwise
+GetLimitSizeOk returns a tuple with the LimitSize field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLimit
+### SetLimitSize
 
-`func (o *BacklogQuota) SetLimit(v int64)`
+`func (o *BacklogQuota) SetLimitSize(v int64)`
 
-SetLimit sets Limit field to given value.
+SetLimitSize sets LimitSize field to given value.
 
-### HasLimit
+### HasLimitSize
 
-`func (o *BacklogQuota) HasLimit() bool`
+`func (o *BacklogQuota) HasLimitSize() bool`
 
-HasLimit returns a boolean if a field has been set.
+HasLimitSize returns a boolean if a field has been set.
+
+### GetLimitTime
+
+`func (o *BacklogQuota) GetLimitTime() int32`
+
+GetLimitTime returns the LimitTime field if non-nil, zero value otherwise.
+
+### GetLimitTimeOk
+
+`func (o *BacklogQuota) GetLimitTimeOk() (*int32, bool)`
+
+GetLimitTimeOk returns a tuple with the LimitTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLimitTime
+
+`func (o *BacklogQuota) SetLimitTime(v int32)`
+
+SetLimitTime sets LimitTime field to given value.
+
+### HasLimitTime
+
+`func (o *BacklogQuota) HasLimitTime() bool`
+
+HasLimitTime returns a boolean if a field has been set.
 
 ### GetPolicy
 
