@@ -16,9 +16,9 @@ import (
 
 // PoolSubpageStats struct for PoolSubpageStats
 type PoolSubpageStats struct {
-	ElementSize *int32 `json:"elementSize,omitempty"`
 	MaxNumElements *int32 `json:"maxNumElements,omitempty"`
 	NumAvailable *int32 `json:"numAvailable,omitempty"`
+	ElementSize *int32 `json:"elementSize,omitempty"`
 	PageSize *int32 `json:"pageSize,omitempty"`
 }
 
@@ -37,38 +37,6 @@ func NewPoolSubpageStats() *PoolSubpageStats {
 func NewPoolSubpageStatsWithDefaults() *PoolSubpageStats {
 	this := PoolSubpageStats{}
 	return &this
-}
-
-// GetElementSize returns the ElementSize field value if set, zero value otherwise.
-func (o *PoolSubpageStats) GetElementSize() int32 {
-	if o == nil || o.ElementSize == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ElementSize
-}
-
-// GetElementSizeOk returns a tuple with the ElementSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolSubpageStats) GetElementSizeOk() (*int32, bool) {
-	if o == nil || o.ElementSize == nil {
-		return nil, false
-	}
-	return o.ElementSize, true
-}
-
-// HasElementSize returns a boolean if a field has been set.
-func (o *PoolSubpageStats) HasElementSize() bool {
-	if o != nil && o.ElementSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetElementSize gets a reference to the given int32 and assigns it to the ElementSize field.
-func (o *PoolSubpageStats) SetElementSize(v int32) {
-	o.ElementSize = &v
 }
 
 // GetMaxNumElements returns the MaxNumElements field value if set, zero value otherwise.
@@ -135,6 +103,38 @@ func (o *PoolSubpageStats) SetNumAvailable(v int32) {
 	o.NumAvailable = &v
 }
 
+// GetElementSize returns the ElementSize field value if set, zero value otherwise.
+func (o *PoolSubpageStats) GetElementSize() int32 {
+	if o == nil || o.ElementSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ElementSize
+}
+
+// GetElementSizeOk returns a tuple with the ElementSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolSubpageStats) GetElementSizeOk() (*int32, bool) {
+	if o == nil || o.ElementSize == nil {
+		return nil, false
+	}
+	return o.ElementSize, true
+}
+
+// HasElementSize returns a boolean if a field has been set.
+func (o *PoolSubpageStats) HasElementSize() bool {
+	if o != nil && o.ElementSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetElementSize gets a reference to the given int32 and assigns it to the ElementSize field.
+func (o *PoolSubpageStats) SetElementSize(v int32) {
+	o.ElementSize = &v
+}
+
 // GetPageSize returns the PageSize field value if set, zero value otherwise.
 func (o *PoolSubpageStats) GetPageSize() int32 {
 	if o == nil || o.PageSize == nil {
@@ -169,14 +169,14 @@ func (o *PoolSubpageStats) SetPageSize(v int32) {
 
 func (o PoolSubpageStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ElementSize != nil {
-		toSerialize["elementSize"] = o.ElementSize
-	}
 	if o.MaxNumElements != nil {
 		toSerialize["maxNumElements"] = o.MaxNumElements
 	}
 	if o.NumAvailable != nil {
 		toSerialize["numAvailable"] = o.NumAvailable
+	}
+	if o.ElementSize != nil {
+		toSerialize["elementSize"] = o.ElementSize
 	}
 	if o.PageSize != nil {
 		toSerialize["pageSize"] = o.PageSize

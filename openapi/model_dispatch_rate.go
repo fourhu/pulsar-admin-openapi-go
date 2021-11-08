@@ -16,10 +16,10 @@ import (
 
 // DispatchRate struct for DispatchRate
 type DispatchRate struct {
-	DispatchThrottlingRateInByte *int64 `json:"dispatchThrottlingRateInByte,omitempty"`
 	DispatchThrottlingRateInMsg *int32 `json:"dispatchThrottlingRateInMsg,omitempty"`
-	RatePeriodInSecond *int32 `json:"ratePeriodInSecond,omitempty"`
+	DispatchThrottlingRateInByte *int64 `json:"dispatchThrottlingRateInByte,omitempty"`
 	RelativeToPublishRate *bool `json:"relativeToPublishRate,omitempty"`
+	RatePeriodInSecond *int32 `json:"ratePeriodInSecond,omitempty"`
 }
 
 // NewDispatchRate instantiates a new DispatchRate object
@@ -37,38 +37,6 @@ func NewDispatchRate() *DispatchRate {
 func NewDispatchRateWithDefaults() *DispatchRate {
 	this := DispatchRate{}
 	return &this
-}
-
-// GetDispatchThrottlingRateInByte returns the DispatchThrottlingRateInByte field value if set, zero value otherwise.
-func (o *DispatchRate) GetDispatchThrottlingRateInByte() int64 {
-	if o == nil || o.DispatchThrottlingRateInByte == nil {
-		var ret int64
-		return ret
-	}
-	return *o.DispatchThrottlingRateInByte
-}
-
-// GetDispatchThrottlingRateInByteOk returns a tuple with the DispatchThrottlingRateInByte field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *DispatchRate) GetDispatchThrottlingRateInByteOk() (*int64, bool) {
-	if o == nil || o.DispatchThrottlingRateInByte == nil {
-		return nil, false
-	}
-	return o.DispatchThrottlingRateInByte, true
-}
-
-// HasDispatchThrottlingRateInByte returns a boolean if a field has been set.
-func (o *DispatchRate) HasDispatchThrottlingRateInByte() bool {
-	if o != nil && o.DispatchThrottlingRateInByte != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDispatchThrottlingRateInByte gets a reference to the given int64 and assigns it to the DispatchThrottlingRateInByte field.
-func (o *DispatchRate) SetDispatchThrottlingRateInByte(v int64) {
-	o.DispatchThrottlingRateInByte = &v
 }
 
 // GetDispatchThrottlingRateInMsg returns the DispatchThrottlingRateInMsg field value if set, zero value otherwise.
@@ -103,36 +71,36 @@ func (o *DispatchRate) SetDispatchThrottlingRateInMsg(v int32) {
 	o.DispatchThrottlingRateInMsg = &v
 }
 
-// GetRatePeriodInSecond returns the RatePeriodInSecond field value if set, zero value otherwise.
-func (o *DispatchRate) GetRatePeriodInSecond() int32 {
-	if o == nil || o.RatePeriodInSecond == nil {
-		var ret int32
+// GetDispatchThrottlingRateInByte returns the DispatchThrottlingRateInByte field value if set, zero value otherwise.
+func (o *DispatchRate) GetDispatchThrottlingRateInByte() int64 {
+	if o == nil || o.DispatchThrottlingRateInByte == nil {
+		var ret int64
 		return ret
 	}
-	return *o.RatePeriodInSecond
+	return *o.DispatchThrottlingRateInByte
 }
 
-// GetRatePeriodInSecondOk returns a tuple with the RatePeriodInSecond field value if set, nil otherwise
+// GetDispatchThrottlingRateInByteOk returns a tuple with the DispatchThrottlingRateInByte field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DispatchRate) GetRatePeriodInSecondOk() (*int32, bool) {
-	if o == nil || o.RatePeriodInSecond == nil {
+func (o *DispatchRate) GetDispatchThrottlingRateInByteOk() (*int64, bool) {
+	if o == nil || o.DispatchThrottlingRateInByte == nil {
 		return nil, false
 	}
-	return o.RatePeriodInSecond, true
+	return o.DispatchThrottlingRateInByte, true
 }
 
-// HasRatePeriodInSecond returns a boolean if a field has been set.
-func (o *DispatchRate) HasRatePeriodInSecond() bool {
-	if o != nil && o.RatePeriodInSecond != nil {
+// HasDispatchThrottlingRateInByte returns a boolean if a field has been set.
+func (o *DispatchRate) HasDispatchThrottlingRateInByte() bool {
+	if o != nil && o.DispatchThrottlingRateInByte != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetRatePeriodInSecond gets a reference to the given int32 and assigns it to the RatePeriodInSecond field.
-func (o *DispatchRate) SetRatePeriodInSecond(v int32) {
-	o.RatePeriodInSecond = &v
+// SetDispatchThrottlingRateInByte gets a reference to the given int64 and assigns it to the DispatchThrottlingRateInByte field.
+func (o *DispatchRate) SetDispatchThrottlingRateInByte(v int64) {
+	o.DispatchThrottlingRateInByte = &v
 }
 
 // GetRelativeToPublishRate returns the RelativeToPublishRate field value if set, zero value otherwise.
@@ -167,19 +135,51 @@ func (o *DispatchRate) SetRelativeToPublishRate(v bool) {
 	o.RelativeToPublishRate = &v
 }
 
+// GetRatePeriodInSecond returns the RatePeriodInSecond field value if set, zero value otherwise.
+func (o *DispatchRate) GetRatePeriodInSecond() int32 {
+	if o == nil || o.RatePeriodInSecond == nil {
+		var ret int32
+		return ret
+	}
+	return *o.RatePeriodInSecond
+}
+
+// GetRatePeriodInSecondOk returns a tuple with the RatePeriodInSecond field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DispatchRate) GetRatePeriodInSecondOk() (*int32, bool) {
+	if o == nil || o.RatePeriodInSecond == nil {
+		return nil, false
+	}
+	return o.RatePeriodInSecond, true
+}
+
+// HasRatePeriodInSecond returns a boolean if a field has been set.
+func (o *DispatchRate) HasRatePeriodInSecond() bool {
+	if o != nil && o.RatePeriodInSecond != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRatePeriodInSecond gets a reference to the given int32 and assigns it to the RatePeriodInSecond field.
+func (o *DispatchRate) SetRatePeriodInSecond(v int32) {
+	o.RatePeriodInSecond = &v
+}
+
 func (o DispatchRate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DispatchThrottlingRateInByte != nil {
-		toSerialize["dispatchThrottlingRateInByte"] = o.DispatchThrottlingRateInByte
-	}
 	if o.DispatchThrottlingRateInMsg != nil {
 		toSerialize["dispatchThrottlingRateInMsg"] = o.DispatchThrottlingRateInMsg
 	}
-	if o.RatePeriodInSecond != nil {
-		toSerialize["ratePeriodInSecond"] = o.RatePeriodInSecond
+	if o.DispatchThrottlingRateInByte != nil {
+		toSerialize["dispatchThrottlingRateInByte"] = o.DispatchThrottlingRateInByte
 	}
 	if o.RelativeToPublishRate != nil {
 		toSerialize["relativeToPublishRate"] = o.RelativeToPublishRate
+	}
+	if o.RatePeriodInSecond != nil {
+		toSerialize["ratePeriodInSecond"] = o.RatePeriodInSecond
 	}
 	return json.Marshal(toSerialize)
 }

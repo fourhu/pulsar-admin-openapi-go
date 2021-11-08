@@ -16,19 +16,21 @@ import (
 
 // CursorStats struct for CursorStats
 type CursorStats struct {
+	MarkDeletePosition *string `json:"markDeletePosition,omitempty"`
+	ReadPosition *string `json:"readPosition,omitempty"`
+	WaitingReadOp *bool `json:"waitingReadOp,omitempty"`
+	PendingReadOps *int32 `json:"pendingReadOps,omitempty"`
+	MessagesConsumedCounter *int64 `json:"messagesConsumedCounter,omitempty"`
 	CursorLedger *int64 `json:"cursorLedger,omitempty"`
 	CursorLedgerLastEntry *int64 `json:"cursorLedgerLastEntry,omitempty"`
 	IndividuallyDeletedMessages *string `json:"individuallyDeletedMessages,omitempty"`
 	LastLedgerSwitchTimestamp *string `json:"lastLedgerSwitchTimestamp,omitempty"`
-	MarkDeletePosition *string `json:"markDeletePosition,omitempty"`
-	MessagesConsumedCounter *int64 `json:"messagesConsumedCounter,omitempty"`
-	NumberOfEntriesSinceFirstNotAckedMessage *int64 `json:"numberOfEntriesSinceFirstNotAckedMessage,omitempty"`
-	PendingReadOps *int32 `json:"pendingReadOps,omitempty"`
-	Properties *map[string]int64 `json:"properties,omitempty"`
-	ReadPosition *string `json:"readPosition,omitempty"`
 	State *string `json:"state,omitempty"`
+	NumberOfEntriesSinceFirstNotAckedMessage *int64 `json:"numberOfEntriesSinceFirstNotAckedMessage,omitempty"`
 	TotalNonContiguousDeletedMessagesRange *int32 `json:"totalNonContiguousDeletedMessagesRange,omitempty"`
-	WaitingReadOp *bool `json:"waitingReadOp,omitempty"`
+	SubscriptionHavePendingRead *bool `json:"subscriptionHavePendingRead,omitempty"`
+	SubscriptionHavePendingReplayRead *bool `json:"subscriptionHavePendingReplayRead,omitempty"`
+	Properties *map[string]int64 `json:"properties,omitempty"`
 }
 
 // NewCursorStats instantiates a new CursorStats object
@@ -46,6 +48,166 @@ func NewCursorStats() *CursorStats {
 func NewCursorStatsWithDefaults() *CursorStats {
 	this := CursorStats{}
 	return &this
+}
+
+// GetMarkDeletePosition returns the MarkDeletePosition field value if set, zero value otherwise.
+func (o *CursorStats) GetMarkDeletePosition() string {
+	if o == nil || o.MarkDeletePosition == nil {
+		var ret string
+		return ret
+	}
+	return *o.MarkDeletePosition
+}
+
+// GetMarkDeletePositionOk returns a tuple with the MarkDeletePosition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetMarkDeletePositionOk() (*string, bool) {
+	if o == nil || o.MarkDeletePosition == nil {
+		return nil, false
+	}
+	return o.MarkDeletePosition, true
+}
+
+// HasMarkDeletePosition returns a boolean if a field has been set.
+func (o *CursorStats) HasMarkDeletePosition() bool {
+	if o != nil && o.MarkDeletePosition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMarkDeletePosition gets a reference to the given string and assigns it to the MarkDeletePosition field.
+func (o *CursorStats) SetMarkDeletePosition(v string) {
+	o.MarkDeletePosition = &v
+}
+
+// GetReadPosition returns the ReadPosition field value if set, zero value otherwise.
+func (o *CursorStats) GetReadPosition() string {
+	if o == nil || o.ReadPosition == nil {
+		var ret string
+		return ret
+	}
+	return *o.ReadPosition
+}
+
+// GetReadPositionOk returns a tuple with the ReadPosition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetReadPositionOk() (*string, bool) {
+	if o == nil || o.ReadPosition == nil {
+		return nil, false
+	}
+	return o.ReadPosition, true
+}
+
+// HasReadPosition returns a boolean if a field has been set.
+func (o *CursorStats) HasReadPosition() bool {
+	if o != nil && o.ReadPosition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReadPosition gets a reference to the given string and assigns it to the ReadPosition field.
+func (o *CursorStats) SetReadPosition(v string) {
+	o.ReadPosition = &v
+}
+
+// GetWaitingReadOp returns the WaitingReadOp field value if set, zero value otherwise.
+func (o *CursorStats) GetWaitingReadOp() bool {
+	if o == nil || o.WaitingReadOp == nil {
+		var ret bool
+		return ret
+	}
+	return *o.WaitingReadOp
+}
+
+// GetWaitingReadOpOk returns a tuple with the WaitingReadOp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetWaitingReadOpOk() (*bool, bool) {
+	if o == nil || o.WaitingReadOp == nil {
+		return nil, false
+	}
+	return o.WaitingReadOp, true
+}
+
+// HasWaitingReadOp returns a boolean if a field has been set.
+func (o *CursorStats) HasWaitingReadOp() bool {
+	if o != nil && o.WaitingReadOp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWaitingReadOp gets a reference to the given bool and assigns it to the WaitingReadOp field.
+func (o *CursorStats) SetWaitingReadOp(v bool) {
+	o.WaitingReadOp = &v
+}
+
+// GetPendingReadOps returns the PendingReadOps field value if set, zero value otherwise.
+func (o *CursorStats) GetPendingReadOps() int32 {
+	if o == nil || o.PendingReadOps == nil {
+		var ret int32
+		return ret
+	}
+	return *o.PendingReadOps
+}
+
+// GetPendingReadOpsOk returns a tuple with the PendingReadOps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetPendingReadOpsOk() (*int32, bool) {
+	if o == nil || o.PendingReadOps == nil {
+		return nil, false
+	}
+	return o.PendingReadOps, true
+}
+
+// HasPendingReadOps returns a boolean if a field has been set.
+func (o *CursorStats) HasPendingReadOps() bool {
+	if o != nil && o.PendingReadOps != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPendingReadOps gets a reference to the given int32 and assigns it to the PendingReadOps field.
+func (o *CursorStats) SetPendingReadOps(v int32) {
+	o.PendingReadOps = &v
+}
+
+// GetMessagesConsumedCounter returns the MessagesConsumedCounter field value if set, zero value otherwise.
+func (o *CursorStats) GetMessagesConsumedCounter() int64 {
+	if o == nil || o.MessagesConsumedCounter == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MessagesConsumedCounter
+}
+
+// GetMessagesConsumedCounterOk returns a tuple with the MessagesConsumedCounter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetMessagesConsumedCounterOk() (*int64, bool) {
+	if o == nil || o.MessagesConsumedCounter == nil {
+		return nil, false
+	}
+	return o.MessagesConsumedCounter, true
+}
+
+// HasMessagesConsumedCounter returns a boolean if a field has been set.
+func (o *CursorStats) HasMessagesConsumedCounter() bool {
+	if o != nil && o.MessagesConsumedCounter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMessagesConsumedCounter gets a reference to the given int64 and assigns it to the MessagesConsumedCounter field.
+func (o *CursorStats) SetMessagesConsumedCounter(v int64) {
+	o.MessagesConsumedCounter = &v
 }
 
 // GetCursorLedger returns the CursorLedger field value if set, zero value otherwise.
@@ -176,68 +338,36 @@ func (o *CursorStats) SetLastLedgerSwitchTimestamp(v string) {
 	o.LastLedgerSwitchTimestamp = &v
 }
 
-// GetMarkDeletePosition returns the MarkDeletePosition field value if set, zero value otherwise.
-func (o *CursorStats) GetMarkDeletePosition() string {
-	if o == nil || o.MarkDeletePosition == nil {
+// GetState returns the State field value if set, zero value otherwise.
+func (o *CursorStats) GetState() string {
+	if o == nil || o.State == nil {
 		var ret string
 		return ret
 	}
-	return *o.MarkDeletePosition
+	return *o.State
 }
 
-// GetMarkDeletePositionOk returns a tuple with the MarkDeletePosition field value if set, nil otherwise
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CursorStats) GetMarkDeletePositionOk() (*string, bool) {
-	if o == nil || o.MarkDeletePosition == nil {
+func (o *CursorStats) GetStateOk() (*string, bool) {
+	if o == nil || o.State == nil {
 		return nil, false
 	}
-	return o.MarkDeletePosition, true
+	return o.State, true
 }
 
-// HasMarkDeletePosition returns a boolean if a field has been set.
-func (o *CursorStats) HasMarkDeletePosition() bool {
-	if o != nil && o.MarkDeletePosition != nil {
+// HasState returns a boolean if a field has been set.
+func (o *CursorStats) HasState() bool {
+	if o != nil && o.State != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMarkDeletePosition gets a reference to the given string and assigns it to the MarkDeletePosition field.
-func (o *CursorStats) SetMarkDeletePosition(v string) {
-	o.MarkDeletePosition = &v
-}
-
-// GetMessagesConsumedCounter returns the MessagesConsumedCounter field value if set, zero value otherwise.
-func (o *CursorStats) GetMessagesConsumedCounter() int64 {
-	if o == nil || o.MessagesConsumedCounter == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MessagesConsumedCounter
-}
-
-// GetMessagesConsumedCounterOk returns a tuple with the MessagesConsumedCounter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CursorStats) GetMessagesConsumedCounterOk() (*int64, bool) {
-	if o == nil || o.MessagesConsumedCounter == nil {
-		return nil, false
-	}
-	return o.MessagesConsumedCounter, true
-}
-
-// HasMessagesConsumedCounter returns a boolean if a field has been set.
-func (o *CursorStats) HasMessagesConsumedCounter() bool {
-	if o != nil && o.MessagesConsumedCounter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMessagesConsumedCounter gets a reference to the given int64 and assigns it to the MessagesConsumedCounter field.
-func (o *CursorStats) SetMessagesConsumedCounter(v int64) {
-	o.MessagesConsumedCounter = &v
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *CursorStats) SetState(v string) {
+	o.State = &v
 }
 
 // GetNumberOfEntriesSinceFirstNotAckedMessage returns the NumberOfEntriesSinceFirstNotAckedMessage field value if set, zero value otherwise.
@@ -272,36 +402,100 @@ func (o *CursorStats) SetNumberOfEntriesSinceFirstNotAckedMessage(v int64) {
 	o.NumberOfEntriesSinceFirstNotAckedMessage = &v
 }
 
-// GetPendingReadOps returns the PendingReadOps field value if set, zero value otherwise.
-func (o *CursorStats) GetPendingReadOps() int32 {
-	if o == nil || o.PendingReadOps == nil {
+// GetTotalNonContiguousDeletedMessagesRange returns the TotalNonContiguousDeletedMessagesRange field value if set, zero value otherwise.
+func (o *CursorStats) GetTotalNonContiguousDeletedMessagesRange() int32 {
+	if o == nil || o.TotalNonContiguousDeletedMessagesRange == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PendingReadOps
+	return *o.TotalNonContiguousDeletedMessagesRange
 }
 
-// GetPendingReadOpsOk returns a tuple with the PendingReadOps field value if set, nil otherwise
+// GetTotalNonContiguousDeletedMessagesRangeOk returns a tuple with the TotalNonContiguousDeletedMessagesRange field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CursorStats) GetPendingReadOpsOk() (*int32, bool) {
-	if o == nil || o.PendingReadOps == nil {
+func (o *CursorStats) GetTotalNonContiguousDeletedMessagesRangeOk() (*int32, bool) {
+	if o == nil || o.TotalNonContiguousDeletedMessagesRange == nil {
 		return nil, false
 	}
-	return o.PendingReadOps, true
+	return o.TotalNonContiguousDeletedMessagesRange, true
 }
 
-// HasPendingReadOps returns a boolean if a field has been set.
-func (o *CursorStats) HasPendingReadOps() bool {
-	if o != nil && o.PendingReadOps != nil {
+// HasTotalNonContiguousDeletedMessagesRange returns a boolean if a field has been set.
+func (o *CursorStats) HasTotalNonContiguousDeletedMessagesRange() bool {
+	if o != nil && o.TotalNonContiguousDeletedMessagesRange != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPendingReadOps gets a reference to the given int32 and assigns it to the PendingReadOps field.
-func (o *CursorStats) SetPendingReadOps(v int32) {
-	o.PendingReadOps = &v
+// SetTotalNonContiguousDeletedMessagesRange gets a reference to the given int32 and assigns it to the TotalNonContiguousDeletedMessagesRange field.
+func (o *CursorStats) SetTotalNonContiguousDeletedMessagesRange(v int32) {
+	o.TotalNonContiguousDeletedMessagesRange = &v
+}
+
+// GetSubscriptionHavePendingRead returns the SubscriptionHavePendingRead field value if set, zero value otherwise.
+func (o *CursorStats) GetSubscriptionHavePendingRead() bool {
+	if o == nil || o.SubscriptionHavePendingRead == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SubscriptionHavePendingRead
+}
+
+// GetSubscriptionHavePendingReadOk returns a tuple with the SubscriptionHavePendingRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetSubscriptionHavePendingReadOk() (*bool, bool) {
+	if o == nil || o.SubscriptionHavePendingRead == nil {
+		return nil, false
+	}
+	return o.SubscriptionHavePendingRead, true
+}
+
+// HasSubscriptionHavePendingRead returns a boolean if a field has been set.
+func (o *CursorStats) HasSubscriptionHavePendingRead() bool {
+	if o != nil && o.SubscriptionHavePendingRead != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptionHavePendingRead gets a reference to the given bool and assigns it to the SubscriptionHavePendingRead field.
+func (o *CursorStats) SetSubscriptionHavePendingRead(v bool) {
+	o.SubscriptionHavePendingRead = &v
+}
+
+// GetSubscriptionHavePendingReplayRead returns the SubscriptionHavePendingReplayRead field value if set, zero value otherwise.
+func (o *CursorStats) GetSubscriptionHavePendingReplayRead() bool {
+	if o == nil || o.SubscriptionHavePendingReplayRead == nil {
+		var ret bool
+		return ret
+	}
+	return *o.SubscriptionHavePendingReplayRead
+}
+
+// GetSubscriptionHavePendingReplayReadOk returns a tuple with the SubscriptionHavePendingReplayRead field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CursorStats) GetSubscriptionHavePendingReplayReadOk() (*bool, bool) {
+	if o == nil || o.SubscriptionHavePendingReplayRead == nil {
+		return nil, false
+	}
+	return o.SubscriptionHavePendingReplayRead, true
+}
+
+// HasSubscriptionHavePendingReplayRead returns a boolean if a field has been set.
+func (o *CursorStats) HasSubscriptionHavePendingReplayRead() bool {
+	if o != nil && o.SubscriptionHavePendingReplayRead != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptionHavePendingReplayRead gets a reference to the given bool and assigns it to the SubscriptionHavePendingReplayRead field.
+func (o *CursorStats) SetSubscriptionHavePendingReplayRead(v bool) {
+	o.SubscriptionHavePendingReplayRead = &v
 }
 
 // GetProperties returns the Properties field value if set, zero value otherwise.
@@ -336,136 +530,23 @@ func (o *CursorStats) SetProperties(v map[string]int64) {
 	o.Properties = &v
 }
 
-// GetReadPosition returns the ReadPosition field value if set, zero value otherwise.
-func (o *CursorStats) GetReadPosition() string {
-	if o == nil || o.ReadPosition == nil {
-		var ret string
-		return ret
-	}
-	return *o.ReadPosition
-}
-
-// GetReadPositionOk returns a tuple with the ReadPosition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CursorStats) GetReadPositionOk() (*string, bool) {
-	if o == nil || o.ReadPosition == nil {
-		return nil, false
-	}
-	return o.ReadPosition, true
-}
-
-// HasReadPosition returns a boolean if a field has been set.
-func (o *CursorStats) HasReadPosition() bool {
-	if o != nil && o.ReadPosition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReadPosition gets a reference to the given string and assigns it to the ReadPosition field.
-func (o *CursorStats) SetReadPosition(v string) {
-	o.ReadPosition = &v
-}
-
-// GetState returns the State field value if set, zero value otherwise.
-func (o *CursorStats) GetState() string {
-	if o == nil || o.State == nil {
-		var ret string
-		return ret
-	}
-	return *o.State
-}
-
-// GetStateOk returns a tuple with the State field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CursorStats) GetStateOk() (*string, bool) {
-	if o == nil || o.State == nil {
-		return nil, false
-	}
-	return o.State, true
-}
-
-// HasState returns a boolean if a field has been set.
-func (o *CursorStats) HasState() bool {
-	if o != nil && o.State != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *CursorStats) SetState(v string) {
-	o.State = &v
-}
-
-// GetTotalNonContiguousDeletedMessagesRange returns the TotalNonContiguousDeletedMessagesRange field value if set, zero value otherwise.
-func (o *CursorStats) GetTotalNonContiguousDeletedMessagesRange() int32 {
-	if o == nil || o.TotalNonContiguousDeletedMessagesRange == nil {
-		var ret int32
-		return ret
-	}
-	return *o.TotalNonContiguousDeletedMessagesRange
-}
-
-// GetTotalNonContiguousDeletedMessagesRangeOk returns a tuple with the TotalNonContiguousDeletedMessagesRange field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CursorStats) GetTotalNonContiguousDeletedMessagesRangeOk() (*int32, bool) {
-	if o == nil || o.TotalNonContiguousDeletedMessagesRange == nil {
-		return nil, false
-	}
-	return o.TotalNonContiguousDeletedMessagesRange, true
-}
-
-// HasTotalNonContiguousDeletedMessagesRange returns a boolean if a field has been set.
-func (o *CursorStats) HasTotalNonContiguousDeletedMessagesRange() bool {
-	if o != nil && o.TotalNonContiguousDeletedMessagesRange != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalNonContiguousDeletedMessagesRange gets a reference to the given int32 and assigns it to the TotalNonContiguousDeletedMessagesRange field.
-func (o *CursorStats) SetTotalNonContiguousDeletedMessagesRange(v int32) {
-	o.TotalNonContiguousDeletedMessagesRange = &v
-}
-
-// GetWaitingReadOp returns the WaitingReadOp field value if set, zero value otherwise.
-func (o *CursorStats) GetWaitingReadOp() bool {
-	if o == nil || o.WaitingReadOp == nil {
-		var ret bool
-		return ret
-	}
-	return *o.WaitingReadOp
-}
-
-// GetWaitingReadOpOk returns a tuple with the WaitingReadOp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CursorStats) GetWaitingReadOpOk() (*bool, bool) {
-	if o == nil || o.WaitingReadOp == nil {
-		return nil, false
-	}
-	return o.WaitingReadOp, true
-}
-
-// HasWaitingReadOp returns a boolean if a field has been set.
-func (o *CursorStats) HasWaitingReadOp() bool {
-	if o != nil && o.WaitingReadOp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetWaitingReadOp gets a reference to the given bool and assigns it to the WaitingReadOp field.
-func (o *CursorStats) SetWaitingReadOp(v bool) {
-	o.WaitingReadOp = &v
-}
-
 func (o CursorStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.MarkDeletePosition != nil {
+		toSerialize["markDeletePosition"] = o.MarkDeletePosition
+	}
+	if o.ReadPosition != nil {
+		toSerialize["readPosition"] = o.ReadPosition
+	}
+	if o.WaitingReadOp != nil {
+		toSerialize["waitingReadOp"] = o.WaitingReadOp
+	}
+	if o.PendingReadOps != nil {
+		toSerialize["pendingReadOps"] = o.PendingReadOps
+	}
+	if o.MessagesConsumedCounter != nil {
+		toSerialize["messagesConsumedCounter"] = o.MessagesConsumedCounter
+	}
 	if o.CursorLedger != nil {
 		toSerialize["cursorLedger"] = o.CursorLedger
 	}
@@ -478,32 +559,23 @@ func (o CursorStats) MarshalJSON() ([]byte, error) {
 	if o.LastLedgerSwitchTimestamp != nil {
 		toSerialize["lastLedgerSwitchTimestamp"] = o.LastLedgerSwitchTimestamp
 	}
-	if o.MarkDeletePosition != nil {
-		toSerialize["markDeletePosition"] = o.MarkDeletePosition
-	}
-	if o.MessagesConsumedCounter != nil {
-		toSerialize["messagesConsumedCounter"] = o.MessagesConsumedCounter
+	if o.State != nil {
+		toSerialize["state"] = o.State
 	}
 	if o.NumberOfEntriesSinceFirstNotAckedMessage != nil {
 		toSerialize["numberOfEntriesSinceFirstNotAckedMessage"] = o.NumberOfEntriesSinceFirstNotAckedMessage
 	}
-	if o.PendingReadOps != nil {
-		toSerialize["pendingReadOps"] = o.PendingReadOps
-	}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
-	}
-	if o.ReadPosition != nil {
-		toSerialize["readPosition"] = o.ReadPosition
-	}
-	if o.State != nil {
-		toSerialize["state"] = o.State
-	}
 	if o.TotalNonContiguousDeletedMessagesRange != nil {
 		toSerialize["totalNonContiguousDeletedMessagesRange"] = o.TotalNonContiguousDeletedMessagesRange
 	}
-	if o.WaitingReadOp != nil {
-		toSerialize["waitingReadOp"] = o.WaitingReadOp
+	if o.SubscriptionHavePendingRead != nil {
+		toSerialize["subscriptionHavePendingRead"] = o.SubscriptionHavePendingRead
+	}
+	if o.SubscriptionHavePendingReplayRead != nil {
+		toSerialize["subscriptionHavePendingReplayRead"] = o.SubscriptionHavePendingReplayRead
+	}
+	if o.Properties != nil {
+		toSerialize["properties"] = o.Properties
 	}
 	return json.Marshal(toSerialize)
 }

@@ -16,23 +16,29 @@ import (
 
 // NonPersistentTopicStats struct for NonPersistentTopicStats
 type NonPersistentTopicStats struct {
-	AverageMsgSize *float64 `json:"averageMsgSize,omitempty"`
-	BacklogSize *int64 `json:"backlogSize,omitempty"`
-	BytesInCounter *int64 `json:"bytesInCounter,omitempty"`
-	BytesOutCounter *int64 `json:"bytesOutCounter,omitempty"`
-	DeduplicationStatus *string `json:"deduplicationStatus,omitempty"`
-	MsgChunkPublished *bool `json:"msgChunkPublished,omitempty"`
-	MsgDropRate *float64 `json:"msgDropRate,omitempty"`
-	MsgInCounter *int64 `json:"msgInCounter,omitempty"`
-	MsgOutCounter *int64 `json:"msgOutCounter,omitempty"`
-	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
-	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
-	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
-	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
+	Subscriptions *map[string]NonPersistentSubscriptionStats `json:"subscriptions,omitempty"`
 	Publishers *[]NonPersistentPublisherStats `json:"publishers,omitempty"`
 	Replication *map[string]NonPersistentReplicatorStats `json:"replication,omitempty"`
+	MsgDropRate *float64 `json:"msgDropRate,omitempty"`
+	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
+	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
+	BacklogSize *int64 `json:"backlogSize,omitempty"`
+	BytesInCounter *int64 `json:"bytesInCounter,omitempty"`
+	MsgInCounter *int64 `json:"msgInCounter,omitempty"`
+	BytesOutCounter *int64 `json:"bytesOutCounter,omitempty"`
+	MsgOutCounter *int64 `json:"msgOutCounter,omitempty"`
+	OffloadedStorageSize *int64 `json:"offloadedStorageSize,omitempty"`
+	WaitingPublishers *int32 `json:"waitingPublishers,omitempty"`
+	DeduplicationStatus *string `json:"deduplicationStatus,omitempty"`
+	TopicEpoch *int64 `json:"topicEpoch,omitempty"`
+	NonContiguousDeletedMessagesRanges *int32 `json:"nonContiguousDeletedMessagesRanges,omitempty"`
+	NonContiguousDeletedMessagesRangesSerializedSize *int32 `json:"nonContiguousDeletedMessagesRangesSerializedSize,omitempty"`
+	Compaction *CompactionStats `json:"compaction,omitempty"`
+	AverageMsgSize *float64 `json:"averageMsgSize,omitempty"`
+	MsgChunkPublished *bool `json:"msgChunkPublished,omitempty"`
 	StorageSize *int64 `json:"storageSize,omitempty"`
-	Subscriptions *map[string]NonPersistentSubscriptionStats `json:"subscriptions,omitempty"`
+	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
+	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
 }
 
 // NewNonPersistentTopicStats instantiates a new NonPersistentTopicStats object
@@ -52,420 +58,36 @@ func NewNonPersistentTopicStatsWithDefaults() *NonPersistentTopicStats {
 	return &this
 }
 
-// GetAverageMsgSize returns the AverageMsgSize field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetAverageMsgSize() float64 {
-	if o == nil || o.AverageMsgSize == nil {
-		var ret float64
+// GetSubscriptions returns the Subscriptions field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetSubscriptions() map[string]NonPersistentSubscriptionStats {
+	if o == nil || o.Subscriptions == nil {
+		var ret map[string]NonPersistentSubscriptionStats
 		return ret
 	}
-	return *o.AverageMsgSize
+	return *o.Subscriptions
 }
 
-// GetAverageMsgSizeOk returns a tuple with the AverageMsgSize field value if set, nil otherwise
+// GetSubscriptionsOk returns a tuple with the Subscriptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetAverageMsgSizeOk() (*float64, bool) {
-	if o == nil || o.AverageMsgSize == nil {
+func (o *NonPersistentTopicStats) GetSubscriptionsOk() (*map[string]NonPersistentSubscriptionStats, bool) {
+	if o == nil || o.Subscriptions == nil {
 		return nil, false
 	}
-	return o.AverageMsgSize, true
+	return o.Subscriptions, true
 }
 
-// HasAverageMsgSize returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasAverageMsgSize() bool {
-	if o != nil && o.AverageMsgSize != nil {
+// HasSubscriptions returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasSubscriptions() bool {
+	if o != nil && o.Subscriptions != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAverageMsgSize gets a reference to the given float64 and assigns it to the AverageMsgSize field.
-func (o *NonPersistentTopicStats) SetAverageMsgSize(v float64) {
-	o.AverageMsgSize = &v
-}
-
-// GetBacklogSize returns the BacklogSize field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetBacklogSize() int64 {
-	if o == nil || o.BacklogSize == nil {
-		var ret int64
-		return ret
-	}
-	return *o.BacklogSize
-}
-
-// GetBacklogSizeOk returns a tuple with the BacklogSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetBacklogSizeOk() (*int64, bool) {
-	if o == nil || o.BacklogSize == nil {
-		return nil, false
-	}
-	return o.BacklogSize, true
-}
-
-// HasBacklogSize returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasBacklogSize() bool {
-	if o != nil && o.BacklogSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBacklogSize gets a reference to the given int64 and assigns it to the BacklogSize field.
-func (o *NonPersistentTopicStats) SetBacklogSize(v int64) {
-	o.BacklogSize = &v
-}
-
-// GetBytesInCounter returns the BytesInCounter field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetBytesInCounter() int64 {
-	if o == nil || o.BytesInCounter == nil {
-		var ret int64
-		return ret
-	}
-	return *o.BytesInCounter
-}
-
-// GetBytesInCounterOk returns a tuple with the BytesInCounter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetBytesInCounterOk() (*int64, bool) {
-	if o == nil || o.BytesInCounter == nil {
-		return nil, false
-	}
-	return o.BytesInCounter, true
-}
-
-// HasBytesInCounter returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasBytesInCounter() bool {
-	if o != nil && o.BytesInCounter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBytesInCounter gets a reference to the given int64 and assigns it to the BytesInCounter field.
-func (o *NonPersistentTopicStats) SetBytesInCounter(v int64) {
-	o.BytesInCounter = &v
-}
-
-// GetBytesOutCounter returns the BytesOutCounter field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetBytesOutCounter() int64 {
-	if o == nil || o.BytesOutCounter == nil {
-		var ret int64
-		return ret
-	}
-	return *o.BytesOutCounter
-}
-
-// GetBytesOutCounterOk returns a tuple with the BytesOutCounter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetBytesOutCounterOk() (*int64, bool) {
-	if o == nil || o.BytesOutCounter == nil {
-		return nil, false
-	}
-	return o.BytesOutCounter, true
-}
-
-// HasBytesOutCounter returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasBytesOutCounter() bool {
-	if o != nil && o.BytesOutCounter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBytesOutCounter gets a reference to the given int64 and assigns it to the BytesOutCounter field.
-func (o *NonPersistentTopicStats) SetBytesOutCounter(v int64) {
-	o.BytesOutCounter = &v
-}
-
-// GetDeduplicationStatus returns the DeduplicationStatus field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetDeduplicationStatus() string {
-	if o == nil || o.DeduplicationStatus == nil {
-		var ret string
-		return ret
-	}
-	return *o.DeduplicationStatus
-}
-
-// GetDeduplicationStatusOk returns a tuple with the DeduplicationStatus field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetDeduplicationStatusOk() (*string, bool) {
-	if o == nil || o.DeduplicationStatus == nil {
-		return nil, false
-	}
-	return o.DeduplicationStatus, true
-}
-
-// HasDeduplicationStatus returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasDeduplicationStatus() bool {
-	if o != nil && o.DeduplicationStatus != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeduplicationStatus gets a reference to the given string and assigns it to the DeduplicationStatus field.
-func (o *NonPersistentTopicStats) SetDeduplicationStatus(v string) {
-	o.DeduplicationStatus = &v
-}
-
-// GetMsgChunkPublished returns the MsgChunkPublished field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgChunkPublished() bool {
-	if o == nil || o.MsgChunkPublished == nil {
-		var ret bool
-		return ret
-	}
-	return *o.MsgChunkPublished
-}
-
-// GetMsgChunkPublishedOk returns a tuple with the MsgChunkPublished field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgChunkPublishedOk() (*bool, bool) {
-	if o == nil || o.MsgChunkPublished == nil {
-		return nil, false
-	}
-	return o.MsgChunkPublished, true
-}
-
-// HasMsgChunkPublished returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgChunkPublished() bool {
-	if o != nil && o.MsgChunkPublished != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgChunkPublished gets a reference to the given bool and assigns it to the MsgChunkPublished field.
-func (o *NonPersistentTopicStats) SetMsgChunkPublished(v bool) {
-	o.MsgChunkPublished = &v
-}
-
-// GetMsgDropRate returns the MsgDropRate field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgDropRate() float64 {
-	if o == nil || o.MsgDropRate == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgDropRate
-}
-
-// GetMsgDropRateOk returns a tuple with the MsgDropRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgDropRateOk() (*float64, bool) {
-	if o == nil || o.MsgDropRate == nil {
-		return nil, false
-	}
-	return o.MsgDropRate, true
-}
-
-// HasMsgDropRate returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgDropRate() bool {
-	if o != nil && o.MsgDropRate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgDropRate gets a reference to the given float64 and assigns it to the MsgDropRate field.
-func (o *NonPersistentTopicStats) SetMsgDropRate(v float64) {
-	o.MsgDropRate = &v
-}
-
-// GetMsgInCounter returns the MsgInCounter field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgInCounter() int64 {
-	if o == nil || o.MsgInCounter == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MsgInCounter
-}
-
-// GetMsgInCounterOk returns a tuple with the MsgInCounter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgInCounterOk() (*int64, bool) {
-	if o == nil || o.MsgInCounter == nil {
-		return nil, false
-	}
-	return o.MsgInCounter, true
-}
-
-// HasMsgInCounter returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgInCounter() bool {
-	if o != nil && o.MsgInCounter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgInCounter gets a reference to the given int64 and assigns it to the MsgInCounter field.
-func (o *NonPersistentTopicStats) SetMsgInCounter(v int64) {
-	o.MsgInCounter = &v
-}
-
-// GetMsgOutCounter returns the MsgOutCounter field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgOutCounter() int64 {
-	if o == nil || o.MsgOutCounter == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MsgOutCounter
-}
-
-// GetMsgOutCounterOk returns a tuple with the MsgOutCounter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgOutCounterOk() (*int64, bool) {
-	if o == nil || o.MsgOutCounter == nil {
-		return nil, false
-	}
-	return o.MsgOutCounter, true
-}
-
-// HasMsgOutCounter returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgOutCounter() bool {
-	if o != nil && o.MsgOutCounter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgOutCounter gets a reference to the given int64 and assigns it to the MsgOutCounter field.
-func (o *NonPersistentTopicStats) SetMsgOutCounter(v int64) {
-	o.MsgOutCounter = &v
-}
-
-// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgRateIn() float64 {
-	if o == nil || o.MsgRateIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateIn
-}
-
-// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgRateInOk() (*float64, bool) {
-	if o == nil || o.MsgRateIn == nil {
-		return nil, false
-	}
-	return o.MsgRateIn, true
-}
-
-// HasMsgRateIn returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgRateIn() bool {
-	if o != nil && o.MsgRateIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
-func (o *NonPersistentTopicStats) SetMsgRateIn(v float64) {
-	o.MsgRateIn = &v
-}
-
-// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgRateOut() float64 {
-	if o == nil || o.MsgRateOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateOut
-}
-
-// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgRateOutOk() (*float64, bool) {
-	if o == nil || o.MsgRateOut == nil {
-		return nil, false
-	}
-	return o.MsgRateOut, true
-}
-
-// HasMsgRateOut returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgRateOut() bool {
-	if o != nil && o.MsgRateOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
-func (o *NonPersistentTopicStats) SetMsgRateOut(v float64) {
-	o.MsgRateOut = &v
-}
-
-// GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgThroughputIn() float64 {
-	if o == nil || o.MsgThroughputIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgThroughputIn
-}
-
-// GetMsgThroughputInOk returns a tuple with the MsgThroughputIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgThroughputInOk() (*float64, bool) {
-	if o == nil || o.MsgThroughputIn == nil {
-		return nil, false
-	}
-	return o.MsgThroughputIn, true
-}
-
-// HasMsgThroughputIn returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgThroughputIn() bool {
-	if o != nil && o.MsgThroughputIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgThroughputIn gets a reference to the given float64 and assigns it to the MsgThroughputIn field.
-func (o *NonPersistentTopicStats) SetMsgThroughputIn(v float64) {
-	o.MsgThroughputIn = &v
-}
-
-// GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetMsgThroughputOut() float64 {
-	if o == nil || o.MsgThroughputOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgThroughputOut
-}
-
-// GetMsgThroughputOutOk returns a tuple with the MsgThroughputOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetMsgThroughputOutOk() (*float64, bool) {
-	if o == nil || o.MsgThroughputOut == nil {
-		return nil, false
-	}
-	return o.MsgThroughputOut, true
-}
-
-// HasMsgThroughputOut returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasMsgThroughputOut() bool {
-	if o != nil && o.MsgThroughputOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
-func (o *NonPersistentTopicStats) SetMsgThroughputOut(v float64) {
-	o.MsgThroughputOut = &v
+// SetSubscriptions gets a reference to the given map[string]NonPersistentSubscriptionStats and assigns it to the Subscriptions field.
+func (o *NonPersistentTopicStats) SetSubscriptions(v map[string]NonPersistentSubscriptionStats) {
+	o.Subscriptions = &v
 }
 
 // GetPublishers returns the Publishers field value if set, zero value otherwise.
@@ -532,6 +154,550 @@ func (o *NonPersistentTopicStats) SetReplication(v map[string]NonPersistentRepli
 	o.Replication = &v
 }
 
+// GetMsgDropRate returns the MsgDropRate field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgDropRate() float64 {
+	if o == nil || o.MsgDropRate == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgDropRate
+}
+
+// GetMsgDropRateOk returns a tuple with the MsgDropRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgDropRateOk() (*float64, bool) {
+	if o == nil || o.MsgDropRate == nil {
+		return nil, false
+	}
+	return o.MsgDropRate, true
+}
+
+// HasMsgDropRate returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgDropRate() bool {
+	if o != nil && o.MsgDropRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgDropRate gets a reference to the given float64 and assigns it to the MsgDropRate field.
+func (o *NonPersistentTopicStats) SetMsgDropRate(v float64) {
+	o.MsgDropRate = &v
+}
+
+// GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgThroughputIn() float64 {
+	if o == nil || o.MsgThroughputIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgThroughputIn
+}
+
+// GetMsgThroughputInOk returns a tuple with the MsgThroughputIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgThroughputInOk() (*float64, bool) {
+	if o == nil || o.MsgThroughputIn == nil {
+		return nil, false
+	}
+	return o.MsgThroughputIn, true
+}
+
+// HasMsgThroughputIn returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgThroughputIn() bool {
+	if o != nil && o.MsgThroughputIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgThroughputIn gets a reference to the given float64 and assigns it to the MsgThroughputIn field.
+func (o *NonPersistentTopicStats) SetMsgThroughputIn(v float64) {
+	o.MsgThroughputIn = &v
+}
+
+// GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgThroughputOut() float64 {
+	if o == nil || o.MsgThroughputOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgThroughputOut
+}
+
+// GetMsgThroughputOutOk returns a tuple with the MsgThroughputOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgThroughputOutOk() (*float64, bool) {
+	if o == nil || o.MsgThroughputOut == nil {
+		return nil, false
+	}
+	return o.MsgThroughputOut, true
+}
+
+// HasMsgThroughputOut returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgThroughputOut() bool {
+	if o != nil && o.MsgThroughputOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
+func (o *NonPersistentTopicStats) SetMsgThroughputOut(v float64) {
+	o.MsgThroughputOut = &v
+}
+
+// GetBacklogSize returns the BacklogSize field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetBacklogSize() int64 {
+	if o == nil || o.BacklogSize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.BacklogSize
+}
+
+// GetBacklogSizeOk returns a tuple with the BacklogSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetBacklogSizeOk() (*int64, bool) {
+	if o == nil || o.BacklogSize == nil {
+		return nil, false
+	}
+	return o.BacklogSize, true
+}
+
+// HasBacklogSize returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasBacklogSize() bool {
+	if o != nil && o.BacklogSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBacklogSize gets a reference to the given int64 and assigns it to the BacklogSize field.
+func (o *NonPersistentTopicStats) SetBacklogSize(v int64) {
+	o.BacklogSize = &v
+}
+
+// GetBytesInCounter returns the BytesInCounter field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetBytesInCounter() int64 {
+	if o == nil || o.BytesInCounter == nil {
+		var ret int64
+		return ret
+	}
+	return *o.BytesInCounter
+}
+
+// GetBytesInCounterOk returns a tuple with the BytesInCounter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetBytesInCounterOk() (*int64, bool) {
+	if o == nil || o.BytesInCounter == nil {
+		return nil, false
+	}
+	return o.BytesInCounter, true
+}
+
+// HasBytesInCounter returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasBytesInCounter() bool {
+	if o != nil && o.BytesInCounter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBytesInCounter gets a reference to the given int64 and assigns it to the BytesInCounter field.
+func (o *NonPersistentTopicStats) SetBytesInCounter(v int64) {
+	o.BytesInCounter = &v
+}
+
+// GetMsgInCounter returns the MsgInCounter field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgInCounter() int64 {
+	if o == nil || o.MsgInCounter == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MsgInCounter
+}
+
+// GetMsgInCounterOk returns a tuple with the MsgInCounter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgInCounterOk() (*int64, bool) {
+	if o == nil || o.MsgInCounter == nil {
+		return nil, false
+	}
+	return o.MsgInCounter, true
+}
+
+// HasMsgInCounter returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgInCounter() bool {
+	if o != nil && o.MsgInCounter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgInCounter gets a reference to the given int64 and assigns it to the MsgInCounter field.
+func (o *NonPersistentTopicStats) SetMsgInCounter(v int64) {
+	o.MsgInCounter = &v
+}
+
+// GetBytesOutCounter returns the BytesOutCounter field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetBytesOutCounter() int64 {
+	if o == nil || o.BytesOutCounter == nil {
+		var ret int64
+		return ret
+	}
+	return *o.BytesOutCounter
+}
+
+// GetBytesOutCounterOk returns a tuple with the BytesOutCounter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetBytesOutCounterOk() (*int64, bool) {
+	if o == nil || o.BytesOutCounter == nil {
+		return nil, false
+	}
+	return o.BytesOutCounter, true
+}
+
+// HasBytesOutCounter returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasBytesOutCounter() bool {
+	if o != nil && o.BytesOutCounter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBytesOutCounter gets a reference to the given int64 and assigns it to the BytesOutCounter field.
+func (o *NonPersistentTopicStats) SetBytesOutCounter(v int64) {
+	o.BytesOutCounter = &v
+}
+
+// GetMsgOutCounter returns the MsgOutCounter field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgOutCounter() int64 {
+	if o == nil || o.MsgOutCounter == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MsgOutCounter
+}
+
+// GetMsgOutCounterOk returns a tuple with the MsgOutCounter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgOutCounterOk() (*int64, bool) {
+	if o == nil || o.MsgOutCounter == nil {
+		return nil, false
+	}
+	return o.MsgOutCounter, true
+}
+
+// HasMsgOutCounter returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgOutCounter() bool {
+	if o != nil && o.MsgOutCounter != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgOutCounter gets a reference to the given int64 and assigns it to the MsgOutCounter field.
+func (o *NonPersistentTopicStats) SetMsgOutCounter(v int64) {
+	o.MsgOutCounter = &v
+}
+
+// GetOffloadedStorageSize returns the OffloadedStorageSize field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetOffloadedStorageSize() int64 {
+	if o == nil || o.OffloadedStorageSize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.OffloadedStorageSize
+}
+
+// GetOffloadedStorageSizeOk returns a tuple with the OffloadedStorageSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetOffloadedStorageSizeOk() (*int64, bool) {
+	if o == nil || o.OffloadedStorageSize == nil {
+		return nil, false
+	}
+	return o.OffloadedStorageSize, true
+}
+
+// HasOffloadedStorageSize returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasOffloadedStorageSize() bool {
+	if o != nil && o.OffloadedStorageSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOffloadedStorageSize gets a reference to the given int64 and assigns it to the OffloadedStorageSize field.
+func (o *NonPersistentTopicStats) SetOffloadedStorageSize(v int64) {
+	o.OffloadedStorageSize = &v
+}
+
+// GetWaitingPublishers returns the WaitingPublishers field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetWaitingPublishers() int32 {
+	if o == nil || o.WaitingPublishers == nil {
+		var ret int32
+		return ret
+	}
+	return *o.WaitingPublishers
+}
+
+// GetWaitingPublishersOk returns a tuple with the WaitingPublishers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetWaitingPublishersOk() (*int32, bool) {
+	if o == nil || o.WaitingPublishers == nil {
+		return nil, false
+	}
+	return o.WaitingPublishers, true
+}
+
+// HasWaitingPublishers returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasWaitingPublishers() bool {
+	if o != nil && o.WaitingPublishers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWaitingPublishers gets a reference to the given int32 and assigns it to the WaitingPublishers field.
+func (o *NonPersistentTopicStats) SetWaitingPublishers(v int32) {
+	o.WaitingPublishers = &v
+}
+
+// GetDeduplicationStatus returns the DeduplicationStatus field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetDeduplicationStatus() string {
+	if o == nil || o.DeduplicationStatus == nil {
+		var ret string
+		return ret
+	}
+	return *o.DeduplicationStatus
+}
+
+// GetDeduplicationStatusOk returns a tuple with the DeduplicationStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetDeduplicationStatusOk() (*string, bool) {
+	if o == nil || o.DeduplicationStatus == nil {
+		return nil, false
+	}
+	return o.DeduplicationStatus, true
+}
+
+// HasDeduplicationStatus returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasDeduplicationStatus() bool {
+	if o != nil && o.DeduplicationStatus != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeduplicationStatus gets a reference to the given string and assigns it to the DeduplicationStatus field.
+func (o *NonPersistentTopicStats) SetDeduplicationStatus(v string) {
+	o.DeduplicationStatus = &v
+}
+
+// GetTopicEpoch returns the TopicEpoch field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetTopicEpoch() int64 {
+	if o == nil || o.TopicEpoch == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TopicEpoch
+}
+
+// GetTopicEpochOk returns a tuple with the TopicEpoch field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetTopicEpochOk() (*int64, bool) {
+	if o == nil || o.TopicEpoch == nil {
+		return nil, false
+	}
+	return o.TopicEpoch, true
+}
+
+// HasTopicEpoch returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasTopicEpoch() bool {
+	if o != nil && o.TopicEpoch != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTopicEpoch gets a reference to the given int64 and assigns it to the TopicEpoch field.
+func (o *NonPersistentTopicStats) SetTopicEpoch(v int64) {
+	o.TopicEpoch = &v
+}
+
+// GetNonContiguousDeletedMessagesRanges returns the NonContiguousDeletedMessagesRanges field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetNonContiguousDeletedMessagesRanges() int32 {
+	if o == nil || o.NonContiguousDeletedMessagesRanges == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NonContiguousDeletedMessagesRanges
+}
+
+// GetNonContiguousDeletedMessagesRangesOk returns a tuple with the NonContiguousDeletedMessagesRanges field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetNonContiguousDeletedMessagesRangesOk() (*int32, bool) {
+	if o == nil || o.NonContiguousDeletedMessagesRanges == nil {
+		return nil, false
+	}
+	return o.NonContiguousDeletedMessagesRanges, true
+}
+
+// HasNonContiguousDeletedMessagesRanges returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasNonContiguousDeletedMessagesRanges() bool {
+	if o != nil && o.NonContiguousDeletedMessagesRanges != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNonContiguousDeletedMessagesRanges gets a reference to the given int32 and assigns it to the NonContiguousDeletedMessagesRanges field.
+func (o *NonPersistentTopicStats) SetNonContiguousDeletedMessagesRanges(v int32) {
+	o.NonContiguousDeletedMessagesRanges = &v
+}
+
+// GetNonContiguousDeletedMessagesRangesSerializedSize returns the NonContiguousDeletedMessagesRangesSerializedSize field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetNonContiguousDeletedMessagesRangesSerializedSize() int32 {
+	if o == nil || o.NonContiguousDeletedMessagesRangesSerializedSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NonContiguousDeletedMessagesRangesSerializedSize
+}
+
+// GetNonContiguousDeletedMessagesRangesSerializedSizeOk returns a tuple with the NonContiguousDeletedMessagesRangesSerializedSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetNonContiguousDeletedMessagesRangesSerializedSizeOk() (*int32, bool) {
+	if o == nil || o.NonContiguousDeletedMessagesRangesSerializedSize == nil {
+		return nil, false
+	}
+	return o.NonContiguousDeletedMessagesRangesSerializedSize, true
+}
+
+// HasNonContiguousDeletedMessagesRangesSerializedSize returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasNonContiguousDeletedMessagesRangesSerializedSize() bool {
+	if o != nil && o.NonContiguousDeletedMessagesRangesSerializedSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNonContiguousDeletedMessagesRangesSerializedSize gets a reference to the given int32 and assigns it to the NonContiguousDeletedMessagesRangesSerializedSize field.
+func (o *NonPersistentTopicStats) SetNonContiguousDeletedMessagesRangesSerializedSize(v int32) {
+	o.NonContiguousDeletedMessagesRangesSerializedSize = &v
+}
+
+// GetCompaction returns the Compaction field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetCompaction() CompactionStats {
+	if o == nil || o.Compaction == nil {
+		var ret CompactionStats
+		return ret
+	}
+	return *o.Compaction
+}
+
+// GetCompactionOk returns a tuple with the Compaction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetCompactionOk() (*CompactionStats, bool) {
+	if o == nil || o.Compaction == nil {
+		return nil, false
+	}
+	return o.Compaction, true
+}
+
+// HasCompaction returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasCompaction() bool {
+	if o != nil && o.Compaction != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCompaction gets a reference to the given CompactionStats and assigns it to the Compaction field.
+func (o *NonPersistentTopicStats) SetCompaction(v CompactionStats) {
+	o.Compaction = &v
+}
+
+// GetAverageMsgSize returns the AverageMsgSize field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetAverageMsgSize() float64 {
+	if o == nil || o.AverageMsgSize == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AverageMsgSize
+}
+
+// GetAverageMsgSizeOk returns a tuple with the AverageMsgSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetAverageMsgSizeOk() (*float64, bool) {
+	if o == nil || o.AverageMsgSize == nil {
+		return nil, false
+	}
+	return o.AverageMsgSize, true
+}
+
+// HasAverageMsgSize returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasAverageMsgSize() bool {
+	if o != nil && o.AverageMsgSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAverageMsgSize gets a reference to the given float64 and assigns it to the AverageMsgSize field.
+func (o *NonPersistentTopicStats) SetAverageMsgSize(v float64) {
+	o.AverageMsgSize = &v
+}
+
+// GetMsgChunkPublished returns the MsgChunkPublished field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgChunkPublished() bool {
+	if o == nil || o.MsgChunkPublished == nil {
+		var ret bool
+		return ret
+	}
+	return *o.MsgChunkPublished
+}
+
+// GetMsgChunkPublishedOk returns a tuple with the MsgChunkPublished field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgChunkPublishedOk() (*bool, bool) {
+	if o == nil || o.MsgChunkPublished == nil {
+		return nil, false
+	}
+	return o.MsgChunkPublished, true
+}
+
+// HasMsgChunkPublished returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgChunkPublished() bool {
+	if o != nil && o.MsgChunkPublished != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgChunkPublished gets a reference to the given bool and assigns it to the MsgChunkPublished field.
+func (o *NonPersistentTopicStats) SetMsgChunkPublished(v bool) {
+	o.MsgChunkPublished = &v
+}
+
 // GetStorageSize returns the StorageSize field value if set, zero value otherwise.
 func (o *NonPersistentTopicStats) GetStorageSize() int64 {
 	if o == nil || o.StorageSize == nil {
@@ -564,78 +730,74 @@ func (o *NonPersistentTopicStats) SetStorageSize(v int64) {
 	o.StorageSize = &v
 }
 
-// GetSubscriptions returns the Subscriptions field value if set, zero value otherwise.
-func (o *NonPersistentTopicStats) GetSubscriptions() map[string]NonPersistentSubscriptionStats {
-	if o == nil || o.Subscriptions == nil {
-		var ret map[string]NonPersistentSubscriptionStats
+// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgRateIn() float64 {
+	if o == nil || o.MsgRateIn == nil {
+		var ret float64
 		return ret
 	}
-	return *o.Subscriptions
+	return *o.MsgRateIn
 }
 
-// GetSubscriptionsOk returns a tuple with the Subscriptions field value if set, nil otherwise
+// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentTopicStats) GetSubscriptionsOk() (*map[string]NonPersistentSubscriptionStats, bool) {
-	if o == nil || o.Subscriptions == nil {
+func (o *NonPersistentTopicStats) GetMsgRateInOk() (*float64, bool) {
+	if o == nil || o.MsgRateIn == nil {
 		return nil, false
 	}
-	return o.Subscriptions, true
+	return o.MsgRateIn, true
 }
 
-// HasSubscriptions returns a boolean if a field has been set.
-func (o *NonPersistentTopicStats) HasSubscriptions() bool {
-	if o != nil && o.Subscriptions != nil {
+// HasMsgRateIn returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgRateIn() bool {
+	if o != nil && o.MsgRateIn != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptions gets a reference to the given map[string]NonPersistentSubscriptionStats and assigns it to the Subscriptions field.
-func (o *NonPersistentTopicStats) SetSubscriptions(v map[string]NonPersistentSubscriptionStats) {
-	o.Subscriptions = &v
+// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
+func (o *NonPersistentTopicStats) SetMsgRateIn(v float64) {
+	o.MsgRateIn = &v
+}
+
+// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
+func (o *NonPersistentTopicStats) GetMsgRateOut() float64 {
+	if o == nil || o.MsgRateOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateOut
+}
+
+// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentTopicStats) GetMsgRateOutOk() (*float64, bool) {
+	if o == nil || o.MsgRateOut == nil {
+		return nil, false
+	}
+	return o.MsgRateOut, true
+}
+
+// HasMsgRateOut returns a boolean if a field has been set.
+func (o *NonPersistentTopicStats) HasMsgRateOut() bool {
+	if o != nil && o.MsgRateOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
+func (o *NonPersistentTopicStats) SetMsgRateOut(v float64) {
+	o.MsgRateOut = &v
 }
 
 func (o NonPersistentTopicStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AverageMsgSize != nil {
-		toSerialize["averageMsgSize"] = o.AverageMsgSize
-	}
-	if o.BacklogSize != nil {
-		toSerialize["backlogSize"] = o.BacklogSize
-	}
-	if o.BytesInCounter != nil {
-		toSerialize["bytesInCounter"] = o.BytesInCounter
-	}
-	if o.BytesOutCounter != nil {
-		toSerialize["bytesOutCounter"] = o.BytesOutCounter
-	}
-	if o.DeduplicationStatus != nil {
-		toSerialize["deduplicationStatus"] = o.DeduplicationStatus
-	}
-	if o.MsgChunkPublished != nil {
-		toSerialize["msgChunkPublished"] = o.MsgChunkPublished
-	}
-	if o.MsgDropRate != nil {
-		toSerialize["msgDropRate"] = o.MsgDropRate
-	}
-	if o.MsgInCounter != nil {
-		toSerialize["msgInCounter"] = o.MsgInCounter
-	}
-	if o.MsgOutCounter != nil {
-		toSerialize["msgOutCounter"] = o.MsgOutCounter
-	}
-	if o.MsgRateIn != nil {
-		toSerialize["msgRateIn"] = o.MsgRateIn
-	}
-	if o.MsgRateOut != nil {
-		toSerialize["msgRateOut"] = o.MsgRateOut
-	}
-	if o.MsgThroughputIn != nil {
-		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
-	}
-	if o.MsgThroughputOut != nil {
-		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
+	if o.Subscriptions != nil {
+		toSerialize["subscriptions"] = o.Subscriptions
 	}
 	if o.Publishers != nil {
 		toSerialize["publishers"] = o.Publishers
@@ -643,11 +805,65 @@ func (o NonPersistentTopicStats) MarshalJSON() ([]byte, error) {
 	if o.Replication != nil {
 		toSerialize["replication"] = o.Replication
 	}
+	if o.MsgDropRate != nil {
+		toSerialize["msgDropRate"] = o.MsgDropRate
+	}
+	if o.MsgThroughputIn != nil {
+		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
+	}
+	if o.MsgThroughputOut != nil {
+		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
+	}
+	if o.BacklogSize != nil {
+		toSerialize["backlogSize"] = o.BacklogSize
+	}
+	if o.BytesInCounter != nil {
+		toSerialize["bytesInCounter"] = o.BytesInCounter
+	}
+	if o.MsgInCounter != nil {
+		toSerialize["msgInCounter"] = o.MsgInCounter
+	}
+	if o.BytesOutCounter != nil {
+		toSerialize["bytesOutCounter"] = o.BytesOutCounter
+	}
+	if o.MsgOutCounter != nil {
+		toSerialize["msgOutCounter"] = o.MsgOutCounter
+	}
+	if o.OffloadedStorageSize != nil {
+		toSerialize["offloadedStorageSize"] = o.OffloadedStorageSize
+	}
+	if o.WaitingPublishers != nil {
+		toSerialize["waitingPublishers"] = o.WaitingPublishers
+	}
+	if o.DeduplicationStatus != nil {
+		toSerialize["deduplicationStatus"] = o.DeduplicationStatus
+	}
+	if o.TopicEpoch != nil {
+		toSerialize["topicEpoch"] = o.TopicEpoch
+	}
+	if o.NonContiguousDeletedMessagesRanges != nil {
+		toSerialize["nonContiguousDeletedMessagesRanges"] = o.NonContiguousDeletedMessagesRanges
+	}
+	if o.NonContiguousDeletedMessagesRangesSerializedSize != nil {
+		toSerialize["nonContiguousDeletedMessagesRangesSerializedSize"] = o.NonContiguousDeletedMessagesRangesSerializedSize
+	}
+	if o.Compaction != nil {
+		toSerialize["compaction"] = o.Compaction
+	}
+	if o.AverageMsgSize != nil {
+		toSerialize["averageMsgSize"] = o.AverageMsgSize
+	}
+	if o.MsgChunkPublished != nil {
+		toSerialize["msgChunkPublished"] = o.MsgChunkPublished
+	}
 	if o.StorageSize != nil {
 		toSerialize["storageSize"] = o.StorageSize
 	}
-	if o.Subscriptions != nil {
-		toSerialize["subscriptions"] = o.Subscriptions
+	if o.MsgRateIn != nil {
+		toSerialize["msgRateIn"] = o.MsgRateIn
+	}
+	if o.MsgRateOut != nil {
+		toSerialize["msgRateOut"] = o.MsgRateOut
 	}
 	return json.Marshal(toSerialize)
 }

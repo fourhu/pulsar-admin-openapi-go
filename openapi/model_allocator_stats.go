@@ -16,14 +16,14 @@ import (
 
 // AllocatorStats struct for AllocatorStats
 type AllocatorStats struct {
-	DirectArenas *[]PoolArenaStats `json:"directArenas,omitempty"`
-	HeapArenas *[]PoolArenaStats `json:"heapArenas,omitempty"`
-	NormalCacheSize *int32 `json:"normalCacheSize,omitempty"`
 	NumDirectArenas *int32 `json:"numDirectArenas,omitempty"`
 	NumHeapArenas *int32 `json:"numHeapArenas,omitempty"`
 	NumThreadLocalCaches *int32 `json:"numThreadLocalCaches,omitempty"`
+	NormalCacheSize *int32 `json:"normalCacheSize,omitempty"`
 	SmallCacheSize *int32 `json:"smallCacheSize,omitempty"`
 	TinyCacheSize *int32 `json:"tinyCacheSize,omitempty"`
+	DirectArenas *[]PoolArenaStats `json:"directArenas,omitempty"`
+	HeapArenas *[]PoolArenaStats `json:"heapArenas,omitempty"`
 }
 
 // NewAllocatorStats instantiates a new AllocatorStats object
@@ -41,102 +41,6 @@ func NewAllocatorStats() *AllocatorStats {
 func NewAllocatorStatsWithDefaults() *AllocatorStats {
 	this := AllocatorStats{}
 	return &this
-}
-
-// GetDirectArenas returns the DirectArenas field value if set, zero value otherwise.
-func (o *AllocatorStats) GetDirectArenas() []PoolArenaStats {
-	if o == nil || o.DirectArenas == nil {
-		var ret []PoolArenaStats
-		return ret
-	}
-	return *o.DirectArenas
-}
-
-// GetDirectArenasOk returns a tuple with the DirectArenas field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AllocatorStats) GetDirectArenasOk() (*[]PoolArenaStats, bool) {
-	if o == nil || o.DirectArenas == nil {
-		return nil, false
-	}
-	return o.DirectArenas, true
-}
-
-// HasDirectArenas returns a boolean if a field has been set.
-func (o *AllocatorStats) HasDirectArenas() bool {
-	if o != nil && o.DirectArenas != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDirectArenas gets a reference to the given []PoolArenaStats and assigns it to the DirectArenas field.
-func (o *AllocatorStats) SetDirectArenas(v []PoolArenaStats) {
-	o.DirectArenas = &v
-}
-
-// GetHeapArenas returns the HeapArenas field value if set, zero value otherwise.
-func (o *AllocatorStats) GetHeapArenas() []PoolArenaStats {
-	if o == nil || o.HeapArenas == nil {
-		var ret []PoolArenaStats
-		return ret
-	}
-	return *o.HeapArenas
-}
-
-// GetHeapArenasOk returns a tuple with the HeapArenas field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AllocatorStats) GetHeapArenasOk() (*[]PoolArenaStats, bool) {
-	if o == nil || o.HeapArenas == nil {
-		return nil, false
-	}
-	return o.HeapArenas, true
-}
-
-// HasHeapArenas returns a boolean if a field has been set.
-func (o *AllocatorStats) HasHeapArenas() bool {
-	if o != nil && o.HeapArenas != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHeapArenas gets a reference to the given []PoolArenaStats and assigns it to the HeapArenas field.
-func (o *AllocatorStats) SetHeapArenas(v []PoolArenaStats) {
-	o.HeapArenas = &v
-}
-
-// GetNormalCacheSize returns the NormalCacheSize field value if set, zero value otherwise.
-func (o *AllocatorStats) GetNormalCacheSize() int32 {
-	if o == nil || o.NormalCacheSize == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NormalCacheSize
-}
-
-// GetNormalCacheSizeOk returns a tuple with the NormalCacheSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AllocatorStats) GetNormalCacheSizeOk() (*int32, bool) {
-	if o == nil || o.NormalCacheSize == nil {
-		return nil, false
-	}
-	return o.NormalCacheSize, true
-}
-
-// HasNormalCacheSize returns a boolean if a field has been set.
-func (o *AllocatorStats) HasNormalCacheSize() bool {
-	if o != nil && o.NormalCacheSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNormalCacheSize gets a reference to the given int32 and assigns it to the NormalCacheSize field.
-func (o *AllocatorStats) SetNormalCacheSize(v int32) {
-	o.NormalCacheSize = &v
 }
 
 // GetNumDirectArenas returns the NumDirectArenas field value if set, zero value otherwise.
@@ -235,6 +139,38 @@ func (o *AllocatorStats) SetNumThreadLocalCaches(v int32) {
 	o.NumThreadLocalCaches = &v
 }
 
+// GetNormalCacheSize returns the NormalCacheSize field value if set, zero value otherwise.
+func (o *AllocatorStats) GetNormalCacheSize() int32 {
+	if o == nil || o.NormalCacheSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NormalCacheSize
+}
+
+// GetNormalCacheSizeOk returns a tuple with the NormalCacheSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllocatorStats) GetNormalCacheSizeOk() (*int32, bool) {
+	if o == nil || o.NormalCacheSize == nil {
+		return nil, false
+	}
+	return o.NormalCacheSize, true
+}
+
+// HasNormalCacheSize returns a boolean if a field has been set.
+func (o *AllocatorStats) HasNormalCacheSize() bool {
+	if o != nil && o.NormalCacheSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNormalCacheSize gets a reference to the given int32 and assigns it to the NormalCacheSize field.
+func (o *AllocatorStats) SetNormalCacheSize(v int32) {
+	o.NormalCacheSize = &v
+}
+
 // GetSmallCacheSize returns the SmallCacheSize field value if set, zero value otherwise.
 func (o *AllocatorStats) GetSmallCacheSize() int32 {
 	if o == nil || o.SmallCacheSize == nil {
@@ -299,17 +235,72 @@ func (o *AllocatorStats) SetTinyCacheSize(v int32) {
 	o.TinyCacheSize = &v
 }
 
+// GetDirectArenas returns the DirectArenas field value if set, zero value otherwise.
+func (o *AllocatorStats) GetDirectArenas() []PoolArenaStats {
+	if o == nil || o.DirectArenas == nil {
+		var ret []PoolArenaStats
+		return ret
+	}
+	return *o.DirectArenas
+}
+
+// GetDirectArenasOk returns a tuple with the DirectArenas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllocatorStats) GetDirectArenasOk() (*[]PoolArenaStats, bool) {
+	if o == nil || o.DirectArenas == nil {
+		return nil, false
+	}
+	return o.DirectArenas, true
+}
+
+// HasDirectArenas returns a boolean if a field has been set.
+func (o *AllocatorStats) HasDirectArenas() bool {
+	if o != nil && o.DirectArenas != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDirectArenas gets a reference to the given []PoolArenaStats and assigns it to the DirectArenas field.
+func (o *AllocatorStats) SetDirectArenas(v []PoolArenaStats) {
+	o.DirectArenas = &v
+}
+
+// GetHeapArenas returns the HeapArenas field value if set, zero value otherwise.
+func (o *AllocatorStats) GetHeapArenas() []PoolArenaStats {
+	if o == nil || o.HeapArenas == nil {
+		var ret []PoolArenaStats
+		return ret
+	}
+	return *o.HeapArenas
+}
+
+// GetHeapArenasOk returns a tuple with the HeapArenas field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AllocatorStats) GetHeapArenasOk() (*[]PoolArenaStats, bool) {
+	if o == nil || o.HeapArenas == nil {
+		return nil, false
+	}
+	return o.HeapArenas, true
+}
+
+// HasHeapArenas returns a boolean if a field has been set.
+func (o *AllocatorStats) HasHeapArenas() bool {
+	if o != nil && o.HeapArenas != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHeapArenas gets a reference to the given []PoolArenaStats and assigns it to the HeapArenas field.
+func (o *AllocatorStats) SetHeapArenas(v []PoolArenaStats) {
+	o.HeapArenas = &v
+}
+
 func (o AllocatorStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DirectArenas != nil {
-		toSerialize["directArenas"] = o.DirectArenas
-	}
-	if o.HeapArenas != nil {
-		toSerialize["heapArenas"] = o.HeapArenas
-	}
-	if o.NormalCacheSize != nil {
-		toSerialize["normalCacheSize"] = o.NormalCacheSize
-	}
 	if o.NumDirectArenas != nil {
 		toSerialize["numDirectArenas"] = o.NumDirectArenas
 	}
@@ -319,11 +310,20 @@ func (o AllocatorStats) MarshalJSON() ([]byte, error) {
 	if o.NumThreadLocalCaches != nil {
 		toSerialize["numThreadLocalCaches"] = o.NumThreadLocalCaches
 	}
+	if o.NormalCacheSize != nil {
+		toSerialize["normalCacheSize"] = o.NormalCacheSize
+	}
 	if o.SmallCacheSize != nil {
 		toSerialize["smallCacheSize"] = o.SmallCacheSize
 	}
 	if o.TinyCacheSize != nil {
 		toSerialize["tinyCacheSize"] = o.TinyCacheSize
+	}
+	if o.DirectArenas != nil {
+		toSerialize["directArenas"] = o.DirectArenas
+	}
+	if o.HeapArenas != nil {
+		toSerialize["heapArenas"] = o.HeapArenas
 	}
 	return json.Marshal(toSerialize)
 }

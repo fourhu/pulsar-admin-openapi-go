@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoFailoverPolicy** | Pointer to [**AutoFailoverPolicyData**](AutoFailoverPolicyData.md) |  | [optional] 
 **Namespaces** | Pointer to **[]string** | The list of namespaces to apply this namespace isolation data | [optional] 
 **Primary** | Pointer to **[]string** | The list of secondary brokers for serving the list of namespaces in this isolation policy | [optional] 
+**AutoFailoverPolicy** | Pointer to [**AutoFailoverPolicyData**](AutoFailoverPolicyData.md) |  | [optional] 
 
 ## Methods
 
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewNamespaceIsolationDataWithDefaults instantiates a new NamespaceIsolationData object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetAutoFailoverPolicy
-
-`func (o *NamespaceIsolationData) GetAutoFailoverPolicy() AutoFailoverPolicyData`
-
-GetAutoFailoverPolicy returns the AutoFailoverPolicy field if non-nil, zero value otherwise.
-
-### GetAutoFailoverPolicyOk
-
-`func (o *NamespaceIsolationData) GetAutoFailoverPolicyOk() (*AutoFailoverPolicyData, bool)`
-
-GetAutoFailoverPolicyOk returns a tuple with the AutoFailoverPolicy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoFailoverPolicy
-
-`func (o *NamespaceIsolationData) SetAutoFailoverPolicy(v AutoFailoverPolicyData)`
-
-SetAutoFailoverPolicy sets AutoFailoverPolicy field to given value.
-
-### HasAutoFailoverPolicy
-
-`func (o *NamespaceIsolationData) HasAutoFailoverPolicy() bool`
-
-HasAutoFailoverPolicy returns a boolean if a field has been set.
 
 ### GetNamespaces
 
@@ -101,6 +76,31 @@ SetPrimary sets Primary field to given value.
 `func (o *NamespaceIsolationData) HasPrimary() bool`
 
 HasPrimary returns a boolean if a field has been set.
+
+### GetAutoFailoverPolicy
+
+`func (o *NamespaceIsolationData) GetAutoFailoverPolicy() AutoFailoverPolicyData`
+
+GetAutoFailoverPolicy returns the AutoFailoverPolicy field if non-nil, zero value otherwise.
+
+### GetAutoFailoverPolicyOk
+
+`func (o *NamespaceIsolationData) GetAutoFailoverPolicyOk() (*AutoFailoverPolicyData, bool)`
+
+GetAutoFailoverPolicyOk returns a tuple with the AutoFailoverPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoFailoverPolicy
+
+`func (o *NamespaceIsolationData) SetAutoFailoverPolicy(v AutoFailoverPolicyData)`
+
+SetAutoFailoverPolicy sets AutoFailoverPolicy field to given value.
+
+### HasAutoFailoverPolicy
+
+`func (o *NamespaceIsolationData) HasAutoFailoverPolicy() bool`
+
+HasAutoFailoverPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -17,14 +17,14 @@ import (
 
 // PersistentOfflineTopicStats struct for PersistentOfflineTopicStats
 type PersistentOfflineTopicStats struct {
-	BrokerName *string `json:"brokerName,omitempty"`
-	CursorDetails *map[string]CursorDetails `json:"cursorDetails,omitempty"`
-	DataLedgerDetails *[]LedgerDetails `json:"dataLedgerDetails,omitempty"`
-	MessageBacklog *int64 `json:"messageBacklog,omitempty"`
-	StatGeneratedAt *time.Time `json:"statGeneratedAt,omitempty"`
 	StorageSize *int64 `json:"storageSize,omitempty"`
-	TopicName *string `json:"topicName,omitempty"`
 	TotalMessages *int64 `json:"totalMessages,omitempty"`
+	MessageBacklog *int64 `json:"messageBacklog,omitempty"`
+	BrokerName *string `json:"brokerName,omitempty"`
+	TopicName *string `json:"topicName,omitempty"`
+	DataLedgerDetails *[]LedgerDetails `json:"dataLedgerDetails,omitempty"`
+	CursorDetails *map[string]CursorDetails `json:"cursorDetails,omitempty"`
+	StatGeneratedAt *time.Time `json:"statGeneratedAt,omitempty"`
 }
 
 // NewPersistentOfflineTopicStats instantiates a new PersistentOfflineTopicStats object
@@ -42,166 +42,6 @@ func NewPersistentOfflineTopicStats() *PersistentOfflineTopicStats {
 func NewPersistentOfflineTopicStatsWithDefaults() *PersistentOfflineTopicStats {
 	this := PersistentOfflineTopicStats{}
 	return &this
-}
-
-// GetBrokerName returns the BrokerName field value if set, zero value otherwise.
-func (o *PersistentOfflineTopicStats) GetBrokerName() string {
-	if o == nil || o.BrokerName == nil {
-		var ret string
-		return ret
-	}
-	return *o.BrokerName
-}
-
-// GetBrokerNameOk returns a tuple with the BrokerName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentOfflineTopicStats) GetBrokerNameOk() (*string, bool) {
-	if o == nil || o.BrokerName == nil {
-		return nil, false
-	}
-	return o.BrokerName, true
-}
-
-// HasBrokerName returns a boolean if a field has been set.
-func (o *PersistentOfflineTopicStats) HasBrokerName() bool {
-	if o != nil && o.BrokerName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBrokerName gets a reference to the given string and assigns it to the BrokerName field.
-func (o *PersistentOfflineTopicStats) SetBrokerName(v string) {
-	o.BrokerName = &v
-}
-
-// GetCursorDetails returns the CursorDetails field value if set, zero value otherwise.
-func (o *PersistentOfflineTopicStats) GetCursorDetails() map[string]CursorDetails {
-	if o == nil || o.CursorDetails == nil {
-		var ret map[string]CursorDetails
-		return ret
-	}
-	return *o.CursorDetails
-}
-
-// GetCursorDetailsOk returns a tuple with the CursorDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentOfflineTopicStats) GetCursorDetailsOk() (*map[string]CursorDetails, bool) {
-	if o == nil || o.CursorDetails == nil {
-		return nil, false
-	}
-	return o.CursorDetails, true
-}
-
-// HasCursorDetails returns a boolean if a field has been set.
-func (o *PersistentOfflineTopicStats) HasCursorDetails() bool {
-	if o != nil && o.CursorDetails != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCursorDetails gets a reference to the given map[string]CursorDetails and assigns it to the CursorDetails field.
-func (o *PersistentOfflineTopicStats) SetCursorDetails(v map[string]CursorDetails) {
-	o.CursorDetails = &v
-}
-
-// GetDataLedgerDetails returns the DataLedgerDetails field value if set, zero value otherwise.
-func (o *PersistentOfflineTopicStats) GetDataLedgerDetails() []LedgerDetails {
-	if o == nil || o.DataLedgerDetails == nil {
-		var ret []LedgerDetails
-		return ret
-	}
-	return *o.DataLedgerDetails
-}
-
-// GetDataLedgerDetailsOk returns a tuple with the DataLedgerDetails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentOfflineTopicStats) GetDataLedgerDetailsOk() (*[]LedgerDetails, bool) {
-	if o == nil || o.DataLedgerDetails == nil {
-		return nil, false
-	}
-	return o.DataLedgerDetails, true
-}
-
-// HasDataLedgerDetails returns a boolean if a field has been set.
-func (o *PersistentOfflineTopicStats) HasDataLedgerDetails() bool {
-	if o != nil && o.DataLedgerDetails != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDataLedgerDetails gets a reference to the given []LedgerDetails and assigns it to the DataLedgerDetails field.
-func (o *PersistentOfflineTopicStats) SetDataLedgerDetails(v []LedgerDetails) {
-	o.DataLedgerDetails = &v
-}
-
-// GetMessageBacklog returns the MessageBacklog field value if set, zero value otherwise.
-func (o *PersistentOfflineTopicStats) GetMessageBacklog() int64 {
-	if o == nil || o.MessageBacklog == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MessageBacklog
-}
-
-// GetMessageBacklogOk returns a tuple with the MessageBacklog field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentOfflineTopicStats) GetMessageBacklogOk() (*int64, bool) {
-	if o == nil || o.MessageBacklog == nil {
-		return nil, false
-	}
-	return o.MessageBacklog, true
-}
-
-// HasMessageBacklog returns a boolean if a field has been set.
-func (o *PersistentOfflineTopicStats) HasMessageBacklog() bool {
-	if o != nil && o.MessageBacklog != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMessageBacklog gets a reference to the given int64 and assigns it to the MessageBacklog field.
-func (o *PersistentOfflineTopicStats) SetMessageBacklog(v int64) {
-	o.MessageBacklog = &v
-}
-
-// GetStatGeneratedAt returns the StatGeneratedAt field value if set, zero value otherwise.
-func (o *PersistentOfflineTopicStats) GetStatGeneratedAt() time.Time {
-	if o == nil || o.StatGeneratedAt == nil {
-		var ret time.Time
-		return ret
-	}
-	return *o.StatGeneratedAt
-}
-
-// GetStatGeneratedAtOk returns a tuple with the StatGeneratedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentOfflineTopicStats) GetStatGeneratedAtOk() (*time.Time, bool) {
-	if o == nil || o.StatGeneratedAt == nil {
-		return nil, false
-	}
-	return o.StatGeneratedAt, true
-}
-
-// HasStatGeneratedAt returns a boolean if a field has been set.
-func (o *PersistentOfflineTopicStats) HasStatGeneratedAt() bool {
-	if o != nil && o.StatGeneratedAt != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetStatGeneratedAt gets a reference to the given time.Time and assigns it to the StatGeneratedAt field.
-func (o *PersistentOfflineTopicStats) SetStatGeneratedAt(v time.Time) {
-	o.StatGeneratedAt = &v
 }
 
 // GetStorageSize returns the StorageSize field value if set, zero value otherwise.
@@ -236,38 +76,6 @@ func (o *PersistentOfflineTopicStats) SetStorageSize(v int64) {
 	o.StorageSize = &v
 }
 
-// GetTopicName returns the TopicName field value if set, zero value otherwise.
-func (o *PersistentOfflineTopicStats) GetTopicName() string {
-	if o == nil || o.TopicName == nil {
-		var ret string
-		return ret
-	}
-	return *o.TopicName
-}
-
-// GetTopicNameOk returns a tuple with the TopicName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentOfflineTopicStats) GetTopicNameOk() (*string, bool) {
-	if o == nil || o.TopicName == nil {
-		return nil, false
-	}
-	return o.TopicName, true
-}
-
-// HasTopicName returns a boolean if a field has been set.
-func (o *PersistentOfflineTopicStats) HasTopicName() bool {
-	if o != nil && o.TopicName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTopicName gets a reference to the given string and assigns it to the TopicName field.
-func (o *PersistentOfflineTopicStats) SetTopicName(v string) {
-	o.TopicName = &v
-}
-
 // GetTotalMessages returns the TotalMessages field value if set, zero value otherwise.
 func (o *PersistentOfflineTopicStats) GetTotalMessages() int64 {
 	if o == nil || o.TotalMessages == nil {
@@ -300,31 +108,223 @@ func (o *PersistentOfflineTopicStats) SetTotalMessages(v int64) {
 	o.TotalMessages = &v
 }
 
+// GetMessageBacklog returns the MessageBacklog field value if set, zero value otherwise.
+func (o *PersistentOfflineTopicStats) GetMessageBacklog() int64 {
+	if o == nil || o.MessageBacklog == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MessageBacklog
+}
+
+// GetMessageBacklogOk returns a tuple with the MessageBacklog field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentOfflineTopicStats) GetMessageBacklogOk() (*int64, bool) {
+	if o == nil || o.MessageBacklog == nil {
+		return nil, false
+	}
+	return o.MessageBacklog, true
+}
+
+// HasMessageBacklog returns a boolean if a field has been set.
+func (o *PersistentOfflineTopicStats) HasMessageBacklog() bool {
+	if o != nil && o.MessageBacklog != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMessageBacklog gets a reference to the given int64 and assigns it to the MessageBacklog field.
+func (o *PersistentOfflineTopicStats) SetMessageBacklog(v int64) {
+	o.MessageBacklog = &v
+}
+
+// GetBrokerName returns the BrokerName field value if set, zero value otherwise.
+func (o *PersistentOfflineTopicStats) GetBrokerName() string {
+	if o == nil || o.BrokerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerName
+}
+
+// GetBrokerNameOk returns a tuple with the BrokerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentOfflineTopicStats) GetBrokerNameOk() (*string, bool) {
+	if o == nil || o.BrokerName == nil {
+		return nil, false
+	}
+	return o.BrokerName, true
+}
+
+// HasBrokerName returns a boolean if a field has been set.
+func (o *PersistentOfflineTopicStats) HasBrokerName() bool {
+	if o != nil && o.BrokerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerName gets a reference to the given string and assigns it to the BrokerName field.
+func (o *PersistentOfflineTopicStats) SetBrokerName(v string) {
+	o.BrokerName = &v
+}
+
+// GetTopicName returns the TopicName field value if set, zero value otherwise.
+func (o *PersistentOfflineTopicStats) GetTopicName() string {
+	if o == nil || o.TopicName == nil {
+		var ret string
+		return ret
+	}
+	return *o.TopicName
+}
+
+// GetTopicNameOk returns a tuple with the TopicName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentOfflineTopicStats) GetTopicNameOk() (*string, bool) {
+	if o == nil || o.TopicName == nil {
+		return nil, false
+	}
+	return o.TopicName, true
+}
+
+// HasTopicName returns a boolean if a field has been set.
+func (o *PersistentOfflineTopicStats) HasTopicName() bool {
+	if o != nil && o.TopicName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTopicName gets a reference to the given string and assigns it to the TopicName field.
+func (o *PersistentOfflineTopicStats) SetTopicName(v string) {
+	o.TopicName = &v
+}
+
+// GetDataLedgerDetails returns the DataLedgerDetails field value if set, zero value otherwise.
+func (o *PersistentOfflineTopicStats) GetDataLedgerDetails() []LedgerDetails {
+	if o == nil || o.DataLedgerDetails == nil {
+		var ret []LedgerDetails
+		return ret
+	}
+	return *o.DataLedgerDetails
+}
+
+// GetDataLedgerDetailsOk returns a tuple with the DataLedgerDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentOfflineTopicStats) GetDataLedgerDetailsOk() (*[]LedgerDetails, bool) {
+	if o == nil || o.DataLedgerDetails == nil {
+		return nil, false
+	}
+	return o.DataLedgerDetails, true
+}
+
+// HasDataLedgerDetails returns a boolean if a field has been set.
+func (o *PersistentOfflineTopicStats) HasDataLedgerDetails() bool {
+	if o != nil && o.DataLedgerDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDataLedgerDetails gets a reference to the given []LedgerDetails and assigns it to the DataLedgerDetails field.
+func (o *PersistentOfflineTopicStats) SetDataLedgerDetails(v []LedgerDetails) {
+	o.DataLedgerDetails = &v
+}
+
+// GetCursorDetails returns the CursorDetails field value if set, zero value otherwise.
+func (o *PersistentOfflineTopicStats) GetCursorDetails() map[string]CursorDetails {
+	if o == nil || o.CursorDetails == nil {
+		var ret map[string]CursorDetails
+		return ret
+	}
+	return *o.CursorDetails
+}
+
+// GetCursorDetailsOk returns a tuple with the CursorDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentOfflineTopicStats) GetCursorDetailsOk() (*map[string]CursorDetails, bool) {
+	if o == nil || o.CursorDetails == nil {
+		return nil, false
+	}
+	return o.CursorDetails, true
+}
+
+// HasCursorDetails returns a boolean if a field has been set.
+func (o *PersistentOfflineTopicStats) HasCursorDetails() bool {
+	if o != nil && o.CursorDetails != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCursorDetails gets a reference to the given map[string]CursorDetails and assigns it to the CursorDetails field.
+func (o *PersistentOfflineTopicStats) SetCursorDetails(v map[string]CursorDetails) {
+	o.CursorDetails = &v
+}
+
+// GetStatGeneratedAt returns the StatGeneratedAt field value if set, zero value otherwise.
+func (o *PersistentOfflineTopicStats) GetStatGeneratedAt() time.Time {
+	if o == nil || o.StatGeneratedAt == nil {
+		var ret time.Time
+		return ret
+	}
+	return *o.StatGeneratedAt
+}
+
+// GetStatGeneratedAtOk returns a tuple with the StatGeneratedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentOfflineTopicStats) GetStatGeneratedAtOk() (*time.Time, bool) {
+	if o == nil || o.StatGeneratedAt == nil {
+		return nil, false
+	}
+	return o.StatGeneratedAt, true
+}
+
+// HasStatGeneratedAt returns a boolean if a field has been set.
+func (o *PersistentOfflineTopicStats) HasStatGeneratedAt() bool {
+	if o != nil && o.StatGeneratedAt != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetStatGeneratedAt gets a reference to the given time.Time and assigns it to the StatGeneratedAt field.
+func (o *PersistentOfflineTopicStats) SetStatGeneratedAt(v time.Time) {
+	o.StatGeneratedAt = &v
+}
+
 func (o PersistentOfflineTopicStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BrokerName != nil {
-		toSerialize["brokerName"] = o.BrokerName
+	if o.StorageSize != nil {
+		toSerialize["storageSize"] = o.StorageSize
 	}
-	if o.CursorDetails != nil {
-		toSerialize["cursorDetails"] = o.CursorDetails
-	}
-	if o.DataLedgerDetails != nil {
-		toSerialize["dataLedgerDetails"] = o.DataLedgerDetails
+	if o.TotalMessages != nil {
+		toSerialize["totalMessages"] = o.TotalMessages
 	}
 	if o.MessageBacklog != nil {
 		toSerialize["messageBacklog"] = o.MessageBacklog
 	}
-	if o.StatGeneratedAt != nil {
-		toSerialize["statGeneratedAt"] = o.StatGeneratedAt
-	}
-	if o.StorageSize != nil {
-		toSerialize["storageSize"] = o.StorageSize
+	if o.BrokerName != nil {
+		toSerialize["brokerName"] = o.BrokerName
 	}
 	if o.TopicName != nil {
 		toSerialize["topicName"] = o.TopicName
 	}
-	if o.TotalMessages != nil {
-		toSerialize["totalMessages"] = o.TotalMessages
+	if o.DataLedgerDetails != nil {
+		toSerialize["dataLedgerDetails"] = o.DataLedgerDetails
+	}
+	if o.CursorDetails != nil {
+		toSerialize["cursorDetails"] = o.CursorDetails
+	}
+	if o.StatGeneratedAt != nil {
+		toSerialize["statGeneratedAt"] = o.StatGeneratedAt
 	}
 	return json.Marshal(toSerialize)
 }

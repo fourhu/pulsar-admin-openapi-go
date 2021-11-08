@@ -17,42 +17,47 @@ import (
 // Policies struct for Policies
 type Policies struct {
 	AuthPolicies *AuthPolicies `json:"auth_policies,omitempty"`
-	AutoSubscriptionCreationOverride *AutoSubscriptionCreationOverride `json:"autoSubscriptionCreationOverride,omitempty"`
-	AutoTopicCreationOverride *AutoTopicCreationOverride `json:"autoTopicCreationOverride,omitempty"`
-	BacklogQuotaMap *map[string]BacklogQuota `json:"backlog_quota_map,omitempty"`
+	ReplicationClusters *[]string `json:"replication_clusters,omitempty"`
 	Bundles *BundlesData `json:"bundles,omitempty"`
-	ClusterDispatchRate *map[string]DispatchRate `json:"clusterDispatchRate,omitempty"`
+	BacklogQuotaMap *map[string]BacklogQuota `json:"backlog_quota_map,omitempty"`
+	ClusterDispatchRate *map[string]DispatchRateImpl `json:"clusterDispatchRate,omitempty"`
+	TopicDispatchRate *map[string]DispatchRateImpl `json:"topicDispatchRate,omitempty"`
+	SubscriptionDispatchRate *map[string]DispatchRateImpl `json:"subscriptionDispatchRate,omitempty"`
+	ReplicatorDispatchRate *map[string]DispatchRateImpl `json:"replicatorDispatchRate,omitempty"`
 	ClusterSubscribeRate *map[string]SubscribeRate `json:"clusterSubscribeRate,omitempty"`
-	CompactionThreshold *int64 `json:"compaction_threshold,omitempty"`
+	Persistence *PersistencePolicies `json:"persistence,omitempty"`
 	DeduplicationEnabled *bool `json:"deduplicationEnabled,omitempty"`
-	DeduplicationSnapshotIntervalSeconds *int32 `json:"deduplicationSnapshotIntervalSeconds,omitempty"`
-	DelayedDeliveryPolicies *DelayedDeliveryPolicies `json:"delayed_delivery_policies,omitempty"`
+	AutoTopicCreationOverride *AutoTopicCreationOverride `json:"autoTopicCreationOverride,omitempty"`
+	AutoSubscriptionCreationOverride *AutoSubscriptionCreationOverride `json:"autoSubscriptionCreationOverride,omitempty"`
+	PublishMaxMessageRate *map[string]PublishRate `json:"publishMaxMessageRate,omitempty"`
+	LatencyStatsSampleRate *map[string]int32 `json:"latency_stats_sample_rate,omitempty"`
+	MessageTtlInSeconds *int32 `json:"message_ttl_in_seconds,omitempty"`
+	SubscriptionExpirationTimeMinutes *int32 `json:"subscription_expiration_time_minutes,omitempty"`
+	RetentionPolicies *RetentionPolicies `json:"retention_policies,omitempty"`
 	Deleted *bool `json:"deleted,omitempty"`
 	EncryptionRequired *bool `json:"encryption_required,omitempty"`
+	DelayedDeliveryPolicies *DelayedDeliveryPolicies `json:"delayed_delivery_policies,omitempty"`
 	InactiveTopicPolicies *InactiveTopicPolicies `json:"inactive_topic_policies,omitempty"`
-	IsAllowAutoUpdateSchema *bool `json:"is_allow_auto_update_schema,omitempty"`
-	LatencyStatsSampleRate *map[string]int32 `json:"latency_stats_sample_rate,omitempty"`
-	MaxConsumersPerSubscription *int32 `json:"max_consumers_per_subscription,omitempty"`
-	MaxConsumersPerTopic *int32 `json:"max_consumers_per_topic,omitempty"`
+	SubscriptionAuthMode *string `json:"subscription_auth_mode,omitempty"`
 	MaxProducersPerTopic *int32 `json:"max_producers_per_topic,omitempty"`
+	MaxConsumersPerTopic *int32 `json:"max_consumers_per_topic,omitempty"`
+	MaxConsumersPerSubscription *int32 `json:"max_consumers_per_subscription,omitempty"`
 	MaxUnackedMessagesPerConsumer *int32 `json:"max_unacked_messages_per_consumer,omitempty"`
 	MaxUnackedMessagesPerSubscription *int32 `json:"max_unacked_messages_per_subscription,omitempty"`
-	MessageTtlInSeconds *int32 `json:"message_ttl_in_seconds,omitempty"`
-	OffloadDeletionLagMs *int64 `json:"offload_deletion_lag_ms,omitempty"`
-	OffloadPolicies *OffloadPolicies `json:"offload_policies,omitempty"`
+	MaxSubscriptionsPerTopic *int32 `json:"max_subscriptions_per_topic,omitempty"`
+	CompactionThreshold *int64 `json:"compaction_threshold,omitempty"`
 	OffloadThreshold *int64 `json:"offload_threshold,omitempty"`
-	Persistence *PersistencePolicies `json:"persistence,omitempty"`
-	PublishMaxMessageRate *map[string]PublishRate `json:"publishMaxMessageRate,omitempty"`
-	ReplicationClusters *[]string `json:"replication_clusters,omitempty"`
-	ReplicatorDispatchRate *map[string]DispatchRate `json:"replicatorDispatchRate,omitempty"`
-	RetentionPolicies *RetentionPolicies `json:"retention_policies,omitempty"`
+	OffloadDeletionLagMs *int64 `json:"offload_deletion_lag_ms,omitempty"`
+	MaxTopicsPerNamespace *int32 `json:"max_topics_per_namespace,omitempty"`
 	SchemaAutoUpdateCompatibilityStrategy *string `json:"schema_auto_update_compatibility_strategy,omitempty"`
 	SchemaCompatibilityStrategy *string `json:"schema_compatibility_strategy,omitempty"`
+	IsAllowAutoUpdateSchema *bool `json:"is_allow_auto_update_schema,omitempty"`
 	SchemaValidationEnforced *bool `json:"schema_validation_enforced,omitempty"`
-	SubscriptionDispatchRate *map[string]DispatchRate `json:"subscriptionDispatchRate,omitempty"`
-	SubscriptionAuthMode *string `json:"subscription_auth_mode,omitempty"`
-	SubscriptionExpirationTimeMinutes *int32 `json:"subscription_expiration_time_minutes,omitempty"`
-	TopicDispatchRate *map[string]DispatchRate `json:"topicDispatchRate,omitempty"`
+	OffloadPolicies *OffloadPolicies `json:"offload_policies,omitempty"`
+	DeduplicationSnapshotIntervalSeconds *int32 `json:"deduplicationSnapshotIntervalSeconds,omitempty"`
+	SubscriptionTypesEnabled *[]string `json:"subscription_types_enabled,omitempty"`
+	Properties *map[string]string `json:"properties,omitempty"`
+	ResourceGroupName *string `json:"resource_group_name,omitempty"`
 }
 
 // NewPolicies instantiates a new Policies object
@@ -104,100 +109,36 @@ func (o *Policies) SetAuthPolicies(v AuthPolicies) {
 	o.AuthPolicies = &v
 }
 
-// GetAutoSubscriptionCreationOverride returns the AutoSubscriptionCreationOverride field value if set, zero value otherwise.
-func (o *Policies) GetAutoSubscriptionCreationOverride() AutoSubscriptionCreationOverride {
-	if o == nil || o.AutoSubscriptionCreationOverride == nil {
-		var ret AutoSubscriptionCreationOverride
+// GetReplicationClusters returns the ReplicationClusters field value if set, zero value otherwise.
+func (o *Policies) GetReplicationClusters() []string {
+	if o == nil || o.ReplicationClusters == nil {
+		var ret []string
 		return ret
 	}
-	return *o.AutoSubscriptionCreationOverride
+	return *o.ReplicationClusters
 }
 
-// GetAutoSubscriptionCreationOverrideOk returns a tuple with the AutoSubscriptionCreationOverride field value if set, nil otherwise
+// GetReplicationClustersOk returns a tuple with the ReplicationClusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetAutoSubscriptionCreationOverrideOk() (*AutoSubscriptionCreationOverride, bool) {
-	if o == nil || o.AutoSubscriptionCreationOverride == nil {
+func (o *Policies) GetReplicationClustersOk() (*[]string, bool) {
+	if o == nil || o.ReplicationClusters == nil {
 		return nil, false
 	}
-	return o.AutoSubscriptionCreationOverride, true
+	return o.ReplicationClusters, true
 }
 
-// HasAutoSubscriptionCreationOverride returns a boolean if a field has been set.
-func (o *Policies) HasAutoSubscriptionCreationOverride() bool {
-	if o != nil && o.AutoSubscriptionCreationOverride != nil {
+// HasReplicationClusters returns a boolean if a field has been set.
+func (o *Policies) HasReplicationClusters() bool {
+	if o != nil && o.ReplicationClusters != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoSubscriptionCreationOverride gets a reference to the given AutoSubscriptionCreationOverride and assigns it to the AutoSubscriptionCreationOverride field.
-func (o *Policies) SetAutoSubscriptionCreationOverride(v AutoSubscriptionCreationOverride) {
-	o.AutoSubscriptionCreationOverride = &v
-}
-
-// GetAutoTopicCreationOverride returns the AutoTopicCreationOverride field value if set, zero value otherwise.
-func (o *Policies) GetAutoTopicCreationOverride() AutoTopicCreationOverride {
-	if o == nil || o.AutoTopicCreationOverride == nil {
-		var ret AutoTopicCreationOverride
-		return ret
-	}
-	return *o.AutoTopicCreationOverride
-}
-
-// GetAutoTopicCreationOverrideOk returns a tuple with the AutoTopicCreationOverride field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetAutoTopicCreationOverrideOk() (*AutoTopicCreationOverride, bool) {
-	if o == nil || o.AutoTopicCreationOverride == nil {
-		return nil, false
-	}
-	return o.AutoTopicCreationOverride, true
-}
-
-// HasAutoTopicCreationOverride returns a boolean if a field has been set.
-func (o *Policies) HasAutoTopicCreationOverride() bool {
-	if o != nil && o.AutoTopicCreationOverride != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoTopicCreationOverride gets a reference to the given AutoTopicCreationOverride and assigns it to the AutoTopicCreationOverride field.
-func (o *Policies) SetAutoTopicCreationOverride(v AutoTopicCreationOverride) {
-	o.AutoTopicCreationOverride = &v
-}
-
-// GetBacklogQuotaMap returns the BacklogQuotaMap field value if set, zero value otherwise.
-func (o *Policies) GetBacklogQuotaMap() map[string]BacklogQuota {
-	if o == nil || o.BacklogQuotaMap == nil {
-		var ret map[string]BacklogQuota
-		return ret
-	}
-	return *o.BacklogQuotaMap
-}
-
-// GetBacklogQuotaMapOk returns a tuple with the BacklogQuotaMap field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetBacklogQuotaMapOk() (*map[string]BacklogQuota, bool) {
-	if o == nil || o.BacklogQuotaMap == nil {
-		return nil, false
-	}
-	return o.BacklogQuotaMap, true
-}
-
-// HasBacklogQuotaMap returns a boolean if a field has been set.
-func (o *Policies) HasBacklogQuotaMap() bool {
-	if o != nil && o.BacklogQuotaMap != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBacklogQuotaMap gets a reference to the given map[string]BacklogQuota and assigns it to the BacklogQuotaMap field.
-func (o *Policies) SetBacklogQuotaMap(v map[string]BacklogQuota) {
-	o.BacklogQuotaMap = &v
+// SetReplicationClusters gets a reference to the given []string and assigns it to the ReplicationClusters field.
+func (o *Policies) SetReplicationClusters(v []string) {
+	o.ReplicationClusters = &v
 }
 
 // GetBundles returns the Bundles field value if set, zero value otherwise.
@@ -232,10 +173,42 @@ func (o *Policies) SetBundles(v BundlesData) {
 	o.Bundles = &v
 }
 
+// GetBacklogQuotaMap returns the BacklogQuotaMap field value if set, zero value otherwise.
+func (o *Policies) GetBacklogQuotaMap() map[string]BacklogQuota {
+	if o == nil || o.BacklogQuotaMap == nil {
+		var ret map[string]BacklogQuota
+		return ret
+	}
+	return *o.BacklogQuotaMap
+}
+
+// GetBacklogQuotaMapOk returns a tuple with the BacklogQuotaMap field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetBacklogQuotaMapOk() (*map[string]BacklogQuota, bool) {
+	if o == nil || o.BacklogQuotaMap == nil {
+		return nil, false
+	}
+	return o.BacklogQuotaMap, true
+}
+
+// HasBacklogQuotaMap returns a boolean if a field has been set.
+func (o *Policies) HasBacklogQuotaMap() bool {
+	if o != nil && o.BacklogQuotaMap != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBacklogQuotaMap gets a reference to the given map[string]BacklogQuota and assigns it to the BacklogQuotaMap field.
+func (o *Policies) SetBacklogQuotaMap(v map[string]BacklogQuota) {
+	o.BacklogQuotaMap = &v
+}
+
 // GetClusterDispatchRate returns the ClusterDispatchRate field value if set, zero value otherwise.
-func (o *Policies) GetClusterDispatchRate() map[string]DispatchRate {
+func (o *Policies) GetClusterDispatchRate() map[string]DispatchRateImpl {
 	if o == nil || o.ClusterDispatchRate == nil {
-		var ret map[string]DispatchRate
+		var ret map[string]DispatchRateImpl
 		return ret
 	}
 	return *o.ClusterDispatchRate
@@ -243,7 +216,7 @@ func (o *Policies) GetClusterDispatchRate() map[string]DispatchRate {
 
 // GetClusterDispatchRateOk returns a tuple with the ClusterDispatchRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetClusterDispatchRateOk() (*map[string]DispatchRate, bool) {
+func (o *Policies) GetClusterDispatchRateOk() (*map[string]DispatchRateImpl, bool) {
 	if o == nil || o.ClusterDispatchRate == nil {
 		return nil, false
 	}
@@ -259,9 +232,105 @@ func (o *Policies) HasClusterDispatchRate() bool {
 	return false
 }
 
-// SetClusterDispatchRate gets a reference to the given map[string]DispatchRate and assigns it to the ClusterDispatchRate field.
-func (o *Policies) SetClusterDispatchRate(v map[string]DispatchRate) {
+// SetClusterDispatchRate gets a reference to the given map[string]DispatchRateImpl and assigns it to the ClusterDispatchRate field.
+func (o *Policies) SetClusterDispatchRate(v map[string]DispatchRateImpl) {
 	o.ClusterDispatchRate = &v
+}
+
+// GetTopicDispatchRate returns the TopicDispatchRate field value if set, zero value otherwise.
+func (o *Policies) GetTopicDispatchRate() map[string]DispatchRateImpl {
+	if o == nil || o.TopicDispatchRate == nil {
+		var ret map[string]DispatchRateImpl
+		return ret
+	}
+	return *o.TopicDispatchRate
+}
+
+// GetTopicDispatchRateOk returns a tuple with the TopicDispatchRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetTopicDispatchRateOk() (*map[string]DispatchRateImpl, bool) {
+	if o == nil || o.TopicDispatchRate == nil {
+		return nil, false
+	}
+	return o.TopicDispatchRate, true
+}
+
+// HasTopicDispatchRate returns a boolean if a field has been set.
+func (o *Policies) HasTopicDispatchRate() bool {
+	if o != nil && o.TopicDispatchRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTopicDispatchRate gets a reference to the given map[string]DispatchRateImpl and assigns it to the TopicDispatchRate field.
+func (o *Policies) SetTopicDispatchRate(v map[string]DispatchRateImpl) {
+	o.TopicDispatchRate = &v
+}
+
+// GetSubscriptionDispatchRate returns the SubscriptionDispatchRate field value if set, zero value otherwise.
+func (o *Policies) GetSubscriptionDispatchRate() map[string]DispatchRateImpl {
+	if o == nil || o.SubscriptionDispatchRate == nil {
+		var ret map[string]DispatchRateImpl
+		return ret
+	}
+	return *o.SubscriptionDispatchRate
+}
+
+// GetSubscriptionDispatchRateOk returns a tuple with the SubscriptionDispatchRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetSubscriptionDispatchRateOk() (*map[string]DispatchRateImpl, bool) {
+	if o == nil || o.SubscriptionDispatchRate == nil {
+		return nil, false
+	}
+	return o.SubscriptionDispatchRate, true
+}
+
+// HasSubscriptionDispatchRate returns a boolean if a field has been set.
+func (o *Policies) HasSubscriptionDispatchRate() bool {
+	if o != nil && o.SubscriptionDispatchRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSubscriptionDispatchRate gets a reference to the given map[string]DispatchRateImpl and assigns it to the SubscriptionDispatchRate field.
+func (o *Policies) SetSubscriptionDispatchRate(v map[string]DispatchRateImpl) {
+	o.SubscriptionDispatchRate = &v
+}
+
+// GetReplicatorDispatchRate returns the ReplicatorDispatchRate field value if set, zero value otherwise.
+func (o *Policies) GetReplicatorDispatchRate() map[string]DispatchRateImpl {
+	if o == nil || o.ReplicatorDispatchRate == nil {
+		var ret map[string]DispatchRateImpl
+		return ret
+	}
+	return *o.ReplicatorDispatchRate
+}
+
+// GetReplicatorDispatchRateOk returns a tuple with the ReplicatorDispatchRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetReplicatorDispatchRateOk() (*map[string]DispatchRateImpl, bool) {
+	if o == nil || o.ReplicatorDispatchRate == nil {
+		return nil, false
+	}
+	return o.ReplicatorDispatchRate, true
+}
+
+// HasReplicatorDispatchRate returns a boolean if a field has been set.
+func (o *Policies) HasReplicatorDispatchRate() bool {
+	if o != nil && o.ReplicatorDispatchRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicatorDispatchRate gets a reference to the given map[string]DispatchRateImpl and assigns it to the ReplicatorDispatchRate field.
+func (o *Policies) SetReplicatorDispatchRate(v map[string]DispatchRateImpl) {
+	o.ReplicatorDispatchRate = &v
 }
 
 // GetClusterSubscribeRate returns the ClusterSubscribeRate field value if set, zero value otherwise.
@@ -296,36 +365,36 @@ func (o *Policies) SetClusterSubscribeRate(v map[string]SubscribeRate) {
 	o.ClusterSubscribeRate = &v
 }
 
-// GetCompactionThreshold returns the CompactionThreshold field value if set, zero value otherwise.
-func (o *Policies) GetCompactionThreshold() int64 {
-	if o == nil || o.CompactionThreshold == nil {
-		var ret int64
+// GetPersistence returns the Persistence field value if set, zero value otherwise.
+func (o *Policies) GetPersistence() PersistencePolicies {
+	if o == nil || o.Persistence == nil {
+		var ret PersistencePolicies
 		return ret
 	}
-	return *o.CompactionThreshold
+	return *o.Persistence
 }
 
-// GetCompactionThresholdOk returns a tuple with the CompactionThreshold field value if set, nil otherwise
+// GetPersistenceOk returns a tuple with the Persistence field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetCompactionThresholdOk() (*int64, bool) {
-	if o == nil || o.CompactionThreshold == nil {
+func (o *Policies) GetPersistenceOk() (*PersistencePolicies, bool) {
+	if o == nil || o.Persistence == nil {
 		return nil, false
 	}
-	return o.CompactionThreshold, true
+	return o.Persistence, true
 }
 
-// HasCompactionThreshold returns a boolean if a field has been set.
-func (o *Policies) HasCompactionThreshold() bool {
-	if o != nil && o.CompactionThreshold != nil {
+// HasPersistence returns a boolean if a field has been set.
+func (o *Policies) HasPersistence() bool {
+	if o != nil && o.Persistence != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCompactionThreshold gets a reference to the given int64 and assigns it to the CompactionThreshold field.
-func (o *Policies) SetCompactionThreshold(v int64) {
-	o.CompactionThreshold = &v
+// SetPersistence gets a reference to the given PersistencePolicies and assigns it to the Persistence field.
+func (o *Policies) SetPersistence(v PersistencePolicies) {
+	o.Persistence = &v
 }
 
 // GetDeduplicationEnabled returns the DeduplicationEnabled field value if set, zero value otherwise.
@@ -360,68 +429,228 @@ func (o *Policies) SetDeduplicationEnabled(v bool) {
 	o.DeduplicationEnabled = &v
 }
 
-// GetDeduplicationSnapshotIntervalSeconds returns the DeduplicationSnapshotIntervalSeconds field value if set, zero value otherwise.
-func (o *Policies) GetDeduplicationSnapshotIntervalSeconds() int32 {
-	if o == nil || o.DeduplicationSnapshotIntervalSeconds == nil {
+// GetAutoTopicCreationOverride returns the AutoTopicCreationOverride field value if set, zero value otherwise.
+func (o *Policies) GetAutoTopicCreationOverride() AutoTopicCreationOverride {
+	if o == nil || o.AutoTopicCreationOverride == nil {
+		var ret AutoTopicCreationOverride
+		return ret
+	}
+	return *o.AutoTopicCreationOverride
+}
+
+// GetAutoTopicCreationOverrideOk returns a tuple with the AutoTopicCreationOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetAutoTopicCreationOverrideOk() (*AutoTopicCreationOverride, bool) {
+	if o == nil || o.AutoTopicCreationOverride == nil {
+		return nil, false
+	}
+	return o.AutoTopicCreationOverride, true
+}
+
+// HasAutoTopicCreationOverride returns a boolean if a field has been set.
+func (o *Policies) HasAutoTopicCreationOverride() bool {
+	if o != nil && o.AutoTopicCreationOverride != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoTopicCreationOverride gets a reference to the given AutoTopicCreationOverride and assigns it to the AutoTopicCreationOverride field.
+func (o *Policies) SetAutoTopicCreationOverride(v AutoTopicCreationOverride) {
+	o.AutoTopicCreationOverride = &v
+}
+
+// GetAutoSubscriptionCreationOverride returns the AutoSubscriptionCreationOverride field value if set, zero value otherwise.
+func (o *Policies) GetAutoSubscriptionCreationOverride() AutoSubscriptionCreationOverride {
+	if o == nil || o.AutoSubscriptionCreationOverride == nil {
+		var ret AutoSubscriptionCreationOverride
+		return ret
+	}
+	return *o.AutoSubscriptionCreationOverride
+}
+
+// GetAutoSubscriptionCreationOverrideOk returns a tuple with the AutoSubscriptionCreationOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetAutoSubscriptionCreationOverrideOk() (*AutoSubscriptionCreationOverride, bool) {
+	if o == nil || o.AutoSubscriptionCreationOverride == nil {
+		return nil, false
+	}
+	return o.AutoSubscriptionCreationOverride, true
+}
+
+// HasAutoSubscriptionCreationOverride returns a boolean if a field has been set.
+func (o *Policies) HasAutoSubscriptionCreationOverride() bool {
+	if o != nil && o.AutoSubscriptionCreationOverride != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoSubscriptionCreationOverride gets a reference to the given AutoSubscriptionCreationOverride and assigns it to the AutoSubscriptionCreationOverride field.
+func (o *Policies) SetAutoSubscriptionCreationOverride(v AutoSubscriptionCreationOverride) {
+	o.AutoSubscriptionCreationOverride = &v
+}
+
+// GetPublishMaxMessageRate returns the PublishMaxMessageRate field value if set, zero value otherwise.
+func (o *Policies) GetPublishMaxMessageRate() map[string]PublishRate {
+	if o == nil || o.PublishMaxMessageRate == nil {
+		var ret map[string]PublishRate
+		return ret
+	}
+	return *o.PublishMaxMessageRate
+}
+
+// GetPublishMaxMessageRateOk returns a tuple with the PublishMaxMessageRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetPublishMaxMessageRateOk() (*map[string]PublishRate, bool) {
+	if o == nil || o.PublishMaxMessageRate == nil {
+		return nil, false
+	}
+	return o.PublishMaxMessageRate, true
+}
+
+// HasPublishMaxMessageRate returns a boolean if a field has been set.
+func (o *Policies) HasPublishMaxMessageRate() bool {
+	if o != nil && o.PublishMaxMessageRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPublishMaxMessageRate gets a reference to the given map[string]PublishRate and assigns it to the PublishMaxMessageRate field.
+func (o *Policies) SetPublishMaxMessageRate(v map[string]PublishRate) {
+	o.PublishMaxMessageRate = &v
+}
+
+// GetLatencyStatsSampleRate returns the LatencyStatsSampleRate field value if set, zero value otherwise.
+func (o *Policies) GetLatencyStatsSampleRate() map[string]int32 {
+	if o == nil || o.LatencyStatsSampleRate == nil {
+		var ret map[string]int32
+		return ret
+	}
+	return *o.LatencyStatsSampleRate
+}
+
+// GetLatencyStatsSampleRateOk returns a tuple with the LatencyStatsSampleRate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetLatencyStatsSampleRateOk() (*map[string]int32, bool) {
+	if o == nil || o.LatencyStatsSampleRate == nil {
+		return nil, false
+	}
+	return o.LatencyStatsSampleRate, true
+}
+
+// HasLatencyStatsSampleRate returns a boolean if a field has been set.
+func (o *Policies) HasLatencyStatsSampleRate() bool {
+	if o != nil && o.LatencyStatsSampleRate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLatencyStatsSampleRate gets a reference to the given map[string]int32 and assigns it to the LatencyStatsSampleRate field.
+func (o *Policies) SetLatencyStatsSampleRate(v map[string]int32) {
+	o.LatencyStatsSampleRate = &v
+}
+
+// GetMessageTtlInSeconds returns the MessageTtlInSeconds field value if set, zero value otherwise.
+func (o *Policies) GetMessageTtlInSeconds() int32 {
+	if o == nil || o.MessageTtlInSeconds == nil {
 		var ret int32
 		return ret
 	}
-	return *o.DeduplicationSnapshotIntervalSeconds
+	return *o.MessageTtlInSeconds
 }
 
-// GetDeduplicationSnapshotIntervalSecondsOk returns a tuple with the DeduplicationSnapshotIntervalSeconds field value if set, nil otherwise
+// GetMessageTtlInSecondsOk returns a tuple with the MessageTtlInSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetDeduplicationSnapshotIntervalSecondsOk() (*int32, bool) {
-	if o == nil || o.DeduplicationSnapshotIntervalSeconds == nil {
+func (o *Policies) GetMessageTtlInSecondsOk() (*int32, bool) {
+	if o == nil || o.MessageTtlInSeconds == nil {
 		return nil, false
 	}
-	return o.DeduplicationSnapshotIntervalSeconds, true
+	return o.MessageTtlInSeconds, true
 }
 
-// HasDeduplicationSnapshotIntervalSeconds returns a boolean if a field has been set.
-func (o *Policies) HasDeduplicationSnapshotIntervalSeconds() bool {
-	if o != nil && o.DeduplicationSnapshotIntervalSeconds != nil {
+// HasMessageTtlInSeconds returns a boolean if a field has been set.
+func (o *Policies) HasMessageTtlInSeconds() bool {
+	if o != nil && o.MessageTtlInSeconds != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDeduplicationSnapshotIntervalSeconds gets a reference to the given int32 and assigns it to the DeduplicationSnapshotIntervalSeconds field.
-func (o *Policies) SetDeduplicationSnapshotIntervalSeconds(v int32) {
-	o.DeduplicationSnapshotIntervalSeconds = &v
+// SetMessageTtlInSeconds gets a reference to the given int32 and assigns it to the MessageTtlInSeconds field.
+func (o *Policies) SetMessageTtlInSeconds(v int32) {
+	o.MessageTtlInSeconds = &v
 }
 
-// GetDelayedDeliveryPolicies returns the DelayedDeliveryPolicies field value if set, zero value otherwise.
-func (o *Policies) GetDelayedDeliveryPolicies() DelayedDeliveryPolicies {
-	if o == nil || o.DelayedDeliveryPolicies == nil {
-		var ret DelayedDeliveryPolicies
+// GetSubscriptionExpirationTimeMinutes returns the SubscriptionExpirationTimeMinutes field value if set, zero value otherwise.
+func (o *Policies) GetSubscriptionExpirationTimeMinutes() int32 {
+	if o == nil || o.SubscriptionExpirationTimeMinutes == nil {
+		var ret int32
 		return ret
 	}
-	return *o.DelayedDeliveryPolicies
+	return *o.SubscriptionExpirationTimeMinutes
 }
 
-// GetDelayedDeliveryPoliciesOk returns a tuple with the DelayedDeliveryPolicies field value if set, nil otherwise
+// GetSubscriptionExpirationTimeMinutesOk returns a tuple with the SubscriptionExpirationTimeMinutes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetDelayedDeliveryPoliciesOk() (*DelayedDeliveryPolicies, bool) {
-	if o == nil || o.DelayedDeliveryPolicies == nil {
+func (o *Policies) GetSubscriptionExpirationTimeMinutesOk() (*int32, bool) {
+	if o == nil || o.SubscriptionExpirationTimeMinutes == nil {
 		return nil, false
 	}
-	return o.DelayedDeliveryPolicies, true
+	return o.SubscriptionExpirationTimeMinutes, true
 }
 
-// HasDelayedDeliveryPolicies returns a boolean if a field has been set.
-func (o *Policies) HasDelayedDeliveryPolicies() bool {
-	if o != nil && o.DelayedDeliveryPolicies != nil {
+// HasSubscriptionExpirationTimeMinutes returns a boolean if a field has been set.
+func (o *Policies) HasSubscriptionExpirationTimeMinutes() bool {
+	if o != nil && o.SubscriptionExpirationTimeMinutes != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDelayedDeliveryPolicies gets a reference to the given DelayedDeliveryPolicies and assigns it to the DelayedDeliveryPolicies field.
-func (o *Policies) SetDelayedDeliveryPolicies(v DelayedDeliveryPolicies) {
-	o.DelayedDeliveryPolicies = &v
+// SetSubscriptionExpirationTimeMinutes gets a reference to the given int32 and assigns it to the SubscriptionExpirationTimeMinutes field.
+func (o *Policies) SetSubscriptionExpirationTimeMinutes(v int32) {
+	o.SubscriptionExpirationTimeMinutes = &v
+}
+
+// GetRetentionPolicies returns the RetentionPolicies field value if set, zero value otherwise.
+func (o *Policies) GetRetentionPolicies() RetentionPolicies {
+	if o == nil || o.RetentionPolicies == nil {
+		var ret RetentionPolicies
+		return ret
+	}
+	return *o.RetentionPolicies
+}
+
+// GetRetentionPoliciesOk returns a tuple with the RetentionPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetRetentionPoliciesOk() (*RetentionPolicies, bool) {
+	if o == nil || o.RetentionPolicies == nil {
+		return nil, false
+	}
+	return o.RetentionPolicies, true
+}
+
+// HasRetentionPolicies returns a boolean if a field has been set.
+func (o *Policies) HasRetentionPolicies() bool {
+	if o != nil && o.RetentionPolicies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRetentionPolicies gets a reference to the given RetentionPolicies and assigns it to the RetentionPolicies field.
+func (o *Policies) SetRetentionPolicies(v RetentionPolicies) {
+	o.RetentionPolicies = &v
 }
 
 // GetDeleted returns the Deleted field value if set, zero value otherwise.
@@ -488,6 +717,38 @@ func (o *Policies) SetEncryptionRequired(v bool) {
 	o.EncryptionRequired = &v
 }
 
+// GetDelayedDeliveryPolicies returns the DelayedDeliveryPolicies field value if set, zero value otherwise.
+func (o *Policies) GetDelayedDeliveryPolicies() DelayedDeliveryPolicies {
+	if o == nil || o.DelayedDeliveryPolicies == nil {
+		var ret DelayedDeliveryPolicies
+		return ret
+	}
+	return *o.DelayedDeliveryPolicies
+}
+
+// GetDelayedDeliveryPoliciesOk returns a tuple with the DelayedDeliveryPolicies field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetDelayedDeliveryPoliciesOk() (*DelayedDeliveryPolicies, bool) {
+	if o == nil || o.DelayedDeliveryPolicies == nil {
+		return nil, false
+	}
+	return o.DelayedDeliveryPolicies, true
+}
+
+// HasDelayedDeliveryPolicies returns a boolean if a field has been set.
+func (o *Policies) HasDelayedDeliveryPolicies() bool {
+	if o != nil && o.DelayedDeliveryPolicies != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDelayedDeliveryPolicies gets a reference to the given DelayedDeliveryPolicies and assigns it to the DelayedDeliveryPolicies field.
+func (o *Policies) SetDelayedDeliveryPolicies(v DelayedDeliveryPolicies) {
+	o.DelayedDeliveryPolicies = &v
+}
+
 // GetInactiveTopicPolicies returns the InactiveTopicPolicies field value if set, zero value otherwise.
 func (o *Policies) GetInactiveTopicPolicies() InactiveTopicPolicies {
 	if o == nil || o.InactiveTopicPolicies == nil {
@@ -520,100 +781,68 @@ func (o *Policies) SetInactiveTopicPolicies(v InactiveTopicPolicies) {
 	o.InactiveTopicPolicies = &v
 }
 
-// GetIsAllowAutoUpdateSchema returns the IsAllowAutoUpdateSchema field value if set, zero value otherwise.
-func (o *Policies) GetIsAllowAutoUpdateSchema() bool {
-	if o == nil || o.IsAllowAutoUpdateSchema == nil {
-		var ret bool
+// GetSubscriptionAuthMode returns the SubscriptionAuthMode field value if set, zero value otherwise.
+func (o *Policies) GetSubscriptionAuthMode() string {
+	if o == nil || o.SubscriptionAuthMode == nil {
+		var ret string
 		return ret
 	}
-	return *o.IsAllowAutoUpdateSchema
+	return *o.SubscriptionAuthMode
 }
 
-// GetIsAllowAutoUpdateSchemaOk returns a tuple with the IsAllowAutoUpdateSchema field value if set, nil otherwise
+// GetSubscriptionAuthModeOk returns a tuple with the SubscriptionAuthMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetIsAllowAutoUpdateSchemaOk() (*bool, bool) {
-	if o == nil || o.IsAllowAutoUpdateSchema == nil {
+func (o *Policies) GetSubscriptionAuthModeOk() (*string, bool) {
+	if o == nil || o.SubscriptionAuthMode == nil {
 		return nil, false
 	}
-	return o.IsAllowAutoUpdateSchema, true
+	return o.SubscriptionAuthMode, true
 }
 
-// HasIsAllowAutoUpdateSchema returns a boolean if a field has been set.
-func (o *Policies) HasIsAllowAutoUpdateSchema() bool {
-	if o != nil && o.IsAllowAutoUpdateSchema != nil {
+// HasSubscriptionAuthMode returns a boolean if a field has been set.
+func (o *Policies) HasSubscriptionAuthMode() bool {
+	if o != nil && o.SubscriptionAuthMode != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIsAllowAutoUpdateSchema gets a reference to the given bool and assigns it to the IsAllowAutoUpdateSchema field.
-func (o *Policies) SetIsAllowAutoUpdateSchema(v bool) {
-	o.IsAllowAutoUpdateSchema = &v
+// SetSubscriptionAuthMode gets a reference to the given string and assigns it to the SubscriptionAuthMode field.
+func (o *Policies) SetSubscriptionAuthMode(v string) {
+	o.SubscriptionAuthMode = &v
 }
 
-// GetLatencyStatsSampleRate returns the LatencyStatsSampleRate field value if set, zero value otherwise.
-func (o *Policies) GetLatencyStatsSampleRate() map[string]int32 {
-	if o == nil || o.LatencyStatsSampleRate == nil {
-		var ret map[string]int32
-		return ret
-	}
-	return *o.LatencyStatsSampleRate
-}
-
-// GetLatencyStatsSampleRateOk returns a tuple with the LatencyStatsSampleRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetLatencyStatsSampleRateOk() (*map[string]int32, bool) {
-	if o == nil || o.LatencyStatsSampleRate == nil {
-		return nil, false
-	}
-	return o.LatencyStatsSampleRate, true
-}
-
-// HasLatencyStatsSampleRate returns a boolean if a field has been set.
-func (o *Policies) HasLatencyStatsSampleRate() bool {
-	if o != nil && o.LatencyStatsSampleRate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLatencyStatsSampleRate gets a reference to the given map[string]int32 and assigns it to the LatencyStatsSampleRate field.
-func (o *Policies) SetLatencyStatsSampleRate(v map[string]int32) {
-	o.LatencyStatsSampleRate = &v
-}
-
-// GetMaxConsumersPerSubscription returns the MaxConsumersPerSubscription field value if set, zero value otherwise.
-func (o *Policies) GetMaxConsumersPerSubscription() int32 {
-	if o == nil || o.MaxConsumersPerSubscription == nil {
+// GetMaxProducersPerTopic returns the MaxProducersPerTopic field value if set, zero value otherwise.
+func (o *Policies) GetMaxProducersPerTopic() int32 {
+	if o == nil || o.MaxProducersPerTopic == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaxConsumersPerSubscription
+	return *o.MaxProducersPerTopic
 }
 
-// GetMaxConsumersPerSubscriptionOk returns a tuple with the MaxConsumersPerSubscription field value if set, nil otherwise
+// GetMaxProducersPerTopicOk returns a tuple with the MaxProducersPerTopic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetMaxConsumersPerSubscriptionOk() (*int32, bool) {
-	if o == nil || o.MaxConsumersPerSubscription == nil {
+func (o *Policies) GetMaxProducersPerTopicOk() (*int32, bool) {
+	if o == nil || o.MaxProducersPerTopic == nil {
 		return nil, false
 	}
-	return o.MaxConsumersPerSubscription, true
+	return o.MaxProducersPerTopic, true
 }
 
-// HasMaxConsumersPerSubscription returns a boolean if a field has been set.
-func (o *Policies) HasMaxConsumersPerSubscription() bool {
-	if o != nil && o.MaxConsumersPerSubscription != nil {
+// HasMaxProducersPerTopic returns a boolean if a field has been set.
+func (o *Policies) HasMaxProducersPerTopic() bool {
+	if o != nil && o.MaxProducersPerTopic != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxConsumersPerSubscription gets a reference to the given int32 and assigns it to the MaxConsumersPerSubscription field.
-func (o *Policies) SetMaxConsumersPerSubscription(v int32) {
-	o.MaxConsumersPerSubscription = &v
+// SetMaxProducersPerTopic gets a reference to the given int32 and assigns it to the MaxProducersPerTopic field.
+func (o *Policies) SetMaxProducersPerTopic(v int32) {
+	o.MaxProducersPerTopic = &v
 }
 
 // GetMaxConsumersPerTopic returns the MaxConsumersPerTopic field value if set, zero value otherwise.
@@ -648,36 +877,36 @@ func (o *Policies) SetMaxConsumersPerTopic(v int32) {
 	o.MaxConsumersPerTopic = &v
 }
 
-// GetMaxProducersPerTopic returns the MaxProducersPerTopic field value if set, zero value otherwise.
-func (o *Policies) GetMaxProducersPerTopic() int32 {
-	if o == nil || o.MaxProducersPerTopic == nil {
+// GetMaxConsumersPerSubscription returns the MaxConsumersPerSubscription field value if set, zero value otherwise.
+func (o *Policies) GetMaxConsumersPerSubscription() int32 {
+	if o == nil || o.MaxConsumersPerSubscription == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MaxProducersPerTopic
+	return *o.MaxConsumersPerSubscription
 }
 
-// GetMaxProducersPerTopicOk returns a tuple with the MaxProducersPerTopic field value if set, nil otherwise
+// GetMaxConsumersPerSubscriptionOk returns a tuple with the MaxConsumersPerSubscription field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetMaxProducersPerTopicOk() (*int32, bool) {
-	if o == nil || o.MaxProducersPerTopic == nil {
+func (o *Policies) GetMaxConsumersPerSubscriptionOk() (*int32, bool) {
+	if o == nil || o.MaxConsumersPerSubscription == nil {
 		return nil, false
 	}
-	return o.MaxProducersPerTopic, true
+	return o.MaxConsumersPerSubscription, true
 }
 
-// HasMaxProducersPerTopic returns a boolean if a field has been set.
-func (o *Policies) HasMaxProducersPerTopic() bool {
-	if o != nil && o.MaxProducersPerTopic != nil {
+// HasMaxConsumersPerSubscription returns a boolean if a field has been set.
+func (o *Policies) HasMaxConsumersPerSubscription() bool {
+	if o != nil && o.MaxConsumersPerSubscription != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxProducersPerTopic gets a reference to the given int32 and assigns it to the MaxProducersPerTopic field.
-func (o *Policies) SetMaxProducersPerTopic(v int32) {
-	o.MaxProducersPerTopic = &v
+// SetMaxConsumersPerSubscription gets a reference to the given int32 and assigns it to the MaxConsumersPerSubscription field.
+func (o *Policies) SetMaxConsumersPerSubscription(v int32) {
+	o.MaxConsumersPerSubscription = &v
 }
 
 // GetMaxUnackedMessagesPerConsumer returns the MaxUnackedMessagesPerConsumer field value if set, zero value otherwise.
@@ -744,100 +973,68 @@ func (o *Policies) SetMaxUnackedMessagesPerSubscription(v int32) {
 	o.MaxUnackedMessagesPerSubscription = &v
 }
 
-// GetMessageTtlInSeconds returns the MessageTtlInSeconds field value if set, zero value otherwise.
-func (o *Policies) GetMessageTtlInSeconds() int32 {
-	if o == nil || o.MessageTtlInSeconds == nil {
+// GetMaxSubscriptionsPerTopic returns the MaxSubscriptionsPerTopic field value if set, zero value otherwise.
+func (o *Policies) GetMaxSubscriptionsPerTopic() int32 {
+	if o == nil || o.MaxSubscriptionsPerTopic == nil {
 		var ret int32
 		return ret
 	}
-	return *o.MessageTtlInSeconds
+	return *o.MaxSubscriptionsPerTopic
 }
 
-// GetMessageTtlInSecondsOk returns a tuple with the MessageTtlInSeconds field value if set, nil otherwise
+// GetMaxSubscriptionsPerTopicOk returns a tuple with the MaxSubscriptionsPerTopic field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetMessageTtlInSecondsOk() (*int32, bool) {
-	if o == nil || o.MessageTtlInSeconds == nil {
+func (o *Policies) GetMaxSubscriptionsPerTopicOk() (*int32, bool) {
+	if o == nil || o.MaxSubscriptionsPerTopic == nil {
 		return nil, false
 	}
-	return o.MessageTtlInSeconds, true
+	return o.MaxSubscriptionsPerTopic, true
 }
 
-// HasMessageTtlInSeconds returns a boolean if a field has been set.
-func (o *Policies) HasMessageTtlInSeconds() bool {
-	if o != nil && o.MessageTtlInSeconds != nil {
+// HasMaxSubscriptionsPerTopic returns a boolean if a field has been set.
+func (o *Policies) HasMaxSubscriptionsPerTopic() bool {
+	if o != nil && o.MaxSubscriptionsPerTopic != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMessageTtlInSeconds gets a reference to the given int32 and assigns it to the MessageTtlInSeconds field.
-func (o *Policies) SetMessageTtlInSeconds(v int32) {
-	o.MessageTtlInSeconds = &v
+// SetMaxSubscriptionsPerTopic gets a reference to the given int32 and assigns it to the MaxSubscriptionsPerTopic field.
+func (o *Policies) SetMaxSubscriptionsPerTopic(v int32) {
+	o.MaxSubscriptionsPerTopic = &v
 }
 
-// GetOffloadDeletionLagMs returns the OffloadDeletionLagMs field value if set, zero value otherwise.
-func (o *Policies) GetOffloadDeletionLagMs() int64 {
-	if o == nil || o.OffloadDeletionLagMs == nil {
+// GetCompactionThreshold returns the CompactionThreshold field value if set, zero value otherwise.
+func (o *Policies) GetCompactionThreshold() int64 {
+	if o == nil || o.CompactionThreshold == nil {
 		var ret int64
 		return ret
 	}
-	return *o.OffloadDeletionLagMs
+	return *o.CompactionThreshold
 }
 
-// GetOffloadDeletionLagMsOk returns a tuple with the OffloadDeletionLagMs field value if set, nil otherwise
+// GetCompactionThresholdOk returns a tuple with the CompactionThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetOffloadDeletionLagMsOk() (*int64, bool) {
-	if o == nil || o.OffloadDeletionLagMs == nil {
+func (o *Policies) GetCompactionThresholdOk() (*int64, bool) {
+	if o == nil || o.CompactionThreshold == nil {
 		return nil, false
 	}
-	return o.OffloadDeletionLagMs, true
+	return o.CompactionThreshold, true
 }
 
-// HasOffloadDeletionLagMs returns a boolean if a field has been set.
-func (o *Policies) HasOffloadDeletionLagMs() bool {
-	if o != nil && o.OffloadDeletionLagMs != nil {
+// HasCompactionThreshold returns a boolean if a field has been set.
+func (o *Policies) HasCompactionThreshold() bool {
+	if o != nil && o.CompactionThreshold != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOffloadDeletionLagMs gets a reference to the given int64 and assigns it to the OffloadDeletionLagMs field.
-func (o *Policies) SetOffloadDeletionLagMs(v int64) {
-	o.OffloadDeletionLagMs = &v
-}
-
-// GetOffloadPolicies returns the OffloadPolicies field value if set, zero value otherwise.
-func (o *Policies) GetOffloadPolicies() OffloadPolicies {
-	if o == nil || o.OffloadPolicies == nil {
-		var ret OffloadPolicies
-		return ret
-	}
-	return *o.OffloadPolicies
-}
-
-// GetOffloadPoliciesOk returns a tuple with the OffloadPolicies field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetOffloadPoliciesOk() (*OffloadPolicies, bool) {
-	if o == nil || o.OffloadPolicies == nil {
-		return nil, false
-	}
-	return o.OffloadPolicies, true
-}
-
-// HasOffloadPolicies returns a boolean if a field has been set.
-func (o *Policies) HasOffloadPolicies() bool {
-	if o != nil && o.OffloadPolicies != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOffloadPolicies gets a reference to the given OffloadPolicies and assigns it to the OffloadPolicies field.
-func (o *Policies) SetOffloadPolicies(v OffloadPolicies) {
-	o.OffloadPolicies = &v
+// SetCompactionThreshold gets a reference to the given int64 and assigns it to the CompactionThreshold field.
+func (o *Policies) SetCompactionThreshold(v int64) {
+	o.CompactionThreshold = &v
 }
 
 // GetOffloadThreshold returns the OffloadThreshold field value if set, zero value otherwise.
@@ -872,164 +1069,68 @@ func (o *Policies) SetOffloadThreshold(v int64) {
 	o.OffloadThreshold = &v
 }
 
-// GetPersistence returns the Persistence field value if set, zero value otherwise.
-func (o *Policies) GetPersistence() PersistencePolicies {
-	if o == nil || o.Persistence == nil {
-		var ret PersistencePolicies
+// GetOffloadDeletionLagMs returns the OffloadDeletionLagMs field value if set, zero value otherwise.
+func (o *Policies) GetOffloadDeletionLagMs() int64 {
+	if o == nil || o.OffloadDeletionLagMs == nil {
+		var ret int64
 		return ret
 	}
-	return *o.Persistence
+	return *o.OffloadDeletionLagMs
 }
 
-// GetPersistenceOk returns a tuple with the Persistence field value if set, nil otherwise
+// GetOffloadDeletionLagMsOk returns a tuple with the OffloadDeletionLagMs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetPersistenceOk() (*PersistencePolicies, bool) {
-	if o == nil || o.Persistence == nil {
+func (o *Policies) GetOffloadDeletionLagMsOk() (*int64, bool) {
+	if o == nil || o.OffloadDeletionLagMs == nil {
 		return nil, false
 	}
-	return o.Persistence, true
+	return o.OffloadDeletionLagMs, true
 }
 
-// HasPersistence returns a boolean if a field has been set.
-func (o *Policies) HasPersistence() bool {
-	if o != nil && o.Persistence != nil {
+// HasOffloadDeletionLagMs returns a boolean if a field has been set.
+func (o *Policies) HasOffloadDeletionLagMs() bool {
+	if o != nil && o.OffloadDeletionLagMs != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPersistence gets a reference to the given PersistencePolicies and assigns it to the Persistence field.
-func (o *Policies) SetPersistence(v PersistencePolicies) {
-	o.Persistence = &v
+// SetOffloadDeletionLagMs gets a reference to the given int64 and assigns it to the OffloadDeletionLagMs field.
+func (o *Policies) SetOffloadDeletionLagMs(v int64) {
+	o.OffloadDeletionLagMs = &v
 }
 
-// GetPublishMaxMessageRate returns the PublishMaxMessageRate field value if set, zero value otherwise.
-func (o *Policies) GetPublishMaxMessageRate() map[string]PublishRate {
-	if o == nil || o.PublishMaxMessageRate == nil {
-		var ret map[string]PublishRate
+// GetMaxTopicsPerNamespace returns the MaxTopicsPerNamespace field value if set, zero value otherwise.
+func (o *Policies) GetMaxTopicsPerNamespace() int32 {
+	if o == nil || o.MaxTopicsPerNamespace == nil {
+		var ret int32
 		return ret
 	}
-	return *o.PublishMaxMessageRate
+	return *o.MaxTopicsPerNamespace
 }
 
-// GetPublishMaxMessageRateOk returns a tuple with the PublishMaxMessageRate field value if set, nil otherwise
+// GetMaxTopicsPerNamespaceOk returns a tuple with the MaxTopicsPerNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetPublishMaxMessageRateOk() (*map[string]PublishRate, bool) {
-	if o == nil || o.PublishMaxMessageRate == nil {
+func (o *Policies) GetMaxTopicsPerNamespaceOk() (*int32, bool) {
+	if o == nil || o.MaxTopicsPerNamespace == nil {
 		return nil, false
 	}
-	return o.PublishMaxMessageRate, true
+	return o.MaxTopicsPerNamespace, true
 }
 
-// HasPublishMaxMessageRate returns a boolean if a field has been set.
-func (o *Policies) HasPublishMaxMessageRate() bool {
-	if o != nil && o.PublishMaxMessageRate != nil {
+// HasMaxTopicsPerNamespace returns a boolean if a field has been set.
+func (o *Policies) HasMaxTopicsPerNamespace() bool {
+	if o != nil && o.MaxTopicsPerNamespace != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPublishMaxMessageRate gets a reference to the given map[string]PublishRate and assigns it to the PublishMaxMessageRate field.
-func (o *Policies) SetPublishMaxMessageRate(v map[string]PublishRate) {
-	o.PublishMaxMessageRate = &v
-}
-
-// GetReplicationClusters returns the ReplicationClusters field value if set, zero value otherwise.
-func (o *Policies) GetReplicationClusters() []string {
-	if o == nil || o.ReplicationClusters == nil {
-		var ret []string
-		return ret
-	}
-	return *o.ReplicationClusters
-}
-
-// GetReplicationClustersOk returns a tuple with the ReplicationClusters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetReplicationClustersOk() (*[]string, bool) {
-	if o == nil || o.ReplicationClusters == nil {
-		return nil, false
-	}
-	return o.ReplicationClusters, true
-}
-
-// HasReplicationClusters returns a boolean if a field has been set.
-func (o *Policies) HasReplicationClusters() bool {
-	if o != nil && o.ReplicationClusters != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReplicationClusters gets a reference to the given []string and assigns it to the ReplicationClusters field.
-func (o *Policies) SetReplicationClusters(v []string) {
-	o.ReplicationClusters = &v
-}
-
-// GetReplicatorDispatchRate returns the ReplicatorDispatchRate field value if set, zero value otherwise.
-func (o *Policies) GetReplicatorDispatchRate() map[string]DispatchRate {
-	if o == nil || o.ReplicatorDispatchRate == nil {
-		var ret map[string]DispatchRate
-		return ret
-	}
-	return *o.ReplicatorDispatchRate
-}
-
-// GetReplicatorDispatchRateOk returns a tuple with the ReplicatorDispatchRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetReplicatorDispatchRateOk() (*map[string]DispatchRate, bool) {
-	if o == nil || o.ReplicatorDispatchRate == nil {
-		return nil, false
-	}
-	return o.ReplicatorDispatchRate, true
-}
-
-// HasReplicatorDispatchRate returns a boolean if a field has been set.
-func (o *Policies) HasReplicatorDispatchRate() bool {
-	if o != nil && o.ReplicatorDispatchRate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetReplicatorDispatchRate gets a reference to the given map[string]DispatchRate and assigns it to the ReplicatorDispatchRate field.
-func (o *Policies) SetReplicatorDispatchRate(v map[string]DispatchRate) {
-	o.ReplicatorDispatchRate = &v
-}
-
-// GetRetentionPolicies returns the RetentionPolicies field value if set, zero value otherwise.
-func (o *Policies) GetRetentionPolicies() RetentionPolicies {
-	if o == nil || o.RetentionPolicies == nil {
-		var ret RetentionPolicies
-		return ret
-	}
-	return *o.RetentionPolicies
-}
-
-// GetRetentionPoliciesOk returns a tuple with the RetentionPolicies field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetRetentionPoliciesOk() (*RetentionPolicies, bool) {
-	if o == nil || o.RetentionPolicies == nil {
-		return nil, false
-	}
-	return o.RetentionPolicies, true
-}
-
-// HasRetentionPolicies returns a boolean if a field has been set.
-func (o *Policies) HasRetentionPolicies() bool {
-	if o != nil && o.RetentionPolicies != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRetentionPolicies gets a reference to the given RetentionPolicies and assigns it to the RetentionPolicies field.
-func (o *Policies) SetRetentionPolicies(v RetentionPolicies) {
-	o.RetentionPolicies = &v
+// SetMaxTopicsPerNamespace gets a reference to the given int32 and assigns it to the MaxTopicsPerNamespace field.
+func (o *Policies) SetMaxTopicsPerNamespace(v int32) {
+	o.MaxTopicsPerNamespace = &v
 }
 
 // GetSchemaAutoUpdateCompatibilityStrategy returns the SchemaAutoUpdateCompatibilityStrategy field value if set, zero value otherwise.
@@ -1096,6 +1197,38 @@ func (o *Policies) SetSchemaCompatibilityStrategy(v string) {
 	o.SchemaCompatibilityStrategy = &v
 }
 
+// GetIsAllowAutoUpdateSchema returns the IsAllowAutoUpdateSchema field value if set, zero value otherwise.
+func (o *Policies) GetIsAllowAutoUpdateSchema() bool {
+	if o == nil || o.IsAllowAutoUpdateSchema == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsAllowAutoUpdateSchema
+}
+
+// GetIsAllowAutoUpdateSchemaOk returns a tuple with the IsAllowAutoUpdateSchema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetIsAllowAutoUpdateSchemaOk() (*bool, bool) {
+	if o == nil || o.IsAllowAutoUpdateSchema == nil {
+		return nil, false
+	}
+	return o.IsAllowAutoUpdateSchema, true
+}
+
+// HasIsAllowAutoUpdateSchema returns a boolean if a field has been set.
+func (o *Policies) HasIsAllowAutoUpdateSchema() bool {
+	if o != nil && o.IsAllowAutoUpdateSchema != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAllowAutoUpdateSchema gets a reference to the given bool and assigns it to the IsAllowAutoUpdateSchema field.
+func (o *Policies) SetIsAllowAutoUpdateSchema(v bool) {
+	o.IsAllowAutoUpdateSchema = &v
+}
+
 // GetSchemaValidationEnforced returns the SchemaValidationEnforced field value if set, zero value otherwise.
 func (o *Policies) GetSchemaValidationEnforced() bool {
 	if o == nil || o.SchemaValidationEnforced == nil {
@@ -1128,132 +1261,164 @@ func (o *Policies) SetSchemaValidationEnforced(v bool) {
 	o.SchemaValidationEnforced = &v
 }
 
-// GetSubscriptionDispatchRate returns the SubscriptionDispatchRate field value if set, zero value otherwise.
-func (o *Policies) GetSubscriptionDispatchRate() map[string]DispatchRate {
-	if o == nil || o.SubscriptionDispatchRate == nil {
-		var ret map[string]DispatchRate
+// GetOffloadPolicies returns the OffloadPolicies field value if set, zero value otherwise.
+func (o *Policies) GetOffloadPolicies() OffloadPolicies {
+	if o == nil || o.OffloadPolicies == nil {
+		var ret OffloadPolicies
 		return ret
 	}
-	return *o.SubscriptionDispatchRate
+	return *o.OffloadPolicies
 }
 
-// GetSubscriptionDispatchRateOk returns a tuple with the SubscriptionDispatchRate field value if set, nil otherwise
+// GetOffloadPoliciesOk returns a tuple with the OffloadPolicies field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetSubscriptionDispatchRateOk() (*map[string]DispatchRate, bool) {
-	if o == nil || o.SubscriptionDispatchRate == nil {
+func (o *Policies) GetOffloadPoliciesOk() (*OffloadPolicies, bool) {
+	if o == nil || o.OffloadPolicies == nil {
 		return nil, false
 	}
-	return o.SubscriptionDispatchRate, true
+	return o.OffloadPolicies, true
 }
 
-// HasSubscriptionDispatchRate returns a boolean if a field has been set.
-func (o *Policies) HasSubscriptionDispatchRate() bool {
-	if o != nil && o.SubscriptionDispatchRate != nil {
+// HasOffloadPolicies returns a boolean if a field has been set.
+func (o *Policies) HasOffloadPolicies() bool {
+	if o != nil && o.OffloadPolicies != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionDispatchRate gets a reference to the given map[string]DispatchRate and assigns it to the SubscriptionDispatchRate field.
-func (o *Policies) SetSubscriptionDispatchRate(v map[string]DispatchRate) {
-	o.SubscriptionDispatchRate = &v
+// SetOffloadPolicies gets a reference to the given OffloadPolicies and assigns it to the OffloadPolicies field.
+func (o *Policies) SetOffloadPolicies(v OffloadPolicies) {
+	o.OffloadPolicies = &v
 }
 
-// GetSubscriptionAuthMode returns the SubscriptionAuthMode field value if set, zero value otherwise.
-func (o *Policies) GetSubscriptionAuthMode() string {
-	if o == nil || o.SubscriptionAuthMode == nil {
-		var ret string
-		return ret
-	}
-	return *o.SubscriptionAuthMode
-}
-
-// GetSubscriptionAuthModeOk returns a tuple with the SubscriptionAuthMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Policies) GetSubscriptionAuthModeOk() (*string, bool) {
-	if o == nil || o.SubscriptionAuthMode == nil {
-		return nil, false
-	}
-	return o.SubscriptionAuthMode, true
-}
-
-// HasSubscriptionAuthMode returns a boolean if a field has been set.
-func (o *Policies) HasSubscriptionAuthMode() bool {
-	if o != nil && o.SubscriptionAuthMode != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSubscriptionAuthMode gets a reference to the given string and assigns it to the SubscriptionAuthMode field.
-func (o *Policies) SetSubscriptionAuthMode(v string) {
-	o.SubscriptionAuthMode = &v
-}
-
-// GetSubscriptionExpirationTimeMinutes returns the SubscriptionExpirationTimeMinutes field value if set, zero value otherwise.
-func (o *Policies) GetSubscriptionExpirationTimeMinutes() int32 {
-	if o == nil || o.SubscriptionExpirationTimeMinutes == nil {
+// GetDeduplicationSnapshotIntervalSeconds returns the DeduplicationSnapshotIntervalSeconds field value if set, zero value otherwise.
+func (o *Policies) GetDeduplicationSnapshotIntervalSeconds() int32 {
+	if o == nil || o.DeduplicationSnapshotIntervalSeconds == nil {
 		var ret int32
 		return ret
 	}
-	return *o.SubscriptionExpirationTimeMinutes
+	return *o.DeduplicationSnapshotIntervalSeconds
 }
 
-// GetSubscriptionExpirationTimeMinutesOk returns a tuple with the SubscriptionExpirationTimeMinutes field value if set, nil otherwise
+// GetDeduplicationSnapshotIntervalSecondsOk returns a tuple with the DeduplicationSnapshotIntervalSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetSubscriptionExpirationTimeMinutesOk() (*int32, bool) {
-	if o == nil || o.SubscriptionExpirationTimeMinutes == nil {
+func (o *Policies) GetDeduplicationSnapshotIntervalSecondsOk() (*int32, bool) {
+	if o == nil || o.DeduplicationSnapshotIntervalSeconds == nil {
 		return nil, false
 	}
-	return o.SubscriptionExpirationTimeMinutes, true
+	return o.DeduplicationSnapshotIntervalSeconds, true
 }
 
-// HasSubscriptionExpirationTimeMinutes returns a boolean if a field has been set.
-func (o *Policies) HasSubscriptionExpirationTimeMinutes() bool {
-	if o != nil && o.SubscriptionExpirationTimeMinutes != nil {
+// HasDeduplicationSnapshotIntervalSeconds returns a boolean if a field has been set.
+func (o *Policies) HasDeduplicationSnapshotIntervalSeconds() bool {
+	if o != nil && o.DeduplicationSnapshotIntervalSeconds != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionExpirationTimeMinutes gets a reference to the given int32 and assigns it to the SubscriptionExpirationTimeMinutes field.
-func (o *Policies) SetSubscriptionExpirationTimeMinutes(v int32) {
-	o.SubscriptionExpirationTimeMinutes = &v
+// SetDeduplicationSnapshotIntervalSeconds gets a reference to the given int32 and assigns it to the DeduplicationSnapshotIntervalSeconds field.
+func (o *Policies) SetDeduplicationSnapshotIntervalSeconds(v int32) {
+	o.DeduplicationSnapshotIntervalSeconds = &v
 }
 
-// GetTopicDispatchRate returns the TopicDispatchRate field value if set, zero value otherwise.
-func (o *Policies) GetTopicDispatchRate() map[string]DispatchRate {
-	if o == nil || o.TopicDispatchRate == nil {
-		var ret map[string]DispatchRate
+// GetSubscriptionTypesEnabled returns the SubscriptionTypesEnabled field value if set, zero value otherwise.
+func (o *Policies) GetSubscriptionTypesEnabled() []string {
+	if o == nil || o.SubscriptionTypesEnabled == nil {
+		var ret []string
 		return ret
 	}
-	return *o.TopicDispatchRate
+	return *o.SubscriptionTypesEnabled
 }
 
-// GetTopicDispatchRateOk returns a tuple with the TopicDispatchRate field value if set, nil otherwise
+// GetSubscriptionTypesEnabledOk returns a tuple with the SubscriptionTypesEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Policies) GetTopicDispatchRateOk() (*map[string]DispatchRate, bool) {
-	if o == nil || o.TopicDispatchRate == nil {
+func (o *Policies) GetSubscriptionTypesEnabledOk() (*[]string, bool) {
+	if o == nil || o.SubscriptionTypesEnabled == nil {
 		return nil, false
 	}
-	return o.TopicDispatchRate, true
+	return o.SubscriptionTypesEnabled, true
 }
 
-// HasTopicDispatchRate returns a boolean if a field has been set.
-func (o *Policies) HasTopicDispatchRate() bool {
-	if o != nil && o.TopicDispatchRate != nil {
+// HasSubscriptionTypesEnabled returns a boolean if a field has been set.
+func (o *Policies) HasSubscriptionTypesEnabled() bool {
+	if o != nil && o.SubscriptionTypesEnabled != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTopicDispatchRate gets a reference to the given map[string]DispatchRate and assigns it to the TopicDispatchRate field.
-func (o *Policies) SetTopicDispatchRate(v map[string]DispatchRate) {
-	o.TopicDispatchRate = &v
+// SetSubscriptionTypesEnabled gets a reference to the given []string and assigns it to the SubscriptionTypesEnabled field.
+func (o *Policies) SetSubscriptionTypesEnabled(v []string) {
+	o.SubscriptionTypesEnabled = &v
+}
+
+// GetProperties returns the Properties field value if set, zero value otherwise.
+func (o *Policies) GetProperties() map[string]string {
+	if o == nil || o.Properties == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Properties
+}
+
+// GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetPropertiesOk() (*map[string]string, bool) {
+	if o == nil || o.Properties == nil {
+		return nil, false
+	}
+	return o.Properties, true
+}
+
+// HasProperties returns a boolean if a field has been set.
+func (o *Policies) HasProperties() bool {
+	if o != nil && o.Properties != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProperties gets a reference to the given map[string]string and assigns it to the Properties field.
+func (o *Policies) SetProperties(v map[string]string) {
+	o.Properties = &v
+}
+
+// GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise.
+func (o *Policies) GetResourceGroupName() string {
+	if o == nil || o.ResourceGroupName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ResourceGroupName
+}
+
+// GetResourceGroupNameOk returns a tuple with the ResourceGroupName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Policies) GetResourceGroupNameOk() (*string, bool) {
+	if o == nil || o.ResourceGroupName == nil {
+		return nil, false
+	}
+	return o.ResourceGroupName, true
+}
+
+// HasResourceGroupName returns a boolean if a field has been set.
+func (o *Policies) HasResourceGroupName() bool {
+	if o != nil && o.ResourceGroupName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
+func (o *Policies) SetResourceGroupName(v string) {
+	o.ResourceGroupName = &v
 }
 
 func (o Policies) MarshalJSON() ([]byte, error) {
@@ -1261,35 +1426,56 @@ func (o Policies) MarshalJSON() ([]byte, error) {
 	if o.AuthPolicies != nil {
 		toSerialize["auth_policies"] = o.AuthPolicies
 	}
-	if o.AutoSubscriptionCreationOverride != nil {
-		toSerialize["autoSubscriptionCreationOverride"] = o.AutoSubscriptionCreationOverride
-	}
-	if o.AutoTopicCreationOverride != nil {
-		toSerialize["autoTopicCreationOverride"] = o.AutoTopicCreationOverride
-	}
-	if o.BacklogQuotaMap != nil {
-		toSerialize["backlog_quota_map"] = o.BacklogQuotaMap
+	if o.ReplicationClusters != nil {
+		toSerialize["replication_clusters"] = o.ReplicationClusters
 	}
 	if o.Bundles != nil {
 		toSerialize["bundles"] = o.Bundles
 	}
+	if o.BacklogQuotaMap != nil {
+		toSerialize["backlog_quota_map"] = o.BacklogQuotaMap
+	}
 	if o.ClusterDispatchRate != nil {
 		toSerialize["clusterDispatchRate"] = o.ClusterDispatchRate
+	}
+	if o.TopicDispatchRate != nil {
+		toSerialize["topicDispatchRate"] = o.TopicDispatchRate
+	}
+	if o.SubscriptionDispatchRate != nil {
+		toSerialize["subscriptionDispatchRate"] = o.SubscriptionDispatchRate
+	}
+	if o.ReplicatorDispatchRate != nil {
+		toSerialize["replicatorDispatchRate"] = o.ReplicatorDispatchRate
 	}
 	if o.ClusterSubscribeRate != nil {
 		toSerialize["clusterSubscribeRate"] = o.ClusterSubscribeRate
 	}
-	if o.CompactionThreshold != nil {
-		toSerialize["compaction_threshold"] = o.CompactionThreshold
+	if o.Persistence != nil {
+		toSerialize["persistence"] = o.Persistence
 	}
 	if o.DeduplicationEnabled != nil {
 		toSerialize["deduplicationEnabled"] = o.DeduplicationEnabled
 	}
-	if o.DeduplicationSnapshotIntervalSeconds != nil {
-		toSerialize["deduplicationSnapshotIntervalSeconds"] = o.DeduplicationSnapshotIntervalSeconds
+	if o.AutoTopicCreationOverride != nil {
+		toSerialize["autoTopicCreationOverride"] = o.AutoTopicCreationOverride
 	}
-	if o.DelayedDeliveryPolicies != nil {
-		toSerialize["delayed_delivery_policies"] = o.DelayedDeliveryPolicies
+	if o.AutoSubscriptionCreationOverride != nil {
+		toSerialize["autoSubscriptionCreationOverride"] = o.AutoSubscriptionCreationOverride
+	}
+	if o.PublishMaxMessageRate != nil {
+		toSerialize["publishMaxMessageRate"] = o.PublishMaxMessageRate
+	}
+	if o.LatencyStatsSampleRate != nil {
+		toSerialize["latency_stats_sample_rate"] = o.LatencyStatsSampleRate
+	}
+	if o.MessageTtlInSeconds != nil {
+		toSerialize["message_ttl_in_seconds"] = o.MessageTtlInSeconds
+	}
+	if o.SubscriptionExpirationTimeMinutes != nil {
+		toSerialize["subscription_expiration_time_minutes"] = o.SubscriptionExpirationTimeMinutes
+	}
+	if o.RetentionPolicies != nil {
+		toSerialize["retention_policies"] = o.RetentionPolicies
 	}
 	if o.Deleted != nil {
 		toSerialize["deleted"] = o.Deleted
@@ -1297,23 +1483,23 @@ func (o Policies) MarshalJSON() ([]byte, error) {
 	if o.EncryptionRequired != nil {
 		toSerialize["encryption_required"] = o.EncryptionRequired
 	}
+	if o.DelayedDeliveryPolicies != nil {
+		toSerialize["delayed_delivery_policies"] = o.DelayedDeliveryPolicies
+	}
 	if o.InactiveTopicPolicies != nil {
 		toSerialize["inactive_topic_policies"] = o.InactiveTopicPolicies
 	}
-	if o.IsAllowAutoUpdateSchema != nil {
-		toSerialize["is_allow_auto_update_schema"] = o.IsAllowAutoUpdateSchema
+	if o.SubscriptionAuthMode != nil {
+		toSerialize["subscription_auth_mode"] = o.SubscriptionAuthMode
 	}
-	if o.LatencyStatsSampleRate != nil {
-		toSerialize["latency_stats_sample_rate"] = o.LatencyStatsSampleRate
-	}
-	if o.MaxConsumersPerSubscription != nil {
-		toSerialize["max_consumers_per_subscription"] = o.MaxConsumersPerSubscription
+	if o.MaxProducersPerTopic != nil {
+		toSerialize["max_producers_per_topic"] = o.MaxProducersPerTopic
 	}
 	if o.MaxConsumersPerTopic != nil {
 		toSerialize["max_consumers_per_topic"] = o.MaxConsumersPerTopic
 	}
-	if o.MaxProducersPerTopic != nil {
-		toSerialize["max_producers_per_topic"] = o.MaxProducersPerTopic
+	if o.MaxConsumersPerSubscription != nil {
+		toSerialize["max_consumers_per_subscription"] = o.MaxConsumersPerSubscription
 	}
 	if o.MaxUnackedMessagesPerConsumer != nil {
 		toSerialize["max_unacked_messages_per_consumer"] = o.MaxUnackedMessagesPerConsumer
@@ -1321,32 +1507,20 @@ func (o Policies) MarshalJSON() ([]byte, error) {
 	if o.MaxUnackedMessagesPerSubscription != nil {
 		toSerialize["max_unacked_messages_per_subscription"] = o.MaxUnackedMessagesPerSubscription
 	}
-	if o.MessageTtlInSeconds != nil {
-		toSerialize["message_ttl_in_seconds"] = o.MessageTtlInSeconds
+	if o.MaxSubscriptionsPerTopic != nil {
+		toSerialize["max_subscriptions_per_topic"] = o.MaxSubscriptionsPerTopic
 	}
-	if o.OffloadDeletionLagMs != nil {
-		toSerialize["offload_deletion_lag_ms"] = o.OffloadDeletionLagMs
-	}
-	if o.OffloadPolicies != nil {
-		toSerialize["offload_policies"] = o.OffloadPolicies
+	if o.CompactionThreshold != nil {
+		toSerialize["compaction_threshold"] = o.CompactionThreshold
 	}
 	if o.OffloadThreshold != nil {
 		toSerialize["offload_threshold"] = o.OffloadThreshold
 	}
-	if o.Persistence != nil {
-		toSerialize["persistence"] = o.Persistence
+	if o.OffloadDeletionLagMs != nil {
+		toSerialize["offload_deletion_lag_ms"] = o.OffloadDeletionLagMs
 	}
-	if o.PublishMaxMessageRate != nil {
-		toSerialize["publishMaxMessageRate"] = o.PublishMaxMessageRate
-	}
-	if o.ReplicationClusters != nil {
-		toSerialize["replication_clusters"] = o.ReplicationClusters
-	}
-	if o.ReplicatorDispatchRate != nil {
-		toSerialize["replicatorDispatchRate"] = o.ReplicatorDispatchRate
-	}
-	if o.RetentionPolicies != nil {
-		toSerialize["retention_policies"] = o.RetentionPolicies
+	if o.MaxTopicsPerNamespace != nil {
+		toSerialize["max_topics_per_namespace"] = o.MaxTopicsPerNamespace
 	}
 	if o.SchemaAutoUpdateCompatibilityStrategy != nil {
 		toSerialize["schema_auto_update_compatibility_strategy"] = o.SchemaAutoUpdateCompatibilityStrategy
@@ -1354,20 +1528,26 @@ func (o Policies) MarshalJSON() ([]byte, error) {
 	if o.SchemaCompatibilityStrategy != nil {
 		toSerialize["schema_compatibility_strategy"] = o.SchemaCompatibilityStrategy
 	}
+	if o.IsAllowAutoUpdateSchema != nil {
+		toSerialize["is_allow_auto_update_schema"] = o.IsAllowAutoUpdateSchema
+	}
 	if o.SchemaValidationEnforced != nil {
 		toSerialize["schema_validation_enforced"] = o.SchemaValidationEnforced
 	}
-	if o.SubscriptionDispatchRate != nil {
-		toSerialize["subscriptionDispatchRate"] = o.SubscriptionDispatchRate
+	if o.OffloadPolicies != nil {
+		toSerialize["offload_policies"] = o.OffloadPolicies
 	}
-	if o.SubscriptionAuthMode != nil {
-		toSerialize["subscription_auth_mode"] = o.SubscriptionAuthMode
+	if o.DeduplicationSnapshotIntervalSeconds != nil {
+		toSerialize["deduplicationSnapshotIntervalSeconds"] = o.DeduplicationSnapshotIntervalSeconds
 	}
-	if o.SubscriptionExpirationTimeMinutes != nil {
-		toSerialize["subscription_expiration_time_minutes"] = o.SubscriptionExpirationTimeMinutes
+	if o.SubscriptionTypesEnabled != nil {
+		toSerialize["subscription_types_enabled"] = o.SubscriptionTypesEnabled
 	}
-	if o.TopicDispatchRate != nil {
-		toSerialize["topicDispatchRate"] = o.TopicDispatchRate
+	if o.Properties != nil {
+		toSerialize["properties"] = o.Properties
+	}
+	if o.ResourceGroupName != nil {
+		toSerialize["resource_group_name"] = o.ResourceGroupName
 	}
 	return json.Marshal(toSerialize)
 }

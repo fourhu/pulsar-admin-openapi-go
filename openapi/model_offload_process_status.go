@@ -16,7 +16,7 @@ import (
 
 // OffloadProcessStatus struct for OffloadProcessStatus
 type OffloadProcessStatus struct {
-	FirstUnoffloadedMessage *MessageIdImpl `json:"firstUnoffloadedMessage,omitempty"`
+	FirstUnoffloadedMessage *map[string]interface{} `json:"firstUnoffloadedMessage,omitempty"`
 	LastError *string `json:"lastError,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
@@ -39,9 +39,9 @@ func NewOffloadProcessStatusWithDefaults() *OffloadProcessStatus {
 }
 
 // GetFirstUnoffloadedMessage returns the FirstUnoffloadedMessage field value if set, zero value otherwise.
-func (o *OffloadProcessStatus) GetFirstUnoffloadedMessage() MessageIdImpl {
+func (o *OffloadProcessStatus) GetFirstUnoffloadedMessage() map[string]interface{} {
 	if o == nil || o.FirstUnoffloadedMessage == nil {
-		var ret MessageIdImpl
+		var ret map[string]interface{}
 		return ret
 	}
 	return *o.FirstUnoffloadedMessage
@@ -49,7 +49,7 @@ func (o *OffloadProcessStatus) GetFirstUnoffloadedMessage() MessageIdImpl {
 
 // GetFirstUnoffloadedMessageOk returns a tuple with the FirstUnoffloadedMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OffloadProcessStatus) GetFirstUnoffloadedMessageOk() (*MessageIdImpl, bool) {
+func (o *OffloadProcessStatus) GetFirstUnoffloadedMessageOk() (*map[string]interface{}, bool) {
 	if o == nil || o.FirstUnoffloadedMessage == nil {
 		return nil, false
 	}
@@ -65,8 +65,8 @@ func (o *OffloadProcessStatus) HasFirstUnoffloadedMessage() bool {
 	return false
 }
 
-// SetFirstUnoffloadedMessage gets a reference to the given MessageIdImpl and assigns it to the FirstUnoffloadedMessage field.
-func (o *OffloadProcessStatus) SetFirstUnoffloadedMessage(v MessageIdImpl) {
+// SetFirstUnoffloadedMessage gets a reference to the given map[string]interface{} and assigns it to the FirstUnoffloadedMessage field.
+func (o *OffloadProcessStatus) SetFirstUnoffloadedMessage(v map[string]interface{}) {
 	o.FirstUnoffloadedMessage = &v
 }
 

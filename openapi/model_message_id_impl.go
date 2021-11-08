@@ -16,8 +16,8 @@ import (
 
 // MessageIdImpl struct for MessageIdImpl
 type MessageIdImpl struct {
-	EntryId *int64 `json:"entryId,omitempty"`
 	LedgerId *int64 `json:"ledgerId,omitempty"`
+	EntryId *int64 `json:"entryId,omitempty"`
 	PartitionIndex *int32 `json:"partitionIndex,omitempty"`
 }
 
@@ -36,38 +36,6 @@ func NewMessageIdImpl() *MessageIdImpl {
 func NewMessageIdImplWithDefaults() *MessageIdImpl {
 	this := MessageIdImpl{}
 	return &this
-}
-
-// GetEntryId returns the EntryId field value if set, zero value otherwise.
-func (o *MessageIdImpl) GetEntryId() int64 {
-	if o == nil || o.EntryId == nil {
-		var ret int64
-		return ret
-	}
-	return *o.EntryId
-}
-
-// GetEntryIdOk returns a tuple with the EntryId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MessageIdImpl) GetEntryIdOk() (*int64, bool) {
-	if o == nil || o.EntryId == nil {
-		return nil, false
-	}
-	return o.EntryId, true
-}
-
-// HasEntryId returns a boolean if a field has been set.
-func (o *MessageIdImpl) HasEntryId() bool {
-	if o != nil && o.EntryId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEntryId gets a reference to the given int64 and assigns it to the EntryId field.
-func (o *MessageIdImpl) SetEntryId(v int64) {
-	o.EntryId = &v
 }
 
 // GetLedgerId returns the LedgerId field value if set, zero value otherwise.
@@ -100,6 +68,38 @@ func (o *MessageIdImpl) HasLedgerId() bool {
 // SetLedgerId gets a reference to the given int64 and assigns it to the LedgerId field.
 func (o *MessageIdImpl) SetLedgerId(v int64) {
 	o.LedgerId = &v
+}
+
+// GetEntryId returns the EntryId field value if set, zero value otherwise.
+func (o *MessageIdImpl) GetEntryId() int64 {
+	if o == nil || o.EntryId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.EntryId
+}
+
+// GetEntryIdOk returns a tuple with the EntryId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MessageIdImpl) GetEntryIdOk() (*int64, bool) {
+	if o == nil || o.EntryId == nil {
+		return nil, false
+	}
+	return o.EntryId, true
+}
+
+// HasEntryId returns a boolean if a field has been set.
+func (o *MessageIdImpl) HasEntryId() bool {
+	if o != nil && o.EntryId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntryId gets a reference to the given int64 and assigns it to the EntryId field.
+func (o *MessageIdImpl) SetEntryId(v int64) {
+	o.EntryId = &v
 }
 
 // GetPartitionIndex returns the PartitionIndex field value if set, zero value otherwise.
@@ -136,11 +136,11 @@ func (o *MessageIdImpl) SetPartitionIndex(v int32) {
 
 func (o MessageIdImpl) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.EntryId != nil {
-		toSerialize["entryId"] = o.EntryId
-	}
 	if o.LedgerId != nil {
 		toSerialize["ledgerId"] = o.LedgerId
+	}
+	if o.EntryId != nil {
+		toSerialize["entryId"] = o.EntryId
 	}
 	if o.PartitionIndex != nil {
 		toSerialize["partitionIndex"] = o.PartitionIndex

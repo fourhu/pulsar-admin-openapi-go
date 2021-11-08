@@ -17,9 +17,9 @@ import (
 // LedgerDetails struct for LedgerDetails
 type LedgerDetails struct {
 	Entries *int64 `json:"entries,omitempty"`
-	LedgerId *int64 `json:"ledgerId,omitempty"`
-	Size *int64 `json:"size,omitempty"`
 	Timestamp *int64 `json:"timestamp,omitempty"`
+	Size *int64 `json:"size,omitempty"`
+	LedgerId *int64 `json:"ledgerId,omitempty"`
 }
 
 // NewLedgerDetails instantiates a new LedgerDetails object
@@ -71,36 +71,36 @@ func (o *LedgerDetails) SetEntries(v int64) {
 	o.Entries = &v
 }
 
-// GetLedgerId returns the LedgerId field value if set, zero value otherwise.
-func (o *LedgerDetails) GetLedgerId() int64 {
-	if o == nil || o.LedgerId == nil {
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+func (o *LedgerDetails) GetTimestamp() int64 {
+	if o == nil || o.Timestamp == nil {
 		var ret int64
 		return ret
 	}
-	return *o.LedgerId
+	return *o.Timestamp
 }
 
-// GetLedgerIdOk returns a tuple with the LedgerId field value if set, nil otherwise
+// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LedgerDetails) GetLedgerIdOk() (*int64, bool) {
-	if o == nil || o.LedgerId == nil {
+func (o *LedgerDetails) GetTimestampOk() (*int64, bool) {
+	if o == nil || o.Timestamp == nil {
 		return nil, false
 	}
-	return o.LedgerId, true
+	return o.Timestamp, true
 }
 
-// HasLedgerId returns a boolean if a field has been set.
-func (o *LedgerDetails) HasLedgerId() bool {
-	if o != nil && o.LedgerId != nil {
+// HasTimestamp returns a boolean if a field has been set.
+func (o *LedgerDetails) HasTimestamp() bool {
+	if o != nil && o.Timestamp != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLedgerId gets a reference to the given int64 and assigns it to the LedgerId field.
-func (o *LedgerDetails) SetLedgerId(v int64) {
-	o.LedgerId = &v
+// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+func (o *LedgerDetails) SetTimestamp(v int64) {
+	o.Timestamp = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -135,36 +135,36 @@ func (o *LedgerDetails) SetSize(v int64) {
 	o.Size = &v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *LedgerDetails) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
+// GetLedgerId returns the LedgerId field value if set, zero value otherwise.
+func (o *LedgerDetails) GetLedgerId() int64 {
+	if o == nil || o.LedgerId == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Timestamp
+	return *o.LedgerId
 }
 
-// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
+// GetLedgerIdOk returns a tuple with the LedgerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LedgerDetails) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
+func (o *LedgerDetails) GetLedgerIdOk() (*int64, bool) {
+	if o == nil || o.LedgerId == nil {
 		return nil, false
 	}
-	return o.Timestamp, true
+	return o.LedgerId, true
 }
 
-// HasTimestamp returns a boolean if a field has been set.
-func (o *LedgerDetails) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
+// HasLedgerId returns a boolean if a field has been set.
+func (o *LedgerDetails) HasLedgerId() bool {
+	if o != nil && o.LedgerId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
-func (o *LedgerDetails) SetTimestamp(v int64) {
-	o.Timestamp = &v
+// SetLedgerId gets a reference to the given int64 and assigns it to the LedgerId field.
+func (o *LedgerDetails) SetLedgerId(v int64) {
+	o.LedgerId = &v
 }
 
 func (o LedgerDetails) MarshalJSON() ([]byte, error) {
@@ -172,14 +172,14 @@ func (o LedgerDetails) MarshalJSON() ([]byte, error) {
 	if o.Entries != nil {
 		toSerialize["entries"] = o.Entries
 	}
-	if o.LedgerId != nil {
-		toSerialize["ledgerId"] = o.LedgerId
+	if o.Timestamp != nil {
+		toSerialize["timestamp"] = o.Timestamp
 	}
 	if o.Size != nil {
 		toSerialize["size"] = o.Size
 	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
+	if o.LedgerId != nil {
+		toSerialize["ledgerId"] = o.LedgerId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost/admin/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteBookieRackInfo**](BookiesApi.md#DeleteBookieRackInfo) | **Delete** /bookies/racks-info/{bookie} | Removed the rack placement information for a specific bookie in the cluster
+[**GetAllBookies**](BookiesApi.md#GetAllBookies) | **Get** /bookies/all | Gets raw information for all the bookies in the cluster
 [**GetBookieRackInfo**](BookiesApi.md#GetBookieRackInfo) | **Get** /bookies/racks-info/{bookie} | Gets the rack placement information for a specific bookie in the cluster
 [**GetBookiesRackInfo**](BookiesApi.md#GetBookiesRackInfo) | **Get** /bookies/racks-info | Gets the rack placement information for all the bookies in the cluster
 [**UpdateBookieRackInfo**](BookiesApi.md#UpdateBookieRackInfo) | **Post** /bookies/racks-info/{bookie} | Updates the rack placement information for a specific bookie in the cluster (note. bookie address format:&#x60;address:port&#x60;)
@@ -71,6 +72,65 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAllBookies
+
+> BookiesClusterInfo GetAllBookies(ctx).Execute()
+
+Gets raw information for all the bookies in the cluster
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BookiesApi.GetAllBookies(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BookiesApi.GetAllBookies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAllBookies`: BookiesClusterInfo
+    fmt.Fprintf(os.Stdout, "Response from `BookiesApi.GetAllBookies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAllBookiesRequest struct via the builder pattern
+
+
+### Return type
+
+[**BookiesClusterInfo**](BookiesClusterInfo.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

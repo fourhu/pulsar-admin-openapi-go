@@ -478,11 +478,16 @@ type ApiCreatePartitionedTopicRequest struct {
 	namespace string
 	topic string
 	body *int32
+	createLocalTopicOnly *bool
 }
 
 // The number of partitions for the topic
 func (r ApiCreatePartitionedTopicRequest) Body(body int32) ApiCreatePartitionedTopicRequest {
 	r.body = &body
+	return r
+}
+func (r ApiCreatePartitionedTopicRequest) CreateLocalTopicOnly(createLocalTopicOnly bool) ApiCreatePartitionedTopicRequest {
+	r.createLocalTopicOnly = &createLocalTopicOnly
 	return r
 }
 
@@ -538,6 +543,9 @@ func (a *PersistentTopicApiService) CreatePartitionedTopicExecute(r ApiCreatePar
 		return nil, reportError("body is required and must be specified")
 	}
 
+	if r.createLocalTopicOnly != nil {
+		localVarQueryParams.Add("createLocalTopicOnly", parameterToString(*r.createLocalTopicOnly, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -724,8 +732,14 @@ type ApiDeleteDeduplicationSnapshotIntervalRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiDeleteDeduplicationSnapshotIntervalRequest) Authoritative(authoritative bool) ApiDeleteDeduplicationSnapshotIntervalRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiDeleteDeduplicationSnapshotIntervalRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteDeduplicationSnapshotIntervalExecute(r)
@@ -774,6 +788,9 @@ func (a *PersistentTopicApiService) DeleteDeduplicationSnapshotIntervalExecute(r
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -825,8 +842,14 @@ type ApiDeleteDelayedDeliveryPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiDeleteDelayedDeliveryPoliciesRequest) Authoritative(authoritative bool) ApiDeleteDelayedDeliveryPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiDeleteDelayedDeliveryPoliciesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteDelayedDeliveryPoliciesExecute(r)
@@ -875,6 +898,9 @@ func (a *PersistentTopicApiService) DeleteDelayedDeliveryPoliciesExecute(r ApiDe
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -926,8 +952,14 @@ type ApiDeleteInactiveTopicPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiDeleteInactiveTopicPoliciesRequest) Authoritative(authoritative bool) ApiDeleteInactiveTopicPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiDeleteInactiveTopicPoliciesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteInactiveTopicPoliciesExecute(r)
@@ -976,6 +1008,9 @@ func (a *PersistentTopicApiService) DeleteInactiveTopicPoliciesExecute(r ApiDele
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1027,8 +1062,14 @@ type ApiDeleteMaxUnackedMessagesOnConsumerRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiDeleteMaxUnackedMessagesOnConsumerRequest) Authoritative(authoritative bool) ApiDeleteMaxUnackedMessagesOnConsumerRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiDeleteMaxUnackedMessagesOnConsumerRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteMaxUnackedMessagesOnConsumerExecute(r)
@@ -1077,6 +1118,9 @@ func (a *PersistentTopicApiService) DeleteMaxUnackedMessagesOnConsumerExecute(r 
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1128,8 +1172,14 @@ type ApiDeleteMaxUnackedMessagesOnSubscriptionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiDeleteMaxUnackedMessagesOnSubscriptionRequest) Authoritative(authoritative bool) ApiDeleteMaxUnackedMessagesOnSubscriptionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiDeleteMaxUnackedMessagesOnSubscriptionRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteMaxUnackedMessagesOnSubscriptionExecute(r)
@@ -1178,6 +1228,9 @@ func (a *PersistentTopicApiService) DeleteMaxUnackedMessagesOnSubscriptionExecut
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1857,13 +1910,18 @@ type ApiExpireTopicMessagesRequest struct {
 	namespace string
 	topic string
 	subName string
-	expireTimeInSeconds int32
 	authoritative *bool
+	messageId *ResetCursorData
 }
 
 // Is authentication required to perform this operation
 func (r ApiExpireTopicMessagesRequest) Authoritative(authoritative bool) ApiExpireTopicMessagesRequest {
 	r.authoritative = &authoritative
+	return r
+}
+// messageId to reset back to (ledgerId:entryId)
+func (r ApiExpireTopicMessagesRequest) MessageId(messageId ResetCursorData) ApiExpireTopicMessagesRequest {
+	r.messageId = &messageId
 	return r
 }
 
@@ -1879,10 +1937,9 @@ ExpireTopicMessages Expiry messages on a topic subscription.
  @param namespace Specify the namespace
  @param topic Specify topic name
  @param subName Subscription to be Expiry messages on
- @param expireTimeInSeconds Expires beyond the specified number of seconds
  @return ApiExpireTopicMessagesRequest
 */
-func (a *PersistentTopicApiService) ExpireTopicMessages(ctx _context.Context, tenant string, namespace string, topic string, subName string, expireTimeInSeconds int32) ApiExpireTopicMessagesRequest {
+func (a *PersistentTopicApiService) ExpireTopicMessages(ctx _context.Context, tenant string, namespace string, topic string, subName string) ApiExpireTopicMessagesRequest {
 	return ApiExpireTopicMessagesRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -1890,7 +1947,6 @@ func (a *PersistentTopicApiService) ExpireTopicMessages(ctx _context.Context, te
 		namespace: namespace,
 		topic: topic,
 		subName: subName,
-		expireTimeInSeconds: expireTimeInSeconds,
 	}
 }
 
@@ -1905,6 +1961,125 @@ func (a *PersistentTopicApiService) ExpireTopicMessagesExecute(r ApiExpireTopicM
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.ExpireTopicMessages")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subName"+"}", _neturl.PathEscape(parameterToString(r.subName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.messageId
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiExpireTopicMessages_0Request struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	subName string
+	expireTimeInSeconds int32
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiExpireTopicMessages_0Request) Authoritative(authoritative bool) ApiExpireTopicMessages_0Request {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiExpireTopicMessages_0Request) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.ExpireTopicMessages_1Execute(r)
+}
+
+/*
+ExpireTopicMessages_0 Expiry messages on a topic subscription.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant Specify the tenant
+ @param namespace Specify the namespace
+ @param topic Specify topic name
+ @param subName Subscription to be Expiry messages on
+ @param expireTimeInSeconds Expires beyond the specified number of seconds
+ @return ApiExpireTopicMessages_0Request
+*/
+func (a *PersistentTopicApiService) ExpireTopicMessages_1(ctx _context.Context, tenant string, namespace string, topic string, subName string, expireTimeInSeconds int32) ApiExpireTopicMessages_0Request {
+	return ApiExpireTopicMessages_0Request{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+		subName: subName,
+		expireTimeInSeconds: expireTimeInSeconds,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) ExpireTopicMessages_1Execute(r ApiExpireTopicMessages_0Request) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.ExpireTopicMessages_1")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -2095,10 +2270,21 @@ type ApiGetBacklogQuotaMapRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetBacklogQuotaMapRequest) Applied(applied bool) ApiGetBacklogQuotaMapRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetBacklogQuotaMapRequest) Authoritative(authoritative bool) ApiGetBacklogQuotaMapRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
-func (r ApiGetBacklogQuotaMapRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiGetBacklogQuotaMapRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetBacklogQuotaMapExecute(r)
 }
 
@@ -2122,20 +2308,18 @@ func (a *PersistentTopicApiService) GetBacklogQuotaMap(ctx _context.Context, ten
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *PersistentTopicApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuotaMapRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
+func (a *PersistentTopicApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuotaMapRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetBacklogQuotaMap")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/backlogQuotaMap"
@@ -2147,6 +2331,12 @@ func (a *PersistentTopicApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuo
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2157,7 +2347,7 @@ func (a *PersistentTopicApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuo
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2166,19 +2356,19 @@ func (a *PersistentTopicApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuo
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2186,19 +2376,10 @@ func (a *PersistentTopicApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuo
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiGetCompactionThresholdRequest struct {
@@ -2207,8 +2388,19 @@ type ApiGetCompactionThresholdRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetCompactionThresholdRequest) Applied(applied bool) ApiGetCompactionThresholdRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetCompactionThresholdRequest) Authoritative(authoritative bool) ApiGetCompactionThresholdRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetCompactionThresholdRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetCompactionThresholdExecute(r)
@@ -2257,6 +2449,12 @@ func (a *PersistentTopicApiService) GetCompactionThresholdExecute(r ApiGetCompac
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2302,30 +2500,41 @@ func (a *PersistentTopicApiService) GetCompactionThresholdExecute(r ApiGetCompac
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetDeduplicationEnabledRequest struct {
+type ApiGetDeduplicationRequest struct {
 	ctx _context.Context
 	ApiService *PersistentTopicApiService
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetDeduplicationRequest) Applied(applied bool) ApiGetDeduplicationRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetDeduplicationRequest) Authoritative(authoritative bool) ApiGetDeduplicationRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
-func (r ApiGetDeduplicationEnabledRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.GetDeduplicationEnabledExecute(r)
+func (r ApiGetDeduplicationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetDeduplicationExecute(r)
 }
 
 /*
-GetDeduplicationEnabled Get deduplication configuration of a topic.
+GetDeduplication Get deduplication configuration of a topic.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant
  @param namespace
  @param topic
- @return ApiGetDeduplicationEnabledRequest
+ @return ApiGetDeduplicationRequest
 */
-func (a *PersistentTopicApiService) GetDeduplicationEnabled(ctx _context.Context, tenant string, namespace string, topic string) ApiGetDeduplicationEnabledRequest {
-	return ApiGetDeduplicationEnabledRequest{
+func (a *PersistentTopicApiService) GetDeduplication(ctx _context.Context, tenant string, namespace string, topic string) ApiGetDeduplicationRequest {
+	return ApiGetDeduplicationRequest{
 		ApiService: a,
 		ctx: ctx,
 		tenant: tenant,
@@ -2335,7 +2544,7 @@ func (a *PersistentTopicApiService) GetDeduplicationEnabled(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *PersistentTopicApiService) GetDeduplicationEnabledExecute(r ApiGetDeduplicationEnabledRequest) (*_nethttp.Response, error) {
+func (a *PersistentTopicApiService) GetDeduplicationExecute(r ApiGetDeduplicationRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -2344,7 +2553,7 @@ func (a *PersistentTopicApiService) GetDeduplicationEnabledExecute(r ApiGetDedup
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetDeduplicationEnabled")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetDeduplication")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -2358,6 +2567,12 @@ func (a *PersistentTopicApiService) GetDeduplicationEnabledExecute(r ApiGetDedup
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2409,8 +2624,14 @@ type ApiGetDeduplicationSnapshotIntervalRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiGetDeduplicationSnapshotIntervalRequest) Authoritative(authoritative bool) ApiGetDeduplicationSnapshotIntervalRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetDeduplicationSnapshotIntervalRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetDeduplicationSnapshotIntervalExecute(r)
@@ -2459,6 +2680,9 @@ func (a *PersistentTopicApiService) GetDeduplicationSnapshotIntervalExecute(r Ap
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2510,8 +2734,19 @@ type ApiGetDelayedDeliveryPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetDelayedDeliveryPoliciesRequest) Applied(applied bool) ApiGetDelayedDeliveryPoliciesRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetDelayedDeliveryPoliciesRequest) Authoritative(authoritative bool) ApiGetDelayedDeliveryPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetDelayedDeliveryPoliciesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetDelayedDeliveryPoliciesExecute(r)
@@ -2560,6 +2795,12 @@ func (a *PersistentTopicApiService) GetDelayedDeliveryPoliciesExecute(r ApiGetDe
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2611,8 +2852,19 @@ type ApiGetDispatchRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetDispatchRateRequest) Applied(applied bool) ApiGetDispatchRateRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetDispatchRateRequest) Authoritative(authoritative bool) ApiGetDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetDispatchRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetDispatchRateExecute(r)
@@ -2661,6 +2913,12 @@ func (a *PersistentTopicApiService) GetDispatchRateExecute(r ApiGetDispatchRateR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2712,8 +2970,19 @@ type ApiGetInactiveTopicPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetInactiveTopicPoliciesRequest) Applied(applied bool) ApiGetInactiveTopicPoliciesRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetInactiveTopicPoliciesRequest) Authoritative(authoritative bool) ApiGetInactiveTopicPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetInactiveTopicPoliciesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetInactiveTopicPoliciesExecute(r)
@@ -2762,6 +3031,12 @@ func (a *PersistentTopicApiService) GetInactiveTopicPoliciesExecute(r ApiGetInac
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3270,8 +3545,19 @@ type ApiGetMaxConsumersRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetMaxConsumersRequest) Applied(applied bool) ApiGetMaxConsumersRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetMaxConsumersRequest) Authoritative(authoritative bool) ApiGetMaxConsumersRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetMaxConsumersRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetMaxConsumersExecute(r)
@@ -3320,6 +3606,12 @@ func (a *PersistentTopicApiService) GetMaxConsumersExecute(r ApiGetMaxConsumersR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3371,8 +3663,14 @@ type ApiGetMaxConsumersPerSubscriptionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiGetMaxConsumersPerSubscriptionRequest) Authoritative(authoritative bool) ApiGetMaxConsumersPerSubscriptionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetMaxConsumersPerSubscriptionRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetMaxConsumersPerSubscriptionExecute(r)
@@ -3421,6 +3719,119 @@ func (a *PersistentTopicApiService) GetMaxConsumersPerSubscriptionExecute(r ApiG
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetMaxMessageSizeRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiGetMaxMessageSizeRequest) Authoritative(authoritative bool) ApiGetMaxMessageSizeRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiGetMaxMessageSizeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetMaxMessageSizeExecute(r)
+}
+
+/*
+GetMaxMessageSize Get maxMessageSize config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiGetMaxMessageSizeRequest
+*/
+func (a *PersistentTopicApiService) GetMaxMessageSize(ctx _context.Context, tenant string, namespace string, topic string) ApiGetMaxMessageSizeRequest {
+	return ApiGetMaxMessageSizeRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) GetMaxMessageSizeExecute(r ApiGetMaxMessageSizeRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetMaxMessageSize")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/maxMessageSize"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3472,8 +3883,19 @@ type ApiGetMaxProducersRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetMaxProducersRequest) Applied(applied bool) ApiGetMaxProducersRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetMaxProducersRequest) Authoritative(authoritative bool) ApiGetMaxProducersRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetMaxProducersRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetMaxProducersExecute(r)
@@ -3522,6 +3944,122 @@ func (a *PersistentTopicApiService) GetMaxProducersExecute(r ApiGetMaxProducersR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetMaxSubscriptionsPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiGetMaxSubscriptionsPerTopicRequest) Authoritative(authoritative bool) ApiGetMaxSubscriptionsPerTopicRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiGetMaxSubscriptionsPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetMaxSubscriptionsPerTopicExecute(r)
+}
+
+/*
+GetMaxSubscriptionsPerTopic Get maxSubscriptionsPerTopic config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiGetMaxSubscriptionsPerTopicRequest
+*/
+func (a *PersistentTopicApiService) GetMaxSubscriptionsPerTopic(ctx _context.Context, tenant string, namespace string, topic string) ApiGetMaxSubscriptionsPerTopicRequest {
+	return ApiGetMaxSubscriptionsPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) GetMaxSubscriptionsPerTopicExecute(r ApiGetMaxSubscriptionsPerTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetMaxSubscriptionsPerTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3573,8 +4111,19 @@ type ApiGetMaxUnackedMessagesOnConsumerRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetMaxUnackedMessagesOnConsumerRequest) Applied(applied bool) ApiGetMaxUnackedMessagesOnConsumerRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetMaxUnackedMessagesOnConsumerRequest) Authoritative(authoritative bool) ApiGetMaxUnackedMessagesOnConsumerRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetMaxUnackedMessagesOnConsumerRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetMaxUnackedMessagesOnConsumerExecute(r)
@@ -3623,6 +4172,12 @@ func (a *PersistentTopicApiService) GetMaxUnackedMessagesOnConsumerExecute(r Api
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3674,8 +4229,19 @@ type ApiGetMaxUnackedMessagesOnSubscriptionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetMaxUnackedMessagesOnSubscriptionRequest) Applied(applied bool) ApiGetMaxUnackedMessagesOnSubscriptionRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetMaxUnackedMessagesOnSubscriptionRequest) Authoritative(authoritative bool) ApiGetMaxUnackedMessagesOnSubscriptionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetMaxUnackedMessagesOnSubscriptionRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetMaxUnackedMessagesOnSubscriptionExecute(r)
@@ -3724,6 +4290,12 @@ func (a *PersistentTopicApiService) GetMaxUnackedMessagesOnSubscriptionExecute(r
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3893,10 +4465,21 @@ type ApiGetMessageTTLRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetMessageTTLRequest) Applied(applied bool) ApiGetMessageTTLRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetMessageTTLRequest) Authoritative(authoritative bool) ApiGetMessageTTLRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
-func (r ApiGetMessageTTLRequest) Execute() (int32, *_nethttp.Response, error) {
+func (r ApiGetMessageTTLRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetMessageTTLExecute(r)
 }
 
@@ -3920,20 +4503,18 @@ func (a *PersistentTopicApiService) GetMessageTTL(ctx _context.Context, tenant s
 }
 
 // Execute executes the request
-//  @return int32
-func (a *PersistentTopicApiService) GetMessageTTLExecute(r ApiGetMessageTTLRequest) (int32, *_nethttp.Response, error) {
+func (a *PersistentTopicApiService) GetMessageTTLExecute(r ApiGetMessageTTLRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  int32
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetMessageTTL")
 	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/messageTTL"
@@ -3945,6 +4526,12 @@ func (a *PersistentTopicApiService) GetMessageTTLExecute(r ApiGetMessageTTLReque
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3955,7 +4542,7 @@ func (a *PersistentTopicApiService) GetMessageTTLExecute(r ApiGetMessageTTLReque
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3964,19 +4551,19 @@ func (a *PersistentTopicApiService) GetMessageTTLExecute(r ApiGetMessageTTLReque
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -3984,19 +4571,10 @@ func (a *PersistentTopicApiService) GetMessageTTLExecute(r ApiGetMessageTTLReque
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiGetOffloadPoliciesRequest struct {
@@ -4005,8 +4583,19 @@ type ApiGetOffloadPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetOffloadPoliciesRequest) Applied(applied bool) ApiGetOffloadPoliciesRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetOffloadPoliciesRequest) Authoritative(authoritative bool) ApiGetOffloadPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetOffloadPoliciesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetOffloadPoliciesExecute(r)
@@ -4055,6 +4644,12 @@ func (a *PersistentTopicApiService) GetOffloadPoliciesExecute(r ApiGetOffloadPol
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4239,6 +4834,7 @@ type ApiGetPartitionedStatsRequest struct {
 	perPartition *bool
 	authoritative *bool
 	getPreciseBacklog *bool
+	subscriptionBacklogSize *bool
 }
 
 // Get per partition stats
@@ -4251,9 +4847,14 @@ func (r ApiGetPartitionedStatsRequest) Authoritative(authoritative bool) ApiGetP
 	r.authoritative = &authoritative
 	return r
 }
-// Is return precise backlog or imprecise backlog
+// If return precise backlog or imprecise backlog
 func (r ApiGetPartitionedStatsRequest) GetPreciseBacklog(getPreciseBacklog bool) ApiGetPartitionedStatsRequest {
 	r.getPreciseBacklog = &getPreciseBacklog
+	return r
+}
+// If return backlog size for each subscription, require locking on ledger so be careful not to use when there&#39;s heavy traffic.
+func (r ApiGetPartitionedStatsRequest) SubscriptionBacklogSize(subscriptionBacklogSize bool) ApiGetPartitionedStatsRequest {
+	r.subscriptionBacklogSize = &subscriptionBacklogSize
 	return r
 }
 
@@ -4312,6 +4913,9 @@ func (a *PersistentTopicApiService) GetPartitionedStatsExecute(r ApiGetPartition
 	}
 	if r.getPreciseBacklog != nil {
 		localVarQueryParams.Add("getPreciseBacklog", parameterToString(*r.getPreciseBacklog, ""))
+	}
+	if r.subscriptionBacklogSize != nil {
+		localVarQueryParams.Add("subscriptionBacklogSize", parameterToString(*r.subscriptionBacklogSize, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -4475,7 +5079,7 @@ type ApiGetPermissionsOnTopicRequest struct {
 }
 
 
-func (r ApiGetPermissionsOnTopicRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiGetPermissionsOnTopicRequest) Execute() (map[string][]string, *_nethttp.Response, error) {
 	return r.ApiService.GetPermissionsOnTopicExecute(r)
 }
 
@@ -4501,15 +5105,15 @@ func (a *PersistentTopicApiService) GetPermissionsOnTopic(ctx _context.Context, 
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *PersistentTopicApiService) GetPermissionsOnTopicExecute(r ApiGetPermissionsOnTopicRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
+//  @return map[string][]string
+func (a *PersistentTopicApiService) GetPermissionsOnTopicExecute(r ApiGetPermissionsOnTopicRequest) (map[string][]string, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string][]string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetPermissionsOnTopic")
@@ -4586,8 +5190,19 @@ type ApiGetPersistenceRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetPersistenceRequest) Applied(applied bool) ApiGetPersistenceRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetPersistenceRequest) Authoritative(authoritative bool) ApiGetPersistenceRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetPersistenceRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetPersistenceExecute(r)
@@ -4636,6 +5251,12 @@ func (a *PersistentTopicApiService) GetPersistenceExecute(r ApiGetPersistenceReq
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4687,8 +5308,14 @@ type ApiGetPublishRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiGetPublishRateRequest) Authoritative(authoritative bool) ApiGetPublishRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetPublishRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetPublishRateExecute(r)
@@ -4737,6 +5364,127 @@ func (a *PersistentTopicApiService) GetPublishRateExecute(r ApiGetPublishRateReq
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetReplicatorDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	applied *bool
+	authoritative *bool
+}
+
+func (r ApiGetReplicatorDispatchRateRequest) Applied(applied bool) ApiGetReplicatorDispatchRateRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetReplicatorDispatchRateRequest) Authoritative(authoritative bool) ApiGetReplicatorDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiGetReplicatorDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetReplicatorDispatchRateExecute(r)
+}
+
+/*
+GetReplicatorDispatchRate Get replicatorDispatchRate config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiGetReplicatorDispatchRateRequest
+*/
+func (a *PersistentTopicApiService) GetReplicatorDispatchRate(ctx _context.Context, tenant string, namespace string, topic string) ApiGetReplicatorDispatchRateRequest {
+	return ApiGetReplicatorDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) GetReplicatorDispatchRateExecute(r ApiGetReplicatorDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetReplicatorDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4788,8 +5536,19 @@ type ApiGetRetentionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetRetentionRequest) Applied(applied bool) ApiGetRetentionRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetRetentionRequest) Authoritative(authoritative bool) ApiGetRetentionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetRetentionRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetRetentionExecute(r)
@@ -4838,6 +5597,12 @@ func (a *PersistentTopicApiService) GetRetentionExecute(r ApiGetRetentionRequest
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -4891,6 +5656,7 @@ type ApiGetStatsRequest struct {
 	topic string
 	authoritative *bool
 	getPreciseBacklog *bool
+	subscriptionBacklogSize *bool
 }
 
 // Is authentication required to perform this operation
@@ -4898,9 +5664,14 @@ func (r ApiGetStatsRequest) Authoritative(authoritative bool) ApiGetStatsRequest
 	r.authoritative = &authoritative
 	return r
 }
-// Is return precise backlog or imprecise backlog
+// If return precise backlog or imprecise backlog
 func (r ApiGetStatsRequest) GetPreciseBacklog(getPreciseBacklog bool) ApiGetStatsRequest {
 	r.getPreciseBacklog = &getPreciseBacklog
+	return r
+}
+// If return backlog size for each subscription, require locking on ledger so be careful not to use when there&#39;s heavy traffic.
+func (r ApiGetStatsRequest) SubscriptionBacklogSize(subscriptionBacklogSize bool) ApiGetStatsRequest {
+	r.subscriptionBacklogSize = &subscriptionBacklogSize
 	return r
 }
 
@@ -4958,6 +5729,9 @@ func (a *PersistentTopicApiService) GetStatsExecute(r ApiGetStatsRequest) (Topic
 	}
 	if r.getPreciseBacklog != nil {
 		localVarQueryParams.Add("getPreciseBacklog", parameterToString(*r.getPreciseBacklog, ""))
+	}
+	if r.subscriptionBacklogSize != nil {
+		localVarQueryParams.Add("subscriptionBacklogSize", parameterToString(*r.subscriptionBacklogSize, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -5019,8 +5793,19 @@ type ApiGetSubscribeRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetSubscribeRateRequest) Applied(applied bool) ApiGetSubscribeRateRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetSubscribeRateRequest) Authoritative(authoritative bool) ApiGetSubscribeRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetSubscribeRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetSubscribeRateExecute(r)
@@ -5069,6 +5854,12 @@ func (a *PersistentTopicApiService) GetSubscribeRateExecute(r ApiGetSubscribeRat
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5120,8 +5911,19 @@ type ApiGetSubscriptionDispatchRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	applied *bool
+	authoritative *bool
 }
 
+func (r ApiGetSubscriptionDispatchRateRequest) Applied(applied bool) ApiGetSubscriptionDispatchRateRequest {
+	r.applied = &applied
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiGetSubscriptionDispatchRateRequest) Authoritative(authoritative bool) ApiGetSubscriptionDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiGetSubscriptionDispatchRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.GetSubscriptionDispatchRateExecute(r)
@@ -5170,6 +5972,122 @@ func (a *PersistentTopicApiService) GetSubscriptionDispatchRateExecute(r ApiGetS
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.applied != nil {
+		localVarQueryParams.Add("applied", parameterToString(*r.applied, ""))
+	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetSubscriptionTypesEnabledRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiGetSubscriptionTypesEnabledRequest) Authoritative(authoritative bool) ApiGetSubscriptionTypesEnabledRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiGetSubscriptionTypesEnabledRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetSubscriptionTypesEnabledExecute(r)
+}
+
+/*
+GetSubscriptionTypesEnabled Get is enable sub type fors specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiGetSubscriptionTypesEnabledRequest
+*/
+func (a *PersistentTopicApiService) GetSubscriptionTypesEnabled(ctx _context.Context, tenant string, namespace string, topic string) ApiGetSubscriptionTypesEnabledRequest {
+	return ApiGetSubscriptionTypesEnabledRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) GetSubscriptionTypesEnabledExecute(r ApiGetSubscriptionTypesEnabledRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.GetSubscriptionTypesEnabled")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5684,10 +6602,16 @@ type ApiRemoveBacklogQuotaRequest struct {
 	namespace string
 	topic string
 	backlogQuotaType *string
+	authoritative *bool
 }
 
 func (r ApiRemoveBacklogQuotaRequest) BacklogQuotaType(backlogQuotaType string) ApiRemoveBacklogQuotaRequest {
 	r.backlogQuotaType = &backlogQuotaType
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiRemoveBacklogQuotaRequest) Authoritative(authoritative bool) ApiRemoveBacklogQuotaRequest {
+	r.authoritative = &authoritative
 	return r
 }
 
@@ -5741,6 +6665,9 @@ func (a *PersistentTopicApiService) RemoveBacklogQuotaExecute(r ApiRemoveBacklog
 	if r.backlogQuotaType != nil {
 		localVarQueryParams.Add("backlogQuotaType", parameterToString(*r.backlogQuotaType, ""))
 	}
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5792,8 +6719,14 @@ type ApiRemoveCompactionThresholdRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveCompactionThresholdRequest) Authoritative(authoritative bool) ApiRemoveCompactionThresholdRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveCompactionThresholdRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveCompactionThresholdExecute(r)
@@ -5842,6 +6775,9 @@ func (a *PersistentTopicApiService) RemoveCompactionThresholdExecute(r ApiRemove
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5887,30 +6823,36 @@ func (a *PersistentTopicApiService) RemoveCompactionThresholdExecute(r ApiRemove
 	return localVarHTTPResponse, nil
 }
 
-type ApiRemoveDeduplicationEnabledRequest struct {
+type ApiRemoveDeduplicationRequest struct {
 	ctx _context.Context
 	ApiService *PersistentTopicApiService
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveDeduplicationRequest) Authoritative(authoritative bool) ApiRemoveDeduplicationRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
-func (r ApiRemoveDeduplicationEnabledRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.RemoveDeduplicationEnabledExecute(r)
+func (r ApiRemoveDeduplicationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveDeduplicationExecute(r)
 }
 
 /*
-RemoveDeduplicationEnabled Remove deduplication configuration for specified topic.
+RemoveDeduplication Remove deduplication configuration for specified topic.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant
  @param namespace
  @param topic
- @return ApiRemoveDeduplicationEnabledRequest
+ @return ApiRemoveDeduplicationRequest
 */
-func (a *PersistentTopicApiService) RemoveDeduplicationEnabled(ctx _context.Context, tenant string, namespace string, topic string) ApiRemoveDeduplicationEnabledRequest {
-	return ApiRemoveDeduplicationEnabledRequest{
+func (a *PersistentTopicApiService) RemoveDeduplication(ctx _context.Context, tenant string, namespace string, topic string) ApiRemoveDeduplicationRequest {
+	return ApiRemoveDeduplicationRequest{
 		ApiService: a,
 		ctx: ctx,
 		tenant: tenant,
@@ -5920,7 +6862,7 @@ func (a *PersistentTopicApiService) RemoveDeduplicationEnabled(ctx _context.Cont
 }
 
 // Execute executes the request
-func (a *PersistentTopicApiService) RemoveDeduplicationEnabledExecute(r ApiRemoveDeduplicationEnabledRequest) (*_nethttp.Response, error) {
+func (a *PersistentTopicApiService) RemoveDeduplicationExecute(r ApiRemoveDeduplicationRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -5929,7 +6871,7 @@ func (a *PersistentTopicApiService) RemoveDeduplicationEnabledExecute(r ApiRemov
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.RemoveDeduplicationEnabled")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.RemoveDeduplication")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -5943,6 +6885,9 @@ func (a *PersistentTopicApiService) RemoveDeduplicationEnabledExecute(r ApiRemov
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5994,8 +6939,14 @@ type ApiRemoveDispatchRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveDispatchRateRequest) Authoritative(authoritative bool) ApiRemoveDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveDispatchRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveDispatchRateExecute(r)
@@ -6044,6 +6995,9 @@ func (a *PersistentTopicApiService) RemoveDispatchRateExecute(r ApiRemoveDispatc
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6095,8 +7049,14 @@ type ApiRemoveMaxConsumersRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveMaxConsumersRequest) Authoritative(authoritative bool) ApiRemoveMaxConsumersRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveMaxConsumersRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveMaxConsumersExecute(r)
@@ -6145,6 +7105,9 @@ func (a *PersistentTopicApiService) RemoveMaxConsumersExecute(r ApiRemoveMaxCons
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6196,8 +7159,14 @@ type ApiRemoveMaxConsumersPerSubscriptionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveMaxConsumersPerSubscriptionRequest) Authoritative(authoritative bool) ApiRemoveMaxConsumersPerSubscriptionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveMaxConsumersPerSubscriptionRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveMaxConsumersPerSubscriptionExecute(r)
@@ -6246,6 +7215,119 @@ func (a *PersistentTopicApiService) RemoveMaxConsumersPerSubscriptionExecute(r A
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveMaxMessageSizeRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiRemoveMaxMessageSizeRequest) Authoritative(authoritative bool) ApiRemoveMaxMessageSizeRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiRemoveMaxMessageSizeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxMessageSizeExecute(r)
+}
+
+/*
+RemoveMaxMessageSize Remove maxMessageSize config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiRemoveMaxMessageSizeRequest
+*/
+func (a *PersistentTopicApiService) RemoveMaxMessageSize(ctx _context.Context, tenant string, namespace string, topic string) ApiRemoveMaxMessageSizeRequest {
+	return ApiRemoveMaxMessageSizeRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) RemoveMaxMessageSizeExecute(r ApiRemoveMaxMessageSizeRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.RemoveMaxMessageSize")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/maxMessageSize"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6297,8 +7379,14 @@ type ApiRemoveMaxProducersRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveMaxProducersRequest) Authoritative(authoritative bool) ApiRemoveMaxProducersRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveMaxProducersRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveMaxProducersExecute(r)
@@ -6347,6 +7435,119 @@ func (a *PersistentTopicApiService) RemoveMaxProducersExecute(r ApiRemoveMaxProd
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveMaxSubscriptionsPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiRemoveMaxSubscriptionsPerTopicRequest) Authoritative(authoritative bool) ApiRemoveMaxSubscriptionsPerTopicRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiRemoveMaxSubscriptionsPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxSubscriptionsPerTopicExecute(r)
+}
+
+/*
+RemoveMaxSubscriptionsPerTopic Remove maxSubscriptionsPerTopic config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiRemoveMaxSubscriptionsPerTopicRequest
+*/
+func (a *PersistentTopicApiService) RemoveMaxSubscriptionsPerTopic(ctx _context.Context, tenant string, namespace string, topic string) ApiRemoveMaxSubscriptionsPerTopicRequest {
+	return ApiRemoveMaxSubscriptionsPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) RemoveMaxSubscriptionsPerTopicExecute(r ApiRemoveMaxSubscriptionsPerTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.RemoveMaxSubscriptionsPerTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6398,8 +7599,14 @@ type ApiRemoveMessageTTLRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveMessageTTLRequest) Authoritative(authoritative bool) ApiRemoveMessageTTLRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveMessageTTLRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveMessageTTLExecute(r)
@@ -6448,6 +7655,9 @@ func (a *PersistentTopicApiService) RemoveMessageTTLExecute(r ApiRemoveMessageTT
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6499,8 +7709,14 @@ type ApiRemoveOffloadPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveOffloadPoliciesRequest) Authoritative(authoritative bool) ApiRemoveOffloadPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveOffloadPoliciesRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveOffloadPoliciesExecute(r)
@@ -6549,6 +7765,9 @@ func (a *PersistentTopicApiService) RemoveOffloadPoliciesExecute(r ApiRemoveOffl
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6600,8 +7819,14 @@ type ApiRemovePersistenceRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemovePersistenceRequest) Authoritative(authoritative bool) ApiRemovePersistenceRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemovePersistenceRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemovePersistenceExecute(r)
@@ -6650,6 +7875,9 @@ func (a *PersistentTopicApiService) RemovePersistenceExecute(r ApiRemovePersiste
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6701,8 +7929,14 @@ type ApiRemovePublishRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemovePublishRateRequest) Authoritative(authoritative bool) ApiRemovePublishRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemovePublishRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemovePublishRateExecute(r)
@@ -6751,6 +7985,119 @@ func (a *PersistentTopicApiService) RemovePublishRateExecute(r ApiRemovePublishR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveReplicatorDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiRemoveReplicatorDispatchRateRequest) Authoritative(authoritative bool) ApiRemoveReplicatorDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiRemoveReplicatorDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveReplicatorDispatchRateExecute(r)
+}
+
+/*
+RemoveReplicatorDispatchRate Remove replicatorDispatchRate config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiRemoveReplicatorDispatchRateRequest
+*/
+func (a *PersistentTopicApiService) RemoveReplicatorDispatchRate(ctx _context.Context, tenant string, namespace string, topic string) ApiRemoveReplicatorDispatchRateRequest {
+	return ApiRemoveReplicatorDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) RemoveReplicatorDispatchRateExecute(r ApiRemoveReplicatorDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.RemoveReplicatorDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6802,8 +8149,14 @@ type ApiRemoveRetentionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveRetentionRequest) Authoritative(authoritative bool) ApiRemoveRetentionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveRetentionRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveRetentionExecute(r)
@@ -6852,6 +8205,9 @@ func (a *PersistentTopicApiService) RemoveRetentionExecute(r ApiRemoveRetentionR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6903,8 +8259,19 @@ type ApiRemoveSubscribeRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
+	body *SubscribeRate
 }
 
+func (r ApiRemoveSubscribeRateRequest) Authoritative(authoritative bool) ApiRemoveSubscribeRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
+// Subscribe rate for the specified topic
+func (r ApiRemoveSubscribeRateRequest) Body(body SubscribeRate) ApiRemoveSubscribeRateRequest {
+	r.body = &body
+	return r
+}
 
 func (r ApiRemoveSubscribeRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveSubscribeRateExecute(r)
@@ -6953,6 +8320,9 @@ func (a *PersistentTopicApiService) RemoveSubscribeRateExecute(r ApiRemoveSubscr
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6970,6 +8340,8 @@ func (a *PersistentTopicApiService) RemoveSubscribeRateExecute(r ApiRemoveSubscr
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return nil, err
@@ -7004,8 +8376,14 @@ type ApiRemoveSubscriptionDispatchRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiRemoveSubscriptionDispatchRateRequest) Authoritative(authoritative bool) ApiRemoveSubscriptionDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 
 func (r ApiRemoveSubscriptionDispatchRateRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.RemoveSubscriptionDispatchRateExecute(r)
@@ -7054,6 +8432,9 @@ func (a *PersistentTopicApiService) RemoveSubscriptionDispatchRateExecute(r ApiR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7130,7 +8511,7 @@ It fence cursor and disconnects all active consumers before reseting cursor.
  @param namespace Specify the namespace
  @param topic Specify topic name
  @param subName Subscription to reset position on
- @param timestamp time in minutes to reset back to (or minutes, hours,days,weeks eg:100m, 3h, 2d, 5w)
+ @param timestamp the timestamp to reset back
  @return ApiResetCursorRequest
 */
 func (a *PersistentTopicApiService) ResetCursor(ctx _context.Context, tenant string, namespace string, topic string, subName string, timestamp int64) ApiResetCursorRequest {
@@ -7456,9 +8837,15 @@ type ApiSetBacklogQuotaRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	backlogQuotaType *string
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetBacklogQuotaRequest) Authoritative(authoritative bool) ApiSetBacklogQuotaRequest {
+	r.authoritative = &authoritative
+	return r
+}
 func (r ApiSetBacklogQuotaRequest) BacklogQuotaType(backlogQuotaType string) ApiSetBacklogQuotaRequest {
 	r.backlogQuotaType = &backlogQuotaType
 	return r
@@ -7511,6 +8898,9 @@ func (a *PersistentTopicApiService) SetBacklogQuotaExecute(r ApiSetBacklogQuotaR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	if r.backlogQuotaType != nil {
 		localVarQueryParams.Add("backlogQuotaType", parameterToString(*r.backlogQuotaType, ""))
 	}
@@ -7565,9 +8955,15 @@ type ApiSetCompactionThresholdRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int64
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetCompactionThresholdRequest) Authoritative(authoritative bool) ApiSetCompactionThresholdRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Dispatch rate for the specified topic
 func (r ApiSetCompactionThresholdRequest) Body(body int64) ApiSetCompactionThresholdRequest {
 	r.body = &body
@@ -7621,6 +9017,9 @@ func (a *PersistentTopicApiService) SetCompactionThresholdExecute(r ApiSetCompac
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7668,36 +9067,42 @@ func (a *PersistentTopicApiService) SetCompactionThresholdExecute(r ApiSetCompac
 	return localVarHTTPResponse, nil
 }
 
-type ApiSetDeduplicationEnabledRequest struct {
+type ApiSetDeduplicationRequest struct {
 	ctx _context.Context
 	ApiService *PersistentTopicApiService
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *bool
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetDeduplicationRequest) Authoritative(authoritative bool) ApiSetDeduplicationRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // DeduplicationEnabled policies for the specified topic
-func (r ApiSetDeduplicationEnabledRequest) Body(body bool) ApiSetDeduplicationEnabledRequest {
+func (r ApiSetDeduplicationRequest) Body(body bool) ApiSetDeduplicationRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiSetDeduplicationEnabledRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetDeduplicationEnabledExecute(r)
+func (r ApiSetDeduplicationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetDeduplicationExecute(r)
 }
 
 /*
-SetDeduplicationEnabled Set deduplication enabled on a topic.
+SetDeduplication Set deduplication enabled on a topic.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant
  @param namespace
  @param topic
- @return ApiSetDeduplicationEnabledRequest
+ @return ApiSetDeduplicationRequest
 */
-func (a *PersistentTopicApiService) SetDeduplicationEnabled(ctx _context.Context, tenant string, namespace string, topic string) ApiSetDeduplicationEnabledRequest {
-	return ApiSetDeduplicationEnabledRequest{
+func (a *PersistentTopicApiService) SetDeduplication(ctx _context.Context, tenant string, namespace string, topic string) ApiSetDeduplicationRequest {
+	return ApiSetDeduplicationRequest{
 		ApiService: a,
 		ctx: ctx,
 		tenant: tenant,
@@ -7707,7 +9112,7 @@ func (a *PersistentTopicApiService) SetDeduplicationEnabled(ctx _context.Context
 }
 
 // Execute executes the request
-func (a *PersistentTopicApiService) SetDeduplicationEnabledExecute(r ApiSetDeduplicationEnabledRequest) (*_nethttp.Response, error) {
+func (a *PersistentTopicApiService) SetDeduplicationExecute(r ApiSetDeduplicationRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
@@ -7716,7 +9121,7 @@ func (a *PersistentTopicApiService) SetDeduplicationEnabledExecute(r ApiSetDedup
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetDeduplicationEnabled")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetDeduplication")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -7730,6 +9135,9 @@ func (a *PersistentTopicApiService) SetDeduplicationEnabledExecute(r ApiSetDedup
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7783,9 +9191,15 @@ type ApiSetDeduplicationSnapshotIntervalRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int32
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetDeduplicationSnapshotIntervalRequest) Authoritative(authoritative bool) ApiSetDeduplicationSnapshotIntervalRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Interval to take deduplication snapshot for the specified topic
 func (r ApiSetDeduplicationSnapshotIntervalRequest) Body(body int32) ApiSetDeduplicationSnapshotIntervalRequest {
 	r.body = &body
@@ -7839,6 +9253,9 @@ func (a *PersistentTopicApiService) SetDeduplicationSnapshotIntervalExecute(r Ap
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7892,9 +9309,15 @@ type ApiSetDelayedDeliveryPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *DelayedDeliveryPolicies
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetDelayedDeliveryPoliciesRequest) Authoritative(authoritative bool) ApiSetDelayedDeliveryPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Delayed delivery policies for the specified topic
 func (r ApiSetDelayedDeliveryPoliciesRequest) Body(body DelayedDeliveryPolicies) ApiSetDelayedDeliveryPoliciesRequest {
 	r.body = &body
@@ -7948,6 +9371,9 @@ func (a *PersistentTopicApiService) SetDelayedDeliveryPoliciesExecute(r ApiSetDe
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8001,11 +9427,17 @@ type ApiSetDispatchRateRequest struct {
 	tenant string
 	namespace string
 	topic string
-	body *DispatchRate
+	authoritative *bool
+	body *DispatchRateImpl
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetDispatchRateRequest) Authoritative(authoritative bool) ApiSetDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Dispatch rate for the specified topic
-func (r ApiSetDispatchRateRequest) Body(body DispatchRate) ApiSetDispatchRateRequest {
+func (r ApiSetDispatchRateRequest) Body(body DispatchRateImpl) ApiSetDispatchRateRequest {
 	r.body = &body
 	return r
 }
@@ -8057,6 +9489,9 @@ func (a *PersistentTopicApiService) SetDispatchRateExecute(r ApiSetDispatchRateR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8110,9 +9545,15 @@ type ApiSetInactiveTopicPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *InactiveTopicPolicies
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetInactiveTopicPoliciesRequest) Authoritative(authoritative bool) ApiSetInactiveTopicPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // inactive topic policies for the specified topic
 func (r ApiSetInactiveTopicPoliciesRequest) Body(body InactiveTopicPolicies) ApiSetInactiveTopicPoliciesRequest {
 	r.body = &body
@@ -8166,6 +9607,9 @@ func (a *PersistentTopicApiService) SetInactiveTopicPoliciesExecute(r ApiSetInac
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8219,9 +9663,15 @@ type ApiSetMaxConsumersRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int32
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetMaxConsumersRequest) Authoritative(authoritative bool) ApiSetMaxConsumersRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // The max consumers of the topic
 func (r ApiSetMaxConsumersRequest) Body(body int32) ApiSetMaxConsumersRequest {
 	r.body = &body
@@ -8275,6 +9725,9 @@ func (a *PersistentTopicApiService) SetMaxConsumersExecute(r ApiSetMaxConsumersR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8328,9 +9781,15 @@ type ApiSetMaxConsumersPerSubscriptionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int32
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetMaxConsumersPerSubscriptionRequest) Authoritative(authoritative bool) ApiSetMaxConsumersPerSubscriptionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Dispatch rate for the specified topic
 func (r ApiSetMaxConsumersPerSubscriptionRequest) Body(body int32) ApiSetMaxConsumersPerSubscriptionRequest {
 	r.body = &body
@@ -8384,6 +9843,127 @@ func (a *PersistentTopicApiService) SetMaxConsumersPerSubscriptionExecute(r ApiS
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetMaxMessageSizeRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+	body *int32
+}
+
+// Is authentication required to perform this operation
+func (r ApiSetMaxMessageSizeRequest) Authoritative(authoritative bool) ApiSetMaxMessageSizeRequest {
+	r.authoritative = &authoritative
+	return r
+}
+// The max message size of the topic
+func (r ApiSetMaxMessageSizeRequest) Body(body int32) ApiSetMaxMessageSizeRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetMaxMessageSizeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetMaxMessageSizeExecute(r)
+}
+
+/*
+SetMaxMessageSize Set maxMessageSize config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiSetMaxMessageSizeRequest
+*/
+func (a *PersistentTopicApiService) SetMaxMessageSize(ctx _context.Context, tenant string, namespace string, topic string) ApiSetMaxMessageSizeRequest {
+	return ApiSetMaxMessageSizeRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) SetMaxMessageSizeExecute(r ApiSetMaxMessageSizeRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetMaxMessageSize")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/maxMessageSize"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8437,9 +10017,15 @@ type ApiSetMaxProducersRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int32
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetMaxProducersRequest) Authoritative(authoritative bool) ApiSetMaxProducersRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // The max producers of the topic
 func (r ApiSetMaxProducersRequest) Body(body int32) ApiSetMaxProducersRequest {
 	r.body = &body
@@ -8493,6 +10079,127 @@ func (a *PersistentTopicApiService) SetMaxProducersExecute(r ApiSetMaxProducersR
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetMaxSubscriptionsPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+	body *int32
+}
+
+// Is authentication required to perform this operation
+func (r ApiSetMaxSubscriptionsPerTopicRequest) Authoritative(authoritative bool) ApiSetMaxSubscriptionsPerTopicRequest {
+	r.authoritative = &authoritative
+	return r
+}
+// The max subscriptions of the topic
+func (r ApiSetMaxSubscriptionsPerTopicRequest) Body(body int32) ApiSetMaxSubscriptionsPerTopicRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetMaxSubscriptionsPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetMaxSubscriptionsPerTopicExecute(r)
+}
+
+/*
+SetMaxSubscriptionsPerTopic Set maxSubscriptionsPerTopic config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiSetMaxSubscriptionsPerTopicRequest
+*/
+func (a *PersistentTopicApiService) SetMaxSubscriptionsPerTopic(ctx _context.Context, tenant string, namespace string, topic string) ApiSetMaxSubscriptionsPerTopicRequest {
+	return ApiSetMaxSubscriptionsPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) SetMaxSubscriptionsPerTopicExecute(r ApiSetMaxSubscriptionsPerTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetMaxSubscriptionsPerTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8546,9 +10253,15 @@ type ApiSetMaxUnackedMessagesOnConsumerRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int32
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetMaxUnackedMessagesOnConsumerRequest) Authoritative(authoritative bool) ApiSetMaxUnackedMessagesOnConsumerRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Max unacked messages on consumer policies for the specified topic
 func (r ApiSetMaxUnackedMessagesOnConsumerRequest) Body(body int32) ApiSetMaxUnackedMessagesOnConsumerRequest {
 	r.body = &body
@@ -8602,6 +10315,9 @@ func (a *PersistentTopicApiService) SetMaxUnackedMessagesOnConsumerExecute(r Api
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8655,9 +10371,15 @@ type ApiSetMaxUnackedMessagesOnSubscriptionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *int32
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetMaxUnackedMessagesOnSubscriptionRequest) Authoritative(authoritative bool) ApiSetMaxUnackedMessagesOnSubscriptionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Max unacked messages on subscription policies for the specified topic
 func (r ApiSetMaxUnackedMessagesOnSubscriptionRequest) Body(body int32) ApiSetMaxUnackedMessagesOnSubscriptionRequest {
 	r.body = &body
@@ -8711,6 +10433,9 @@ func (a *PersistentTopicApiService) SetMaxUnackedMessagesOnSubscriptionExecute(r
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8765,11 +10490,17 @@ type ApiSetMessageTTLRequest struct {
 	namespace string
 	topic string
 	messageTTL *int32
+	authoritative *bool
 }
 
 // TTL in seconds for the specified namespace
 func (r ApiSetMessageTTLRequest) MessageTTL(messageTTL int32) ApiSetMessageTTLRequest {
 	r.messageTTL = &messageTTL
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiSetMessageTTLRequest) Authoritative(authoritative bool) ApiSetMessageTTLRequest {
+	r.authoritative = &authoritative
 	return r
 }
 
@@ -8824,6 +10555,9 @@ func (a *PersistentTopicApiService) SetMessageTTLExecute(r ApiSetMessageTTLReque
 	}
 
 	localVarQueryParams.Add("messageTTL", parameterToString(*r.messageTTL, ""))
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8875,11 +10609,17 @@ type ApiSetOffloadPoliciesRequest struct {
 	tenant string
 	namespace string
 	topic string
-	body *OffloadPolicies
+	authoritative *bool
+	body *OffloadPoliciesImpl
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetOffloadPoliciesRequest) Authoritative(authoritative bool) ApiSetOffloadPoliciesRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Offload policies for the specified topic
-func (r ApiSetOffloadPoliciesRequest) Body(body OffloadPolicies) ApiSetOffloadPoliciesRequest {
+func (r ApiSetOffloadPoliciesRequest) Body(body OffloadPoliciesImpl) ApiSetOffloadPoliciesRequest {
 	r.body = &body
 	return r
 }
@@ -8931,6 +10671,9 @@ func (a *PersistentTopicApiService) SetOffloadPoliciesExecute(r ApiSetOffloadPol
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -8984,9 +10727,15 @@ type ApiSetPersistenceRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *PersistencePolicies
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetPersistenceRequest) Authoritative(authoritative bool) ApiSetPersistenceRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Bookkeeper persistence policies for specified topic
 func (r ApiSetPersistenceRequest) Body(body PersistencePolicies) ApiSetPersistenceRequest {
 	r.body = &body
@@ -9040,6 +10789,9 @@ func (a *PersistentTopicApiService) SetPersistenceExecute(r ApiSetPersistenceReq
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9093,9 +10845,15 @@ type ApiSetPublishRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *PublishRate
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetPublishRateRequest) Authoritative(authoritative bool) ApiSetPublishRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Dispatch rate for the specified topic
 func (r ApiSetPublishRateRequest) Body(body PublishRate) ApiSetPublishRateRequest {
 	r.body = &body
@@ -9149,6 +10907,252 @@ func (a *PersistentTopicApiService) SetPublishRateExecute(r ApiSetPublishRateReq
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetReplicatedSubscriptionStatusRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	subName string
+	body *bool
+	authoritative *bool
+}
+
+// Whether to enable replicated subscription
+func (r ApiSetReplicatedSubscriptionStatusRequest) Body(body bool) ApiSetReplicatedSubscriptionStatusRequest {
+	r.body = &body
+	return r
+}
+// Is authentication required to perform this operation
+func (r ApiSetReplicatedSubscriptionStatusRequest) Authoritative(authoritative bool) ApiSetReplicatedSubscriptionStatusRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiSetReplicatedSubscriptionStatusRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetReplicatedSubscriptionStatusExecute(r)
+}
+
+/*
+SetReplicatedSubscriptionStatus Enable or disable a replicated subscription on a topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant Specify the tenant
+ @param namespace Specify the namespace
+ @param topic Specify topic name
+ @param subName Name of subscription
+ @return ApiSetReplicatedSubscriptionStatusRequest
+*/
+func (a *PersistentTopicApiService) SetReplicatedSubscriptionStatus(ctx _context.Context, tenant string, namespace string, topic string, subName string) ApiSetReplicatedSubscriptionStatusRequest {
+	return ApiSetReplicatedSubscriptionStatusRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+		subName: subName,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) SetReplicatedSubscriptionStatusExecute(r ApiSetReplicatedSubscriptionStatusRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetReplicatedSubscriptionStatus")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/replicatedSubscriptionStatus"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"subName"+"}", _neturl.PathEscape(parameterToString(r.subName, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetReplicatorDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+	body *DispatchRateImpl
+}
+
+// Is authentication required to perform this operation
+func (r ApiSetReplicatorDispatchRateRequest) Authoritative(authoritative bool) ApiSetReplicatorDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
+// Replicator dispatch rate of the topic
+func (r ApiSetReplicatorDispatchRateRequest) Body(body DispatchRateImpl) ApiSetReplicatorDispatchRateRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetReplicatorDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetReplicatorDispatchRateExecute(r)
+}
+
+/*
+SetReplicatorDispatchRate Set replicatorDispatchRate config for specified topic.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiSetReplicatorDispatchRateRequest
+*/
+func (a *PersistentTopicApiService) SetReplicatorDispatchRate(ctx _context.Context, tenant string, namespace string, topic string) ApiSetReplicatorDispatchRateRequest {
+	return ApiSetReplicatorDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) SetReplicatorDispatchRateExecute(r ApiSetReplicatorDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetReplicatorDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9202,9 +11206,15 @@ type ApiSetRetentionRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *RetentionPolicies
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetRetentionRequest) Authoritative(authoritative bool) ApiSetRetentionRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Retention policies for the specified namespace
 func (r ApiSetRetentionRequest) Body(body RetentionPolicies) ApiSetRetentionRequest {
 	r.body = &body
@@ -9258,6 +11268,9 @@ func (a *PersistentTopicApiService) SetRetentionExecute(r ApiSetRetentionRequest
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9311,9 +11324,15 @@ type ApiSetSubscribeRateRequest struct {
 	tenant string
 	namespace string
 	topic string
+	authoritative *bool
 	body *SubscribeRate
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetSubscribeRateRequest) Authoritative(authoritative bool) ApiSetSubscribeRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Subscribe rate for the specified topic
 func (r ApiSetSubscribeRateRequest) Body(body SubscribeRate) ApiSetSubscribeRateRequest {
 	r.body = &body
@@ -9367,6 +11386,9 @@ func (a *PersistentTopicApiService) SetSubscribeRateExecute(r ApiSetSubscribeRat
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9420,11 +11442,17 @@ type ApiSetSubscriptionDispatchRateRequest struct {
 	tenant string
 	namespace string
 	topic string
-	body *DispatchRate
+	authoritative *bool
+	body *DispatchRateImpl
 }
 
+// Is authentication required to perform this operation
+func (r ApiSetSubscriptionDispatchRateRequest) Authoritative(authoritative bool) ApiSetSubscriptionDispatchRateRequest {
+	r.authoritative = &authoritative
+	return r
+}
 // Subscription message dispatch rate for the specified topic
-func (r ApiSetSubscriptionDispatchRateRequest) Body(body DispatchRate) ApiSetSubscriptionDispatchRateRequest {
+func (r ApiSetSubscriptionDispatchRateRequest) Body(body DispatchRateImpl) ApiSetSubscriptionDispatchRateRequest {
 	r.body = &body
 	return r
 }
@@ -9476,6 +11504,127 @@ func (a *PersistentTopicApiService) SetSubscriptionDispatchRateExecute(r ApiSetS
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetSubscriptionTypesEnabledRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+	body *[]string
+}
+
+// Is authentication required to perform this operation
+func (r ApiSetSubscriptionTypesEnabledRequest) Authoritative(authoritative bool) ApiSetSubscriptionTypesEnabledRequest {
+	r.authoritative = &authoritative
+	return r
+}
+// Enable sub types for the specified topic
+func (r ApiSetSubscriptionTypesEnabledRequest) Body(body []string) ApiSetSubscriptionTypesEnabledRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetSubscriptionTypesEnabledRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetSubscriptionTypesEnabledExecute(r)
+}
+
+/*
+SetSubscriptionTypesEnabled Set is enable sub types for specified topic
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param topic
+ @return ApiSetSubscriptionTypesEnabledRequest
+*/
+func (a *PersistentTopicApiService) SetSubscriptionTypesEnabled(ctx _context.Context, tenant string, namespace string, topic string) ApiSetSubscriptionTypesEnabledRequest {
+	return ApiSetSubscriptionTypesEnabledRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) SetSubscriptionTypesEnabledExecute(r ApiSetSubscriptionTypesEnabledRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.SetSubscriptionTypesEnabled")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9777,7 +11926,7 @@ func (r ApiTerminateRequest) Execute() (map[string]interface{}, *_nethttp.Respon
 }
 
 /*
-Terminate Terminate a persistent topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
+Terminate Terminate a topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant Specify the tenant
@@ -10042,6 +12191,118 @@ func (a *PersistentTopicApiService) TriggerOffloadExecute(r ApiTriggerOffloadReq
 	}
 
 	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/offload"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.authoritative != nil {
+		localVarQueryParams.Add("authoritative", parameterToString(*r.authoritative, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiTruncateTopicRequest struct {
+	ctx _context.Context
+	ApiService *PersistentTopicApiService
+	tenant string
+	namespace string
+	topic string
+	authoritative *bool
+}
+
+// Is authentication required to perform this operation
+func (r ApiTruncateTopicRequest) Authoritative(authoritative bool) ApiTruncateTopicRequest {
+	r.authoritative = &authoritative
+	return r
+}
+
+func (r ApiTruncateTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.TruncateTopicExecute(r)
+}
+
+/*
+TruncateTopic Truncate a topic.
+
+The truncate operation will move all cursors to the end of the topic and delete all inactive ledgers.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant Specify the tenant
+ @param namespace Specify the namespace
+ @param topic Specify topic name
+ @return ApiTruncateTopicRequest
+*/
+func (a *PersistentTopicApiService) TruncateTopic(ctx _context.Context, tenant string, namespace string, topic string) ApiTruncateTopicRequest {
+	return ApiTruncateTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		topic: topic,
+	}
+}
+
+// Execute executes the request
+func (a *PersistentTopicApiService) TruncateTopicExecute(r ApiTruncateTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PersistentTopicApiService.TruncateTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/persistent/{tenant}/{namespace}/{topic}/truncate"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"topic"+"}", _neturl.PathEscape(parameterToString(r.topic, "")), -1)

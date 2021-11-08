@@ -16,8 +16,8 @@ import (
 
 // IsCompatibilityResponse struct for IsCompatibilityResponse
 type IsCompatibilityResponse struct {
-	Compatibility *bool `json:"compatibility,omitempty"`
 	SchemaCompatibilityStrategy *string `json:"schemaCompatibilityStrategy,omitempty"`
+	Compatibility *bool `json:"compatibility,omitempty"`
 }
 
 // NewIsCompatibilityResponse instantiates a new IsCompatibilityResponse object
@@ -35,38 +35,6 @@ func NewIsCompatibilityResponse() *IsCompatibilityResponse {
 func NewIsCompatibilityResponseWithDefaults() *IsCompatibilityResponse {
 	this := IsCompatibilityResponse{}
 	return &this
-}
-
-// GetCompatibility returns the Compatibility field value if set, zero value otherwise.
-func (o *IsCompatibilityResponse) GetCompatibility() bool {
-	if o == nil || o.Compatibility == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Compatibility
-}
-
-// GetCompatibilityOk returns a tuple with the Compatibility field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *IsCompatibilityResponse) GetCompatibilityOk() (*bool, bool) {
-	if o == nil || o.Compatibility == nil {
-		return nil, false
-	}
-	return o.Compatibility, true
-}
-
-// HasCompatibility returns a boolean if a field has been set.
-func (o *IsCompatibilityResponse) HasCompatibility() bool {
-	if o != nil && o.Compatibility != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCompatibility gets a reference to the given bool and assigns it to the Compatibility field.
-func (o *IsCompatibilityResponse) SetCompatibility(v bool) {
-	o.Compatibility = &v
 }
 
 // GetSchemaCompatibilityStrategy returns the SchemaCompatibilityStrategy field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *IsCompatibilityResponse) SetSchemaCompatibilityStrategy(v string) {
 	o.SchemaCompatibilityStrategy = &v
 }
 
+// GetCompatibility returns the Compatibility field value if set, zero value otherwise.
+func (o *IsCompatibilityResponse) GetCompatibility() bool {
+	if o == nil || o.Compatibility == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Compatibility
+}
+
+// GetCompatibilityOk returns a tuple with the Compatibility field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *IsCompatibilityResponse) GetCompatibilityOk() (*bool, bool) {
+	if o == nil || o.Compatibility == nil {
+		return nil, false
+	}
+	return o.Compatibility, true
+}
+
+// HasCompatibility returns a boolean if a field has been set.
+func (o *IsCompatibilityResponse) HasCompatibility() bool {
+	if o != nil && o.Compatibility != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCompatibility gets a reference to the given bool and assigns it to the Compatibility field.
+func (o *IsCompatibilityResponse) SetCompatibility(v bool) {
+	o.Compatibility = &v
+}
+
 func (o IsCompatibilityResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Compatibility != nil {
-		toSerialize["compatibility"] = o.Compatibility
-	}
 	if o.SchemaCompatibilityStrategy != nil {
 		toSerialize["schemaCompatibilityStrategy"] = o.SchemaCompatibilityStrategy
+	}
+	if o.Compatibility != nil {
+		toSerialize["compatibility"] = o.Compatibility
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**MarkDeletePosition** | Pointer to **string** |  | [optional] 
+**ReadPosition** | Pointer to **string** |  | [optional] 
+**WaitingReadOp** | Pointer to **bool** |  | [optional] 
+**PendingReadOps** | Pointer to **int32** |  | [optional] 
+**MessagesConsumedCounter** | Pointer to **int64** |  | [optional] 
 **CursorLedger** | Pointer to **int64** |  | [optional] 
 **CursorLedgerLastEntry** | Pointer to **int64** |  | [optional] 
 **IndividuallyDeletedMessages** | Pointer to **string** |  | [optional] 
 **LastLedgerSwitchTimestamp** | Pointer to **string** |  | [optional] 
-**MarkDeletePosition** | Pointer to **string** |  | [optional] 
-**MessagesConsumedCounter** | Pointer to **int64** |  | [optional] 
-**NumberOfEntriesSinceFirstNotAckedMessage** | Pointer to **int64** |  | [optional] 
-**PendingReadOps** | Pointer to **int32** |  | [optional] 
-**Properties** | Pointer to **map[string]int64** |  | [optional] 
-**ReadPosition** | Pointer to **string** |  | [optional] 
 **State** | Pointer to **string** |  | [optional] 
+**NumberOfEntriesSinceFirstNotAckedMessage** | Pointer to **int64** |  | [optional] 
 **TotalNonContiguousDeletedMessagesRange** | Pointer to **int32** |  | [optional] 
-**WaitingReadOp** | Pointer to **bool** |  | [optional] 
+**SubscriptionHavePendingRead** | Pointer to **bool** |  | [optional] 
+**SubscriptionHavePendingReplayRead** | Pointer to **bool** |  | [optional] 
+**Properties** | Pointer to **map[string]int64** |  | [optional] 
 
 ## Methods
 
@@ -36,6 +38,131 @@ will change when the set of required properties is changed
 NewCursorStatsWithDefaults instantiates a new CursorStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMarkDeletePosition
+
+`func (o *CursorStats) GetMarkDeletePosition() string`
+
+GetMarkDeletePosition returns the MarkDeletePosition field if non-nil, zero value otherwise.
+
+### GetMarkDeletePositionOk
+
+`func (o *CursorStats) GetMarkDeletePositionOk() (*string, bool)`
+
+GetMarkDeletePositionOk returns a tuple with the MarkDeletePosition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarkDeletePosition
+
+`func (o *CursorStats) SetMarkDeletePosition(v string)`
+
+SetMarkDeletePosition sets MarkDeletePosition field to given value.
+
+### HasMarkDeletePosition
+
+`func (o *CursorStats) HasMarkDeletePosition() bool`
+
+HasMarkDeletePosition returns a boolean if a field has been set.
+
+### GetReadPosition
+
+`func (o *CursorStats) GetReadPosition() string`
+
+GetReadPosition returns the ReadPosition field if non-nil, zero value otherwise.
+
+### GetReadPositionOk
+
+`func (o *CursorStats) GetReadPositionOk() (*string, bool)`
+
+GetReadPositionOk returns a tuple with the ReadPosition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadPosition
+
+`func (o *CursorStats) SetReadPosition(v string)`
+
+SetReadPosition sets ReadPosition field to given value.
+
+### HasReadPosition
+
+`func (o *CursorStats) HasReadPosition() bool`
+
+HasReadPosition returns a boolean if a field has been set.
+
+### GetWaitingReadOp
+
+`func (o *CursorStats) GetWaitingReadOp() bool`
+
+GetWaitingReadOp returns the WaitingReadOp field if non-nil, zero value otherwise.
+
+### GetWaitingReadOpOk
+
+`func (o *CursorStats) GetWaitingReadOpOk() (*bool, bool)`
+
+GetWaitingReadOpOk returns a tuple with the WaitingReadOp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWaitingReadOp
+
+`func (o *CursorStats) SetWaitingReadOp(v bool)`
+
+SetWaitingReadOp sets WaitingReadOp field to given value.
+
+### HasWaitingReadOp
+
+`func (o *CursorStats) HasWaitingReadOp() bool`
+
+HasWaitingReadOp returns a boolean if a field has been set.
+
+### GetPendingReadOps
+
+`func (o *CursorStats) GetPendingReadOps() int32`
+
+GetPendingReadOps returns the PendingReadOps field if non-nil, zero value otherwise.
+
+### GetPendingReadOpsOk
+
+`func (o *CursorStats) GetPendingReadOpsOk() (*int32, bool)`
+
+GetPendingReadOpsOk returns a tuple with the PendingReadOps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPendingReadOps
+
+`func (o *CursorStats) SetPendingReadOps(v int32)`
+
+SetPendingReadOps sets PendingReadOps field to given value.
+
+### HasPendingReadOps
+
+`func (o *CursorStats) HasPendingReadOps() bool`
+
+HasPendingReadOps returns a boolean if a field has been set.
+
+### GetMessagesConsumedCounter
+
+`func (o *CursorStats) GetMessagesConsumedCounter() int64`
+
+GetMessagesConsumedCounter returns the MessagesConsumedCounter field if non-nil, zero value otherwise.
+
+### GetMessagesConsumedCounterOk
+
+`func (o *CursorStats) GetMessagesConsumedCounterOk() (*int64, bool)`
+
+GetMessagesConsumedCounterOk returns a tuple with the MessagesConsumedCounter field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessagesConsumedCounter
+
+`func (o *CursorStats) SetMessagesConsumedCounter(v int64)`
+
+SetMessagesConsumedCounter sets MessagesConsumedCounter field to given value.
+
+### HasMessagesConsumedCounter
+
+`func (o *CursorStats) HasMessagesConsumedCounter() bool`
+
+HasMessagesConsumedCounter returns a boolean if a field has been set.
 
 ### GetCursorLedger
 
@@ -137,55 +264,30 @@ SetLastLedgerSwitchTimestamp sets LastLedgerSwitchTimestamp field to given value
 
 HasLastLedgerSwitchTimestamp returns a boolean if a field has been set.
 
-### GetMarkDeletePosition
+### GetState
 
-`func (o *CursorStats) GetMarkDeletePosition() string`
+`func (o *CursorStats) GetState() string`
 
-GetMarkDeletePosition returns the MarkDeletePosition field if non-nil, zero value otherwise.
+GetState returns the State field if non-nil, zero value otherwise.
 
-### GetMarkDeletePositionOk
+### GetStateOk
 
-`func (o *CursorStats) GetMarkDeletePositionOk() (*string, bool)`
+`func (o *CursorStats) GetStateOk() (*string, bool)`
 
-GetMarkDeletePositionOk returns a tuple with the MarkDeletePosition field if it's non-nil, zero value otherwise
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMarkDeletePosition
+### SetState
 
-`func (o *CursorStats) SetMarkDeletePosition(v string)`
+`func (o *CursorStats) SetState(v string)`
 
-SetMarkDeletePosition sets MarkDeletePosition field to given value.
+SetState sets State field to given value.
 
-### HasMarkDeletePosition
+### HasState
 
-`func (o *CursorStats) HasMarkDeletePosition() bool`
+`func (o *CursorStats) HasState() bool`
 
-HasMarkDeletePosition returns a boolean if a field has been set.
-
-### GetMessagesConsumedCounter
-
-`func (o *CursorStats) GetMessagesConsumedCounter() int64`
-
-GetMessagesConsumedCounter returns the MessagesConsumedCounter field if non-nil, zero value otherwise.
-
-### GetMessagesConsumedCounterOk
-
-`func (o *CursorStats) GetMessagesConsumedCounterOk() (*int64, bool)`
-
-GetMessagesConsumedCounterOk returns a tuple with the MessagesConsumedCounter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMessagesConsumedCounter
-
-`func (o *CursorStats) SetMessagesConsumedCounter(v int64)`
-
-SetMessagesConsumedCounter sets MessagesConsumedCounter field to given value.
-
-### HasMessagesConsumedCounter
-
-`func (o *CursorStats) HasMessagesConsumedCounter() bool`
-
-HasMessagesConsumedCounter returns a boolean if a field has been set.
+HasState returns a boolean if a field has been set.
 
 ### GetNumberOfEntriesSinceFirstNotAckedMessage
 
@@ -212,106 +314,6 @@ SetNumberOfEntriesSinceFirstNotAckedMessage sets NumberOfEntriesSinceFirstNotAck
 
 HasNumberOfEntriesSinceFirstNotAckedMessage returns a boolean if a field has been set.
 
-### GetPendingReadOps
-
-`func (o *CursorStats) GetPendingReadOps() int32`
-
-GetPendingReadOps returns the PendingReadOps field if non-nil, zero value otherwise.
-
-### GetPendingReadOpsOk
-
-`func (o *CursorStats) GetPendingReadOpsOk() (*int32, bool)`
-
-GetPendingReadOpsOk returns a tuple with the PendingReadOps field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPendingReadOps
-
-`func (o *CursorStats) SetPendingReadOps(v int32)`
-
-SetPendingReadOps sets PendingReadOps field to given value.
-
-### HasPendingReadOps
-
-`func (o *CursorStats) HasPendingReadOps() bool`
-
-HasPendingReadOps returns a boolean if a field has been set.
-
-### GetProperties
-
-`func (o *CursorStats) GetProperties() map[string]int64`
-
-GetProperties returns the Properties field if non-nil, zero value otherwise.
-
-### GetPropertiesOk
-
-`func (o *CursorStats) GetPropertiesOk() (*map[string]int64, bool)`
-
-GetPropertiesOk returns a tuple with the Properties field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProperties
-
-`func (o *CursorStats) SetProperties(v map[string]int64)`
-
-SetProperties sets Properties field to given value.
-
-### HasProperties
-
-`func (o *CursorStats) HasProperties() bool`
-
-HasProperties returns a boolean if a field has been set.
-
-### GetReadPosition
-
-`func (o *CursorStats) GetReadPosition() string`
-
-GetReadPosition returns the ReadPosition field if non-nil, zero value otherwise.
-
-### GetReadPositionOk
-
-`func (o *CursorStats) GetReadPositionOk() (*string, bool)`
-
-GetReadPositionOk returns a tuple with the ReadPosition field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetReadPosition
-
-`func (o *CursorStats) SetReadPosition(v string)`
-
-SetReadPosition sets ReadPosition field to given value.
-
-### HasReadPosition
-
-`func (o *CursorStats) HasReadPosition() bool`
-
-HasReadPosition returns a boolean if a field has been set.
-
-### GetState
-
-`func (o *CursorStats) GetState() string`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *CursorStats) GetStateOk() (*string, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *CursorStats) SetState(v string)`
-
-SetState sets State field to given value.
-
-### HasState
-
-`func (o *CursorStats) HasState() bool`
-
-HasState returns a boolean if a field has been set.
-
 ### GetTotalNonContiguousDeletedMessagesRange
 
 `func (o *CursorStats) GetTotalNonContiguousDeletedMessagesRange() int32`
@@ -337,30 +339,80 @@ SetTotalNonContiguousDeletedMessagesRange sets TotalNonContiguousDeletedMessages
 
 HasTotalNonContiguousDeletedMessagesRange returns a boolean if a field has been set.
 
-### GetWaitingReadOp
+### GetSubscriptionHavePendingRead
 
-`func (o *CursorStats) GetWaitingReadOp() bool`
+`func (o *CursorStats) GetSubscriptionHavePendingRead() bool`
 
-GetWaitingReadOp returns the WaitingReadOp field if non-nil, zero value otherwise.
+GetSubscriptionHavePendingRead returns the SubscriptionHavePendingRead field if non-nil, zero value otherwise.
 
-### GetWaitingReadOpOk
+### GetSubscriptionHavePendingReadOk
 
-`func (o *CursorStats) GetWaitingReadOpOk() (*bool, bool)`
+`func (o *CursorStats) GetSubscriptionHavePendingReadOk() (*bool, bool)`
 
-GetWaitingReadOpOk returns a tuple with the WaitingReadOp field if it's non-nil, zero value otherwise
+GetSubscriptionHavePendingReadOk returns a tuple with the SubscriptionHavePendingRead field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWaitingReadOp
+### SetSubscriptionHavePendingRead
 
-`func (o *CursorStats) SetWaitingReadOp(v bool)`
+`func (o *CursorStats) SetSubscriptionHavePendingRead(v bool)`
 
-SetWaitingReadOp sets WaitingReadOp field to given value.
+SetSubscriptionHavePendingRead sets SubscriptionHavePendingRead field to given value.
 
-### HasWaitingReadOp
+### HasSubscriptionHavePendingRead
 
-`func (o *CursorStats) HasWaitingReadOp() bool`
+`func (o *CursorStats) HasSubscriptionHavePendingRead() bool`
 
-HasWaitingReadOp returns a boolean if a field has been set.
+HasSubscriptionHavePendingRead returns a boolean if a field has been set.
+
+### GetSubscriptionHavePendingReplayRead
+
+`func (o *CursorStats) GetSubscriptionHavePendingReplayRead() bool`
+
+GetSubscriptionHavePendingReplayRead returns the SubscriptionHavePendingReplayRead field if non-nil, zero value otherwise.
+
+### GetSubscriptionHavePendingReplayReadOk
+
+`func (o *CursorStats) GetSubscriptionHavePendingReplayReadOk() (*bool, bool)`
+
+GetSubscriptionHavePendingReplayReadOk returns a tuple with the SubscriptionHavePendingReplayRead field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubscriptionHavePendingReplayRead
+
+`func (o *CursorStats) SetSubscriptionHavePendingReplayRead(v bool)`
+
+SetSubscriptionHavePendingReplayRead sets SubscriptionHavePendingReplayRead field to given value.
+
+### HasSubscriptionHavePendingReplayRead
+
+`func (o *CursorStats) HasSubscriptionHavePendingReplayRead() bool`
+
+HasSubscriptionHavePendingReplayRead returns a boolean if a field has been set.
+
+### GetProperties
+
+`func (o *CursorStats) GetProperties() map[string]int64`
+
+GetProperties returns the Properties field if non-nil, zero value otherwise.
+
+### GetPropertiesOk
+
+`func (o *CursorStats) GetPropertiesOk() (*map[string]int64, bool)`
+
+GetPropertiesOk returns a tuple with the Properties field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProperties
+
+`func (o *CursorStats) SetProperties(v map[string]int64)`
+
+SetProperties sets Properties field to given value.
+
+### HasProperties
+
+`func (o *CursorStats) HasProperties() bool`
+
+HasProperties returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

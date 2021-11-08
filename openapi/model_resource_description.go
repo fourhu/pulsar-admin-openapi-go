@@ -16,8 +16,8 @@ import (
 
 // ResourceDescription struct for ResourceDescription
 type ResourceDescription struct {
-	ResourceUsage *map[string]ResourceUsage `json:"resourceUsage,omitempty"`
 	UsagePct *int32 `json:"usagePct,omitempty"`
+	ResourceUsage *map[string]ResourceUsage `json:"resourceUsage,omitempty"`
 }
 
 // NewResourceDescription instantiates a new ResourceDescription object
@@ -35,38 +35,6 @@ func NewResourceDescription() *ResourceDescription {
 func NewResourceDescriptionWithDefaults() *ResourceDescription {
 	this := ResourceDescription{}
 	return &this
-}
-
-// GetResourceUsage returns the ResourceUsage field value if set, zero value otherwise.
-func (o *ResourceDescription) GetResourceUsage() map[string]ResourceUsage {
-	if o == nil || o.ResourceUsage == nil {
-		var ret map[string]ResourceUsage
-		return ret
-	}
-	return *o.ResourceUsage
-}
-
-// GetResourceUsageOk returns a tuple with the ResourceUsage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResourceDescription) GetResourceUsageOk() (*map[string]ResourceUsage, bool) {
-	if o == nil || o.ResourceUsage == nil {
-		return nil, false
-	}
-	return o.ResourceUsage, true
-}
-
-// HasResourceUsage returns a boolean if a field has been set.
-func (o *ResourceDescription) HasResourceUsage() bool {
-	if o != nil && o.ResourceUsage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceUsage gets a reference to the given map[string]ResourceUsage and assigns it to the ResourceUsage field.
-func (o *ResourceDescription) SetResourceUsage(v map[string]ResourceUsage) {
-	o.ResourceUsage = &v
 }
 
 // GetUsagePct returns the UsagePct field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *ResourceDescription) SetUsagePct(v int32) {
 	o.UsagePct = &v
 }
 
+// GetResourceUsage returns the ResourceUsage field value if set, zero value otherwise.
+func (o *ResourceDescription) GetResourceUsage() map[string]ResourceUsage {
+	if o == nil || o.ResourceUsage == nil {
+		var ret map[string]ResourceUsage
+		return ret
+	}
+	return *o.ResourceUsage
+}
+
+// GetResourceUsageOk returns a tuple with the ResourceUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceDescription) GetResourceUsageOk() (*map[string]ResourceUsage, bool) {
+	if o == nil || o.ResourceUsage == nil {
+		return nil, false
+	}
+	return o.ResourceUsage, true
+}
+
+// HasResourceUsage returns a boolean if a field has been set.
+func (o *ResourceDescription) HasResourceUsage() bool {
+	if o != nil && o.ResourceUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceUsage gets a reference to the given map[string]ResourceUsage and assigns it to the ResourceUsage field.
+func (o *ResourceDescription) SetResourceUsage(v map[string]ResourceUsage) {
+	o.ResourceUsage = &v
+}
+
 func (o ResourceDescription) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ResourceUsage != nil {
-		toSerialize["resourceUsage"] = o.ResourceUsage
-	}
 	if o.UsagePct != nil {
 		toSerialize["usagePct"] = o.UsagePct
+	}
+	if o.ResourceUsage != nil {
+		toSerialize["resourceUsage"] = o.ResourceUsage
 	}
 	return json.Marshal(toSerialize)
 }

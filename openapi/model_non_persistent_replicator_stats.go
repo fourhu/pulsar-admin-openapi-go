@@ -16,19 +16,19 @@ import (
 
 // NonPersistentReplicatorStats struct for NonPersistentReplicatorStats
 type NonPersistentReplicatorStats struct {
-	Connected *bool `json:"connected,omitempty"`
-	InboundConnectedSince *string `json:"inboundConnectedSince,omitempty"`
-	InboundConnection *string `json:"inboundConnection,omitempty"`
 	MsgDropRate *float64 `json:"msgDropRate,omitempty"`
-	MsgRateExpired *float64 `json:"msgRateExpired,omitempty"`
-	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
-	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
 	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
 	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
-	OutboundConnectedSince *string `json:"outboundConnectedSince,omitempty"`
-	OutboundConnection *string `json:"outboundConnection,omitempty"`
-	ReplicationBacklog *int64 `json:"replicationBacklog,omitempty"`
 	ReplicationDelayInSeconds *int64 `json:"replicationDelayInSeconds,omitempty"`
+	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
+	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
+	MsgRateExpired *float64 `json:"msgRateExpired,omitempty"`
+	OutboundConnection *string `json:"outboundConnection,omitempty"`
+	InboundConnectedSince *string `json:"inboundConnectedSince,omitempty"`
+	InboundConnection *string `json:"inboundConnection,omitempty"`
+	OutboundConnectedSince *string `json:"outboundConnectedSince,omitempty"`
+	ReplicationBacklog *int64 `json:"replicationBacklog,omitempty"`
+	Connected *bool `json:"connected,omitempty"`
 }
 
 // NewNonPersistentReplicatorStats instantiates a new NonPersistentReplicatorStats object
@@ -46,102 +46,6 @@ func NewNonPersistentReplicatorStats() *NonPersistentReplicatorStats {
 func NewNonPersistentReplicatorStatsWithDefaults() *NonPersistentReplicatorStats {
 	this := NonPersistentReplicatorStats{}
 	return &this
-}
-
-// GetConnected returns the Connected field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetConnected() bool {
-	if o == nil || o.Connected == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Connected
-}
-
-// GetConnectedOk returns a tuple with the Connected field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetConnectedOk() (*bool, bool) {
-	if o == nil || o.Connected == nil {
-		return nil, false
-	}
-	return o.Connected, true
-}
-
-// HasConnected returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasConnected() bool {
-	if o != nil && o.Connected != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConnected gets a reference to the given bool and assigns it to the Connected field.
-func (o *NonPersistentReplicatorStats) SetConnected(v bool) {
-	o.Connected = &v
-}
-
-// GetInboundConnectedSince returns the InboundConnectedSince field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetInboundConnectedSince() string {
-	if o == nil || o.InboundConnectedSince == nil {
-		var ret string
-		return ret
-	}
-	return *o.InboundConnectedSince
-}
-
-// GetInboundConnectedSinceOk returns a tuple with the InboundConnectedSince field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetInboundConnectedSinceOk() (*string, bool) {
-	if o == nil || o.InboundConnectedSince == nil {
-		return nil, false
-	}
-	return o.InboundConnectedSince, true
-}
-
-// HasInboundConnectedSince returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasInboundConnectedSince() bool {
-	if o != nil && o.InboundConnectedSince != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetInboundConnectedSince gets a reference to the given string and assigns it to the InboundConnectedSince field.
-func (o *NonPersistentReplicatorStats) SetInboundConnectedSince(v string) {
-	o.InboundConnectedSince = &v
-}
-
-// GetInboundConnection returns the InboundConnection field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetInboundConnection() string {
-	if o == nil || o.InboundConnection == nil {
-		var ret string
-		return ret
-	}
-	return *o.InboundConnection
-}
-
-// GetInboundConnectionOk returns a tuple with the InboundConnection field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetInboundConnectionOk() (*string, bool) {
-	if o == nil || o.InboundConnection == nil {
-		return nil, false
-	}
-	return o.InboundConnection, true
-}
-
-// HasInboundConnection returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasInboundConnection() bool {
-	if o != nil && o.InboundConnection != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetInboundConnection gets a reference to the given string and assigns it to the InboundConnection field.
-func (o *NonPersistentReplicatorStats) SetInboundConnection(v string) {
-	o.InboundConnection = &v
 }
 
 // GetMsgDropRate returns the MsgDropRate field value if set, zero value otherwise.
@@ -174,102 +78,6 @@ func (o *NonPersistentReplicatorStats) HasMsgDropRate() bool {
 // SetMsgDropRate gets a reference to the given float64 and assigns it to the MsgDropRate field.
 func (o *NonPersistentReplicatorStats) SetMsgDropRate(v float64) {
 	o.MsgDropRate = &v
-}
-
-// GetMsgRateExpired returns the MsgRateExpired field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetMsgRateExpired() float64 {
-	if o == nil || o.MsgRateExpired == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateExpired
-}
-
-// GetMsgRateExpiredOk returns a tuple with the MsgRateExpired field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetMsgRateExpiredOk() (*float64, bool) {
-	if o == nil || o.MsgRateExpired == nil {
-		return nil, false
-	}
-	return o.MsgRateExpired, true
-}
-
-// HasMsgRateExpired returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasMsgRateExpired() bool {
-	if o != nil && o.MsgRateExpired != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateExpired gets a reference to the given float64 and assigns it to the MsgRateExpired field.
-func (o *NonPersistentReplicatorStats) SetMsgRateExpired(v float64) {
-	o.MsgRateExpired = &v
-}
-
-// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetMsgRateIn() float64 {
-	if o == nil || o.MsgRateIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateIn
-}
-
-// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetMsgRateInOk() (*float64, bool) {
-	if o == nil || o.MsgRateIn == nil {
-		return nil, false
-	}
-	return o.MsgRateIn, true
-}
-
-// HasMsgRateIn returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasMsgRateIn() bool {
-	if o != nil && o.MsgRateIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
-func (o *NonPersistentReplicatorStats) SetMsgRateIn(v float64) {
-	o.MsgRateIn = &v
-}
-
-// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetMsgRateOut() float64 {
-	if o == nil || o.MsgRateOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateOut
-}
-
-// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetMsgRateOutOk() (*float64, bool) {
-	if o == nil || o.MsgRateOut == nil {
-		return nil, false
-	}
-	return o.MsgRateOut, true
-}
-
-// HasMsgRateOut returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasMsgRateOut() bool {
-	if o != nil && o.MsgRateOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
-func (o *NonPersistentReplicatorStats) SetMsgRateOut(v float64) {
-	o.MsgRateOut = &v
 }
 
 // GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
@@ -336,36 +144,132 @@ func (o *NonPersistentReplicatorStats) SetMsgThroughputOut(v float64) {
 	o.MsgThroughputOut = &v
 }
 
-// GetOutboundConnectedSince returns the OutboundConnectedSince field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetOutboundConnectedSince() string {
-	if o == nil || o.OutboundConnectedSince == nil {
-		var ret string
+// GetReplicationDelayInSeconds returns the ReplicationDelayInSeconds field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetReplicationDelayInSeconds() int64 {
+	if o == nil || o.ReplicationDelayInSeconds == nil {
+		var ret int64
 		return ret
 	}
-	return *o.OutboundConnectedSince
+	return *o.ReplicationDelayInSeconds
 }
 
-// GetOutboundConnectedSinceOk returns a tuple with the OutboundConnectedSince field value if set, nil otherwise
+// GetReplicationDelayInSecondsOk returns a tuple with the ReplicationDelayInSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetOutboundConnectedSinceOk() (*string, bool) {
-	if o == nil || o.OutboundConnectedSince == nil {
+func (o *NonPersistentReplicatorStats) GetReplicationDelayInSecondsOk() (*int64, bool) {
+	if o == nil || o.ReplicationDelayInSeconds == nil {
 		return nil, false
 	}
-	return o.OutboundConnectedSince, true
+	return o.ReplicationDelayInSeconds, true
 }
 
-// HasOutboundConnectedSince returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasOutboundConnectedSince() bool {
-	if o != nil && o.OutboundConnectedSince != nil {
+// HasReplicationDelayInSeconds returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasReplicationDelayInSeconds() bool {
+	if o != nil && o.ReplicationDelayInSeconds != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetOutboundConnectedSince gets a reference to the given string and assigns it to the OutboundConnectedSince field.
-func (o *NonPersistentReplicatorStats) SetOutboundConnectedSince(v string) {
-	o.OutboundConnectedSince = &v
+// SetReplicationDelayInSeconds gets a reference to the given int64 and assigns it to the ReplicationDelayInSeconds field.
+func (o *NonPersistentReplicatorStats) SetReplicationDelayInSeconds(v int64) {
+	o.ReplicationDelayInSeconds = &v
+}
+
+// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetMsgRateIn() float64 {
+	if o == nil || o.MsgRateIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateIn
+}
+
+// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentReplicatorStats) GetMsgRateInOk() (*float64, bool) {
+	if o == nil || o.MsgRateIn == nil {
+		return nil, false
+	}
+	return o.MsgRateIn, true
+}
+
+// HasMsgRateIn returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasMsgRateIn() bool {
+	if o != nil && o.MsgRateIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
+func (o *NonPersistentReplicatorStats) SetMsgRateIn(v float64) {
+	o.MsgRateIn = &v
+}
+
+// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetMsgRateOut() float64 {
+	if o == nil || o.MsgRateOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateOut
+}
+
+// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentReplicatorStats) GetMsgRateOutOk() (*float64, bool) {
+	if o == nil || o.MsgRateOut == nil {
+		return nil, false
+	}
+	return o.MsgRateOut, true
+}
+
+// HasMsgRateOut returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasMsgRateOut() bool {
+	if o != nil && o.MsgRateOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
+func (o *NonPersistentReplicatorStats) SetMsgRateOut(v float64) {
+	o.MsgRateOut = &v
+}
+
+// GetMsgRateExpired returns the MsgRateExpired field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetMsgRateExpired() float64 {
+	if o == nil || o.MsgRateExpired == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateExpired
+}
+
+// GetMsgRateExpiredOk returns a tuple with the MsgRateExpired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentReplicatorStats) GetMsgRateExpiredOk() (*float64, bool) {
+	if o == nil || o.MsgRateExpired == nil {
+		return nil, false
+	}
+	return o.MsgRateExpired, true
+}
+
+// HasMsgRateExpired returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasMsgRateExpired() bool {
+	if o != nil && o.MsgRateExpired != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateExpired gets a reference to the given float64 and assigns it to the MsgRateExpired field.
+func (o *NonPersistentReplicatorStats) SetMsgRateExpired(v float64) {
+	o.MsgRateExpired = &v
 }
 
 // GetOutboundConnection returns the OutboundConnection field value if set, zero value otherwise.
@@ -400,6 +304,102 @@ func (o *NonPersistentReplicatorStats) SetOutboundConnection(v string) {
 	o.OutboundConnection = &v
 }
 
+// GetInboundConnectedSince returns the InboundConnectedSince field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetInboundConnectedSince() string {
+	if o == nil || o.InboundConnectedSince == nil {
+		var ret string
+		return ret
+	}
+	return *o.InboundConnectedSince
+}
+
+// GetInboundConnectedSinceOk returns a tuple with the InboundConnectedSince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentReplicatorStats) GetInboundConnectedSinceOk() (*string, bool) {
+	if o == nil || o.InboundConnectedSince == nil {
+		return nil, false
+	}
+	return o.InboundConnectedSince, true
+}
+
+// HasInboundConnectedSince returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasInboundConnectedSince() bool {
+	if o != nil && o.InboundConnectedSince != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInboundConnectedSince gets a reference to the given string and assigns it to the InboundConnectedSince field.
+func (o *NonPersistentReplicatorStats) SetInboundConnectedSince(v string) {
+	o.InboundConnectedSince = &v
+}
+
+// GetInboundConnection returns the InboundConnection field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetInboundConnection() string {
+	if o == nil || o.InboundConnection == nil {
+		var ret string
+		return ret
+	}
+	return *o.InboundConnection
+}
+
+// GetInboundConnectionOk returns a tuple with the InboundConnection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentReplicatorStats) GetInboundConnectionOk() (*string, bool) {
+	if o == nil || o.InboundConnection == nil {
+		return nil, false
+	}
+	return o.InboundConnection, true
+}
+
+// HasInboundConnection returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasInboundConnection() bool {
+	if o != nil && o.InboundConnection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetInboundConnection gets a reference to the given string and assigns it to the InboundConnection field.
+func (o *NonPersistentReplicatorStats) SetInboundConnection(v string) {
+	o.InboundConnection = &v
+}
+
+// GetOutboundConnectedSince returns the OutboundConnectedSince field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetOutboundConnectedSince() string {
+	if o == nil || o.OutboundConnectedSince == nil {
+		var ret string
+		return ret
+	}
+	return *o.OutboundConnectedSince
+}
+
+// GetOutboundConnectedSinceOk returns a tuple with the OutboundConnectedSince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentReplicatorStats) GetOutboundConnectedSinceOk() (*string, bool) {
+	if o == nil || o.OutboundConnectedSince == nil {
+		return nil, false
+	}
+	return o.OutboundConnectedSince, true
+}
+
+// HasOutboundConnectedSince returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasOutboundConnectedSince() bool {
+	if o != nil && o.OutboundConnectedSince != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOutboundConnectedSince gets a reference to the given string and assigns it to the OutboundConnectedSince field.
+func (o *NonPersistentReplicatorStats) SetOutboundConnectedSince(v string) {
+	o.OutboundConnectedSince = &v
+}
+
 // GetReplicationBacklog returns the ReplicationBacklog field value if set, zero value otherwise.
 func (o *NonPersistentReplicatorStats) GetReplicationBacklog() int64 {
 	if o == nil || o.ReplicationBacklog == nil {
@@ -432,60 +432,42 @@ func (o *NonPersistentReplicatorStats) SetReplicationBacklog(v int64) {
 	o.ReplicationBacklog = &v
 }
 
-// GetReplicationDelayInSeconds returns the ReplicationDelayInSeconds field value if set, zero value otherwise.
-func (o *NonPersistentReplicatorStats) GetReplicationDelayInSeconds() int64 {
-	if o == nil || o.ReplicationDelayInSeconds == nil {
-		var ret int64
+// GetConnected returns the Connected field value if set, zero value otherwise.
+func (o *NonPersistentReplicatorStats) GetConnected() bool {
+	if o == nil || o.Connected == nil {
+		var ret bool
 		return ret
 	}
-	return *o.ReplicationDelayInSeconds
+	return *o.Connected
 }
 
-// GetReplicationDelayInSecondsOk returns a tuple with the ReplicationDelayInSeconds field value if set, nil otherwise
+// GetConnectedOk returns a tuple with the Connected field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentReplicatorStats) GetReplicationDelayInSecondsOk() (*int64, bool) {
-	if o == nil || o.ReplicationDelayInSeconds == nil {
+func (o *NonPersistentReplicatorStats) GetConnectedOk() (*bool, bool) {
+	if o == nil || o.Connected == nil {
 		return nil, false
 	}
-	return o.ReplicationDelayInSeconds, true
+	return o.Connected, true
 }
 
-// HasReplicationDelayInSeconds returns a boolean if a field has been set.
-func (o *NonPersistentReplicatorStats) HasReplicationDelayInSeconds() bool {
-	if o != nil && o.ReplicationDelayInSeconds != nil {
+// HasConnected returns a boolean if a field has been set.
+func (o *NonPersistentReplicatorStats) HasConnected() bool {
+	if o != nil && o.Connected != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetReplicationDelayInSeconds gets a reference to the given int64 and assigns it to the ReplicationDelayInSeconds field.
-func (o *NonPersistentReplicatorStats) SetReplicationDelayInSeconds(v int64) {
-	o.ReplicationDelayInSeconds = &v
+// SetConnected gets a reference to the given bool and assigns it to the Connected field.
+func (o *NonPersistentReplicatorStats) SetConnected(v bool) {
+	o.Connected = &v
 }
 
 func (o NonPersistentReplicatorStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Connected != nil {
-		toSerialize["connected"] = o.Connected
-	}
-	if o.InboundConnectedSince != nil {
-		toSerialize["inboundConnectedSince"] = o.InboundConnectedSince
-	}
-	if o.InboundConnection != nil {
-		toSerialize["inboundConnection"] = o.InboundConnection
-	}
 	if o.MsgDropRate != nil {
 		toSerialize["msgDropRate"] = o.MsgDropRate
-	}
-	if o.MsgRateExpired != nil {
-		toSerialize["msgRateExpired"] = o.MsgRateExpired
-	}
-	if o.MsgRateIn != nil {
-		toSerialize["msgRateIn"] = o.MsgRateIn
-	}
-	if o.MsgRateOut != nil {
-		toSerialize["msgRateOut"] = o.MsgRateOut
 	}
 	if o.MsgThroughputIn != nil {
 		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
@@ -493,17 +475,35 @@ func (o NonPersistentReplicatorStats) MarshalJSON() ([]byte, error) {
 	if o.MsgThroughputOut != nil {
 		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
 	}
-	if o.OutboundConnectedSince != nil {
-		toSerialize["outboundConnectedSince"] = o.OutboundConnectedSince
+	if o.ReplicationDelayInSeconds != nil {
+		toSerialize["replicationDelayInSeconds"] = o.ReplicationDelayInSeconds
+	}
+	if o.MsgRateIn != nil {
+		toSerialize["msgRateIn"] = o.MsgRateIn
+	}
+	if o.MsgRateOut != nil {
+		toSerialize["msgRateOut"] = o.MsgRateOut
+	}
+	if o.MsgRateExpired != nil {
+		toSerialize["msgRateExpired"] = o.MsgRateExpired
 	}
 	if o.OutboundConnection != nil {
 		toSerialize["outboundConnection"] = o.OutboundConnection
 	}
+	if o.InboundConnectedSince != nil {
+		toSerialize["inboundConnectedSince"] = o.InboundConnectedSince
+	}
+	if o.InboundConnection != nil {
+		toSerialize["inboundConnection"] = o.InboundConnection
+	}
+	if o.OutboundConnectedSince != nil {
+		toSerialize["outboundConnectedSince"] = o.OutboundConnectedSince
+	}
 	if o.ReplicationBacklog != nil {
 		toSerialize["replicationBacklog"] = o.ReplicationBacklog
 	}
-	if o.ReplicationDelayInSeconds != nil {
-		toSerialize["replicationDelayInSeconds"] = o.ReplicationDelayInSeconds
+	if o.Connected != nil {
+		toSerialize["connected"] = o.Connected
 	}
 	return json.Marshal(toSerialize)
 }

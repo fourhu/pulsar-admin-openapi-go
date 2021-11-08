@@ -16,20 +16,21 @@ import (
 
 // PersistentTopicInternalStats struct for PersistentTopicInternalStats
 type PersistentTopicInternalStats struct {
-	CompactedLedger *LedgerInfo `json:"compactedLedger,omitempty"`
+	EntriesAddedCounter *int64 `json:"entriesAddedCounter,omitempty"`
+	NumberOfEntries *int64 `json:"numberOfEntries,omitempty"`
+	TotalSize *int64 `json:"totalSize,omitempty"`
 	CurrentLedgerEntries *int64 `json:"currentLedgerEntries,omitempty"`
 	CurrentLedgerSize *int64 `json:"currentLedgerSize,omitempty"`
-	Cursors *map[string]CursorStats `json:"cursors,omitempty"`
-	EntriesAddedCounter *int64 `json:"entriesAddedCounter,omitempty"`
-	LastConfirmedEntry *string `json:"lastConfirmedEntry,omitempty"`
 	LastLedgerCreatedTimestamp *string `json:"lastLedgerCreatedTimestamp,omitempty"`
 	LastLedgerCreationFailureTimestamp *string `json:"lastLedgerCreationFailureTimestamp,omitempty"`
-	Ledgers *[]LedgerInfo `json:"ledgers,omitempty"`
-	NumberOfEntries *int64 `json:"numberOfEntries,omitempty"`
-	PendingAddEntriesCount *int32 `json:"pendingAddEntriesCount,omitempty"`
-	State *string `json:"state,omitempty"`
-	TotalSize *int64 `json:"totalSize,omitempty"`
 	WaitingCursorsCount *int32 `json:"waitingCursorsCount,omitempty"`
+	PendingAddEntriesCount *int32 `json:"pendingAddEntriesCount,omitempty"`
+	LastConfirmedEntry *string `json:"lastConfirmedEntry,omitempty"`
+	State *string `json:"state,omitempty"`
+	Ledgers *[]LedgerInfo `json:"ledgers,omitempty"`
+	Cursors *map[string]CursorStats `json:"cursors,omitempty"`
+	SchemaLedgers *[]LedgerInfo `json:"schemaLedgers,omitempty"`
+	CompactedLedger *LedgerInfo `json:"compactedLedger,omitempty"`
 }
 
 // NewPersistentTopicInternalStats instantiates a new PersistentTopicInternalStats object
@@ -49,36 +50,100 @@ func NewPersistentTopicInternalStatsWithDefaults() *PersistentTopicInternalStats
 	return &this
 }
 
-// GetCompactedLedger returns the CompactedLedger field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetCompactedLedger() LedgerInfo {
-	if o == nil || o.CompactedLedger == nil {
-		var ret LedgerInfo
+// GetEntriesAddedCounter returns the EntriesAddedCounter field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetEntriesAddedCounter() int64 {
+	if o == nil || o.EntriesAddedCounter == nil {
+		var ret int64
 		return ret
 	}
-	return *o.CompactedLedger
+	return *o.EntriesAddedCounter
 }
 
-// GetCompactedLedgerOk returns a tuple with the CompactedLedger field value if set, nil otherwise
+// GetEntriesAddedCounterOk returns a tuple with the EntriesAddedCounter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetCompactedLedgerOk() (*LedgerInfo, bool) {
-	if o == nil || o.CompactedLedger == nil {
+func (o *PersistentTopicInternalStats) GetEntriesAddedCounterOk() (*int64, bool) {
+	if o == nil || o.EntriesAddedCounter == nil {
 		return nil, false
 	}
-	return o.CompactedLedger, true
+	return o.EntriesAddedCounter, true
 }
 
-// HasCompactedLedger returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasCompactedLedger() bool {
-	if o != nil && o.CompactedLedger != nil {
+// HasEntriesAddedCounter returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasEntriesAddedCounter() bool {
+	if o != nil && o.EntriesAddedCounter != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCompactedLedger gets a reference to the given LedgerInfo and assigns it to the CompactedLedger field.
-func (o *PersistentTopicInternalStats) SetCompactedLedger(v LedgerInfo) {
-	o.CompactedLedger = &v
+// SetEntriesAddedCounter gets a reference to the given int64 and assigns it to the EntriesAddedCounter field.
+func (o *PersistentTopicInternalStats) SetEntriesAddedCounter(v int64) {
+	o.EntriesAddedCounter = &v
+}
+
+// GetNumberOfEntries returns the NumberOfEntries field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetNumberOfEntries() int64 {
+	if o == nil || o.NumberOfEntries == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumberOfEntries
+}
+
+// GetNumberOfEntriesOk returns a tuple with the NumberOfEntries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentTopicInternalStats) GetNumberOfEntriesOk() (*int64, bool) {
+	if o == nil || o.NumberOfEntries == nil {
+		return nil, false
+	}
+	return o.NumberOfEntries, true
+}
+
+// HasNumberOfEntries returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasNumberOfEntries() bool {
+	if o != nil && o.NumberOfEntries != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberOfEntries gets a reference to the given int64 and assigns it to the NumberOfEntries field.
+func (o *PersistentTopicInternalStats) SetNumberOfEntries(v int64) {
+	o.NumberOfEntries = &v
+}
+
+// GetTotalSize returns the TotalSize field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetTotalSize() int64 {
+	if o == nil || o.TotalSize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TotalSize
+}
+
+// GetTotalSizeOk returns a tuple with the TotalSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentTopicInternalStats) GetTotalSizeOk() (*int64, bool) {
+	if o == nil || o.TotalSize == nil {
+		return nil, false
+	}
+	return o.TotalSize, true
+}
+
+// HasTotalSize returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasTotalSize() bool {
+	if o != nil && o.TotalSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalSize gets a reference to the given int64 and assigns it to the TotalSize field.
+func (o *PersistentTopicInternalStats) SetTotalSize(v int64) {
+	o.TotalSize = &v
 }
 
 // GetCurrentLedgerEntries returns the CurrentLedgerEntries field value if set, zero value otherwise.
@@ -145,102 +210,6 @@ func (o *PersistentTopicInternalStats) SetCurrentLedgerSize(v int64) {
 	o.CurrentLedgerSize = &v
 }
 
-// GetCursors returns the Cursors field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetCursors() map[string]CursorStats {
-	if o == nil || o.Cursors == nil {
-		var ret map[string]CursorStats
-		return ret
-	}
-	return *o.Cursors
-}
-
-// GetCursorsOk returns a tuple with the Cursors field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetCursorsOk() (*map[string]CursorStats, bool) {
-	if o == nil || o.Cursors == nil {
-		return nil, false
-	}
-	return o.Cursors, true
-}
-
-// HasCursors returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasCursors() bool {
-	if o != nil && o.Cursors != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCursors gets a reference to the given map[string]CursorStats and assigns it to the Cursors field.
-func (o *PersistentTopicInternalStats) SetCursors(v map[string]CursorStats) {
-	o.Cursors = &v
-}
-
-// GetEntriesAddedCounter returns the EntriesAddedCounter field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetEntriesAddedCounter() int64 {
-	if o == nil || o.EntriesAddedCounter == nil {
-		var ret int64
-		return ret
-	}
-	return *o.EntriesAddedCounter
-}
-
-// GetEntriesAddedCounterOk returns a tuple with the EntriesAddedCounter field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetEntriesAddedCounterOk() (*int64, bool) {
-	if o == nil || o.EntriesAddedCounter == nil {
-		return nil, false
-	}
-	return o.EntriesAddedCounter, true
-}
-
-// HasEntriesAddedCounter returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasEntriesAddedCounter() bool {
-	if o != nil && o.EntriesAddedCounter != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEntriesAddedCounter gets a reference to the given int64 and assigns it to the EntriesAddedCounter field.
-func (o *PersistentTopicInternalStats) SetEntriesAddedCounter(v int64) {
-	o.EntriesAddedCounter = &v
-}
-
-// GetLastConfirmedEntry returns the LastConfirmedEntry field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetLastConfirmedEntry() string {
-	if o == nil || o.LastConfirmedEntry == nil {
-		var ret string
-		return ret
-	}
-	return *o.LastConfirmedEntry
-}
-
-// GetLastConfirmedEntryOk returns a tuple with the LastConfirmedEntry field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetLastConfirmedEntryOk() (*string, bool) {
-	if o == nil || o.LastConfirmedEntry == nil {
-		return nil, false
-	}
-	return o.LastConfirmedEntry, true
-}
-
-// HasLastConfirmedEntry returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasLastConfirmedEntry() bool {
-	if o != nil && o.LastConfirmedEntry != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastConfirmedEntry gets a reference to the given string and assigns it to the LastConfirmedEntry field.
-func (o *PersistentTopicInternalStats) SetLastConfirmedEntry(v string) {
-	o.LastConfirmedEntry = &v
-}
-
 // GetLastLedgerCreatedTimestamp returns the LastLedgerCreatedTimestamp field value if set, zero value otherwise.
 func (o *PersistentTopicInternalStats) GetLastLedgerCreatedTimestamp() string {
 	if o == nil || o.LastLedgerCreatedTimestamp == nil {
@@ -305,68 +274,36 @@ func (o *PersistentTopicInternalStats) SetLastLedgerCreationFailureTimestamp(v s
 	o.LastLedgerCreationFailureTimestamp = &v
 }
 
-// GetLedgers returns the Ledgers field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetLedgers() []LedgerInfo {
-	if o == nil || o.Ledgers == nil {
-		var ret []LedgerInfo
+// GetWaitingCursorsCount returns the WaitingCursorsCount field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetWaitingCursorsCount() int32 {
+	if o == nil || o.WaitingCursorsCount == nil {
+		var ret int32
 		return ret
 	}
-	return *o.Ledgers
+	return *o.WaitingCursorsCount
 }
 
-// GetLedgersOk returns a tuple with the Ledgers field value if set, nil otherwise
+// GetWaitingCursorsCountOk returns a tuple with the WaitingCursorsCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetLedgersOk() (*[]LedgerInfo, bool) {
-	if o == nil || o.Ledgers == nil {
+func (o *PersistentTopicInternalStats) GetWaitingCursorsCountOk() (*int32, bool) {
+	if o == nil || o.WaitingCursorsCount == nil {
 		return nil, false
 	}
-	return o.Ledgers, true
+	return o.WaitingCursorsCount, true
 }
 
-// HasLedgers returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasLedgers() bool {
-	if o != nil && o.Ledgers != nil {
+// HasWaitingCursorsCount returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasWaitingCursorsCount() bool {
+	if o != nil && o.WaitingCursorsCount != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetLedgers gets a reference to the given []LedgerInfo and assigns it to the Ledgers field.
-func (o *PersistentTopicInternalStats) SetLedgers(v []LedgerInfo) {
-	o.Ledgers = &v
-}
-
-// GetNumberOfEntries returns the NumberOfEntries field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetNumberOfEntries() int64 {
-	if o == nil || o.NumberOfEntries == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumberOfEntries
-}
-
-// GetNumberOfEntriesOk returns a tuple with the NumberOfEntries field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetNumberOfEntriesOk() (*int64, bool) {
-	if o == nil || o.NumberOfEntries == nil {
-		return nil, false
-	}
-	return o.NumberOfEntries, true
-}
-
-// HasNumberOfEntries returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasNumberOfEntries() bool {
-	if o != nil && o.NumberOfEntries != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumberOfEntries gets a reference to the given int64 and assigns it to the NumberOfEntries field.
-func (o *PersistentTopicInternalStats) SetNumberOfEntries(v int64) {
-	o.NumberOfEntries = &v
+// SetWaitingCursorsCount gets a reference to the given int32 and assigns it to the WaitingCursorsCount field.
+func (o *PersistentTopicInternalStats) SetWaitingCursorsCount(v int32) {
+	o.WaitingCursorsCount = &v
 }
 
 // GetPendingAddEntriesCount returns the PendingAddEntriesCount field value if set, zero value otherwise.
@@ -401,6 +338,38 @@ func (o *PersistentTopicInternalStats) SetPendingAddEntriesCount(v int32) {
 	o.PendingAddEntriesCount = &v
 }
 
+// GetLastConfirmedEntry returns the LastConfirmedEntry field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetLastConfirmedEntry() string {
+	if o == nil || o.LastConfirmedEntry == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastConfirmedEntry
+}
+
+// GetLastConfirmedEntryOk returns a tuple with the LastConfirmedEntry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentTopicInternalStats) GetLastConfirmedEntryOk() (*string, bool) {
+	if o == nil || o.LastConfirmedEntry == nil {
+		return nil, false
+	}
+	return o.LastConfirmedEntry, true
+}
+
+// HasLastConfirmedEntry returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasLastConfirmedEntry() bool {
+	if o != nil && o.LastConfirmedEntry != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastConfirmedEntry gets a reference to the given string and assigns it to the LastConfirmedEntry field.
+func (o *PersistentTopicInternalStats) SetLastConfirmedEntry(v string) {
+	o.LastConfirmedEntry = &v
+}
+
 // GetState returns the State field value if set, zero value otherwise.
 func (o *PersistentTopicInternalStats) GetState() string {
 	if o == nil || o.State == nil {
@@ -433,74 +402,144 @@ func (o *PersistentTopicInternalStats) SetState(v string) {
 	o.State = &v
 }
 
-// GetTotalSize returns the TotalSize field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetTotalSize() int64 {
-	if o == nil || o.TotalSize == nil {
-		var ret int64
+// GetLedgers returns the Ledgers field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetLedgers() []LedgerInfo {
+	if o == nil || o.Ledgers == nil {
+		var ret []LedgerInfo
 		return ret
 	}
-	return *o.TotalSize
+	return *o.Ledgers
 }
 
-// GetTotalSizeOk returns a tuple with the TotalSize field value if set, nil otherwise
+// GetLedgersOk returns a tuple with the Ledgers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetTotalSizeOk() (*int64, bool) {
-	if o == nil || o.TotalSize == nil {
+func (o *PersistentTopicInternalStats) GetLedgersOk() (*[]LedgerInfo, bool) {
+	if o == nil || o.Ledgers == nil {
 		return nil, false
 	}
-	return o.TotalSize, true
+	return o.Ledgers, true
 }
 
-// HasTotalSize returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasTotalSize() bool {
-	if o != nil && o.TotalSize != nil {
+// HasLedgers returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasLedgers() bool {
+	if o != nil && o.Ledgers != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalSize gets a reference to the given int64 and assigns it to the TotalSize field.
-func (o *PersistentTopicInternalStats) SetTotalSize(v int64) {
-	o.TotalSize = &v
+// SetLedgers gets a reference to the given []LedgerInfo and assigns it to the Ledgers field.
+func (o *PersistentTopicInternalStats) SetLedgers(v []LedgerInfo) {
+	o.Ledgers = &v
 }
 
-// GetWaitingCursorsCount returns the WaitingCursorsCount field value if set, zero value otherwise.
-func (o *PersistentTopicInternalStats) GetWaitingCursorsCount() int32 {
-	if o == nil || o.WaitingCursorsCount == nil {
-		var ret int32
+// GetCursors returns the Cursors field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetCursors() map[string]CursorStats {
+	if o == nil || o.Cursors == nil {
+		var ret map[string]CursorStats
 		return ret
 	}
-	return *o.WaitingCursorsCount
+	return *o.Cursors
 }
 
-// GetWaitingCursorsCountOk returns a tuple with the WaitingCursorsCount field value if set, nil otherwise
+// GetCursorsOk returns a tuple with the Cursors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PersistentTopicInternalStats) GetWaitingCursorsCountOk() (*int32, bool) {
-	if o == nil || o.WaitingCursorsCount == nil {
+func (o *PersistentTopicInternalStats) GetCursorsOk() (*map[string]CursorStats, bool) {
+	if o == nil || o.Cursors == nil {
 		return nil, false
 	}
-	return o.WaitingCursorsCount, true
+	return o.Cursors, true
 }
 
-// HasWaitingCursorsCount returns a boolean if a field has been set.
-func (o *PersistentTopicInternalStats) HasWaitingCursorsCount() bool {
-	if o != nil && o.WaitingCursorsCount != nil {
+// HasCursors returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasCursors() bool {
+	if o != nil && o.Cursors != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetWaitingCursorsCount gets a reference to the given int32 and assigns it to the WaitingCursorsCount field.
-func (o *PersistentTopicInternalStats) SetWaitingCursorsCount(v int32) {
-	o.WaitingCursorsCount = &v
+// SetCursors gets a reference to the given map[string]CursorStats and assigns it to the Cursors field.
+func (o *PersistentTopicInternalStats) SetCursors(v map[string]CursorStats) {
+	o.Cursors = &v
+}
+
+// GetSchemaLedgers returns the SchemaLedgers field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetSchemaLedgers() []LedgerInfo {
+	if o == nil || o.SchemaLedgers == nil {
+		var ret []LedgerInfo
+		return ret
+	}
+	return *o.SchemaLedgers
+}
+
+// GetSchemaLedgersOk returns a tuple with the SchemaLedgers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentTopicInternalStats) GetSchemaLedgersOk() (*[]LedgerInfo, bool) {
+	if o == nil || o.SchemaLedgers == nil {
+		return nil, false
+	}
+	return o.SchemaLedgers, true
+}
+
+// HasSchemaLedgers returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasSchemaLedgers() bool {
+	if o != nil && o.SchemaLedgers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSchemaLedgers gets a reference to the given []LedgerInfo and assigns it to the SchemaLedgers field.
+func (o *PersistentTopicInternalStats) SetSchemaLedgers(v []LedgerInfo) {
+	o.SchemaLedgers = &v
+}
+
+// GetCompactedLedger returns the CompactedLedger field value if set, zero value otherwise.
+func (o *PersistentTopicInternalStats) GetCompactedLedger() LedgerInfo {
+	if o == nil || o.CompactedLedger == nil {
+		var ret LedgerInfo
+		return ret
+	}
+	return *o.CompactedLedger
+}
+
+// GetCompactedLedgerOk returns a tuple with the CompactedLedger field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistentTopicInternalStats) GetCompactedLedgerOk() (*LedgerInfo, bool) {
+	if o == nil || o.CompactedLedger == nil {
+		return nil, false
+	}
+	return o.CompactedLedger, true
+}
+
+// HasCompactedLedger returns a boolean if a field has been set.
+func (o *PersistentTopicInternalStats) HasCompactedLedger() bool {
+	if o != nil && o.CompactedLedger != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCompactedLedger gets a reference to the given LedgerInfo and assigns it to the CompactedLedger field.
+func (o *PersistentTopicInternalStats) SetCompactedLedger(v LedgerInfo) {
+	o.CompactedLedger = &v
 }
 
 func (o PersistentTopicInternalStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CompactedLedger != nil {
-		toSerialize["compactedLedger"] = o.CompactedLedger
+	if o.EntriesAddedCounter != nil {
+		toSerialize["entriesAddedCounter"] = o.EntriesAddedCounter
+	}
+	if o.NumberOfEntries != nil {
+		toSerialize["numberOfEntries"] = o.NumberOfEntries
+	}
+	if o.TotalSize != nil {
+		toSerialize["totalSize"] = o.TotalSize
 	}
 	if o.CurrentLedgerEntries != nil {
 		toSerialize["currentLedgerEntries"] = o.CurrentLedgerEntries
@@ -508,38 +547,35 @@ func (o PersistentTopicInternalStats) MarshalJSON() ([]byte, error) {
 	if o.CurrentLedgerSize != nil {
 		toSerialize["currentLedgerSize"] = o.CurrentLedgerSize
 	}
-	if o.Cursors != nil {
-		toSerialize["cursors"] = o.Cursors
-	}
-	if o.EntriesAddedCounter != nil {
-		toSerialize["entriesAddedCounter"] = o.EntriesAddedCounter
-	}
-	if o.LastConfirmedEntry != nil {
-		toSerialize["lastConfirmedEntry"] = o.LastConfirmedEntry
-	}
 	if o.LastLedgerCreatedTimestamp != nil {
 		toSerialize["lastLedgerCreatedTimestamp"] = o.LastLedgerCreatedTimestamp
 	}
 	if o.LastLedgerCreationFailureTimestamp != nil {
 		toSerialize["lastLedgerCreationFailureTimestamp"] = o.LastLedgerCreationFailureTimestamp
 	}
-	if o.Ledgers != nil {
-		toSerialize["ledgers"] = o.Ledgers
-	}
-	if o.NumberOfEntries != nil {
-		toSerialize["numberOfEntries"] = o.NumberOfEntries
+	if o.WaitingCursorsCount != nil {
+		toSerialize["waitingCursorsCount"] = o.WaitingCursorsCount
 	}
 	if o.PendingAddEntriesCount != nil {
 		toSerialize["pendingAddEntriesCount"] = o.PendingAddEntriesCount
 	}
+	if o.LastConfirmedEntry != nil {
+		toSerialize["lastConfirmedEntry"] = o.LastConfirmedEntry
+	}
 	if o.State != nil {
 		toSerialize["state"] = o.State
 	}
-	if o.TotalSize != nil {
-		toSerialize["totalSize"] = o.TotalSize
+	if o.Ledgers != nil {
+		toSerialize["ledgers"] = o.Ledgers
 	}
-	if o.WaitingCursorsCount != nil {
-		toSerialize["waitingCursorsCount"] = o.WaitingCursorsCount
+	if o.Cursors != nil {
+		toSerialize["cursors"] = o.Cursors
+	}
+	if o.SchemaLedgers != nil {
+		toSerialize["schemaLedgers"] = o.SchemaLedgers
+	}
+	if o.CompactedLedger != nil {
+		toSerialize["compactedLedger"] = o.CompactedLedger
 	}
 	return json.Marshal(toSerialize)
 }

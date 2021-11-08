@@ -16,9 +16,9 @@ import (
 
 // PoolChunkListStats struct for PoolChunkListStats
 type PoolChunkListStats struct {
-	Chunks *[]PoolChunkStats `json:"chunks,omitempty"`
-	MaxUsage *int32 `json:"maxUsage,omitempty"`
 	MinUsage *int32 `json:"minUsage,omitempty"`
+	MaxUsage *int32 `json:"maxUsage,omitempty"`
+	Chunks *[]PoolChunkStats `json:"chunks,omitempty"`
 }
 
 // NewPoolChunkListStats instantiates a new PoolChunkListStats object
@@ -36,70 +36,6 @@ func NewPoolChunkListStats() *PoolChunkListStats {
 func NewPoolChunkListStatsWithDefaults() *PoolChunkListStats {
 	this := PoolChunkListStats{}
 	return &this
-}
-
-// GetChunks returns the Chunks field value if set, zero value otherwise.
-func (o *PoolChunkListStats) GetChunks() []PoolChunkStats {
-	if o == nil || o.Chunks == nil {
-		var ret []PoolChunkStats
-		return ret
-	}
-	return *o.Chunks
-}
-
-// GetChunksOk returns a tuple with the Chunks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolChunkListStats) GetChunksOk() (*[]PoolChunkStats, bool) {
-	if o == nil || o.Chunks == nil {
-		return nil, false
-	}
-	return o.Chunks, true
-}
-
-// HasChunks returns a boolean if a field has been set.
-func (o *PoolChunkListStats) HasChunks() bool {
-	if o != nil && o.Chunks != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetChunks gets a reference to the given []PoolChunkStats and assigns it to the Chunks field.
-func (o *PoolChunkListStats) SetChunks(v []PoolChunkStats) {
-	o.Chunks = &v
-}
-
-// GetMaxUsage returns the MaxUsage field value if set, zero value otherwise.
-func (o *PoolChunkListStats) GetMaxUsage() int32 {
-	if o == nil || o.MaxUsage == nil {
-		var ret int32
-		return ret
-	}
-	return *o.MaxUsage
-}
-
-// GetMaxUsageOk returns a tuple with the MaxUsage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolChunkListStats) GetMaxUsageOk() (*int32, bool) {
-	if o == nil || o.MaxUsage == nil {
-		return nil, false
-	}
-	return o.MaxUsage, true
-}
-
-// HasMaxUsage returns a boolean if a field has been set.
-func (o *PoolChunkListStats) HasMaxUsage() bool {
-	if o != nil && o.MaxUsage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxUsage gets a reference to the given int32 and assigns it to the MaxUsage field.
-func (o *PoolChunkListStats) SetMaxUsage(v int32) {
-	o.MaxUsage = &v
 }
 
 // GetMinUsage returns the MinUsage field value if set, zero value otherwise.
@@ -134,16 +70,80 @@ func (o *PoolChunkListStats) SetMinUsage(v int32) {
 	o.MinUsage = &v
 }
 
+// GetMaxUsage returns the MaxUsage field value if set, zero value otherwise.
+func (o *PoolChunkListStats) GetMaxUsage() int32 {
+	if o == nil || o.MaxUsage == nil {
+		var ret int32
+		return ret
+	}
+	return *o.MaxUsage
+}
+
+// GetMaxUsageOk returns a tuple with the MaxUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolChunkListStats) GetMaxUsageOk() (*int32, bool) {
+	if o == nil || o.MaxUsage == nil {
+		return nil, false
+	}
+	return o.MaxUsage, true
+}
+
+// HasMaxUsage returns a boolean if a field has been set.
+func (o *PoolChunkListStats) HasMaxUsage() bool {
+	if o != nil && o.MaxUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxUsage gets a reference to the given int32 and assigns it to the MaxUsage field.
+func (o *PoolChunkListStats) SetMaxUsage(v int32) {
+	o.MaxUsage = &v
+}
+
+// GetChunks returns the Chunks field value if set, zero value otherwise.
+func (o *PoolChunkListStats) GetChunks() []PoolChunkStats {
+	if o == nil || o.Chunks == nil {
+		var ret []PoolChunkStats
+		return ret
+	}
+	return *o.Chunks
+}
+
+// GetChunksOk returns a tuple with the Chunks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolChunkListStats) GetChunksOk() (*[]PoolChunkStats, bool) {
+	if o == nil || o.Chunks == nil {
+		return nil, false
+	}
+	return o.Chunks, true
+}
+
+// HasChunks returns a boolean if a field has been set.
+func (o *PoolChunkListStats) HasChunks() bool {
+	if o != nil && o.Chunks != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChunks gets a reference to the given []PoolChunkStats and assigns it to the Chunks field.
+func (o *PoolChunkListStats) SetChunks(v []PoolChunkStats) {
+	o.Chunks = &v
+}
+
 func (o PoolChunkListStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Chunks != nil {
-		toSerialize["chunks"] = o.Chunks
+	if o.MinUsage != nil {
+		toSerialize["minUsage"] = o.MinUsage
 	}
 	if o.MaxUsage != nil {
 		toSerialize["maxUsage"] = o.MaxUsage
 	}
-	if o.MinUsage != nil {
-		toSerialize["minUsage"] = o.MinUsage
+	if o.Chunks != nil {
+		toSerialize["chunks"] = o.Chunks
 	}
 	return json.Marshal(toSerialize)
 }

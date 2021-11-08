@@ -16,49 +16,49 @@ import (
 
 // LoadReport struct for LoadReport
 type LoadReport struct {
-	AllocatedBandwidthIn *float64 `json:"allocatedBandwidthIn,omitempty"`
-	AllocatedBandwidthOut *float64 `json:"allocatedBandwidthOut,omitempty"`
-	AllocatedCPU *float64 `json:"allocatedCPU,omitempty"`
-	AllocatedMemory *float64 `json:"allocatedMemory,omitempty"`
-	AllocatedMsgRateIn *float64 `json:"allocatedMsgRateIn,omitempty"`
-	AllocatedMsgRateOut *float64 `json:"allocatedMsgRateOut,omitempty"`
-	BandwidthIn *ResourceUsage `json:"bandwidthIn,omitempty"`
-	BandwidthOut *ResourceUsage `json:"bandwidthOut,omitempty"`
-	BrokerVersionString *string `json:"brokerVersionString,omitempty"`
-	BundleGains *[]string `json:"bundleGains,omitempty"`
-	BundleLosses *[]string `json:"bundleLosses,omitempty"`
-	BundleStats *map[string]NamespaceBundleStats `json:"bundleStats,omitempty"`
-	Cpu *ResourceUsage `json:"cpu,omitempty"`
-	DirectMemory *ResourceUsage `json:"directMemory,omitempty"`
-	LastUpdate *int64 `json:"lastUpdate,omitempty"`
-	LoadReportType *string `json:"loadReportType,omitempty"`
-	Memory *ResourceUsage `json:"memory,omitempty"`
-	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
-	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
-	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
-	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NonPersistentTopicsEnabled *bool `json:"nonPersistentTopicsEnabled,omitempty"`
-	NumBundles *int32 `json:"numBundles,omitempty"`
-	NumConsumers *int32 `json:"numConsumers,omitempty"`
-	NumProducers *int32 `json:"numProducers,omitempty"`
-	NumTopics *int32 `json:"numTopics,omitempty"`
-	OverLoaded *bool `json:"overLoaded,omitempty"`
-	PersistentTopicsEnabled *bool `json:"persistentTopicsEnabled,omitempty"`
-	PreAllocatedBandwidthIn *float64 `json:"preAllocatedBandwidthIn,omitempty"`
-	PreAllocatedBandwidthOut *float64 `json:"preAllocatedBandwidthOut,omitempty"`
-	PreAllocatedCPU *float64 `json:"preAllocatedCPU,omitempty"`
-	PreAllocatedMemory *float64 `json:"preAllocatedMemory,omitempty"`
-	PreAllocatedMsgRateIn *float64 `json:"preAllocatedMsgRateIn,omitempty"`
-	PreAllocatedMsgRateOut *float64 `json:"preAllocatedMsgRateOut,omitempty"`
-	Protocols *map[string]string `json:"protocols,omitempty"`
-	PulsarServiceUrl *string `json:"pulsarServiceUrl,omitempty"`
-	PulsarServiceUrlTls *string `json:"pulsarServiceUrlTls,omitempty"`
-	SystemResourceUsage *SystemResourceUsage `json:"systemResourceUsage,omitempty"`
-	Timestamp *int64 `json:"timestamp,omitempty"`
-	UnderLoaded *bool `json:"underLoaded,omitempty"`
+	BrokerVersionString *string `json:"brokerVersionString,omitempty"`
 	WebServiceUrl *string `json:"webServiceUrl,omitempty"`
 	WebServiceUrlTls *string `json:"webServiceUrlTls,omitempty"`
+	PulsarServiceUrl *string `json:"pulsarServiceUrl,omitempty"`
+	PulsarServiceUrlTls *string `json:"pulsarServiceUrlTls,omitempty"`
+	PersistentTopicsEnabled *bool `json:"persistentTopicsEnabled,omitempty"`
+	NonPersistentTopicsEnabled *bool `json:"nonPersistentTopicsEnabled,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty"`
+	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
+	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
+	NumTopics *int32 `json:"numTopics,omitempty"`
+	NumConsumers *int32 `json:"numConsumers,omitempty"`
+	NumProducers *int32 `json:"numProducers,omitempty"`
+	NumBundles *int32 `json:"numBundles,omitempty"`
+	Protocols *map[string]string `json:"protocols,omitempty"`
+	SystemResourceUsage *SystemResourceUsage `json:"systemResourceUsage,omitempty"`
+	BundleStats *map[string]NamespaceBundleStats `json:"bundleStats,omitempty"`
+	BundleGains *[]string `json:"bundleGains,omitempty"`
+	BundleLosses *[]string `json:"bundleLosses,omitempty"`
+	AllocatedCPU *float64 `json:"allocatedCPU,omitempty"`
+	AllocatedMemory *float64 `json:"allocatedMemory,omitempty"`
+	AllocatedBandwidthIn *float64 `json:"allocatedBandwidthIn,omitempty"`
+	AllocatedBandwidthOut *float64 `json:"allocatedBandwidthOut,omitempty"`
+	AllocatedMsgRateIn *float64 `json:"allocatedMsgRateIn,omitempty"`
+	AllocatedMsgRateOut *float64 `json:"allocatedMsgRateOut,omitempty"`
+	PreAllocatedCPU *float64 `json:"preAllocatedCPU,omitempty"`
+	PreAllocatedMemory *float64 `json:"preAllocatedMemory,omitempty"`
+	PreAllocatedBandwidthIn *float64 `json:"preAllocatedBandwidthIn,omitempty"`
+	PreAllocatedBandwidthOut *float64 `json:"preAllocatedBandwidthOut,omitempty"`
+	PreAllocatedMsgRateIn *float64 `json:"preAllocatedMsgRateIn,omitempty"`
+	PreAllocatedMsgRateOut *float64 `json:"preAllocatedMsgRateOut,omitempty"`
+	UnderLoaded *bool `json:"underLoaded,omitempty"`
+	OverLoaded *bool `json:"overLoaded,omitempty"`
+	LoadReportType *string `json:"loadReportType,omitempty"`
+	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
+	LastUpdate *int64 `json:"lastUpdate,omitempty"`
+	DirectMemory *ResourceUsage `json:"directMemory,omitempty"`
+	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
+	Cpu *ResourceUsage `json:"cpu,omitempty"`
+	Memory *ResourceUsage `json:"memory,omitempty"`
+	BandwidthIn *ResourceUsage `json:"bandwidthIn,omitempty"`
+	BandwidthOut *ResourceUsage `json:"bandwidthOut,omitempty"`
 }
 
 // NewLoadReport instantiates a new LoadReport object
@@ -76,678 +76,6 @@ func NewLoadReport() *LoadReport {
 func NewLoadReportWithDefaults() *LoadReport {
 	this := LoadReport{}
 	return &this
-}
-
-// GetAllocatedBandwidthIn returns the AllocatedBandwidthIn field value if set, zero value otherwise.
-func (o *LoadReport) GetAllocatedBandwidthIn() float64 {
-	if o == nil || o.AllocatedBandwidthIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.AllocatedBandwidthIn
-}
-
-// GetAllocatedBandwidthInOk returns a tuple with the AllocatedBandwidthIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetAllocatedBandwidthInOk() (*float64, bool) {
-	if o == nil || o.AllocatedBandwidthIn == nil {
-		return nil, false
-	}
-	return o.AllocatedBandwidthIn, true
-}
-
-// HasAllocatedBandwidthIn returns a boolean if a field has been set.
-func (o *LoadReport) HasAllocatedBandwidthIn() bool {
-	if o != nil && o.AllocatedBandwidthIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocatedBandwidthIn gets a reference to the given float64 and assigns it to the AllocatedBandwidthIn field.
-func (o *LoadReport) SetAllocatedBandwidthIn(v float64) {
-	o.AllocatedBandwidthIn = &v
-}
-
-// GetAllocatedBandwidthOut returns the AllocatedBandwidthOut field value if set, zero value otherwise.
-func (o *LoadReport) GetAllocatedBandwidthOut() float64 {
-	if o == nil || o.AllocatedBandwidthOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.AllocatedBandwidthOut
-}
-
-// GetAllocatedBandwidthOutOk returns a tuple with the AllocatedBandwidthOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetAllocatedBandwidthOutOk() (*float64, bool) {
-	if o == nil || o.AllocatedBandwidthOut == nil {
-		return nil, false
-	}
-	return o.AllocatedBandwidthOut, true
-}
-
-// HasAllocatedBandwidthOut returns a boolean if a field has been set.
-func (o *LoadReport) HasAllocatedBandwidthOut() bool {
-	if o != nil && o.AllocatedBandwidthOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocatedBandwidthOut gets a reference to the given float64 and assigns it to the AllocatedBandwidthOut field.
-func (o *LoadReport) SetAllocatedBandwidthOut(v float64) {
-	o.AllocatedBandwidthOut = &v
-}
-
-// GetAllocatedCPU returns the AllocatedCPU field value if set, zero value otherwise.
-func (o *LoadReport) GetAllocatedCPU() float64 {
-	if o == nil || o.AllocatedCPU == nil {
-		var ret float64
-		return ret
-	}
-	return *o.AllocatedCPU
-}
-
-// GetAllocatedCPUOk returns a tuple with the AllocatedCPU field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetAllocatedCPUOk() (*float64, bool) {
-	if o == nil || o.AllocatedCPU == nil {
-		return nil, false
-	}
-	return o.AllocatedCPU, true
-}
-
-// HasAllocatedCPU returns a boolean if a field has been set.
-func (o *LoadReport) HasAllocatedCPU() bool {
-	if o != nil && o.AllocatedCPU != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocatedCPU gets a reference to the given float64 and assigns it to the AllocatedCPU field.
-func (o *LoadReport) SetAllocatedCPU(v float64) {
-	o.AllocatedCPU = &v
-}
-
-// GetAllocatedMemory returns the AllocatedMemory field value if set, zero value otherwise.
-func (o *LoadReport) GetAllocatedMemory() float64 {
-	if o == nil || o.AllocatedMemory == nil {
-		var ret float64
-		return ret
-	}
-	return *o.AllocatedMemory
-}
-
-// GetAllocatedMemoryOk returns a tuple with the AllocatedMemory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetAllocatedMemoryOk() (*float64, bool) {
-	if o == nil || o.AllocatedMemory == nil {
-		return nil, false
-	}
-	return o.AllocatedMemory, true
-}
-
-// HasAllocatedMemory returns a boolean if a field has been set.
-func (o *LoadReport) HasAllocatedMemory() bool {
-	if o != nil && o.AllocatedMemory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocatedMemory gets a reference to the given float64 and assigns it to the AllocatedMemory field.
-func (o *LoadReport) SetAllocatedMemory(v float64) {
-	o.AllocatedMemory = &v
-}
-
-// GetAllocatedMsgRateIn returns the AllocatedMsgRateIn field value if set, zero value otherwise.
-func (o *LoadReport) GetAllocatedMsgRateIn() float64 {
-	if o == nil || o.AllocatedMsgRateIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.AllocatedMsgRateIn
-}
-
-// GetAllocatedMsgRateInOk returns a tuple with the AllocatedMsgRateIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetAllocatedMsgRateInOk() (*float64, bool) {
-	if o == nil || o.AllocatedMsgRateIn == nil {
-		return nil, false
-	}
-	return o.AllocatedMsgRateIn, true
-}
-
-// HasAllocatedMsgRateIn returns a boolean if a field has been set.
-func (o *LoadReport) HasAllocatedMsgRateIn() bool {
-	if o != nil && o.AllocatedMsgRateIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocatedMsgRateIn gets a reference to the given float64 and assigns it to the AllocatedMsgRateIn field.
-func (o *LoadReport) SetAllocatedMsgRateIn(v float64) {
-	o.AllocatedMsgRateIn = &v
-}
-
-// GetAllocatedMsgRateOut returns the AllocatedMsgRateOut field value if set, zero value otherwise.
-func (o *LoadReport) GetAllocatedMsgRateOut() float64 {
-	if o == nil || o.AllocatedMsgRateOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.AllocatedMsgRateOut
-}
-
-// GetAllocatedMsgRateOutOk returns a tuple with the AllocatedMsgRateOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetAllocatedMsgRateOutOk() (*float64, bool) {
-	if o == nil || o.AllocatedMsgRateOut == nil {
-		return nil, false
-	}
-	return o.AllocatedMsgRateOut, true
-}
-
-// HasAllocatedMsgRateOut returns a boolean if a field has been set.
-func (o *LoadReport) HasAllocatedMsgRateOut() bool {
-	if o != nil && o.AllocatedMsgRateOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllocatedMsgRateOut gets a reference to the given float64 and assigns it to the AllocatedMsgRateOut field.
-func (o *LoadReport) SetAllocatedMsgRateOut(v float64) {
-	o.AllocatedMsgRateOut = &v
-}
-
-// GetBandwidthIn returns the BandwidthIn field value if set, zero value otherwise.
-func (o *LoadReport) GetBandwidthIn() ResourceUsage {
-	if o == nil || o.BandwidthIn == nil {
-		var ret ResourceUsage
-		return ret
-	}
-	return *o.BandwidthIn
-}
-
-// GetBandwidthInOk returns a tuple with the BandwidthIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetBandwidthInOk() (*ResourceUsage, bool) {
-	if o == nil || o.BandwidthIn == nil {
-		return nil, false
-	}
-	return o.BandwidthIn, true
-}
-
-// HasBandwidthIn returns a boolean if a field has been set.
-func (o *LoadReport) HasBandwidthIn() bool {
-	if o != nil && o.BandwidthIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBandwidthIn gets a reference to the given ResourceUsage and assigns it to the BandwidthIn field.
-func (o *LoadReport) SetBandwidthIn(v ResourceUsage) {
-	o.BandwidthIn = &v
-}
-
-// GetBandwidthOut returns the BandwidthOut field value if set, zero value otherwise.
-func (o *LoadReport) GetBandwidthOut() ResourceUsage {
-	if o == nil || o.BandwidthOut == nil {
-		var ret ResourceUsage
-		return ret
-	}
-	return *o.BandwidthOut
-}
-
-// GetBandwidthOutOk returns a tuple with the BandwidthOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetBandwidthOutOk() (*ResourceUsage, bool) {
-	if o == nil || o.BandwidthOut == nil {
-		return nil, false
-	}
-	return o.BandwidthOut, true
-}
-
-// HasBandwidthOut returns a boolean if a field has been set.
-func (o *LoadReport) HasBandwidthOut() bool {
-	if o != nil && o.BandwidthOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBandwidthOut gets a reference to the given ResourceUsage and assigns it to the BandwidthOut field.
-func (o *LoadReport) SetBandwidthOut(v ResourceUsage) {
-	o.BandwidthOut = &v
-}
-
-// GetBrokerVersionString returns the BrokerVersionString field value if set, zero value otherwise.
-func (o *LoadReport) GetBrokerVersionString() string {
-	if o == nil || o.BrokerVersionString == nil {
-		var ret string
-		return ret
-	}
-	return *o.BrokerVersionString
-}
-
-// GetBrokerVersionStringOk returns a tuple with the BrokerVersionString field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetBrokerVersionStringOk() (*string, bool) {
-	if o == nil || o.BrokerVersionString == nil {
-		return nil, false
-	}
-	return o.BrokerVersionString, true
-}
-
-// HasBrokerVersionString returns a boolean if a field has been set.
-func (o *LoadReport) HasBrokerVersionString() bool {
-	if o != nil && o.BrokerVersionString != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBrokerVersionString gets a reference to the given string and assigns it to the BrokerVersionString field.
-func (o *LoadReport) SetBrokerVersionString(v string) {
-	o.BrokerVersionString = &v
-}
-
-// GetBundleGains returns the BundleGains field value if set, zero value otherwise.
-func (o *LoadReport) GetBundleGains() []string {
-	if o == nil || o.BundleGains == nil {
-		var ret []string
-		return ret
-	}
-	return *o.BundleGains
-}
-
-// GetBundleGainsOk returns a tuple with the BundleGains field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetBundleGainsOk() (*[]string, bool) {
-	if o == nil || o.BundleGains == nil {
-		return nil, false
-	}
-	return o.BundleGains, true
-}
-
-// HasBundleGains returns a boolean if a field has been set.
-func (o *LoadReport) HasBundleGains() bool {
-	if o != nil && o.BundleGains != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBundleGains gets a reference to the given []string and assigns it to the BundleGains field.
-func (o *LoadReport) SetBundleGains(v []string) {
-	o.BundleGains = &v
-}
-
-// GetBundleLosses returns the BundleLosses field value if set, zero value otherwise.
-func (o *LoadReport) GetBundleLosses() []string {
-	if o == nil || o.BundleLosses == nil {
-		var ret []string
-		return ret
-	}
-	return *o.BundleLosses
-}
-
-// GetBundleLossesOk returns a tuple with the BundleLosses field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetBundleLossesOk() (*[]string, bool) {
-	if o == nil || o.BundleLosses == nil {
-		return nil, false
-	}
-	return o.BundleLosses, true
-}
-
-// HasBundleLosses returns a boolean if a field has been set.
-func (o *LoadReport) HasBundleLosses() bool {
-	if o != nil && o.BundleLosses != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBundleLosses gets a reference to the given []string and assigns it to the BundleLosses field.
-func (o *LoadReport) SetBundleLosses(v []string) {
-	o.BundleLosses = &v
-}
-
-// GetBundleStats returns the BundleStats field value if set, zero value otherwise.
-func (o *LoadReport) GetBundleStats() map[string]NamespaceBundleStats {
-	if o == nil || o.BundleStats == nil {
-		var ret map[string]NamespaceBundleStats
-		return ret
-	}
-	return *o.BundleStats
-}
-
-// GetBundleStatsOk returns a tuple with the BundleStats field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetBundleStatsOk() (*map[string]NamespaceBundleStats, bool) {
-	if o == nil || o.BundleStats == nil {
-		return nil, false
-	}
-	return o.BundleStats, true
-}
-
-// HasBundleStats returns a boolean if a field has been set.
-func (o *LoadReport) HasBundleStats() bool {
-	if o != nil && o.BundleStats != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBundleStats gets a reference to the given map[string]NamespaceBundleStats and assigns it to the BundleStats field.
-func (o *LoadReport) SetBundleStats(v map[string]NamespaceBundleStats) {
-	o.BundleStats = &v
-}
-
-// GetCpu returns the Cpu field value if set, zero value otherwise.
-func (o *LoadReport) GetCpu() ResourceUsage {
-	if o == nil || o.Cpu == nil {
-		var ret ResourceUsage
-		return ret
-	}
-	return *o.Cpu
-}
-
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetCpuOk() (*ResourceUsage, bool) {
-	if o == nil || o.Cpu == nil {
-		return nil, false
-	}
-	return o.Cpu, true
-}
-
-// HasCpu returns a boolean if a field has been set.
-func (o *LoadReport) HasCpu() bool {
-	if o != nil && o.Cpu != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given ResourceUsage and assigns it to the Cpu field.
-func (o *LoadReport) SetCpu(v ResourceUsage) {
-	o.Cpu = &v
-}
-
-// GetDirectMemory returns the DirectMemory field value if set, zero value otherwise.
-func (o *LoadReport) GetDirectMemory() ResourceUsage {
-	if o == nil || o.DirectMemory == nil {
-		var ret ResourceUsage
-		return ret
-	}
-	return *o.DirectMemory
-}
-
-// GetDirectMemoryOk returns a tuple with the DirectMemory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetDirectMemoryOk() (*ResourceUsage, bool) {
-	if o == nil || o.DirectMemory == nil {
-		return nil, false
-	}
-	return o.DirectMemory, true
-}
-
-// HasDirectMemory returns a boolean if a field has been set.
-func (o *LoadReport) HasDirectMemory() bool {
-	if o != nil && o.DirectMemory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDirectMemory gets a reference to the given ResourceUsage and assigns it to the DirectMemory field.
-func (o *LoadReport) SetDirectMemory(v ResourceUsage) {
-	o.DirectMemory = &v
-}
-
-// GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
-func (o *LoadReport) GetLastUpdate() int64 {
-	if o == nil || o.LastUpdate == nil {
-		var ret int64
-		return ret
-	}
-	return *o.LastUpdate
-}
-
-// GetLastUpdateOk returns a tuple with the LastUpdate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetLastUpdateOk() (*int64, bool) {
-	if o == nil || o.LastUpdate == nil {
-		return nil, false
-	}
-	return o.LastUpdate, true
-}
-
-// HasLastUpdate returns a boolean if a field has been set.
-func (o *LoadReport) HasLastUpdate() bool {
-	if o != nil && o.LastUpdate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastUpdate gets a reference to the given int64 and assigns it to the LastUpdate field.
-func (o *LoadReport) SetLastUpdate(v int64) {
-	o.LastUpdate = &v
-}
-
-// GetLoadReportType returns the LoadReportType field value if set, zero value otherwise.
-func (o *LoadReport) GetLoadReportType() string {
-	if o == nil || o.LoadReportType == nil {
-		var ret string
-		return ret
-	}
-	return *o.LoadReportType
-}
-
-// GetLoadReportTypeOk returns a tuple with the LoadReportType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetLoadReportTypeOk() (*string, bool) {
-	if o == nil || o.LoadReportType == nil {
-		return nil, false
-	}
-	return o.LoadReportType, true
-}
-
-// HasLoadReportType returns a boolean if a field has been set.
-func (o *LoadReport) HasLoadReportType() bool {
-	if o != nil && o.LoadReportType != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLoadReportType gets a reference to the given string and assigns it to the LoadReportType field.
-func (o *LoadReport) SetLoadReportType(v string) {
-	o.LoadReportType = &v
-}
-
-// GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *LoadReport) GetMemory() ResourceUsage {
-	if o == nil || o.Memory == nil {
-		var ret ResourceUsage
-		return ret
-	}
-	return *o.Memory
-}
-
-// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetMemoryOk() (*ResourceUsage, bool) {
-	if o == nil || o.Memory == nil {
-		return nil, false
-	}
-	return o.Memory, true
-}
-
-// HasMemory returns a boolean if a field has been set.
-func (o *LoadReport) HasMemory() bool {
-	if o != nil && o.Memory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMemory gets a reference to the given ResourceUsage and assigns it to the Memory field.
-func (o *LoadReport) SetMemory(v ResourceUsage) {
-	o.Memory = &v
-}
-
-// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
-func (o *LoadReport) GetMsgRateIn() float64 {
-	if o == nil || o.MsgRateIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateIn
-}
-
-// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetMsgRateInOk() (*float64, bool) {
-	if o == nil || o.MsgRateIn == nil {
-		return nil, false
-	}
-	return o.MsgRateIn, true
-}
-
-// HasMsgRateIn returns a boolean if a field has been set.
-func (o *LoadReport) HasMsgRateIn() bool {
-	if o != nil && o.MsgRateIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
-func (o *LoadReport) SetMsgRateIn(v float64) {
-	o.MsgRateIn = &v
-}
-
-// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
-func (o *LoadReport) GetMsgRateOut() float64 {
-	if o == nil || o.MsgRateOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateOut
-}
-
-// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetMsgRateOutOk() (*float64, bool) {
-	if o == nil || o.MsgRateOut == nil {
-		return nil, false
-	}
-	return o.MsgRateOut, true
-}
-
-// HasMsgRateOut returns a boolean if a field has been set.
-func (o *LoadReport) HasMsgRateOut() bool {
-	if o != nil && o.MsgRateOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
-func (o *LoadReport) SetMsgRateOut(v float64) {
-	o.MsgRateOut = &v
-}
-
-// GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
-func (o *LoadReport) GetMsgThroughputIn() float64 {
-	if o == nil || o.MsgThroughputIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgThroughputIn
-}
-
-// GetMsgThroughputInOk returns a tuple with the MsgThroughputIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetMsgThroughputInOk() (*float64, bool) {
-	if o == nil || o.MsgThroughputIn == nil {
-		return nil, false
-	}
-	return o.MsgThroughputIn, true
-}
-
-// HasMsgThroughputIn returns a boolean if a field has been set.
-func (o *LoadReport) HasMsgThroughputIn() bool {
-	if o != nil && o.MsgThroughputIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgThroughputIn gets a reference to the given float64 and assigns it to the MsgThroughputIn field.
-func (o *LoadReport) SetMsgThroughputIn(v float64) {
-	o.MsgThroughputIn = &v
-}
-
-// GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
-func (o *LoadReport) GetMsgThroughputOut() float64 {
-	if o == nil || o.MsgThroughputOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgThroughputOut
-}
-
-// GetMsgThroughputOutOk returns a tuple with the MsgThroughputOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetMsgThroughputOutOk() (*float64, bool) {
-	if o == nil || o.MsgThroughputOut == nil {
-		return nil, false
-	}
-	return o.MsgThroughputOut, true
-}
-
-// HasMsgThroughputOut returns a boolean if a field has been set.
-func (o *LoadReport) HasMsgThroughputOut() bool {
-	if o != nil && o.MsgThroughputOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
-func (o *LoadReport) SetMsgThroughputOut(v float64) {
-	o.MsgThroughputOut = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
@@ -782,612 +110,36 @@ func (o *LoadReport) SetName(v string) {
 	o.Name = &v
 }
 
-// GetNonPersistentTopicsEnabled returns the NonPersistentTopicsEnabled field value if set, zero value otherwise.
-func (o *LoadReport) GetNonPersistentTopicsEnabled() bool {
-	if o == nil || o.NonPersistentTopicsEnabled == nil {
-		var ret bool
-		return ret
-	}
-	return *o.NonPersistentTopicsEnabled
-}
-
-// GetNonPersistentTopicsEnabledOk returns a tuple with the NonPersistentTopicsEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetNonPersistentTopicsEnabledOk() (*bool, bool) {
-	if o == nil || o.NonPersistentTopicsEnabled == nil {
-		return nil, false
-	}
-	return o.NonPersistentTopicsEnabled, true
-}
-
-// HasNonPersistentTopicsEnabled returns a boolean if a field has been set.
-func (o *LoadReport) HasNonPersistentTopicsEnabled() bool {
-	if o != nil && o.NonPersistentTopicsEnabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNonPersistentTopicsEnabled gets a reference to the given bool and assigns it to the NonPersistentTopicsEnabled field.
-func (o *LoadReport) SetNonPersistentTopicsEnabled(v bool) {
-	o.NonPersistentTopicsEnabled = &v
-}
-
-// GetNumBundles returns the NumBundles field value if set, zero value otherwise.
-func (o *LoadReport) GetNumBundles() int32 {
-	if o == nil || o.NumBundles == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NumBundles
-}
-
-// GetNumBundlesOk returns a tuple with the NumBundles field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetNumBundlesOk() (*int32, bool) {
-	if o == nil || o.NumBundles == nil {
-		return nil, false
-	}
-	return o.NumBundles, true
-}
-
-// HasNumBundles returns a boolean if a field has been set.
-func (o *LoadReport) HasNumBundles() bool {
-	if o != nil && o.NumBundles != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumBundles gets a reference to the given int32 and assigns it to the NumBundles field.
-func (o *LoadReport) SetNumBundles(v int32) {
-	o.NumBundles = &v
-}
-
-// GetNumConsumers returns the NumConsumers field value if set, zero value otherwise.
-func (o *LoadReport) GetNumConsumers() int32 {
-	if o == nil || o.NumConsumers == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NumConsumers
-}
-
-// GetNumConsumersOk returns a tuple with the NumConsumers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetNumConsumersOk() (*int32, bool) {
-	if o == nil || o.NumConsumers == nil {
-		return nil, false
-	}
-	return o.NumConsumers, true
-}
-
-// HasNumConsumers returns a boolean if a field has been set.
-func (o *LoadReport) HasNumConsumers() bool {
-	if o != nil && o.NumConsumers != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumConsumers gets a reference to the given int32 and assigns it to the NumConsumers field.
-func (o *LoadReport) SetNumConsumers(v int32) {
-	o.NumConsumers = &v
-}
-
-// GetNumProducers returns the NumProducers field value if set, zero value otherwise.
-func (o *LoadReport) GetNumProducers() int32 {
-	if o == nil || o.NumProducers == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NumProducers
-}
-
-// GetNumProducersOk returns a tuple with the NumProducers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetNumProducersOk() (*int32, bool) {
-	if o == nil || o.NumProducers == nil {
-		return nil, false
-	}
-	return o.NumProducers, true
-}
-
-// HasNumProducers returns a boolean if a field has been set.
-func (o *LoadReport) HasNumProducers() bool {
-	if o != nil && o.NumProducers != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumProducers gets a reference to the given int32 and assigns it to the NumProducers field.
-func (o *LoadReport) SetNumProducers(v int32) {
-	o.NumProducers = &v
-}
-
-// GetNumTopics returns the NumTopics field value if set, zero value otherwise.
-func (o *LoadReport) GetNumTopics() int32 {
-	if o == nil || o.NumTopics == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NumTopics
-}
-
-// GetNumTopicsOk returns a tuple with the NumTopics field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetNumTopicsOk() (*int32, bool) {
-	if o == nil || o.NumTopics == nil {
-		return nil, false
-	}
-	return o.NumTopics, true
-}
-
-// HasNumTopics returns a boolean if a field has been set.
-func (o *LoadReport) HasNumTopics() bool {
-	if o != nil && o.NumTopics != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumTopics gets a reference to the given int32 and assigns it to the NumTopics field.
-func (o *LoadReport) SetNumTopics(v int32) {
-	o.NumTopics = &v
-}
-
-// GetOverLoaded returns the OverLoaded field value if set, zero value otherwise.
-func (o *LoadReport) GetOverLoaded() bool {
-	if o == nil || o.OverLoaded == nil {
-		var ret bool
-		return ret
-	}
-	return *o.OverLoaded
-}
-
-// GetOverLoadedOk returns a tuple with the OverLoaded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetOverLoadedOk() (*bool, bool) {
-	if o == nil || o.OverLoaded == nil {
-		return nil, false
-	}
-	return o.OverLoaded, true
-}
-
-// HasOverLoaded returns a boolean if a field has been set.
-func (o *LoadReport) HasOverLoaded() bool {
-	if o != nil && o.OverLoaded != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOverLoaded gets a reference to the given bool and assigns it to the OverLoaded field.
-func (o *LoadReport) SetOverLoaded(v bool) {
-	o.OverLoaded = &v
-}
-
-// GetPersistentTopicsEnabled returns the PersistentTopicsEnabled field value if set, zero value otherwise.
-func (o *LoadReport) GetPersistentTopicsEnabled() bool {
-	if o == nil || o.PersistentTopicsEnabled == nil {
-		var ret bool
-		return ret
-	}
-	return *o.PersistentTopicsEnabled
-}
-
-// GetPersistentTopicsEnabledOk returns a tuple with the PersistentTopicsEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPersistentTopicsEnabledOk() (*bool, bool) {
-	if o == nil || o.PersistentTopicsEnabled == nil {
-		return nil, false
-	}
-	return o.PersistentTopicsEnabled, true
-}
-
-// HasPersistentTopicsEnabled returns a boolean if a field has been set.
-func (o *LoadReport) HasPersistentTopicsEnabled() bool {
-	if o != nil && o.PersistentTopicsEnabled != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPersistentTopicsEnabled gets a reference to the given bool and assigns it to the PersistentTopicsEnabled field.
-func (o *LoadReport) SetPersistentTopicsEnabled(v bool) {
-	o.PersistentTopicsEnabled = &v
-}
-
-// GetPreAllocatedBandwidthIn returns the PreAllocatedBandwidthIn field value if set, zero value otherwise.
-func (o *LoadReport) GetPreAllocatedBandwidthIn() float64 {
-	if o == nil || o.PreAllocatedBandwidthIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.PreAllocatedBandwidthIn
-}
-
-// GetPreAllocatedBandwidthInOk returns a tuple with the PreAllocatedBandwidthIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPreAllocatedBandwidthInOk() (*float64, bool) {
-	if o == nil || o.PreAllocatedBandwidthIn == nil {
-		return nil, false
-	}
-	return o.PreAllocatedBandwidthIn, true
-}
-
-// HasPreAllocatedBandwidthIn returns a boolean if a field has been set.
-func (o *LoadReport) HasPreAllocatedBandwidthIn() bool {
-	if o != nil && o.PreAllocatedBandwidthIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreAllocatedBandwidthIn gets a reference to the given float64 and assigns it to the PreAllocatedBandwidthIn field.
-func (o *LoadReport) SetPreAllocatedBandwidthIn(v float64) {
-	o.PreAllocatedBandwidthIn = &v
-}
-
-// GetPreAllocatedBandwidthOut returns the PreAllocatedBandwidthOut field value if set, zero value otherwise.
-func (o *LoadReport) GetPreAllocatedBandwidthOut() float64 {
-	if o == nil || o.PreAllocatedBandwidthOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.PreAllocatedBandwidthOut
-}
-
-// GetPreAllocatedBandwidthOutOk returns a tuple with the PreAllocatedBandwidthOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPreAllocatedBandwidthOutOk() (*float64, bool) {
-	if o == nil || o.PreAllocatedBandwidthOut == nil {
-		return nil, false
-	}
-	return o.PreAllocatedBandwidthOut, true
-}
-
-// HasPreAllocatedBandwidthOut returns a boolean if a field has been set.
-func (o *LoadReport) HasPreAllocatedBandwidthOut() bool {
-	if o != nil && o.PreAllocatedBandwidthOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreAllocatedBandwidthOut gets a reference to the given float64 and assigns it to the PreAllocatedBandwidthOut field.
-func (o *LoadReport) SetPreAllocatedBandwidthOut(v float64) {
-	o.PreAllocatedBandwidthOut = &v
-}
-
-// GetPreAllocatedCPU returns the PreAllocatedCPU field value if set, zero value otherwise.
-func (o *LoadReport) GetPreAllocatedCPU() float64 {
-	if o == nil || o.PreAllocatedCPU == nil {
-		var ret float64
-		return ret
-	}
-	return *o.PreAllocatedCPU
-}
-
-// GetPreAllocatedCPUOk returns a tuple with the PreAllocatedCPU field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPreAllocatedCPUOk() (*float64, bool) {
-	if o == nil || o.PreAllocatedCPU == nil {
-		return nil, false
-	}
-	return o.PreAllocatedCPU, true
-}
-
-// HasPreAllocatedCPU returns a boolean if a field has been set.
-func (o *LoadReport) HasPreAllocatedCPU() bool {
-	if o != nil && o.PreAllocatedCPU != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreAllocatedCPU gets a reference to the given float64 and assigns it to the PreAllocatedCPU field.
-func (o *LoadReport) SetPreAllocatedCPU(v float64) {
-	o.PreAllocatedCPU = &v
-}
-
-// GetPreAllocatedMemory returns the PreAllocatedMemory field value if set, zero value otherwise.
-func (o *LoadReport) GetPreAllocatedMemory() float64 {
-	if o == nil || o.PreAllocatedMemory == nil {
-		var ret float64
-		return ret
-	}
-	return *o.PreAllocatedMemory
-}
-
-// GetPreAllocatedMemoryOk returns a tuple with the PreAllocatedMemory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPreAllocatedMemoryOk() (*float64, bool) {
-	if o == nil || o.PreAllocatedMemory == nil {
-		return nil, false
-	}
-	return o.PreAllocatedMemory, true
-}
-
-// HasPreAllocatedMemory returns a boolean if a field has been set.
-func (o *LoadReport) HasPreAllocatedMemory() bool {
-	if o != nil && o.PreAllocatedMemory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreAllocatedMemory gets a reference to the given float64 and assigns it to the PreAllocatedMemory field.
-func (o *LoadReport) SetPreAllocatedMemory(v float64) {
-	o.PreAllocatedMemory = &v
-}
-
-// GetPreAllocatedMsgRateIn returns the PreAllocatedMsgRateIn field value if set, zero value otherwise.
-func (o *LoadReport) GetPreAllocatedMsgRateIn() float64 {
-	if o == nil || o.PreAllocatedMsgRateIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.PreAllocatedMsgRateIn
-}
-
-// GetPreAllocatedMsgRateInOk returns a tuple with the PreAllocatedMsgRateIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPreAllocatedMsgRateInOk() (*float64, bool) {
-	if o == nil || o.PreAllocatedMsgRateIn == nil {
-		return nil, false
-	}
-	return o.PreAllocatedMsgRateIn, true
-}
-
-// HasPreAllocatedMsgRateIn returns a boolean if a field has been set.
-func (o *LoadReport) HasPreAllocatedMsgRateIn() bool {
-	if o != nil && o.PreAllocatedMsgRateIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreAllocatedMsgRateIn gets a reference to the given float64 and assigns it to the PreAllocatedMsgRateIn field.
-func (o *LoadReport) SetPreAllocatedMsgRateIn(v float64) {
-	o.PreAllocatedMsgRateIn = &v
-}
-
-// GetPreAllocatedMsgRateOut returns the PreAllocatedMsgRateOut field value if set, zero value otherwise.
-func (o *LoadReport) GetPreAllocatedMsgRateOut() float64 {
-	if o == nil || o.PreAllocatedMsgRateOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.PreAllocatedMsgRateOut
-}
-
-// GetPreAllocatedMsgRateOutOk returns a tuple with the PreAllocatedMsgRateOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPreAllocatedMsgRateOutOk() (*float64, bool) {
-	if o == nil || o.PreAllocatedMsgRateOut == nil {
-		return nil, false
-	}
-	return o.PreAllocatedMsgRateOut, true
-}
-
-// HasPreAllocatedMsgRateOut returns a boolean if a field has been set.
-func (o *LoadReport) HasPreAllocatedMsgRateOut() bool {
-	if o != nil && o.PreAllocatedMsgRateOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPreAllocatedMsgRateOut gets a reference to the given float64 and assigns it to the PreAllocatedMsgRateOut field.
-func (o *LoadReport) SetPreAllocatedMsgRateOut(v float64) {
-	o.PreAllocatedMsgRateOut = &v
-}
-
-// GetProtocols returns the Protocols field value if set, zero value otherwise.
-func (o *LoadReport) GetProtocols() map[string]string {
-	if o == nil || o.Protocols == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Protocols
-}
-
-// GetProtocolsOk returns a tuple with the Protocols field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetProtocolsOk() (*map[string]string, bool) {
-	if o == nil || o.Protocols == nil {
-		return nil, false
-	}
-	return o.Protocols, true
-}
-
-// HasProtocols returns a boolean if a field has been set.
-func (o *LoadReport) HasProtocols() bool {
-	if o != nil && o.Protocols != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocols gets a reference to the given map[string]string and assigns it to the Protocols field.
-func (o *LoadReport) SetProtocols(v map[string]string) {
-	o.Protocols = &v
-}
-
-// GetPulsarServiceUrl returns the PulsarServiceUrl field value if set, zero value otherwise.
-func (o *LoadReport) GetPulsarServiceUrl() string {
-	if o == nil || o.PulsarServiceUrl == nil {
+// GetBrokerVersionString returns the BrokerVersionString field value if set, zero value otherwise.
+func (o *LoadReport) GetBrokerVersionString() string {
+	if o == nil || o.BrokerVersionString == nil {
 		var ret string
 		return ret
 	}
-	return *o.PulsarServiceUrl
+	return *o.BrokerVersionString
 }
 
-// GetPulsarServiceUrlOk returns a tuple with the PulsarServiceUrl field value if set, nil otherwise
+// GetBrokerVersionStringOk returns a tuple with the BrokerVersionString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LoadReport) GetPulsarServiceUrlOk() (*string, bool) {
-	if o == nil || o.PulsarServiceUrl == nil {
+func (o *LoadReport) GetBrokerVersionStringOk() (*string, bool) {
+	if o == nil || o.BrokerVersionString == nil {
 		return nil, false
 	}
-	return o.PulsarServiceUrl, true
+	return o.BrokerVersionString, true
 }
 
-// HasPulsarServiceUrl returns a boolean if a field has been set.
-func (o *LoadReport) HasPulsarServiceUrl() bool {
-	if o != nil && o.PulsarServiceUrl != nil {
+// HasBrokerVersionString returns a boolean if a field has been set.
+func (o *LoadReport) HasBrokerVersionString() bool {
+	if o != nil && o.BrokerVersionString != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPulsarServiceUrl gets a reference to the given string and assigns it to the PulsarServiceUrl field.
-func (o *LoadReport) SetPulsarServiceUrl(v string) {
-	o.PulsarServiceUrl = &v
-}
-
-// GetPulsarServiceUrlTls returns the PulsarServiceUrlTls field value if set, zero value otherwise.
-func (o *LoadReport) GetPulsarServiceUrlTls() string {
-	if o == nil || o.PulsarServiceUrlTls == nil {
-		var ret string
-		return ret
-	}
-	return *o.PulsarServiceUrlTls
-}
-
-// GetPulsarServiceUrlTlsOk returns a tuple with the PulsarServiceUrlTls field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetPulsarServiceUrlTlsOk() (*string, bool) {
-	if o == nil || o.PulsarServiceUrlTls == nil {
-		return nil, false
-	}
-	return o.PulsarServiceUrlTls, true
-}
-
-// HasPulsarServiceUrlTls returns a boolean if a field has been set.
-func (o *LoadReport) HasPulsarServiceUrlTls() bool {
-	if o != nil && o.PulsarServiceUrlTls != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPulsarServiceUrlTls gets a reference to the given string and assigns it to the PulsarServiceUrlTls field.
-func (o *LoadReport) SetPulsarServiceUrlTls(v string) {
-	o.PulsarServiceUrlTls = &v
-}
-
-// GetSystemResourceUsage returns the SystemResourceUsage field value if set, zero value otherwise.
-func (o *LoadReport) GetSystemResourceUsage() SystemResourceUsage {
-	if o == nil || o.SystemResourceUsage == nil {
-		var ret SystemResourceUsage
-		return ret
-	}
-	return *o.SystemResourceUsage
-}
-
-// GetSystemResourceUsageOk returns a tuple with the SystemResourceUsage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetSystemResourceUsageOk() (*SystemResourceUsage, bool) {
-	if o == nil || o.SystemResourceUsage == nil {
-		return nil, false
-	}
-	return o.SystemResourceUsage, true
-}
-
-// HasSystemResourceUsage returns a boolean if a field has been set.
-func (o *LoadReport) HasSystemResourceUsage() bool {
-	if o != nil && o.SystemResourceUsage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSystemResourceUsage gets a reference to the given SystemResourceUsage and assigns it to the SystemResourceUsage field.
-func (o *LoadReport) SetSystemResourceUsage(v SystemResourceUsage) {
-	o.SystemResourceUsage = &v
-}
-
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *LoadReport) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.Timestamp
-}
-
-// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
-	}
-	return o.Timestamp, true
-}
-
-// HasTimestamp returns a boolean if a field has been set.
-func (o *LoadReport) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
-func (o *LoadReport) SetTimestamp(v int64) {
-	o.Timestamp = &v
-}
-
-// GetUnderLoaded returns the UnderLoaded field value if set, zero value otherwise.
-func (o *LoadReport) GetUnderLoaded() bool {
-	if o == nil || o.UnderLoaded == nil {
-		var ret bool
-		return ret
-	}
-	return *o.UnderLoaded
-}
-
-// GetUnderLoadedOk returns a tuple with the UnderLoaded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LoadReport) GetUnderLoadedOk() (*bool, bool) {
-	if o == nil || o.UnderLoaded == nil {
-		return nil, false
-	}
-	return o.UnderLoaded, true
-}
-
-// HasUnderLoaded returns a boolean if a field has been set.
-func (o *LoadReport) HasUnderLoaded() bool {
-	if o != nil && o.UnderLoaded != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUnderLoaded gets a reference to the given bool and assigns it to the UnderLoaded field.
-func (o *LoadReport) SetUnderLoaded(v bool) {
-	o.UnderLoaded = &v
+// SetBrokerVersionString gets a reference to the given string and assigns it to the BrokerVersionString field.
+func (o *LoadReport) SetBrokerVersionString(v string) {
+	o.BrokerVersionString = &v
 }
 
 // GetWebServiceUrl returns the WebServiceUrl field value if set, zero value otherwise.
@@ -1454,115 +206,1267 @@ func (o *LoadReport) SetWebServiceUrlTls(v string) {
 	o.WebServiceUrlTls = &v
 }
 
+// GetPulsarServiceUrl returns the PulsarServiceUrl field value if set, zero value otherwise.
+func (o *LoadReport) GetPulsarServiceUrl() string {
+	if o == nil || o.PulsarServiceUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.PulsarServiceUrl
+}
+
+// GetPulsarServiceUrlOk returns a tuple with the PulsarServiceUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPulsarServiceUrlOk() (*string, bool) {
+	if o == nil || o.PulsarServiceUrl == nil {
+		return nil, false
+	}
+	return o.PulsarServiceUrl, true
+}
+
+// HasPulsarServiceUrl returns a boolean if a field has been set.
+func (o *LoadReport) HasPulsarServiceUrl() bool {
+	if o != nil && o.PulsarServiceUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPulsarServiceUrl gets a reference to the given string and assigns it to the PulsarServiceUrl field.
+func (o *LoadReport) SetPulsarServiceUrl(v string) {
+	o.PulsarServiceUrl = &v
+}
+
+// GetPulsarServiceUrlTls returns the PulsarServiceUrlTls field value if set, zero value otherwise.
+func (o *LoadReport) GetPulsarServiceUrlTls() string {
+	if o == nil || o.PulsarServiceUrlTls == nil {
+		var ret string
+		return ret
+	}
+	return *o.PulsarServiceUrlTls
+}
+
+// GetPulsarServiceUrlTlsOk returns a tuple with the PulsarServiceUrlTls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPulsarServiceUrlTlsOk() (*string, bool) {
+	if o == nil || o.PulsarServiceUrlTls == nil {
+		return nil, false
+	}
+	return o.PulsarServiceUrlTls, true
+}
+
+// HasPulsarServiceUrlTls returns a boolean if a field has been set.
+func (o *LoadReport) HasPulsarServiceUrlTls() bool {
+	if o != nil && o.PulsarServiceUrlTls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPulsarServiceUrlTls gets a reference to the given string and assigns it to the PulsarServiceUrlTls field.
+func (o *LoadReport) SetPulsarServiceUrlTls(v string) {
+	o.PulsarServiceUrlTls = &v
+}
+
+// GetPersistentTopicsEnabled returns the PersistentTopicsEnabled field value if set, zero value otherwise.
+func (o *LoadReport) GetPersistentTopicsEnabled() bool {
+	if o == nil || o.PersistentTopicsEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.PersistentTopicsEnabled
+}
+
+// GetPersistentTopicsEnabledOk returns a tuple with the PersistentTopicsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPersistentTopicsEnabledOk() (*bool, bool) {
+	if o == nil || o.PersistentTopicsEnabled == nil {
+		return nil, false
+	}
+	return o.PersistentTopicsEnabled, true
+}
+
+// HasPersistentTopicsEnabled returns a boolean if a field has been set.
+func (o *LoadReport) HasPersistentTopicsEnabled() bool {
+	if o != nil && o.PersistentTopicsEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPersistentTopicsEnabled gets a reference to the given bool and assigns it to the PersistentTopicsEnabled field.
+func (o *LoadReport) SetPersistentTopicsEnabled(v bool) {
+	o.PersistentTopicsEnabled = &v
+}
+
+// GetNonPersistentTopicsEnabled returns the NonPersistentTopicsEnabled field value if set, zero value otherwise.
+func (o *LoadReport) GetNonPersistentTopicsEnabled() bool {
+	if o == nil || o.NonPersistentTopicsEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.NonPersistentTopicsEnabled
+}
+
+// GetNonPersistentTopicsEnabledOk returns a tuple with the NonPersistentTopicsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetNonPersistentTopicsEnabledOk() (*bool, bool) {
+	if o == nil || o.NonPersistentTopicsEnabled == nil {
+		return nil, false
+	}
+	return o.NonPersistentTopicsEnabled, true
+}
+
+// HasNonPersistentTopicsEnabled returns a boolean if a field has been set.
+func (o *LoadReport) HasNonPersistentTopicsEnabled() bool {
+	if o != nil && o.NonPersistentTopicsEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNonPersistentTopicsEnabled gets a reference to the given bool and assigns it to the NonPersistentTopicsEnabled field.
+func (o *LoadReport) SetNonPersistentTopicsEnabled(v bool) {
+	o.NonPersistentTopicsEnabled = &v
+}
+
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+func (o *LoadReport) GetTimestamp() int64 {
+	if o == nil || o.Timestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Timestamp
+}
+
+// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetTimestampOk() (*int64, bool) {
+	if o == nil || o.Timestamp == nil {
+		return nil, false
+	}
+	return o.Timestamp, true
+}
+
+// HasTimestamp returns a boolean if a field has been set.
+func (o *LoadReport) HasTimestamp() bool {
+	if o != nil && o.Timestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+func (o *LoadReport) SetTimestamp(v int64) {
+	o.Timestamp = &v
+}
+
+// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
+func (o *LoadReport) GetMsgRateIn() float64 {
+	if o == nil || o.MsgRateIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateIn
+}
+
+// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetMsgRateInOk() (*float64, bool) {
+	if o == nil || o.MsgRateIn == nil {
+		return nil, false
+	}
+	return o.MsgRateIn, true
+}
+
+// HasMsgRateIn returns a boolean if a field has been set.
+func (o *LoadReport) HasMsgRateIn() bool {
+	if o != nil && o.MsgRateIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
+func (o *LoadReport) SetMsgRateIn(v float64) {
+	o.MsgRateIn = &v
+}
+
+// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
+func (o *LoadReport) GetMsgRateOut() float64 {
+	if o == nil || o.MsgRateOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateOut
+}
+
+// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetMsgRateOutOk() (*float64, bool) {
+	if o == nil || o.MsgRateOut == nil {
+		return nil, false
+	}
+	return o.MsgRateOut, true
+}
+
+// HasMsgRateOut returns a boolean if a field has been set.
+func (o *LoadReport) HasMsgRateOut() bool {
+	if o != nil && o.MsgRateOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
+func (o *LoadReport) SetMsgRateOut(v float64) {
+	o.MsgRateOut = &v
+}
+
+// GetNumTopics returns the NumTopics field value if set, zero value otherwise.
+func (o *LoadReport) GetNumTopics() int32 {
+	if o == nil || o.NumTopics == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NumTopics
+}
+
+// GetNumTopicsOk returns a tuple with the NumTopics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetNumTopicsOk() (*int32, bool) {
+	if o == nil || o.NumTopics == nil {
+		return nil, false
+	}
+	return o.NumTopics, true
+}
+
+// HasNumTopics returns a boolean if a field has been set.
+func (o *LoadReport) HasNumTopics() bool {
+	if o != nil && o.NumTopics != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumTopics gets a reference to the given int32 and assigns it to the NumTopics field.
+func (o *LoadReport) SetNumTopics(v int32) {
+	o.NumTopics = &v
+}
+
+// GetNumConsumers returns the NumConsumers field value if set, zero value otherwise.
+func (o *LoadReport) GetNumConsumers() int32 {
+	if o == nil || o.NumConsumers == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NumConsumers
+}
+
+// GetNumConsumersOk returns a tuple with the NumConsumers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetNumConsumersOk() (*int32, bool) {
+	if o == nil || o.NumConsumers == nil {
+		return nil, false
+	}
+	return o.NumConsumers, true
+}
+
+// HasNumConsumers returns a boolean if a field has been set.
+func (o *LoadReport) HasNumConsumers() bool {
+	if o != nil && o.NumConsumers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumConsumers gets a reference to the given int32 and assigns it to the NumConsumers field.
+func (o *LoadReport) SetNumConsumers(v int32) {
+	o.NumConsumers = &v
+}
+
+// GetNumProducers returns the NumProducers field value if set, zero value otherwise.
+func (o *LoadReport) GetNumProducers() int32 {
+	if o == nil || o.NumProducers == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NumProducers
+}
+
+// GetNumProducersOk returns a tuple with the NumProducers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetNumProducersOk() (*int32, bool) {
+	if o == nil || o.NumProducers == nil {
+		return nil, false
+	}
+	return o.NumProducers, true
+}
+
+// HasNumProducers returns a boolean if a field has been set.
+func (o *LoadReport) HasNumProducers() bool {
+	if o != nil && o.NumProducers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumProducers gets a reference to the given int32 and assigns it to the NumProducers field.
+func (o *LoadReport) SetNumProducers(v int32) {
+	o.NumProducers = &v
+}
+
+// GetNumBundles returns the NumBundles field value if set, zero value otherwise.
+func (o *LoadReport) GetNumBundles() int32 {
+	if o == nil || o.NumBundles == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NumBundles
+}
+
+// GetNumBundlesOk returns a tuple with the NumBundles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetNumBundlesOk() (*int32, bool) {
+	if o == nil || o.NumBundles == nil {
+		return nil, false
+	}
+	return o.NumBundles, true
+}
+
+// HasNumBundles returns a boolean if a field has been set.
+func (o *LoadReport) HasNumBundles() bool {
+	if o != nil && o.NumBundles != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumBundles gets a reference to the given int32 and assigns it to the NumBundles field.
+func (o *LoadReport) SetNumBundles(v int32) {
+	o.NumBundles = &v
+}
+
+// GetProtocols returns the Protocols field value if set, zero value otherwise.
+func (o *LoadReport) GetProtocols() map[string]string {
+	if o == nil || o.Protocols == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Protocols
+}
+
+// GetProtocolsOk returns a tuple with the Protocols field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetProtocolsOk() (*map[string]string, bool) {
+	if o == nil || o.Protocols == nil {
+		return nil, false
+	}
+	return o.Protocols, true
+}
+
+// HasProtocols returns a boolean if a field has been set.
+func (o *LoadReport) HasProtocols() bool {
+	if o != nil && o.Protocols != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProtocols gets a reference to the given map[string]string and assigns it to the Protocols field.
+func (o *LoadReport) SetProtocols(v map[string]string) {
+	o.Protocols = &v
+}
+
+// GetSystemResourceUsage returns the SystemResourceUsage field value if set, zero value otherwise.
+func (o *LoadReport) GetSystemResourceUsage() SystemResourceUsage {
+	if o == nil || o.SystemResourceUsage == nil {
+		var ret SystemResourceUsage
+		return ret
+	}
+	return *o.SystemResourceUsage
+}
+
+// GetSystemResourceUsageOk returns a tuple with the SystemResourceUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetSystemResourceUsageOk() (*SystemResourceUsage, bool) {
+	if o == nil || o.SystemResourceUsage == nil {
+		return nil, false
+	}
+	return o.SystemResourceUsage, true
+}
+
+// HasSystemResourceUsage returns a boolean if a field has been set.
+func (o *LoadReport) HasSystemResourceUsage() bool {
+	if o != nil && o.SystemResourceUsage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSystemResourceUsage gets a reference to the given SystemResourceUsage and assigns it to the SystemResourceUsage field.
+func (o *LoadReport) SetSystemResourceUsage(v SystemResourceUsage) {
+	o.SystemResourceUsage = &v
+}
+
+// GetBundleStats returns the BundleStats field value if set, zero value otherwise.
+func (o *LoadReport) GetBundleStats() map[string]NamespaceBundleStats {
+	if o == nil || o.BundleStats == nil {
+		var ret map[string]NamespaceBundleStats
+		return ret
+	}
+	return *o.BundleStats
+}
+
+// GetBundleStatsOk returns a tuple with the BundleStats field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetBundleStatsOk() (*map[string]NamespaceBundleStats, bool) {
+	if o == nil || o.BundleStats == nil {
+		return nil, false
+	}
+	return o.BundleStats, true
+}
+
+// HasBundleStats returns a boolean if a field has been set.
+func (o *LoadReport) HasBundleStats() bool {
+	if o != nil && o.BundleStats != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleStats gets a reference to the given map[string]NamespaceBundleStats and assigns it to the BundleStats field.
+func (o *LoadReport) SetBundleStats(v map[string]NamespaceBundleStats) {
+	o.BundleStats = &v
+}
+
+// GetBundleGains returns the BundleGains field value if set, zero value otherwise.
+func (o *LoadReport) GetBundleGains() []string {
+	if o == nil || o.BundleGains == nil {
+		var ret []string
+		return ret
+	}
+	return *o.BundleGains
+}
+
+// GetBundleGainsOk returns a tuple with the BundleGains field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetBundleGainsOk() (*[]string, bool) {
+	if o == nil || o.BundleGains == nil {
+		return nil, false
+	}
+	return o.BundleGains, true
+}
+
+// HasBundleGains returns a boolean if a field has been set.
+func (o *LoadReport) HasBundleGains() bool {
+	if o != nil && o.BundleGains != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleGains gets a reference to the given []string and assigns it to the BundleGains field.
+func (o *LoadReport) SetBundleGains(v []string) {
+	o.BundleGains = &v
+}
+
+// GetBundleLosses returns the BundleLosses field value if set, zero value otherwise.
+func (o *LoadReport) GetBundleLosses() []string {
+	if o == nil || o.BundleLosses == nil {
+		var ret []string
+		return ret
+	}
+	return *o.BundleLosses
+}
+
+// GetBundleLossesOk returns a tuple with the BundleLosses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetBundleLossesOk() (*[]string, bool) {
+	if o == nil || o.BundleLosses == nil {
+		return nil, false
+	}
+	return o.BundleLosses, true
+}
+
+// HasBundleLosses returns a boolean if a field has been set.
+func (o *LoadReport) HasBundleLosses() bool {
+	if o != nil && o.BundleLosses != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBundleLosses gets a reference to the given []string and assigns it to the BundleLosses field.
+func (o *LoadReport) SetBundleLosses(v []string) {
+	o.BundleLosses = &v
+}
+
+// GetAllocatedCPU returns the AllocatedCPU field value if set, zero value otherwise.
+func (o *LoadReport) GetAllocatedCPU() float64 {
+	if o == nil || o.AllocatedCPU == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AllocatedCPU
+}
+
+// GetAllocatedCPUOk returns a tuple with the AllocatedCPU field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetAllocatedCPUOk() (*float64, bool) {
+	if o == nil || o.AllocatedCPU == nil {
+		return nil, false
+	}
+	return o.AllocatedCPU, true
+}
+
+// HasAllocatedCPU returns a boolean if a field has been set.
+func (o *LoadReport) HasAllocatedCPU() bool {
+	if o != nil && o.AllocatedCPU != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocatedCPU gets a reference to the given float64 and assigns it to the AllocatedCPU field.
+func (o *LoadReport) SetAllocatedCPU(v float64) {
+	o.AllocatedCPU = &v
+}
+
+// GetAllocatedMemory returns the AllocatedMemory field value if set, zero value otherwise.
+func (o *LoadReport) GetAllocatedMemory() float64 {
+	if o == nil || o.AllocatedMemory == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AllocatedMemory
+}
+
+// GetAllocatedMemoryOk returns a tuple with the AllocatedMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetAllocatedMemoryOk() (*float64, bool) {
+	if o == nil || o.AllocatedMemory == nil {
+		return nil, false
+	}
+	return o.AllocatedMemory, true
+}
+
+// HasAllocatedMemory returns a boolean if a field has been set.
+func (o *LoadReport) HasAllocatedMemory() bool {
+	if o != nil && o.AllocatedMemory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocatedMemory gets a reference to the given float64 and assigns it to the AllocatedMemory field.
+func (o *LoadReport) SetAllocatedMemory(v float64) {
+	o.AllocatedMemory = &v
+}
+
+// GetAllocatedBandwidthIn returns the AllocatedBandwidthIn field value if set, zero value otherwise.
+func (o *LoadReport) GetAllocatedBandwidthIn() float64 {
+	if o == nil || o.AllocatedBandwidthIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AllocatedBandwidthIn
+}
+
+// GetAllocatedBandwidthInOk returns a tuple with the AllocatedBandwidthIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetAllocatedBandwidthInOk() (*float64, bool) {
+	if o == nil || o.AllocatedBandwidthIn == nil {
+		return nil, false
+	}
+	return o.AllocatedBandwidthIn, true
+}
+
+// HasAllocatedBandwidthIn returns a boolean if a field has been set.
+func (o *LoadReport) HasAllocatedBandwidthIn() bool {
+	if o != nil && o.AllocatedBandwidthIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocatedBandwidthIn gets a reference to the given float64 and assigns it to the AllocatedBandwidthIn field.
+func (o *LoadReport) SetAllocatedBandwidthIn(v float64) {
+	o.AllocatedBandwidthIn = &v
+}
+
+// GetAllocatedBandwidthOut returns the AllocatedBandwidthOut field value if set, zero value otherwise.
+func (o *LoadReport) GetAllocatedBandwidthOut() float64 {
+	if o == nil || o.AllocatedBandwidthOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AllocatedBandwidthOut
+}
+
+// GetAllocatedBandwidthOutOk returns a tuple with the AllocatedBandwidthOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetAllocatedBandwidthOutOk() (*float64, bool) {
+	if o == nil || o.AllocatedBandwidthOut == nil {
+		return nil, false
+	}
+	return o.AllocatedBandwidthOut, true
+}
+
+// HasAllocatedBandwidthOut returns a boolean if a field has been set.
+func (o *LoadReport) HasAllocatedBandwidthOut() bool {
+	if o != nil && o.AllocatedBandwidthOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocatedBandwidthOut gets a reference to the given float64 and assigns it to the AllocatedBandwidthOut field.
+func (o *LoadReport) SetAllocatedBandwidthOut(v float64) {
+	o.AllocatedBandwidthOut = &v
+}
+
+// GetAllocatedMsgRateIn returns the AllocatedMsgRateIn field value if set, zero value otherwise.
+func (o *LoadReport) GetAllocatedMsgRateIn() float64 {
+	if o == nil || o.AllocatedMsgRateIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AllocatedMsgRateIn
+}
+
+// GetAllocatedMsgRateInOk returns a tuple with the AllocatedMsgRateIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetAllocatedMsgRateInOk() (*float64, bool) {
+	if o == nil || o.AllocatedMsgRateIn == nil {
+		return nil, false
+	}
+	return o.AllocatedMsgRateIn, true
+}
+
+// HasAllocatedMsgRateIn returns a boolean if a field has been set.
+func (o *LoadReport) HasAllocatedMsgRateIn() bool {
+	if o != nil && o.AllocatedMsgRateIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocatedMsgRateIn gets a reference to the given float64 and assigns it to the AllocatedMsgRateIn field.
+func (o *LoadReport) SetAllocatedMsgRateIn(v float64) {
+	o.AllocatedMsgRateIn = &v
+}
+
+// GetAllocatedMsgRateOut returns the AllocatedMsgRateOut field value if set, zero value otherwise.
+func (o *LoadReport) GetAllocatedMsgRateOut() float64 {
+	if o == nil || o.AllocatedMsgRateOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.AllocatedMsgRateOut
+}
+
+// GetAllocatedMsgRateOutOk returns a tuple with the AllocatedMsgRateOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetAllocatedMsgRateOutOk() (*float64, bool) {
+	if o == nil || o.AllocatedMsgRateOut == nil {
+		return nil, false
+	}
+	return o.AllocatedMsgRateOut, true
+}
+
+// HasAllocatedMsgRateOut returns a boolean if a field has been set.
+func (o *LoadReport) HasAllocatedMsgRateOut() bool {
+	if o != nil && o.AllocatedMsgRateOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllocatedMsgRateOut gets a reference to the given float64 and assigns it to the AllocatedMsgRateOut field.
+func (o *LoadReport) SetAllocatedMsgRateOut(v float64) {
+	o.AllocatedMsgRateOut = &v
+}
+
+// GetPreAllocatedCPU returns the PreAllocatedCPU field value if set, zero value otherwise.
+func (o *LoadReport) GetPreAllocatedCPU() float64 {
+	if o == nil || o.PreAllocatedCPU == nil {
+		var ret float64
+		return ret
+	}
+	return *o.PreAllocatedCPU
+}
+
+// GetPreAllocatedCPUOk returns a tuple with the PreAllocatedCPU field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPreAllocatedCPUOk() (*float64, bool) {
+	if o == nil || o.PreAllocatedCPU == nil {
+		return nil, false
+	}
+	return o.PreAllocatedCPU, true
+}
+
+// HasPreAllocatedCPU returns a boolean if a field has been set.
+func (o *LoadReport) HasPreAllocatedCPU() bool {
+	if o != nil && o.PreAllocatedCPU != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreAllocatedCPU gets a reference to the given float64 and assigns it to the PreAllocatedCPU field.
+func (o *LoadReport) SetPreAllocatedCPU(v float64) {
+	o.PreAllocatedCPU = &v
+}
+
+// GetPreAllocatedMemory returns the PreAllocatedMemory field value if set, zero value otherwise.
+func (o *LoadReport) GetPreAllocatedMemory() float64 {
+	if o == nil || o.PreAllocatedMemory == nil {
+		var ret float64
+		return ret
+	}
+	return *o.PreAllocatedMemory
+}
+
+// GetPreAllocatedMemoryOk returns a tuple with the PreAllocatedMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPreAllocatedMemoryOk() (*float64, bool) {
+	if o == nil || o.PreAllocatedMemory == nil {
+		return nil, false
+	}
+	return o.PreAllocatedMemory, true
+}
+
+// HasPreAllocatedMemory returns a boolean if a field has been set.
+func (o *LoadReport) HasPreAllocatedMemory() bool {
+	if o != nil && o.PreAllocatedMemory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreAllocatedMemory gets a reference to the given float64 and assigns it to the PreAllocatedMemory field.
+func (o *LoadReport) SetPreAllocatedMemory(v float64) {
+	o.PreAllocatedMemory = &v
+}
+
+// GetPreAllocatedBandwidthIn returns the PreAllocatedBandwidthIn field value if set, zero value otherwise.
+func (o *LoadReport) GetPreAllocatedBandwidthIn() float64 {
+	if o == nil || o.PreAllocatedBandwidthIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.PreAllocatedBandwidthIn
+}
+
+// GetPreAllocatedBandwidthInOk returns a tuple with the PreAllocatedBandwidthIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPreAllocatedBandwidthInOk() (*float64, bool) {
+	if o == nil || o.PreAllocatedBandwidthIn == nil {
+		return nil, false
+	}
+	return o.PreAllocatedBandwidthIn, true
+}
+
+// HasPreAllocatedBandwidthIn returns a boolean if a field has been set.
+func (o *LoadReport) HasPreAllocatedBandwidthIn() bool {
+	if o != nil && o.PreAllocatedBandwidthIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreAllocatedBandwidthIn gets a reference to the given float64 and assigns it to the PreAllocatedBandwidthIn field.
+func (o *LoadReport) SetPreAllocatedBandwidthIn(v float64) {
+	o.PreAllocatedBandwidthIn = &v
+}
+
+// GetPreAllocatedBandwidthOut returns the PreAllocatedBandwidthOut field value if set, zero value otherwise.
+func (o *LoadReport) GetPreAllocatedBandwidthOut() float64 {
+	if o == nil || o.PreAllocatedBandwidthOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.PreAllocatedBandwidthOut
+}
+
+// GetPreAllocatedBandwidthOutOk returns a tuple with the PreAllocatedBandwidthOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPreAllocatedBandwidthOutOk() (*float64, bool) {
+	if o == nil || o.PreAllocatedBandwidthOut == nil {
+		return nil, false
+	}
+	return o.PreAllocatedBandwidthOut, true
+}
+
+// HasPreAllocatedBandwidthOut returns a boolean if a field has been set.
+func (o *LoadReport) HasPreAllocatedBandwidthOut() bool {
+	if o != nil && o.PreAllocatedBandwidthOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreAllocatedBandwidthOut gets a reference to the given float64 and assigns it to the PreAllocatedBandwidthOut field.
+func (o *LoadReport) SetPreAllocatedBandwidthOut(v float64) {
+	o.PreAllocatedBandwidthOut = &v
+}
+
+// GetPreAllocatedMsgRateIn returns the PreAllocatedMsgRateIn field value if set, zero value otherwise.
+func (o *LoadReport) GetPreAllocatedMsgRateIn() float64 {
+	if o == nil || o.PreAllocatedMsgRateIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.PreAllocatedMsgRateIn
+}
+
+// GetPreAllocatedMsgRateInOk returns a tuple with the PreAllocatedMsgRateIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPreAllocatedMsgRateInOk() (*float64, bool) {
+	if o == nil || o.PreAllocatedMsgRateIn == nil {
+		return nil, false
+	}
+	return o.PreAllocatedMsgRateIn, true
+}
+
+// HasPreAllocatedMsgRateIn returns a boolean if a field has been set.
+func (o *LoadReport) HasPreAllocatedMsgRateIn() bool {
+	if o != nil && o.PreAllocatedMsgRateIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreAllocatedMsgRateIn gets a reference to the given float64 and assigns it to the PreAllocatedMsgRateIn field.
+func (o *LoadReport) SetPreAllocatedMsgRateIn(v float64) {
+	o.PreAllocatedMsgRateIn = &v
+}
+
+// GetPreAllocatedMsgRateOut returns the PreAllocatedMsgRateOut field value if set, zero value otherwise.
+func (o *LoadReport) GetPreAllocatedMsgRateOut() float64 {
+	if o == nil || o.PreAllocatedMsgRateOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.PreAllocatedMsgRateOut
+}
+
+// GetPreAllocatedMsgRateOutOk returns a tuple with the PreAllocatedMsgRateOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetPreAllocatedMsgRateOutOk() (*float64, bool) {
+	if o == nil || o.PreAllocatedMsgRateOut == nil {
+		return nil, false
+	}
+	return o.PreAllocatedMsgRateOut, true
+}
+
+// HasPreAllocatedMsgRateOut returns a boolean if a field has been set.
+func (o *LoadReport) HasPreAllocatedMsgRateOut() bool {
+	if o != nil && o.PreAllocatedMsgRateOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPreAllocatedMsgRateOut gets a reference to the given float64 and assigns it to the PreAllocatedMsgRateOut field.
+func (o *LoadReport) SetPreAllocatedMsgRateOut(v float64) {
+	o.PreAllocatedMsgRateOut = &v
+}
+
+// GetUnderLoaded returns the UnderLoaded field value if set, zero value otherwise.
+func (o *LoadReport) GetUnderLoaded() bool {
+	if o == nil || o.UnderLoaded == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UnderLoaded
+}
+
+// GetUnderLoadedOk returns a tuple with the UnderLoaded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetUnderLoadedOk() (*bool, bool) {
+	if o == nil || o.UnderLoaded == nil {
+		return nil, false
+	}
+	return o.UnderLoaded, true
+}
+
+// HasUnderLoaded returns a boolean if a field has been set.
+func (o *LoadReport) HasUnderLoaded() bool {
+	if o != nil && o.UnderLoaded != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUnderLoaded gets a reference to the given bool and assigns it to the UnderLoaded field.
+func (o *LoadReport) SetUnderLoaded(v bool) {
+	o.UnderLoaded = &v
+}
+
+// GetOverLoaded returns the OverLoaded field value if set, zero value otherwise.
+func (o *LoadReport) GetOverLoaded() bool {
+	if o == nil || o.OverLoaded == nil {
+		var ret bool
+		return ret
+	}
+	return *o.OverLoaded
+}
+
+// GetOverLoadedOk returns a tuple with the OverLoaded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetOverLoadedOk() (*bool, bool) {
+	if o == nil || o.OverLoaded == nil {
+		return nil, false
+	}
+	return o.OverLoaded, true
+}
+
+// HasOverLoaded returns a boolean if a field has been set.
+func (o *LoadReport) HasOverLoaded() bool {
+	if o != nil && o.OverLoaded != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOverLoaded gets a reference to the given bool and assigns it to the OverLoaded field.
+func (o *LoadReport) SetOverLoaded(v bool) {
+	o.OverLoaded = &v
+}
+
+// GetLoadReportType returns the LoadReportType field value if set, zero value otherwise.
+func (o *LoadReport) GetLoadReportType() string {
+	if o == nil || o.LoadReportType == nil {
+		var ret string
+		return ret
+	}
+	return *o.LoadReportType
+}
+
+// GetLoadReportTypeOk returns a tuple with the LoadReportType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetLoadReportTypeOk() (*string, bool) {
+	if o == nil || o.LoadReportType == nil {
+		return nil, false
+	}
+	return o.LoadReportType, true
+}
+
+// HasLoadReportType returns a boolean if a field has been set.
+func (o *LoadReport) HasLoadReportType() bool {
+	if o != nil && o.LoadReportType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLoadReportType gets a reference to the given string and assigns it to the LoadReportType field.
+func (o *LoadReport) SetLoadReportType(v string) {
+	o.LoadReportType = &v
+}
+
+// GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
+func (o *LoadReport) GetMsgThroughputIn() float64 {
+	if o == nil || o.MsgThroughputIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgThroughputIn
+}
+
+// GetMsgThroughputInOk returns a tuple with the MsgThroughputIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetMsgThroughputInOk() (*float64, bool) {
+	if o == nil || o.MsgThroughputIn == nil {
+		return nil, false
+	}
+	return o.MsgThroughputIn, true
+}
+
+// HasMsgThroughputIn returns a boolean if a field has been set.
+func (o *LoadReport) HasMsgThroughputIn() bool {
+	if o != nil && o.MsgThroughputIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgThroughputIn gets a reference to the given float64 and assigns it to the MsgThroughputIn field.
+func (o *LoadReport) SetMsgThroughputIn(v float64) {
+	o.MsgThroughputIn = &v
+}
+
+// GetLastUpdate returns the LastUpdate field value if set, zero value otherwise.
+func (o *LoadReport) GetLastUpdate() int64 {
+	if o == nil || o.LastUpdate == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastUpdate
+}
+
+// GetLastUpdateOk returns a tuple with the LastUpdate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetLastUpdateOk() (*int64, bool) {
+	if o == nil || o.LastUpdate == nil {
+		return nil, false
+	}
+	return o.LastUpdate, true
+}
+
+// HasLastUpdate returns a boolean if a field has been set.
+func (o *LoadReport) HasLastUpdate() bool {
+	if o != nil && o.LastUpdate != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUpdate gets a reference to the given int64 and assigns it to the LastUpdate field.
+func (o *LoadReport) SetLastUpdate(v int64) {
+	o.LastUpdate = &v
+}
+
+// GetDirectMemory returns the DirectMemory field value if set, zero value otherwise.
+func (o *LoadReport) GetDirectMemory() ResourceUsage {
+	if o == nil || o.DirectMemory == nil {
+		var ret ResourceUsage
+		return ret
+	}
+	return *o.DirectMemory
+}
+
+// GetDirectMemoryOk returns a tuple with the DirectMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetDirectMemoryOk() (*ResourceUsage, bool) {
+	if o == nil || o.DirectMemory == nil {
+		return nil, false
+	}
+	return o.DirectMemory, true
+}
+
+// HasDirectMemory returns a boolean if a field has been set.
+func (o *LoadReport) HasDirectMemory() bool {
+	if o != nil && o.DirectMemory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDirectMemory gets a reference to the given ResourceUsage and assigns it to the DirectMemory field.
+func (o *LoadReport) SetDirectMemory(v ResourceUsage) {
+	o.DirectMemory = &v
+}
+
+// GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
+func (o *LoadReport) GetMsgThroughputOut() float64 {
+	if o == nil || o.MsgThroughputOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgThroughputOut
+}
+
+// GetMsgThroughputOutOk returns a tuple with the MsgThroughputOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetMsgThroughputOutOk() (*float64, bool) {
+	if o == nil || o.MsgThroughputOut == nil {
+		return nil, false
+	}
+	return o.MsgThroughputOut, true
+}
+
+// HasMsgThroughputOut returns a boolean if a field has been set.
+func (o *LoadReport) HasMsgThroughputOut() bool {
+	if o != nil && o.MsgThroughputOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
+func (o *LoadReport) SetMsgThroughputOut(v float64) {
+	o.MsgThroughputOut = &v
+}
+
+// GetCpu returns the Cpu field value if set, zero value otherwise.
+func (o *LoadReport) GetCpu() ResourceUsage {
+	if o == nil || o.Cpu == nil {
+		var ret ResourceUsage
+		return ret
+	}
+	return *o.Cpu
+}
+
+// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetCpuOk() (*ResourceUsage, bool) {
+	if o == nil || o.Cpu == nil {
+		return nil, false
+	}
+	return o.Cpu, true
+}
+
+// HasCpu returns a boolean if a field has been set.
+func (o *LoadReport) HasCpu() bool {
+	if o != nil && o.Cpu != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCpu gets a reference to the given ResourceUsage and assigns it to the Cpu field.
+func (o *LoadReport) SetCpu(v ResourceUsage) {
+	o.Cpu = &v
+}
+
+// GetMemory returns the Memory field value if set, zero value otherwise.
+func (o *LoadReport) GetMemory() ResourceUsage {
+	if o == nil || o.Memory == nil {
+		var ret ResourceUsage
+		return ret
+	}
+	return *o.Memory
+}
+
+// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetMemoryOk() (*ResourceUsage, bool) {
+	if o == nil || o.Memory == nil {
+		return nil, false
+	}
+	return o.Memory, true
+}
+
+// HasMemory returns a boolean if a field has been set.
+func (o *LoadReport) HasMemory() bool {
+	if o != nil && o.Memory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMemory gets a reference to the given ResourceUsage and assigns it to the Memory field.
+func (o *LoadReport) SetMemory(v ResourceUsage) {
+	o.Memory = &v
+}
+
+// GetBandwidthIn returns the BandwidthIn field value if set, zero value otherwise.
+func (o *LoadReport) GetBandwidthIn() ResourceUsage {
+	if o == nil || o.BandwidthIn == nil {
+		var ret ResourceUsage
+		return ret
+	}
+	return *o.BandwidthIn
+}
+
+// GetBandwidthInOk returns a tuple with the BandwidthIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetBandwidthInOk() (*ResourceUsage, bool) {
+	if o == nil || o.BandwidthIn == nil {
+		return nil, false
+	}
+	return o.BandwidthIn, true
+}
+
+// HasBandwidthIn returns a boolean if a field has been set.
+func (o *LoadReport) HasBandwidthIn() bool {
+	if o != nil && o.BandwidthIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBandwidthIn gets a reference to the given ResourceUsage and assigns it to the BandwidthIn field.
+func (o *LoadReport) SetBandwidthIn(v ResourceUsage) {
+	o.BandwidthIn = &v
+}
+
+// GetBandwidthOut returns the BandwidthOut field value if set, zero value otherwise.
+func (o *LoadReport) GetBandwidthOut() ResourceUsage {
+	if o == nil || o.BandwidthOut == nil {
+		var ret ResourceUsage
+		return ret
+	}
+	return *o.BandwidthOut
+}
+
+// GetBandwidthOutOk returns a tuple with the BandwidthOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoadReport) GetBandwidthOutOk() (*ResourceUsage, bool) {
+	if o == nil || o.BandwidthOut == nil {
+		return nil, false
+	}
+	return o.BandwidthOut, true
+}
+
+// HasBandwidthOut returns a boolean if a field has been set.
+func (o *LoadReport) HasBandwidthOut() bool {
+	if o != nil && o.BandwidthOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBandwidthOut gets a reference to the given ResourceUsage and assigns it to the BandwidthOut field.
+func (o *LoadReport) SetBandwidthOut(v ResourceUsage) {
+	o.BandwidthOut = &v
+}
+
 func (o LoadReport) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AllocatedBandwidthIn != nil {
-		toSerialize["allocatedBandwidthIn"] = o.AllocatedBandwidthIn
-	}
-	if o.AllocatedBandwidthOut != nil {
-		toSerialize["allocatedBandwidthOut"] = o.AllocatedBandwidthOut
-	}
-	if o.AllocatedCPU != nil {
-		toSerialize["allocatedCPU"] = o.AllocatedCPU
-	}
-	if o.AllocatedMemory != nil {
-		toSerialize["allocatedMemory"] = o.AllocatedMemory
-	}
-	if o.AllocatedMsgRateIn != nil {
-		toSerialize["allocatedMsgRateIn"] = o.AllocatedMsgRateIn
-	}
-	if o.AllocatedMsgRateOut != nil {
-		toSerialize["allocatedMsgRateOut"] = o.AllocatedMsgRateOut
-	}
-	if o.BandwidthIn != nil {
-		toSerialize["bandwidthIn"] = o.BandwidthIn
-	}
-	if o.BandwidthOut != nil {
-		toSerialize["bandwidthOut"] = o.BandwidthOut
+	if o.Name != nil {
+		toSerialize["name"] = o.Name
 	}
 	if o.BrokerVersionString != nil {
 		toSerialize["brokerVersionString"] = o.BrokerVersionString
 	}
-	if o.BundleGains != nil {
-		toSerialize["bundleGains"] = o.BundleGains
+	if o.WebServiceUrl != nil {
+		toSerialize["webServiceUrl"] = o.WebServiceUrl
 	}
-	if o.BundleLosses != nil {
-		toSerialize["bundleLosses"] = o.BundleLosses
-	}
-	if o.BundleStats != nil {
-		toSerialize["bundleStats"] = o.BundleStats
-	}
-	if o.Cpu != nil {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.DirectMemory != nil {
-		toSerialize["directMemory"] = o.DirectMemory
-	}
-	if o.LastUpdate != nil {
-		toSerialize["lastUpdate"] = o.LastUpdate
-	}
-	if o.LoadReportType != nil {
-		toSerialize["loadReportType"] = o.LoadReportType
-	}
-	if o.Memory != nil {
-		toSerialize["memory"] = o.Memory
-	}
-	if o.MsgRateIn != nil {
-		toSerialize["msgRateIn"] = o.MsgRateIn
-	}
-	if o.MsgRateOut != nil {
-		toSerialize["msgRateOut"] = o.MsgRateOut
-	}
-	if o.MsgThroughputIn != nil {
-		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
-	}
-	if o.MsgThroughputOut != nil {
-		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
-	}
-	if o.Name != nil {
-		toSerialize["name"] = o.Name
-	}
-	if o.NonPersistentTopicsEnabled != nil {
-		toSerialize["nonPersistentTopicsEnabled"] = o.NonPersistentTopicsEnabled
-	}
-	if o.NumBundles != nil {
-		toSerialize["numBundles"] = o.NumBundles
-	}
-	if o.NumConsumers != nil {
-		toSerialize["numConsumers"] = o.NumConsumers
-	}
-	if o.NumProducers != nil {
-		toSerialize["numProducers"] = o.NumProducers
-	}
-	if o.NumTopics != nil {
-		toSerialize["numTopics"] = o.NumTopics
-	}
-	if o.OverLoaded != nil {
-		toSerialize["overLoaded"] = o.OverLoaded
-	}
-	if o.PersistentTopicsEnabled != nil {
-		toSerialize["persistentTopicsEnabled"] = o.PersistentTopicsEnabled
-	}
-	if o.PreAllocatedBandwidthIn != nil {
-		toSerialize["preAllocatedBandwidthIn"] = o.PreAllocatedBandwidthIn
-	}
-	if o.PreAllocatedBandwidthOut != nil {
-		toSerialize["preAllocatedBandwidthOut"] = o.PreAllocatedBandwidthOut
-	}
-	if o.PreAllocatedCPU != nil {
-		toSerialize["preAllocatedCPU"] = o.PreAllocatedCPU
-	}
-	if o.PreAllocatedMemory != nil {
-		toSerialize["preAllocatedMemory"] = o.PreAllocatedMemory
-	}
-	if o.PreAllocatedMsgRateIn != nil {
-		toSerialize["preAllocatedMsgRateIn"] = o.PreAllocatedMsgRateIn
-	}
-	if o.PreAllocatedMsgRateOut != nil {
-		toSerialize["preAllocatedMsgRateOut"] = o.PreAllocatedMsgRateOut
-	}
-	if o.Protocols != nil {
-		toSerialize["protocols"] = o.Protocols
+	if o.WebServiceUrlTls != nil {
+		toSerialize["webServiceUrlTls"] = o.WebServiceUrlTls
 	}
 	if o.PulsarServiceUrl != nil {
 		toSerialize["pulsarServiceUrl"] = o.PulsarServiceUrl
@@ -1570,20 +1474,116 @@ func (o LoadReport) MarshalJSON() ([]byte, error) {
 	if o.PulsarServiceUrlTls != nil {
 		toSerialize["pulsarServiceUrlTls"] = o.PulsarServiceUrlTls
 	}
-	if o.SystemResourceUsage != nil {
-		toSerialize["systemResourceUsage"] = o.SystemResourceUsage
+	if o.PersistentTopicsEnabled != nil {
+		toSerialize["persistentTopicsEnabled"] = o.PersistentTopicsEnabled
+	}
+	if o.NonPersistentTopicsEnabled != nil {
+		toSerialize["nonPersistentTopicsEnabled"] = o.NonPersistentTopicsEnabled
 	}
 	if o.Timestamp != nil {
 		toSerialize["timestamp"] = o.Timestamp
 	}
+	if o.MsgRateIn != nil {
+		toSerialize["msgRateIn"] = o.MsgRateIn
+	}
+	if o.MsgRateOut != nil {
+		toSerialize["msgRateOut"] = o.MsgRateOut
+	}
+	if o.NumTopics != nil {
+		toSerialize["numTopics"] = o.NumTopics
+	}
+	if o.NumConsumers != nil {
+		toSerialize["numConsumers"] = o.NumConsumers
+	}
+	if o.NumProducers != nil {
+		toSerialize["numProducers"] = o.NumProducers
+	}
+	if o.NumBundles != nil {
+		toSerialize["numBundles"] = o.NumBundles
+	}
+	if o.Protocols != nil {
+		toSerialize["protocols"] = o.Protocols
+	}
+	if o.SystemResourceUsage != nil {
+		toSerialize["systemResourceUsage"] = o.SystemResourceUsage
+	}
+	if o.BundleStats != nil {
+		toSerialize["bundleStats"] = o.BundleStats
+	}
+	if o.BundleGains != nil {
+		toSerialize["bundleGains"] = o.BundleGains
+	}
+	if o.BundleLosses != nil {
+		toSerialize["bundleLosses"] = o.BundleLosses
+	}
+	if o.AllocatedCPU != nil {
+		toSerialize["allocatedCPU"] = o.AllocatedCPU
+	}
+	if o.AllocatedMemory != nil {
+		toSerialize["allocatedMemory"] = o.AllocatedMemory
+	}
+	if o.AllocatedBandwidthIn != nil {
+		toSerialize["allocatedBandwidthIn"] = o.AllocatedBandwidthIn
+	}
+	if o.AllocatedBandwidthOut != nil {
+		toSerialize["allocatedBandwidthOut"] = o.AllocatedBandwidthOut
+	}
+	if o.AllocatedMsgRateIn != nil {
+		toSerialize["allocatedMsgRateIn"] = o.AllocatedMsgRateIn
+	}
+	if o.AllocatedMsgRateOut != nil {
+		toSerialize["allocatedMsgRateOut"] = o.AllocatedMsgRateOut
+	}
+	if o.PreAllocatedCPU != nil {
+		toSerialize["preAllocatedCPU"] = o.PreAllocatedCPU
+	}
+	if o.PreAllocatedMemory != nil {
+		toSerialize["preAllocatedMemory"] = o.PreAllocatedMemory
+	}
+	if o.PreAllocatedBandwidthIn != nil {
+		toSerialize["preAllocatedBandwidthIn"] = o.PreAllocatedBandwidthIn
+	}
+	if o.PreAllocatedBandwidthOut != nil {
+		toSerialize["preAllocatedBandwidthOut"] = o.PreAllocatedBandwidthOut
+	}
+	if o.PreAllocatedMsgRateIn != nil {
+		toSerialize["preAllocatedMsgRateIn"] = o.PreAllocatedMsgRateIn
+	}
+	if o.PreAllocatedMsgRateOut != nil {
+		toSerialize["preAllocatedMsgRateOut"] = o.PreAllocatedMsgRateOut
+	}
 	if o.UnderLoaded != nil {
 		toSerialize["underLoaded"] = o.UnderLoaded
 	}
-	if o.WebServiceUrl != nil {
-		toSerialize["webServiceUrl"] = o.WebServiceUrl
+	if o.OverLoaded != nil {
+		toSerialize["overLoaded"] = o.OverLoaded
 	}
-	if o.WebServiceUrlTls != nil {
-		toSerialize["webServiceUrlTls"] = o.WebServiceUrlTls
+	if o.LoadReportType != nil {
+		toSerialize["loadReportType"] = o.LoadReportType
+	}
+	if o.MsgThroughputIn != nil {
+		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
+	}
+	if o.LastUpdate != nil {
+		toSerialize["lastUpdate"] = o.LastUpdate
+	}
+	if o.DirectMemory != nil {
+		toSerialize["directMemory"] = o.DirectMemory
+	}
+	if o.MsgThroughputOut != nil {
+		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
+	}
+	if o.Cpu != nil {
+		toSerialize["cpu"] = o.Cpu
+	}
+	if o.Memory != nil {
+		toSerialize["memory"] = o.Memory
+	}
+	if o.BandwidthIn != nil {
+		toSerialize["bandwidthIn"] = o.BandwidthIn
+	}
+	if o.BandwidthOut != nil {
+		toSerialize["bandwidthOut"] = o.BandwidthOut
 	}
 	return json.Marshal(toSerialize)
 }

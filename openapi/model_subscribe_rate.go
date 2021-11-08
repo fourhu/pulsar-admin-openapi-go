@@ -16,8 +16,8 @@ import (
 
 // SubscribeRate struct for SubscribeRate
 type SubscribeRate struct {
-	RatePeriodInSecond *int32 `json:"ratePeriodInSecond,omitempty"`
 	SubscribeThrottlingRatePerConsumer *int32 `json:"subscribeThrottlingRatePerConsumer,omitempty"`
+	RatePeriodInSecond *int32 `json:"ratePeriodInSecond,omitempty"`
 }
 
 // NewSubscribeRate instantiates a new SubscribeRate object
@@ -35,38 +35,6 @@ func NewSubscribeRate() *SubscribeRate {
 func NewSubscribeRateWithDefaults() *SubscribeRate {
 	this := SubscribeRate{}
 	return &this
-}
-
-// GetRatePeriodInSecond returns the RatePeriodInSecond field value if set, zero value otherwise.
-func (o *SubscribeRate) GetRatePeriodInSecond() int32 {
-	if o == nil || o.RatePeriodInSecond == nil {
-		var ret int32
-		return ret
-	}
-	return *o.RatePeriodInSecond
-}
-
-// GetRatePeriodInSecondOk returns a tuple with the RatePeriodInSecond field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscribeRate) GetRatePeriodInSecondOk() (*int32, bool) {
-	if o == nil || o.RatePeriodInSecond == nil {
-		return nil, false
-	}
-	return o.RatePeriodInSecond, true
-}
-
-// HasRatePeriodInSecond returns a boolean if a field has been set.
-func (o *SubscribeRate) HasRatePeriodInSecond() bool {
-	if o != nil && o.RatePeriodInSecond != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRatePeriodInSecond gets a reference to the given int32 and assigns it to the RatePeriodInSecond field.
-func (o *SubscribeRate) SetRatePeriodInSecond(v int32) {
-	o.RatePeriodInSecond = &v
 }
 
 // GetSubscribeThrottlingRatePerConsumer returns the SubscribeThrottlingRatePerConsumer field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *SubscribeRate) SetSubscribeThrottlingRatePerConsumer(v int32) {
 	o.SubscribeThrottlingRatePerConsumer = &v
 }
 
+// GetRatePeriodInSecond returns the RatePeriodInSecond field value if set, zero value otherwise.
+func (o *SubscribeRate) GetRatePeriodInSecond() int32 {
+	if o == nil || o.RatePeriodInSecond == nil {
+		var ret int32
+		return ret
+	}
+	return *o.RatePeriodInSecond
+}
+
+// GetRatePeriodInSecondOk returns a tuple with the RatePeriodInSecond field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscribeRate) GetRatePeriodInSecondOk() (*int32, bool) {
+	if o == nil || o.RatePeriodInSecond == nil {
+		return nil, false
+	}
+	return o.RatePeriodInSecond, true
+}
+
+// HasRatePeriodInSecond returns a boolean if a field has been set.
+func (o *SubscribeRate) HasRatePeriodInSecond() bool {
+	if o != nil && o.RatePeriodInSecond != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRatePeriodInSecond gets a reference to the given int32 and assigns it to the RatePeriodInSecond field.
+func (o *SubscribeRate) SetRatePeriodInSecond(v int32) {
+	o.RatePeriodInSecond = &v
+}
+
 func (o SubscribeRate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RatePeriodInSecond != nil {
-		toSerialize["ratePeriodInSecond"] = o.RatePeriodInSecond
-	}
 	if o.SubscribeThrottlingRatePerConsumer != nil {
 		toSerialize["subscribeThrottlingRatePerConsumer"] = o.SubscribeThrottlingRatePerConsumer
+	}
+	if o.RatePeriodInSecond != nil {
+		toSerialize["ratePeriodInSecond"] = o.RatePeriodInSecond
 	}
 	return json.Marshal(toSerialize)
 }

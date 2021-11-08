@@ -16,27 +16,27 @@ import (
 
 // PoolArenaStats struct for PoolArenaStats
 type PoolArenaStats struct {
-	ChunkLists *[]PoolChunkListStats `json:"chunkLists,omitempty"`
-	NumActiveAllocations *int64 `json:"numActiveAllocations,omitempty"`
-	NumActiveHugeAllocations *int64 `json:"numActiveHugeAllocations,omitempty"`
-	NumActiveNormalAllocations *int64 `json:"numActiveNormalAllocations,omitempty"`
-	NumActiveSmallAllocations *int64 `json:"numActiveSmallAllocations,omitempty"`
-	NumActiveTinyAllocations *int64 `json:"numActiveTinyAllocations,omitempty"`
-	NumAllocations *int64 `json:"numAllocations,omitempty"`
-	NumChunkLists *int32 `json:"numChunkLists,omitempty"`
-	NumDeallocations *int64 `json:"numDeallocations,omitempty"`
-	NumHugeAllocations *int64 `json:"numHugeAllocations,omitempty"`
-	NumHugeDeallocations *int64 `json:"numHugeDeallocations,omitempty"`
-	NumNormalAllocations *int64 `json:"numNormalAllocations,omitempty"`
-	NumNormalDeallocations *int64 `json:"numNormalDeallocations,omitempty"`
-	NumSmallAllocations *int64 `json:"numSmallAllocations,omitempty"`
-	NumSmallDeallocations *int64 `json:"numSmallDeallocations,omitempty"`
-	NumSmallSubpages *int32 `json:"numSmallSubpages,omitempty"`
-	NumTinyAllocations *int64 `json:"numTinyAllocations,omitempty"`
-	NumTinyDeallocations *int64 `json:"numTinyDeallocations,omitempty"`
 	NumTinySubpages *int32 `json:"numTinySubpages,omitempty"`
-	SmallSubpages *[]PoolSubpageStats `json:"smallSubpages,omitempty"`
+	NumSmallSubpages *int32 `json:"numSmallSubpages,omitempty"`
+	NumChunkLists *int32 `json:"numChunkLists,omitempty"`
 	TinySubpages *[]PoolSubpageStats `json:"tinySubpages,omitempty"`
+	SmallSubpages *[]PoolSubpageStats `json:"smallSubpages,omitempty"`
+	ChunkLists *[]PoolChunkListStats `json:"chunkLists,omitempty"`
+	NumAllocations *int64 `json:"numAllocations,omitempty"`
+	NumTinyAllocations *int64 `json:"numTinyAllocations,omitempty"`
+	NumSmallAllocations *int64 `json:"numSmallAllocations,omitempty"`
+	NumNormalAllocations *int64 `json:"numNormalAllocations,omitempty"`
+	NumHugeAllocations *int64 `json:"numHugeAllocations,omitempty"`
+	NumDeallocations *int64 `json:"numDeallocations,omitempty"`
+	NumTinyDeallocations *int64 `json:"numTinyDeallocations,omitempty"`
+	NumSmallDeallocations *int64 `json:"numSmallDeallocations,omitempty"`
+	NumNormalDeallocations *int64 `json:"numNormalDeallocations,omitempty"`
+	NumHugeDeallocations *int64 `json:"numHugeDeallocations,omitempty"`
+	NumActiveAllocations *int64 `json:"numActiveAllocations,omitempty"`
+	NumActiveTinyAllocations *int64 `json:"numActiveTinyAllocations,omitempty"`
+	NumActiveSmallAllocations *int64 `json:"numActiveSmallAllocations,omitempty"`
+	NumActiveNormalAllocations *int64 `json:"numActiveNormalAllocations,omitempty"`
+	NumActiveHugeAllocations *int64 `json:"numActiveHugeAllocations,omitempty"`
 }
 
 // NewPoolArenaStats instantiates a new PoolArenaStats object
@@ -54,582 +54,6 @@ func NewPoolArenaStats() *PoolArenaStats {
 func NewPoolArenaStatsWithDefaults() *PoolArenaStats {
 	this := PoolArenaStats{}
 	return &this
-}
-
-// GetChunkLists returns the ChunkLists field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetChunkLists() []PoolChunkListStats {
-	if o == nil || o.ChunkLists == nil {
-		var ret []PoolChunkListStats
-		return ret
-	}
-	return *o.ChunkLists
-}
-
-// GetChunkListsOk returns a tuple with the ChunkLists field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetChunkListsOk() (*[]PoolChunkListStats, bool) {
-	if o == nil || o.ChunkLists == nil {
-		return nil, false
-	}
-	return o.ChunkLists, true
-}
-
-// HasChunkLists returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasChunkLists() bool {
-	if o != nil && o.ChunkLists != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetChunkLists gets a reference to the given []PoolChunkListStats and assigns it to the ChunkLists field.
-func (o *PoolArenaStats) SetChunkLists(v []PoolChunkListStats) {
-	o.ChunkLists = &v
-}
-
-// GetNumActiveAllocations returns the NumActiveAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumActiveAllocations() int64 {
-	if o == nil || o.NumActiveAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumActiveAllocations
-}
-
-// GetNumActiveAllocationsOk returns a tuple with the NumActiveAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumActiveAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumActiveAllocations == nil {
-		return nil, false
-	}
-	return o.NumActiveAllocations, true
-}
-
-// HasNumActiveAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumActiveAllocations() bool {
-	if o != nil && o.NumActiveAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumActiveAllocations gets a reference to the given int64 and assigns it to the NumActiveAllocations field.
-func (o *PoolArenaStats) SetNumActiveAllocations(v int64) {
-	o.NumActiveAllocations = &v
-}
-
-// GetNumActiveHugeAllocations returns the NumActiveHugeAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumActiveHugeAllocations() int64 {
-	if o == nil || o.NumActiveHugeAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumActiveHugeAllocations
-}
-
-// GetNumActiveHugeAllocationsOk returns a tuple with the NumActiveHugeAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumActiveHugeAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumActiveHugeAllocations == nil {
-		return nil, false
-	}
-	return o.NumActiveHugeAllocations, true
-}
-
-// HasNumActiveHugeAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumActiveHugeAllocations() bool {
-	if o != nil && o.NumActiveHugeAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumActiveHugeAllocations gets a reference to the given int64 and assigns it to the NumActiveHugeAllocations field.
-func (o *PoolArenaStats) SetNumActiveHugeAllocations(v int64) {
-	o.NumActiveHugeAllocations = &v
-}
-
-// GetNumActiveNormalAllocations returns the NumActiveNormalAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumActiveNormalAllocations() int64 {
-	if o == nil || o.NumActiveNormalAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumActiveNormalAllocations
-}
-
-// GetNumActiveNormalAllocationsOk returns a tuple with the NumActiveNormalAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumActiveNormalAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumActiveNormalAllocations == nil {
-		return nil, false
-	}
-	return o.NumActiveNormalAllocations, true
-}
-
-// HasNumActiveNormalAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumActiveNormalAllocations() bool {
-	if o != nil && o.NumActiveNormalAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumActiveNormalAllocations gets a reference to the given int64 and assigns it to the NumActiveNormalAllocations field.
-func (o *PoolArenaStats) SetNumActiveNormalAllocations(v int64) {
-	o.NumActiveNormalAllocations = &v
-}
-
-// GetNumActiveSmallAllocations returns the NumActiveSmallAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumActiveSmallAllocations() int64 {
-	if o == nil || o.NumActiveSmallAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumActiveSmallAllocations
-}
-
-// GetNumActiveSmallAllocationsOk returns a tuple with the NumActiveSmallAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumActiveSmallAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumActiveSmallAllocations == nil {
-		return nil, false
-	}
-	return o.NumActiveSmallAllocations, true
-}
-
-// HasNumActiveSmallAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumActiveSmallAllocations() bool {
-	if o != nil && o.NumActiveSmallAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumActiveSmallAllocations gets a reference to the given int64 and assigns it to the NumActiveSmallAllocations field.
-func (o *PoolArenaStats) SetNumActiveSmallAllocations(v int64) {
-	o.NumActiveSmallAllocations = &v
-}
-
-// GetNumActiveTinyAllocations returns the NumActiveTinyAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumActiveTinyAllocations() int64 {
-	if o == nil || o.NumActiveTinyAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumActiveTinyAllocations
-}
-
-// GetNumActiveTinyAllocationsOk returns a tuple with the NumActiveTinyAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumActiveTinyAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumActiveTinyAllocations == nil {
-		return nil, false
-	}
-	return o.NumActiveTinyAllocations, true
-}
-
-// HasNumActiveTinyAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumActiveTinyAllocations() bool {
-	if o != nil && o.NumActiveTinyAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumActiveTinyAllocations gets a reference to the given int64 and assigns it to the NumActiveTinyAllocations field.
-func (o *PoolArenaStats) SetNumActiveTinyAllocations(v int64) {
-	o.NumActiveTinyAllocations = &v
-}
-
-// GetNumAllocations returns the NumAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumAllocations() int64 {
-	if o == nil || o.NumAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumAllocations
-}
-
-// GetNumAllocationsOk returns a tuple with the NumAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumAllocations == nil {
-		return nil, false
-	}
-	return o.NumAllocations, true
-}
-
-// HasNumAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumAllocations() bool {
-	if o != nil && o.NumAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumAllocations gets a reference to the given int64 and assigns it to the NumAllocations field.
-func (o *PoolArenaStats) SetNumAllocations(v int64) {
-	o.NumAllocations = &v
-}
-
-// GetNumChunkLists returns the NumChunkLists field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumChunkLists() int32 {
-	if o == nil || o.NumChunkLists == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NumChunkLists
-}
-
-// GetNumChunkListsOk returns a tuple with the NumChunkLists field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumChunkListsOk() (*int32, bool) {
-	if o == nil || o.NumChunkLists == nil {
-		return nil, false
-	}
-	return o.NumChunkLists, true
-}
-
-// HasNumChunkLists returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumChunkLists() bool {
-	if o != nil && o.NumChunkLists != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumChunkLists gets a reference to the given int32 and assigns it to the NumChunkLists field.
-func (o *PoolArenaStats) SetNumChunkLists(v int32) {
-	o.NumChunkLists = &v
-}
-
-// GetNumDeallocations returns the NumDeallocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumDeallocations() int64 {
-	if o == nil || o.NumDeallocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumDeallocations
-}
-
-// GetNumDeallocationsOk returns a tuple with the NumDeallocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumDeallocationsOk() (*int64, bool) {
-	if o == nil || o.NumDeallocations == nil {
-		return nil, false
-	}
-	return o.NumDeallocations, true
-}
-
-// HasNumDeallocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumDeallocations() bool {
-	if o != nil && o.NumDeallocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumDeallocations gets a reference to the given int64 and assigns it to the NumDeallocations field.
-func (o *PoolArenaStats) SetNumDeallocations(v int64) {
-	o.NumDeallocations = &v
-}
-
-// GetNumHugeAllocations returns the NumHugeAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumHugeAllocations() int64 {
-	if o == nil || o.NumHugeAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumHugeAllocations
-}
-
-// GetNumHugeAllocationsOk returns a tuple with the NumHugeAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumHugeAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumHugeAllocations == nil {
-		return nil, false
-	}
-	return o.NumHugeAllocations, true
-}
-
-// HasNumHugeAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumHugeAllocations() bool {
-	if o != nil && o.NumHugeAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumHugeAllocations gets a reference to the given int64 and assigns it to the NumHugeAllocations field.
-func (o *PoolArenaStats) SetNumHugeAllocations(v int64) {
-	o.NumHugeAllocations = &v
-}
-
-// GetNumHugeDeallocations returns the NumHugeDeallocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumHugeDeallocations() int64 {
-	if o == nil || o.NumHugeDeallocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumHugeDeallocations
-}
-
-// GetNumHugeDeallocationsOk returns a tuple with the NumHugeDeallocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumHugeDeallocationsOk() (*int64, bool) {
-	if o == nil || o.NumHugeDeallocations == nil {
-		return nil, false
-	}
-	return o.NumHugeDeallocations, true
-}
-
-// HasNumHugeDeallocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumHugeDeallocations() bool {
-	if o != nil && o.NumHugeDeallocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumHugeDeallocations gets a reference to the given int64 and assigns it to the NumHugeDeallocations field.
-func (o *PoolArenaStats) SetNumHugeDeallocations(v int64) {
-	o.NumHugeDeallocations = &v
-}
-
-// GetNumNormalAllocations returns the NumNormalAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumNormalAllocations() int64 {
-	if o == nil || o.NumNormalAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumNormalAllocations
-}
-
-// GetNumNormalAllocationsOk returns a tuple with the NumNormalAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumNormalAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumNormalAllocations == nil {
-		return nil, false
-	}
-	return o.NumNormalAllocations, true
-}
-
-// HasNumNormalAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumNormalAllocations() bool {
-	if o != nil && o.NumNormalAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumNormalAllocations gets a reference to the given int64 and assigns it to the NumNormalAllocations field.
-func (o *PoolArenaStats) SetNumNormalAllocations(v int64) {
-	o.NumNormalAllocations = &v
-}
-
-// GetNumNormalDeallocations returns the NumNormalDeallocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumNormalDeallocations() int64 {
-	if o == nil || o.NumNormalDeallocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumNormalDeallocations
-}
-
-// GetNumNormalDeallocationsOk returns a tuple with the NumNormalDeallocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumNormalDeallocationsOk() (*int64, bool) {
-	if o == nil || o.NumNormalDeallocations == nil {
-		return nil, false
-	}
-	return o.NumNormalDeallocations, true
-}
-
-// HasNumNormalDeallocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumNormalDeallocations() bool {
-	if o != nil && o.NumNormalDeallocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumNormalDeallocations gets a reference to the given int64 and assigns it to the NumNormalDeallocations field.
-func (o *PoolArenaStats) SetNumNormalDeallocations(v int64) {
-	o.NumNormalDeallocations = &v
-}
-
-// GetNumSmallAllocations returns the NumSmallAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumSmallAllocations() int64 {
-	if o == nil || o.NumSmallAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumSmallAllocations
-}
-
-// GetNumSmallAllocationsOk returns a tuple with the NumSmallAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumSmallAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumSmallAllocations == nil {
-		return nil, false
-	}
-	return o.NumSmallAllocations, true
-}
-
-// HasNumSmallAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumSmallAllocations() bool {
-	if o != nil && o.NumSmallAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumSmallAllocations gets a reference to the given int64 and assigns it to the NumSmallAllocations field.
-func (o *PoolArenaStats) SetNumSmallAllocations(v int64) {
-	o.NumSmallAllocations = &v
-}
-
-// GetNumSmallDeallocations returns the NumSmallDeallocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumSmallDeallocations() int64 {
-	if o == nil || o.NumSmallDeallocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumSmallDeallocations
-}
-
-// GetNumSmallDeallocationsOk returns a tuple with the NumSmallDeallocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumSmallDeallocationsOk() (*int64, bool) {
-	if o == nil || o.NumSmallDeallocations == nil {
-		return nil, false
-	}
-	return o.NumSmallDeallocations, true
-}
-
-// HasNumSmallDeallocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumSmallDeallocations() bool {
-	if o != nil && o.NumSmallDeallocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumSmallDeallocations gets a reference to the given int64 and assigns it to the NumSmallDeallocations field.
-func (o *PoolArenaStats) SetNumSmallDeallocations(v int64) {
-	o.NumSmallDeallocations = &v
-}
-
-// GetNumSmallSubpages returns the NumSmallSubpages field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumSmallSubpages() int32 {
-	if o == nil || o.NumSmallSubpages == nil {
-		var ret int32
-		return ret
-	}
-	return *o.NumSmallSubpages
-}
-
-// GetNumSmallSubpagesOk returns a tuple with the NumSmallSubpages field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumSmallSubpagesOk() (*int32, bool) {
-	if o == nil || o.NumSmallSubpages == nil {
-		return nil, false
-	}
-	return o.NumSmallSubpages, true
-}
-
-// HasNumSmallSubpages returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumSmallSubpages() bool {
-	if o != nil && o.NumSmallSubpages != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumSmallSubpages gets a reference to the given int32 and assigns it to the NumSmallSubpages field.
-func (o *PoolArenaStats) SetNumSmallSubpages(v int32) {
-	o.NumSmallSubpages = &v
-}
-
-// GetNumTinyAllocations returns the NumTinyAllocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumTinyAllocations() int64 {
-	if o == nil || o.NumTinyAllocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumTinyAllocations
-}
-
-// GetNumTinyAllocationsOk returns a tuple with the NumTinyAllocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumTinyAllocationsOk() (*int64, bool) {
-	if o == nil || o.NumTinyAllocations == nil {
-		return nil, false
-	}
-	return o.NumTinyAllocations, true
-}
-
-// HasNumTinyAllocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumTinyAllocations() bool {
-	if o != nil && o.NumTinyAllocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumTinyAllocations gets a reference to the given int64 and assigns it to the NumTinyAllocations field.
-func (o *PoolArenaStats) SetNumTinyAllocations(v int64) {
-	o.NumTinyAllocations = &v
-}
-
-// GetNumTinyDeallocations returns the NumTinyDeallocations field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetNumTinyDeallocations() int64 {
-	if o == nil || o.NumTinyDeallocations == nil {
-		var ret int64
-		return ret
-	}
-	return *o.NumTinyDeallocations
-}
-
-// GetNumTinyDeallocationsOk returns a tuple with the NumTinyDeallocations field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetNumTinyDeallocationsOk() (*int64, bool) {
-	if o == nil || o.NumTinyDeallocations == nil {
-		return nil, false
-	}
-	return o.NumTinyDeallocations, true
-}
-
-// HasNumTinyDeallocations returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasNumTinyDeallocations() bool {
-	if o != nil && o.NumTinyDeallocations != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetNumTinyDeallocations gets a reference to the given int64 and assigns it to the NumTinyDeallocations field.
-func (o *PoolArenaStats) SetNumTinyDeallocations(v int64) {
-	o.NumTinyDeallocations = &v
 }
 
 // GetNumTinySubpages returns the NumTinySubpages field value if set, zero value otherwise.
@@ -664,36 +88,68 @@ func (o *PoolArenaStats) SetNumTinySubpages(v int32) {
 	o.NumTinySubpages = &v
 }
 
-// GetSmallSubpages returns the SmallSubpages field value if set, zero value otherwise.
-func (o *PoolArenaStats) GetSmallSubpages() []PoolSubpageStats {
-	if o == nil || o.SmallSubpages == nil {
-		var ret []PoolSubpageStats
+// GetNumSmallSubpages returns the NumSmallSubpages field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumSmallSubpages() int32 {
+	if o == nil || o.NumSmallSubpages == nil {
+		var ret int32
 		return ret
 	}
-	return *o.SmallSubpages
+	return *o.NumSmallSubpages
 }
 
-// GetSmallSubpagesOk returns a tuple with the SmallSubpages field value if set, nil otherwise
+// GetNumSmallSubpagesOk returns a tuple with the NumSmallSubpages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PoolArenaStats) GetSmallSubpagesOk() (*[]PoolSubpageStats, bool) {
-	if o == nil || o.SmallSubpages == nil {
+func (o *PoolArenaStats) GetNumSmallSubpagesOk() (*int32, bool) {
+	if o == nil || o.NumSmallSubpages == nil {
 		return nil, false
 	}
-	return o.SmallSubpages, true
+	return o.NumSmallSubpages, true
 }
 
-// HasSmallSubpages returns a boolean if a field has been set.
-func (o *PoolArenaStats) HasSmallSubpages() bool {
-	if o != nil && o.SmallSubpages != nil {
+// HasNumSmallSubpages returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumSmallSubpages() bool {
+	if o != nil && o.NumSmallSubpages != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSmallSubpages gets a reference to the given []PoolSubpageStats and assigns it to the SmallSubpages field.
-func (o *PoolArenaStats) SetSmallSubpages(v []PoolSubpageStats) {
-	o.SmallSubpages = &v
+// SetNumSmallSubpages gets a reference to the given int32 and assigns it to the NumSmallSubpages field.
+func (o *PoolArenaStats) SetNumSmallSubpages(v int32) {
+	o.NumSmallSubpages = &v
+}
+
+// GetNumChunkLists returns the NumChunkLists field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumChunkLists() int32 {
+	if o == nil || o.NumChunkLists == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NumChunkLists
+}
+
+// GetNumChunkListsOk returns a tuple with the NumChunkLists field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumChunkListsOk() (*int32, bool) {
+	if o == nil || o.NumChunkLists == nil {
+		return nil, false
+	}
+	return o.NumChunkLists, true
+}
+
+// HasNumChunkLists returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumChunkLists() bool {
+	if o != nil && o.NumChunkLists != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumChunkLists gets a reference to the given int32 and assigns it to the NumChunkLists field.
+func (o *PoolArenaStats) SetNumChunkLists(v int32) {
+	o.NumChunkLists = &v
 }
 
 // GetTinySubpages returns the TinySubpages field value if set, zero value otherwise.
@@ -728,70 +184,614 @@ func (o *PoolArenaStats) SetTinySubpages(v []PoolSubpageStats) {
 	o.TinySubpages = &v
 }
 
+// GetSmallSubpages returns the SmallSubpages field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetSmallSubpages() []PoolSubpageStats {
+	if o == nil || o.SmallSubpages == nil {
+		var ret []PoolSubpageStats
+		return ret
+	}
+	return *o.SmallSubpages
+}
+
+// GetSmallSubpagesOk returns a tuple with the SmallSubpages field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetSmallSubpagesOk() (*[]PoolSubpageStats, bool) {
+	if o == nil || o.SmallSubpages == nil {
+		return nil, false
+	}
+	return o.SmallSubpages, true
+}
+
+// HasSmallSubpages returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasSmallSubpages() bool {
+	if o != nil && o.SmallSubpages != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSmallSubpages gets a reference to the given []PoolSubpageStats and assigns it to the SmallSubpages field.
+func (o *PoolArenaStats) SetSmallSubpages(v []PoolSubpageStats) {
+	o.SmallSubpages = &v
+}
+
+// GetChunkLists returns the ChunkLists field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetChunkLists() []PoolChunkListStats {
+	if o == nil || o.ChunkLists == nil {
+		var ret []PoolChunkListStats
+		return ret
+	}
+	return *o.ChunkLists
+}
+
+// GetChunkListsOk returns a tuple with the ChunkLists field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetChunkListsOk() (*[]PoolChunkListStats, bool) {
+	if o == nil || o.ChunkLists == nil {
+		return nil, false
+	}
+	return o.ChunkLists, true
+}
+
+// HasChunkLists returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasChunkLists() bool {
+	if o != nil && o.ChunkLists != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetChunkLists gets a reference to the given []PoolChunkListStats and assigns it to the ChunkLists field.
+func (o *PoolArenaStats) SetChunkLists(v []PoolChunkListStats) {
+	o.ChunkLists = &v
+}
+
+// GetNumAllocations returns the NumAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumAllocations() int64 {
+	if o == nil || o.NumAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumAllocations
+}
+
+// GetNumAllocationsOk returns a tuple with the NumAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumAllocations == nil {
+		return nil, false
+	}
+	return o.NumAllocations, true
+}
+
+// HasNumAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumAllocations() bool {
+	if o != nil && o.NumAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumAllocations gets a reference to the given int64 and assigns it to the NumAllocations field.
+func (o *PoolArenaStats) SetNumAllocations(v int64) {
+	o.NumAllocations = &v
+}
+
+// GetNumTinyAllocations returns the NumTinyAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumTinyAllocations() int64 {
+	if o == nil || o.NumTinyAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumTinyAllocations
+}
+
+// GetNumTinyAllocationsOk returns a tuple with the NumTinyAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumTinyAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumTinyAllocations == nil {
+		return nil, false
+	}
+	return o.NumTinyAllocations, true
+}
+
+// HasNumTinyAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumTinyAllocations() bool {
+	if o != nil && o.NumTinyAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumTinyAllocations gets a reference to the given int64 and assigns it to the NumTinyAllocations field.
+func (o *PoolArenaStats) SetNumTinyAllocations(v int64) {
+	o.NumTinyAllocations = &v
+}
+
+// GetNumSmallAllocations returns the NumSmallAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumSmallAllocations() int64 {
+	if o == nil || o.NumSmallAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumSmallAllocations
+}
+
+// GetNumSmallAllocationsOk returns a tuple with the NumSmallAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumSmallAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumSmallAllocations == nil {
+		return nil, false
+	}
+	return o.NumSmallAllocations, true
+}
+
+// HasNumSmallAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumSmallAllocations() bool {
+	if o != nil && o.NumSmallAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumSmallAllocations gets a reference to the given int64 and assigns it to the NumSmallAllocations field.
+func (o *PoolArenaStats) SetNumSmallAllocations(v int64) {
+	o.NumSmallAllocations = &v
+}
+
+// GetNumNormalAllocations returns the NumNormalAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumNormalAllocations() int64 {
+	if o == nil || o.NumNormalAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumNormalAllocations
+}
+
+// GetNumNormalAllocationsOk returns a tuple with the NumNormalAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumNormalAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumNormalAllocations == nil {
+		return nil, false
+	}
+	return o.NumNormalAllocations, true
+}
+
+// HasNumNormalAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumNormalAllocations() bool {
+	if o != nil && o.NumNormalAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumNormalAllocations gets a reference to the given int64 and assigns it to the NumNormalAllocations field.
+func (o *PoolArenaStats) SetNumNormalAllocations(v int64) {
+	o.NumNormalAllocations = &v
+}
+
+// GetNumHugeAllocations returns the NumHugeAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumHugeAllocations() int64 {
+	if o == nil || o.NumHugeAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumHugeAllocations
+}
+
+// GetNumHugeAllocationsOk returns a tuple with the NumHugeAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumHugeAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumHugeAllocations == nil {
+		return nil, false
+	}
+	return o.NumHugeAllocations, true
+}
+
+// HasNumHugeAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumHugeAllocations() bool {
+	if o != nil && o.NumHugeAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumHugeAllocations gets a reference to the given int64 and assigns it to the NumHugeAllocations field.
+func (o *PoolArenaStats) SetNumHugeAllocations(v int64) {
+	o.NumHugeAllocations = &v
+}
+
+// GetNumDeallocations returns the NumDeallocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumDeallocations() int64 {
+	if o == nil || o.NumDeallocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumDeallocations
+}
+
+// GetNumDeallocationsOk returns a tuple with the NumDeallocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumDeallocationsOk() (*int64, bool) {
+	if o == nil || o.NumDeallocations == nil {
+		return nil, false
+	}
+	return o.NumDeallocations, true
+}
+
+// HasNumDeallocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumDeallocations() bool {
+	if o != nil && o.NumDeallocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumDeallocations gets a reference to the given int64 and assigns it to the NumDeallocations field.
+func (o *PoolArenaStats) SetNumDeallocations(v int64) {
+	o.NumDeallocations = &v
+}
+
+// GetNumTinyDeallocations returns the NumTinyDeallocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumTinyDeallocations() int64 {
+	if o == nil || o.NumTinyDeallocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumTinyDeallocations
+}
+
+// GetNumTinyDeallocationsOk returns a tuple with the NumTinyDeallocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumTinyDeallocationsOk() (*int64, bool) {
+	if o == nil || o.NumTinyDeallocations == nil {
+		return nil, false
+	}
+	return o.NumTinyDeallocations, true
+}
+
+// HasNumTinyDeallocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumTinyDeallocations() bool {
+	if o != nil && o.NumTinyDeallocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumTinyDeallocations gets a reference to the given int64 and assigns it to the NumTinyDeallocations field.
+func (o *PoolArenaStats) SetNumTinyDeallocations(v int64) {
+	o.NumTinyDeallocations = &v
+}
+
+// GetNumSmallDeallocations returns the NumSmallDeallocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumSmallDeallocations() int64 {
+	if o == nil || o.NumSmallDeallocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumSmallDeallocations
+}
+
+// GetNumSmallDeallocationsOk returns a tuple with the NumSmallDeallocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumSmallDeallocationsOk() (*int64, bool) {
+	if o == nil || o.NumSmallDeallocations == nil {
+		return nil, false
+	}
+	return o.NumSmallDeallocations, true
+}
+
+// HasNumSmallDeallocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumSmallDeallocations() bool {
+	if o != nil && o.NumSmallDeallocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumSmallDeallocations gets a reference to the given int64 and assigns it to the NumSmallDeallocations field.
+func (o *PoolArenaStats) SetNumSmallDeallocations(v int64) {
+	o.NumSmallDeallocations = &v
+}
+
+// GetNumNormalDeallocations returns the NumNormalDeallocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumNormalDeallocations() int64 {
+	if o == nil || o.NumNormalDeallocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumNormalDeallocations
+}
+
+// GetNumNormalDeallocationsOk returns a tuple with the NumNormalDeallocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumNormalDeallocationsOk() (*int64, bool) {
+	if o == nil || o.NumNormalDeallocations == nil {
+		return nil, false
+	}
+	return o.NumNormalDeallocations, true
+}
+
+// HasNumNormalDeallocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumNormalDeallocations() bool {
+	if o != nil && o.NumNormalDeallocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumNormalDeallocations gets a reference to the given int64 and assigns it to the NumNormalDeallocations field.
+func (o *PoolArenaStats) SetNumNormalDeallocations(v int64) {
+	o.NumNormalDeallocations = &v
+}
+
+// GetNumHugeDeallocations returns the NumHugeDeallocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumHugeDeallocations() int64 {
+	if o == nil || o.NumHugeDeallocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumHugeDeallocations
+}
+
+// GetNumHugeDeallocationsOk returns a tuple with the NumHugeDeallocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumHugeDeallocationsOk() (*int64, bool) {
+	if o == nil || o.NumHugeDeallocations == nil {
+		return nil, false
+	}
+	return o.NumHugeDeallocations, true
+}
+
+// HasNumHugeDeallocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumHugeDeallocations() bool {
+	if o != nil && o.NumHugeDeallocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumHugeDeallocations gets a reference to the given int64 and assigns it to the NumHugeDeallocations field.
+func (o *PoolArenaStats) SetNumHugeDeallocations(v int64) {
+	o.NumHugeDeallocations = &v
+}
+
+// GetNumActiveAllocations returns the NumActiveAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumActiveAllocations() int64 {
+	if o == nil || o.NumActiveAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumActiveAllocations
+}
+
+// GetNumActiveAllocationsOk returns a tuple with the NumActiveAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumActiveAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumActiveAllocations == nil {
+		return nil, false
+	}
+	return o.NumActiveAllocations, true
+}
+
+// HasNumActiveAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumActiveAllocations() bool {
+	if o != nil && o.NumActiveAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumActiveAllocations gets a reference to the given int64 and assigns it to the NumActiveAllocations field.
+func (o *PoolArenaStats) SetNumActiveAllocations(v int64) {
+	o.NumActiveAllocations = &v
+}
+
+// GetNumActiveTinyAllocations returns the NumActiveTinyAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumActiveTinyAllocations() int64 {
+	if o == nil || o.NumActiveTinyAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumActiveTinyAllocations
+}
+
+// GetNumActiveTinyAllocationsOk returns a tuple with the NumActiveTinyAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumActiveTinyAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumActiveTinyAllocations == nil {
+		return nil, false
+	}
+	return o.NumActiveTinyAllocations, true
+}
+
+// HasNumActiveTinyAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumActiveTinyAllocations() bool {
+	if o != nil && o.NumActiveTinyAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumActiveTinyAllocations gets a reference to the given int64 and assigns it to the NumActiveTinyAllocations field.
+func (o *PoolArenaStats) SetNumActiveTinyAllocations(v int64) {
+	o.NumActiveTinyAllocations = &v
+}
+
+// GetNumActiveSmallAllocations returns the NumActiveSmallAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumActiveSmallAllocations() int64 {
+	if o == nil || o.NumActiveSmallAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumActiveSmallAllocations
+}
+
+// GetNumActiveSmallAllocationsOk returns a tuple with the NumActiveSmallAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumActiveSmallAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumActiveSmallAllocations == nil {
+		return nil, false
+	}
+	return o.NumActiveSmallAllocations, true
+}
+
+// HasNumActiveSmallAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumActiveSmallAllocations() bool {
+	if o != nil && o.NumActiveSmallAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumActiveSmallAllocations gets a reference to the given int64 and assigns it to the NumActiveSmallAllocations field.
+func (o *PoolArenaStats) SetNumActiveSmallAllocations(v int64) {
+	o.NumActiveSmallAllocations = &v
+}
+
+// GetNumActiveNormalAllocations returns the NumActiveNormalAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumActiveNormalAllocations() int64 {
+	if o == nil || o.NumActiveNormalAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumActiveNormalAllocations
+}
+
+// GetNumActiveNormalAllocationsOk returns a tuple with the NumActiveNormalAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumActiveNormalAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumActiveNormalAllocations == nil {
+		return nil, false
+	}
+	return o.NumActiveNormalAllocations, true
+}
+
+// HasNumActiveNormalAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumActiveNormalAllocations() bool {
+	if o != nil && o.NumActiveNormalAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumActiveNormalAllocations gets a reference to the given int64 and assigns it to the NumActiveNormalAllocations field.
+func (o *PoolArenaStats) SetNumActiveNormalAllocations(v int64) {
+	o.NumActiveNormalAllocations = &v
+}
+
+// GetNumActiveHugeAllocations returns the NumActiveHugeAllocations field value if set, zero value otherwise.
+func (o *PoolArenaStats) GetNumActiveHugeAllocations() int64 {
+	if o == nil || o.NumActiveHugeAllocations == nil {
+		var ret int64
+		return ret
+	}
+	return *o.NumActiveHugeAllocations
+}
+
+// GetNumActiveHugeAllocationsOk returns a tuple with the NumActiveHugeAllocations field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolArenaStats) GetNumActiveHugeAllocationsOk() (*int64, bool) {
+	if o == nil || o.NumActiveHugeAllocations == nil {
+		return nil, false
+	}
+	return o.NumActiveHugeAllocations, true
+}
+
+// HasNumActiveHugeAllocations returns a boolean if a field has been set.
+func (o *PoolArenaStats) HasNumActiveHugeAllocations() bool {
+	if o != nil && o.NumActiveHugeAllocations != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNumActiveHugeAllocations gets a reference to the given int64 and assigns it to the NumActiveHugeAllocations field.
+func (o *PoolArenaStats) SetNumActiveHugeAllocations(v int64) {
+	o.NumActiveHugeAllocations = &v
+}
+
 func (o PoolArenaStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ChunkLists != nil {
-		toSerialize["chunkLists"] = o.ChunkLists
-	}
-	if o.NumActiveAllocations != nil {
-		toSerialize["numActiveAllocations"] = o.NumActiveAllocations
-	}
-	if o.NumActiveHugeAllocations != nil {
-		toSerialize["numActiveHugeAllocations"] = o.NumActiveHugeAllocations
-	}
-	if o.NumActiveNormalAllocations != nil {
-		toSerialize["numActiveNormalAllocations"] = o.NumActiveNormalAllocations
-	}
-	if o.NumActiveSmallAllocations != nil {
-		toSerialize["numActiveSmallAllocations"] = o.NumActiveSmallAllocations
-	}
-	if o.NumActiveTinyAllocations != nil {
-		toSerialize["numActiveTinyAllocations"] = o.NumActiveTinyAllocations
-	}
-	if o.NumAllocations != nil {
-		toSerialize["numAllocations"] = o.NumAllocations
-	}
-	if o.NumChunkLists != nil {
-		toSerialize["numChunkLists"] = o.NumChunkLists
-	}
-	if o.NumDeallocations != nil {
-		toSerialize["numDeallocations"] = o.NumDeallocations
-	}
-	if o.NumHugeAllocations != nil {
-		toSerialize["numHugeAllocations"] = o.NumHugeAllocations
-	}
-	if o.NumHugeDeallocations != nil {
-		toSerialize["numHugeDeallocations"] = o.NumHugeDeallocations
-	}
-	if o.NumNormalAllocations != nil {
-		toSerialize["numNormalAllocations"] = o.NumNormalAllocations
-	}
-	if o.NumNormalDeallocations != nil {
-		toSerialize["numNormalDeallocations"] = o.NumNormalDeallocations
-	}
-	if o.NumSmallAllocations != nil {
-		toSerialize["numSmallAllocations"] = o.NumSmallAllocations
-	}
-	if o.NumSmallDeallocations != nil {
-		toSerialize["numSmallDeallocations"] = o.NumSmallDeallocations
+	if o.NumTinySubpages != nil {
+		toSerialize["numTinySubpages"] = o.NumTinySubpages
 	}
 	if o.NumSmallSubpages != nil {
 		toSerialize["numSmallSubpages"] = o.NumSmallSubpages
 	}
-	if o.NumTinyAllocations != nil {
-		toSerialize["numTinyAllocations"] = o.NumTinyAllocations
+	if o.NumChunkLists != nil {
+		toSerialize["numChunkLists"] = o.NumChunkLists
 	}
-	if o.NumTinyDeallocations != nil {
-		toSerialize["numTinyDeallocations"] = o.NumTinyDeallocations
-	}
-	if o.NumTinySubpages != nil {
-		toSerialize["numTinySubpages"] = o.NumTinySubpages
+	if o.TinySubpages != nil {
+		toSerialize["tinySubpages"] = o.TinySubpages
 	}
 	if o.SmallSubpages != nil {
 		toSerialize["smallSubpages"] = o.SmallSubpages
 	}
-	if o.TinySubpages != nil {
-		toSerialize["tinySubpages"] = o.TinySubpages
+	if o.ChunkLists != nil {
+		toSerialize["chunkLists"] = o.ChunkLists
+	}
+	if o.NumAllocations != nil {
+		toSerialize["numAllocations"] = o.NumAllocations
+	}
+	if o.NumTinyAllocations != nil {
+		toSerialize["numTinyAllocations"] = o.NumTinyAllocations
+	}
+	if o.NumSmallAllocations != nil {
+		toSerialize["numSmallAllocations"] = o.NumSmallAllocations
+	}
+	if o.NumNormalAllocations != nil {
+		toSerialize["numNormalAllocations"] = o.NumNormalAllocations
+	}
+	if o.NumHugeAllocations != nil {
+		toSerialize["numHugeAllocations"] = o.NumHugeAllocations
+	}
+	if o.NumDeallocations != nil {
+		toSerialize["numDeallocations"] = o.NumDeallocations
+	}
+	if o.NumTinyDeallocations != nil {
+		toSerialize["numTinyDeallocations"] = o.NumTinyDeallocations
+	}
+	if o.NumSmallDeallocations != nil {
+		toSerialize["numSmallDeallocations"] = o.NumSmallDeallocations
+	}
+	if o.NumNormalDeallocations != nil {
+		toSerialize["numNormalDeallocations"] = o.NumNormalDeallocations
+	}
+	if o.NumHugeDeallocations != nil {
+		toSerialize["numHugeDeallocations"] = o.NumHugeDeallocations
+	}
+	if o.NumActiveAllocations != nil {
+		toSerialize["numActiveAllocations"] = o.NumActiveAllocations
+	}
+	if o.NumActiveTinyAllocations != nil {
+		toSerialize["numActiveTinyAllocations"] = o.NumActiveTinyAllocations
+	}
+	if o.NumActiveSmallAllocations != nil {
+		toSerialize["numActiveSmallAllocations"] = o.NumActiveSmallAllocations
+	}
+	if o.NumActiveNormalAllocations != nil {
+		toSerialize["numActiveNormalAllocations"] = o.NumActiveNormalAllocations
+	}
+	if o.NumActiveHugeAllocations != nil {
+		toSerialize["numActiveHugeAllocations"] = o.NumActiveHugeAllocations
 	}
 	return json.Marshal(toSerialize)
 }

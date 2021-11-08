@@ -10,11 +10,13 @@ Method | HTTP request | Description
 [**GetAllDynamicConfigurations**](BrokersApi.md#GetAllDynamicConfigurations) | **Get** /brokers/configuration/values | Get value of all dynamic configurations&#39; value overridden on local config
 [**GetDynamicConfigurationName**](BrokersApi.md#GetDynamicConfigurationName) | **Get** /brokers/configuration | Get all updatable dynamic configurations&#39;s name
 [**GetInternalConfigurationData**](BrokersApi.md#GetInternalConfigurationData) | **Get** /brokers/internal-configuration | Get the internal configuration data
+[**GetLeaderBroker**](BrokersApi.md#GetLeaderBroker) | **Get** /brokers/leaderBroker | Get the information of the leader broker.
 [**GetOwnedNamespaces**](BrokersApi.md#GetOwnedNamespaces) | **Get** /brokers/{clusterName}/{broker-webserviceurl}/ownedNamespaces | Get the list of namespaces served by the specific broker
 [**GetRuntimeConfiguration**](BrokersApi.md#GetRuntimeConfiguration) | **Get** /brokers/configuration/runtime | Get all runtime configurations. This operation requires Pulsar super-user privileges.
 [**Healthcheck**](BrokersApi.md#Healthcheck) | **Get** /brokers/health | Run a healthcheck against the broker
 [**IsReady**](BrokersApi.md#IsReady) | **Get** /brokers/ready | Check if the broker is fully initialized
 [**UpdateDynamicConfiguration**](BrokersApi.md#UpdateDynamicConfiguration) | **Post** /brokers/configuration/{configName}/{configValue} | Update dynamic serviceconfiguration into zk only. This operation requires Pulsar super-user privileges.
+[**Version**](BrokersApi.md#Version) | **Get** /brokers/version | Get version of current broker
 
 
 
@@ -211,7 +213,7 @@ No authorization required
 
 ## GetAllDynamicConfigurations
 
-> map[string]map[string]interface{} GetAllDynamicConfigurations(ctx).Execute()
+> map[string]string GetAllDynamicConfigurations(ctx).Execute()
 
 Get value of all dynamic configurations' value overridden on local config
 
@@ -236,7 +238,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BrokersApi.GetAllDynamicConfigurations``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAllDynamicConfigurations`: map[string]map[string]interface{}
+    // response from `GetAllDynamicConfigurations`: map[string]string
     fmt.Fprintf(os.Stdout, "Response from `BrokersApi.GetAllDynamicConfigurations`: %v\n", resp)
 }
 ```
@@ -252,7 +254,7 @@ Other parameters are passed through a pointer to a apiGetAllDynamicConfiguration
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]string**
 
 ### Authorization
 
@@ -270,7 +272,7 @@ No authorization required
 
 ## GetDynamicConfigurationName
 
-> []map[string]interface{} GetDynamicConfigurationName(ctx).Execute()
+> []string GetDynamicConfigurationName(ctx).Execute()
 
 Get all updatable dynamic configurations's name
 
@@ -295,7 +297,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BrokersApi.GetDynamicConfigurationName``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDynamicConfigurationName`: []map[string]interface{}
+    // response from `GetDynamicConfigurationName`: []string
     fmt.Fprintf(os.Stdout, "Response from `BrokersApi.GetDynamicConfigurationName`: %v\n", resp)
 }
 ```
@@ -311,7 +313,7 @@ Other parameters are passed through a pointer to a apiGetDynamicConfigurationNam
 
 ### Return type
 
-**[]map[string]interface{}**
+**[]string**
 
 ### Authorization
 
@@ -371,6 +373,65 @@ Other parameters are passed through a pointer to a apiGetInternalConfigurationDa
 ### Return type
 
 [**InternalConfigurationData**](InternalConfigurationData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetLeaderBroker
+
+> BrokerInfo GetLeaderBroker(ctx).Execute()
+
+Get the information of the leader broker.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BrokersApi.GetLeaderBroker(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BrokersApi.GetLeaderBroker``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetLeaderBroker`: BrokerInfo
+    fmt.Fprintf(os.Stdout, "Response from `BrokersApi.GetLeaderBroker`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetLeaderBrokerRequest struct via the builder pattern
+
+
+### Return type
+
+[**BrokerInfo**](BrokerInfo.md)
 
 ### Authorization
 
@@ -459,7 +520,7 @@ No authorization required
 
 ## GetRuntimeConfiguration
 
-> map[string]map[string]interface{} GetRuntimeConfiguration(ctx).Execute()
+> map[string]string GetRuntimeConfiguration(ctx).Execute()
 
 Get all runtime configurations. This operation requires Pulsar super-user privileges.
 
@@ -484,7 +545,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BrokersApi.GetRuntimeConfiguration``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetRuntimeConfiguration`: map[string]map[string]interface{}
+    // response from `GetRuntimeConfiguration`: map[string]string
     fmt.Fprintf(os.Stdout, "Response from `BrokersApi.GetRuntimeConfiguration`: %v\n", resp)
 }
 ```
@@ -500,7 +561,7 @@ Other parameters are passed through a pointer to a apiGetRuntimeConfigurationReq
 
 ### Return type
 
-**map[string]map[string]interface{}**
+**map[string]string**
 
 ### Authorization
 
@@ -693,6 +754,65 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Version
+
+> string Version(ctx).Execute()
+
+Get version of current broker
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.BrokersApi.Version(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BrokersApi.Version``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Version`: string
+    fmt.Fprintf(os.Stdout, "Response from `BrokersApi.Version`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiVersionRequest struct via the builder pattern
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

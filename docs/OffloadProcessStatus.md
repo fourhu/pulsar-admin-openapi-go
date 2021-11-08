@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FirstUnoffloadedMessage** | Pointer to [**MessageIdImpl**](MessageIdImpl.md) |  | [optional] 
+**FirstUnoffloadedMessage** | Pointer to **map[string]interface{}** |  | [optional] 
 **LastError** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to **string** |  | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetFirstUnoffloadedMessage
 
-`func (o *OffloadProcessStatus) GetFirstUnoffloadedMessage() MessageIdImpl`
+`func (o *OffloadProcessStatus) GetFirstUnoffloadedMessage() map[string]interface{}`
 
 GetFirstUnoffloadedMessage returns the FirstUnoffloadedMessage field if non-nil, zero value otherwise.
 
 ### GetFirstUnoffloadedMessageOk
 
-`func (o *OffloadProcessStatus) GetFirstUnoffloadedMessageOk() (*MessageIdImpl, bool)`
+`func (o *OffloadProcessStatus) GetFirstUnoffloadedMessageOk() (*map[string]interface{}, bool)`
 
 GetFirstUnoffloadedMessageOk returns a tuple with the FirstUnoffloadedMessage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFirstUnoffloadedMessage
 
-`func (o *OffloadProcessStatus) SetFirstUnoffloadedMessage(v MessageIdImpl)`
+`func (o *OffloadProcessStatus) SetFirstUnoffloadedMessage(v map[string]interface{})`
 
 SetFirstUnoffloadedMessage sets FirstUnoffloadedMessage field to given value.
 

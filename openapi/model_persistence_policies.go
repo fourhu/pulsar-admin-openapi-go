@@ -16,9 +16,9 @@ import (
 
 // PersistencePolicies struct for PersistencePolicies
 type PersistencePolicies struct {
-	BookkeeperAckQuorum *int32 `json:"bookkeeperAckQuorum,omitempty"`
 	BookkeeperEnsemble *int32 `json:"bookkeeperEnsemble,omitempty"`
 	BookkeeperWriteQuorum *int32 `json:"bookkeeperWriteQuorum,omitempty"`
+	BookkeeperAckQuorum *int32 `json:"bookkeeperAckQuorum,omitempty"`
 	ManagedLedgerMaxMarkDeleteRate *float64 `json:"managedLedgerMaxMarkDeleteRate,omitempty"`
 }
 
@@ -37,38 +37,6 @@ func NewPersistencePolicies() *PersistencePolicies {
 func NewPersistencePoliciesWithDefaults() *PersistencePolicies {
 	this := PersistencePolicies{}
 	return &this
-}
-
-// GetBookkeeperAckQuorum returns the BookkeeperAckQuorum field value if set, zero value otherwise.
-func (o *PersistencePolicies) GetBookkeeperAckQuorum() int32 {
-	if o == nil || o.BookkeeperAckQuorum == nil {
-		var ret int32
-		return ret
-	}
-	return *o.BookkeeperAckQuorum
-}
-
-// GetBookkeeperAckQuorumOk returns a tuple with the BookkeeperAckQuorum field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PersistencePolicies) GetBookkeeperAckQuorumOk() (*int32, bool) {
-	if o == nil || o.BookkeeperAckQuorum == nil {
-		return nil, false
-	}
-	return o.BookkeeperAckQuorum, true
-}
-
-// HasBookkeeperAckQuorum returns a boolean if a field has been set.
-func (o *PersistencePolicies) HasBookkeeperAckQuorum() bool {
-	if o != nil && o.BookkeeperAckQuorum != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBookkeeperAckQuorum gets a reference to the given int32 and assigns it to the BookkeeperAckQuorum field.
-func (o *PersistencePolicies) SetBookkeeperAckQuorum(v int32) {
-	o.BookkeeperAckQuorum = &v
 }
 
 // GetBookkeeperEnsemble returns the BookkeeperEnsemble field value if set, zero value otherwise.
@@ -135,6 +103,38 @@ func (o *PersistencePolicies) SetBookkeeperWriteQuorum(v int32) {
 	o.BookkeeperWriteQuorum = &v
 }
 
+// GetBookkeeperAckQuorum returns the BookkeeperAckQuorum field value if set, zero value otherwise.
+func (o *PersistencePolicies) GetBookkeeperAckQuorum() int32 {
+	if o == nil || o.BookkeeperAckQuorum == nil {
+		var ret int32
+		return ret
+	}
+	return *o.BookkeeperAckQuorum
+}
+
+// GetBookkeeperAckQuorumOk returns a tuple with the BookkeeperAckQuorum field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PersistencePolicies) GetBookkeeperAckQuorumOk() (*int32, bool) {
+	if o == nil || o.BookkeeperAckQuorum == nil {
+		return nil, false
+	}
+	return o.BookkeeperAckQuorum, true
+}
+
+// HasBookkeeperAckQuorum returns a boolean if a field has been set.
+func (o *PersistencePolicies) HasBookkeeperAckQuorum() bool {
+	if o != nil && o.BookkeeperAckQuorum != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBookkeeperAckQuorum gets a reference to the given int32 and assigns it to the BookkeeperAckQuorum field.
+func (o *PersistencePolicies) SetBookkeeperAckQuorum(v int32) {
+	o.BookkeeperAckQuorum = &v
+}
+
 // GetManagedLedgerMaxMarkDeleteRate returns the ManagedLedgerMaxMarkDeleteRate field value if set, zero value otherwise.
 func (o *PersistencePolicies) GetManagedLedgerMaxMarkDeleteRate() float64 {
 	if o == nil || o.ManagedLedgerMaxMarkDeleteRate == nil {
@@ -169,14 +169,14 @@ func (o *PersistencePolicies) SetManagedLedgerMaxMarkDeleteRate(v float64) {
 
 func (o PersistencePolicies) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BookkeeperAckQuorum != nil {
-		toSerialize["bookkeeperAckQuorum"] = o.BookkeeperAckQuorum
-	}
 	if o.BookkeeperEnsemble != nil {
 		toSerialize["bookkeeperEnsemble"] = o.BookkeeperEnsemble
 	}
 	if o.BookkeeperWriteQuorum != nil {
 		toSerialize["bookkeeperWriteQuorum"] = o.BookkeeperWriteQuorum
+	}
+	if o.BookkeeperAckQuorum != nil {
+		toSerialize["bookkeeperAckQuorum"] = o.BookkeeperAckQuorum
 	}
 	if o.ManagedLedgerMaxMarkDeleteRate != nil {
 		toSerialize["managedLedgerMaxMarkDeleteRate"] = o.ManagedLedgerMaxMarkDeleteRate

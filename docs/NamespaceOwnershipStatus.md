@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BrokerAssignment** | Pointer to **string** |  | [optional] 
-**IsActive** | Pointer to **bool** |  | [optional] 
 **IsControlled** | Pointer to **bool** |  | [optional] 
+**IsActive** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -52,31 +52,6 @@ SetBrokerAssignment sets BrokerAssignment field to given value.
 
 HasBrokerAssignment returns a boolean if a field has been set.
 
-### GetIsActive
-
-`func (o *NamespaceOwnershipStatus) GetIsActive() bool`
-
-GetIsActive returns the IsActive field if non-nil, zero value otherwise.
-
-### GetIsActiveOk
-
-`func (o *NamespaceOwnershipStatus) GetIsActiveOk() (*bool, bool)`
-
-GetIsActiveOk returns a tuple with the IsActive field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetIsActive
-
-`func (o *NamespaceOwnershipStatus) SetIsActive(v bool)`
-
-SetIsActive sets IsActive field to given value.
-
-### HasIsActive
-
-`func (o *NamespaceOwnershipStatus) HasIsActive() bool`
-
-HasIsActive returns a boolean if a field has been set.
-
 ### GetIsControlled
 
 `func (o *NamespaceOwnershipStatus) GetIsControlled() bool`
@@ -101,6 +76,31 @@ SetIsControlled sets IsControlled field to given value.
 `func (o *NamespaceOwnershipStatus) HasIsControlled() bool`
 
 HasIsControlled returns a boolean if a field has been set.
+
+### GetIsActive
+
+`func (o *NamespaceOwnershipStatus) GetIsActive() bool`
+
+GetIsActive returns the IsActive field if non-nil, zero value otherwise.
+
+### GetIsActiveOk
+
+`func (o *NamespaceOwnershipStatus) GetIsActiveOk() (*bool, bool)`
+
+GetIsActiveOk returns a tuple with the IsActive field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsActive
+
+`func (o *NamespaceOwnershipStatus) SetIsActive(v bool)`
+
+SetIsActive sets IsActive field to given value.
+
+### HasIsActive
+
+`func (o *NamespaceOwnershipStatus) HasIsActive() bool`
+
+HasIsActive returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

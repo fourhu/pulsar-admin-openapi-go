@@ -16,11 +16,11 @@ import (
 
 // InternalConfigurationData struct for InternalConfigurationData
 type InternalConfigurationData struct {
-	BookkeeperMetadataServiceUri *string `json:"bookkeeperMetadataServiceUri,omitempty"`
+	ZookeeperServers *string `json:"zookeeperServers,omitempty"`
 	ConfigurationStoreServers *string `json:"configurationStoreServers,omitempty"`
 	LedgersRootPath *string `json:"ledgersRootPath,omitempty"`
+	BookkeeperMetadataServiceUri *string `json:"bookkeeperMetadataServiceUri,omitempty"`
 	StateStorageServiceUrl *string `json:"stateStorageServiceUrl,omitempty"`
-	ZookeeperServers *string `json:"zookeeperServers,omitempty"`
 }
 
 // NewInternalConfigurationData instantiates a new InternalConfigurationData object
@@ -40,36 +40,36 @@ func NewInternalConfigurationDataWithDefaults() *InternalConfigurationData {
 	return &this
 }
 
-// GetBookkeeperMetadataServiceUri returns the BookkeeperMetadataServiceUri field value if set, zero value otherwise.
-func (o *InternalConfigurationData) GetBookkeeperMetadataServiceUri() string {
-	if o == nil || o.BookkeeperMetadataServiceUri == nil {
+// GetZookeeperServers returns the ZookeeperServers field value if set, zero value otherwise.
+func (o *InternalConfigurationData) GetZookeeperServers() string {
+	if o == nil || o.ZookeeperServers == nil {
 		var ret string
 		return ret
 	}
-	return *o.BookkeeperMetadataServiceUri
+	return *o.ZookeeperServers
 }
 
-// GetBookkeeperMetadataServiceUriOk returns a tuple with the BookkeeperMetadataServiceUri field value if set, nil otherwise
+// GetZookeeperServersOk returns a tuple with the ZookeeperServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InternalConfigurationData) GetBookkeeperMetadataServiceUriOk() (*string, bool) {
-	if o == nil || o.BookkeeperMetadataServiceUri == nil {
+func (o *InternalConfigurationData) GetZookeeperServersOk() (*string, bool) {
+	if o == nil || o.ZookeeperServers == nil {
 		return nil, false
 	}
-	return o.BookkeeperMetadataServiceUri, true
+	return o.ZookeeperServers, true
 }
 
-// HasBookkeeperMetadataServiceUri returns a boolean if a field has been set.
-func (o *InternalConfigurationData) HasBookkeeperMetadataServiceUri() bool {
-	if o != nil && o.BookkeeperMetadataServiceUri != nil {
+// HasZookeeperServers returns a boolean if a field has been set.
+func (o *InternalConfigurationData) HasZookeeperServers() bool {
+	if o != nil && o.ZookeeperServers != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBookkeeperMetadataServiceUri gets a reference to the given string and assigns it to the BookkeeperMetadataServiceUri field.
-func (o *InternalConfigurationData) SetBookkeeperMetadataServiceUri(v string) {
-	o.BookkeeperMetadataServiceUri = &v
+// SetZookeeperServers gets a reference to the given string and assigns it to the ZookeeperServers field.
+func (o *InternalConfigurationData) SetZookeeperServers(v string) {
+	o.ZookeeperServers = &v
 }
 
 // GetConfigurationStoreServers returns the ConfigurationStoreServers field value if set, zero value otherwise.
@@ -136,6 +136,38 @@ func (o *InternalConfigurationData) SetLedgersRootPath(v string) {
 	o.LedgersRootPath = &v
 }
 
+// GetBookkeeperMetadataServiceUri returns the BookkeeperMetadataServiceUri field value if set, zero value otherwise.
+func (o *InternalConfigurationData) GetBookkeeperMetadataServiceUri() string {
+	if o == nil || o.BookkeeperMetadataServiceUri == nil {
+		var ret string
+		return ret
+	}
+	return *o.BookkeeperMetadataServiceUri
+}
+
+// GetBookkeeperMetadataServiceUriOk returns a tuple with the BookkeeperMetadataServiceUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InternalConfigurationData) GetBookkeeperMetadataServiceUriOk() (*string, bool) {
+	if o == nil || o.BookkeeperMetadataServiceUri == nil {
+		return nil, false
+	}
+	return o.BookkeeperMetadataServiceUri, true
+}
+
+// HasBookkeeperMetadataServiceUri returns a boolean if a field has been set.
+func (o *InternalConfigurationData) HasBookkeeperMetadataServiceUri() bool {
+	if o != nil && o.BookkeeperMetadataServiceUri != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBookkeeperMetadataServiceUri gets a reference to the given string and assigns it to the BookkeeperMetadataServiceUri field.
+func (o *InternalConfigurationData) SetBookkeeperMetadataServiceUri(v string) {
+	o.BookkeeperMetadataServiceUri = &v
+}
+
 // GetStateStorageServiceUrl returns the StateStorageServiceUrl field value if set, zero value otherwise.
 func (o *InternalConfigurationData) GetStateStorageServiceUrl() string {
 	if o == nil || o.StateStorageServiceUrl == nil {
@@ -168,42 +200,10 @@ func (o *InternalConfigurationData) SetStateStorageServiceUrl(v string) {
 	o.StateStorageServiceUrl = &v
 }
 
-// GetZookeeperServers returns the ZookeeperServers field value if set, zero value otherwise.
-func (o *InternalConfigurationData) GetZookeeperServers() string {
-	if o == nil || o.ZookeeperServers == nil {
-		var ret string
-		return ret
-	}
-	return *o.ZookeeperServers
-}
-
-// GetZookeeperServersOk returns a tuple with the ZookeeperServers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InternalConfigurationData) GetZookeeperServersOk() (*string, bool) {
-	if o == nil || o.ZookeeperServers == nil {
-		return nil, false
-	}
-	return o.ZookeeperServers, true
-}
-
-// HasZookeeperServers returns a boolean if a field has been set.
-func (o *InternalConfigurationData) HasZookeeperServers() bool {
-	if o != nil && o.ZookeeperServers != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetZookeeperServers gets a reference to the given string and assigns it to the ZookeeperServers field.
-func (o *InternalConfigurationData) SetZookeeperServers(v string) {
-	o.ZookeeperServers = &v
-}
-
 func (o InternalConfigurationData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BookkeeperMetadataServiceUri != nil {
-		toSerialize["bookkeeperMetadataServiceUri"] = o.BookkeeperMetadataServiceUri
+	if o.ZookeeperServers != nil {
+		toSerialize["zookeeperServers"] = o.ZookeeperServers
 	}
 	if o.ConfigurationStoreServers != nil {
 		toSerialize["configurationStoreServers"] = o.ConfigurationStoreServers
@@ -211,11 +211,11 @@ func (o InternalConfigurationData) MarshalJSON() ([]byte, error) {
 	if o.LedgersRootPath != nil {
 		toSerialize["ledgersRootPath"] = o.LedgersRootPath
 	}
+	if o.BookkeeperMetadataServiceUri != nil {
+		toSerialize["bookkeeperMetadataServiceUri"] = o.BookkeeperMetadataServiceUri
+	}
 	if o.StateStorageServiceUrl != nil {
 		toSerialize["stateStorageServiceUrl"] = o.StateStorageServiceUrl
-	}
-	if o.ZookeeperServers != nil {
-		toSerialize["zookeeperServers"] = o.ZookeeperServers
 	}
 	return json.Marshal(toSerialize)
 }

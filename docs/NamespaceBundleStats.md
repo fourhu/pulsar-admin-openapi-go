@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CacheSize** | Pointer to **int64** |  | [optional] 
-**ConsumerCount** | Pointer to **int32** |  | [optional] 
 **MsgRateIn** | Pointer to **float64** |  | [optional] 
-**MsgRateOut** | Pointer to **float64** |  | [optional] 
 **MsgThroughputIn** | Pointer to **float64** |  | [optional] 
+**MsgRateOut** | Pointer to **float64** |  | [optional] 
 **MsgThroughputOut** | Pointer to **float64** |  | [optional] 
+**ConsumerCount** | Pointer to **int32** |  | [optional] 
 **ProducerCount** | Pointer to **int32** |  | [optional] 
 **Topics** | Pointer to **int64** |  | [optional] 
+**CacheSize** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -31,56 +31,6 @@ will change when the set of required properties is changed
 NewNamespaceBundleStatsWithDefaults instantiates a new NamespaceBundleStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCacheSize
-
-`func (o *NamespaceBundleStats) GetCacheSize() int64`
-
-GetCacheSize returns the CacheSize field if non-nil, zero value otherwise.
-
-### GetCacheSizeOk
-
-`func (o *NamespaceBundleStats) GetCacheSizeOk() (*int64, bool)`
-
-GetCacheSizeOk returns a tuple with the CacheSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCacheSize
-
-`func (o *NamespaceBundleStats) SetCacheSize(v int64)`
-
-SetCacheSize sets CacheSize field to given value.
-
-### HasCacheSize
-
-`func (o *NamespaceBundleStats) HasCacheSize() bool`
-
-HasCacheSize returns a boolean if a field has been set.
-
-### GetConsumerCount
-
-`func (o *NamespaceBundleStats) GetConsumerCount() int32`
-
-GetConsumerCount returns the ConsumerCount field if non-nil, zero value otherwise.
-
-### GetConsumerCountOk
-
-`func (o *NamespaceBundleStats) GetConsumerCountOk() (*int32, bool)`
-
-GetConsumerCountOk returns a tuple with the ConsumerCount field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConsumerCount
-
-`func (o *NamespaceBundleStats) SetConsumerCount(v int32)`
-
-SetConsumerCount sets ConsumerCount field to given value.
-
-### HasConsumerCount
-
-`func (o *NamespaceBundleStats) HasConsumerCount() bool`
-
-HasConsumerCount returns a boolean if a field has been set.
 
 ### GetMsgRateIn
 
@@ -107,31 +57,6 @@ SetMsgRateIn sets MsgRateIn field to given value.
 
 HasMsgRateIn returns a boolean if a field has been set.
 
-### GetMsgRateOut
-
-`func (o *NamespaceBundleStats) GetMsgRateOut() float64`
-
-GetMsgRateOut returns the MsgRateOut field if non-nil, zero value otherwise.
-
-### GetMsgRateOutOk
-
-`func (o *NamespaceBundleStats) GetMsgRateOutOk() (*float64, bool)`
-
-GetMsgRateOutOk returns a tuple with the MsgRateOut field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMsgRateOut
-
-`func (o *NamespaceBundleStats) SetMsgRateOut(v float64)`
-
-SetMsgRateOut sets MsgRateOut field to given value.
-
-### HasMsgRateOut
-
-`func (o *NamespaceBundleStats) HasMsgRateOut() bool`
-
-HasMsgRateOut returns a boolean if a field has been set.
-
 ### GetMsgThroughputIn
 
 `func (o *NamespaceBundleStats) GetMsgThroughputIn() float64`
@@ -157,6 +82,31 @@ SetMsgThroughputIn sets MsgThroughputIn field to given value.
 
 HasMsgThroughputIn returns a boolean if a field has been set.
 
+### GetMsgRateOut
+
+`func (o *NamespaceBundleStats) GetMsgRateOut() float64`
+
+GetMsgRateOut returns the MsgRateOut field if non-nil, zero value otherwise.
+
+### GetMsgRateOutOk
+
+`func (o *NamespaceBundleStats) GetMsgRateOutOk() (*float64, bool)`
+
+GetMsgRateOutOk returns a tuple with the MsgRateOut field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsgRateOut
+
+`func (o *NamespaceBundleStats) SetMsgRateOut(v float64)`
+
+SetMsgRateOut sets MsgRateOut field to given value.
+
+### HasMsgRateOut
+
+`func (o *NamespaceBundleStats) HasMsgRateOut() bool`
+
+HasMsgRateOut returns a boolean if a field has been set.
+
 ### GetMsgThroughputOut
 
 `func (o *NamespaceBundleStats) GetMsgThroughputOut() float64`
@@ -181,6 +131,31 @@ SetMsgThroughputOut sets MsgThroughputOut field to given value.
 `func (o *NamespaceBundleStats) HasMsgThroughputOut() bool`
 
 HasMsgThroughputOut returns a boolean if a field has been set.
+
+### GetConsumerCount
+
+`func (o *NamespaceBundleStats) GetConsumerCount() int32`
+
+GetConsumerCount returns the ConsumerCount field if non-nil, zero value otherwise.
+
+### GetConsumerCountOk
+
+`func (o *NamespaceBundleStats) GetConsumerCountOk() (*int32, bool)`
+
+GetConsumerCountOk returns a tuple with the ConsumerCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConsumerCount
+
+`func (o *NamespaceBundleStats) SetConsumerCount(v int32)`
+
+SetConsumerCount sets ConsumerCount field to given value.
+
+### HasConsumerCount
+
+`func (o *NamespaceBundleStats) HasConsumerCount() bool`
+
+HasConsumerCount returns a boolean if a field has been set.
 
 ### GetProducerCount
 
@@ -231,6 +206,31 @@ SetTopics sets Topics field to given value.
 `func (o *NamespaceBundleStats) HasTopics() bool`
 
 HasTopics returns a boolean if a field has been set.
+
+### GetCacheSize
+
+`func (o *NamespaceBundleStats) GetCacheSize() int64`
+
+GetCacheSize returns the CacheSize field if non-nil, zero value otherwise.
+
+### GetCacheSizeOk
+
+`func (o *NamespaceBundleStats) GetCacheSizeOk() (*int64, bool)`
+
+GetCacheSizeOk returns a tuple with the CacheSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCacheSize
+
+`func (o *NamespaceBundleStats) SetCacheSize(v int64)`
+
+SetCacheSize sets CacheSize field to given value.
+
+### HasCacheSize
+
+`func (o *NamespaceBundleStats) HasCacheSize() bool`
+
+HasCacheSize returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -16,14 +16,14 @@ import (
 
 // PendingBookieOpsStats struct for PendingBookieOpsStats
 type PendingBookieOpsStats struct {
-	CursorLedgerCloseOp *int64 `json:"cursorLedgerCloseOp,omitempty"`
-	CursorLedgerCreateOp *int64 `json:"cursorLedgerCreateOp,omitempty"`
-	CursorLedgerDeleteOp *int64 `json:"cursorLedgerDeleteOp,omitempty"`
-	CursorLedgerOpenOp *int64 `json:"cursorLedgerOpenOp,omitempty"`
+	DataLedgerOpenOp *int64 `json:"dataLedgerOpenOp,omitempty"`
 	DataLedgerCloseOp *int64 `json:"dataLedgerCloseOp,omitempty"`
 	DataLedgerCreateOp *int64 `json:"dataLedgerCreateOp,omitempty"`
 	DataLedgerDeleteOp *int64 `json:"dataLedgerDeleteOp,omitempty"`
-	DataLedgerOpenOp *int64 `json:"dataLedgerOpenOp,omitempty"`
+	CursorLedgerOpenOp *int64 `json:"cursorLedgerOpenOp,omitempty"`
+	CursorLedgerCloseOp *int64 `json:"cursorLedgerCloseOp,omitempty"`
+	CursorLedgerCreateOp *int64 `json:"cursorLedgerCreateOp,omitempty"`
+	CursorLedgerDeleteOp *int64 `json:"cursorLedgerDeleteOp,omitempty"`
 }
 
 // NewPendingBookieOpsStats instantiates a new PendingBookieOpsStats object
@@ -43,132 +43,36 @@ func NewPendingBookieOpsStatsWithDefaults() *PendingBookieOpsStats {
 	return &this
 }
 
-// GetCursorLedgerCloseOp returns the CursorLedgerCloseOp field value if set, zero value otherwise.
-func (o *PendingBookieOpsStats) GetCursorLedgerCloseOp() int64 {
-	if o == nil || o.CursorLedgerCloseOp == nil {
+// GetDataLedgerOpenOp returns the DataLedgerOpenOp field value if set, zero value otherwise.
+func (o *PendingBookieOpsStats) GetDataLedgerOpenOp() int64 {
+	if o == nil || o.DataLedgerOpenOp == nil {
 		var ret int64
 		return ret
 	}
-	return *o.CursorLedgerCloseOp
+	return *o.DataLedgerOpenOp
 }
 
-// GetCursorLedgerCloseOpOk returns a tuple with the CursorLedgerCloseOp field value if set, nil otherwise
+// GetDataLedgerOpenOpOk returns a tuple with the DataLedgerOpenOp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingBookieOpsStats) GetCursorLedgerCloseOpOk() (*int64, bool) {
-	if o == nil || o.CursorLedgerCloseOp == nil {
+func (o *PendingBookieOpsStats) GetDataLedgerOpenOpOk() (*int64, bool) {
+	if o == nil || o.DataLedgerOpenOp == nil {
 		return nil, false
 	}
-	return o.CursorLedgerCloseOp, true
+	return o.DataLedgerOpenOp, true
 }
 
-// HasCursorLedgerCloseOp returns a boolean if a field has been set.
-func (o *PendingBookieOpsStats) HasCursorLedgerCloseOp() bool {
-	if o != nil && o.CursorLedgerCloseOp != nil {
+// HasDataLedgerOpenOp returns a boolean if a field has been set.
+func (o *PendingBookieOpsStats) HasDataLedgerOpenOp() bool {
+	if o != nil && o.DataLedgerOpenOp != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetCursorLedgerCloseOp gets a reference to the given int64 and assigns it to the CursorLedgerCloseOp field.
-func (o *PendingBookieOpsStats) SetCursorLedgerCloseOp(v int64) {
-	o.CursorLedgerCloseOp = &v
-}
-
-// GetCursorLedgerCreateOp returns the CursorLedgerCreateOp field value if set, zero value otherwise.
-func (o *PendingBookieOpsStats) GetCursorLedgerCreateOp() int64 {
-	if o == nil || o.CursorLedgerCreateOp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.CursorLedgerCreateOp
-}
-
-// GetCursorLedgerCreateOpOk returns a tuple with the CursorLedgerCreateOp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PendingBookieOpsStats) GetCursorLedgerCreateOpOk() (*int64, bool) {
-	if o == nil || o.CursorLedgerCreateOp == nil {
-		return nil, false
-	}
-	return o.CursorLedgerCreateOp, true
-}
-
-// HasCursorLedgerCreateOp returns a boolean if a field has been set.
-func (o *PendingBookieOpsStats) HasCursorLedgerCreateOp() bool {
-	if o != nil && o.CursorLedgerCreateOp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCursorLedgerCreateOp gets a reference to the given int64 and assigns it to the CursorLedgerCreateOp field.
-func (o *PendingBookieOpsStats) SetCursorLedgerCreateOp(v int64) {
-	o.CursorLedgerCreateOp = &v
-}
-
-// GetCursorLedgerDeleteOp returns the CursorLedgerDeleteOp field value if set, zero value otherwise.
-func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOp() int64 {
-	if o == nil || o.CursorLedgerDeleteOp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.CursorLedgerDeleteOp
-}
-
-// GetCursorLedgerDeleteOpOk returns a tuple with the CursorLedgerDeleteOp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOpOk() (*int64, bool) {
-	if o == nil || o.CursorLedgerDeleteOp == nil {
-		return nil, false
-	}
-	return o.CursorLedgerDeleteOp, true
-}
-
-// HasCursorLedgerDeleteOp returns a boolean if a field has been set.
-func (o *PendingBookieOpsStats) HasCursorLedgerDeleteOp() bool {
-	if o != nil && o.CursorLedgerDeleteOp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCursorLedgerDeleteOp gets a reference to the given int64 and assigns it to the CursorLedgerDeleteOp field.
-func (o *PendingBookieOpsStats) SetCursorLedgerDeleteOp(v int64) {
-	o.CursorLedgerDeleteOp = &v
-}
-
-// GetCursorLedgerOpenOp returns the CursorLedgerOpenOp field value if set, zero value otherwise.
-func (o *PendingBookieOpsStats) GetCursorLedgerOpenOp() int64 {
-	if o == nil || o.CursorLedgerOpenOp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.CursorLedgerOpenOp
-}
-
-// GetCursorLedgerOpenOpOk returns a tuple with the CursorLedgerOpenOp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PendingBookieOpsStats) GetCursorLedgerOpenOpOk() (*int64, bool) {
-	if o == nil || o.CursorLedgerOpenOp == nil {
-		return nil, false
-	}
-	return o.CursorLedgerOpenOp, true
-}
-
-// HasCursorLedgerOpenOp returns a boolean if a field has been set.
-func (o *PendingBookieOpsStats) HasCursorLedgerOpenOp() bool {
-	if o != nil && o.CursorLedgerOpenOp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCursorLedgerOpenOp gets a reference to the given int64 and assigns it to the CursorLedgerOpenOp field.
-func (o *PendingBookieOpsStats) SetCursorLedgerOpenOp(v int64) {
-	o.CursorLedgerOpenOp = &v
+// SetDataLedgerOpenOp gets a reference to the given int64 and assigns it to the DataLedgerOpenOp field.
+func (o *PendingBookieOpsStats) SetDataLedgerOpenOp(v int64) {
+	o.DataLedgerOpenOp = &v
 }
 
 // GetDataLedgerCloseOp returns the DataLedgerCloseOp field value if set, zero value otherwise.
@@ -267,51 +171,138 @@ func (o *PendingBookieOpsStats) SetDataLedgerDeleteOp(v int64) {
 	o.DataLedgerDeleteOp = &v
 }
 
-// GetDataLedgerOpenOp returns the DataLedgerOpenOp field value if set, zero value otherwise.
-func (o *PendingBookieOpsStats) GetDataLedgerOpenOp() int64 {
-	if o == nil || o.DataLedgerOpenOp == nil {
+// GetCursorLedgerOpenOp returns the CursorLedgerOpenOp field value if set, zero value otherwise.
+func (o *PendingBookieOpsStats) GetCursorLedgerOpenOp() int64 {
+	if o == nil || o.CursorLedgerOpenOp == nil {
 		var ret int64
 		return ret
 	}
-	return *o.DataLedgerOpenOp
+	return *o.CursorLedgerOpenOp
 }
 
-// GetDataLedgerOpenOpOk returns a tuple with the DataLedgerOpenOp field value if set, nil otherwise
+// GetCursorLedgerOpenOpOk returns a tuple with the CursorLedgerOpenOp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PendingBookieOpsStats) GetDataLedgerOpenOpOk() (*int64, bool) {
-	if o == nil || o.DataLedgerOpenOp == nil {
+func (o *PendingBookieOpsStats) GetCursorLedgerOpenOpOk() (*int64, bool) {
+	if o == nil || o.CursorLedgerOpenOp == nil {
 		return nil, false
 	}
-	return o.DataLedgerOpenOp, true
+	return o.CursorLedgerOpenOp, true
 }
 
-// HasDataLedgerOpenOp returns a boolean if a field has been set.
-func (o *PendingBookieOpsStats) HasDataLedgerOpenOp() bool {
-	if o != nil && o.DataLedgerOpenOp != nil {
+// HasCursorLedgerOpenOp returns a boolean if a field has been set.
+func (o *PendingBookieOpsStats) HasCursorLedgerOpenOp() bool {
+	if o != nil && o.CursorLedgerOpenOp != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDataLedgerOpenOp gets a reference to the given int64 and assigns it to the DataLedgerOpenOp field.
-func (o *PendingBookieOpsStats) SetDataLedgerOpenOp(v int64) {
-	o.DataLedgerOpenOp = &v
+// SetCursorLedgerOpenOp gets a reference to the given int64 and assigns it to the CursorLedgerOpenOp field.
+func (o *PendingBookieOpsStats) SetCursorLedgerOpenOp(v int64) {
+	o.CursorLedgerOpenOp = &v
+}
+
+// GetCursorLedgerCloseOp returns the CursorLedgerCloseOp field value if set, zero value otherwise.
+func (o *PendingBookieOpsStats) GetCursorLedgerCloseOp() int64 {
+	if o == nil || o.CursorLedgerCloseOp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CursorLedgerCloseOp
+}
+
+// GetCursorLedgerCloseOpOk returns a tuple with the CursorLedgerCloseOp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingBookieOpsStats) GetCursorLedgerCloseOpOk() (*int64, bool) {
+	if o == nil || o.CursorLedgerCloseOp == nil {
+		return nil, false
+	}
+	return o.CursorLedgerCloseOp, true
+}
+
+// HasCursorLedgerCloseOp returns a boolean if a field has been set.
+func (o *PendingBookieOpsStats) HasCursorLedgerCloseOp() bool {
+	if o != nil && o.CursorLedgerCloseOp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCursorLedgerCloseOp gets a reference to the given int64 and assigns it to the CursorLedgerCloseOp field.
+func (o *PendingBookieOpsStats) SetCursorLedgerCloseOp(v int64) {
+	o.CursorLedgerCloseOp = &v
+}
+
+// GetCursorLedgerCreateOp returns the CursorLedgerCreateOp field value if set, zero value otherwise.
+func (o *PendingBookieOpsStats) GetCursorLedgerCreateOp() int64 {
+	if o == nil || o.CursorLedgerCreateOp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CursorLedgerCreateOp
+}
+
+// GetCursorLedgerCreateOpOk returns a tuple with the CursorLedgerCreateOp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingBookieOpsStats) GetCursorLedgerCreateOpOk() (*int64, bool) {
+	if o == nil || o.CursorLedgerCreateOp == nil {
+		return nil, false
+	}
+	return o.CursorLedgerCreateOp, true
+}
+
+// HasCursorLedgerCreateOp returns a boolean if a field has been set.
+func (o *PendingBookieOpsStats) HasCursorLedgerCreateOp() bool {
+	if o != nil && o.CursorLedgerCreateOp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCursorLedgerCreateOp gets a reference to the given int64 and assigns it to the CursorLedgerCreateOp field.
+func (o *PendingBookieOpsStats) SetCursorLedgerCreateOp(v int64) {
+	o.CursorLedgerCreateOp = &v
+}
+
+// GetCursorLedgerDeleteOp returns the CursorLedgerDeleteOp field value if set, zero value otherwise.
+func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOp() int64 {
+	if o == nil || o.CursorLedgerDeleteOp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CursorLedgerDeleteOp
+}
+
+// GetCursorLedgerDeleteOpOk returns a tuple with the CursorLedgerDeleteOp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOpOk() (*int64, bool) {
+	if o == nil || o.CursorLedgerDeleteOp == nil {
+		return nil, false
+	}
+	return o.CursorLedgerDeleteOp, true
+}
+
+// HasCursorLedgerDeleteOp returns a boolean if a field has been set.
+func (o *PendingBookieOpsStats) HasCursorLedgerDeleteOp() bool {
+	if o != nil && o.CursorLedgerDeleteOp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCursorLedgerDeleteOp gets a reference to the given int64 and assigns it to the CursorLedgerDeleteOp field.
+func (o *PendingBookieOpsStats) SetCursorLedgerDeleteOp(v int64) {
+	o.CursorLedgerDeleteOp = &v
 }
 
 func (o PendingBookieOpsStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CursorLedgerCloseOp != nil {
-		toSerialize["cursorLedgerCloseOp"] = o.CursorLedgerCloseOp
-	}
-	if o.CursorLedgerCreateOp != nil {
-		toSerialize["cursorLedgerCreateOp"] = o.CursorLedgerCreateOp
-	}
-	if o.CursorLedgerDeleteOp != nil {
-		toSerialize["cursorLedgerDeleteOp"] = o.CursorLedgerDeleteOp
-	}
-	if o.CursorLedgerOpenOp != nil {
-		toSerialize["cursorLedgerOpenOp"] = o.CursorLedgerOpenOp
+	if o.DataLedgerOpenOp != nil {
+		toSerialize["dataLedgerOpenOp"] = o.DataLedgerOpenOp
 	}
 	if o.DataLedgerCloseOp != nil {
 		toSerialize["dataLedgerCloseOp"] = o.DataLedgerCloseOp
@@ -322,8 +313,17 @@ func (o PendingBookieOpsStats) MarshalJSON() ([]byte, error) {
 	if o.DataLedgerDeleteOp != nil {
 		toSerialize["dataLedgerDeleteOp"] = o.DataLedgerDeleteOp
 	}
-	if o.DataLedgerOpenOp != nil {
-		toSerialize["dataLedgerOpenOp"] = o.DataLedgerOpenOp
+	if o.CursorLedgerOpenOp != nil {
+		toSerialize["cursorLedgerOpenOp"] = o.CursorLedgerOpenOp
+	}
+	if o.CursorLedgerCloseOp != nil {
+		toSerialize["cursorLedgerCloseOp"] = o.CursorLedgerCloseOp
+	}
+	if o.CursorLedgerCreateOp != nil {
+		toSerialize["cursorLedgerCreateOp"] = o.CursorLedgerCreateOp
+	}
+	if o.CursorLedgerDeleteOp != nil {
+		toSerialize["cursorLedgerDeleteOp"] = o.CursorLedgerDeleteOp
 	}
 	return json.Marshal(toSerialize)
 }

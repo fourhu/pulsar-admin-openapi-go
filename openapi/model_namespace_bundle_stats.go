@@ -16,14 +16,14 @@ import (
 
 // NamespaceBundleStats struct for NamespaceBundleStats
 type NamespaceBundleStats struct {
-	CacheSize *int64 `json:"cacheSize,omitempty"`
-	ConsumerCount *int32 `json:"consumerCount,omitempty"`
 	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
-	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
 	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
+	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
 	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
+	ConsumerCount *int32 `json:"consumerCount,omitempty"`
 	ProducerCount *int32 `json:"producerCount,omitempty"`
 	Topics *int64 `json:"topics,omitempty"`
+	CacheSize *int64 `json:"cacheSize,omitempty"`
 }
 
 // NewNamespaceBundleStats instantiates a new NamespaceBundleStats object
@@ -41,70 +41,6 @@ func NewNamespaceBundleStats() *NamespaceBundleStats {
 func NewNamespaceBundleStatsWithDefaults() *NamespaceBundleStats {
 	this := NamespaceBundleStats{}
 	return &this
-}
-
-// GetCacheSize returns the CacheSize field value if set, zero value otherwise.
-func (o *NamespaceBundleStats) GetCacheSize() int64 {
-	if o == nil || o.CacheSize == nil {
-		var ret int64
-		return ret
-	}
-	return *o.CacheSize
-}
-
-// GetCacheSizeOk returns a tuple with the CacheSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NamespaceBundleStats) GetCacheSizeOk() (*int64, bool) {
-	if o == nil || o.CacheSize == nil {
-		return nil, false
-	}
-	return o.CacheSize, true
-}
-
-// HasCacheSize returns a boolean if a field has been set.
-func (o *NamespaceBundleStats) HasCacheSize() bool {
-	if o != nil && o.CacheSize != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetCacheSize gets a reference to the given int64 and assigns it to the CacheSize field.
-func (o *NamespaceBundleStats) SetCacheSize(v int64) {
-	o.CacheSize = &v
-}
-
-// GetConsumerCount returns the ConsumerCount field value if set, zero value otherwise.
-func (o *NamespaceBundleStats) GetConsumerCount() int32 {
-	if o == nil || o.ConsumerCount == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ConsumerCount
-}
-
-// GetConsumerCountOk returns a tuple with the ConsumerCount field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NamespaceBundleStats) GetConsumerCountOk() (*int32, bool) {
-	if o == nil || o.ConsumerCount == nil {
-		return nil, false
-	}
-	return o.ConsumerCount, true
-}
-
-// HasConsumerCount returns a boolean if a field has been set.
-func (o *NamespaceBundleStats) HasConsumerCount() bool {
-	if o != nil && o.ConsumerCount != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConsumerCount gets a reference to the given int32 and assigns it to the ConsumerCount field.
-func (o *NamespaceBundleStats) SetConsumerCount(v int32) {
-	o.ConsumerCount = &v
 }
 
 // GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
@@ -139,38 +75,6 @@ func (o *NamespaceBundleStats) SetMsgRateIn(v float64) {
 	o.MsgRateIn = &v
 }
 
-// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
-func (o *NamespaceBundleStats) GetMsgRateOut() float64 {
-	if o == nil || o.MsgRateOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateOut
-}
-
-// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NamespaceBundleStats) GetMsgRateOutOk() (*float64, bool) {
-	if o == nil || o.MsgRateOut == nil {
-		return nil, false
-	}
-	return o.MsgRateOut, true
-}
-
-// HasMsgRateOut returns a boolean if a field has been set.
-func (o *NamespaceBundleStats) HasMsgRateOut() bool {
-	if o != nil && o.MsgRateOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
-func (o *NamespaceBundleStats) SetMsgRateOut(v float64) {
-	o.MsgRateOut = &v
-}
-
 // GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
 func (o *NamespaceBundleStats) GetMsgThroughputIn() float64 {
 	if o == nil || o.MsgThroughputIn == nil {
@@ -203,6 +107,38 @@ func (o *NamespaceBundleStats) SetMsgThroughputIn(v float64) {
 	o.MsgThroughputIn = &v
 }
 
+// GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
+func (o *NamespaceBundleStats) GetMsgRateOut() float64 {
+	if o == nil || o.MsgRateOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateOut
+}
+
+// GetMsgRateOutOk returns a tuple with the MsgRateOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NamespaceBundleStats) GetMsgRateOutOk() (*float64, bool) {
+	if o == nil || o.MsgRateOut == nil {
+		return nil, false
+	}
+	return o.MsgRateOut, true
+}
+
+// HasMsgRateOut returns a boolean if a field has been set.
+func (o *NamespaceBundleStats) HasMsgRateOut() bool {
+	if o != nil && o.MsgRateOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateOut gets a reference to the given float64 and assigns it to the MsgRateOut field.
+func (o *NamespaceBundleStats) SetMsgRateOut(v float64) {
+	o.MsgRateOut = &v
+}
+
 // GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
 func (o *NamespaceBundleStats) GetMsgThroughputOut() float64 {
 	if o == nil || o.MsgThroughputOut == nil {
@@ -233,6 +169,38 @@ func (o *NamespaceBundleStats) HasMsgThroughputOut() bool {
 // SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
 func (o *NamespaceBundleStats) SetMsgThroughputOut(v float64) {
 	o.MsgThroughputOut = &v
+}
+
+// GetConsumerCount returns the ConsumerCount field value if set, zero value otherwise.
+func (o *NamespaceBundleStats) GetConsumerCount() int32 {
+	if o == nil || o.ConsumerCount == nil {
+		var ret int32
+		return ret
+	}
+	return *o.ConsumerCount
+}
+
+// GetConsumerCountOk returns a tuple with the ConsumerCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NamespaceBundleStats) GetConsumerCountOk() (*int32, bool) {
+	if o == nil || o.ConsumerCount == nil {
+		return nil, false
+	}
+	return o.ConsumerCount, true
+}
+
+// HasConsumerCount returns a boolean if a field has been set.
+func (o *NamespaceBundleStats) HasConsumerCount() bool {
+	if o != nil && o.ConsumerCount != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConsumerCount gets a reference to the given int32 and assigns it to the ConsumerCount field.
+func (o *NamespaceBundleStats) SetConsumerCount(v int32) {
+	o.ConsumerCount = &v
 }
 
 // GetProducerCount returns the ProducerCount field value if set, zero value otherwise.
@@ -299,31 +267,63 @@ func (o *NamespaceBundleStats) SetTopics(v int64) {
 	o.Topics = &v
 }
 
+// GetCacheSize returns the CacheSize field value if set, zero value otherwise.
+func (o *NamespaceBundleStats) GetCacheSize() int64 {
+	if o == nil || o.CacheSize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.CacheSize
+}
+
+// GetCacheSizeOk returns a tuple with the CacheSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NamespaceBundleStats) GetCacheSizeOk() (*int64, bool) {
+	if o == nil || o.CacheSize == nil {
+		return nil, false
+	}
+	return o.CacheSize, true
+}
+
+// HasCacheSize returns a boolean if a field has been set.
+func (o *NamespaceBundleStats) HasCacheSize() bool {
+	if o != nil && o.CacheSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetCacheSize gets a reference to the given int64 and assigns it to the CacheSize field.
+func (o *NamespaceBundleStats) SetCacheSize(v int64) {
+	o.CacheSize = &v
+}
+
 func (o NamespaceBundleStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CacheSize != nil {
-		toSerialize["cacheSize"] = o.CacheSize
-	}
-	if o.ConsumerCount != nil {
-		toSerialize["consumerCount"] = o.ConsumerCount
-	}
 	if o.MsgRateIn != nil {
 		toSerialize["msgRateIn"] = o.MsgRateIn
-	}
-	if o.MsgRateOut != nil {
-		toSerialize["msgRateOut"] = o.MsgRateOut
 	}
 	if o.MsgThroughputIn != nil {
 		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
 	}
+	if o.MsgRateOut != nil {
+		toSerialize["msgRateOut"] = o.MsgRateOut
+	}
 	if o.MsgThroughputOut != nil {
 		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
+	}
+	if o.ConsumerCount != nil {
+		toSerialize["consumerCount"] = o.ConsumerCount
 	}
 	if o.ProducerCount != nil {
 		toSerialize["producerCount"] = o.ProducerCount
 	}
 	if o.Topics != nil {
 		toSerialize["topics"] = o.Topics
+	}
+	if o.CacheSize != nil {
+		toSerialize["cacheSize"] = o.CacheSize
 	}
 	return json.Marshal(toSerialize)
 }

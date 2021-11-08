@@ -16,8 +16,8 @@ import (
 
 // Metrics struct for Metrics
 type Metrics struct {
-	Dimensions *map[string]string `json:"dimensions,omitempty"`
 	Metrics *map[string]map[string]interface{} `json:"metrics,omitempty"`
+	Dimensions *map[string]string `json:"dimensions,omitempty"`
 }
 
 // NewMetrics instantiates a new Metrics object
@@ -35,38 +35,6 @@ func NewMetrics() *Metrics {
 func NewMetricsWithDefaults() *Metrics {
 	this := Metrics{}
 	return &this
-}
-
-// GetDimensions returns the Dimensions field value if set, zero value otherwise.
-func (o *Metrics) GetDimensions() map[string]string {
-	if o == nil || o.Dimensions == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Dimensions
-}
-
-// GetDimensionsOk returns a tuple with the Dimensions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Metrics) GetDimensionsOk() (*map[string]string, bool) {
-	if o == nil || o.Dimensions == nil {
-		return nil, false
-	}
-	return o.Dimensions, true
-}
-
-// HasDimensions returns a boolean if a field has been set.
-func (o *Metrics) HasDimensions() bool {
-	if o != nil && o.Dimensions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDimensions gets a reference to the given map[string]string and assigns it to the Dimensions field.
-func (o *Metrics) SetDimensions(v map[string]string) {
-	o.Dimensions = &v
 }
 
 // GetMetrics returns the Metrics field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *Metrics) SetMetrics(v map[string]map[string]interface{}) {
 	o.Metrics = &v
 }
 
+// GetDimensions returns the Dimensions field value if set, zero value otherwise.
+func (o *Metrics) GetDimensions() map[string]string {
+	if o == nil || o.Dimensions == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Dimensions
+}
+
+// GetDimensionsOk returns a tuple with the Dimensions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Metrics) GetDimensionsOk() (*map[string]string, bool) {
+	if o == nil || o.Dimensions == nil {
+		return nil, false
+	}
+	return o.Dimensions, true
+}
+
+// HasDimensions returns a boolean if a field has been set.
+func (o *Metrics) HasDimensions() bool {
+	if o != nil && o.Dimensions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDimensions gets a reference to the given map[string]string and assigns it to the Dimensions field.
+func (o *Metrics) SetDimensions(v map[string]string) {
+	o.Dimensions = &v
+}
+
 func (o Metrics) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Dimensions != nil {
-		toSerialize["dimensions"] = o.Dimensions
-	}
 	if o.Metrics != nil {
 		toSerialize["metrics"] = o.Metrics
+	}
+	if o.Dimensions != nil {
+		toSerialize["dimensions"] = o.Dimensions
 	}
 	return json.Marshal(toSerialize)
 }

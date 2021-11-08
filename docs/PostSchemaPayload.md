@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Properties** | Pointer to **map[string]string** |  | [optional] 
-**Schema** | Pointer to **string** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] 
+**Schema** | Pointer to **string** |  | [optional] 
+**Properties** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewPostSchemaPayloadWithDefaults instantiates a new PostSchemaPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetProperties
+### GetType
 
-`func (o *PostSchemaPayload) GetProperties() map[string]string`
+`func (o *PostSchemaPayload) GetType() string`
 
-GetProperties returns the Properties field if non-nil, zero value otherwise.
+GetType returns the Type field if non-nil, zero value otherwise.
 
-### GetPropertiesOk
+### GetTypeOk
 
-`func (o *PostSchemaPayload) GetPropertiesOk() (*map[string]string, bool)`
+`func (o *PostSchemaPayload) GetTypeOk() (*string, bool)`
 
-GetPropertiesOk returns a tuple with the Properties field if it's non-nil, zero value otherwise
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProperties
+### SetType
 
-`func (o *PostSchemaPayload) SetProperties(v map[string]string)`
+`func (o *PostSchemaPayload) SetType(v string)`
 
-SetProperties sets Properties field to given value.
+SetType sets Type field to given value.
 
-### HasProperties
+### HasType
 
-`func (o *PostSchemaPayload) HasProperties() bool`
+`func (o *PostSchemaPayload) HasType() bool`
 
-HasProperties returns a boolean if a field has been set.
+HasType returns a boolean if a field has been set.
 
 ### GetSchema
 
@@ -77,30 +77,30 @@ SetSchema sets Schema field to given value.
 
 HasSchema returns a boolean if a field has been set.
 
-### GetType
+### GetProperties
 
-`func (o *PostSchemaPayload) GetType() string`
+`func (o *PostSchemaPayload) GetProperties() map[string]string`
 
-GetType returns the Type field if non-nil, zero value otherwise.
+GetProperties returns the Properties field if non-nil, zero value otherwise.
 
-### GetTypeOk
+### GetPropertiesOk
 
-`func (o *PostSchemaPayload) GetTypeOk() (*string, bool)`
+`func (o *PostSchemaPayload) GetPropertiesOk() (*map[string]string, bool)`
 
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+GetPropertiesOk returns a tuple with the Properties field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetType
+### SetProperties
 
-`func (o *PostSchemaPayload) SetType(v string)`
+`func (o *PostSchemaPayload) SetProperties(v map[string]string)`
 
-SetType sets Type field to given value.
+SetProperties sets Properties field to given value.
 
-### HasType
+### HasProperties
 
-`func (o *PostSchemaPayload) HasType() bool`
+`func (o *PostSchemaPayload) HasProperties() bool`
 
-HasType returns a boolean if a field has been set.
+HasProperties returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

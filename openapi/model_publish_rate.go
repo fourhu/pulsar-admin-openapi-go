@@ -16,8 +16,8 @@ import (
 
 // PublishRate struct for PublishRate
 type PublishRate struct {
-	PublishThrottlingRateInByte *int64 `json:"publishThrottlingRateInByte,omitempty"`
 	PublishThrottlingRateInMsg *int32 `json:"publishThrottlingRateInMsg,omitempty"`
+	PublishThrottlingRateInByte *int64 `json:"publishThrottlingRateInByte,omitempty"`
 }
 
 // NewPublishRate instantiates a new PublishRate object
@@ -35,38 +35,6 @@ func NewPublishRate() *PublishRate {
 func NewPublishRateWithDefaults() *PublishRate {
 	this := PublishRate{}
 	return &this
-}
-
-// GetPublishThrottlingRateInByte returns the PublishThrottlingRateInByte field value if set, zero value otherwise.
-func (o *PublishRate) GetPublishThrottlingRateInByte() int64 {
-	if o == nil || o.PublishThrottlingRateInByte == nil {
-		var ret int64
-		return ret
-	}
-	return *o.PublishThrottlingRateInByte
-}
-
-// GetPublishThrottlingRateInByteOk returns a tuple with the PublishThrottlingRateInByte field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PublishRate) GetPublishThrottlingRateInByteOk() (*int64, bool) {
-	if o == nil || o.PublishThrottlingRateInByte == nil {
-		return nil, false
-	}
-	return o.PublishThrottlingRateInByte, true
-}
-
-// HasPublishThrottlingRateInByte returns a boolean if a field has been set.
-func (o *PublishRate) HasPublishThrottlingRateInByte() bool {
-	if o != nil && o.PublishThrottlingRateInByte != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPublishThrottlingRateInByte gets a reference to the given int64 and assigns it to the PublishThrottlingRateInByte field.
-func (o *PublishRate) SetPublishThrottlingRateInByte(v int64) {
-	o.PublishThrottlingRateInByte = &v
 }
 
 // GetPublishThrottlingRateInMsg returns the PublishThrottlingRateInMsg field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *PublishRate) SetPublishThrottlingRateInMsg(v int32) {
 	o.PublishThrottlingRateInMsg = &v
 }
 
+// GetPublishThrottlingRateInByte returns the PublishThrottlingRateInByte field value if set, zero value otherwise.
+func (o *PublishRate) GetPublishThrottlingRateInByte() int64 {
+	if o == nil || o.PublishThrottlingRateInByte == nil {
+		var ret int64
+		return ret
+	}
+	return *o.PublishThrottlingRateInByte
+}
+
+// GetPublishThrottlingRateInByteOk returns a tuple with the PublishThrottlingRateInByte field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublishRate) GetPublishThrottlingRateInByteOk() (*int64, bool) {
+	if o == nil || o.PublishThrottlingRateInByte == nil {
+		return nil, false
+	}
+	return o.PublishThrottlingRateInByte, true
+}
+
+// HasPublishThrottlingRateInByte returns a boolean if a field has been set.
+func (o *PublishRate) HasPublishThrottlingRateInByte() bool {
+	if o != nil && o.PublishThrottlingRateInByte != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPublishThrottlingRateInByte gets a reference to the given int64 and assigns it to the PublishThrottlingRateInByte field.
+func (o *PublishRate) SetPublishThrottlingRateInByte(v int64) {
+	o.PublishThrottlingRateInByte = &v
+}
+
 func (o PublishRate) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.PublishThrottlingRateInByte != nil {
-		toSerialize["publishThrottlingRateInByte"] = o.PublishThrottlingRateInByte
-	}
 	if o.PublishThrottlingRateInMsg != nil {
 		toSerialize["publishThrottlingRateInMsg"] = o.PublishThrottlingRateInMsg
+	}
+	if o.PublishThrottlingRateInByte != nil {
+		toSerialize["publishThrottlingRateInByte"] = o.PublishThrottlingRateInByte
 	}
 	return json.Marshal(toSerialize)
 }

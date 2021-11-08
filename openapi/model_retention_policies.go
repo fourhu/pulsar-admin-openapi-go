@@ -16,8 +16,8 @@ import (
 
 // RetentionPolicies struct for RetentionPolicies
 type RetentionPolicies struct {
-	RetentionSizeInMB *int64 `json:"retentionSizeInMB,omitempty"`
 	RetentionTimeInMinutes *int32 `json:"retentionTimeInMinutes,omitempty"`
+	RetentionSizeInMB *int64 `json:"retentionSizeInMB,omitempty"`
 }
 
 // NewRetentionPolicies instantiates a new RetentionPolicies object
@@ -35,38 +35,6 @@ func NewRetentionPolicies() *RetentionPolicies {
 func NewRetentionPoliciesWithDefaults() *RetentionPolicies {
 	this := RetentionPolicies{}
 	return &this
-}
-
-// GetRetentionSizeInMB returns the RetentionSizeInMB field value if set, zero value otherwise.
-func (o *RetentionPolicies) GetRetentionSizeInMB() int64 {
-	if o == nil || o.RetentionSizeInMB == nil {
-		var ret int64
-		return ret
-	}
-	return *o.RetentionSizeInMB
-}
-
-// GetRetentionSizeInMBOk returns a tuple with the RetentionSizeInMB field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *RetentionPolicies) GetRetentionSizeInMBOk() (*int64, bool) {
-	if o == nil || o.RetentionSizeInMB == nil {
-		return nil, false
-	}
-	return o.RetentionSizeInMB, true
-}
-
-// HasRetentionSizeInMB returns a boolean if a field has been set.
-func (o *RetentionPolicies) HasRetentionSizeInMB() bool {
-	if o != nil && o.RetentionSizeInMB != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetRetentionSizeInMB gets a reference to the given int64 and assigns it to the RetentionSizeInMB field.
-func (o *RetentionPolicies) SetRetentionSizeInMB(v int64) {
-	o.RetentionSizeInMB = &v
 }
 
 // GetRetentionTimeInMinutes returns the RetentionTimeInMinutes field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *RetentionPolicies) SetRetentionTimeInMinutes(v int32) {
 	o.RetentionTimeInMinutes = &v
 }
 
+// GetRetentionSizeInMB returns the RetentionSizeInMB field value if set, zero value otherwise.
+func (o *RetentionPolicies) GetRetentionSizeInMB() int64 {
+	if o == nil || o.RetentionSizeInMB == nil {
+		var ret int64
+		return ret
+	}
+	return *o.RetentionSizeInMB
+}
+
+// GetRetentionSizeInMBOk returns a tuple with the RetentionSizeInMB field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RetentionPolicies) GetRetentionSizeInMBOk() (*int64, bool) {
+	if o == nil || o.RetentionSizeInMB == nil {
+		return nil, false
+	}
+	return o.RetentionSizeInMB, true
+}
+
+// HasRetentionSizeInMB returns a boolean if a field has been set.
+func (o *RetentionPolicies) HasRetentionSizeInMB() bool {
+	if o != nil && o.RetentionSizeInMB != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetRetentionSizeInMB gets a reference to the given int64 and assigns it to the RetentionSizeInMB field.
+func (o *RetentionPolicies) SetRetentionSizeInMB(v int64) {
+	o.RetentionSizeInMB = &v
+}
+
 func (o RetentionPolicies) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RetentionSizeInMB != nil {
-		toSerialize["retentionSizeInMB"] = o.RetentionSizeInMB
-	}
 	if o.RetentionTimeInMinutes != nil {
 		toSerialize["retentionTimeInMinutes"] = o.RetentionTimeInMinutes
+	}
+	if o.RetentionSizeInMB != nil {
+		toSerialize["retentionSizeInMB"] = o.RetentionSizeInMB
 	}
 	return json.Marshal(toSerialize)
 }

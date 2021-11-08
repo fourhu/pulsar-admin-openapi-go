@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**PublishThrottlingRateInByte** | Pointer to **int64** |  | [optional] 
 **PublishThrottlingRateInMsg** | Pointer to **int32** |  | [optional] 
+**PublishThrottlingRateInByte** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewPublishRateWithDefaults instantiates a new PublishRate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetPublishThrottlingRateInByte
-
-`func (o *PublishRate) GetPublishThrottlingRateInByte() int64`
-
-GetPublishThrottlingRateInByte returns the PublishThrottlingRateInByte field if non-nil, zero value otherwise.
-
-### GetPublishThrottlingRateInByteOk
-
-`func (o *PublishRate) GetPublishThrottlingRateInByteOk() (*int64, bool)`
-
-GetPublishThrottlingRateInByteOk returns a tuple with the PublishThrottlingRateInByte field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPublishThrottlingRateInByte
-
-`func (o *PublishRate) SetPublishThrottlingRateInByte(v int64)`
-
-SetPublishThrottlingRateInByte sets PublishThrottlingRateInByte field to given value.
-
-### HasPublishThrottlingRateInByte
-
-`func (o *PublishRate) HasPublishThrottlingRateInByte() bool`
-
-HasPublishThrottlingRateInByte returns a boolean if a field has been set.
 
 ### GetPublishThrottlingRateInMsg
 
@@ -75,6 +50,31 @@ SetPublishThrottlingRateInMsg sets PublishThrottlingRateInMsg field to given val
 `func (o *PublishRate) HasPublishThrottlingRateInMsg() bool`
 
 HasPublishThrottlingRateInMsg returns a boolean if a field has been set.
+
+### GetPublishThrottlingRateInByte
+
+`func (o *PublishRate) GetPublishThrottlingRateInByte() int64`
+
+GetPublishThrottlingRateInByte returns the PublishThrottlingRateInByte field if non-nil, zero value otherwise.
+
+### GetPublishThrottlingRateInByteOk
+
+`func (o *PublishRate) GetPublishThrottlingRateInByteOk() (*int64, bool)`
+
+GetPublishThrottlingRateInByteOk returns a tuple with the PublishThrottlingRateInByte field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublishThrottlingRateInByte
+
+`func (o *PublishRate) SetPublishThrottlingRateInByte(v int64)`
+
+SetPublishThrottlingRateInByte sets PublishThrottlingRateInByte field to given value.
+
+### HasPublishThrottlingRateInByte
+
+`func (o *PublishRate) HasPublishThrottlingRateInByte() bool`
+
+HasPublishThrottlingRateInByte returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

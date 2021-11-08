@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EntryId** | Pointer to **int64** |  | [optional] 
 **LedgerId** | Pointer to **int64** |  | [optional] 
+**EntryId** | Pointer to **int64** |  | [optional] 
 **PartitionIndex** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -26,31 +26,6 @@ will change when the set of required properties is changed
 NewMessageIdImplWithDefaults instantiates a new MessageIdImpl object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEntryId
-
-`func (o *MessageIdImpl) GetEntryId() int64`
-
-GetEntryId returns the EntryId field if non-nil, zero value otherwise.
-
-### GetEntryIdOk
-
-`func (o *MessageIdImpl) GetEntryIdOk() (*int64, bool)`
-
-GetEntryIdOk returns a tuple with the EntryId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntryId
-
-`func (o *MessageIdImpl) SetEntryId(v int64)`
-
-SetEntryId sets EntryId field to given value.
-
-### HasEntryId
-
-`func (o *MessageIdImpl) HasEntryId() bool`
-
-HasEntryId returns a boolean if a field has been set.
 
 ### GetLedgerId
 
@@ -76,6 +51,31 @@ SetLedgerId sets LedgerId field to given value.
 `func (o *MessageIdImpl) HasLedgerId() bool`
 
 HasLedgerId returns a boolean if a field has been set.
+
+### GetEntryId
+
+`func (o *MessageIdImpl) GetEntryId() int64`
+
+GetEntryId returns the EntryId field if non-nil, zero value otherwise.
+
+### GetEntryIdOk
+
+`func (o *MessageIdImpl) GetEntryIdOk() (*int64, bool)`
+
+GetEntryIdOk returns a tuple with the EntryId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntryId
+
+`func (o *MessageIdImpl) SetEntryId(v int64)`
+
+SetEntryId sets EntryId field to given value.
+
+### HasEntryId
+
+`func (o *MessageIdImpl) HasEntryId() bool`
+
+HasEntryId returns a boolean if a field has been set.
 
 ### GetPartitionIndex
 

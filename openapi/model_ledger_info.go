@@ -16,11 +16,12 @@ import (
 
 // LedgerInfo struct for LedgerInfo
 type LedgerInfo struct {
-	Entries *int64 `json:"entries,omitempty"`
 	LedgerId *int64 `json:"ledgerId,omitempty"`
-	Metadata *string `json:"metadata,omitempty"`
-	Offloaded *bool `json:"offloaded,omitempty"`
+	Entries *int64 `json:"entries,omitempty"`
 	Size *int64 `json:"size,omitempty"`
+	Offloaded *bool `json:"offloaded,omitempty"`
+	Metadata *string `json:"metadata,omitempty"`
+	UnderReplicated *bool `json:"underReplicated,omitempty"`
 }
 
 // NewLedgerInfo instantiates a new LedgerInfo object
@@ -38,38 +39,6 @@ func NewLedgerInfo() *LedgerInfo {
 func NewLedgerInfoWithDefaults() *LedgerInfo {
 	this := LedgerInfo{}
 	return &this
-}
-
-// GetEntries returns the Entries field value if set, zero value otherwise.
-func (o *LedgerInfo) GetEntries() int64 {
-	if o == nil || o.Entries == nil {
-		var ret int64
-		return ret
-	}
-	return *o.Entries
-}
-
-// GetEntriesOk returns a tuple with the Entries field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LedgerInfo) GetEntriesOk() (*int64, bool) {
-	if o == nil || o.Entries == nil {
-		return nil, false
-	}
-	return o.Entries, true
-}
-
-// HasEntries returns a boolean if a field has been set.
-func (o *LedgerInfo) HasEntries() bool {
-	if o != nil && o.Entries != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEntries gets a reference to the given int64 and assigns it to the Entries field.
-func (o *LedgerInfo) SetEntries(v int64) {
-	o.Entries = &v
 }
 
 // GetLedgerId returns the LedgerId field value if set, zero value otherwise.
@@ -104,68 +73,36 @@ func (o *LedgerInfo) SetLedgerId(v int64) {
 	o.LedgerId = &v
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *LedgerInfo) GetMetadata() string {
-	if o == nil || o.Metadata == nil {
-		var ret string
+// GetEntries returns the Entries field value if set, zero value otherwise.
+func (o *LedgerInfo) GetEntries() int64 {
+	if o == nil || o.Entries == nil {
+		var ret int64
 		return ret
 	}
-	return *o.Metadata
+	return *o.Entries
 }
 
-// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// GetEntriesOk returns a tuple with the Entries field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LedgerInfo) GetMetadataOk() (*string, bool) {
-	if o == nil || o.Metadata == nil {
+func (o *LedgerInfo) GetEntriesOk() (*int64, bool) {
+	if o == nil || o.Entries == nil {
 		return nil, false
 	}
-	return o.Metadata, true
+	return o.Entries, true
 }
 
-// HasMetadata returns a boolean if a field has been set.
-func (o *LedgerInfo) HasMetadata() bool {
-	if o != nil && o.Metadata != nil {
+// HasEntries returns a boolean if a field has been set.
+func (o *LedgerInfo) HasEntries() bool {
+	if o != nil && o.Entries != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
-func (o *LedgerInfo) SetMetadata(v string) {
-	o.Metadata = &v
-}
-
-// GetOffloaded returns the Offloaded field value if set, zero value otherwise.
-func (o *LedgerInfo) GetOffloaded() bool {
-	if o == nil || o.Offloaded == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Offloaded
-}
-
-// GetOffloadedOk returns a tuple with the Offloaded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LedgerInfo) GetOffloadedOk() (*bool, bool) {
-	if o == nil || o.Offloaded == nil {
-		return nil, false
-	}
-	return o.Offloaded, true
-}
-
-// HasOffloaded returns a boolean if a field has been set.
-func (o *LedgerInfo) HasOffloaded() bool {
-	if o != nil && o.Offloaded != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetOffloaded gets a reference to the given bool and assigns it to the Offloaded field.
-func (o *LedgerInfo) SetOffloaded(v bool) {
-	o.Offloaded = &v
+// SetEntries gets a reference to the given int64 and assigns it to the Entries field.
+func (o *LedgerInfo) SetEntries(v int64) {
+	o.Entries = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -200,22 +137,121 @@ func (o *LedgerInfo) SetSize(v int64) {
 	o.Size = &v
 }
 
+// GetOffloaded returns the Offloaded field value if set, zero value otherwise.
+func (o *LedgerInfo) GetOffloaded() bool {
+	if o == nil || o.Offloaded == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Offloaded
+}
+
+// GetOffloadedOk returns a tuple with the Offloaded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LedgerInfo) GetOffloadedOk() (*bool, bool) {
+	if o == nil || o.Offloaded == nil {
+		return nil, false
+	}
+	return o.Offloaded, true
+}
+
+// HasOffloaded returns a boolean if a field has been set.
+func (o *LedgerInfo) HasOffloaded() bool {
+	if o != nil && o.Offloaded != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetOffloaded gets a reference to the given bool and assigns it to the Offloaded field.
+func (o *LedgerInfo) SetOffloaded(v bool) {
+	o.Offloaded = &v
+}
+
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
+func (o *LedgerInfo) GetMetadata() string {
+	if o == nil || o.Metadata == nil {
+		var ret string
+		return ret
+	}
+	return *o.Metadata
+}
+
+// GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LedgerInfo) GetMetadataOk() (*string, bool) {
+	if o == nil || o.Metadata == nil {
+		return nil, false
+	}
+	return o.Metadata, true
+}
+
+// HasMetadata returns a boolean if a field has been set.
+func (o *LedgerInfo) HasMetadata() bool {
+	if o != nil && o.Metadata != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMetadata gets a reference to the given string and assigns it to the Metadata field.
+func (o *LedgerInfo) SetMetadata(v string) {
+	o.Metadata = &v
+}
+
+// GetUnderReplicated returns the UnderReplicated field value if set, zero value otherwise.
+func (o *LedgerInfo) GetUnderReplicated() bool {
+	if o == nil || o.UnderReplicated == nil {
+		var ret bool
+		return ret
+	}
+	return *o.UnderReplicated
+}
+
+// GetUnderReplicatedOk returns a tuple with the UnderReplicated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LedgerInfo) GetUnderReplicatedOk() (*bool, bool) {
+	if o == nil || o.UnderReplicated == nil {
+		return nil, false
+	}
+	return o.UnderReplicated, true
+}
+
+// HasUnderReplicated returns a boolean if a field has been set.
+func (o *LedgerInfo) HasUnderReplicated() bool {
+	if o != nil && o.UnderReplicated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUnderReplicated gets a reference to the given bool and assigns it to the UnderReplicated field.
+func (o *LedgerInfo) SetUnderReplicated(v bool) {
+	o.UnderReplicated = &v
+}
+
 func (o LedgerInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Entries != nil {
-		toSerialize["entries"] = o.Entries
-	}
 	if o.LedgerId != nil {
 		toSerialize["ledgerId"] = o.LedgerId
 	}
-	if o.Metadata != nil {
-		toSerialize["metadata"] = o.Metadata
+	if o.Entries != nil {
+		toSerialize["entries"] = o.Entries
+	}
+	if o.Size != nil {
+		toSerialize["size"] = o.Size
 	}
 	if o.Offloaded != nil {
 		toSerialize["offloaded"] = o.Offloaded
 	}
-	if o.Size != nil {
-		toSerialize["size"] = o.Size
+	if o.Metadata != nil {
+		toSerialize["metadata"] = o.Metadata
+	}
+	if o.UnderReplicated != nil {
+		toSerialize["underReplicated"] = o.UnderReplicated
 	}
 	return json.Marshal(toSerialize)
 }

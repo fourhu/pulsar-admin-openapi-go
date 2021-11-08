@@ -16,8 +16,8 @@ import (
 
 // LongRunningProcessStatus struct for LongRunningProcessStatus
 type LongRunningProcessStatus struct {
-	LastError *string `json:"lastError,omitempty"`
 	Status *string `json:"status,omitempty"`
+	LastError *string `json:"lastError,omitempty"`
 }
 
 // NewLongRunningProcessStatus instantiates a new LongRunningProcessStatus object
@@ -35,38 +35,6 @@ func NewLongRunningProcessStatus() *LongRunningProcessStatus {
 func NewLongRunningProcessStatusWithDefaults() *LongRunningProcessStatus {
 	this := LongRunningProcessStatus{}
 	return &this
-}
-
-// GetLastError returns the LastError field value if set, zero value otherwise.
-func (o *LongRunningProcessStatus) GetLastError() string {
-	if o == nil || o.LastError == nil {
-		var ret string
-		return ret
-	}
-	return *o.LastError
-}
-
-// GetLastErrorOk returns a tuple with the LastError field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *LongRunningProcessStatus) GetLastErrorOk() (*string, bool) {
-	if o == nil || o.LastError == nil {
-		return nil, false
-	}
-	return o.LastError, true
-}
-
-// HasLastError returns a boolean if a field has been set.
-func (o *LongRunningProcessStatus) HasLastError() bool {
-	if o != nil && o.LastError != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastError gets a reference to the given string and assigns it to the LastError field.
-func (o *LongRunningProcessStatus) SetLastError(v string) {
-	o.LastError = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *LongRunningProcessStatus) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetLastError returns the LastError field value if set, zero value otherwise.
+func (o *LongRunningProcessStatus) GetLastError() string {
+	if o == nil || o.LastError == nil {
+		var ret string
+		return ret
+	}
+	return *o.LastError
+}
+
+// GetLastErrorOk returns a tuple with the LastError field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LongRunningProcessStatus) GetLastErrorOk() (*string, bool) {
+	if o == nil || o.LastError == nil {
+		return nil, false
+	}
+	return o.LastError, true
+}
+
+// HasLastError returns a boolean if a field has been set.
+func (o *LongRunningProcessStatus) HasLastError() bool {
+	if o != nil && o.LastError != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastError gets a reference to the given string and assigns it to the LastError field.
+func (o *LongRunningProcessStatus) SetLastError(v string) {
+	o.LastError = &v
+}
+
 func (o LongRunningProcessStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.LastError != nil {
-		toSerialize["lastError"] = o.LastError
-	}
 	if o.Status != nil {
 		toSerialize["status"] = o.Status
+	}
+	if o.LastError != nil {
+		toSerialize["lastError"] = o.LastError
 	}
 	return json.Marshal(toSerialize)
 }

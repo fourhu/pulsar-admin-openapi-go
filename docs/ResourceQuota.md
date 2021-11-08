@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BandwidthIn** | Pointer to **float64** |  | [optional] 
-**BandwidthOut** | Pointer to **float64** |  | [optional] 
-**Dynamic** | Pointer to **bool** |  | [optional] 
-**Memory** | Pointer to **float64** |  | [optional] 
 **MsgRateIn** | Pointer to **float64** |  | [optional] 
 **MsgRateOut** | Pointer to **float64** |  | [optional] 
+**BandwidthIn** | Pointer to **float64** |  | [optional] 
+**BandwidthOut** | Pointer to **float64** |  | [optional] 
+**Memory** | Pointer to **float64** |  | [optional] 
+**Dynamic** | Pointer to **bool** |  | [optional] 
+**Valid** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -29,6 +30,56 @@ will change when the set of required properties is changed
 NewResourceQuotaWithDefaults instantiates a new ResourceQuota object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetMsgRateIn
+
+`func (o *ResourceQuota) GetMsgRateIn() float64`
+
+GetMsgRateIn returns the MsgRateIn field if non-nil, zero value otherwise.
+
+### GetMsgRateInOk
+
+`func (o *ResourceQuota) GetMsgRateInOk() (*float64, bool)`
+
+GetMsgRateInOk returns a tuple with the MsgRateIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsgRateIn
+
+`func (o *ResourceQuota) SetMsgRateIn(v float64)`
+
+SetMsgRateIn sets MsgRateIn field to given value.
+
+### HasMsgRateIn
+
+`func (o *ResourceQuota) HasMsgRateIn() bool`
+
+HasMsgRateIn returns a boolean if a field has been set.
+
+### GetMsgRateOut
+
+`func (o *ResourceQuota) GetMsgRateOut() float64`
+
+GetMsgRateOut returns the MsgRateOut field if non-nil, zero value otherwise.
+
+### GetMsgRateOutOk
+
+`func (o *ResourceQuota) GetMsgRateOutOk() (*float64, bool)`
+
+GetMsgRateOutOk returns a tuple with the MsgRateOut field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMsgRateOut
+
+`func (o *ResourceQuota) SetMsgRateOut(v float64)`
+
+SetMsgRateOut sets MsgRateOut field to given value.
+
+### HasMsgRateOut
+
+`func (o *ResourceQuota) HasMsgRateOut() bool`
+
+HasMsgRateOut returns a boolean if a field has been set.
 
 ### GetBandwidthIn
 
@@ -80,31 +131,6 @@ SetBandwidthOut sets BandwidthOut field to given value.
 
 HasBandwidthOut returns a boolean if a field has been set.
 
-### GetDynamic
-
-`func (o *ResourceQuota) GetDynamic() bool`
-
-GetDynamic returns the Dynamic field if non-nil, zero value otherwise.
-
-### GetDynamicOk
-
-`func (o *ResourceQuota) GetDynamicOk() (*bool, bool)`
-
-GetDynamicOk returns a tuple with the Dynamic field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDynamic
-
-`func (o *ResourceQuota) SetDynamic(v bool)`
-
-SetDynamic sets Dynamic field to given value.
-
-### HasDynamic
-
-`func (o *ResourceQuota) HasDynamic() bool`
-
-HasDynamic returns a boolean if a field has been set.
-
 ### GetMemory
 
 `func (o *ResourceQuota) GetMemory() float64`
@@ -130,55 +156,55 @@ SetMemory sets Memory field to given value.
 
 HasMemory returns a boolean if a field has been set.
 
-### GetMsgRateIn
+### GetDynamic
 
-`func (o *ResourceQuota) GetMsgRateIn() float64`
+`func (o *ResourceQuota) GetDynamic() bool`
 
-GetMsgRateIn returns the MsgRateIn field if non-nil, zero value otherwise.
+GetDynamic returns the Dynamic field if non-nil, zero value otherwise.
 
-### GetMsgRateInOk
+### GetDynamicOk
 
-`func (o *ResourceQuota) GetMsgRateInOk() (*float64, bool)`
+`func (o *ResourceQuota) GetDynamicOk() (*bool, bool)`
 
-GetMsgRateInOk returns a tuple with the MsgRateIn field if it's non-nil, zero value otherwise
+GetDynamicOk returns a tuple with the Dynamic field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMsgRateIn
+### SetDynamic
 
-`func (o *ResourceQuota) SetMsgRateIn(v float64)`
+`func (o *ResourceQuota) SetDynamic(v bool)`
 
-SetMsgRateIn sets MsgRateIn field to given value.
+SetDynamic sets Dynamic field to given value.
 
-### HasMsgRateIn
+### HasDynamic
 
-`func (o *ResourceQuota) HasMsgRateIn() bool`
+`func (o *ResourceQuota) HasDynamic() bool`
 
-HasMsgRateIn returns a boolean if a field has been set.
+HasDynamic returns a boolean if a field has been set.
 
-### GetMsgRateOut
+### GetValid
 
-`func (o *ResourceQuota) GetMsgRateOut() float64`
+`func (o *ResourceQuota) GetValid() bool`
 
-GetMsgRateOut returns the MsgRateOut field if non-nil, zero value otherwise.
+GetValid returns the Valid field if non-nil, zero value otherwise.
 
-### GetMsgRateOutOk
+### GetValidOk
 
-`func (o *ResourceQuota) GetMsgRateOutOk() (*float64, bool)`
+`func (o *ResourceQuota) GetValidOk() (*bool, bool)`
 
-GetMsgRateOutOk returns a tuple with the MsgRateOut field if it's non-nil, zero value otherwise
+GetValidOk returns a tuple with the Valid field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMsgRateOut
+### SetValid
 
-`func (o *ResourceQuota) SetMsgRateOut(v float64)`
+`func (o *ResourceQuota) SetValid(v bool)`
 
-SetMsgRateOut sets MsgRateOut field to given value.
+SetValid sets Valid field to given value.
 
-### HasMsgRateOut
+### HasValid
 
-`func (o *ResourceQuota) HasMsgRateOut() bool`
+`func (o *ResourceQuota) HasValid() bool`
 
-HasMsgRateOut returns a boolean if a field has been set.
+HasValid returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

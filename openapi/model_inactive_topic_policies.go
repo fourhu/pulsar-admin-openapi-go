@@ -16,9 +16,9 @@ import (
 
 // InactiveTopicPolicies struct for InactiveTopicPolicies
 type InactiveTopicPolicies struct {
-	DeleteWhileInactive *bool `json:"deleteWhileInactive,omitempty"`
 	InactiveTopicDeleteMode *string `json:"inactiveTopicDeleteMode,omitempty"`
 	MaxInactiveDurationSeconds *int32 `json:"maxInactiveDurationSeconds,omitempty"`
+	DeleteWhileInactive *bool `json:"deleteWhileInactive,omitempty"`
 }
 
 // NewInactiveTopicPolicies instantiates a new InactiveTopicPolicies object
@@ -36,38 +36,6 @@ func NewInactiveTopicPolicies() *InactiveTopicPolicies {
 func NewInactiveTopicPoliciesWithDefaults() *InactiveTopicPolicies {
 	this := InactiveTopicPolicies{}
 	return &this
-}
-
-// GetDeleteWhileInactive returns the DeleteWhileInactive field value if set, zero value otherwise.
-func (o *InactiveTopicPolicies) GetDeleteWhileInactive() bool {
-	if o == nil || o.DeleteWhileInactive == nil {
-		var ret bool
-		return ret
-	}
-	return *o.DeleteWhileInactive
-}
-
-// GetDeleteWhileInactiveOk returns a tuple with the DeleteWhileInactive field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InactiveTopicPolicies) GetDeleteWhileInactiveOk() (*bool, bool) {
-	if o == nil || o.DeleteWhileInactive == nil {
-		return nil, false
-	}
-	return o.DeleteWhileInactive, true
-}
-
-// HasDeleteWhileInactive returns a boolean if a field has been set.
-func (o *InactiveTopicPolicies) HasDeleteWhileInactive() bool {
-	if o != nil && o.DeleteWhileInactive != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDeleteWhileInactive gets a reference to the given bool and assigns it to the DeleteWhileInactive field.
-func (o *InactiveTopicPolicies) SetDeleteWhileInactive(v bool) {
-	o.DeleteWhileInactive = &v
 }
 
 // GetInactiveTopicDeleteMode returns the InactiveTopicDeleteMode field value if set, zero value otherwise.
@@ -134,16 +102,48 @@ func (o *InactiveTopicPolicies) SetMaxInactiveDurationSeconds(v int32) {
 	o.MaxInactiveDurationSeconds = &v
 }
 
+// GetDeleteWhileInactive returns the DeleteWhileInactive field value if set, zero value otherwise.
+func (o *InactiveTopicPolicies) GetDeleteWhileInactive() bool {
+	if o == nil || o.DeleteWhileInactive == nil {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteWhileInactive
+}
+
+// GetDeleteWhileInactiveOk returns a tuple with the DeleteWhileInactive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InactiveTopicPolicies) GetDeleteWhileInactiveOk() (*bool, bool) {
+	if o == nil || o.DeleteWhileInactive == nil {
+		return nil, false
+	}
+	return o.DeleteWhileInactive, true
+}
+
+// HasDeleteWhileInactive returns a boolean if a field has been set.
+func (o *InactiveTopicPolicies) HasDeleteWhileInactive() bool {
+	if o != nil && o.DeleteWhileInactive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteWhileInactive gets a reference to the given bool and assigns it to the DeleteWhileInactive field.
+func (o *InactiveTopicPolicies) SetDeleteWhileInactive(v bool) {
+	o.DeleteWhileInactive = &v
+}
+
 func (o InactiveTopicPolicies) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DeleteWhileInactive != nil {
-		toSerialize["deleteWhileInactive"] = o.DeleteWhileInactive
-	}
 	if o.InactiveTopicDeleteMode != nil {
 		toSerialize["inactiveTopicDeleteMode"] = o.InactiveTopicDeleteMode
 	}
 	if o.MaxInactiveDurationSeconds != nil {
 		toSerialize["maxInactiveDurationSeconds"] = o.MaxInactiveDurationSeconds
+	}
+	if o.DeleteWhileInactive != nil {
+		toSerialize["deleteWhileInactive"] = o.DeleteWhileInactive
 	}
 	return json.Marshal(toSerialize)
 }

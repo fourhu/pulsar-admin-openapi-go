@@ -16,11 +16,11 @@ import (
 
 // ResetCursorData struct for ResetCursorData
 type ResetCursorData struct {
-	BatchIndex *int32 `json:"batchIndex,omitempty"`
-	EntryId *int64 `json:"entryId,omitempty"`
-	Excluded *bool `json:"excluded,omitempty"`
 	LedgerId *int64 `json:"ledgerId,omitempty"`
+	EntryId *int64 `json:"entryId,omitempty"`
 	PartitionIndex *int32 `json:"partitionIndex,omitempty"`
+	BatchIndex *int32 `json:"batchIndex,omitempty"`
+	Excluded *bool `json:"excluded,omitempty"`
 }
 
 // NewResetCursorData instantiates a new ResetCursorData object
@@ -38,102 +38,6 @@ func NewResetCursorData() *ResetCursorData {
 func NewResetCursorDataWithDefaults() *ResetCursorData {
 	this := ResetCursorData{}
 	return &this
-}
-
-// GetBatchIndex returns the BatchIndex field value if set, zero value otherwise.
-func (o *ResetCursorData) GetBatchIndex() int32 {
-	if o == nil || o.BatchIndex == nil {
-		var ret int32
-		return ret
-	}
-	return *o.BatchIndex
-}
-
-// GetBatchIndexOk returns a tuple with the BatchIndex field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResetCursorData) GetBatchIndexOk() (*int32, bool) {
-	if o == nil || o.BatchIndex == nil {
-		return nil, false
-	}
-	return o.BatchIndex, true
-}
-
-// HasBatchIndex returns a boolean if a field has been set.
-func (o *ResetCursorData) HasBatchIndex() bool {
-	if o != nil && o.BatchIndex != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBatchIndex gets a reference to the given int32 and assigns it to the BatchIndex field.
-func (o *ResetCursorData) SetBatchIndex(v int32) {
-	o.BatchIndex = &v
-}
-
-// GetEntryId returns the EntryId field value if set, zero value otherwise.
-func (o *ResetCursorData) GetEntryId() int64 {
-	if o == nil || o.EntryId == nil {
-		var ret int64
-		return ret
-	}
-	return *o.EntryId
-}
-
-// GetEntryIdOk returns a tuple with the EntryId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResetCursorData) GetEntryIdOk() (*int64, bool) {
-	if o == nil || o.EntryId == nil {
-		return nil, false
-	}
-	return o.EntryId, true
-}
-
-// HasEntryId returns a boolean if a field has been set.
-func (o *ResetCursorData) HasEntryId() bool {
-	if o != nil && o.EntryId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetEntryId gets a reference to the given int64 and assigns it to the EntryId field.
-func (o *ResetCursorData) SetEntryId(v int64) {
-	o.EntryId = &v
-}
-
-// GetExcluded returns the Excluded field value if set, zero value otherwise.
-func (o *ResetCursorData) GetExcluded() bool {
-	if o == nil || o.Excluded == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Excluded
-}
-
-// GetExcludedOk returns a tuple with the Excluded field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResetCursorData) GetExcludedOk() (*bool, bool) {
-	if o == nil || o.Excluded == nil {
-		return nil, false
-	}
-	return o.Excluded, true
-}
-
-// HasExcluded returns a boolean if a field has been set.
-func (o *ResetCursorData) HasExcluded() bool {
-	if o != nil && o.Excluded != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetExcluded gets a reference to the given bool and assigns it to the Excluded field.
-func (o *ResetCursorData) SetExcluded(v bool) {
-	o.Excluded = &v
 }
 
 // GetLedgerId returns the LedgerId field value if set, zero value otherwise.
@@ -168,6 +72,38 @@ func (o *ResetCursorData) SetLedgerId(v int64) {
 	o.LedgerId = &v
 }
 
+// GetEntryId returns the EntryId field value if set, zero value otherwise.
+func (o *ResetCursorData) GetEntryId() int64 {
+	if o == nil || o.EntryId == nil {
+		var ret int64
+		return ret
+	}
+	return *o.EntryId
+}
+
+// GetEntryIdOk returns a tuple with the EntryId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResetCursorData) GetEntryIdOk() (*int64, bool) {
+	if o == nil || o.EntryId == nil {
+		return nil, false
+	}
+	return o.EntryId, true
+}
+
+// HasEntryId returns a boolean if a field has been set.
+func (o *ResetCursorData) HasEntryId() bool {
+	if o != nil && o.EntryId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetEntryId gets a reference to the given int64 and assigns it to the EntryId field.
+func (o *ResetCursorData) SetEntryId(v int64) {
+	o.EntryId = &v
+}
+
 // GetPartitionIndex returns the PartitionIndex field value if set, zero value otherwise.
 func (o *ResetCursorData) GetPartitionIndex() int32 {
 	if o == nil || o.PartitionIndex == nil {
@@ -200,22 +136,86 @@ func (o *ResetCursorData) SetPartitionIndex(v int32) {
 	o.PartitionIndex = &v
 }
 
+// GetBatchIndex returns the BatchIndex field value if set, zero value otherwise.
+func (o *ResetCursorData) GetBatchIndex() int32 {
+	if o == nil || o.BatchIndex == nil {
+		var ret int32
+		return ret
+	}
+	return *o.BatchIndex
+}
+
+// GetBatchIndexOk returns a tuple with the BatchIndex field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResetCursorData) GetBatchIndexOk() (*int32, bool) {
+	if o == nil || o.BatchIndex == nil {
+		return nil, false
+	}
+	return o.BatchIndex, true
+}
+
+// HasBatchIndex returns a boolean if a field has been set.
+func (o *ResetCursorData) HasBatchIndex() bool {
+	if o != nil && o.BatchIndex != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBatchIndex gets a reference to the given int32 and assigns it to the BatchIndex field.
+func (o *ResetCursorData) SetBatchIndex(v int32) {
+	o.BatchIndex = &v
+}
+
+// GetExcluded returns the Excluded field value if set, zero value otherwise.
+func (o *ResetCursorData) GetExcluded() bool {
+	if o == nil || o.Excluded == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Excluded
+}
+
+// GetExcludedOk returns a tuple with the Excluded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResetCursorData) GetExcludedOk() (*bool, bool) {
+	if o == nil || o.Excluded == nil {
+		return nil, false
+	}
+	return o.Excluded, true
+}
+
+// HasExcluded returns a boolean if a field has been set.
+func (o *ResetCursorData) HasExcluded() bool {
+	if o != nil && o.Excluded != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetExcluded gets a reference to the given bool and assigns it to the Excluded field.
+func (o *ResetCursorData) SetExcluded(v bool) {
+	o.Excluded = &v
+}
+
 func (o ResetCursorData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.BatchIndex != nil {
-		toSerialize["batchIndex"] = o.BatchIndex
+	if o.LedgerId != nil {
+		toSerialize["ledgerId"] = o.LedgerId
 	}
 	if o.EntryId != nil {
 		toSerialize["entryId"] = o.EntryId
 	}
-	if o.Excluded != nil {
-		toSerialize["excluded"] = o.Excluded
-	}
-	if o.LedgerId != nil {
-		toSerialize["ledgerId"] = o.LedgerId
-	}
 	if o.PartitionIndex != nil {
 		toSerialize["partitionIndex"] = o.PartitionIndex
+	}
+	if o.BatchIndex != nil {
+		toSerialize["batchIndex"] = o.BatchIndex
+	}
+	if o.Excluded != nil {
+		toSerialize["excluded"] = o.Excluded
 	}
 	return json.Marshal(toSerialize)
 }

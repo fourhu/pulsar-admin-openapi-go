@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**DeleteSchema**](SchemasApi.md#DeleteSchema) | **Delete** /schemas/{tenant}/{namespace}/{topic}/schema | Delete the schema of a topic
 [**GetAllSchemas**](SchemasApi.md#GetAllSchemas) | **Get** /schemas/{tenant}/{namespace}/{topic}/schemas | Get the all schemas of a topic
 [**GetSchema**](SchemasApi.md#GetSchema) | **Get** /schemas/{tenant}/{namespace}/{topic}/schema | Get the schema of a topic
-[**GetSchemaVersion**](SchemasApi.md#GetSchemaVersion) | **Get** /schemas/{tenant}/{namespace}/{topic}/schema/{version} | Get the schema of a topic at a given version
+[**GetSchema_0**](SchemasApi.md#GetSchema_0) | **Get** /schemas/{tenant}/{namespace}/{topic}/schema/{version} | Get the schema of a topic at a given version
 [**GetVersionBySchema**](SchemasApi.md#GetVersionBySchema) | **Post** /schemas/{tenant}/{namespace}/{topic}/version | get the version of the schema
 [**PostSchema**](SchemasApi.md#PostSchema) | **Post** /schemas/{tenant}/{namespace}/{topic}/schema | Update the schema of a topic
 [**TestCompatibility**](SchemasApi.md#TestCompatibility) | **Post** /schemas/{tenant}/{namespace}/{topic}/compatibility | test the schema compatibility
@@ -242,9 +242,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetSchemaVersion
+## GetSchema_0
 
-> GetSchemaResponse GetSchemaVersion(ctx, tenant, namespace, topic, version).Authoritative(authoritative).Execute()
+> GetSchemaResponse GetSchema_0(ctx, tenant, namespace, topic, version).Authoritative(authoritative).Execute()
 
 Get the schema of a topic at a given version
 
@@ -269,13 +269,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.SchemasApi.GetSchemaVersion(context.Background(), tenant, namespace, topic, version).Authoritative(authoritative).Execute()
+    resp, r, err := api_client.SchemasApi.GetSchema_0(context.Background(), tenant, namespace, topic, version).Authoritative(authoritative).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.GetSchemaVersion``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `SchemasApi.GetSchema_0``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetSchemaVersion`: GetSchemaResponse
-    fmt.Fprintf(os.Stdout, "Response from `SchemasApi.GetSchemaVersion`: %v\n", resp)
+    // response from `GetSchema_0`: GetSchemaResponse
+    fmt.Fprintf(os.Stdout, "Response from `SchemasApi.GetSchema_0`: %v\n", resp)
 }
 ```
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetSchemaVersionRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetSchema_1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes

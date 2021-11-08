@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BookkeeperAckQuorum** | Pointer to **int32** |  | [optional] 
 **BookkeeperEnsemble** | Pointer to **int32** |  | [optional] 
 **BookkeeperWriteQuorum** | Pointer to **int32** |  | [optional] 
+**BookkeeperAckQuorum** | Pointer to **int32** |  | [optional] 
 **ManagedLedgerMaxMarkDeleteRate** | Pointer to **float64** |  | [optional] 
 
 ## Methods
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewPersistencePoliciesWithDefaults instantiates a new PersistencePolicies object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetBookkeeperAckQuorum
-
-`func (o *PersistencePolicies) GetBookkeeperAckQuorum() int32`
-
-GetBookkeeperAckQuorum returns the BookkeeperAckQuorum field if non-nil, zero value otherwise.
-
-### GetBookkeeperAckQuorumOk
-
-`func (o *PersistencePolicies) GetBookkeeperAckQuorumOk() (*int32, bool)`
-
-GetBookkeeperAckQuorumOk returns a tuple with the BookkeeperAckQuorum field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBookkeeperAckQuorum
-
-`func (o *PersistencePolicies) SetBookkeeperAckQuorum(v int32)`
-
-SetBookkeeperAckQuorum sets BookkeeperAckQuorum field to given value.
-
-### HasBookkeeperAckQuorum
-
-`func (o *PersistencePolicies) HasBookkeeperAckQuorum() bool`
-
-HasBookkeeperAckQuorum returns a boolean if a field has been set.
 
 ### GetBookkeeperEnsemble
 
@@ -102,6 +77,31 @@ SetBookkeeperWriteQuorum sets BookkeeperWriteQuorum field to given value.
 `func (o *PersistencePolicies) HasBookkeeperWriteQuorum() bool`
 
 HasBookkeeperWriteQuorum returns a boolean if a field has been set.
+
+### GetBookkeeperAckQuorum
+
+`func (o *PersistencePolicies) GetBookkeeperAckQuorum() int32`
+
+GetBookkeeperAckQuorum returns the BookkeeperAckQuorum field if non-nil, zero value otherwise.
+
+### GetBookkeeperAckQuorumOk
+
+`func (o *PersistencePolicies) GetBookkeeperAckQuorumOk() (*int32, bool)`
+
+GetBookkeeperAckQuorumOk returns a tuple with the BookkeeperAckQuorum field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBookkeeperAckQuorum
+
+`func (o *PersistencePolicies) SetBookkeeperAckQuorum(v int32)`
+
+SetBookkeeperAckQuorum sets BookkeeperAckQuorum field to given value.
+
+### HasBookkeeperAckQuorum
+
+`func (o *PersistencePolicies) HasBookkeeperAckQuorum() bool`
+
+HasBookkeeperAckQuorum returns a boolean if a field has been set.
 
 ### GetManagedLedgerMaxMarkDeleteRate
 

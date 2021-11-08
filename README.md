@@ -79,6 +79,7 @@ All URIs are relative to *http://localhost/admin/v2*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BookiesApi* | [**DeleteBookieRackInfo**](docs/BookiesApi.md#deletebookierackinfo) | **Delete** /bookies/racks-info/{bookie} | Removed the rack placement information for a specific bookie in the cluster
+*BookiesApi* | [**GetAllBookies**](docs/BookiesApi.md#getallbookies) | **Get** /bookies/all | Gets raw information for all the bookies in the cluster
 *BookiesApi* | [**GetBookieRackInfo**](docs/BookiesApi.md#getbookierackinfo) | **Get** /bookies/racks-info/{bookie} | Gets the rack placement information for a specific bookie in the cluster
 *BookiesApi* | [**GetBookiesRackInfo**](docs/BookiesApi.md#getbookiesrackinfo) | **Get** /bookies/racks-info | Gets the rack placement information for all the bookies in the cluster
 *BookiesApi* | [**UpdateBookieRackInfo**](docs/BookiesApi.md#updatebookierackinfo) | **Post** /bookies/racks-info/{bookie} | Updates the rack placement information for a specific bookie in the cluster (note. bookie address format:&#x60;address:port&#x60;)
@@ -95,11 +96,13 @@ Class | Method | HTTP request | Description
 *BrokersApi* | [**GetAllDynamicConfigurations**](docs/BrokersApi.md#getalldynamicconfigurations) | **Get** /brokers/configuration/values | Get value of all dynamic configurations&#39; value overridden on local config
 *BrokersApi* | [**GetDynamicConfigurationName**](docs/BrokersApi.md#getdynamicconfigurationname) | **Get** /brokers/configuration | Get all updatable dynamic configurations&#39;s name
 *BrokersApi* | [**GetInternalConfigurationData**](docs/BrokersApi.md#getinternalconfigurationdata) | **Get** /brokers/internal-configuration | Get the internal configuration data
+*BrokersApi* | [**GetLeaderBroker**](docs/BrokersApi.md#getleaderbroker) | **Get** /brokers/leaderBroker | Get the information of the leader broker.
 *BrokersApi* | [**GetOwnedNamespaces**](docs/BrokersApi.md#getownednamespaces) | **Get** /brokers/{clusterName}/{broker-webserviceurl}/ownedNamespaces | Get the list of namespaces served by the specific broker
 *BrokersApi* | [**GetRuntimeConfiguration**](docs/BrokersApi.md#getruntimeconfiguration) | **Get** /brokers/configuration/runtime | Get all runtime configurations. This operation requires Pulsar super-user privileges.
 *BrokersApi* | [**Healthcheck**](docs/BrokersApi.md#healthcheck) | **Get** /brokers/health | Run a healthcheck against the broker
 *BrokersApi* | [**IsReady**](docs/BrokersApi.md#isready) | **Get** /brokers/ready | Check if the broker is fully initialized
 *BrokersApi* | [**UpdateDynamicConfiguration**](docs/BrokersApi.md#updatedynamicconfiguration) | **Post** /brokers/configuration/{configName}/{configValue} | Update dynamic serviceconfiguration into zk only. This operation requires Pulsar super-user privileges.
+*BrokersApi* | [**Version**](docs/BrokersApi.md#version) | **Get** /brokers/version | Get version of current broker
 *ClustersApi* | [**CreateCluster**](docs/ClustersApi.md#createcluster) | **Put** /clusters/{cluster} | Create a new cluster.
 *ClustersApi* | [**DeleteCluster**](docs/ClustersApi.md#deletecluster) | **Delete** /clusters/{cluster} | Delete an existing cluster.
 *ClustersApi* | [**DeleteFailureDomain**](docs/ClustersApi.md#deletefailuredomain) | **Delete** /clusters/{cluster}/failureDomains/{domainName} | Delete the failure domain of the cluster
@@ -117,47 +120,68 @@ Class | Method | HTTP request | Description
 *ClustersApi* | [**SetNamespaceIsolationPolicy**](docs/ClustersApi.md#setnamespaceisolationpolicy) | **Post** /clusters/{cluster}/namespaceIsolationPolicies/{policyName} | Set namespace isolation policy.
 *ClustersApi* | [**SetPeerClusterNames**](docs/ClustersApi.md#setpeerclusternames) | **Post** /clusters/{cluster}/peers | Update peer-cluster-list for a cluster.
 *ClustersApi* | [**UpdateCluster**](docs/ClustersApi.md#updatecluster) | **Post** /clusters/{cluster} | Update the configuration for a cluster.
+*DefaultApi* | [**GetAssignments**](docs/DefaultApi.md#getassignments) | **Get** /worker/assignments | Fetches information about which Pulsar Functions are assigned to which Pulsar clusters
+*DefaultApi* | [**GetCluster**](docs/DefaultApi.md#getcluster) | **Get** /worker/cluster | Fetches information about the Pulsar cluster running Pulsar Functions
+*DefaultApi* | [**GetClusterLeader**](docs/DefaultApi.md#getclusterleader) | **Get** /worker/cluster/leader | Fetches info about the leader node of the Pulsar cluster running Pulsar Functions
+*DefaultApi* | [**GetConnectorsList**](docs/DefaultApi.md#getconnectorslist) | **Get** /worker/connectors | Fetches a list of supported Pulsar IO connectors currently running in cluster mode
+*DefaultApi* | [**GetMetrics**](docs/DefaultApi.md#getmetrics) | **Get** /worker-stats/metrics | Gets the metrics for Monitoring
+*DefaultApi* | [**GetStats**](docs/DefaultApi.md#getstats) | **Get** /worker-stats/functionsmetrics | Get metrics for all functions owned by worker
+*DefaultApi* | [**IsLeaderReady**](docs/DefaultApi.md#isleaderready) | **Get** /worker/cluster/leader/ready | Checks if this node is the leader and is ready to service requests
+*DefaultApi* | [**Rebalance**](docs/DefaultApi.md#rebalance) | **Put** /worker/rebalance | Triggers a rebalance of functions to workers
 *NamespacesApi* | [**ClearNamespaceBacklog**](docs/NamespacesApi.md#clearnamespacebacklog) | **Post** /namespaces/{tenant}/{namespace}/clearBacklog | Clear backlog for all topics on a namespace.
 *NamespacesApi* | [**ClearNamespaceBacklogForSubscription**](docs/NamespacesApi.md#clearnamespacebacklogforsubscription) | **Post** /namespaces/{tenant}/{namespace}/clearBacklog/{subscription} | Clear backlog for a given subscription on all topics on a namespace.
 *NamespacesApi* | [**ClearNamespaceBundleBacklog**](docs/NamespacesApi.md#clearnamespacebundlebacklog) | **Post** /namespaces/{tenant}/{namespace}/{bundle}/clearBacklog | Clear backlog for all topics on a namespace bundle.
 *NamespacesApi* | [**ClearNamespaceBundleBacklogForSubscription**](docs/NamespacesApi.md#clearnamespacebundlebacklogforsubscription) | **Post** /namespaces/{tenant}/{namespace}/{bundle}/clearBacklog/{subscription} | Clear backlog for a given subscription on all topics on a namespace bundle.
 *NamespacesApi* | [**ClearOffloadDeletionLag**](docs/NamespacesApi.md#clearoffloaddeletionlag) | **Delete** /namespaces/{tenant}/{namespace}/offloadDeletionLagMs | Clear the namespace configured offload deletion lag. The topics in the namespace will fallback to using the default configured deletion lag for the broker
+*NamespacesApi* | [**ClearProperties**](docs/NamespacesApi.md#clearproperties) | **Delete** /namespaces/{tenant}/{namespace}/properties | Get property value for a given key on a namespace.
 *NamespacesApi* | [**CreateNamespace**](docs/NamespacesApi.md#createnamespace) | **Put** /namespaces/{tenant}/{namespace} | Creates a new namespace with the specified policies
 *NamespacesApi* | [**DeleteBookieAffinityGroup**](docs/NamespacesApi.md#deletebookieaffinitygroup) | **Delete** /namespaces/{property}/{namespace}/persistence/bookieAffinity | Delete the bookie-affinity-group from namespace-local policy.
+*NamespacesApi* | [**DeleteCompactionThreshold**](docs/NamespacesApi.md#deletecompactionthreshold) | **Delete** /namespaces/{tenant}/{namespace}/compactionThreshold | Delete maximum number of uncompacted bytes in a topic before compaction is triggered.
+*NamespacesApi* | [**DeleteDispatchRate**](docs/NamespacesApi.md#deletedispatchrate) | **Delete** /namespaces/{tenant}/{namespace}/dispatchRate | Delete dispatch-rate throttling for all topics of the namespace
 *NamespacesApi* | [**DeleteNamespace**](docs/NamespacesApi.md#deletenamespace) | **Delete** /namespaces/{tenant}/{namespace} | Delete a namespace and all the topics under it.
 *NamespacesApi* | [**DeleteNamespaceBundle**](docs/NamespacesApi.md#deletenamespacebundle) | **Delete** /namespaces/{tenant}/{namespace}/{bundle} | Delete a namespace bundle and all the topics under it.
+*NamespacesApi* | [**DeletePersistence**](docs/NamespacesApi.md#deletepersistence) | **Delete** /namespaces/{tenant}/{namespace}/persistence | Delete the persistence configuration for all topics on a namespace
+*NamespacesApi* | [**DeleteSubscribeRate**](docs/NamespacesApi.md#deletesubscriberate) | **Delete** /namespaces/{tenant}/{namespace}/subscribeRate | Delete subscribe-rate throttling for all topics of the namespace
+*NamespacesApi* | [**DeleteSubscriptionDispatchRate**](docs/NamespacesApi.md#deletesubscriptiondispatchrate) | **Delete** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Delete Subscription dispatch-rate throttling for all topics of the namespace
 *NamespacesApi* | [**GetAntiAffinityNamespaces**](docs/NamespacesApi.md#getantiaffinitynamespaces) | **Get** /namespaces/{cluster}/antiAffinity/{group} | Get all namespaces that are grouped by given anti-affinity group in a given cluster. api can be only accessed by admin of any of the existing tenant
+*NamespacesApi* | [**GetBacklogQuotaMap**](docs/NamespacesApi.md#getbacklogquotamap) | **Get** /namespaces/{tenant}/{namespace}/backlogQuotaMap | Get backlog quota map on a namespace.
 *NamespacesApi* | [**GetBookieAffinityGroup**](docs/NamespacesApi.md#getbookieaffinitygroup) | **Get** /namespaces/{property}/{namespace}/persistence/bookieAffinity | Get the bookie-affinity-group from namespace-local policy.
 *NamespacesApi* | [**GetBundlesData**](docs/NamespacesApi.md#getbundlesdata) | **Get** /namespaces/{tenant}/{namespace}/bundles | Get the bundles split data.
+*NamespacesApi* | [**GetCompactionThreshold**](docs/NamespacesApi.md#getcompactionthreshold) | **Get** /namespaces/{tenant}/{namespace}/compactionThreshold | Maximum number of uncompacted bytes in topics before compaction is triggered.
+*NamespacesApi* | [**GetDeduplication**](docs/NamespacesApi.md#getdeduplication) | **Get** /namespaces/{tenant}/{namespace}/deduplication | Get broker side deduplication for all topics in a namespace
+*NamespacesApi* | [**GetDeduplicationSnapshotInterval**](docs/NamespacesApi.md#getdeduplicationsnapshotinterval) | **Get** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a namespace.
+*NamespacesApi* | [**GetDelayedDeliveryPolicies**](docs/NamespacesApi.md#getdelayeddeliverypolicies) | **Get** /namespaces/{tenant}/{namespace}/delayedDelivery | Get delayed delivery messages config on a namespace.
+*NamespacesApi* | [**GetDispatchRate**](docs/NamespacesApi.md#getdispatchrate) | **Get** /namespaces/{tenant}/{namespace}/dispatchRate | Get dispatch-rate configured for the namespace, -1 represents not configured yet
+*NamespacesApi* | [**GetInactiveTopicPolicies**](docs/NamespacesApi.md#getinactivetopicpolicies) | **Get** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Get inactive topic policies config on a namespace.
 *NamespacesApi* | [**GetIsAllowAutoUpdateSchema**](docs/NamespacesApi.md#getisallowautoupdateschema) | **Get** /namespaces/{tenant}/{namespace}/isAllowAutoUpdateSchema | The flag of whether allow auto update schema
+*NamespacesApi* | [**GetMaxConsumersPerSubscription**](docs/NamespacesApi.md#getmaxconsumerspersubscription) | **Get** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription | Get maxConsumersPerSubscription config on a namespace.
 *NamespacesApi* | [**GetMaxConsumersPerTopic**](docs/NamespacesApi.md#getmaxconsumerspertopic) | **Get** /namespaces/{tenant}/{namespace}/maxConsumersPerTopic | Get maxConsumersPerTopic config on a namespace.
 *NamespacesApi* | [**GetMaxProducersPerTopic**](docs/NamespacesApi.md#getmaxproducerspertopic) | **Get** /namespaces/{tenant}/{namespace}/maxProducersPerTopic | Get maxProducersPerTopic config on a namespace.
+*NamespacesApi* | [**GetMaxSubscriptionsPerTopic**](docs/NamespacesApi.md#getmaxsubscriptionspertopic) | **Get** /namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic | Get maxSubscriptionsPerTopic config on a namespace.
+*NamespacesApi* | [**GetMaxTopicsPerNamespace**](docs/NamespacesApi.md#getmaxtopicspernamespace) | **Get** /namespaces/{tenant}/{namespace}/maxTopicsPerNamespace | Get maxTopicsPerNamespace config on a namespace.
 *NamespacesApi* | [**GetMaxUnackedMessagesPerConsumer**](docs/NamespacesApi.md#getmaxunackedmessagesperconsumer) | **Get** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer | Get maxUnackedMessagesPerConsumer config on a namespace.
 *NamespacesApi* | [**GetMaxUnackedmessagesPerSubscription**](docs/NamespacesApi.md#getmaxunackedmessagespersubscription) | **Get** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription | Get maxUnackedMessagesPerSubscription config on a namespace.
-*NamespacesApi* | [**GetNameSpaceBacklogQuotaMap**](docs/NamespacesApi.md#getnamespacebacklogquotamap) | **Get** /namespaces/{tenant}/{namespace}/backlogQuotaMap | Get backlog quota map on a namespace.
-*NamespacesApi* | [**GetNameSpaceCompactionThreshold**](docs/NamespacesApi.md#getnamespacecompactionthreshold) | **Get** /namespaces/{tenant}/{namespace}/compactionThreshold | Maximum number of uncompacted bytes in topics before compaction is triggered.
-*NamespacesApi* | [**GetNameSpaceDeduplicationSnapshotInterval**](docs/NamespacesApi.md#getnamespacededuplicationsnapshotinterval) | **Get** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a namespace.
-*NamespacesApi* | [**GetNameSpaceDelayedDeliveryPolicies**](docs/NamespacesApi.md#getnamespacedelayeddeliverypolicies) | **Get** /namespaces/{tenant}/{namespace}/delayedDelivery | Get delayed delivery messages config on a namespace.
-*NamespacesApi* | [**GetNameSpaceDispatchRate**](docs/NamespacesApi.md#getnamespacedispatchrate) | **Get** /namespaces/{tenant}/{namespace}/dispatchRate | Get dispatch-rate configured for the namespace, -1 represents not configured yet
-*NamespacesApi* | [**GetNameSpaceInactiveTopicPolicies**](docs/NamespacesApi.md#getnamespaceinactivetopicpolicies) | **Get** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Get inactive topic policies config on a namespace.
-*NamespacesApi* | [**GetNameSpaceMaxConsumersPerSubscription**](docs/NamespacesApi.md#getnamespacemaxconsumerspersubscription) | **Get** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription | Get maxConsumersPerSubscription config on a namespace.
-*NamespacesApi* | [**GetNameSpaceOffloadPolicies**](docs/NamespacesApi.md#getnamespaceoffloadpolicies) | **Get** /namespaces/{tenant}/{namespace}/offloadPolicies | Get offload configuration on a namespace.
-*NamespacesApi* | [**GetNameSpacePersistence**](docs/NamespacesApi.md#getnamespacepersistence) | **Get** /namespaces/{tenant}/{namespace}/persistence | Get the persistence configuration for a namespace.
-*NamespacesApi* | [**GetNameSpaceRetention**](docs/NamespacesApi.md#getnamespaceretention) | **Get** /namespaces/{tenant}/{namespace}/retention | Get retention config on a namespace.
-*NamespacesApi* | [**GetNameSpaceSubscribeRate**](docs/NamespacesApi.md#getnamespacesubscriberate) | **Get** /namespaces/{tenant}/{namespace}/subscribeRate | Get subscribe-rate configured for the namespace
-*NamespacesApi* | [**GetNameSpaceSubscriptionDispatchRate**](docs/NamespacesApi.md#getnamespacesubscriptiondispatchrate) | **Get** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
 *NamespacesApi* | [**GetNamespaceAntiAffinityGroup**](docs/NamespacesApi.md#getnamespaceantiaffinitygroup) | **Get** /namespaces/{tenant}/{namespace}/antiAffinity | Get anti-affinity group of a namespace.
 *NamespacesApi* | [**GetNamespaceMessageTTL**](docs/NamespacesApi.md#getnamespacemessagettl) | **Get** /namespaces/{tenant}/{namespace}/messageTTL | Get the message TTL for the namespace
 *NamespacesApi* | [**GetNamespaceReplicationClusters**](docs/NamespacesApi.md#getnamespacereplicationclusters) | **Get** /namespaces/{tenant}/{namespace}/replication | Get the replication clusters for a namespace.
+*NamespacesApi* | [**GetNamespaceResourceGroup**](docs/NamespacesApi.md#getnamespaceresourcegroup) | **Get** /namespaces/{tenant}/{namespace}/resourcegroup | Get the resourcegroup attached to the namespace
 *NamespacesApi* | [**GetOffloadDeletionLag**](docs/NamespacesApi.md#getoffloaddeletionlag) | **Get** /namespaces/{tenant}/{namespace}/offloadDeletionLagMs | Number of milliseconds to wait before deleting a ledger segment which has been offloaded from the Pulsar cluster&#39;s local storage (i.e. BookKeeper)
+*NamespacesApi* | [**GetOffloadPolicies**](docs/NamespacesApi.md#getoffloadpolicies) | **Get** /namespaces/{tenant}/{namespace}/offloadPolicies | Get offload configuration on a namespace.
 *NamespacesApi* | [**GetOffloadThreshold**](docs/NamespacesApi.md#getoffloadthreshold) | **Get** /namespaces/{tenant}/{namespace}/offloadThreshold | Maximum number of bytes stored on the pulsar cluster for a topic, before the broker will start offloading to longterm storage
 *NamespacesApi* | [**GetPermissions**](docs/NamespacesApi.md#getpermissions) | **Get** /namespaces/{tenant}/{namespace}/permissions | Retrieve the permissions for a namespace.
+*NamespacesApi* | [**GetPersistence**](docs/NamespacesApi.md#getpersistence) | **Get** /namespaces/{tenant}/{namespace}/persistence | Get the persistence configuration for a namespace.
 *NamespacesApi* | [**GetPolicies**](docs/NamespacesApi.md#getpolicies) | **Get** /namespaces/{tenant}/{namespace} | Get the dump all the policies specified for a namespace.
+*NamespacesApi* | [**GetProperties**](docs/NamespacesApi.md#getproperties) | **Get** /namespaces/{tenant}/{namespace}/properties | Get key value pair properties for a given namespace.
+*NamespacesApi* | [**GetProperty**](docs/NamespacesApi.md#getproperty) | **Get** /namespaces/{tenant}/{namespace}/property/{key} | Get property value for a given key on a namespace.
 *NamespacesApi* | [**GetReplicatorDispatchRate**](docs/NamespacesApi.md#getreplicatordispatchrate) | **Get** /namespaces/{tenant}/{namespace}/replicatorDispatchRate | Get replicator dispatch-rate configured for the namespace, -1 represents not configured yet
+*NamespacesApi* | [**GetRetention**](docs/NamespacesApi.md#getretention) | **Get** /namespaces/{tenant}/{namespace}/retention | Get retention config on a namespace.
 *NamespacesApi* | [**GetSchemaAutoUpdateCompatibilityStrategy**](docs/NamespacesApi.md#getschemaautoupdatecompatibilitystrategy) | **Get** /namespaces/{tenant}/{namespace}/schemaAutoUpdateCompatibilityStrategy | The strategy used to check the compatibility of new schemas, provided by producers, before automatically updating the schema
 *NamespacesApi* | [**GetSchemaCompatibilityStrategy**](docs/NamespacesApi.md#getschemacompatibilitystrategy) | **Get** /namespaces/{tenant}/{namespace}/schemaCompatibilityStrategy | The strategy of the namespace schema compatibility 
 *NamespacesApi* | [**GetSchemaValidtionEnforced**](docs/NamespacesApi.md#getschemavalidtionenforced) | **Get** /namespaces/{tenant}/{namespace}/schemaValidationEnforced | Get schema validation enforced flag for namespace.
+*NamespacesApi* | [**GetSubscribeRate**](docs/NamespacesApi.md#getsubscriberate) | **Get** /namespaces/{tenant}/{namespace}/subscribeRate | Get subscribe-rate configured for the namespace
+*NamespacesApi* | [**GetSubscriptionDispatchRate**](docs/NamespacesApi.md#getsubscriptiondispatchrate) | **Get** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
 *NamespacesApi* | [**GetSubscriptionExpirationTime**](docs/NamespacesApi.md#getsubscriptionexpirationtime) | **Get** /namespaces/{tenant}/{namespace}/subscriptionExpirationTime | Get the subscription expiration time for the namespace
+*NamespacesApi* | [**GetSubscriptionTypesEnabled**](docs/NamespacesApi.md#getsubscriptiontypesenabled) | **Get** /namespaces/{tenant}/{namespace}/subscriptionTypesEnabled | The set of whether allow subscription types
 *NamespacesApi* | [**GetTenantNamespaces**](docs/NamespacesApi.md#gettenantnamespaces) | **Get** /namespaces/{tenant} | Get the list of all the namespaces for a certain tenant.
 *NamespacesApi* | [**GetTopics**](docs/NamespacesApi.md#gettopics) | **Get** /namespaces/{tenant}/{namespace}/topics | Get the list of all the topics under a certain namespace.
 *NamespacesApi* | [**GrantPermissionOnNamespace**](docs/NamespacesApi.md#grantpermissiononnamespace) | **Post** /namespaces/{tenant}/{namespace}/permissions/{role} | Grant a new permission to a role on a namespace.
@@ -165,141 +189,177 @@ Class | Method | HTTP request | Description
 *NamespacesApi* | [**ModifyEncryptionRequired**](docs/NamespacesApi.md#modifyencryptionrequired) | **Post** /namespaces/{tenant}/{namespace}/encryptionRequired | Message encryption is required or not for all topics in a namespace
 *NamespacesApi* | [**RemoveAutoSubscriptionCreation**](docs/NamespacesApi.md#removeautosubscriptioncreation) | **Delete** /namespaces/{tenant}/{namespace}/autoSubscriptionCreation | Remove override of broker&#39;s allowAutoSubscriptionCreation in a namespace
 *NamespacesApi* | [**RemoveAutoTopicCreation**](docs/NamespacesApi.md#removeautotopiccreation) | **Delete** /namespaces/{tenant}/{namespace}/autoTopicCreation | Remove override of broker&#39;s allowAutoTopicCreation in a namespace
+*NamespacesApi* | [**RemoveBacklogQuota**](docs/NamespacesApi.md#removebacklogquota) | **Delete** /namespaces/{tenant}/{namespace}/backlogQuota | Remove a backlog quota policy from a namespace.
+*NamespacesApi* | [**RemoveDeduplication**](docs/NamespacesApi.md#removededuplication) | **Delete** /namespaces/{tenant}/{namespace}/deduplication | Remove broker side deduplication for all topics in a namespace
+*NamespacesApi* | [**RemoveDelayedDeliveryPolicies**](docs/NamespacesApi.md#removedelayeddeliverypolicies) | **Delete** /namespaces/{tenant}/{namespace}/delayedDelivery | Delete delayed delivery messages config on a namespace.
 *NamespacesApi* | [**RemoveInactiveTopicPolicies**](docs/NamespacesApi.md#removeinactivetopicpolicies) | **Delete** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Remove inactive topic policies from a namespace.
-*NamespacesApi* | [**RemoveNameSpaceBacklogQuota**](docs/NamespacesApi.md#removenamespacebacklogquota) | **Delete** /namespaces/{tenant}/{namespace}/backlogQuota | Remove a backlog quota policy from a namespace.
-*NamespacesApi* | [**RemoveNameSpaceOffloadPolicies**](docs/NamespacesApi.md#removenamespaceoffloadpolicies) | **Delete** /namespaces/{tenant}/{namespace}/removeOffloadPolicies |  Set offload configuration on a namespace.
+*NamespacesApi* | [**RemoveMaxConsumersPerSubscription**](docs/NamespacesApi.md#removemaxconsumerspersubscription) | **Delete** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription |  Set maxConsumersPerSubscription configuration on a namespace.
+*NamespacesApi* | [**RemoveMaxConsumersPerTopic**](docs/NamespacesApi.md#removemaxconsumerspertopic) | **Delete** /namespaces/{tenant}/{namespace}/maxConsumersPerTopic | Remove maxConsumersPerTopic configuration on a namespace.
+*NamespacesApi* | [**RemoveMaxProducersPerTopic**](docs/NamespacesApi.md#removemaxproducerspertopic) | **Delete** /namespaces/{tenant}/{namespace}/maxProducersPerTopic | Remove maxProducersPerTopic configuration on a namespace.
+*NamespacesApi* | [**RemoveMaxSubscriptionsPerTopic**](docs/NamespacesApi.md#removemaxsubscriptionspertopic) | **Delete** /namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic | Remove maxSubscriptionsPerTopic configuration on a namespace.
+*NamespacesApi* | [**RemoveMaxUnackedmessagesPerConsumer**](docs/NamespacesApi.md#removemaxunackedmessagesperconsumer) | **Delete** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer | Remove maxUnackedMessagesPerConsumer config on a namespace.
+*NamespacesApi* | [**RemoveMaxUnackedmessagesPerSubscription**](docs/NamespacesApi.md#removemaxunackedmessagespersubscription) | **Delete** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription | Remove maxUnackedMessagesPerSubscription config on a namespace.
 *NamespacesApi* | [**RemoveNamespaceAntiAffinityGroup**](docs/NamespacesApi.md#removenamespaceantiaffinitygroup) | **Delete** /namespaces/{tenant}/{namespace}/antiAffinity | Remove anti-affinity group of a namespace.
 *NamespacesApi* | [**RemoveNamespaceMessageTTL**](docs/NamespacesApi.md#removenamespacemessagettl) | **Delete** /namespaces/{tenant}/{namespace}/messageTTL | Set message TTL in seconds for namespace
+*NamespacesApi* | [**RemoveNamespaceResourceGroup**](docs/NamespacesApi.md#removenamespaceresourcegroup) | **Delete** /namespaces/{tenant}/{namespace}/resourcegroup | Delete resourcegroup for a namespace
+*NamespacesApi* | [**RemoveOffloadPolicies**](docs/NamespacesApi.md#removeoffloadpolicies) | **Delete** /namespaces/{tenant}/{namespace}/removeOffloadPolicies |  Set offload configuration on a namespace.
+*NamespacesApi* | [**RemoveProperty**](docs/NamespacesApi.md#removeproperty) | **Delete** /namespaces/{tenant}/{namespace}/property/{key} | Get property value for a given key on a namespace.
+*NamespacesApi* | [**RemoveReplicatorDispatchRate**](docs/NamespacesApi.md#removereplicatordispatchrate) | **Delete** /namespaces/{tenant}/{namespace}/replicatorDispatchRate | Remove replicator dispatch-rate throttling for all topics of the namespace
+*NamespacesApi* | [**RemoveRetention**](docs/NamespacesApi.md#removeretention) | **Delete** /namespaces/{tenant}/{namespace}/retention |  Remove retention configuration on a namespace.
+*NamespacesApi* | [**RemoveSubscriptionExpirationTime**](docs/NamespacesApi.md#removesubscriptionexpirationtime) | **Delete** /namespaces/{tenant}/{namespace}/subscriptionExpirationTime | Remove subscription expiration time for namespace
 *NamespacesApi* | [**RevokePermissionsOnNamespace**](docs/NamespacesApi.md#revokepermissionsonnamespace) | **Delete** /namespaces/{tenant}/{namespace}/permissions/{role} | Revoke all permissions to a role on a namespace.
 *NamespacesApi* | [**SetAutoSubscriptionCreation**](docs/NamespacesApi.md#setautosubscriptioncreation) | **Post** /namespaces/{tenant}/{namespace}/autoSubscriptionCreation | Override broker&#39;s allowAutoSubscriptionCreation setting for a namespace
 *NamespacesApi* | [**SetAutoTopicCreation**](docs/NamespacesApi.md#setautotopiccreation) | **Post** /namespaces/{tenant}/{namespace}/autoTopicCreation | Override broker&#39;s allowAutoTopicCreation setting for a namespace
+*NamespacesApi* | [**SetBacklogQuota**](docs/NamespacesApi.md#setbacklogquota) | **Post** /namespaces/{tenant}/{namespace}/backlogQuota |  Set a backlog quota for all the topics on a namespace.
 *NamespacesApi* | [**SetBookieAffinityGroup**](docs/NamespacesApi.md#setbookieaffinitygroup) | **Post** /namespaces/{tenant}/{namespace}/persistence/bookieAffinity | Set the bookie-affinity-group to namespace-persistent policy.
+*NamespacesApi* | [**SetCompactionThreshold**](docs/NamespacesApi.md#setcompactionthreshold) | **Put** /namespaces/{tenant}/{namespace}/compactionThreshold | Set maximum number of uncompacted bytes in a topic before compaction is triggered.
+*NamespacesApi* | [**SetDeduplicationSnapshotInterval**](docs/NamespacesApi.md#setdeduplicationsnapshotinterval) | **Post** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a namespace.
+*NamespacesApi* | [**SetDelayedDeliveryPolicies**](docs/NamespacesApi.md#setdelayeddeliverypolicies) | **Post** /namespaces/{tenant}/{namespace}/delayedDelivery | Set delayed delivery messages config on a namespace.
+*NamespacesApi* | [**SetDispatchRate**](docs/NamespacesApi.md#setdispatchrate) | **Post** /namespaces/{tenant}/{namespace}/dispatchRate | Set dispatch-rate throttling for all topics of the namespace
+*NamespacesApi* | [**SetInactiveTopicPolicies**](docs/NamespacesApi.md#setinactivetopicpolicies) | **Post** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Set inactive topic policies config on a namespace.
+*NamespacesApi* | [**SetInactiveTopicPolicies_0**](docs/NamespacesApi.md#setinactivetopicpolicies_0) | **Post** /namespaces/{tenant}/{namespace}/maxTopicsPerNamespace | Set maxTopicsPerNamespace config on a namespace.
+*NamespacesApi* | [**SetInactiveTopicPolicies_1**](docs/NamespacesApi.md#setinactivetopicpolicies_1) | **Delete** /namespaces/{tenant}/{namespace}/maxTopicsPerNamespace | Set maxTopicsPerNamespace config on a namespace.
 *NamespacesApi* | [**SetIsAllowAutoUpdateSchema**](docs/NamespacesApi.md#setisallowautoupdateschema) | **Post** /namespaces/{tenant}/{namespace}/isAllowAutoUpdateSchema | Update flag of whether allow auto update schema
+*NamespacesApi* | [**SetMaxConsumersPerSubscription**](docs/NamespacesApi.md#setmaxconsumerspersubscription) | **Post** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription |  Set maxConsumersPerSubscription configuration on a namespace.
 *NamespacesApi* | [**SetMaxConsumersPerTopic**](docs/NamespacesApi.md#setmaxconsumerspertopic) | **Post** /namespaces/{tenant}/{namespace}/maxConsumersPerTopic |  Set maxConsumersPerTopic configuration on a namespace.
 *NamespacesApi* | [**SetMaxProducersPerTopic**](docs/NamespacesApi.md#setmaxproducerspertopic) | **Post** /namespaces/{tenant}/{namespace}/maxProducersPerTopic |  Set maxProducersPerTopic configuration on a namespace.
+*NamespacesApi* | [**SetMaxSubscriptionsPerTopic**](docs/NamespacesApi.md#setmaxsubscriptionspertopic) | **Post** /namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic |  Set maxSubscriptionsPerTopic configuration on a namespace.
 *NamespacesApi* | [**SetMaxUnackedMessagesPerConsumer**](docs/NamespacesApi.md#setmaxunackedmessagesperconsumer) | **Post** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer |  Set maxConsumersPerTopic configuration on a namespace.
 *NamespacesApi* | [**SetMaxUnackedMessagesPerSubscription**](docs/NamespacesApi.md#setmaxunackedmessagespersubscription) | **Post** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription |  Set maxUnackedMessagesPerSubscription configuration on a namespace.
-*NamespacesApi* | [**SetNameSpaceBacklogQuota**](docs/NamespacesApi.md#setnamespacebacklogquota) | **Post** /namespaces/{tenant}/{namespace}/backlogQuota |  Set a backlog quota for all the topics on a namespace.
-*NamespacesApi* | [**SetNameSpaceCompactionThreshold**](docs/NamespacesApi.md#setnamespacecompactionthreshold) | **Put** /namespaces/{tenant}/{namespace}/compactionThreshold | Set maximum number of uncompacted bytes in a topic before compaction is triggered.
-*NamespacesApi* | [**SetNameSpaceDeduplicationSnapshotInterval**](docs/NamespacesApi.md#setnamespacededuplicationsnapshotinterval) | **Post** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a namespace.
-*NamespacesApi* | [**SetNameSpaceDelayedDeliveryPolicies**](docs/NamespacesApi.md#setnamespacedelayeddeliverypolicies) | **Post** /namespaces/{tenant}/{namespace}/delayedDelivery | Set delayed delivery messages config on a namespace.
-*NamespacesApi* | [**SetNameSpaceDispatchRate**](docs/NamespacesApi.md#setnamespacedispatchrate) | **Post** /namespaces/{tenant}/{namespace}/dispatchRate | Set dispatch-rate throttling for all topics of the namespace
-*NamespacesApi* | [**SetNameSpaceInactiveTopicPolicies**](docs/NamespacesApi.md#setnamespaceinactivetopicpolicies) | **Post** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Set inactive topic policies config on a namespace.
-*NamespacesApi* | [**SetNameSpaceMaxConsumersPerSubscription**](docs/NamespacesApi.md#setnamespacemaxconsumerspersubscription) | **Post** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription |  Set maxConsumersPerSubscription configuration on a namespace.
-*NamespacesApi* | [**SetNameSpaceOffloadPolicies**](docs/NamespacesApi.md#setnamespaceoffloadpolicies) | **Post** /namespaces/{tenant}/{namespace}/offloadPolicies |  Set offload configuration on a namespace.
-*NamespacesApi* | [**SetNameSpacePersistence**](docs/NamespacesApi.md#setnamespacepersistence) | **Post** /namespaces/{tenant}/{namespace}/persistence | Set the persistence configuration for all the topics on a namespace.
-*NamespacesApi* | [**SetNameSpaceRetention**](docs/NamespacesApi.md#setnamespaceretention) | **Post** /namespaces/{tenant}/{namespace}/retention |  Set retention configuration on a namespace.
-*NamespacesApi* | [**SetNameSpaceSubscribeRate**](docs/NamespacesApi.md#setnamespacesubscriberate) | **Post** /namespaces/{tenant}/{namespace}/subscribeRate | Set subscribe-rate throttling for all topics of the namespace
-*NamespacesApi* | [**SetNameSpaceSubscriptionDispatchRate**](docs/NamespacesApi.md#setnamespacesubscriptiondispatchrate) | **Post** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Set Subscription dispatch-rate throttling for all topics of the namespace
 *NamespacesApi* | [**SetNamespaceAntiAffinityGroup**](docs/NamespacesApi.md#setnamespaceantiaffinitygroup) | **Post** /namespaces/{tenant}/{namespace}/antiAffinity | Set anti-affinity group for a namespace
 *NamespacesApi* | [**SetNamespaceMessageTTL**](docs/NamespacesApi.md#setnamespacemessagettl) | **Post** /namespaces/{tenant}/{namespace}/messageTTL | Set message TTL in seconds for namespace
 *NamespacesApi* | [**SetNamespaceReplicationClusters**](docs/NamespacesApi.md#setnamespacereplicationclusters) | **Post** /namespaces/{tenant}/{namespace}/replication | Set the replication clusters for a namespace.
+*NamespacesApi* | [**SetNamespaceResourceGroup**](docs/NamespacesApi.md#setnamespaceresourcegroup) | **Post** /namespaces/{tenant}/{namespace}/resourcegroup | Set resourcegroup for a namespace
 *NamespacesApi* | [**SetOffloadDeletionLag**](docs/NamespacesApi.md#setoffloaddeletionlag) | **Put** /namespaces/{tenant}/{namespace}/offloadDeletionLagMs | Set number of milliseconds to wait before deleting a ledger segment which has been offloaded from the Pulsar cluster&#39;s local storage (i.e. BookKeeper)
+*NamespacesApi* | [**SetOffloadPolicies**](docs/NamespacesApi.md#setoffloadpolicies) | **Post** /namespaces/{tenant}/{namespace}/offloadPolicies |  Set offload configuration on a namespace.
 *NamespacesApi* | [**SetOffloadThreshold**](docs/NamespacesApi.md#setoffloadthreshold) | **Put** /namespaces/{tenant}/{namespace}/offloadThreshold | Set maximum number of bytes stored on the pulsar cluster for a topic, before the broker will start offloading to longterm storage
+*NamespacesApi* | [**SetPersistence**](docs/NamespacesApi.md#setpersistence) | **Post** /namespaces/{tenant}/{namespace}/persistence | Set the persistence configuration for all the topics on a namespace.
+*NamespacesApi* | [**SetProperties**](docs/NamespacesApi.md#setproperties) | **Put** /namespaces/{tenant}/{namespace}/properties | Put key value pairs property on a namespace.
+*NamespacesApi* | [**SetProperty**](docs/NamespacesApi.md#setproperty) | **Put** /namespaces/{tenant}/{namespace}/property/{key}/{value} | Put a key value pair property on a namespace.
 *NamespacesApi* | [**SetReplicatorDispatchRate**](docs/NamespacesApi.md#setreplicatordispatchrate) | **Post** /namespaces/{tenant}/{namespace}/replicatorDispatchRate | Set replicator dispatch-rate throttling for all topics of the namespace
+*NamespacesApi* | [**SetRetention**](docs/NamespacesApi.md#setretention) | **Post** /namespaces/{tenant}/{namespace}/retention |  Set retention configuration on a namespace.
 *NamespacesApi* | [**SetSchemaAutoUpdateCompatibilityStrategy**](docs/NamespacesApi.md#setschemaautoupdatecompatibilitystrategy) | **Put** /namespaces/{tenant}/{namespace}/schemaAutoUpdateCompatibilityStrategy | Update the strategy used to check the compatibility of new schemas, provided by producers, before automatically updating the schema
 *NamespacesApi* | [**SetSchemaCompatibilityStrategy**](docs/NamespacesApi.md#setschemacompatibilitystrategy) | **Put** /namespaces/{tenant}/{namespace}/schemaCompatibilityStrategy | Update the strategy used to check the compatibility of new schema
 *NamespacesApi* | [**SetSchemaValidtionEnforced**](docs/NamespacesApi.md#setschemavalidtionenforced) | **Post** /namespaces/{tenant}/{namespace}/schemaValidationEnforced | Set schema validation enforced flag on namespace.
+*NamespacesApi* | [**SetSubscribeRate**](docs/NamespacesApi.md#setsubscriberate) | **Post** /namespaces/{tenant}/{namespace}/subscribeRate | Set subscribe-rate throttling for all topics of the namespace
 *NamespacesApi* | [**SetSubscriptionAuthMode**](docs/NamespacesApi.md#setsubscriptionauthmode) | **Post** /namespaces/{tenant}/{namespace}/subscriptionAuthMode |  Set a subscription auth mode for all the topics on a namespace.
+*NamespacesApi* | [**SetSubscriptionDispatchRate**](docs/NamespacesApi.md#setsubscriptiondispatchrate) | **Post** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Set Subscription dispatch-rate throttling for all topics of the namespace
 *NamespacesApi* | [**SetSubscriptionExpirationTime**](docs/NamespacesApi.md#setsubscriptionexpirationtime) | **Post** /namespaces/{tenant}/{namespace}/subscriptionExpirationTime | Set subscription expiration time in minutes for namespace
+*NamespacesApi* | [**SetSubscriptionTypesEnabled**](docs/NamespacesApi.md#setsubscriptiontypesenabled) | **Post** /namespaces/{tenant}/{namespace}/subscriptionTypesEnabled | Update set of whether allow share sub type
 *NamespacesApi* | [**SplitNamespaceBundle**](docs/NamespacesApi.md#splitnamespacebundle) | **Put** /namespaces/{tenant}/{namespace}/{bundle}/split | Split a namespace bundle
 *NamespacesApi* | [**UnloadNamespace**](docs/NamespacesApi.md#unloadnamespace) | **Put** /namespaces/{tenant}/{namespace}/unload | Unload namespace
 *NamespacesApi* | [**UnloadNamespaceBundle**](docs/NamespacesApi.md#unloadnamespacebundle) | **Put** /namespaces/{tenant}/{namespace}/{bundle}/unload | Unload a namespace bundle
 *NamespacesApi* | [**UnsubscribeNamespace**](docs/NamespacesApi.md#unsubscribenamespace) | **Post** /namespaces/{tenant}/{namespace}/unsubscribe/{subscription} | Unsubscribes the given subscription on all topics on a namespace.
 *NamespacesApi* | [**UnsubscribeNamespaceBundle**](docs/NamespacesApi.md#unsubscribenamespacebundle) | **Post** /namespaces/{tenant}/{namespace}/{bundle}/unsubscribe/{subscription} | Unsubscribes the given subscription on all topics on a namespace bundle.
-*NonPersistentTopicApi* | [**CompactNP**](docs/NonPersistentTopicApi.md#compactnp) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/compaction | Trigger a compaction operation on a topic.
-*NonPersistentTopicApi* | [**CompactionStatusNP**](docs/NonPersistentTopicApi.md#compactionstatusnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/compaction | Get the status of a compaction operation for a topic.
-*NonPersistentTopicApi* | [**CreateMissedPartitionsNP**](docs/NonPersistentTopicApi.md#createmissedpartitionsnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/createMissedPartitions | Create missed partitions of an existing partitioned topic.
-*NonPersistentTopicApi* | [**CreateNonPartitionedTopicNP**](docs/NonPersistentTopicApi.md#createnonpartitionedtopicnp) | **Put** /non-persistent/{tenant}/{namespace}/{topic} | Create a non-partitioned topic.
-*NonPersistentTopicApi* | [**CreatePartitionedTopicNP**](docs/NonPersistentTopicApi.md#createpartitionedtopicnp) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Create a partitioned topic.
-*NonPersistentTopicApi* | [**CreateSubscriptionNP**](docs/NonPersistentTopicApi.md#createsubscriptionnp) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subscriptionName} | Create a subscription on the topic.
-*NonPersistentTopicApi* | [**DeleteDeduplicationSnapshotIntervalNP**](docs/NonPersistentTopicApi.md#deletededuplicationsnapshotintervalnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Delete deduplicationSnapshotInterval config on a topic.
-*NonPersistentTopicApi* | [**DeleteDelayedDeliveryPoliciesNP**](docs/NonPersistentTopicApi.md#deletedelayeddeliverypoliciesnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Set delayed delivery messages config on a topic.
-*NonPersistentTopicApi* | [**DeleteInactiveTopicPoliciesNP**](docs/NonPersistentTopicApi.md#deleteinactivetopicpoliciesnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Delete inactive topic policies on a topic.
-*NonPersistentTopicApi* | [**DeleteMaxUnackedMessagesOnConsumerNP**](docs/NonPersistentTopicApi.md#deletemaxunackedmessagesonconsumernp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Delete max unacked messages per consumer config on a topic.
-*NonPersistentTopicApi* | [**DeleteMaxUnackedMessagesOnSubscriptionNP**](docs/NonPersistentTopicApi.md#deletemaxunackedmessagesonsubscriptionnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Delete max unacked messages per subscription config on a topic.
-*NonPersistentTopicApi* | [**DeletePartitionedTopicNP**](docs/NonPersistentTopicApi.md#deletepartitionedtopicnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Delete a partitioned topic.
-*NonPersistentTopicApi* | [**DeleteSubscriptionNP**](docs/NonPersistentTopicApi.md#deletesubscriptionnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName} | Delete a subscription.
-*NonPersistentTopicApi* | [**DeleteTopicNP**](docs/NonPersistentTopicApi.md#deletetopicnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic} | Delete a topic.
-*NonPersistentTopicApi* | [**ExamineMessageNP**](docs/NonPersistentTopicApi.md#examinemessagenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/examinemessage | Examine a specific message on a topic by position relative to the earliest or the latest message.
-*NonPersistentTopicApi* | [**ExpireMessagesForAllSubscriptionsNP**](docs/NonPersistentTopicApi.md#expiremessagesforallsubscriptionsnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/all_subscription/expireMessages/{expireTimeInSeconds} | Expiry messages on all subscriptions of topic.
-*NonPersistentTopicApi* | [**ExpireTopicMessagesNP**](docs/NonPersistentTopicApi.md#expiretopicmessagesnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages/{expireTimeInSeconds} | Expiry messages on a topic subscription.
-*NonPersistentTopicApi* | [**GetBacklogNP**](docs/NonPersistentTopicApi.md#getbacklognp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/backlog | Get estimated backlog for offline topic.
-*NonPersistentTopicApi* | [**GetBacklogQuotaMapNP**](docs/NonPersistentTopicApi.md#getbacklogquotamapnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/backlogQuotaMap | Get backlog quota map on a topic.
-*NonPersistentTopicApi* | [**GetCompactionThresholdNP**](docs/NonPersistentTopicApi.md#getcompactionthresholdnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Get compaction threshold configuration for specified topic.
-*NonPersistentTopicApi* | [**GetDeduplicationEnabledNP**](docs/NonPersistentTopicApi.md#getdeduplicationenablednp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Get deduplication configuration of a topic.
-*NonPersistentTopicApi* | [**GetDeduplicationSnapshotIntervalNP**](docs/NonPersistentTopicApi.md#getdeduplicationsnapshotintervalnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a topic.
-*NonPersistentTopicApi* | [**GetDelayedDeliveryPoliciesNP**](docs/NonPersistentTopicApi.md#getdelayeddeliverypoliciesnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Get delayed delivery messages config on a topic.
-*NonPersistentTopicApi* | [**GetDispatchRateNP**](docs/NonPersistentTopicApi.md#getdispatchratenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/dispatchRate | Get dispatch rate configuration for specified topic.
-*NonPersistentTopicApi* | [**GetInactiveTopicPoliciesNP**](docs/NonPersistentTopicApi.md#getinactivetopicpoliciesnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Get inactive topic policies on a topic.
-*NonPersistentTopicApi* | [**GetInternalStatsNP**](docs/NonPersistentTopicApi.md#getinternalstatsnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/internalStats | Get the internal stats for the topic.
-*NonPersistentTopicApi* | [**GetLastMessageIdNP**](docs/NonPersistentTopicApi.md#getlastmessageidnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/lastMessageId | Return the last commit message id of topic
+*NonPersistentTopicApi* | [**Compact**](docs/NonPersistentTopicApi.md#compact) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/compaction | Trigger a compaction operation on a topic.
+*NonPersistentTopicApi* | [**CompactionStatus**](docs/NonPersistentTopicApi.md#compactionstatus) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/compaction | Get the status of a compaction operation for a topic.
+*NonPersistentTopicApi* | [**CreateMissedPartitions**](docs/NonPersistentTopicApi.md#createmissedpartitions) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/createMissedPartitions | Create missed partitions of an existing partitioned topic.
+*NonPersistentTopicApi* | [**CreateNonPartitionedTopic**](docs/NonPersistentTopicApi.md#createnonpartitionedtopic) | **Put** /non-persistent/{tenant}/{namespace}/{topic} | Create a non-partitioned topic.
+*NonPersistentTopicApi* | [**CreatePartitionedTopic**](docs/NonPersistentTopicApi.md#createpartitionedtopic) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Create a partitioned topic.
+*NonPersistentTopicApi* | [**CreateSubscription**](docs/NonPersistentTopicApi.md#createsubscription) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subscriptionName} | Create a subscription on the topic.
+*NonPersistentTopicApi* | [**DeleteDeduplicationSnapshotInterval**](docs/NonPersistentTopicApi.md#deletededuplicationsnapshotinterval) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Delete deduplicationSnapshotInterval config on a topic.
+*NonPersistentTopicApi* | [**DeleteDelayedDeliveryPolicies**](docs/NonPersistentTopicApi.md#deletedelayeddeliverypolicies) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Set delayed delivery messages config on a topic.
+*NonPersistentTopicApi* | [**DeleteInactiveTopicPolicies**](docs/NonPersistentTopicApi.md#deleteinactivetopicpolicies) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Delete inactive topic policies on a topic.
+*NonPersistentTopicApi* | [**DeleteMaxUnackedMessagesOnConsumer**](docs/NonPersistentTopicApi.md#deletemaxunackedmessagesonconsumer) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Delete max unacked messages per consumer config on a topic.
+*NonPersistentTopicApi* | [**DeleteMaxUnackedMessagesOnSubscription**](docs/NonPersistentTopicApi.md#deletemaxunackedmessagesonsubscription) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Delete max unacked messages per subscription config on a topic.
+*NonPersistentTopicApi* | [**DeletePartitionedTopic**](docs/NonPersistentTopicApi.md#deletepartitionedtopic) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Delete a partitioned topic.
+*NonPersistentTopicApi* | [**DeleteSubscription**](docs/NonPersistentTopicApi.md#deletesubscription) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName} | Delete a subscription.
+*NonPersistentTopicApi* | [**DeleteTopic**](docs/NonPersistentTopicApi.md#deletetopic) | **Delete** /non-persistent/{tenant}/{namespace}/{topic} | Delete a topic.
+*NonPersistentTopicApi* | [**ExamineMessage**](docs/NonPersistentTopicApi.md#examinemessage) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/examinemessage | Examine a specific message on a topic by position relative to the earliest or the latest message.
+*NonPersistentTopicApi* | [**ExpireMessagesForAllSubscriptions**](docs/NonPersistentTopicApi.md#expiremessagesforallsubscriptions) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/all_subscription/expireMessages/{expireTimeInSeconds} | Expiry messages on all subscriptions of topic.
+*NonPersistentTopicApi* | [**ExpireTopicMessages**](docs/NonPersistentTopicApi.md#expiretopicmessages) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages | Expiry messages on a topic subscription.
+*NonPersistentTopicApi* | [**ExpireTopicMessages_0**](docs/NonPersistentTopicApi.md#expiretopicmessages_0) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages/{expireTimeInSeconds} | Expiry messages on a topic subscription.
+*NonPersistentTopicApi* | [**GetBacklog**](docs/NonPersistentTopicApi.md#getbacklog) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/backlog | Get estimated backlog for offline topic.
+*NonPersistentTopicApi* | [**GetBacklogQuotaMap**](docs/NonPersistentTopicApi.md#getbacklogquotamap) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/backlogQuotaMap | Get backlog quota map on a topic.
+*NonPersistentTopicApi* | [**GetCompactionThreshold**](docs/NonPersistentTopicApi.md#getcompactionthreshold) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Get compaction threshold configuration for specified topic.
+*NonPersistentTopicApi* | [**GetDeduplication**](docs/NonPersistentTopicApi.md#getdeduplication) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Get deduplication configuration of a topic.
+*NonPersistentTopicApi* | [**GetDeduplicationSnapshotInterval**](docs/NonPersistentTopicApi.md#getdeduplicationsnapshotinterval) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a topic.
+*NonPersistentTopicApi* | [**GetDelayedDeliveryPolicies**](docs/NonPersistentTopicApi.md#getdelayeddeliverypolicies) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Get delayed delivery messages config on a topic.
+*NonPersistentTopicApi* | [**GetDispatchRate**](docs/NonPersistentTopicApi.md#getdispatchrate) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/dispatchRate | Get dispatch rate configuration for specified topic.
+*NonPersistentTopicApi* | [**GetInactiveTopicPolicies**](docs/NonPersistentTopicApi.md#getinactivetopicpolicies) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Get inactive topic policies on a topic.
+*NonPersistentTopicApi* | [**GetInternalStats**](docs/NonPersistentTopicApi.md#getinternalstats) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/internalStats | Get the internal stats for the topic.
+*NonPersistentTopicApi* | [**GetLastMessageId**](docs/NonPersistentTopicApi.md#getlastmessageid) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/lastMessageId | Return the last commit message id of topic
+*NonPersistentTopicApi* | [**GetList**](docs/NonPersistentTopicApi.md#getlist) | **Get** /non-persistent/{tenant}/{namespace} | Get the list of non-persistent topics under a namespace.
 *NonPersistentTopicApi* | [**GetListFromBundle**](docs/NonPersistentTopicApi.md#getlistfrombundle) | **Get** /non-persistent/{tenant}/{namespace}/{bundle} | Get the list of non-persistent topics under a namespace bundle.
-*NonPersistentTopicApi* | [**GetListNP**](docs/NonPersistentTopicApi.md#getlistnp) | **Get** /non-persistent/{tenant}/{namespace} | Get the list of non-persistent topics under a namespace.
-*NonPersistentTopicApi* | [**GetManagedLedgerInfoNP**](docs/NonPersistentTopicApi.md#getmanagedledgerinfonp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/internal-info | Get the stored topic metadata.
-*NonPersistentTopicApi* | [**GetMaxConsumersNP**](docs/NonPersistentTopicApi.md#getmaxconsumersnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumers | Get maxConsumers config for specified topic.
-*NonPersistentTopicApi* | [**GetMaxConsumersPerSubscriptionNP**](docs/NonPersistentTopicApi.md#getmaxconsumerspersubscriptionnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Get max consumers per subscription configuration for specified topic.
-*NonPersistentTopicApi* | [**GetMaxProducersNP**](docs/NonPersistentTopicApi.md#getmaxproducersnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxProducers | Get maxProducers config for specified topic.
-*NonPersistentTopicApi* | [**GetMaxUnackedMessagesOnConsumerNP**](docs/NonPersistentTopicApi.md#getmaxunackedmessagesonconsumernp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Get max unacked messages per consumer config on a topic.
-*NonPersistentTopicApi* | [**GetMaxUnackedMessagesOnSubscriptionNP**](docs/NonPersistentTopicApi.md#getmaxunackedmessagesonsubscriptionnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Get max unacked messages per subscription config on a topic.
-*NonPersistentTopicApi* | [**GetMessageByIdNP**](docs/NonPersistentTopicApi.md#getmessagebyidnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/ledger/{ledgerId}/entry/{entryId} | Get message by its messageId.
-*NonPersistentTopicApi* | [**GetMessageTTLNP**](docs/NonPersistentTopicApi.md#getmessagettlnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/messageTTL | Get message TTL in seconds for a topic
-*NonPersistentTopicApi* | [**GetOffloadPoliciesNP**](docs/NonPersistentTopicApi.md#getoffloadpoliciesnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Get offload policies on a topic.
-*NonPersistentTopicApi* | [**GetPartitionedMetadataNP**](docs/NonPersistentTopicApi.md#getpartitionedmetadatanp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Get partitioned topic metadata.
-*NonPersistentTopicApi* | [**GetPartitionedStatsNP**](docs/NonPersistentTopicApi.md#getpartitionedstatsnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/partitioned-stats | Get the stats for the partitioned topic.
-*NonPersistentTopicApi* | [**GetPartitionedTopicListNP**](docs/NonPersistentTopicApi.md#getpartitionedtopiclistnp) | **Get** /non-persistent/{tenant}/{namespace}/partitioned | Get the list of partitioned topics under a namespace.
-*NonPersistentTopicApi* | [**GetPermissionsOnTopicNP**](docs/NonPersistentTopicApi.md#getpermissionsontopicnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/permissions | Get permissions on a topic.
-*NonPersistentTopicApi* | [**GetPersistenceNP**](docs/NonPersistentTopicApi.md#getpersistencenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/persistence | Get configuration of persistence policies for specified topic.
-*NonPersistentTopicApi* | [**GetPublishRateNP**](docs/NonPersistentTopicApi.md#getpublishratenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/publishRate | Get publish rate configuration for specified topic.
-*NonPersistentTopicApi* | [**GetRetentionNP**](docs/NonPersistentTopicApi.md#getretentionnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/retention | Get retention configuration for specified topic.
-*NonPersistentTopicApi* | [**GetStatsNP**](docs/NonPersistentTopicApi.md#getstatsnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/stats | Get the stats for the topic.
-*NonPersistentTopicApi* | [**GetSubscribeRateNP**](docs/NonPersistentTopicApi.md#getsubscriberatenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscribeRate | Get subscribe rate configuration for specified topic.
-*NonPersistentTopicApi* | [**GetSubscriptionDispatchRateNP**](docs/NonPersistentTopicApi.md#getsubscriptiondispatchratenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Get subscription message dispatch rate configuration for specified topic.
-*NonPersistentTopicApi* | [**GetSubscriptionsNP**](docs/NonPersistentTopicApi.md#getsubscriptionsnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscriptions | Get the list of persistent subscriptions for a given topic.
-*NonPersistentTopicApi* | [**GrantPermissionsOnTopicNP**](docs/NonPersistentTopicApi.md#grantpermissionsontopicnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Grant a new permission to a role on a single topic.
-*NonPersistentTopicApi* | [**OffloadStatusNP**](docs/NonPersistentTopicApi.md#offloadstatusnp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
-*NonPersistentTopicApi* | [**PeekNthMessageNP**](docs/NonPersistentTopicApi.md#peeknthmessagenp) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition} | Peek nth message on a topic subscription.
-*NonPersistentTopicApi* | [**RemoveBacklogQuotaNP**](docs/NonPersistentTopicApi.md#removebacklogquotanp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/backlogQuota | Remove a backlog quota policy from a topic.
-*NonPersistentTopicApi* | [**RemoveCompactionThresholdNP**](docs/NonPersistentTopicApi.md#removecompactionthresholdnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Remove compaction threshold configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveDeduplicationEnabledNP**](docs/NonPersistentTopicApi.md#removededuplicationenablednp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Remove deduplication configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveDispatchRateNP**](docs/NonPersistentTopicApi.md#removedispatchratenp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/dispatchRate | Remove message dispatch rate configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveMaxConsumersNP**](docs/NonPersistentTopicApi.md#removemaxconsumersnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumers | Remove maxConsumers config for specified topic.
-*NonPersistentTopicApi* | [**RemoveMaxConsumersPerSubscriptionNP**](docs/NonPersistentTopicApi.md#removemaxconsumerspersubscriptionnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Remove max consumers per subscription configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveMaxProducersNP**](docs/NonPersistentTopicApi.md#removemaxproducersnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxProducers | Remove maxProducers config for specified topic.
-*NonPersistentTopicApi* | [**RemoveMessageTTLNP**](docs/NonPersistentTopicApi.md#removemessagettlnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/messageTTL | Remove message TTL in seconds for a topic
-*NonPersistentTopicApi* | [**RemoveOffloadPoliciesNP**](docs/NonPersistentTopicApi.md#removeoffloadpoliciesnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Delete offload policies on a topic.
-*NonPersistentTopicApi* | [**RemovePersistenceNP**](docs/NonPersistentTopicApi.md#removepersistencenp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/persistence | Remove configuration of persistence policies for specified topic.
-*NonPersistentTopicApi* | [**RemovePublishRateNP**](docs/NonPersistentTopicApi.md#removepublishratenp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/publishRate | Remove message publish rate configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveRetentionNP**](docs/NonPersistentTopicApi.md#removeretentionnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/retention | Remove retention configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveSubscribeRateNP**](docs/NonPersistentTopicApi.md#removesubscriberatenp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/subscribeRate | Remove subscribe rate configuration for specified topic.
-*NonPersistentTopicApi* | [**RemoveSubscriptionDispatchRateNP**](docs/NonPersistentTopicApi.md#removesubscriptiondispatchratenp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Remove subscription message dispatch rate configuration for specified topic.
-*NonPersistentTopicApi* | [**ResetCursorNP**](docs/NonPersistentTopicApi.md#resetcursornp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/resetcursor/{timestamp} | Reset subscription to message position closest to absolute timestamp (in ms).
-*NonPersistentTopicApi* | [**ResetCursorOnPositionNP**](docs/NonPersistentTopicApi.md#resetcursoronpositionnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/resetcursor | Reset subscription to message position closest to given position.
-*NonPersistentTopicApi* | [**RevokePermissionsOnTopicNP**](docs/NonPersistentTopicApi.md#revokepermissionsontopicnp) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Revoke permissions on a topic.
-*NonPersistentTopicApi* | [**SetBacklogQuotaNP**](docs/NonPersistentTopicApi.md#setbacklogquotanp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/backlogQuota | Set a backlog quota for a topic.
-*NonPersistentTopicApi* | [**SetCompactionThresholdNP**](docs/NonPersistentTopicApi.md#setcompactionthresholdnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Set compaction threshold configuration for specified topic.
-*NonPersistentTopicApi* | [**SetDeduplicationEnabledNP**](docs/NonPersistentTopicApi.md#setdeduplicationenablednp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Set deduplication enabled on a topic.
-*NonPersistentTopicApi* | [**SetDeduplicationSnapshotIntervalNP**](docs/NonPersistentTopicApi.md#setdeduplicationsnapshotintervalnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a topic.
-*NonPersistentTopicApi* | [**SetDelayedDeliveryPoliciesNP**](docs/NonPersistentTopicApi.md#setdelayeddeliverypoliciesnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Set delayed delivery messages config on a topic.
-*NonPersistentTopicApi* | [**SetDispatchRateNP**](docs/NonPersistentTopicApi.md#setdispatchratenp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/dispatchRate | Set message dispatch rate configuration for specified topic.
-*NonPersistentTopicApi* | [**SetInactiveTopicPoliciesNP**](docs/NonPersistentTopicApi.md#setinactivetopicpoliciesnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Set inactive topic policies on a topic.
-*NonPersistentTopicApi* | [**SetMaxConsumersNP**](docs/NonPersistentTopicApi.md#setmaxconsumersnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumers | Set maxConsumers config for specified topic.
-*NonPersistentTopicApi* | [**SetMaxConsumersPerSubscriptionNP**](docs/NonPersistentTopicApi.md#setmaxconsumerspersubscriptionnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Set max consumers per subscription configuration for specified topic.
-*NonPersistentTopicApi* | [**SetMaxProducersNP**](docs/NonPersistentTopicApi.md#setmaxproducersnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxProducers | Set maxProducers config for specified topic.
-*NonPersistentTopicApi* | [**SetMaxUnackedMessagesOnConsumerNP**](docs/NonPersistentTopicApi.md#setmaxunackedmessagesonconsumernp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Set max unacked messages per consumer config on a topic.
-*NonPersistentTopicApi* | [**SetMaxUnackedMessagesOnSubscriptionNP**](docs/NonPersistentTopicApi.md#setmaxunackedmessagesonsubscriptionnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Set max unacked messages per subscription config on a topic.
-*NonPersistentTopicApi* | [**SetMessageTTLNP**](docs/NonPersistentTopicApi.md#setmessagettlnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/messageTTL | Set message TTL in seconds for a topic
-*NonPersistentTopicApi* | [**SetOffloadPoliciesNP**](docs/NonPersistentTopicApi.md#setoffloadpoliciesnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Set offload policies on a topic.
-*NonPersistentTopicApi* | [**SetPersistenceNP**](docs/NonPersistentTopicApi.md#setpersistencenp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/persistence | Set configuration of persistence policies for specified topic.
-*NonPersistentTopicApi* | [**SetPublishRateNP**](docs/NonPersistentTopicApi.md#setpublishratenp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/publishRate | Set message publish rate configuration for specified topic.
-*NonPersistentTopicApi* | [**SetRetentionNP**](docs/NonPersistentTopicApi.md#setretentionnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/retention | Set retention configuration for specified topic.
-*NonPersistentTopicApi* | [**SetSubscribeRateNP**](docs/NonPersistentTopicApi.md#setsubscriberatenp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscribeRate | Set subscribe rate configuration for specified topic.
-*NonPersistentTopicApi* | [**SetSubscriptionDispatchRateNP**](docs/NonPersistentTopicApi.md#setsubscriptiondispatchratenp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Set subscription message dispatch rate configuration for specified topic.
-*NonPersistentTopicApi* | [**SkipAllMessagesNP**](docs/NonPersistentTopicApi.md#skipallmessagesnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip_all | Skip all messages on a topic subscription.
-*NonPersistentTopicApi* | [**SkipMessagesNP**](docs/NonPersistentTopicApi.md#skipmessagesnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip/{numMessages} | Skipping messages on a topic subscription.
-*NonPersistentTopicApi* | [**TriggerOffloadNP**](docs/NonPersistentTopicApi.md#triggeroffloadnp) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
-*NonPersistentTopicApi* | [**UnloadTopicNP**](docs/NonPersistentTopicApi.md#unloadtopicnp) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/unload | Unload a topic
-*NonPersistentTopicApi* | [**UpdatePartitionedTopicNP**](docs/NonPersistentTopicApi.md#updatepartitionedtopicnp) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Increment partitions of an existing partitioned topic.
+*NonPersistentTopicApi* | [**GetManagedLedgerInfo**](docs/NonPersistentTopicApi.md#getmanagedledgerinfo) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/internal-info | Get the stored topic metadata.
+*NonPersistentTopicApi* | [**GetMaxConsumers**](docs/NonPersistentTopicApi.md#getmaxconsumers) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumers | Get maxConsumers config for specified topic.
+*NonPersistentTopicApi* | [**GetMaxConsumersPerSubscription**](docs/NonPersistentTopicApi.md#getmaxconsumerspersubscription) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Get max consumers per subscription configuration for specified topic.
+*NonPersistentTopicApi* | [**GetMaxMessageSize**](docs/NonPersistentTopicApi.md#getmaxmessagesize) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Get maxMessageSize config for specified topic.
+*NonPersistentTopicApi* | [**GetMaxProducers**](docs/NonPersistentTopicApi.md#getmaxproducers) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxProducers | Get maxProducers config for specified topic.
+*NonPersistentTopicApi* | [**GetMaxSubscriptionsPerTopic**](docs/NonPersistentTopicApi.md#getmaxsubscriptionspertopic) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Get maxSubscriptionsPerTopic config for specified topic.
+*NonPersistentTopicApi* | [**GetMaxUnackedMessagesOnConsumer**](docs/NonPersistentTopicApi.md#getmaxunackedmessagesonconsumer) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Get max unacked messages per consumer config on a topic.
+*NonPersistentTopicApi* | [**GetMaxUnackedMessagesOnSubscription**](docs/NonPersistentTopicApi.md#getmaxunackedmessagesonsubscription) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Get max unacked messages per subscription config on a topic.
+*NonPersistentTopicApi* | [**GetMessageById**](docs/NonPersistentTopicApi.md#getmessagebyid) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/ledger/{ledgerId}/entry/{entryId} | Get message by its messageId.
+*NonPersistentTopicApi* | [**GetMessageTTL**](docs/NonPersistentTopicApi.md#getmessagettl) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/messageTTL | Get message TTL in seconds for a topic
+*NonPersistentTopicApi* | [**GetOffloadPolicies**](docs/NonPersistentTopicApi.md#getoffloadpolicies) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Get offload policies on a topic.
+*NonPersistentTopicApi* | [**GetPartitionedMetadata**](docs/NonPersistentTopicApi.md#getpartitionedmetadata) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Get partitioned topic metadata.
+*NonPersistentTopicApi* | [**GetPartitionedStats**](docs/NonPersistentTopicApi.md#getpartitionedstats) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/partitioned-stats | Get the stats for the partitioned topic.
+*NonPersistentTopicApi* | [**GetPartitionedTopicList**](docs/NonPersistentTopicApi.md#getpartitionedtopiclist) | **Get** /non-persistent/{tenant}/{namespace}/partitioned | Get the list of partitioned topics under a namespace.
+*NonPersistentTopicApi* | [**GetPermissionsOnTopic**](docs/NonPersistentTopicApi.md#getpermissionsontopic) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/permissions | Get permissions on a topic.
+*NonPersistentTopicApi* | [**GetPersistence**](docs/NonPersistentTopicApi.md#getpersistence) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/persistence | Get configuration of persistence policies for specified topic.
+*NonPersistentTopicApi* | [**GetPublishRate**](docs/NonPersistentTopicApi.md#getpublishrate) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/publishRate | Get publish rate configuration for specified topic.
+*NonPersistentTopicApi* | [**GetReplicatorDispatchRate**](docs/NonPersistentTopicApi.md#getreplicatordispatchrate) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Get replicatorDispatchRate config for specified topic.
+*NonPersistentTopicApi* | [**GetRetention**](docs/NonPersistentTopicApi.md#getretention) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/retention | Get retention configuration for specified topic.
+*NonPersistentTopicApi* | [**GetStats**](docs/NonPersistentTopicApi.md#getstats) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/stats | Get the stats for the topic.
+*NonPersistentTopicApi* | [**GetSubscribeRate**](docs/NonPersistentTopicApi.md#getsubscriberate) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscribeRate | Get subscribe rate configuration for specified topic.
+*NonPersistentTopicApi* | [**GetSubscriptionDispatchRate**](docs/NonPersistentTopicApi.md#getsubscriptiondispatchrate) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Get subscription message dispatch rate configuration for specified topic.
+*NonPersistentTopicApi* | [**GetSubscriptionTypesEnabled**](docs/NonPersistentTopicApi.md#getsubscriptiontypesenabled) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled | Get is enable sub type fors specified topic.
+*NonPersistentTopicApi* | [**GetSubscriptions**](docs/NonPersistentTopicApi.md#getsubscriptions) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscriptions | Get the list of persistent subscriptions for a given topic.
+*NonPersistentTopicApi* | [**GrantPermissionsOnTopic**](docs/NonPersistentTopicApi.md#grantpermissionsontopic) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Grant a new permission to a role on a single topic.
+*NonPersistentTopicApi* | [**OffloadStatus**](docs/NonPersistentTopicApi.md#offloadstatus) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
+*NonPersistentTopicApi* | [**PeekNthMessage**](docs/NonPersistentTopicApi.md#peeknthmessage) | **Get** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition} | Peek nth message on a topic subscription.
+*NonPersistentTopicApi* | [**RemoveBacklogQuota**](docs/NonPersistentTopicApi.md#removebacklogquota) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/backlogQuota | Remove a backlog quota policy from a topic.
+*NonPersistentTopicApi* | [**RemoveCompactionThreshold**](docs/NonPersistentTopicApi.md#removecompactionthreshold) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Remove compaction threshold configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveDeduplication**](docs/NonPersistentTopicApi.md#removededuplication) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Remove deduplication configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveDispatchRate**](docs/NonPersistentTopicApi.md#removedispatchrate) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/dispatchRate | Remove message dispatch rate configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveMaxConsumers**](docs/NonPersistentTopicApi.md#removemaxconsumers) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumers | Remove maxConsumers config for specified topic.
+*NonPersistentTopicApi* | [**RemoveMaxConsumersPerSubscription**](docs/NonPersistentTopicApi.md#removemaxconsumerspersubscription) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Remove max consumers per subscription configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveMaxMessageSize**](docs/NonPersistentTopicApi.md#removemaxmessagesize) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Remove maxMessageSize config for specified topic.
+*NonPersistentTopicApi* | [**RemoveMaxProducers**](docs/NonPersistentTopicApi.md#removemaxproducers) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxProducers | Remove maxProducers config for specified topic.
+*NonPersistentTopicApi* | [**RemoveMaxSubscriptionsPerTopic**](docs/NonPersistentTopicApi.md#removemaxsubscriptionspertopic) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Remove maxSubscriptionsPerTopic config for specified topic.
+*NonPersistentTopicApi* | [**RemoveMessageTTL**](docs/NonPersistentTopicApi.md#removemessagettl) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/messageTTL | Remove message TTL in seconds for a topic
+*NonPersistentTopicApi* | [**RemoveOffloadPolicies**](docs/NonPersistentTopicApi.md#removeoffloadpolicies) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Delete offload policies on a topic.
+*NonPersistentTopicApi* | [**RemovePersistence**](docs/NonPersistentTopicApi.md#removepersistence) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/persistence | Remove configuration of persistence policies for specified topic.
+*NonPersistentTopicApi* | [**RemovePublishRate**](docs/NonPersistentTopicApi.md#removepublishrate) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/publishRate | Remove message publish rate configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveReplicatorDispatchRate**](docs/NonPersistentTopicApi.md#removereplicatordispatchrate) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Remove replicatorDispatchRate config for specified topic.
+*NonPersistentTopicApi* | [**RemoveRetention**](docs/NonPersistentTopicApi.md#removeretention) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/retention | Remove retention configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveSubscribeRate**](docs/NonPersistentTopicApi.md#removesubscriberate) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/subscribeRate | Remove subscribe rate configuration for specified topic.
+*NonPersistentTopicApi* | [**RemoveSubscriptionDispatchRate**](docs/NonPersistentTopicApi.md#removesubscriptiondispatchrate) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Remove subscription message dispatch rate configuration for specified topic.
+*NonPersistentTopicApi* | [**ResetCursor**](docs/NonPersistentTopicApi.md#resetcursor) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/resetcursor/{timestamp} | Reset subscription to message position closest to absolute timestamp (in ms).
+*NonPersistentTopicApi* | [**ResetCursorOnPosition**](docs/NonPersistentTopicApi.md#resetcursoronposition) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/resetcursor | Reset subscription to message position closest to given position.
+*NonPersistentTopicApi* | [**RevokePermissionsOnTopic**](docs/NonPersistentTopicApi.md#revokepermissionsontopic) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Revoke permissions on a topic.
+*NonPersistentTopicApi* | [**SetBacklogQuota**](docs/NonPersistentTopicApi.md#setbacklogquota) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/backlogQuota | Set a backlog quota for a topic.
+*NonPersistentTopicApi* | [**SetCompactionThreshold**](docs/NonPersistentTopicApi.md#setcompactionthreshold) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Set compaction threshold configuration for specified topic.
+*NonPersistentTopicApi* | [**SetDeduplication**](docs/NonPersistentTopicApi.md#setdeduplication) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Set deduplication enabled on a topic.
+*NonPersistentTopicApi* | [**SetDeduplicationSnapshotInterval**](docs/NonPersistentTopicApi.md#setdeduplicationsnapshotinterval) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a topic.
+*NonPersistentTopicApi* | [**SetDelayedDeliveryPolicies**](docs/NonPersistentTopicApi.md#setdelayeddeliverypolicies) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Set delayed delivery messages config on a topic.
+*NonPersistentTopicApi* | [**SetDispatchRate**](docs/NonPersistentTopicApi.md#setdispatchrate) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/dispatchRate | Set message dispatch rate configuration for specified topic.
+*NonPersistentTopicApi* | [**SetInactiveTopicPolicies**](docs/NonPersistentTopicApi.md#setinactivetopicpolicies) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Set inactive topic policies on a topic.
+*NonPersistentTopicApi* | [**SetMaxConsumers**](docs/NonPersistentTopicApi.md#setmaxconsumers) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumers | Set maxConsumers config for specified topic.
+*NonPersistentTopicApi* | [**SetMaxConsumersPerSubscription**](docs/NonPersistentTopicApi.md#setmaxconsumerspersubscription) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Set max consumers per subscription configuration for specified topic.
+*NonPersistentTopicApi* | [**SetMaxMessageSize**](docs/NonPersistentTopicApi.md#setmaxmessagesize) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Set maxMessageSize config for specified topic.
+*NonPersistentTopicApi* | [**SetMaxProducers**](docs/NonPersistentTopicApi.md#setmaxproducers) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxProducers | Set maxProducers config for specified topic.
+*NonPersistentTopicApi* | [**SetMaxSubscriptionsPerTopic**](docs/NonPersistentTopicApi.md#setmaxsubscriptionspertopic) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Set maxSubscriptionsPerTopic config for specified topic.
+*NonPersistentTopicApi* | [**SetMaxUnackedMessagesOnConsumer**](docs/NonPersistentTopicApi.md#setmaxunackedmessagesonconsumer) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Set max unacked messages per consumer config on a topic.
+*NonPersistentTopicApi* | [**SetMaxUnackedMessagesOnSubscription**](docs/NonPersistentTopicApi.md#setmaxunackedmessagesonsubscription) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Set max unacked messages per subscription config on a topic.
+*NonPersistentTopicApi* | [**SetMessageTTL**](docs/NonPersistentTopicApi.md#setmessagettl) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/messageTTL | Set message TTL in seconds for a topic
+*NonPersistentTopicApi* | [**SetOffloadPolicies**](docs/NonPersistentTopicApi.md#setoffloadpolicies) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Set offload policies on a topic.
+*NonPersistentTopicApi* | [**SetPersistence**](docs/NonPersistentTopicApi.md#setpersistence) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/persistence | Set configuration of persistence policies for specified topic.
+*NonPersistentTopicApi* | [**SetPublishRate**](docs/NonPersistentTopicApi.md#setpublishrate) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/publishRate | Set message publish rate configuration for specified topic.
+*NonPersistentTopicApi* | [**SetReplicatedSubscriptionStatus**](docs/NonPersistentTopicApi.md#setreplicatedsubscriptionstatus) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/replicatedSubscriptionStatus | Enable or disable a replicated subscription on a topic.
+*NonPersistentTopicApi* | [**SetReplicatorDispatchRate**](docs/NonPersistentTopicApi.md#setreplicatordispatchrate) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Set replicatorDispatchRate config for specified topic.
+*NonPersistentTopicApi* | [**SetRetention**](docs/NonPersistentTopicApi.md#setretention) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/retention | Set retention configuration for specified topic.
+*NonPersistentTopicApi* | [**SetSubscribeRate**](docs/NonPersistentTopicApi.md#setsubscriberate) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscribeRate | Set subscribe rate configuration for specified topic.
+*NonPersistentTopicApi* | [**SetSubscriptionDispatchRate**](docs/NonPersistentTopicApi.md#setsubscriptiondispatchrate) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Set subscription message dispatch rate configuration for specified topic.
+*NonPersistentTopicApi* | [**SetSubscriptionTypesEnabled**](docs/NonPersistentTopicApi.md#setsubscriptiontypesenabled) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled | Set is enable sub types for specified topic
+*NonPersistentTopicApi* | [**SkipAllMessages**](docs/NonPersistentTopicApi.md#skipallmessages) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip_all | Skip all messages on a topic subscription.
+*NonPersistentTopicApi* | [**SkipMessages**](docs/NonPersistentTopicApi.md#skipmessages) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip/{numMessages} | Skipping messages on a topic subscription.
+*NonPersistentTopicApi* | [**Terminate**](docs/NonPersistentTopicApi.md#terminate) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/terminate | Terminate a topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
+*NonPersistentTopicApi* | [**TerminatePartitionedTopic**](docs/NonPersistentTopicApi.md#terminatepartitionedtopic) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/terminate/partitions | Terminate all partitioned topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
+*NonPersistentTopicApi* | [**TriggerOffload**](docs/NonPersistentTopicApi.md#triggeroffload) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
+*NonPersistentTopicApi* | [**TruncateTopic**](docs/NonPersistentTopicApi.md#truncatetopic) | **Delete** /non-persistent/{tenant}/{namespace}/{topic}/truncate | Truncate a topic.
+*NonPersistentTopicApi* | [**UnloadTopic**](docs/NonPersistentTopicApi.md#unloadtopic) | **Put** /non-persistent/{tenant}/{namespace}/{topic}/unload | Unload a topic
+*NonPersistentTopicApi* | [**UpdatePartitionedTopic**](docs/NonPersistentTopicApi.md#updatepartitionedtopic) | **Post** /non-persistent/{tenant}/{namespace}/{topic}/partitions | Increment partitions of an existing partitioned topic.
 *PersistentTopicApi* | [**Compact**](docs/PersistentTopicApi.md#compact) | **Put** /persistent/{tenant}/{namespace}/{topic}/compaction | Trigger a compaction operation on a topic.
 *PersistentTopicApi* | [**CompactionStatus**](docs/PersistentTopicApi.md#compactionstatus) | **Get** /persistent/{tenant}/{namespace}/{topic}/compaction | Get the status of a compaction operation for a topic.
 *PersistentTopicApi* | [**CreateMissedPartitions**](docs/PersistentTopicApi.md#createmissedpartitions) | **Post** /persistent/{tenant}/{namespace}/{topic}/createMissedPartitions | Create missed partitions of an existing partitioned topic.
@@ -316,11 +376,12 @@ Class | Method | HTTP request | Description
 *PersistentTopicApi* | [**DeleteTopic**](docs/PersistentTopicApi.md#deletetopic) | **Delete** /persistent/{tenant}/{namespace}/{topic} | Delete a topic.
 *PersistentTopicApi* | [**ExamineMessage**](docs/PersistentTopicApi.md#examinemessage) | **Get** /persistent/{tenant}/{namespace}/{topic}/examinemessage | Examine a specific message on a topic by position relative to the earliest or the latest message.
 *PersistentTopicApi* | [**ExpireMessagesForAllSubscriptions**](docs/PersistentTopicApi.md#expiremessagesforallsubscriptions) | **Post** /persistent/{tenant}/{namespace}/{topic}/all_subscription/expireMessages/{expireTimeInSeconds} | Expiry messages on all subscriptions of topic.
-*PersistentTopicApi* | [**ExpireTopicMessages**](docs/PersistentTopicApi.md#expiretopicmessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages/{expireTimeInSeconds} | Expiry messages on a topic subscription.
+*PersistentTopicApi* | [**ExpireTopicMessages**](docs/PersistentTopicApi.md#expiretopicmessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages | Expiry messages on a topic subscription.
+*PersistentTopicApi* | [**ExpireTopicMessages_0**](docs/PersistentTopicApi.md#expiretopicmessages_0) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages/{expireTimeInSeconds} | Expiry messages on a topic subscription.
 *PersistentTopicApi* | [**GetBacklog**](docs/PersistentTopicApi.md#getbacklog) | **Get** /persistent/{tenant}/{namespace}/{topic}/backlog | Get estimated backlog for offline topic.
 *PersistentTopicApi* | [**GetBacklogQuotaMap**](docs/PersistentTopicApi.md#getbacklogquotamap) | **Get** /persistent/{tenant}/{namespace}/{topic}/backlogQuotaMap | Get backlog quota map on a topic.
 *PersistentTopicApi* | [**GetCompactionThreshold**](docs/PersistentTopicApi.md#getcompactionthreshold) | **Get** /persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Get compaction threshold configuration for specified topic.
-*PersistentTopicApi* | [**GetDeduplicationEnabled**](docs/PersistentTopicApi.md#getdeduplicationenabled) | **Get** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Get deduplication configuration of a topic.
+*PersistentTopicApi* | [**GetDeduplication**](docs/PersistentTopicApi.md#getdeduplication) | **Get** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Get deduplication configuration of a topic.
 *PersistentTopicApi* | [**GetDeduplicationSnapshotInterval**](docs/PersistentTopicApi.md#getdeduplicationsnapshotinterval) | **Get** /persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a topic.
 *PersistentTopicApi* | [**GetDelayedDeliveryPolicies**](docs/PersistentTopicApi.md#getdelayeddeliverypolicies) | **Get** /persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Get delayed delivery messages config on a topic.
 *PersistentTopicApi* | [**GetDispatchRate**](docs/PersistentTopicApi.md#getdispatchrate) | **Get** /persistent/{tenant}/{namespace}/{topic}/dispatchRate | Get dispatch rate configuration for specified topic.
@@ -331,7 +392,9 @@ Class | Method | HTTP request | Description
 *PersistentTopicApi* | [**GetManagedLedgerInfo**](docs/PersistentTopicApi.md#getmanagedledgerinfo) | **Get** /persistent/{tenant}/{namespace}/{topic}/internal-info | Get the stored topic metadata.
 *PersistentTopicApi* | [**GetMaxConsumers**](docs/PersistentTopicApi.md#getmaxconsumers) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxConsumers | Get maxConsumers config for specified topic.
 *PersistentTopicApi* | [**GetMaxConsumersPerSubscription**](docs/PersistentTopicApi.md#getmaxconsumerspersubscription) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Get max consumers per subscription configuration for specified topic.
+*PersistentTopicApi* | [**GetMaxMessageSize**](docs/PersistentTopicApi.md#getmaxmessagesize) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Get maxMessageSize config for specified topic.
 *PersistentTopicApi* | [**GetMaxProducers**](docs/PersistentTopicApi.md#getmaxproducers) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxProducers | Get maxProducers config for specified topic.
+*PersistentTopicApi* | [**GetMaxSubscriptionsPerTopic**](docs/PersistentTopicApi.md#getmaxsubscriptionspertopic) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Get maxSubscriptionsPerTopic config for specified topic.
 *PersistentTopicApi* | [**GetMaxUnackedMessagesOnConsumer**](docs/PersistentTopicApi.md#getmaxunackedmessagesonconsumer) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Get max unacked messages per consumer config on a topic.
 *PersistentTopicApi* | [**GetMaxUnackedMessagesOnSubscription**](docs/PersistentTopicApi.md#getmaxunackedmessagesonsubscription) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Get max unacked messages per subscription config on a topic.
 *PersistentTopicApi* | [**GetMessageById**](docs/PersistentTopicApi.md#getmessagebyid) | **Get** /persistent/{tenant}/{namespace}/{topic}/ledger/{ledgerId}/entry/{entryId} | Get message by its messageId.
@@ -343,25 +406,30 @@ Class | Method | HTTP request | Description
 *PersistentTopicApi* | [**GetPermissionsOnTopic**](docs/PersistentTopicApi.md#getpermissionsontopic) | **Get** /persistent/{tenant}/{namespace}/{topic}/permissions | Get permissions on a topic.
 *PersistentTopicApi* | [**GetPersistence**](docs/PersistentTopicApi.md#getpersistence) | **Get** /persistent/{tenant}/{namespace}/{topic}/persistence | Get configuration of persistence policies for specified topic.
 *PersistentTopicApi* | [**GetPublishRate**](docs/PersistentTopicApi.md#getpublishrate) | **Get** /persistent/{tenant}/{namespace}/{topic}/publishRate | Get publish rate configuration for specified topic.
+*PersistentTopicApi* | [**GetReplicatorDispatchRate**](docs/PersistentTopicApi.md#getreplicatordispatchrate) | **Get** /persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Get replicatorDispatchRate config for specified topic.
 *PersistentTopicApi* | [**GetRetention**](docs/PersistentTopicApi.md#getretention) | **Get** /persistent/{tenant}/{namespace}/{topic}/retention | Get retention configuration for specified topic.
 *PersistentTopicApi* | [**GetStats**](docs/PersistentTopicApi.md#getstats) | **Get** /persistent/{tenant}/{namespace}/{topic}/stats | Get the stats for the topic.
 *PersistentTopicApi* | [**GetSubscribeRate**](docs/PersistentTopicApi.md#getsubscriberate) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscribeRate | Get subscribe rate configuration for specified topic.
 *PersistentTopicApi* | [**GetSubscriptionDispatchRate**](docs/PersistentTopicApi.md#getsubscriptiondispatchrate) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Get subscription message dispatch rate configuration for specified topic.
+*PersistentTopicApi* | [**GetSubscriptionTypesEnabled**](docs/PersistentTopicApi.md#getsubscriptiontypesenabled) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled | Get is enable sub type fors specified topic.
 *PersistentTopicApi* | [**GetSubscriptions**](docs/PersistentTopicApi.md#getsubscriptions) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscriptions | Get the list of persistent subscriptions for a given topic.
 *PersistentTopicApi* | [**GrantPermissionsOnTopic**](docs/PersistentTopicApi.md#grantpermissionsontopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Grant a new permission to a role on a single topic.
 *PersistentTopicApi* | [**OffloadStatus**](docs/PersistentTopicApi.md#offloadstatus) | **Get** /persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
 *PersistentTopicApi* | [**PeekNthMessage**](docs/PersistentTopicApi.md#peeknthmessage) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition} | Peek nth message on a topic subscription.
 *PersistentTopicApi* | [**RemoveBacklogQuota**](docs/PersistentTopicApi.md#removebacklogquota) | **Delete** /persistent/{tenant}/{namespace}/{topic}/backlogQuota | Remove a backlog quota policy from a topic.
 *PersistentTopicApi* | [**RemoveCompactionThreshold**](docs/PersistentTopicApi.md#removecompactionthreshold) | **Delete** /persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Remove compaction threshold configuration for specified topic.
-*PersistentTopicApi* | [**RemoveDeduplicationEnabled**](docs/PersistentTopicApi.md#removededuplicationenabled) | **Delete** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Remove deduplication configuration for specified topic.
+*PersistentTopicApi* | [**RemoveDeduplication**](docs/PersistentTopicApi.md#removededuplication) | **Delete** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Remove deduplication configuration for specified topic.
 *PersistentTopicApi* | [**RemoveDispatchRate**](docs/PersistentTopicApi.md#removedispatchrate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/dispatchRate | Remove message dispatch rate configuration for specified topic.
 *PersistentTopicApi* | [**RemoveMaxConsumers**](docs/PersistentTopicApi.md#removemaxconsumers) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxConsumers | Remove maxConsumers config for specified topic.
 *PersistentTopicApi* | [**RemoveMaxConsumersPerSubscription**](docs/PersistentTopicApi.md#removemaxconsumerspersubscription) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Remove max consumers per subscription configuration for specified topic.
+*PersistentTopicApi* | [**RemoveMaxMessageSize**](docs/PersistentTopicApi.md#removemaxmessagesize) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Remove maxMessageSize config for specified topic.
 *PersistentTopicApi* | [**RemoveMaxProducers**](docs/PersistentTopicApi.md#removemaxproducers) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxProducers | Remove maxProducers config for specified topic.
+*PersistentTopicApi* | [**RemoveMaxSubscriptionsPerTopic**](docs/PersistentTopicApi.md#removemaxsubscriptionspertopic) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Remove maxSubscriptionsPerTopic config for specified topic.
 *PersistentTopicApi* | [**RemoveMessageTTL**](docs/PersistentTopicApi.md#removemessagettl) | **Delete** /persistent/{tenant}/{namespace}/{topic}/messageTTL | Remove message TTL in seconds for a topic
 *PersistentTopicApi* | [**RemoveOffloadPolicies**](docs/PersistentTopicApi.md#removeoffloadpolicies) | **Delete** /persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Delete offload policies on a topic.
 *PersistentTopicApi* | [**RemovePersistence**](docs/PersistentTopicApi.md#removepersistence) | **Delete** /persistent/{tenant}/{namespace}/{topic}/persistence | Remove configuration of persistence policies for specified topic.
 *PersistentTopicApi* | [**RemovePublishRate**](docs/PersistentTopicApi.md#removepublishrate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/publishRate | Remove message publish rate configuration for specified topic.
+*PersistentTopicApi* | [**RemoveReplicatorDispatchRate**](docs/PersistentTopicApi.md#removereplicatordispatchrate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Remove replicatorDispatchRate config for specified topic.
 *PersistentTopicApi* | [**RemoveRetention**](docs/PersistentTopicApi.md#removeretention) | **Delete** /persistent/{tenant}/{namespace}/{topic}/retention | Remove retention configuration for specified topic.
 *PersistentTopicApi* | [**RemoveSubscribeRate**](docs/PersistentTopicApi.md#removesubscriberate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/subscribeRate | Remove subscribe rate configuration for specified topic.
 *PersistentTopicApi* | [**RemoveSubscriptionDispatchRate**](docs/PersistentTopicApi.md#removesubscriptiondispatchrate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Remove subscription message dispatch rate configuration for specified topic.
@@ -370,28 +438,34 @@ Class | Method | HTTP request | Description
 *PersistentTopicApi* | [**RevokePermissionsOnTopic**](docs/PersistentTopicApi.md#revokepermissionsontopic) | **Delete** /persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Revoke permissions on a topic.
 *PersistentTopicApi* | [**SetBacklogQuota**](docs/PersistentTopicApi.md#setbacklogquota) | **Post** /persistent/{tenant}/{namespace}/{topic}/backlogQuota | Set a backlog quota for a topic.
 *PersistentTopicApi* | [**SetCompactionThreshold**](docs/PersistentTopicApi.md#setcompactionthreshold) | **Post** /persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Set compaction threshold configuration for specified topic.
-*PersistentTopicApi* | [**SetDeduplicationEnabled**](docs/PersistentTopicApi.md#setdeduplicationenabled) | **Post** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Set deduplication enabled on a topic.
+*PersistentTopicApi* | [**SetDeduplication**](docs/PersistentTopicApi.md#setdeduplication) | **Post** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Set deduplication enabled on a topic.
 *PersistentTopicApi* | [**SetDeduplicationSnapshotInterval**](docs/PersistentTopicApi.md#setdeduplicationsnapshotinterval) | **Post** /persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a topic.
 *PersistentTopicApi* | [**SetDelayedDeliveryPolicies**](docs/PersistentTopicApi.md#setdelayeddeliverypolicies) | **Post** /persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Set delayed delivery messages config on a topic.
 *PersistentTopicApi* | [**SetDispatchRate**](docs/PersistentTopicApi.md#setdispatchrate) | **Post** /persistent/{tenant}/{namespace}/{topic}/dispatchRate | Set message dispatch rate configuration for specified topic.
 *PersistentTopicApi* | [**SetInactiveTopicPolicies**](docs/PersistentTopicApi.md#setinactivetopicpolicies) | **Post** /persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Set inactive topic policies on a topic.
 *PersistentTopicApi* | [**SetMaxConsumers**](docs/PersistentTopicApi.md#setmaxconsumers) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxConsumers | Set maxConsumers config for specified topic.
 *PersistentTopicApi* | [**SetMaxConsumersPerSubscription**](docs/PersistentTopicApi.md#setmaxconsumerspersubscription) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Set max consumers per subscription configuration for specified topic.
+*PersistentTopicApi* | [**SetMaxMessageSize**](docs/PersistentTopicApi.md#setmaxmessagesize) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Set maxMessageSize config for specified topic.
 *PersistentTopicApi* | [**SetMaxProducers**](docs/PersistentTopicApi.md#setmaxproducers) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxProducers | Set maxProducers config for specified topic.
+*PersistentTopicApi* | [**SetMaxSubscriptionsPerTopic**](docs/PersistentTopicApi.md#setmaxsubscriptionspertopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Set maxSubscriptionsPerTopic config for specified topic.
 *PersistentTopicApi* | [**SetMaxUnackedMessagesOnConsumer**](docs/PersistentTopicApi.md#setmaxunackedmessagesonconsumer) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Set max unacked messages per consumer config on a topic.
 *PersistentTopicApi* | [**SetMaxUnackedMessagesOnSubscription**](docs/PersistentTopicApi.md#setmaxunackedmessagesonsubscription) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Set max unacked messages per subscription config on a topic.
 *PersistentTopicApi* | [**SetMessageTTL**](docs/PersistentTopicApi.md#setmessagettl) | **Post** /persistent/{tenant}/{namespace}/{topic}/messageTTL | Set message TTL in seconds for a topic
 *PersistentTopicApi* | [**SetOffloadPolicies**](docs/PersistentTopicApi.md#setoffloadpolicies) | **Post** /persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Set offload policies on a topic.
 *PersistentTopicApi* | [**SetPersistence**](docs/PersistentTopicApi.md#setpersistence) | **Post** /persistent/{tenant}/{namespace}/{topic}/persistence | Set configuration of persistence policies for specified topic.
 *PersistentTopicApi* | [**SetPublishRate**](docs/PersistentTopicApi.md#setpublishrate) | **Post** /persistent/{tenant}/{namespace}/{topic}/publishRate | Set message publish rate configuration for specified topic.
+*PersistentTopicApi* | [**SetReplicatedSubscriptionStatus**](docs/PersistentTopicApi.md#setreplicatedsubscriptionstatus) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/replicatedSubscriptionStatus | Enable or disable a replicated subscription on a topic.
+*PersistentTopicApi* | [**SetReplicatorDispatchRate**](docs/PersistentTopicApi.md#setreplicatordispatchrate) | **Post** /persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Set replicatorDispatchRate config for specified topic.
 *PersistentTopicApi* | [**SetRetention**](docs/PersistentTopicApi.md#setretention) | **Post** /persistent/{tenant}/{namespace}/{topic}/retention | Set retention configuration for specified topic.
 *PersistentTopicApi* | [**SetSubscribeRate**](docs/PersistentTopicApi.md#setsubscriberate) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscribeRate | Set subscribe rate configuration for specified topic.
 *PersistentTopicApi* | [**SetSubscriptionDispatchRate**](docs/PersistentTopicApi.md#setsubscriptiondispatchrate) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Set subscription message dispatch rate configuration for specified topic.
+*PersistentTopicApi* | [**SetSubscriptionTypesEnabled**](docs/PersistentTopicApi.md#setsubscriptiontypesenabled) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled | Set is enable sub types for specified topic
 *PersistentTopicApi* | [**SkipAllMessages**](docs/PersistentTopicApi.md#skipallmessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip_all | Skip all messages on a topic subscription.
 *PersistentTopicApi* | [**SkipMessages**](docs/PersistentTopicApi.md#skipmessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip/{numMessages} | Skipping messages on a topic subscription.
-*PersistentTopicApi* | [**Terminate**](docs/PersistentTopicApi.md#terminate) | **Post** /persistent/{tenant}/{namespace}/{topic}/terminate | Terminate a persistent topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
+*PersistentTopicApi* | [**Terminate**](docs/PersistentTopicApi.md#terminate) | **Post** /persistent/{tenant}/{namespace}/{topic}/terminate | Terminate a topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
 *PersistentTopicApi* | [**TerminatePartitionedTopic**](docs/PersistentTopicApi.md#terminatepartitionedtopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/terminate/partitions | Terminate all partitioned topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
 *PersistentTopicApi* | [**TriggerOffload**](docs/PersistentTopicApi.md#triggeroffload) | **Put** /persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
+*PersistentTopicApi* | [**TruncateTopic**](docs/PersistentTopicApi.md#truncatetopic) | **Delete** /persistent/{tenant}/{namespace}/{topic}/truncate | Truncate a topic.
 *PersistentTopicApi* | [**UnloadTopic**](docs/PersistentTopicApi.md#unloadtopic) | **Put** /persistent/{tenant}/{namespace}/{topic}/unload | Unload a topic
 *PersistentTopicApi* | [**UpdatePartitionedTopic**](docs/PersistentTopicApi.md#updatepartitionedtopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/partitions | Increment partitions of an existing partitioned topic.
 *ResourceQuotasApi* | [**GetDefaultResourceQuota**](docs/ResourceQuotasApi.md#getdefaultresourcequota) | **Get** /resource-quotas | Get the default quota
@@ -399,10 +473,14 @@ Class | Method | HTTP request | Description
 *ResourceQuotasApi* | [**RemoveNamespaceBundleResourceQuota**](docs/ResourceQuotasApi.md#removenamespacebundleresourcequota) | **Delete** /resource-quotas/{tenant}/{namespace}/{bundle} | Remove resource quota for a namespace.
 *ResourceQuotasApi* | [**SetDefaultResourceQuota**](docs/ResourceQuotasApi.md#setdefaultresourcequota) | **Post** /resource-quotas | Set the default quota
 *ResourceQuotasApi* | [**SetNamespaceBundleResourceQuota**](docs/ResourceQuotasApi.md#setnamespacebundleresourcequota) | **Post** /resource-quotas/{tenant}/{namespace}/{bundle} | Set resource quota on a namespace.
+*ResourcegroupsApi* | [**CreateOrUpdateResourceGroup**](docs/ResourcegroupsApi.md#createorupdateresourcegroup) | **Put** /resourcegroups/{resourcegroup} | Creates a new resourcegroup with the specified rate limiters
+*ResourcegroupsApi* | [**DeleteResourceGroup**](docs/ResourcegroupsApi.md#deleteresourcegroup) | **Delete** /resourcegroups/{resourcegroup} | Delete a resourcegroup.
+*ResourcegroupsApi* | [**GetResourceGroup**](docs/ResourcegroupsApi.md#getresourcegroup) | **Get** /resourcegroups/{resourcegroup} | Get the rate limiters specified for a resourcegroup.
+*ResourcegroupsApi* | [**GetResourceGroups**](docs/ResourcegroupsApi.md#getresourcegroups) | **Get** /resourcegroups | Get the list of all the resourcegroups.
 *SchemasApi* | [**DeleteSchema**](docs/SchemasApi.md#deleteschema) | **Delete** /schemas/{tenant}/{namespace}/{topic}/schema | Delete the schema of a topic
 *SchemasApi* | [**GetAllSchemas**](docs/SchemasApi.md#getallschemas) | **Get** /schemas/{tenant}/{namespace}/{topic}/schemas | Get the all schemas of a topic
 *SchemasApi* | [**GetSchema**](docs/SchemasApi.md#getschema) | **Get** /schemas/{tenant}/{namespace}/{topic}/schema | Get the schema of a topic
-*SchemasApi* | [**GetSchemaVersion**](docs/SchemasApi.md#getschemaversion) | **Get** /schemas/{tenant}/{namespace}/{topic}/schema/{version} | Get the schema of a topic at a given version
+*SchemasApi* | [**GetSchema_0**](docs/SchemasApi.md#getschema_0) | **Get** /schemas/{tenant}/{namespace}/{topic}/schema/{version} | Get the schema of a topic at a given version
 *SchemasApi* | [**GetVersionBySchema**](docs/SchemasApi.md#getversionbyschema) | **Post** /schemas/{tenant}/{namespace}/{topic}/version | get the version of the schema
 *SchemasApi* | [**PostSchema**](docs/SchemasApi.md#postschema) | **Post** /schemas/{tenant}/{namespace}/{topic}/schema | Update the schema of a topic
 *SchemasApi* | [**TestCompatibility**](docs/SchemasApi.md#testcompatibility) | **Post** /schemas/{tenant}/{namespace}/{topic}/compatibility | test the schema compatibility
@@ -416,35 +494,72 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AllocatorStats](docs/AllocatorStats.md)
+ - [ArrayBuilders](docs/ArrayBuilders.md)
  - [AuthPolicies](docs/AuthPolicies.md)
+ - [AuthenticationDataHttps](docs/AuthenticationDataHttps.md)
  - [AutoFailoverPolicyData](docs/AutoFailoverPolicyData.md)
  - [AutoSubscriptionCreationOverride](docs/AutoSubscriptionCreationOverride.md)
  - [AutoTopicCreationOverride](docs/AutoTopicCreationOverride.md)
  - [BacklogQuota](docs/BacklogQuota.md)
+ - [Base64Variant](docs/Base64Variant.md)
  - [BookieAffinityGroupData](docs/BookieAffinityGroupData.md)
  - [BookieInfo](docs/BookieInfo.md)
+ - [BookiesClusterInfo](docs/BookiesClusterInfo.md)
+ - [BrokerInfo](docs/BrokerInfo.md)
  - [BrokerNamespaceIsolationData](docs/BrokerNamespaceIsolationData.md)
  - [BundlesData](docs/BundlesData.md)
+ - [CharacterEscapes](docs/CharacterEscapes.md)
+ - [ClassLoader](docs/ClassLoader.md)
  - [ClusterData](docs/ClusterData.md)
+ - [CompactionStats](docs/CompactionStats.md)
+ - [CompletableFuture](docs/CompletableFuture.md)
+ - [CompletableFutureClusterData](docs/CompletableFutureClusterData.md)
+ - [CompletableFuturePartitionedTopicMetadata](docs/CompletableFuturePartitionedTopicMetadata.md)
+ - [ConnectorDefinition](docs/ConnectorDefinition.md)
  - [ConsumerStats](docs/ConsumerStats.md)
+ - [Currency](docs/Currency.md)
  - [CursorDetails](docs/CursorDetails.md)
  - [CursorStats](docs/CursorStats.md)
+ - [DateFormat](docs/DateFormat.md)
  - [DelayedDeliveryPolicies](docs/DelayedDeliveryPolicies.md)
  - [DeleteSchemaResponse](docs/DeleteSchemaResponse.md)
+ - [DeserializationConfig](docs/DeserializationConfig.md)
+ - [DeserializationContext](docs/DeserializationContext.md)
  - [DispatchRate](docs/DispatchRate.md)
+ - [DispatchRateImpl](docs/DispatchRateImpl.md)
  - [FailureDomain](docs/FailureDomain.md)
+ - [FormatSchema](docs/FormatSchema.md)
+ - [FunctionInstanceStatsData](docs/FunctionInstanceStatsData.md)
+ - [FunctionInstanceStatsDataBase](docs/FunctionInstanceStatsDataBase.md)
+ - [Functions](docs/Functions.md)
+ - [FunctionsV2](docs/FunctionsV2.md)
+ - [FunctionsV2WorkerService](docs/FunctionsV2WorkerService.md)
+ - [FunctionsWorkerService](docs/FunctionsWorkerService.md)
  - [GetAllVersionsSchemaResponse](docs/GetAllVersionsSchemaResponse.md)
  - [GetSchemaResponse](docs/GetSchemaResponse.md)
  - [InactiveTopicPolicies](docs/InactiveTopicPolicies.md)
  - [InternalConfigurationData](docs/InternalConfigurationData.md)
  - [IsCompatibilityResponse](docs/IsCompatibilityResponse.md)
+ - [JavaType](docs/JavaType.md)
+ - [JsonFactory](docs/JsonFactory.md)
+ - [JsonGenerator](docs/JsonGenerator.md)
+ - [JsonLocation](docs/JsonLocation.md)
+ - [JsonParser](docs/JsonParser.md)
+ - [JsonSerializer](docs/JsonSerializer.md)
+ - [JsonSerializerObject](docs/JsonSerializerObject.md)
+ - [JsonStreamContext](docs/JsonStreamContext.md)
+ - [KubernetesContainerFactory](docs/KubernetesContainerFactory.md)
  - [LedgerDetails](docs/LedgerDetails.md)
  - [LedgerInfo](docs/LedgerInfo.md)
  - [LoadReport](docs/LoadReport.md)
+ - [Locale](docs/Locale.md)
  - [LongRunningProcessStatus](docs/LongRunningProcessStatus.md)
  - [LongSchemaVersion](docs/LongSchemaVersion.md)
+ - [MemoryLimit](docs/MemoryLimit.md)
  - [MessageIdImpl](docs/MessageIdImpl.md)
  - [Metrics](docs/Metrics.md)
+ - [Module](docs/Module.md)
+ - [ModuleDescriptor](docs/ModuleDescriptor.md)
  - [NamespaceBundleStats](docs/NamespaceBundleStats.md)
  - [NamespaceIsolationData](docs/NamespaceIsolationData.md)
  - [NamespaceOwnershipStatus](docs/NamespaceOwnershipStatus.md)
@@ -452,8 +567,13 @@ Class | Method | HTTP request | Description
  - [NonPersistentReplicatorStats](docs/NonPersistentReplicatorStats.md)
  - [NonPersistentSubscriptionStats](docs/NonPersistentSubscriptionStats.md)
  - [NonPersistentTopicStats](docs/NonPersistentTopicStats.md)
+ - [NumberFormat](docs/NumberFormat.md)
+ - [ObjectCodec](docs/ObjectCodec.md)
+ - [ObjectMapper](docs/ObjectMapper.md)
  - [OffloadPolicies](docs/OffloadPolicies.md)
+ - [OffloadPoliciesImpl](docs/OffloadPoliciesImpl.md)
  - [OffloadProcessStatus](docs/OffloadProcessStatus.md)
+ - [Package](docs/Package.md)
  - [PartitionedTopicMetadata](docs/PartitionedTopicMetadata.md)
  - [PendingBookieOpsStats](docs/PendingBookieOpsStats.md)
  - [PersistencePolicies](docs/PersistencePolicies.md)
@@ -466,20 +586,44 @@ Class | Method | HTTP request | Description
  - [PoolSubpageStats](docs/PoolSubpageStats.md)
  - [PostSchemaPayload](docs/PostSchemaPayload.md)
  - [PostSchemaResponse](docs/PostSchemaResponse.md)
+ - [Principal](docs/Principal.md)
+ - [ProcessContainerFactory](docs/ProcessContainerFactory.md)
+ - [PropertyName](docs/PropertyName.md)
+ - [PublicKey](docs/PublicKey.md)
  - [PublishRate](docs/PublishRate.md)
  - [PublisherStats](docs/PublisherStats.md)
+ - [RawBookieInfo](docs/RawBookieInfo.md)
  - [ReplicatorStats](docs/ReplicatorStats.md)
  - [ResetCursorData](docs/ResetCursorData.md)
  - [ResourceDescription](docs/ResourceDescription.md)
+ - [ResourceGroup](docs/ResourceGroup.md)
  - [ResourceQuota](docs/ResourceQuota.md)
  - [ResourceUnit](docs/ResourceUnit.md)
  - [ResourceUsage](docs/ResourceUsage.md)
+ - [Resources](docs/Resources.md)
  - [RetentionPolicies](docs/RetentionPolicies.md)
+ - [SerializationConfig](docs/SerializationConfig.md)
+ - [SerializerProvider](docs/SerializerProvider.md)
+ - [Sinks](docs/Sinks.md)
+ - [SinksWorkerService](docs/SinksWorkerService.md)
+ - [Sources](docs/Sources.md)
+ - [SourcesWorkerService](docs/SourcesWorkerService.md)
  - [SubscribeRate](docs/SubscribeRate.md)
  - [SubscriptionStats](docs/SubscriptionStats.md)
  - [SystemResourceUsage](docs/SystemResourceUsage.md)
  - [TenantInfo](docs/TenantInfo.md)
+ - [ThreadContainerFactory](docs/ThreadContainerFactory.md)
+ - [TimeZone](docs/TimeZone.md)
  - [TopicStats](docs/TopicStats.md)
+ - [TypeBindings](docs/TypeBindings.md)
+ - [TypeFactory](docs/TypeFactory.md)
+ - [Value](docs/Value.md)
+ - [WorkerConfig](docs/WorkerConfig.md)
+ - [WorkerFunctionInstanceStats](docs/WorkerFunctionInstanceStats.md)
+ - [WorkerInfo](docs/WorkerInfo.md)
+ - [WorkerService](docs/WorkerService.md)
+ - [X500Principal](docs/X500Principal.md)
+ - [X509Certificate](docs/X509Certificate.md)
 
 
 ## Documentation For Authorization

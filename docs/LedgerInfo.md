@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Entries** | Pointer to **int64** |  | [optional] 
 **LedgerId** | Pointer to **int64** |  | [optional] 
-**Metadata** | Pointer to **string** |  | [optional] 
-**Offloaded** | Pointer to **bool** |  | [optional] 
+**Entries** | Pointer to **int64** |  | [optional] 
 **Size** | Pointer to **int64** |  | [optional] 
+**Offloaded** | Pointer to **bool** |  | [optional] 
+**Metadata** | Pointer to **string** |  | [optional] 
+**UnderReplicated** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -28,31 +29,6 @@ will change when the set of required properties is changed
 NewLedgerInfoWithDefaults instantiates a new LedgerInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetEntries
-
-`func (o *LedgerInfo) GetEntries() int64`
-
-GetEntries returns the Entries field if non-nil, zero value otherwise.
-
-### GetEntriesOk
-
-`func (o *LedgerInfo) GetEntriesOk() (*int64, bool)`
-
-GetEntriesOk returns a tuple with the Entries field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntries
-
-`func (o *LedgerInfo) SetEntries(v int64)`
-
-SetEntries sets Entries field to given value.
-
-### HasEntries
-
-`func (o *LedgerInfo) HasEntries() bool`
-
-HasEntries returns a boolean if a field has been set.
 
 ### GetLedgerId
 
@@ -79,30 +55,55 @@ SetLedgerId sets LedgerId field to given value.
 
 HasLedgerId returns a boolean if a field has been set.
 
-### GetMetadata
+### GetEntries
 
-`func (o *LedgerInfo) GetMetadata() string`
+`func (o *LedgerInfo) GetEntries() int64`
 
-GetMetadata returns the Metadata field if non-nil, zero value otherwise.
+GetEntries returns the Entries field if non-nil, zero value otherwise.
 
-### GetMetadataOk
+### GetEntriesOk
 
-`func (o *LedgerInfo) GetMetadataOk() (*string, bool)`
+`func (o *LedgerInfo) GetEntriesOk() (*int64, bool)`
 
-GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
+GetEntriesOk returns a tuple with the Entries field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMetadata
+### SetEntries
 
-`func (o *LedgerInfo) SetMetadata(v string)`
+`func (o *LedgerInfo) SetEntries(v int64)`
 
-SetMetadata sets Metadata field to given value.
+SetEntries sets Entries field to given value.
 
-### HasMetadata
+### HasEntries
 
-`func (o *LedgerInfo) HasMetadata() bool`
+`func (o *LedgerInfo) HasEntries() bool`
 
-HasMetadata returns a boolean if a field has been set.
+HasEntries returns a boolean if a field has been set.
+
+### GetSize
+
+`func (o *LedgerInfo) GetSize() int64`
+
+GetSize returns the Size field if non-nil, zero value otherwise.
+
+### GetSizeOk
+
+`func (o *LedgerInfo) GetSizeOk() (*int64, bool)`
+
+GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSize
+
+`func (o *LedgerInfo) SetSize(v int64)`
+
+SetSize sets Size field to given value.
+
+### HasSize
+
+`func (o *LedgerInfo) HasSize() bool`
+
+HasSize returns a boolean if a field has been set.
 
 ### GetOffloaded
 
@@ -129,30 +130,55 @@ SetOffloaded sets Offloaded field to given value.
 
 HasOffloaded returns a boolean if a field has been set.
 
-### GetSize
+### GetMetadata
 
-`func (o *LedgerInfo) GetSize() int64`
+`func (o *LedgerInfo) GetMetadata() string`
 
-GetSize returns the Size field if non-nil, zero value otherwise.
+GetMetadata returns the Metadata field if non-nil, zero value otherwise.
 
-### GetSizeOk
+### GetMetadataOk
 
-`func (o *LedgerInfo) GetSizeOk() (*int64, bool)`
+`func (o *LedgerInfo) GetMetadataOk() (*string, bool)`
 
-GetSizeOk returns a tuple with the Size field if it's non-nil, zero value otherwise
+GetMetadataOk returns a tuple with the Metadata field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSize
+### SetMetadata
 
-`func (o *LedgerInfo) SetSize(v int64)`
+`func (o *LedgerInfo) SetMetadata(v string)`
 
-SetSize sets Size field to given value.
+SetMetadata sets Metadata field to given value.
 
-### HasSize
+### HasMetadata
 
-`func (o *LedgerInfo) HasSize() bool`
+`func (o *LedgerInfo) HasMetadata() bool`
 
-HasSize returns a boolean if a field has been set.
+HasMetadata returns a boolean if a field has been set.
+
+### GetUnderReplicated
+
+`func (o *LedgerInfo) GetUnderReplicated() bool`
+
+GetUnderReplicated returns the UnderReplicated field if non-nil, zero value otherwise.
+
+### GetUnderReplicatedOk
+
+`func (o *LedgerInfo) GetUnderReplicatedOk() (*bool, bool)`
+
+GetUnderReplicatedOk returns a tuple with the UnderReplicated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUnderReplicated
+
+`func (o *LedgerInfo) SetUnderReplicated(v bool)`
+
+SetUnderReplicated sets UnderReplicated field to given value.
+
+### HasUnderReplicated
+
+`func (o *LedgerInfo) HasUnderReplicated() bool`
+
+HasUnderReplicated returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

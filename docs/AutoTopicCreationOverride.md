@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AllowAutoTopicCreation** | Pointer to **bool** |  | [optional] 
-**DefaultNumPartitions** | Pointer to **int32** |  | [optional] 
 **TopicType** | Pointer to **string** |  | [optional] 
+**DefaultNumPartitions** | Pointer to **int32** |  | [optional] 
+**AllowAutoTopicCreation** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewAutoTopicCreationOverrideWithDefaults instantiates a new AutoTopicCreationOve
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAllowAutoTopicCreation
+### GetTopicType
 
-`func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreation() bool`
+`func (o *AutoTopicCreationOverride) GetTopicType() string`
 
-GetAllowAutoTopicCreation returns the AllowAutoTopicCreation field if non-nil, zero value otherwise.
+GetTopicType returns the TopicType field if non-nil, zero value otherwise.
 
-### GetAllowAutoTopicCreationOk
+### GetTopicTypeOk
 
-`func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreationOk() (*bool, bool)`
+`func (o *AutoTopicCreationOverride) GetTopicTypeOk() (*string, bool)`
 
-GetAllowAutoTopicCreationOk returns a tuple with the AllowAutoTopicCreation field if it's non-nil, zero value otherwise
+GetTopicTypeOk returns a tuple with the TopicType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAllowAutoTopicCreation
+### SetTopicType
 
-`func (o *AutoTopicCreationOverride) SetAllowAutoTopicCreation(v bool)`
+`func (o *AutoTopicCreationOverride) SetTopicType(v string)`
 
-SetAllowAutoTopicCreation sets AllowAutoTopicCreation field to given value.
+SetTopicType sets TopicType field to given value.
 
-### HasAllowAutoTopicCreation
+### HasTopicType
 
-`func (o *AutoTopicCreationOverride) HasAllowAutoTopicCreation() bool`
+`func (o *AutoTopicCreationOverride) HasTopicType() bool`
 
-HasAllowAutoTopicCreation returns a boolean if a field has been set.
+HasTopicType returns a boolean if a field has been set.
 
 ### GetDefaultNumPartitions
 
@@ -77,30 +77,30 @@ SetDefaultNumPartitions sets DefaultNumPartitions field to given value.
 
 HasDefaultNumPartitions returns a boolean if a field has been set.
 
-### GetTopicType
+### GetAllowAutoTopicCreation
 
-`func (o *AutoTopicCreationOverride) GetTopicType() string`
+`func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreation() bool`
 
-GetTopicType returns the TopicType field if non-nil, zero value otherwise.
+GetAllowAutoTopicCreation returns the AllowAutoTopicCreation field if non-nil, zero value otherwise.
 
-### GetTopicTypeOk
+### GetAllowAutoTopicCreationOk
 
-`func (o *AutoTopicCreationOverride) GetTopicTypeOk() (*string, bool)`
+`func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreationOk() (*bool, bool)`
 
-GetTopicTypeOk returns a tuple with the TopicType field if it's non-nil, zero value otherwise
+GetAllowAutoTopicCreationOk returns a tuple with the AllowAutoTopicCreation field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTopicType
+### SetAllowAutoTopicCreation
 
-`func (o *AutoTopicCreationOverride) SetTopicType(v string)`
+`func (o *AutoTopicCreationOverride) SetAllowAutoTopicCreation(v bool)`
 
-SetTopicType sets TopicType field to given value.
+SetAllowAutoTopicCreation sets AllowAutoTopicCreation field to given value.
 
-### HasTopicType
+### HasAllowAutoTopicCreation
 
-`func (o *AutoTopicCreationOverride) HasTopicType() bool`
+`func (o *AutoTopicCreationOverride) HasAllowAutoTopicCreation() bool`
 
-HasTopicType returns a boolean if a field has been set.
+HasAllowAutoTopicCreation returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

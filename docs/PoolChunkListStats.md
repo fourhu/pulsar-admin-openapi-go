@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Chunks** | Pointer to [**[]PoolChunkStats**](PoolChunkStats.md) |  | [optional] 
-**MaxUsage** | Pointer to **int32** |  | [optional] 
 **MinUsage** | Pointer to **int32** |  | [optional] 
+**MaxUsage** | Pointer to **int32** |  | [optional] 
+**Chunks** | Pointer to [**[]PoolChunkStats**](PoolChunkStats.md) |  | [optional] 
 
 ## Methods
 
@@ -27,30 +27,30 @@ NewPoolChunkListStatsWithDefaults instantiates a new PoolChunkListStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetChunks
+### GetMinUsage
 
-`func (o *PoolChunkListStats) GetChunks() []PoolChunkStats`
+`func (o *PoolChunkListStats) GetMinUsage() int32`
 
-GetChunks returns the Chunks field if non-nil, zero value otherwise.
+GetMinUsage returns the MinUsage field if non-nil, zero value otherwise.
 
-### GetChunksOk
+### GetMinUsageOk
 
-`func (o *PoolChunkListStats) GetChunksOk() (*[]PoolChunkStats, bool)`
+`func (o *PoolChunkListStats) GetMinUsageOk() (*int32, bool)`
 
-GetChunksOk returns a tuple with the Chunks field if it's non-nil, zero value otherwise
+GetMinUsageOk returns a tuple with the MinUsage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetChunks
+### SetMinUsage
 
-`func (o *PoolChunkListStats) SetChunks(v []PoolChunkStats)`
+`func (o *PoolChunkListStats) SetMinUsage(v int32)`
 
-SetChunks sets Chunks field to given value.
+SetMinUsage sets MinUsage field to given value.
 
-### HasChunks
+### HasMinUsage
 
-`func (o *PoolChunkListStats) HasChunks() bool`
+`func (o *PoolChunkListStats) HasMinUsage() bool`
 
-HasChunks returns a boolean if a field has been set.
+HasMinUsage returns a boolean if a field has been set.
 
 ### GetMaxUsage
 
@@ -77,30 +77,30 @@ SetMaxUsage sets MaxUsage field to given value.
 
 HasMaxUsage returns a boolean if a field has been set.
 
-### GetMinUsage
+### GetChunks
 
-`func (o *PoolChunkListStats) GetMinUsage() int32`
+`func (o *PoolChunkListStats) GetChunks() []PoolChunkStats`
 
-GetMinUsage returns the MinUsage field if non-nil, zero value otherwise.
+GetChunks returns the Chunks field if non-nil, zero value otherwise.
 
-### GetMinUsageOk
+### GetChunksOk
 
-`func (o *PoolChunkListStats) GetMinUsageOk() (*int32, bool)`
+`func (o *PoolChunkListStats) GetChunksOk() (*[]PoolChunkStats, bool)`
 
-GetMinUsageOk returns a tuple with the MinUsage field if it's non-nil, zero value otherwise
+GetChunksOk returns a tuple with the Chunks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMinUsage
+### SetChunks
 
-`func (o *PoolChunkListStats) SetMinUsage(v int32)`
+`func (o *PoolChunkListStats) SetChunks(v []PoolChunkStats)`
 
-SetMinUsage sets MinUsage field to given value.
+SetChunks sets Chunks field to given value.
 
-### HasMinUsage
+### HasChunks
 
-`func (o *PoolChunkListStats) HasMinUsage() bool`
+`func (o *PoolChunkListStats) HasChunks() bool`
 
-HasMinUsage returns a boolean if a field has been set.
+HasChunks returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

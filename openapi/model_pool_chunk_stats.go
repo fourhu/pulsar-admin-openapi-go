@@ -16,9 +16,9 @@ import (
 
 // PoolChunkStats struct for PoolChunkStats
 type PoolChunkStats struct {
+	Usage *int32 `json:"usage,omitempty"`
 	ChunkSize *int32 `json:"chunkSize,omitempty"`
 	FreeBytes *int32 `json:"freeBytes,omitempty"`
-	Usage *int32 `json:"usage,omitempty"`
 }
 
 // NewPoolChunkStats instantiates a new PoolChunkStats object
@@ -36,6 +36,38 @@ func NewPoolChunkStats() *PoolChunkStats {
 func NewPoolChunkStatsWithDefaults() *PoolChunkStats {
 	this := PoolChunkStats{}
 	return &this
+}
+
+// GetUsage returns the Usage field value if set, zero value otherwise.
+func (o *PoolChunkStats) GetUsage() int32 {
+	if o == nil || o.Usage == nil {
+		var ret int32
+		return ret
+	}
+	return *o.Usage
+}
+
+// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PoolChunkStats) GetUsageOk() (*int32, bool) {
+	if o == nil || o.Usage == nil {
+		return nil, false
+	}
+	return o.Usage, true
+}
+
+// HasUsage returns a boolean if a field has been set.
+func (o *PoolChunkStats) HasUsage() bool {
+	if o != nil && o.Usage != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetUsage gets a reference to the given int32 and assigns it to the Usage field.
+func (o *PoolChunkStats) SetUsage(v int32) {
+	o.Usage = &v
 }
 
 // GetChunkSize returns the ChunkSize field value if set, zero value otherwise.
@@ -102,48 +134,16 @@ func (o *PoolChunkStats) SetFreeBytes(v int32) {
 	o.FreeBytes = &v
 }
 
-// GetUsage returns the Usage field value if set, zero value otherwise.
-func (o *PoolChunkStats) GetUsage() int32 {
-	if o == nil || o.Usage == nil {
-		var ret int32
-		return ret
-	}
-	return *o.Usage
-}
-
-// GetUsageOk returns a tuple with the Usage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PoolChunkStats) GetUsageOk() (*int32, bool) {
-	if o == nil || o.Usage == nil {
-		return nil, false
-	}
-	return o.Usage, true
-}
-
-// HasUsage returns a boolean if a field has been set.
-func (o *PoolChunkStats) HasUsage() bool {
-	if o != nil && o.Usage != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetUsage gets a reference to the given int32 and assigns it to the Usage field.
-func (o *PoolChunkStats) SetUsage(v int32) {
-	o.Usage = &v
-}
-
 func (o PoolChunkStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Usage != nil {
+		toSerialize["usage"] = o.Usage
+	}
 	if o.ChunkSize != nil {
 		toSerialize["chunkSize"] = o.ChunkSize
 	}
 	if o.FreeBytes != nil {
 		toSerialize["freeBytes"] = o.FreeBytes
-	}
-	if o.Usage != nil {
-		toSerialize["usage"] = o.Usage
 	}
 	return json.Marshal(toSerialize)
 }

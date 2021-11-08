@@ -18,12 +18,11 @@ import (
 type BrokerNamespaceIsolationData struct {
 	// The broker name
 	BrokerName *string `json:"brokerName,omitempty"`
-	// Is Primary broker
-	IsPrimary *bool `json:"isPrimary,omitempty"`
-	// The namespace-isolation policies attached to this broker
-	NamespaceRegex *[]string `json:"namespaceRegex,omitempty"`
 	// Policy name
 	PolicyName *string `json:"policyName,omitempty"`
+	// The namespace-isolation policies attached to this broker
+	NamespaceRegex *[]string `json:"namespaceRegex,omitempty"`
+	Primary *bool `json:"primary,omitempty"`
 }
 
 // NewBrokerNamespaceIsolationData instantiates a new BrokerNamespaceIsolationData object
@@ -75,36 +74,36 @@ func (o *BrokerNamespaceIsolationData) SetBrokerName(v string) {
 	o.BrokerName = &v
 }
 
-// GetIsPrimary returns the IsPrimary field value if set, zero value otherwise.
-func (o *BrokerNamespaceIsolationData) GetIsPrimary() bool {
-	if o == nil || o.IsPrimary == nil {
-		var ret bool
+// GetPolicyName returns the PolicyName field value if set, zero value otherwise.
+func (o *BrokerNamespaceIsolationData) GetPolicyName() string {
+	if o == nil || o.PolicyName == nil {
+		var ret string
 		return ret
 	}
-	return *o.IsPrimary
+	return *o.PolicyName
 }
 
-// GetIsPrimaryOk returns a tuple with the IsPrimary field value if set, nil otherwise
+// GetPolicyNameOk returns a tuple with the PolicyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BrokerNamespaceIsolationData) GetIsPrimaryOk() (*bool, bool) {
-	if o == nil || o.IsPrimary == nil {
+func (o *BrokerNamespaceIsolationData) GetPolicyNameOk() (*string, bool) {
+	if o == nil || o.PolicyName == nil {
 		return nil, false
 	}
-	return o.IsPrimary, true
+	return o.PolicyName, true
 }
 
-// HasIsPrimary returns a boolean if a field has been set.
-func (o *BrokerNamespaceIsolationData) HasIsPrimary() bool {
-	if o != nil && o.IsPrimary != nil {
+// HasPolicyName returns a boolean if a field has been set.
+func (o *BrokerNamespaceIsolationData) HasPolicyName() bool {
+	if o != nil && o.PolicyName != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetIsPrimary gets a reference to the given bool and assigns it to the IsPrimary field.
-func (o *BrokerNamespaceIsolationData) SetIsPrimary(v bool) {
-	o.IsPrimary = &v
+// SetPolicyName gets a reference to the given string and assigns it to the PolicyName field.
+func (o *BrokerNamespaceIsolationData) SetPolicyName(v string) {
+	o.PolicyName = &v
 }
 
 // GetNamespaceRegex returns the NamespaceRegex field value if set, zero value otherwise.
@@ -139,36 +138,36 @@ func (o *BrokerNamespaceIsolationData) SetNamespaceRegex(v []string) {
 	o.NamespaceRegex = &v
 }
 
-// GetPolicyName returns the PolicyName field value if set, zero value otherwise.
-func (o *BrokerNamespaceIsolationData) GetPolicyName() string {
-	if o == nil || o.PolicyName == nil {
-		var ret string
+// GetPrimary returns the Primary field value if set, zero value otherwise.
+func (o *BrokerNamespaceIsolationData) GetPrimary() bool {
+	if o == nil || o.Primary == nil {
+		var ret bool
 		return ret
 	}
-	return *o.PolicyName
+	return *o.Primary
 }
 
-// GetPolicyNameOk returns a tuple with the PolicyName field value if set, nil otherwise
+// GetPrimaryOk returns a tuple with the Primary field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BrokerNamespaceIsolationData) GetPolicyNameOk() (*string, bool) {
-	if o == nil || o.PolicyName == nil {
+func (o *BrokerNamespaceIsolationData) GetPrimaryOk() (*bool, bool) {
+	if o == nil || o.Primary == nil {
 		return nil, false
 	}
-	return o.PolicyName, true
+	return o.Primary, true
 }
 
-// HasPolicyName returns a boolean if a field has been set.
-func (o *BrokerNamespaceIsolationData) HasPolicyName() bool {
-	if o != nil && o.PolicyName != nil {
+// HasPrimary returns a boolean if a field has been set.
+func (o *BrokerNamespaceIsolationData) HasPrimary() bool {
+	if o != nil && o.Primary != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetPolicyName gets a reference to the given string and assigns it to the PolicyName field.
-func (o *BrokerNamespaceIsolationData) SetPolicyName(v string) {
-	o.PolicyName = &v
+// SetPrimary gets a reference to the given bool and assigns it to the Primary field.
+func (o *BrokerNamespaceIsolationData) SetPrimary(v bool) {
+	o.Primary = &v
 }
 
 func (o BrokerNamespaceIsolationData) MarshalJSON() ([]byte, error) {
@@ -176,14 +175,14 @@ func (o BrokerNamespaceIsolationData) MarshalJSON() ([]byte, error) {
 	if o.BrokerName != nil {
 		toSerialize["brokerName"] = o.BrokerName
 	}
-	if o.IsPrimary != nil {
-		toSerialize["isPrimary"] = o.IsPrimary
+	if o.PolicyName != nil {
+		toSerialize["policyName"] = o.PolicyName
 	}
 	if o.NamespaceRegex != nil {
 		toSerialize["namespaceRegex"] = o.NamespaceRegex
 	}
-	if o.PolicyName != nil {
-		toSerialize["policyName"] = o.PolicyName
+	if o.Primary != nil {
+		toSerialize["primary"] = o.Primary
 	}
 	return json.Marshal(toSerialize)
 }

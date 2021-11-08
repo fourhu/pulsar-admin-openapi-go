@@ -16,8 +16,8 @@ import (
 
 // BookieInfo struct for BookieInfo
 type BookieInfo struct {
-	Hostname *string `json:"hostname,omitempty"`
 	Rack *string `json:"rack,omitempty"`
+	Hostname *string `json:"hostname,omitempty"`
 }
 
 // NewBookieInfo instantiates a new BookieInfo object
@@ -35,38 +35,6 @@ func NewBookieInfo() *BookieInfo {
 func NewBookieInfoWithDefaults() *BookieInfo {
 	this := BookieInfo{}
 	return &this
-}
-
-// GetHostname returns the Hostname field value if set, zero value otherwise.
-func (o *BookieInfo) GetHostname() string {
-	if o == nil || o.Hostname == nil {
-		var ret string
-		return ret
-	}
-	return *o.Hostname
-}
-
-// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BookieInfo) GetHostnameOk() (*string, bool) {
-	if o == nil || o.Hostname == nil {
-		return nil, false
-	}
-	return o.Hostname, true
-}
-
-// HasHostname returns a boolean if a field has been set.
-func (o *BookieInfo) HasHostname() bool {
-	if o != nil && o.Hostname != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetHostname gets a reference to the given string and assigns it to the Hostname field.
-func (o *BookieInfo) SetHostname(v string) {
-	o.Hostname = &v
 }
 
 // GetRack returns the Rack field value if set, zero value otherwise.
@@ -101,13 +69,45 @@ func (o *BookieInfo) SetRack(v string) {
 	o.Rack = &v
 }
 
+// GetHostname returns the Hostname field value if set, zero value otherwise.
+func (o *BookieInfo) GetHostname() string {
+	if o == nil || o.Hostname == nil {
+		var ret string
+		return ret
+	}
+	return *o.Hostname
+}
+
+// GetHostnameOk returns a tuple with the Hostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BookieInfo) GetHostnameOk() (*string, bool) {
+	if o == nil || o.Hostname == nil {
+		return nil, false
+	}
+	return o.Hostname, true
+}
+
+// HasHostname returns a boolean if a field has been set.
+func (o *BookieInfo) HasHostname() bool {
+	if o != nil && o.Hostname != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetHostname gets a reference to the given string and assigns it to the Hostname field.
+func (o *BookieInfo) SetHostname(v string) {
+	o.Hostname = &v
+}
+
 func (o BookieInfo) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Hostname != nil {
-		toSerialize["hostname"] = o.Hostname
-	}
 	if o.Rack != nil {
 		toSerialize["rack"] = o.Rack
+	}
+	if o.Hostname != nil {
+		toSerialize["hostname"] = o.Hostname
 	}
 	return json.Marshal(toSerialize)
 }

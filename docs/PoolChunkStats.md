@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Usage** | Pointer to **int32** |  | [optional] 
 **ChunkSize** | Pointer to **int32** |  | [optional] 
 **FreeBytes** | Pointer to **int32** |  | [optional] 
-**Usage** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -26,6 +26,31 @@ will change when the set of required properties is changed
 NewPoolChunkStatsWithDefaults instantiates a new PoolChunkStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetUsage
+
+`func (o *PoolChunkStats) GetUsage() int32`
+
+GetUsage returns the Usage field if non-nil, zero value otherwise.
+
+### GetUsageOk
+
+`func (o *PoolChunkStats) GetUsageOk() (*int32, bool)`
+
+GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUsage
+
+`func (o *PoolChunkStats) SetUsage(v int32)`
+
+SetUsage sets Usage field to given value.
+
+### HasUsage
+
+`func (o *PoolChunkStats) HasUsage() bool`
+
+HasUsage returns a boolean if a field has been set.
 
 ### GetChunkSize
 
@@ -76,31 +101,6 @@ SetFreeBytes sets FreeBytes field to given value.
 `func (o *PoolChunkStats) HasFreeBytes() bool`
 
 HasFreeBytes returns a boolean if a field has been set.
-
-### GetUsage
-
-`func (o *PoolChunkStats) GetUsage() int32`
-
-GetUsage returns the Usage field if non-nil, zero value otherwise.
-
-### GetUsageOk
-
-`func (o *PoolChunkStats) GetUsageOk() (*int32, bool)`
-
-GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetUsage
-
-`func (o *PoolChunkStats) SetUsage(v int32)`
-
-SetUsage sets Usage field to given value.
-
-### HasUsage
-
-`func (o *PoolChunkStats) HasUsage() bool`
-
-HasUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

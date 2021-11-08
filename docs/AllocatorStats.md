@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DirectArenas** | Pointer to [**[]PoolArenaStats**](PoolArenaStats.md) |  | [optional] 
-**HeapArenas** | Pointer to [**[]PoolArenaStats**](PoolArenaStats.md) |  | [optional] 
-**NormalCacheSize** | Pointer to **int32** |  | [optional] 
 **NumDirectArenas** | Pointer to **int32** |  | [optional] 
 **NumHeapArenas** | Pointer to **int32** |  | [optional] 
 **NumThreadLocalCaches** | Pointer to **int32** |  | [optional] 
+**NormalCacheSize** | Pointer to **int32** |  | [optional] 
 **SmallCacheSize** | Pointer to **int32** |  | [optional] 
 **TinyCacheSize** | Pointer to **int32** |  | [optional] 
+**DirectArenas** | Pointer to [**[]PoolArenaStats**](PoolArenaStats.md) |  | [optional] 
+**HeapArenas** | Pointer to [**[]PoolArenaStats**](PoolArenaStats.md) |  | [optional] 
 
 ## Methods
 
@@ -31,81 +31,6 @@ will change when the set of required properties is changed
 NewAllocatorStatsWithDefaults instantiates a new AllocatorStats object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDirectArenas
-
-`func (o *AllocatorStats) GetDirectArenas() []PoolArenaStats`
-
-GetDirectArenas returns the DirectArenas field if non-nil, zero value otherwise.
-
-### GetDirectArenasOk
-
-`func (o *AllocatorStats) GetDirectArenasOk() (*[]PoolArenaStats, bool)`
-
-GetDirectArenasOk returns a tuple with the DirectArenas field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDirectArenas
-
-`func (o *AllocatorStats) SetDirectArenas(v []PoolArenaStats)`
-
-SetDirectArenas sets DirectArenas field to given value.
-
-### HasDirectArenas
-
-`func (o *AllocatorStats) HasDirectArenas() bool`
-
-HasDirectArenas returns a boolean if a field has been set.
-
-### GetHeapArenas
-
-`func (o *AllocatorStats) GetHeapArenas() []PoolArenaStats`
-
-GetHeapArenas returns the HeapArenas field if non-nil, zero value otherwise.
-
-### GetHeapArenasOk
-
-`func (o *AllocatorStats) GetHeapArenasOk() (*[]PoolArenaStats, bool)`
-
-GetHeapArenasOk returns a tuple with the HeapArenas field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHeapArenas
-
-`func (o *AllocatorStats) SetHeapArenas(v []PoolArenaStats)`
-
-SetHeapArenas sets HeapArenas field to given value.
-
-### HasHeapArenas
-
-`func (o *AllocatorStats) HasHeapArenas() bool`
-
-HasHeapArenas returns a boolean if a field has been set.
-
-### GetNormalCacheSize
-
-`func (o *AllocatorStats) GetNormalCacheSize() int32`
-
-GetNormalCacheSize returns the NormalCacheSize field if non-nil, zero value otherwise.
-
-### GetNormalCacheSizeOk
-
-`func (o *AllocatorStats) GetNormalCacheSizeOk() (*int32, bool)`
-
-GetNormalCacheSizeOk returns a tuple with the NormalCacheSize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNormalCacheSize
-
-`func (o *AllocatorStats) SetNormalCacheSize(v int32)`
-
-SetNormalCacheSize sets NormalCacheSize field to given value.
-
-### HasNormalCacheSize
-
-`func (o *AllocatorStats) HasNormalCacheSize() bool`
-
-HasNormalCacheSize returns a boolean if a field has been set.
 
 ### GetNumDirectArenas
 
@@ -182,6 +107,31 @@ SetNumThreadLocalCaches sets NumThreadLocalCaches field to given value.
 
 HasNumThreadLocalCaches returns a boolean if a field has been set.
 
+### GetNormalCacheSize
+
+`func (o *AllocatorStats) GetNormalCacheSize() int32`
+
+GetNormalCacheSize returns the NormalCacheSize field if non-nil, zero value otherwise.
+
+### GetNormalCacheSizeOk
+
+`func (o *AllocatorStats) GetNormalCacheSizeOk() (*int32, bool)`
+
+GetNormalCacheSizeOk returns a tuple with the NormalCacheSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNormalCacheSize
+
+`func (o *AllocatorStats) SetNormalCacheSize(v int32)`
+
+SetNormalCacheSize sets NormalCacheSize field to given value.
+
+### HasNormalCacheSize
+
+`func (o *AllocatorStats) HasNormalCacheSize() bool`
+
+HasNormalCacheSize returns a boolean if a field has been set.
+
 ### GetSmallCacheSize
 
 `func (o *AllocatorStats) GetSmallCacheSize() int32`
@@ -231,6 +181,56 @@ SetTinyCacheSize sets TinyCacheSize field to given value.
 `func (o *AllocatorStats) HasTinyCacheSize() bool`
 
 HasTinyCacheSize returns a boolean if a field has been set.
+
+### GetDirectArenas
+
+`func (o *AllocatorStats) GetDirectArenas() []PoolArenaStats`
+
+GetDirectArenas returns the DirectArenas field if non-nil, zero value otherwise.
+
+### GetDirectArenasOk
+
+`func (o *AllocatorStats) GetDirectArenasOk() (*[]PoolArenaStats, bool)`
+
+GetDirectArenasOk returns a tuple with the DirectArenas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirectArenas
+
+`func (o *AllocatorStats) SetDirectArenas(v []PoolArenaStats)`
+
+SetDirectArenas sets DirectArenas field to given value.
+
+### HasDirectArenas
+
+`func (o *AllocatorStats) HasDirectArenas() bool`
+
+HasDirectArenas returns a boolean if a field has been set.
+
+### GetHeapArenas
+
+`func (o *AllocatorStats) GetHeapArenas() []PoolArenaStats`
+
+GetHeapArenas returns the HeapArenas field if non-nil, zero value otherwise.
+
+### GetHeapArenasOk
+
+`func (o *AllocatorStats) GetHeapArenasOk() (*[]PoolArenaStats, bool)`
+
+GetHeapArenasOk returns a tuple with the HeapArenas field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeapArenas
+
+`func (o *AllocatorStats) SetHeapArenas(v []PoolArenaStats)`
+
+SetHeapArenas sets HeapArenas field to given value.
+
+### HasHeapArenas
+
+`func (o *AllocatorStats) HasHeapArenas() bool`
+
+HasHeapArenas returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

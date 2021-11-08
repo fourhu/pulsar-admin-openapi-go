@@ -4,20 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CompactedLedger** | Pointer to [**LedgerInfo**](LedgerInfo.md) |  | [optional] 
+**EntriesAddedCounter** | Pointer to **int64** |  | [optional] 
+**NumberOfEntries** | Pointer to **int64** |  | [optional] 
+**TotalSize** | Pointer to **int64** |  | [optional] 
 **CurrentLedgerEntries** | Pointer to **int64** |  | [optional] 
 **CurrentLedgerSize** | Pointer to **int64** |  | [optional] 
-**Cursors** | Pointer to [**map[string]CursorStats**](CursorStats.md) |  | [optional] 
-**EntriesAddedCounter** | Pointer to **int64** |  | [optional] 
-**LastConfirmedEntry** | Pointer to **string** |  | [optional] 
 **LastLedgerCreatedTimestamp** | Pointer to **string** |  | [optional] 
 **LastLedgerCreationFailureTimestamp** | Pointer to **string** |  | [optional] 
-**Ledgers** | Pointer to [**[]LedgerInfo**](LedgerInfo.md) |  | [optional] 
-**NumberOfEntries** | Pointer to **int64** |  | [optional] 
-**PendingAddEntriesCount** | Pointer to **int32** |  | [optional] 
-**State** | Pointer to **string** |  | [optional] 
-**TotalSize** | Pointer to **int64** |  | [optional] 
 **WaitingCursorsCount** | Pointer to **int32** |  | [optional] 
+**PendingAddEntriesCount** | Pointer to **int32** |  | [optional] 
+**LastConfirmedEntry** | Pointer to **string** |  | [optional] 
+**State** | Pointer to **string** |  | [optional] 
+**Ledgers** | Pointer to [**[]LedgerInfo**](LedgerInfo.md) |  | [optional] 
+**Cursors** | Pointer to [**map[string]CursorStats**](CursorStats.md) |  | [optional] 
+**SchemaLedgers** | Pointer to [**[]LedgerInfo**](LedgerInfo.md) |  | [optional] 
+**CompactedLedger** | Pointer to [**LedgerInfo**](LedgerInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -38,30 +39,80 @@ NewPersistentTopicInternalStatsWithDefaults instantiates a new PersistentTopicIn
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCompactedLedger
+### GetEntriesAddedCounter
 
-`func (o *PersistentTopicInternalStats) GetCompactedLedger() LedgerInfo`
+`func (o *PersistentTopicInternalStats) GetEntriesAddedCounter() int64`
 
-GetCompactedLedger returns the CompactedLedger field if non-nil, zero value otherwise.
+GetEntriesAddedCounter returns the EntriesAddedCounter field if non-nil, zero value otherwise.
 
-### GetCompactedLedgerOk
+### GetEntriesAddedCounterOk
 
-`func (o *PersistentTopicInternalStats) GetCompactedLedgerOk() (*LedgerInfo, bool)`
+`func (o *PersistentTopicInternalStats) GetEntriesAddedCounterOk() (*int64, bool)`
 
-GetCompactedLedgerOk returns a tuple with the CompactedLedger field if it's non-nil, zero value otherwise
+GetEntriesAddedCounterOk returns a tuple with the EntriesAddedCounter field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCompactedLedger
+### SetEntriesAddedCounter
 
-`func (o *PersistentTopicInternalStats) SetCompactedLedger(v LedgerInfo)`
+`func (o *PersistentTopicInternalStats) SetEntriesAddedCounter(v int64)`
 
-SetCompactedLedger sets CompactedLedger field to given value.
+SetEntriesAddedCounter sets EntriesAddedCounter field to given value.
 
-### HasCompactedLedger
+### HasEntriesAddedCounter
 
-`func (o *PersistentTopicInternalStats) HasCompactedLedger() bool`
+`func (o *PersistentTopicInternalStats) HasEntriesAddedCounter() bool`
 
-HasCompactedLedger returns a boolean if a field has been set.
+HasEntriesAddedCounter returns a boolean if a field has been set.
+
+### GetNumberOfEntries
+
+`func (o *PersistentTopicInternalStats) GetNumberOfEntries() int64`
+
+GetNumberOfEntries returns the NumberOfEntries field if non-nil, zero value otherwise.
+
+### GetNumberOfEntriesOk
+
+`func (o *PersistentTopicInternalStats) GetNumberOfEntriesOk() (*int64, bool)`
+
+GetNumberOfEntriesOk returns a tuple with the NumberOfEntries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNumberOfEntries
+
+`func (o *PersistentTopicInternalStats) SetNumberOfEntries(v int64)`
+
+SetNumberOfEntries sets NumberOfEntries field to given value.
+
+### HasNumberOfEntries
+
+`func (o *PersistentTopicInternalStats) HasNumberOfEntries() bool`
+
+HasNumberOfEntries returns a boolean if a field has been set.
+
+### GetTotalSize
+
+`func (o *PersistentTopicInternalStats) GetTotalSize() int64`
+
+GetTotalSize returns the TotalSize field if non-nil, zero value otherwise.
+
+### GetTotalSizeOk
+
+`func (o *PersistentTopicInternalStats) GetTotalSizeOk() (*int64, bool)`
+
+GetTotalSizeOk returns a tuple with the TotalSize field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalSize
+
+`func (o *PersistentTopicInternalStats) SetTotalSize(v int64)`
+
+SetTotalSize sets TotalSize field to given value.
+
+### HasTotalSize
+
+`func (o *PersistentTopicInternalStats) HasTotalSize() bool`
+
+HasTotalSize returns a boolean if a field has been set.
 
 ### GetCurrentLedgerEntries
 
@@ -113,81 +164,6 @@ SetCurrentLedgerSize sets CurrentLedgerSize field to given value.
 
 HasCurrentLedgerSize returns a boolean if a field has been set.
 
-### GetCursors
-
-`func (o *PersistentTopicInternalStats) GetCursors() map[string]CursorStats`
-
-GetCursors returns the Cursors field if non-nil, zero value otherwise.
-
-### GetCursorsOk
-
-`func (o *PersistentTopicInternalStats) GetCursorsOk() (*map[string]CursorStats, bool)`
-
-GetCursorsOk returns a tuple with the Cursors field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCursors
-
-`func (o *PersistentTopicInternalStats) SetCursors(v map[string]CursorStats)`
-
-SetCursors sets Cursors field to given value.
-
-### HasCursors
-
-`func (o *PersistentTopicInternalStats) HasCursors() bool`
-
-HasCursors returns a boolean if a field has been set.
-
-### GetEntriesAddedCounter
-
-`func (o *PersistentTopicInternalStats) GetEntriesAddedCounter() int64`
-
-GetEntriesAddedCounter returns the EntriesAddedCounter field if non-nil, zero value otherwise.
-
-### GetEntriesAddedCounterOk
-
-`func (o *PersistentTopicInternalStats) GetEntriesAddedCounterOk() (*int64, bool)`
-
-GetEntriesAddedCounterOk returns a tuple with the EntriesAddedCounter field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEntriesAddedCounter
-
-`func (o *PersistentTopicInternalStats) SetEntriesAddedCounter(v int64)`
-
-SetEntriesAddedCounter sets EntriesAddedCounter field to given value.
-
-### HasEntriesAddedCounter
-
-`func (o *PersistentTopicInternalStats) HasEntriesAddedCounter() bool`
-
-HasEntriesAddedCounter returns a boolean if a field has been set.
-
-### GetLastConfirmedEntry
-
-`func (o *PersistentTopicInternalStats) GetLastConfirmedEntry() string`
-
-GetLastConfirmedEntry returns the LastConfirmedEntry field if non-nil, zero value otherwise.
-
-### GetLastConfirmedEntryOk
-
-`func (o *PersistentTopicInternalStats) GetLastConfirmedEntryOk() (*string, bool)`
-
-GetLastConfirmedEntryOk returns a tuple with the LastConfirmedEntry field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLastConfirmedEntry
-
-`func (o *PersistentTopicInternalStats) SetLastConfirmedEntry(v string)`
-
-SetLastConfirmedEntry sets LastConfirmedEntry field to given value.
-
-### HasLastConfirmedEntry
-
-`func (o *PersistentTopicInternalStats) HasLastConfirmedEntry() bool`
-
-HasLastConfirmedEntry returns a boolean if a field has been set.
-
 ### GetLastLedgerCreatedTimestamp
 
 `func (o *PersistentTopicInternalStats) GetLastLedgerCreatedTimestamp() string`
@@ -238,55 +214,30 @@ SetLastLedgerCreationFailureTimestamp sets LastLedgerCreationFailureTimestamp fi
 
 HasLastLedgerCreationFailureTimestamp returns a boolean if a field has been set.
 
-### GetLedgers
+### GetWaitingCursorsCount
 
-`func (o *PersistentTopicInternalStats) GetLedgers() []LedgerInfo`
+`func (o *PersistentTopicInternalStats) GetWaitingCursorsCount() int32`
 
-GetLedgers returns the Ledgers field if non-nil, zero value otherwise.
+GetWaitingCursorsCount returns the WaitingCursorsCount field if non-nil, zero value otherwise.
 
-### GetLedgersOk
+### GetWaitingCursorsCountOk
 
-`func (o *PersistentTopicInternalStats) GetLedgersOk() (*[]LedgerInfo, bool)`
+`func (o *PersistentTopicInternalStats) GetWaitingCursorsCountOk() (*int32, bool)`
 
-GetLedgersOk returns a tuple with the Ledgers field if it's non-nil, zero value otherwise
+GetWaitingCursorsCountOk returns a tuple with the WaitingCursorsCount field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLedgers
+### SetWaitingCursorsCount
 
-`func (o *PersistentTopicInternalStats) SetLedgers(v []LedgerInfo)`
+`func (o *PersistentTopicInternalStats) SetWaitingCursorsCount(v int32)`
 
-SetLedgers sets Ledgers field to given value.
+SetWaitingCursorsCount sets WaitingCursorsCount field to given value.
 
-### HasLedgers
+### HasWaitingCursorsCount
 
-`func (o *PersistentTopicInternalStats) HasLedgers() bool`
+`func (o *PersistentTopicInternalStats) HasWaitingCursorsCount() bool`
 
-HasLedgers returns a boolean if a field has been set.
-
-### GetNumberOfEntries
-
-`func (o *PersistentTopicInternalStats) GetNumberOfEntries() int64`
-
-GetNumberOfEntries returns the NumberOfEntries field if non-nil, zero value otherwise.
-
-### GetNumberOfEntriesOk
-
-`func (o *PersistentTopicInternalStats) GetNumberOfEntriesOk() (*int64, bool)`
-
-GetNumberOfEntriesOk returns a tuple with the NumberOfEntries field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetNumberOfEntries
-
-`func (o *PersistentTopicInternalStats) SetNumberOfEntries(v int64)`
-
-SetNumberOfEntries sets NumberOfEntries field to given value.
-
-### HasNumberOfEntries
-
-`func (o *PersistentTopicInternalStats) HasNumberOfEntries() bool`
-
-HasNumberOfEntries returns a boolean if a field has been set.
+HasWaitingCursorsCount returns a boolean if a field has been set.
 
 ### GetPendingAddEntriesCount
 
@@ -313,6 +264,31 @@ SetPendingAddEntriesCount sets PendingAddEntriesCount field to given value.
 
 HasPendingAddEntriesCount returns a boolean if a field has been set.
 
+### GetLastConfirmedEntry
+
+`func (o *PersistentTopicInternalStats) GetLastConfirmedEntry() string`
+
+GetLastConfirmedEntry returns the LastConfirmedEntry field if non-nil, zero value otherwise.
+
+### GetLastConfirmedEntryOk
+
+`func (o *PersistentTopicInternalStats) GetLastConfirmedEntryOk() (*string, bool)`
+
+GetLastConfirmedEntryOk returns a tuple with the LastConfirmedEntry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastConfirmedEntry
+
+`func (o *PersistentTopicInternalStats) SetLastConfirmedEntry(v string)`
+
+SetLastConfirmedEntry sets LastConfirmedEntry field to given value.
+
+### HasLastConfirmedEntry
+
+`func (o *PersistentTopicInternalStats) HasLastConfirmedEntry() bool`
+
+HasLastConfirmedEntry returns a boolean if a field has been set.
+
 ### GetState
 
 `func (o *PersistentTopicInternalStats) GetState() string`
@@ -338,55 +314,105 @@ SetState sets State field to given value.
 
 HasState returns a boolean if a field has been set.
 
-### GetTotalSize
+### GetLedgers
 
-`func (o *PersistentTopicInternalStats) GetTotalSize() int64`
+`func (o *PersistentTopicInternalStats) GetLedgers() []LedgerInfo`
 
-GetTotalSize returns the TotalSize field if non-nil, zero value otherwise.
+GetLedgers returns the Ledgers field if non-nil, zero value otherwise.
 
-### GetTotalSizeOk
+### GetLedgersOk
 
-`func (o *PersistentTopicInternalStats) GetTotalSizeOk() (*int64, bool)`
+`func (o *PersistentTopicInternalStats) GetLedgersOk() (*[]LedgerInfo, bool)`
 
-GetTotalSizeOk returns a tuple with the TotalSize field if it's non-nil, zero value otherwise
+GetLedgersOk returns a tuple with the Ledgers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTotalSize
+### SetLedgers
 
-`func (o *PersistentTopicInternalStats) SetTotalSize(v int64)`
+`func (o *PersistentTopicInternalStats) SetLedgers(v []LedgerInfo)`
 
-SetTotalSize sets TotalSize field to given value.
+SetLedgers sets Ledgers field to given value.
 
-### HasTotalSize
+### HasLedgers
 
-`func (o *PersistentTopicInternalStats) HasTotalSize() bool`
+`func (o *PersistentTopicInternalStats) HasLedgers() bool`
 
-HasTotalSize returns a boolean if a field has been set.
+HasLedgers returns a boolean if a field has been set.
 
-### GetWaitingCursorsCount
+### GetCursors
 
-`func (o *PersistentTopicInternalStats) GetWaitingCursorsCount() int32`
+`func (o *PersistentTopicInternalStats) GetCursors() map[string]CursorStats`
 
-GetWaitingCursorsCount returns the WaitingCursorsCount field if non-nil, zero value otherwise.
+GetCursors returns the Cursors field if non-nil, zero value otherwise.
 
-### GetWaitingCursorsCountOk
+### GetCursorsOk
 
-`func (o *PersistentTopicInternalStats) GetWaitingCursorsCountOk() (*int32, bool)`
+`func (o *PersistentTopicInternalStats) GetCursorsOk() (*map[string]CursorStats, bool)`
 
-GetWaitingCursorsCountOk returns a tuple with the WaitingCursorsCount field if it's non-nil, zero value otherwise
+GetCursorsOk returns a tuple with the Cursors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWaitingCursorsCount
+### SetCursors
 
-`func (o *PersistentTopicInternalStats) SetWaitingCursorsCount(v int32)`
+`func (o *PersistentTopicInternalStats) SetCursors(v map[string]CursorStats)`
 
-SetWaitingCursorsCount sets WaitingCursorsCount field to given value.
+SetCursors sets Cursors field to given value.
 
-### HasWaitingCursorsCount
+### HasCursors
 
-`func (o *PersistentTopicInternalStats) HasWaitingCursorsCount() bool`
+`func (o *PersistentTopicInternalStats) HasCursors() bool`
 
-HasWaitingCursorsCount returns a boolean if a field has been set.
+HasCursors returns a boolean if a field has been set.
+
+### GetSchemaLedgers
+
+`func (o *PersistentTopicInternalStats) GetSchemaLedgers() []LedgerInfo`
+
+GetSchemaLedgers returns the SchemaLedgers field if non-nil, zero value otherwise.
+
+### GetSchemaLedgersOk
+
+`func (o *PersistentTopicInternalStats) GetSchemaLedgersOk() (*[]LedgerInfo, bool)`
+
+GetSchemaLedgersOk returns a tuple with the SchemaLedgers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchemaLedgers
+
+`func (o *PersistentTopicInternalStats) SetSchemaLedgers(v []LedgerInfo)`
+
+SetSchemaLedgers sets SchemaLedgers field to given value.
+
+### HasSchemaLedgers
+
+`func (o *PersistentTopicInternalStats) HasSchemaLedgers() bool`
+
+HasSchemaLedgers returns a boolean if a field has been set.
+
+### GetCompactedLedger
+
+`func (o *PersistentTopicInternalStats) GetCompactedLedger() LedgerInfo`
+
+GetCompactedLedger returns the CompactedLedger field if non-nil, zero value otherwise.
+
+### GetCompactedLedgerOk
+
+`func (o *PersistentTopicInternalStats) GetCompactedLedgerOk() (*LedgerInfo, bool)`
+
+GetCompactedLedgerOk returns a tuple with the CompactedLedger field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompactedLedger
+
+`func (o *PersistentTopicInternalStats) SetCompactedLedger(v LedgerInfo)`
+
+SetCompactedLedger sets CompactedLedger field to given value.
+
+### HasCompactedLedger
+
+`func (o *PersistentTopicInternalStats) HasCompactedLedger() bool`
+
+HasCompactedLedger returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

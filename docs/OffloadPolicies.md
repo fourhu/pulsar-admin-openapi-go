@@ -4,34 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**FileSystemDriver** | Pointer to **bool** |  | [optional] 
-**FileSystemProfilePath** | Pointer to **string** |  | [optional] 
-**FileSystemURI** | Pointer to **string** |  | [optional] 
-**GcsDriver** | Pointer to **bool** |  | [optional] 
+**ManagedLedgerOffloadPrefetchRounds** | Pointer to **int32** |  | [optional] 
+**S3ManagedLedgerOffloadRegion** | Pointer to **string** |  | [optional] 
+**S3ManagedLedgerOffloadBucket** | Pointer to **string** |  | [optional] 
+**S3ManagedLedgerOffloadServiceEndpoint** | Pointer to **string** |  | [optional] 
+**S3ManagedLedgerOffloadMaxBlockSizeInBytes** | Pointer to **int32** |  | [optional] 
+**S3ManagedLedgerOffloadReadBufferSizeInBytes** | Pointer to **int32** |  | [optional] 
+**S3ManagedLedgerOffloadCredentialId** | Pointer to **string** |  | [optional] 
+**S3ManagedLedgerOffloadCredentialSecret** | Pointer to **string** |  | [optional] 
+**S3ManagedLedgerOffloadRole** | Pointer to **string** |  | [optional] 
+**S3ManagedLedgerOffloadRoleSessionName** | Pointer to **string** |  | [optional] 
+**GcsManagedLedgerOffloadRegion** | Pointer to **string** |  | [optional] 
 **GcsManagedLedgerOffloadBucket** | Pointer to **string** |  | [optional] 
 **GcsManagedLedgerOffloadMaxBlockSizeInBytes** | Pointer to **int32** |  | [optional] 
 **GcsManagedLedgerOffloadReadBufferSizeInBytes** | Pointer to **int32** |  | [optional] 
-**GcsManagedLedgerOffloadRegion** | Pointer to **string** |  | [optional] 
 **GcsManagedLedgerOffloadServiceAccountKeyFile** | Pointer to **string** |  | [optional] 
+**FileSystemProfilePath** | Pointer to **string** |  | [optional] 
+**FileSystemURI** | Pointer to **string** |  | [optional] 
 **ManagedLedgerOffloadBucket** | Pointer to **string** |  | [optional] 
-**ManagedLedgerOffloadDeletionLagInMillis** | Pointer to **int64** |  | [optional] 
-**ManagedLedgerOffloadDriver** | Pointer to **string** |  | [optional] 
-**ManagedLedgerOffloadMaxBlockSizeInBytes** | Pointer to **int32** |  | [optional] 
-**ManagedLedgerOffloadMaxThreads** | Pointer to **int32** |  | [optional] 
-**ManagedLedgerOffloadPrefetchRounds** | Pointer to **int32** |  | [optional] 
-**ManagedLedgerOffloadReadBufferSizeInBytes** | Pointer to **int32** |  | [optional] 
+**ManagedLedgerOffloadedReadPriority** | Pointer to **string** |  | [optional] 
 **ManagedLedgerOffloadRegion** | Pointer to **string** |  | [optional] 
 **ManagedLedgerOffloadServiceEndpoint** | Pointer to **string** |  | [optional] 
+**ManagedLedgerOffloadMaxBlockSizeInBytes** | Pointer to **int32** |  | [optional] 
+**ManagedLedgerOffloadReadBufferSizeInBytes** | Pointer to **int32** |  | [optional] 
 **ManagedLedgerOffloadThresholdInBytes** | Pointer to **int64** |  | [optional] 
+**ManagedLedgerOffloadDeletionLagInMillis** | Pointer to **int64** |  | [optional] 
+**ManagedLedgerOffloadDriver** | Pointer to **string** |  | [optional] 
 **OffloadersDirectory** | Pointer to **string** |  | [optional] 
-**S3Driver** | Pointer to **bool** |  | [optional] 
-**S3ManagedLedgerOffloadBucket** | Pointer to **string** |  | [optional] 
-**S3ManagedLedgerOffloadMaxBlockSizeInBytes** | Pointer to **int32** |  | [optional] 
-**S3ManagedLedgerOffloadReadBufferSizeInBytes** | Pointer to **int32** |  | [optional] 
-**S3ManagedLedgerOffloadRegion** | Pointer to **string** |  | [optional] 
-**S3ManagedLedgerOffloadRole** | Pointer to **string** |  | [optional] 
-**S3ManagedLedgerOffloadRoleSessionName** | Pointer to **string** |  | [optional] 
-**S3ManagedLedgerOffloadServiceEndpoint** | Pointer to **string** |  | [optional] 
+**ManagedLedgerOffloadMaxThreads** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -52,105 +52,280 @@ NewOffloadPoliciesWithDefaults instantiates a new OffloadPolicies object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetFileSystemDriver
+### GetManagedLedgerOffloadPrefetchRounds
 
-`func (o *OffloadPolicies) GetFileSystemDriver() bool`
+`func (o *OffloadPolicies) GetManagedLedgerOffloadPrefetchRounds() int32`
 
-GetFileSystemDriver returns the FileSystemDriver field if non-nil, zero value otherwise.
+GetManagedLedgerOffloadPrefetchRounds returns the ManagedLedgerOffloadPrefetchRounds field if non-nil, zero value otherwise.
 
-### GetFileSystemDriverOk
+### GetManagedLedgerOffloadPrefetchRoundsOk
 
-`func (o *OffloadPolicies) GetFileSystemDriverOk() (*bool, bool)`
+`func (o *OffloadPolicies) GetManagedLedgerOffloadPrefetchRoundsOk() (*int32, bool)`
 
-GetFileSystemDriverOk returns a tuple with the FileSystemDriver field if it's non-nil, zero value otherwise
+GetManagedLedgerOffloadPrefetchRoundsOk returns a tuple with the ManagedLedgerOffloadPrefetchRounds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFileSystemDriver
+### SetManagedLedgerOffloadPrefetchRounds
 
-`func (o *OffloadPolicies) SetFileSystemDriver(v bool)`
+`func (o *OffloadPolicies) SetManagedLedgerOffloadPrefetchRounds(v int32)`
 
-SetFileSystemDriver sets FileSystemDriver field to given value.
+SetManagedLedgerOffloadPrefetchRounds sets ManagedLedgerOffloadPrefetchRounds field to given value.
 
-### HasFileSystemDriver
+### HasManagedLedgerOffloadPrefetchRounds
 
-`func (o *OffloadPolicies) HasFileSystemDriver() bool`
+`func (o *OffloadPolicies) HasManagedLedgerOffloadPrefetchRounds() bool`
 
-HasFileSystemDriver returns a boolean if a field has been set.
+HasManagedLedgerOffloadPrefetchRounds returns a boolean if a field has been set.
 
-### GetFileSystemProfilePath
+### GetS3ManagedLedgerOffloadRegion
 
-`func (o *OffloadPolicies) GetFileSystemProfilePath() string`
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRegion() string`
 
-GetFileSystemProfilePath returns the FileSystemProfilePath field if non-nil, zero value otherwise.
+GetS3ManagedLedgerOffloadRegion returns the S3ManagedLedgerOffloadRegion field if non-nil, zero value otherwise.
 
-### GetFileSystemProfilePathOk
+### GetS3ManagedLedgerOffloadRegionOk
 
-`func (o *OffloadPolicies) GetFileSystemProfilePathOk() (*string, bool)`
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRegionOk() (*string, bool)`
 
-GetFileSystemProfilePathOk returns a tuple with the FileSystemProfilePath field if it's non-nil, zero value otherwise
+GetS3ManagedLedgerOffloadRegionOk returns a tuple with the S3ManagedLedgerOffloadRegion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFileSystemProfilePath
+### SetS3ManagedLedgerOffloadRegion
 
-`func (o *OffloadPolicies) SetFileSystemProfilePath(v string)`
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadRegion(v string)`
 
-SetFileSystemProfilePath sets FileSystemProfilePath field to given value.
+SetS3ManagedLedgerOffloadRegion sets S3ManagedLedgerOffloadRegion field to given value.
 
-### HasFileSystemProfilePath
+### HasS3ManagedLedgerOffloadRegion
 
-`func (o *OffloadPolicies) HasFileSystemProfilePath() bool`
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadRegion() bool`
 
-HasFileSystemProfilePath returns a boolean if a field has been set.
+HasS3ManagedLedgerOffloadRegion returns a boolean if a field has been set.
 
-### GetFileSystemURI
+### GetS3ManagedLedgerOffloadBucket
 
-`func (o *OffloadPolicies) GetFileSystemURI() string`
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadBucket() string`
 
-GetFileSystemURI returns the FileSystemURI field if non-nil, zero value otherwise.
+GetS3ManagedLedgerOffloadBucket returns the S3ManagedLedgerOffloadBucket field if non-nil, zero value otherwise.
 
-### GetFileSystemURIOk
+### GetS3ManagedLedgerOffloadBucketOk
 
-`func (o *OffloadPolicies) GetFileSystemURIOk() (*string, bool)`
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadBucketOk() (*string, bool)`
 
-GetFileSystemURIOk returns a tuple with the FileSystemURI field if it's non-nil, zero value otherwise
+GetS3ManagedLedgerOffloadBucketOk returns a tuple with the S3ManagedLedgerOffloadBucket field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFileSystemURI
+### SetS3ManagedLedgerOffloadBucket
 
-`func (o *OffloadPolicies) SetFileSystemURI(v string)`
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadBucket(v string)`
 
-SetFileSystemURI sets FileSystemURI field to given value.
+SetS3ManagedLedgerOffloadBucket sets S3ManagedLedgerOffloadBucket field to given value.
 
-### HasFileSystemURI
+### HasS3ManagedLedgerOffloadBucket
 
-`func (o *OffloadPolicies) HasFileSystemURI() bool`
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadBucket() bool`
 
-HasFileSystemURI returns a boolean if a field has been set.
+HasS3ManagedLedgerOffloadBucket returns a boolean if a field has been set.
 
-### GetGcsDriver
+### GetS3ManagedLedgerOffloadServiceEndpoint
 
-`func (o *OffloadPolicies) GetGcsDriver() bool`
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadServiceEndpoint() string`
 
-GetGcsDriver returns the GcsDriver field if non-nil, zero value otherwise.
+GetS3ManagedLedgerOffloadServiceEndpoint returns the S3ManagedLedgerOffloadServiceEndpoint field if non-nil, zero value otherwise.
 
-### GetGcsDriverOk
+### GetS3ManagedLedgerOffloadServiceEndpointOk
 
-`func (o *OffloadPolicies) GetGcsDriverOk() (*bool, bool)`
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadServiceEndpointOk() (*string, bool)`
 
-GetGcsDriverOk returns a tuple with the GcsDriver field if it's non-nil, zero value otherwise
+GetS3ManagedLedgerOffloadServiceEndpointOk returns a tuple with the S3ManagedLedgerOffloadServiceEndpoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetGcsDriver
+### SetS3ManagedLedgerOffloadServiceEndpoint
 
-`func (o *OffloadPolicies) SetGcsDriver(v bool)`
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadServiceEndpoint(v string)`
 
-SetGcsDriver sets GcsDriver field to given value.
+SetS3ManagedLedgerOffloadServiceEndpoint sets S3ManagedLedgerOffloadServiceEndpoint field to given value.
 
-### HasGcsDriver
+### HasS3ManagedLedgerOffloadServiceEndpoint
 
-`func (o *OffloadPolicies) HasGcsDriver() bool`
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadServiceEndpoint() bool`
 
-HasGcsDriver returns a boolean if a field has been set.
+HasS3ManagedLedgerOffloadServiceEndpoint returns a boolean if a field has been set.
+
+### GetS3ManagedLedgerOffloadMaxBlockSizeInBytes
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadMaxBlockSizeInBytes() int32`
+
+GetS3ManagedLedgerOffloadMaxBlockSizeInBytes returns the S3ManagedLedgerOffloadMaxBlockSizeInBytes field if non-nil, zero value otherwise.
+
+### GetS3ManagedLedgerOffloadMaxBlockSizeInBytesOk
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadMaxBlockSizeInBytesOk() (*int32, bool)`
+
+GetS3ManagedLedgerOffloadMaxBlockSizeInBytesOk returns a tuple with the S3ManagedLedgerOffloadMaxBlockSizeInBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3ManagedLedgerOffloadMaxBlockSizeInBytes
+
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadMaxBlockSizeInBytes(v int32)`
+
+SetS3ManagedLedgerOffloadMaxBlockSizeInBytes sets S3ManagedLedgerOffloadMaxBlockSizeInBytes field to given value.
+
+### HasS3ManagedLedgerOffloadMaxBlockSizeInBytes
+
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadMaxBlockSizeInBytes() bool`
+
+HasS3ManagedLedgerOffloadMaxBlockSizeInBytes returns a boolean if a field has been set.
+
+### GetS3ManagedLedgerOffloadReadBufferSizeInBytes
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadReadBufferSizeInBytes() int32`
+
+GetS3ManagedLedgerOffloadReadBufferSizeInBytes returns the S3ManagedLedgerOffloadReadBufferSizeInBytes field if non-nil, zero value otherwise.
+
+### GetS3ManagedLedgerOffloadReadBufferSizeInBytesOk
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadReadBufferSizeInBytesOk() (*int32, bool)`
+
+GetS3ManagedLedgerOffloadReadBufferSizeInBytesOk returns a tuple with the S3ManagedLedgerOffloadReadBufferSizeInBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3ManagedLedgerOffloadReadBufferSizeInBytes
+
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadReadBufferSizeInBytes(v int32)`
+
+SetS3ManagedLedgerOffloadReadBufferSizeInBytes sets S3ManagedLedgerOffloadReadBufferSizeInBytes field to given value.
+
+### HasS3ManagedLedgerOffloadReadBufferSizeInBytes
+
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadReadBufferSizeInBytes() bool`
+
+HasS3ManagedLedgerOffloadReadBufferSizeInBytes returns a boolean if a field has been set.
+
+### GetS3ManagedLedgerOffloadCredentialId
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadCredentialId() string`
+
+GetS3ManagedLedgerOffloadCredentialId returns the S3ManagedLedgerOffloadCredentialId field if non-nil, zero value otherwise.
+
+### GetS3ManagedLedgerOffloadCredentialIdOk
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadCredentialIdOk() (*string, bool)`
+
+GetS3ManagedLedgerOffloadCredentialIdOk returns a tuple with the S3ManagedLedgerOffloadCredentialId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3ManagedLedgerOffloadCredentialId
+
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadCredentialId(v string)`
+
+SetS3ManagedLedgerOffloadCredentialId sets S3ManagedLedgerOffloadCredentialId field to given value.
+
+### HasS3ManagedLedgerOffloadCredentialId
+
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadCredentialId() bool`
+
+HasS3ManagedLedgerOffloadCredentialId returns a boolean if a field has been set.
+
+### GetS3ManagedLedgerOffloadCredentialSecret
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadCredentialSecret() string`
+
+GetS3ManagedLedgerOffloadCredentialSecret returns the S3ManagedLedgerOffloadCredentialSecret field if non-nil, zero value otherwise.
+
+### GetS3ManagedLedgerOffloadCredentialSecretOk
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadCredentialSecretOk() (*string, bool)`
+
+GetS3ManagedLedgerOffloadCredentialSecretOk returns a tuple with the S3ManagedLedgerOffloadCredentialSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3ManagedLedgerOffloadCredentialSecret
+
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadCredentialSecret(v string)`
+
+SetS3ManagedLedgerOffloadCredentialSecret sets S3ManagedLedgerOffloadCredentialSecret field to given value.
+
+### HasS3ManagedLedgerOffloadCredentialSecret
+
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadCredentialSecret() bool`
+
+HasS3ManagedLedgerOffloadCredentialSecret returns a boolean if a field has been set.
+
+### GetS3ManagedLedgerOffloadRole
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRole() string`
+
+GetS3ManagedLedgerOffloadRole returns the S3ManagedLedgerOffloadRole field if non-nil, zero value otherwise.
+
+### GetS3ManagedLedgerOffloadRoleOk
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRoleOk() (*string, bool)`
+
+GetS3ManagedLedgerOffloadRoleOk returns a tuple with the S3ManagedLedgerOffloadRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3ManagedLedgerOffloadRole
+
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadRole(v string)`
+
+SetS3ManagedLedgerOffloadRole sets S3ManagedLedgerOffloadRole field to given value.
+
+### HasS3ManagedLedgerOffloadRole
+
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadRole() bool`
+
+HasS3ManagedLedgerOffloadRole returns a boolean if a field has been set.
+
+### GetS3ManagedLedgerOffloadRoleSessionName
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRoleSessionName() string`
+
+GetS3ManagedLedgerOffloadRoleSessionName returns the S3ManagedLedgerOffloadRoleSessionName field if non-nil, zero value otherwise.
+
+### GetS3ManagedLedgerOffloadRoleSessionNameOk
+
+`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRoleSessionNameOk() (*string, bool)`
+
+GetS3ManagedLedgerOffloadRoleSessionNameOk returns a tuple with the S3ManagedLedgerOffloadRoleSessionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3ManagedLedgerOffloadRoleSessionName
+
+`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadRoleSessionName(v string)`
+
+SetS3ManagedLedgerOffloadRoleSessionName sets S3ManagedLedgerOffloadRoleSessionName field to given value.
+
+### HasS3ManagedLedgerOffloadRoleSessionName
+
+`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadRoleSessionName() bool`
+
+HasS3ManagedLedgerOffloadRoleSessionName returns a boolean if a field has been set.
+
+### GetGcsManagedLedgerOffloadRegion
+
+`func (o *OffloadPolicies) GetGcsManagedLedgerOffloadRegion() string`
+
+GetGcsManagedLedgerOffloadRegion returns the GcsManagedLedgerOffloadRegion field if non-nil, zero value otherwise.
+
+### GetGcsManagedLedgerOffloadRegionOk
+
+`func (o *OffloadPolicies) GetGcsManagedLedgerOffloadRegionOk() (*string, bool)`
+
+GetGcsManagedLedgerOffloadRegionOk returns a tuple with the GcsManagedLedgerOffloadRegion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcsManagedLedgerOffloadRegion
+
+`func (o *OffloadPolicies) SetGcsManagedLedgerOffloadRegion(v string)`
+
+SetGcsManagedLedgerOffloadRegion sets GcsManagedLedgerOffloadRegion field to given value.
+
+### HasGcsManagedLedgerOffloadRegion
+
+`func (o *OffloadPolicies) HasGcsManagedLedgerOffloadRegion() bool`
+
+HasGcsManagedLedgerOffloadRegion returns a boolean if a field has been set.
 
 ### GetGcsManagedLedgerOffloadBucket
 
@@ -227,31 +402,6 @@ SetGcsManagedLedgerOffloadReadBufferSizeInBytes sets GcsManagedLedgerOffloadRead
 
 HasGcsManagedLedgerOffloadReadBufferSizeInBytes returns a boolean if a field has been set.
 
-### GetGcsManagedLedgerOffloadRegion
-
-`func (o *OffloadPolicies) GetGcsManagedLedgerOffloadRegion() string`
-
-GetGcsManagedLedgerOffloadRegion returns the GcsManagedLedgerOffloadRegion field if non-nil, zero value otherwise.
-
-### GetGcsManagedLedgerOffloadRegionOk
-
-`func (o *OffloadPolicies) GetGcsManagedLedgerOffloadRegionOk() (*string, bool)`
-
-GetGcsManagedLedgerOffloadRegionOk returns a tuple with the GcsManagedLedgerOffloadRegion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGcsManagedLedgerOffloadRegion
-
-`func (o *OffloadPolicies) SetGcsManagedLedgerOffloadRegion(v string)`
-
-SetGcsManagedLedgerOffloadRegion sets GcsManagedLedgerOffloadRegion field to given value.
-
-### HasGcsManagedLedgerOffloadRegion
-
-`func (o *OffloadPolicies) HasGcsManagedLedgerOffloadRegion() bool`
-
-HasGcsManagedLedgerOffloadRegion returns a boolean if a field has been set.
-
 ### GetGcsManagedLedgerOffloadServiceAccountKeyFile
 
 `func (o *OffloadPolicies) GetGcsManagedLedgerOffloadServiceAccountKeyFile() string`
@@ -276,6 +426,56 @@ SetGcsManagedLedgerOffloadServiceAccountKeyFile sets GcsManagedLedgerOffloadServ
 `func (o *OffloadPolicies) HasGcsManagedLedgerOffloadServiceAccountKeyFile() bool`
 
 HasGcsManagedLedgerOffloadServiceAccountKeyFile returns a boolean if a field has been set.
+
+### GetFileSystemProfilePath
+
+`func (o *OffloadPolicies) GetFileSystemProfilePath() string`
+
+GetFileSystemProfilePath returns the FileSystemProfilePath field if non-nil, zero value otherwise.
+
+### GetFileSystemProfilePathOk
+
+`func (o *OffloadPolicies) GetFileSystemProfilePathOk() (*string, bool)`
+
+GetFileSystemProfilePathOk returns a tuple with the FileSystemProfilePath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSystemProfilePath
+
+`func (o *OffloadPolicies) SetFileSystemProfilePath(v string)`
+
+SetFileSystemProfilePath sets FileSystemProfilePath field to given value.
+
+### HasFileSystemProfilePath
+
+`func (o *OffloadPolicies) HasFileSystemProfilePath() bool`
+
+HasFileSystemProfilePath returns a boolean if a field has been set.
+
+### GetFileSystemURI
+
+`func (o *OffloadPolicies) GetFileSystemURI() string`
+
+GetFileSystemURI returns the FileSystemURI field if non-nil, zero value otherwise.
+
+### GetFileSystemURIOk
+
+`func (o *OffloadPolicies) GetFileSystemURIOk() (*string, bool)`
+
+GetFileSystemURIOk returns a tuple with the FileSystemURI field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileSystemURI
+
+`func (o *OffloadPolicies) SetFileSystemURI(v string)`
+
+SetFileSystemURI sets FileSystemURI field to given value.
+
+### HasFileSystemURI
+
+`func (o *OffloadPolicies) HasFileSystemURI() bool`
+
+HasFileSystemURI returns a boolean if a field has been set.
 
 ### GetManagedLedgerOffloadBucket
 
@@ -302,155 +502,30 @@ SetManagedLedgerOffloadBucket sets ManagedLedgerOffloadBucket field to given val
 
 HasManagedLedgerOffloadBucket returns a boolean if a field has been set.
 
-### GetManagedLedgerOffloadDeletionLagInMillis
+### GetManagedLedgerOffloadedReadPriority
 
-`func (o *OffloadPolicies) GetManagedLedgerOffloadDeletionLagInMillis() int64`
+`func (o *OffloadPolicies) GetManagedLedgerOffloadedReadPriority() string`
 
-GetManagedLedgerOffloadDeletionLagInMillis returns the ManagedLedgerOffloadDeletionLagInMillis field if non-nil, zero value otherwise.
+GetManagedLedgerOffloadedReadPriority returns the ManagedLedgerOffloadedReadPriority field if non-nil, zero value otherwise.
 
-### GetManagedLedgerOffloadDeletionLagInMillisOk
+### GetManagedLedgerOffloadedReadPriorityOk
 
-`func (o *OffloadPolicies) GetManagedLedgerOffloadDeletionLagInMillisOk() (*int64, bool)`
+`func (o *OffloadPolicies) GetManagedLedgerOffloadedReadPriorityOk() (*string, bool)`
 
-GetManagedLedgerOffloadDeletionLagInMillisOk returns a tuple with the ManagedLedgerOffloadDeletionLagInMillis field if it's non-nil, zero value otherwise
+GetManagedLedgerOffloadedReadPriorityOk returns a tuple with the ManagedLedgerOffloadedReadPriority field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetManagedLedgerOffloadDeletionLagInMillis
+### SetManagedLedgerOffloadedReadPriority
 
-`func (o *OffloadPolicies) SetManagedLedgerOffloadDeletionLagInMillis(v int64)`
+`func (o *OffloadPolicies) SetManagedLedgerOffloadedReadPriority(v string)`
 
-SetManagedLedgerOffloadDeletionLagInMillis sets ManagedLedgerOffloadDeletionLagInMillis field to given value.
+SetManagedLedgerOffloadedReadPriority sets ManagedLedgerOffloadedReadPriority field to given value.
 
-### HasManagedLedgerOffloadDeletionLagInMillis
+### HasManagedLedgerOffloadedReadPriority
 
-`func (o *OffloadPolicies) HasManagedLedgerOffloadDeletionLagInMillis() bool`
+`func (o *OffloadPolicies) HasManagedLedgerOffloadedReadPriority() bool`
 
-HasManagedLedgerOffloadDeletionLagInMillis returns a boolean if a field has been set.
-
-### GetManagedLedgerOffloadDriver
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadDriver() string`
-
-GetManagedLedgerOffloadDriver returns the ManagedLedgerOffloadDriver field if non-nil, zero value otherwise.
-
-### GetManagedLedgerOffloadDriverOk
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadDriverOk() (*string, bool)`
-
-GetManagedLedgerOffloadDriverOk returns a tuple with the ManagedLedgerOffloadDriver field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagedLedgerOffloadDriver
-
-`func (o *OffloadPolicies) SetManagedLedgerOffloadDriver(v string)`
-
-SetManagedLedgerOffloadDriver sets ManagedLedgerOffloadDriver field to given value.
-
-### HasManagedLedgerOffloadDriver
-
-`func (o *OffloadPolicies) HasManagedLedgerOffloadDriver() bool`
-
-HasManagedLedgerOffloadDriver returns a boolean if a field has been set.
-
-### GetManagedLedgerOffloadMaxBlockSizeInBytes
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxBlockSizeInBytes() int32`
-
-GetManagedLedgerOffloadMaxBlockSizeInBytes returns the ManagedLedgerOffloadMaxBlockSizeInBytes field if non-nil, zero value otherwise.
-
-### GetManagedLedgerOffloadMaxBlockSizeInBytesOk
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxBlockSizeInBytesOk() (*int32, bool)`
-
-GetManagedLedgerOffloadMaxBlockSizeInBytesOk returns a tuple with the ManagedLedgerOffloadMaxBlockSizeInBytes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagedLedgerOffloadMaxBlockSizeInBytes
-
-`func (o *OffloadPolicies) SetManagedLedgerOffloadMaxBlockSizeInBytes(v int32)`
-
-SetManagedLedgerOffloadMaxBlockSizeInBytes sets ManagedLedgerOffloadMaxBlockSizeInBytes field to given value.
-
-### HasManagedLedgerOffloadMaxBlockSizeInBytes
-
-`func (o *OffloadPolicies) HasManagedLedgerOffloadMaxBlockSizeInBytes() bool`
-
-HasManagedLedgerOffloadMaxBlockSizeInBytes returns a boolean if a field has been set.
-
-### GetManagedLedgerOffloadMaxThreads
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxThreads() int32`
-
-GetManagedLedgerOffloadMaxThreads returns the ManagedLedgerOffloadMaxThreads field if non-nil, zero value otherwise.
-
-### GetManagedLedgerOffloadMaxThreadsOk
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxThreadsOk() (*int32, bool)`
-
-GetManagedLedgerOffloadMaxThreadsOk returns a tuple with the ManagedLedgerOffloadMaxThreads field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagedLedgerOffloadMaxThreads
-
-`func (o *OffloadPolicies) SetManagedLedgerOffloadMaxThreads(v int32)`
-
-SetManagedLedgerOffloadMaxThreads sets ManagedLedgerOffloadMaxThreads field to given value.
-
-### HasManagedLedgerOffloadMaxThreads
-
-`func (o *OffloadPolicies) HasManagedLedgerOffloadMaxThreads() bool`
-
-HasManagedLedgerOffloadMaxThreads returns a boolean if a field has been set.
-
-### GetManagedLedgerOffloadPrefetchRounds
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadPrefetchRounds() int32`
-
-GetManagedLedgerOffloadPrefetchRounds returns the ManagedLedgerOffloadPrefetchRounds field if non-nil, zero value otherwise.
-
-### GetManagedLedgerOffloadPrefetchRoundsOk
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadPrefetchRoundsOk() (*int32, bool)`
-
-GetManagedLedgerOffloadPrefetchRoundsOk returns a tuple with the ManagedLedgerOffloadPrefetchRounds field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagedLedgerOffloadPrefetchRounds
-
-`func (o *OffloadPolicies) SetManagedLedgerOffloadPrefetchRounds(v int32)`
-
-SetManagedLedgerOffloadPrefetchRounds sets ManagedLedgerOffloadPrefetchRounds field to given value.
-
-### HasManagedLedgerOffloadPrefetchRounds
-
-`func (o *OffloadPolicies) HasManagedLedgerOffloadPrefetchRounds() bool`
-
-HasManagedLedgerOffloadPrefetchRounds returns a boolean if a field has been set.
-
-### GetManagedLedgerOffloadReadBufferSizeInBytes
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadReadBufferSizeInBytes() int32`
-
-GetManagedLedgerOffloadReadBufferSizeInBytes returns the ManagedLedgerOffloadReadBufferSizeInBytes field if non-nil, zero value otherwise.
-
-### GetManagedLedgerOffloadReadBufferSizeInBytesOk
-
-`func (o *OffloadPolicies) GetManagedLedgerOffloadReadBufferSizeInBytesOk() (*int32, bool)`
-
-GetManagedLedgerOffloadReadBufferSizeInBytesOk returns a tuple with the ManagedLedgerOffloadReadBufferSizeInBytes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetManagedLedgerOffloadReadBufferSizeInBytes
-
-`func (o *OffloadPolicies) SetManagedLedgerOffloadReadBufferSizeInBytes(v int32)`
-
-SetManagedLedgerOffloadReadBufferSizeInBytes sets ManagedLedgerOffloadReadBufferSizeInBytes field to given value.
-
-### HasManagedLedgerOffloadReadBufferSizeInBytes
-
-`func (o *OffloadPolicies) HasManagedLedgerOffloadReadBufferSizeInBytes() bool`
-
-HasManagedLedgerOffloadReadBufferSizeInBytes returns a boolean if a field has been set.
+HasManagedLedgerOffloadedReadPriority returns a boolean if a field has been set.
 
 ### GetManagedLedgerOffloadRegion
 
@@ -502,6 +577,56 @@ SetManagedLedgerOffloadServiceEndpoint sets ManagedLedgerOffloadServiceEndpoint 
 
 HasManagedLedgerOffloadServiceEndpoint returns a boolean if a field has been set.
 
+### GetManagedLedgerOffloadMaxBlockSizeInBytes
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxBlockSizeInBytes() int32`
+
+GetManagedLedgerOffloadMaxBlockSizeInBytes returns the ManagedLedgerOffloadMaxBlockSizeInBytes field if non-nil, zero value otherwise.
+
+### GetManagedLedgerOffloadMaxBlockSizeInBytesOk
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxBlockSizeInBytesOk() (*int32, bool)`
+
+GetManagedLedgerOffloadMaxBlockSizeInBytesOk returns a tuple with the ManagedLedgerOffloadMaxBlockSizeInBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedLedgerOffloadMaxBlockSizeInBytes
+
+`func (o *OffloadPolicies) SetManagedLedgerOffloadMaxBlockSizeInBytes(v int32)`
+
+SetManagedLedgerOffloadMaxBlockSizeInBytes sets ManagedLedgerOffloadMaxBlockSizeInBytes field to given value.
+
+### HasManagedLedgerOffloadMaxBlockSizeInBytes
+
+`func (o *OffloadPolicies) HasManagedLedgerOffloadMaxBlockSizeInBytes() bool`
+
+HasManagedLedgerOffloadMaxBlockSizeInBytes returns a boolean if a field has been set.
+
+### GetManagedLedgerOffloadReadBufferSizeInBytes
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadReadBufferSizeInBytes() int32`
+
+GetManagedLedgerOffloadReadBufferSizeInBytes returns the ManagedLedgerOffloadReadBufferSizeInBytes field if non-nil, zero value otherwise.
+
+### GetManagedLedgerOffloadReadBufferSizeInBytesOk
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadReadBufferSizeInBytesOk() (*int32, bool)`
+
+GetManagedLedgerOffloadReadBufferSizeInBytesOk returns a tuple with the ManagedLedgerOffloadReadBufferSizeInBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedLedgerOffloadReadBufferSizeInBytes
+
+`func (o *OffloadPolicies) SetManagedLedgerOffloadReadBufferSizeInBytes(v int32)`
+
+SetManagedLedgerOffloadReadBufferSizeInBytes sets ManagedLedgerOffloadReadBufferSizeInBytes field to given value.
+
+### HasManagedLedgerOffloadReadBufferSizeInBytes
+
+`func (o *OffloadPolicies) HasManagedLedgerOffloadReadBufferSizeInBytes() bool`
+
+HasManagedLedgerOffloadReadBufferSizeInBytes returns a boolean if a field has been set.
+
 ### GetManagedLedgerOffloadThresholdInBytes
 
 `func (o *OffloadPolicies) GetManagedLedgerOffloadThresholdInBytes() int64`
@@ -526,6 +651,56 @@ SetManagedLedgerOffloadThresholdInBytes sets ManagedLedgerOffloadThresholdInByte
 `func (o *OffloadPolicies) HasManagedLedgerOffloadThresholdInBytes() bool`
 
 HasManagedLedgerOffloadThresholdInBytes returns a boolean if a field has been set.
+
+### GetManagedLedgerOffloadDeletionLagInMillis
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadDeletionLagInMillis() int64`
+
+GetManagedLedgerOffloadDeletionLagInMillis returns the ManagedLedgerOffloadDeletionLagInMillis field if non-nil, zero value otherwise.
+
+### GetManagedLedgerOffloadDeletionLagInMillisOk
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadDeletionLagInMillisOk() (*int64, bool)`
+
+GetManagedLedgerOffloadDeletionLagInMillisOk returns a tuple with the ManagedLedgerOffloadDeletionLagInMillis field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedLedgerOffloadDeletionLagInMillis
+
+`func (o *OffloadPolicies) SetManagedLedgerOffloadDeletionLagInMillis(v int64)`
+
+SetManagedLedgerOffloadDeletionLagInMillis sets ManagedLedgerOffloadDeletionLagInMillis field to given value.
+
+### HasManagedLedgerOffloadDeletionLagInMillis
+
+`func (o *OffloadPolicies) HasManagedLedgerOffloadDeletionLagInMillis() bool`
+
+HasManagedLedgerOffloadDeletionLagInMillis returns a boolean if a field has been set.
+
+### GetManagedLedgerOffloadDriver
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadDriver() string`
+
+GetManagedLedgerOffloadDriver returns the ManagedLedgerOffloadDriver field if non-nil, zero value otherwise.
+
+### GetManagedLedgerOffloadDriverOk
+
+`func (o *OffloadPolicies) GetManagedLedgerOffloadDriverOk() (*string, bool)`
+
+GetManagedLedgerOffloadDriverOk returns a tuple with the ManagedLedgerOffloadDriver field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetManagedLedgerOffloadDriver
+
+`func (o *OffloadPolicies) SetManagedLedgerOffloadDriver(v string)`
+
+SetManagedLedgerOffloadDriver sets ManagedLedgerOffloadDriver field to given value.
+
+### HasManagedLedgerOffloadDriver
+
+`func (o *OffloadPolicies) HasManagedLedgerOffloadDriver() bool`
+
+HasManagedLedgerOffloadDriver returns a boolean if a field has been set.
 
 ### GetOffloadersDirectory
 
@@ -552,205 +727,30 @@ SetOffloadersDirectory sets OffloadersDirectory field to given value.
 
 HasOffloadersDirectory returns a boolean if a field has been set.
 
-### GetS3Driver
+### GetManagedLedgerOffloadMaxThreads
 
-`func (o *OffloadPolicies) GetS3Driver() bool`
+`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxThreads() int32`
 
-GetS3Driver returns the S3Driver field if non-nil, zero value otherwise.
+GetManagedLedgerOffloadMaxThreads returns the ManagedLedgerOffloadMaxThreads field if non-nil, zero value otherwise.
 
-### GetS3DriverOk
+### GetManagedLedgerOffloadMaxThreadsOk
 
-`func (o *OffloadPolicies) GetS3DriverOk() (*bool, bool)`
+`func (o *OffloadPolicies) GetManagedLedgerOffloadMaxThreadsOk() (*int32, bool)`
 
-GetS3DriverOk returns a tuple with the S3Driver field if it's non-nil, zero value otherwise
+GetManagedLedgerOffloadMaxThreadsOk returns a tuple with the ManagedLedgerOffloadMaxThreads field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetS3Driver
+### SetManagedLedgerOffloadMaxThreads
 
-`func (o *OffloadPolicies) SetS3Driver(v bool)`
+`func (o *OffloadPolicies) SetManagedLedgerOffloadMaxThreads(v int32)`
 
-SetS3Driver sets S3Driver field to given value.
+SetManagedLedgerOffloadMaxThreads sets ManagedLedgerOffloadMaxThreads field to given value.
 
-### HasS3Driver
+### HasManagedLedgerOffloadMaxThreads
 
-`func (o *OffloadPolicies) HasS3Driver() bool`
+`func (o *OffloadPolicies) HasManagedLedgerOffloadMaxThreads() bool`
 
-HasS3Driver returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadBucket
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadBucket() string`
-
-GetS3ManagedLedgerOffloadBucket returns the S3ManagedLedgerOffloadBucket field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadBucketOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadBucketOk() (*string, bool)`
-
-GetS3ManagedLedgerOffloadBucketOk returns a tuple with the S3ManagedLedgerOffloadBucket field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadBucket
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadBucket(v string)`
-
-SetS3ManagedLedgerOffloadBucket sets S3ManagedLedgerOffloadBucket field to given value.
-
-### HasS3ManagedLedgerOffloadBucket
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadBucket() bool`
-
-HasS3ManagedLedgerOffloadBucket returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadMaxBlockSizeInBytes
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadMaxBlockSizeInBytes() int32`
-
-GetS3ManagedLedgerOffloadMaxBlockSizeInBytes returns the S3ManagedLedgerOffloadMaxBlockSizeInBytes field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadMaxBlockSizeInBytesOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadMaxBlockSizeInBytesOk() (*int32, bool)`
-
-GetS3ManagedLedgerOffloadMaxBlockSizeInBytesOk returns a tuple with the S3ManagedLedgerOffloadMaxBlockSizeInBytes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadMaxBlockSizeInBytes
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadMaxBlockSizeInBytes(v int32)`
-
-SetS3ManagedLedgerOffloadMaxBlockSizeInBytes sets S3ManagedLedgerOffloadMaxBlockSizeInBytes field to given value.
-
-### HasS3ManagedLedgerOffloadMaxBlockSizeInBytes
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadMaxBlockSizeInBytes() bool`
-
-HasS3ManagedLedgerOffloadMaxBlockSizeInBytes returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadReadBufferSizeInBytes
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadReadBufferSizeInBytes() int32`
-
-GetS3ManagedLedgerOffloadReadBufferSizeInBytes returns the S3ManagedLedgerOffloadReadBufferSizeInBytes field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadReadBufferSizeInBytesOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadReadBufferSizeInBytesOk() (*int32, bool)`
-
-GetS3ManagedLedgerOffloadReadBufferSizeInBytesOk returns a tuple with the S3ManagedLedgerOffloadReadBufferSizeInBytes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadReadBufferSizeInBytes
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadReadBufferSizeInBytes(v int32)`
-
-SetS3ManagedLedgerOffloadReadBufferSizeInBytes sets S3ManagedLedgerOffloadReadBufferSizeInBytes field to given value.
-
-### HasS3ManagedLedgerOffloadReadBufferSizeInBytes
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadReadBufferSizeInBytes() bool`
-
-HasS3ManagedLedgerOffloadReadBufferSizeInBytes returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadRegion
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRegion() string`
-
-GetS3ManagedLedgerOffloadRegion returns the S3ManagedLedgerOffloadRegion field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadRegionOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRegionOk() (*string, bool)`
-
-GetS3ManagedLedgerOffloadRegionOk returns a tuple with the S3ManagedLedgerOffloadRegion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadRegion
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadRegion(v string)`
-
-SetS3ManagedLedgerOffloadRegion sets S3ManagedLedgerOffloadRegion field to given value.
-
-### HasS3ManagedLedgerOffloadRegion
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadRegion() bool`
-
-HasS3ManagedLedgerOffloadRegion returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadRole
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRole() string`
-
-GetS3ManagedLedgerOffloadRole returns the S3ManagedLedgerOffloadRole field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadRoleOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRoleOk() (*string, bool)`
-
-GetS3ManagedLedgerOffloadRoleOk returns a tuple with the S3ManagedLedgerOffloadRole field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadRole
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadRole(v string)`
-
-SetS3ManagedLedgerOffloadRole sets S3ManagedLedgerOffloadRole field to given value.
-
-### HasS3ManagedLedgerOffloadRole
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadRole() bool`
-
-HasS3ManagedLedgerOffloadRole returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadRoleSessionName
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRoleSessionName() string`
-
-GetS3ManagedLedgerOffloadRoleSessionName returns the S3ManagedLedgerOffloadRoleSessionName field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadRoleSessionNameOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadRoleSessionNameOk() (*string, bool)`
-
-GetS3ManagedLedgerOffloadRoleSessionNameOk returns a tuple with the S3ManagedLedgerOffloadRoleSessionName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadRoleSessionName
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadRoleSessionName(v string)`
-
-SetS3ManagedLedgerOffloadRoleSessionName sets S3ManagedLedgerOffloadRoleSessionName field to given value.
-
-### HasS3ManagedLedgerOffloadRoleSessionName
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadRoleSessionName() bool`
-
-HasS3ManagedLedgerOffloadRoleSessionName returns a boolean if a field has been set.
-
-### GetS3ManagedLedgerOffloadServiceEndpoint
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadServiceEndpoint() string`
-
-GetS3ManagedLedgerOffloadServiceEndpoint returns the S3ManagedLedgerOffloadServiceEndpoint field if non-nil, zero value otherwise.
-
-### GetS3ManagedLedgerOffloadServiceEndpointOk
-
-`func (o *OffloadPolicies) GetS3ManagedLedgerOffloadServiceEndpointOk() (*string, bool)`
-
-GetS3ManagedLedgerOffloadServiceEndpointOk returns a tuple with the S3ManagedLedgerOffloadServiceEndpoint field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetS3ManagedLedgerOffloadServiceEndpoint
-
-`func (o *OffloadPolicies) SetS3ManagedLedgerOffloadServiceEndpoint(v string)`
-
-SetS3ManagedLedgerOffloadServiceEndpoint sets S3ManagedLedgerOffloadServiceEndpoint field to given value.
-
-### HasS3ManagedLedgerOffloadServiceEndpoint
-
-`func (o *OffloadPolicies) HasS3ManagedLedgerOffloadServiceEndpoint() bool`
-
-HasS3ManagedLedgerOffloadServiceEndpoint returns a boolean if a field has been set.
+HasManagedLedgerOffloadMaxThreads returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

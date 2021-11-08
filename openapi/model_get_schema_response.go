@@ -16,11 +16,11 @@ import (
 
 // GetSchemaResponse struct for GetSchemaResponse
 type GetSchemaResponse struct {
+	Version *int64 `json:"version,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Timestamp *int64 `json:"timestamp,omitempty"`
 	Data *string `json:"data,omitempty"`
 	Properties *map[string]string `json:"properties,omitempty"`
-	Timestamp *int64 `json:"timestamp,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Version *int64 `json:"version,omitempty"`
 }
 
 // NewGetSchemaResponse instantiates a new GetSchemaResponse object
@@ -38,6 +38,102 @@ func NewGetSchemaResponse() *GetSchemaResponse {
 func NewGetSchemaResponseWithDefaults() *GetSchemaResponse {
 	this := GetSchemaResponse{}
 	return &this
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise.
+func (o *GetSchemaResponse) GetVersion() int64 {
+	if o == nil || o.Version == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSchemaResponse) GetVersionOk() (*int64, bool) {
+	if o == nil || o.Version == nil {
+		return nil, false
+	}
+	return o.Version, true
+}
+
+// HasVersion returns a boolean if a field has been set.
+func (o *GetSchemaResponse) HasVersion() bool {
+	if o != nil && o.Version != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetVersion gets a reference to the given int64 and assigns it to the Version field.
+func (o *GetSchemaResponse) SetVersion(v int64) {
+	o.Version = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *GetSchemaResponse) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSchemaResponse) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *GetSchemaResponse) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *GetSchemaResponse) SetType(v string) {
+	o.Type = &v
+}
+
+// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
+func (o *GetSchemaResponse) GetTimestamp() int64 {
+	if o == nil || o.Timestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.Timestamp
+}
+
+// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetSchemaResponse) GetTimestampOk() (*int64, bool) {
+	if o == nil || o.Timestamp == nil {
+		return nil, false
+	}
+	return o.Timestamp, true
+}
+
+// HasTimestamp returns a boolean if a field has been set.
+func (o *GetSchemaResponse) HasTimestamp() bool {
+	if o != nil && o.Timestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
+func (o *GetSchemaResponse) SetTimestamp(v int64) {
+	o.Timestamp = &v
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
@@ -104,118 +200,22 @@ func (o *GetSchemaResponse) SetProperties(v map[string]string) {
 	o.Properties = &v
 }
 
-// GetTimestamp returns the Timestamp field value if set, zero value otherwise.
-func (o *GetSchemaResponse) GetTimestamp() int64 {
-	if o == nil || o.Timestamp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.Timestamp
-}
-
-// GetTimestampOk returns a tuple with the Timestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetSchemaResponse) GetTimestampOk() (*int64, bool) {
-	if o == nil || o.Timestamp == nil {
-		return nil, false
-	}
-	return o.Timestamp, true
-}
-
-// HasTimestamp returns a boolean if a field has been set.
-func (o *GetSchemaResponse) HasTimestamp() bool {
-	if o != nil && o.Timestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
-func (o *GetSchemaResponse) SetTimestamp(v int64) {
-	o.Timestamp = &v
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *GetSchemaResponse) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
-		return ret
-	}
-	return *o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetSchemaResponse) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
-		return nil, false
-	}
-	return o.Type, true
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *GetSchemaResponse) HasType() bool {
-	if o != nil && o.Type != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *GetSchemaResponse) SetType(v string) {
-	o.Type = &v
-}
-
-// GetVersion returns the Version field value if set, zero value otherwise.
-func (o *GetSchemaResponse) GetVersion() int64 {
-	if o == nil || o.Version == nil {
-		var ret int64
-		return ret
-	}
-	return *o.Version
-}
-
-// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *GetSchemaResponse) GetVersionOk() (*int64, bool) {
-	if o == nil || o.Version == nil {
-		return nil, false
-	}
-	return o.Version, true
-}
-
-// HasVersion returns a boolean if a field has been set.
-func (o *GetSchemaResponse) HasVersion() bool {
-	if o != nil && o.Version != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetVersion gets a reference to the given int64 and assigns it to the Version field.
-func (o *GetSchemaResponse) SetVersion(v int64) {
-	o.Version = &v
-}
-
 func (o GetSchemaResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Version != nil {
+		toSerialize["version"] = o.Version
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
+	}
+	if o.Timestamp != nil {
+		toSerialize["timestamp"] = o.Timestamp
+	}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	if o.Properties != nil {
 		toSerialize["properties"] = o.Properties
-	}
-	if o.Timestamp != nil {
-		toSerialize["timestamp"] = o.Timestamp
-	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
-	}
-	if o.Version != nil {
-		toSerialize["version"] = o.Version
 	}
 	return json.Marshal(toSerialize)
 }

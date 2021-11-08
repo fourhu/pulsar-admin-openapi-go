@@ -14,12 +14,10 @@ import (
 	"encoding/json"
 )
 
-// AutoFailoverPolicyData The auto failover policy configuration data
+// AutoFailoverPolicyData struct for AutoFailoverPolicyData
 type AutoFailoverPolicyData struct {
-	// The parameters applied to the auto failover policy specified by `policy_type`. The parameters for 'min_available' are :   - 'min_limit': the limit of minimal number of available brokers in primary group before auto failover   - 'usage_threshold': the resource usage threshold. If the usage of a broker is beyond this value, it would be marked as unavailable 
+	PolicyType *string `json:"policyType,omitempty"`
 	Parameters *map[string]string `json:"parameters,omitempty"`
-	// The auto failover policy type
-	PolicyType *string `json:"policy_type,omitempty"`
 }
 
 // NewAutoFailoverPolicyData instantiates a new AutoFailoverPolicyData object
@@ -37,38 +35,6 @@ func NewAutoFailoverPolicyData() *AutoFailoverPolicyData {
 func NewAutoFailoverPolicyDataWithDefaults() *AutoFailoverPolicyData {
 	this := AutoFailoverPolicyData{}
 	return &this
-}
-
-// GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *AutoFailoverPolicyData) GetParameters() map[string]string {
-	if o == nil || o.Parameters == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Parameters
-}
-
-// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AutoFailoverPolicyData) GetParametersOk() (*map[string]string, bool) {
-	if o == nil || o.Parameters == nil {
-		return nil, false
-	}
-	return o.Parameters, true
-}
-
-// HasParameters returns a boolean if a field has been set.
-func (o *AutoFailoverPolicyData) HasParameters() bool {
-	if o != nil && o.Parameters != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetParameters gets a reference to the given map[string]string and assigns it to the Parameters field.
-func (o *AutoFailoverPolicyData) SetParameters(v map[string]string) {
-	o.Parameters = &v
 }
 
 // GetPolicyType returns the PolicyType field value if set, zero value otherwise.
@@ -103,13 +69,45 @@ func (o *AutoFailoverPolicyData) SetPolicyType(v string) {
 	o.PolicyType = &v
 }
 
+// GetParameters returns the Parameters field value if set, zero value otherwise.
+func (o *AutoFailoverPolicyData) GetParameters() map[string]string {
+	if o == nil || o.Parameters == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Parameters
+}
+
+// GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AutoFailoverPolicyData) GetParametersOk() (*map[string]string, bool) {
+	if o == nil || o.Parameters == nil {
+		return nil, false
+	}
+	return o.Parameters, true
+}
+
+// HasParameters returns a boolean if a field has been set.
+func (o *AutoFailoverPolicyData) HasParameters() bool {
+	if o != nil && o.Parameters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetParameters gets a reference to the given map[string]string and assigns it to the Parameters field.
+func (o *AutoFailoverPolicyData) SetParameters(v map[string]string) {
+	o.Parameters = &v
+}
+
 func (o AutoFailoverPolicyData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.PolicyType != nil {
+		toSerialize["policyType"] = o.PolicyType
+	}
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
-	}
-	if o.PolicyType != nil {
-		toSerialize["policy_type"] = o.PolicyType
 	}
 	return json.Marshal(toSerialize)
 }

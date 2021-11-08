@@ -387,7 +387,7 @@ func (a *SchemasApiService) GetSchemaExecute(r ApiGetSchemaRequest) (GetSchemaRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetSchemaVersionRequest struct {
+type ApiGetSchema_0Request struct {
 	ctx _context.Context
 	ApiService *SchemasApiService
 	tenant string
@@ -397,27 +397,27 @@ type ApiGetSchemaVersionRequest struct {
 	authoritative *bool
 }
 
-func (r ApiGetSchemaVersionRequest) Authoritative(authoritative bool) ApiGetSchemaVersionRequest {
+func (r ApiGetSchema_0Request) Authoritative(authoritative bool) ApiGetSchema_0Request {
 	r.authoritative = &authoritative
 	return r
 }
 
-func (r ApiGetSchemaVersionRequest) Execute() (GetSchemaResponse, *_nethttp.Response, error) {
-	return r.ApiService.GetSchemaVersionExecute(r)
+func (r ApiGetSchema_0Request) Execute() (GetSchemaResponse, *_nethttp.Response, error) {
+	return r.ApiService.GetSchema_1Execute(r)
 }
 
 /*
-GetSchemaVersion Get the schema of a topic at a given version
+GetSchema_0 Get the schema of a topic at a given version
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant
  @param namespace
  @param topic
  @param version
- @return ApiGetSchemaVersionRequest
+ @return ApiGetSchema_0Request
 */
-func (a *SchemasApiService) GetSchemaVersion(ctx _context.Context, tenant string, namespace string, topic string, version string) ApiGetSchemaVersionRequest {
-	return ApiGetSchemaVersionRequest{
+func (a *SchemasApiService) GetSchema_1(ctx _context.Context, tenant string, namespace string, topic string, version string) ApiGetSchema_0Request {
+	return ApiGetSchema_0Request{
 		ApiService: a,
 		ctx: ctx,
 		tenant: tenant,
@@ -429,7 +429,7 @@ func (a *SchemasApiService) GetSchemaVersion(ctx _context.Context, tenant string
 
 // Execute executes the request
 //  @return GetSchemaResponse
-func (a *SchemasApiService) GetSchemaVersionExecute(r ApiGetSchemaVersionRequest) (GetSchemaResponse, *_nethttp.Response, error) {
+func (a *SchemasApiService) GetSchema_1Execute(r ApiGetSchema_0Request) (GetSchemaResponse, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
@@ -439,7 +439,7 @@ func (a *SchemasApiService) GetSchemaVersionExecute(r ApiGetSchemaVersionRequest
 		localVarReturnValue  GetSchemaResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchemasApiService.GetSchemaVersion")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SchemasApiService.GetSchema_1")
 	if err != nil {
 		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
 	}

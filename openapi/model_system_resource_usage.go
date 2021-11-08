@@ -19,8 +19,8 @@ type SystemResourceUsage struct {
 	BandwidthIn *ResourceUsage `json:"bandwidthIn,omitempty"`
 	BandwidthOut *ResourceUsage `json:"bandwidthOut,omitempty"`
 	Cpu *ResourceUsage `json:"cpu,omitempty"`
-	DirectMemory *ResourceUsage `json:"directMemory,omitempty"`
 	Memory *ResourceUsage `json:"memory,omitempty"`
+	DirectMemory *ResourceUsage `json:"directMemory,omitempty"`
 }
 
 // NewSystemResourceUsage instantiates a new SystemResourceUsage object
@@ -136,38 +136,6 @@ func (o *SystemResourceUsage) SetCpu(v ResourceUsage) {
 	o.Cpu = &v
 }
 
-// GetDirectMemory returns the DirectMemory field value if set, zero value otherwise.
-func (o *SystemResourceUsage) GetDirectMemory() ResourceUsage {
-	if o == nil || o.DirectMemory == nil {
-		var ret ResourceUsage
-		return ret
-	}
-	return *o.DirectMemory
-}
-
-// GetDirectMemoryOk returns a tuple with the DirectMemory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SystemResourceUsage) GetDirectMemoryOk() (*ResourceUsage, bool) {
-	if o == nil || o.DirectMemory == nil {
-		return nil, false
-	}
-	return o.DirectMemory, true
-}
-
-// HasDirectMemory returns a boolean if a field has been set.
-func (o *SystemResourceUsage) HasDirectMemory() bool {
-	if o != nil && o.DirectMemory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDirectMemory gets a reference to the given ResourceUsage and assigns it to the DirectMemory field.
-func (o *SystemResourceUsage) SetDirectMemory(v ResourceUsage) {
-	o.DirectMemory = &v
-}
-
 // GetMemory returns the Memory field value if set, zero value otherwise.
 func (o *SystemResourceUsage) GetMemory() ResourceUsage {
 	if o == nil || o.Memory == nil {
@@ -200,6 +168,38 @@ func (o *SystemResourceUsage) SetMemory(v ResourceUsage) {
 	o.Memory = &v
 }
 
+// GetDirectMemory returns the DirectMemory field value if set, zero value otherwise.
+func (o *SystemResourceUsage) GetDirectMemory() ResourceUsage {
+	if o == nil || o.DirectMemory == nil {
+		var ret ResourceUsage
+		return ret
+	}
+	return *o.DirectMemory
+}
+
+// GetDirectMemoryOk returns a tuple with the DirectMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemResourceUsage) GetDirectMemoryOk() (*ResourceUsage, bool) {
+	if o == nil || o.DirectMemory == nil {
+		return nil, false
+	}
+	return o.DirectMemory, true
+}
+
+// HasDirectMemory returns a boolean if a field has been set.
+func (o *SystemResourceUsage) HasDirectMemory() bool {
+	if o != nil && o.DirectMemory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDirectMemory gets a reference to the given ResourceUsage and assigns it to the DirectMemory field.
+func (o *SystemResourceUsage) SetDirectMemory(v ResourceUsage) {
+	o.DirectMemory = &v
+}
+
 func (o SystemResourceUsage) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BandwidthIn != nil {
@@ -211,11 +211,11 @@ func (o SystemResourceUsage) MarshalJSON() ([]byte, error) {
 	if o.Cpu != nil {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if o.DirectMemory != nil {
-		toSerialize["directMemory"] = o.DirectMemory
-	}
 	if o.Memory != nil {
 		toSerialize["memory"] = o.Memory
+	}
+	if o.DirectMemory != nil {
+		toSerialize["directMemory"] = o.DirectMemory
 	}
 	return json.Marshal(toSerialize)
 }

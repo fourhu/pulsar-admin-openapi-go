@@ -20,11 +20,12 @@ Method | HTTP request | Description
 [**DeleteTopic**](PersistentTopicApi.md#DeleteTopic) | **Delete** /persistent/{tenant}/{namespace}/{topic} | Delete a topic.
 [**ExamineMessage**](PersistentTopicApi.md#ExamineMessage) | **Get** /persistent/{tenant}/{namespace}/{topic}/examinemessage | Examine a specific message on a topic by position relative to the earliest or the latest message.
 [**ExpireMessagesForAllSubscriptions**](PersistentTopicApi.md#ExpireMessagesForAllSubscriptions) | **Post** /persistent/{tenant}/{namespace}/{topic}/all_subscription/expireMessages/{expireTimeInSeconds} | Expiry messages on all subscriptions of topic.
-[**ExpireTopicMessages**](PersistentTopicApi.md#ExpireTopicMessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages/{expireTimeInSeconds} | Expiry messages on a topic subscription.
+[**ExpireTopicMessages**](PersistentTopicApi.md#ExpireTopicMessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages | Expiry messages on a topic subscription.
+[**ExpireTopicMessages_0**](PersistentTopicApi.md#ExpireTopicMessages_0) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/expireMessages/{expireTimeInSeconds} | Expiry messages on a topic subscription.
 [**GetBacklog**](PersistentTopicApi.md#GetBacklog) | **Get** /persistent/{tenant}/{namespace}/{topic}/backlog | Get estimated backlog for offline topic.
 [**GetBacklogQuotaMap**](PersistentTopicApi.md#GetBacklogQuotaMap) | **Get** /persistent/{tenant}/{namespace}/{topic}/backlogQuotaMap | Get backlog quota map on a topic.
 [**GetCompactionThreshold**](PersistentTopicApi.md#GetCompactionThreshold) | **Get** /persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Get compaction threshold configuration for specified topic.
-[**GetDeduplicationEnabled**](PersistentTopicApi.md#GetDeduplicationEnabled) | **Get** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Get deduplication configuration of a topic.
+[**GetDeduplication**](PersistentTopicApi.md#GetDeduplication) | **Get** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Get deduplication configuration of a topic.
 [**GetDeduplicationSnapshotInterval**](PersistentTopicApi.md#GetDeduplicationSnapshotInterval) | **Get** /persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a topic.
 [**GetDelayedDeliveryPolicies**](PersistentTopicApi.md#GetDelayedDeliveryPolicies) | **Get** /persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Get delayed delivery messages config on a topic.
 [**GetDispatchRate**](PersistentTopicApi.md#GetDispatchRate) | **Get** /persistent/{tenant}/{namespace}/{topic}/dispatchRate | Get dispatch rate configuration for specified topic.
@@ -35,7 +36,9 @@ Method | HTTP request | Description
 [**GetManagedLedgerInfo**](PersistentTopicApi.md#GetManagedLedgerInfo) | **Get** /persistent/{tenant}/{namespace}/{topic}/internal-info | Get the stored topic metadata.
 [**GetMaxConsumers**](PersistentTopicApi.md#GetMaxConsumers) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxConsumers | Get maxConsumers config for specified topic.
 [**GetMaxConsumersPerSubscription**](PersistentTopicApi.md#GetMaxConsumersPerSubscription) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Get max consumers per subscription configuration for specified topic.
+[**GetMaxMessageSize**](PersistentTopicApi.md#GetMaxMessageSize) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Get maxMessageSize config for specified topic.
 [**GetMaxProducers**](PersistentTopicApi.md#GetMaxProducers) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxProducers | Get maxProducers config for specified topic.
+[**GetMaxSubscriptionsPerTopic**](PersistentTopicApi.md#GetMaxSubscriptionsPerTopic) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Get maxSubscriptionsPerTopic config for specified topic.
 [**GetMaxUnackedMessagesOnConsumer**](PersistentTopicApi.md#GetMaxUnackedMessagesOnConsumer) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Get max unacked messages per consumer config on a topic.
 [**GetMaxUnackedMessagesOnSubscription**](PersistentTopicApi.md#GetMaxUnackedMessagesOnSubscription) | **Get** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Get max unacked messages per subscription config on a topic.
 [**GetMessageById**](PersistentTopicApi.md#GetMessageById) | **Get** /persistent/{tenant}/{namespace}/{topic}/ledger/{ledgerId}/entry/{entryId} | Get message by its messageId.
@@ -47,25 +50,30 @@ Method | HTTP request | Description
 [**GetPermissionsOnTopic**](PersistentTopicApi.md#GetPermissionsOnTopic) | **Get** /persistent/{tenant}/{namespace}/{topic}/permissions | Get permissions on a topic.
 [**GetPersistence**](PersistentTopicApi.md#GetPersistence) | **Get** /persistent/{tenant}/{namespace}/{topic}/persistence | Get configuration of persistence policies for specified topic.
 [**GetPublishRate**](PersistentTopicApi.md#GetPublishRate) | **Get** /persistent/{tenant}/{namespace}/{topic}/publishRate | Get publish rate configuration for specified topic.
+[**GetReplicatorDispatchRate**](PersistentTopicApi.md#GetReplicatorDispatchRate) | **Get** /persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Get replicatorDispatchRate config for specified topic.
 [**GetRetention**](PersistentTopicApi.md#GetRetention) | **Get** /persistent/{tenant}/{namespace}/{topic}/retention | Get retention configuration for specified topic.
 [**GetStats**](PersistentTopicApi.md#GetStats) | **Get** /persistent/{tenant}/{namespace}/{topic}/stats | Get the stats for the topic.
 [**GetSubscribeRate**](PersistentTopicApi.md#GetSubscribeRate) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscribeRate | Get subscribe rate configuration for specified topic.
 [**GetSubscriptionDispatchRate**](PersistentTopicApi.md#GetSubscriptionDispatchRate) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Get subscription message dispatch rate configuration for specified topic.
+[**GetSubscriptionTypesEnabled**](PersistentTopicApi.md#GetSubscriptionTypesEnabled) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled | Get is enable sub type fors specified topic.
 [**GetSubscriptions**](PersistentTopicApi.md#GetSubscriptions) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscriptions | Get the list of persistent subscriptions for a given topic.
 [**GrantPermissionsOnTopic**](PersistentTopicApi.md#GrantPermissionsOnTopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Grant a new permission to a role on a single topic.
 [**OffloadStatus**](PersistentTopicApi.md#OffloadStatus) | **Get** /persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
 [**PeekNthMessage**](PersistentTopicApi.md#PeekNthMessage) | **Get** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/position/{messagePosition} | Peek nth message on a topic subscription.
 [**RemoveBacklogQuota**](PersistentTopicApi.md#RemoveBacklogQuota) | **Delete** /persistent/{tenant}/{namespace}/{topic}/backlogQuota | Remove a backlog quota policy from a topic.
 [**RemoveCompactionThreshold**](PersistentTopicApi.md#RemoveCompactionThreshold) | **Delete** /persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Remove compaction threshold configuration for specified topic.
-[**RemoveDeduplicationEnabled**](PersistentTopicApi.md#RemoveDeduplicationEnabled) | **Delete** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Remove deduplication configuration for specified topic.
+[**RemoveDeduplication**](PersistentTopicApi.md#RemoveDeduplication) | **Delete** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Remove deduplication configuration for specified topic.
 [**RemoveDispatchRate**](PersistentTopicApi.md#RemoveDispatchRate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/dispatchRate | Remove message dispatch rate configuration for specified topic.
 [**RemoveMaxConsumers**](PersistentTopicApi.md#RemoveMaxConsumers) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxConsumers | Remove maxConsumers config for specified topic.
 [**RemoveMaxConsumersPerSubscription**](PersistentTopicApi.md#RemoveMaxConsumersPerSubscription) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Remove max consumers per subscription configuration for specified topic.
+[**RemoveMaxMessageSize**](PersistentTopicApi.md#RemoveMaxMessageSize) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Remove maxMessageSize config for specified topic.
 [**RemoveMaxProducers**](PersistentTopicApi.md#RemoveMaxProducers) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxProducers | Remove maxProducers config for specified topic.
+[**RemoveMaxSubscriptionsPerTopic**](PersistentTopicApi.md#RemoveMaxSubscriptionsPerTopic) | **Delete** /persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Remove maxSubscriptionsPerTopic config for specified topic.
 [**RemoveMessageTTL**](PersistentTopicApi.md#RemoveMessageTTL) | **Delete** /persistent/{tenant}/{namespace}/{topic}/messageTTL | Remove message TTL in seconds for a topic
 [**RemoveOffloadPolicies**](PersistentTopicApi.md#RemoveOffloadPolicies) | **Delete** /persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Delete offload policies on a topic.
 [**RemovePersistence**](PersistentTopicApi.md#RemovePersistence) | **Delete** /persistent/{tenant}/{namespace}/{topic}/persistence | Remove configuration of persistence policies for specified topic.
 [**RemovePublishRate**](PersistentTopicApi.md#RemovePublishRate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/publishRate | Remove message publish rate configuration for specified topic.
+[**RemoveReplicatorDispatchRate**](PersistentTopicApi.md#RemoveReplicatorDispatchRate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Remove replicatorDispatchRate config for specified topic.
 [**RemoveRetention**](PersistentTopicApi.md#RemoveRetention) | **Delete** /persistent/{tenant}/{namespace}/{topic}/retention | Remove retention configuration for specified topic.
 [**RemoveSubscribeRate**](PersistentTopicApi.md#RemoveSubscribeRate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/subscribeRate | Remove subscribe rate configuration for specified topic.
 [**RemoveSubscriptionDispatchRate**](PersistentTopicApi.md#RemoveSubscriptionDispatchRate) | **Delete** /persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Remove subscription message dispatch rate configuration for specified topic.
@@ -74,28 +82,34 @@ Method | HTTP request | Description
 [**RevokePermissionsOnTopic**](PersistentTopicApi.md#RevokePermissionsOnTopic) | **Delete** /persistent/{tenant}/{namespace}/{topic}/permissions/{role} | Revoke permissions on a topic.
 [**SetBacklogQuota**](PersistentTopicApi.md#SetBacklogQuota) | **Post** /persistent/{tenant}/{namespace}/{topic}/backlogQuota | Set a backlog quota for a topic.
 [**SetCompactionThreshold**](PersistentTopicApi.md#SetCompactionThreshold) | **Post** /persistent/{tenant}/{namespace}/{topic}/compactionThreshold | Set compaction threshold configuration for specified topic.
-[**SetDeduplicationEnabled**](PersistentTopicApi.md#SetDeduplicationEnabled) | **Post** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Set deduplication enabled on a topic.
+[**SetDeduplication**](PersistentTopicApi.md#SetDeduplication) | **Post** /persistent/{tenant}/{namespace}/{topic}/deduplicationEnabled | Set deduplication enabled on a topic.
 [**SetDeduplicationSnapshotInterval**](PersistentTopicApi.md#SetDeduplicationSnapshotInterval) | **Post** /persistent/{tenant}/{namespace}/{topic}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a topic.
 [**SetDelayedDeliveryPolicies**](PersistentTopicApi.md#SetDelayedDeliveryPolicies) | **Post** /persistent/{tenant}/{namespace}/{topic}/delayedDelivery | Set delayed delivery messages config on a topic.
 [**SetDispatchRate**](PersistentTopicApi.md#SetDispatchRate) | **Post** /persistent/{tenant}/{namespace}/{topic}/dispatchRate | Set message dispatch rate configuration for specified topic.
 [**SetInactiveTopicPolicies**](PersistentTopicApi.md#SetInactiveTopicPolicies) | **Post** /persistent/{tenant}/{namespace}/{topic}/inactiveTopicPolicies | Set inactive topic policies on a topic.
 [**SetMaxConsumers**](PersistentTopicApi.md#SetMaxConsumers) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxConsumers | Set maxConsumers config for specified topic.
 [**SetMaxConsumersPerSubscription**](PersistentTopicApi.md#SetMaxConsumersPerSubscription) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxConsumersPerSubscription | Set max consumers per subscription configuration for specified topic.
+[**SetMaxMessageSize**](PersistentTopicApi.md#SetMaxMessageSize) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxMessageSize | Set maxMessageSize config for specified topic.
 [**SetMaxProducers**](PersistentTopicApi.md#SetMaxProducers) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxProducers | Set maxProducers config for specified topic.
+[**SetMaxSubscriptionsPerTopic**](PersistentTopicApi.md#SetMaxSubscriptionsPerTopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxSubscriptionsPerTopic | Set maxSubscriptionsPerTopic config for specified topic.
 [**SetMaxUnackedMessagesOnConsumer**](PersistentTopicApi.md#SetMaxUnackedMessagesOnConsumer) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnConsumer | Set max unacked messages per consumer config on a topic.
 [**SetMaxUnackedMessagesOnSubscription**](PersistentTopicApi.md#SetMaxUnackedMessagesOnSubscription) | **Post** /persistent/{tenant}/{namespace}/{topic}/maxUnackedMessagesOnSubscription | Set max unacked messages per subscription config on a topic.
 [**SetMessageTTL**](PersistentTopicApi.md#SetMessageTTL) | **Post** /persistent/{tenant}/{namespace}/{topic}/messageTTL | Set message TTL in seconds for a topic
 [**SetOffloadPolicies**](PersistentTopicApi.md#SetOffloadPolicies) | **Post** /persistent/{tenant}/{namespace}/{topic}/offloadPolicies | Set offload policies on a topic.
 [**SetPersistence**](PersistentTopicApi.md#SetPersistence) | **Post** /persistent/{tenant}/{namespace}/{topic}/persistence | Set configuration of persistence policies for specified topic.
 [**SetPublishRate**](PersistentTopicApi.md#SetPublishRate) | **Post** /persistent/{tenant}/{namespace}/{topic}/publishRate | Set message publish rate configuration for specified topic.
+[**SetReplicatedSubscriptionStatus**](PersistentTopicApi.md#SetReplicatedSubscriptionStatus) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/replicatedSubscriptionStatus | Enable or disable a replicated subscription on a topic.
+[**SetReplicatorDispatchRate**](PersistentTopicApi.md#SetReplicatorDispatchRate) | **Post** /persistent/{tenant}/{namespace}/{topic}/replicatorDispatchRate | Set replicatorDispatchRate config for specified topic.
 [**SetRetention**](PersistentTopicApi.md#SetRetention) | **Post** /persistent/{tenant}/{namespace}/{topic}/retention | Set retention configuration for specified topic.
 [**SetSubscribeRate**](PersistentTopicApi.md#SetSubscribeRate) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscribeRate | Set subscribe rate configuration for specified topic.
 [**SetSubscriptionDispatchRate**](PersistentTopicApi.md#SetSubscriptionDispatchRate) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscriptionDispatchRate | Set subscription message dispatch rate configuration for specified topic.
+[**SetSubscriptionTypesEnabled**](PersistentTopicApi.md#SetSubscriptionTypesEnabled) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscriptionTypesEnabled | Set is enable sub types for specified topic
 [**SkipAllMessages**](PersistentTopicApi.md#SkipAllMessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip_all | Skip all messages on a topic subscription.
 [**SkipMessages**](PersistentTopicApi.md#SkipMessages) | **Post** /persistent/{tenant}/{namespace}/{topic}/subscription/{subName}/skip/{numMessages} | Skipping messages on a topic subscription.
-[**Terminate**](PersistentTopicApi.md#Terminate) | **Post** /persistent/{tenant}/{namespace}/{topic}/terminate | Terminate a persistent topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
+[**Terminate**](PersistentTopicApi.md#Terminate) | **Post** /persistent/{tenant}/{namespace}/{topic}/terminate | Terminate a topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
 [**TerminatePartitionedTopic**](PersistentTopicApi.md#TerminatePartitionedTopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/terminate/partitions | Terminate all partitioned topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
 [**TriggerOffload**](PersistentTopicApi.md#TriggerOffload) | **Put** /persistent/{tenant}/{namespace}/{topic}/offload | Offload a prefix of a topic to long term storage
+[**TruncateTopic**](PersistentTopicApi.md#TruncateTopic) | **Delete** /persistent/{tenant}/{namespace}/{topic}/truncate | Truncate a topic.
 [**UnloadTopic**](PersistentTopicApi.md#UnloadTopic) | **Put** /persistent/{tenant}/{namespace}/{topic}/unload | Unload a topic
 [**UpdatePartitionedTopic**](PersistentTopicApi.md#UpdatePartitionedTopic) | **Post** /persistent/{tenant}/{namespace}/{topic}/partitions | Increment partitions of an existing partitioned topic.
 
@@ -401,7 +415,7 @@ No authorization required
 
 ## CreatePartitionedTopic
 
-> CreatePartitionedTopic(ctx, tenant, namespace, topic).Body(body).Execute()
+> CreatePartitionedTopic(ctx, tenant, namespace, topic).Body(body).CreateLocalTopicOnly(createLocalTopicOnly).Execute()
 
 Create a partitioned topic.
 
@@ -424,10 +438,11 @@ func main() {
     namespace := "namespace_example" // string | Specify the namespace
     topic := "topic_example" // string | Specify topic name
     body := int32(56) // int32 | The number of partitions for the topic
+    createLocalTopicOnly := true // bool |  (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.CreatePartitionedTopic(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.CreatePartitionedTopic(context.Background(), tenant, namespace, topic).Body(body).CreateLocalTopicOnly(createLocalTopicOnly).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.CreatePartitionedTopic``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -456,6 +471,7 @@ Name | Type | Description  | Notes
 
 
  **body** | **int32** | The number of partitions for the topic | 
+ **createLocalTopicOnly** | **bool** |  | [default to false]
 
 ### Return type
 
@@ -560,7 +576,7 @@ No authorization required
 
 ## DeleteDeduplicationSnapshotInterval
 
-> DeleteDeduplicationSnapshotInterval(ctx, tenant, namespace, topic).Execute()
+> DeleteDeduplicationSnapshotInterval(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Delete deduplicationSnapshotInterval config on a topic.
 
@@ -580,10 +596,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.DeleteDeduplicationSnapshotInterval(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.DeleteDeduplicationSnapshotInterval(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.DeleteDeduplicationSnapshotInterval``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -611,6 +628,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -632,7 +650,7 @@ No authorization required
 
 ## DeleteDelayedDeliveryPolicies
 
-> DeleteDelayedDeliveryPolicies(ctx, tenant, namespace, topic).Execute()
+> DeleteDelayedDeliveryPolicies(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Set delayed delivery messages config on a topic.
 
@@ -652,10 +670,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.DeleteDelayedDeliveryPolicies(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.DeleteDelayedDeliveryPolicies(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.DeleteDelayedDeliveryPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -683,6 +702,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -704,7 +724,7 @@ No authorization required
 
 ## DeleteInactiveTopicPolicies
 
-> DeleteInactiveTopicPolicies(ctx, tenant, namespace, topic).Execute()
+> DeleteInactiveTopicPolicies(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Delete inactive topic policies on a topic.
 
@@ -724,10 +744,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.DeleteInactiveTopicPolicies(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.DeleteInactiveTopicPolicies(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.DeleteInactiveTopicPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -755,6 +776,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -776,7 +798,7 @@ No authorization required
 
 ## DeleteMaxUnackedMessagesOnConsumer
 
-> DeleteMaxUnackedMessagesOnConsumer(ctx, tenant, namespace, topic).Execute()
+> DeleteMaxUnackedMessagesOnConsumer(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Delete max unacked messages per consumer config on a topic.
 
@@ -796,10 +818,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.DeleteMaxUnackedMessagesOnConsumer(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.DeleteMaxUnackedMessagesOnConsumer(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.DeleteMaxUnackedMessagesOnConsumer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -827,6 +850,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -848,7 +872,7 @@ No authorization required
 
 ## DeleteMaxUnackedMessagesOnSubscription
 
-> DeleteMaxUnackedMessagesOnSubscription(ctx, tenant, namespace, topic).Execute()
+> DeleteMaxUnackedMessagesOnSubscription(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Delete max unacked messages per subscription config on a topic.
 
@@ -868,10 +892,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.DeleteMaxUnackedMessagesOnSubscription(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.DeleteMaxUnackedMessagesOnSubscription(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.DeleteMaxUnackedMessagesOnSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -899,6 +924,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -1316,7 +1342,86 @@ No authorization required
 
 ## ExpireTopicMessages
 
-> ExpireTopicMessages(ctx, tenant, namespace, topic, subName, expireTimeInSeconds).Authoritative(authoritative).Execute()
+> ExpireTopicMessages(ctx, tenant, namespace, topic, subName).Authoritative(authoritative).MessageId(messageId).Execute()
+
+Expiry messages on a topic subscription.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | Specify the tenant
+    namespace := "namespace_example" // string | Specify the namespace
+    topic := "topic_example" // string | Specify topic name
+    subName := "subName_example" // string | Subscription to be Expiry messages on
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    messageId := *openapiclient.NewResetCursorData() // ResetCursorData | messageId to reset back to (ledgerId:entryId) (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.ExpireTopicMessages(context.Background(), tenant, namespace, topic, subName).Authoritative(authoritative).MessageId(messageId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.ExpireTopicMessages``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** | Specify the tenant | 
+**namespace** | **string** | Specify the namespace | 
+**topic** | **string** | Specify topic name | 
+**subName** | **string** | Subscription to be Expiry messages on | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiExpireTopicMessagesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **messageId** | [**ResetCursorData**](ResetCursorData.md) | messageId to reset back to (ledgerId:entryId) | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ExpireTopicMessages_0
+
+> ExpireTopicMessages_0(ctx, tenant, namespace, topic, subName, expireTimeInSeconds).Authoritative(authoritative).Execute()
 
 Expiry messages on a topic subscription.
 
@@ -1342,9 +1447,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.ExpireTopicMessages(context.Background(), tenant, namespace, topic, subName, expireTimeInSeconds).Authoritative(authoritative).Execute()
+    resp, r, err := api_client.PersistentTopicApi.ExpireTopicMessages_0(context.Background(), tenant, namespace, topic, subName, expireTimeInSeconds).Authoritative(authoritative).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.ExpireTopicMessages``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.ExpireTopicMessages_0``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1364,7 +1469,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiExpireTopicMessagesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiExpireTopicMessages_1Request struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1472,7 +1577,7 @@ No authorization required
 
 ## GetBacklogQuotaMap
 
-> map[string]map[string]interface{} GetBacklogQuotaMap(ctx, tenant, namespace, topic).Execute()
+> GetBacklogQuotaMap(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get backlog quota map on a topic.
 
@@ -1492,16 +1597,16 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetBacklogQuotaMap(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetBacklogQuotaMap(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetBacklogQuotaMap``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetBacklogQuotaMap`: map[string]map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `PersistentTopicApi.GetBacklogQuotaMap`: %v\n", resp)
 }
 ```
 
@@ -1525,10 +1630,12 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
-**map[string]map[string]interface{}**
+ (empty response body)
 
 ### Authorization
 
@@ -1537,7 +1644,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1546,7 +1653,7 @@ No authorization required
 
 ## GetCompactionThreshold
 
-> GetCompactionThreshold(ctx, tenant, namespace, topic).Execute()
+> GetCompactionThreshold(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get compaction threshold configuration for specified topic.
 
@@ -1566,10 +1673,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetCompactionThreshold(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetCompactionThreshold(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetCompactionThreshold``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1597,6 +1706,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -1616,9 +1727,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetDeduplicationEnabled
+## GetDeduplication
 
-> GetDeduplicationEnabled(ctx, tenant, namespace, topic).Execute()
+> GetDeduplication(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get deduplication configuration of a topic.
 
@@ -1638,12 +1749,14 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetDeduplicationEnabled(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetDeduplication(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetDeduplicationEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetDeduplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -1661,7 +1774,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetDeduplicationEnabledRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetDeduplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -1669,6 +1782,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -1690,7 +1805,7 @@ No authorization required
 
 ## GetDeduplicationSnapshotInterval
 
-> GetDeduplicationSnapshotInterval(ctx, tenant, namespace, topic).Execute()
+> GetDeduplicationSnapshotInterval(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Get deduplicationSnapshotInterval config on a topic.
 
@@ -1710,10 +1825,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetDeduplicationSnapshotInterval(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetDeduplicationSnapshotInterval(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetDeduplicationSnapshotInterval``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1741,6 +1857,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -1762,7 +1879,7 @@ No authorization required
 
 ## GetDelayedDeliveryPolicies
 
-> GetDelayedDeliveryPolicies(ctx, tenant, namespace, topic).Execute()
+> GetDelayedDeliveryPolicies(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get delayed delivery messages config on a topic.
 
@@ -1782,10 +1899,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetDelayedDeliveryPolicies(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetDelayedDeliveryPolicies(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetDelayedDeliveryPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1813,6 +1932,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -1834,7 +1955,7 @@ No authorization required
 
 ## GetDispatchRate
 
-> GetDispatchRate(ctx, tenant, namespace, topic).Execute()
+> GetDispatchRate(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get dispatch rate configuration for specified topic.
 
@@ -1854,10 +1975,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetDispatchRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetDispatchRate(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetDispatchRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1885,6 +2008,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -1906,7 +2031,7 @@ No authorization required
 
 ## GetInactiveTopicPolicies
 
-> GetInactiveTopicPolicies(ctx, tenant, namespace, topic).Execute()
+> GetInactiveTopicPolicies(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get inactive topic policies on a topic.
 
@@ -1926,10 +2051,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetInactiveTopicPolicies(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetInactiveTopicPolicies(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetInactiveTopicPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1957,6 +2084,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2275,7 +2404,7 @@ No authorization required
 
 ## GetMaxConsumers
 
-> GetMaxConsumers(ctx, tenant, namespace, topic).Execute()
+> GetMaxConsumers(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get maxConsumers config for specified topic.
 
@@ -2295,10 +2424,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetMaxConsumers(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetMaxConsumers(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxConsumers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2326,6 +2457,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2347,7 +2480,7 @@ No authorization required
 
 ## GetMaxConsumersPerSubscription
 
-> GetMaxConsumersPerSubscription(ctx, tenant, namespace, topic).Execute()
+> GetMaxConsumersPerSubscription(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Get max consumers per subscription configuration for specified topic.
 
@@ -2367,10 +2500,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetMaxConsumersPerSubscription(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetMaxConsumersPerSubscription(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxConsumersPerSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2398,6 +2532,81 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMaxMessageSize
+
+> GetMaxMessageSize(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Get maxMessageSize config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.GetMaxMessageSize(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxMessageSize``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMaxMessageSizeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2419,7 +2628,7 @@ No authorization required
 
 ## GetMaxProducers
 
-> GetMaxProducers(ctx, tenant, namespace, topic).Execute()
+> GetMaxProducers(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get maxProducers config for specified topic.
 
@@ -2439,10 +2648,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetMaxProducers(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetMaxProducers(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxProducers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2470,6 +2681,82 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMaxSubscriptionsPerTopic
+
+> GetMaxSubscriptionsPerTopic(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Get maxSubscriptionsPerTopic config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.GetMaxSubscriptionsPerTopic(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxSubscriptionsPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMaxSubscriptionsPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2491,7 +2778,7 @@ No authorization required
 
 ## GetMaxUnackedMessagesOnConsumer
 
-> GetMaxUnackedMessagesOnConsumer(ctx, tenant, namespace, topic).Execute()
+> GetMaxUnackedMessagesOnConsumer(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get max unacked messages per consumer config on a topic.
 
@@ -2511,10 +2798,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetMaxUnackedMessagesOnConsumer(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetMaxUnackedMessagesOnConsumer(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxUnackedMessagesOnConsumer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2542,6 +2831,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2563,7 +2854,7 @@ No authorization required
 
 ## GetMaxUnackedMessagesOnSubscription
 
-> GetMaxUnackedMessagesOnSubscription(ctx, tenant, namespace, topic).Execute()
+> GetMaxUnackedMessagesOnSubscription(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get max unacked messages per subscription config on a topic.
 
@@ -2583,10 +2874,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetMaxUnackedMessagesOnSubscription(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetMaxUnackedMessagesOnSubscription(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMaxUnackedMessagesOnSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2614,6 +2907,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2715,7 +3010,7 @@ No authorization required
 
 ## GetMessageTTL
 
-> int32 GetMessageTTL(ctx, tenant, namespace, topic).Execute()
+> GetMessageTTL(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get message TTL in seconds for a topic
 
@@ -2735,16 +3030,16 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetMessageTTL(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetMessageTTL(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetMessageTTL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetMessageTTL`: int32
-    fmt.Fprintf(os.Stdout, "Response from `PersistentTopicApi.GetMessageTTL`: %v\n", resp)
 }
 ```
 
@@ -2768,10 +3063,12 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
-**int32**
+ (empty response body)
 
 ### Authorization
 
@@ -2780,7 +3077,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2789,7 +3086,7 @@ No authorization required
 
 ## GetOffloadPolicies
 
-> GetOffloadPolicies(ctx, tenant, namespace, topic).Execute()
+> GetOffloadPolicies(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get offload policies on a topic.
 
@@ -2809,10 +3106,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetOffloadPolicies(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetOffloadPolicies(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetOffloadPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2840,6 +3139,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -2939,7 +3240,7 @@ No authorization required
 
 ## GetPartitionedStats
 
-> GetPartitionedStats(ctx, tenant, namespace, topic).PerPartition(perPartition).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).Execute()
+> GetPartitionedStats(ctx, tenant, namespace, topic).PerPartition(perPartition).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).SubscriptionBacklogSize(subscriptionBacklogSize).Execute()
 
 Get the stats for the partitioned topic.
 
@@ -2961,11 +3262,12 @@ func main() {
     topic := "topic_example" // string | Specify topic name
     perPartition := true // bool | Get per partition stats (optional) (default to true)
     authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
-    getPreciseBacklog := true // bool | Is return precise backlog or imprecise backlog (optional) (default to false)
+    getPreciseBacklog := true // bool | If return precise backlog or imprecise backlog (optional) (default to false)
+    subscriptionBacklogSize := true // bool | If return backlog size for each subscription, require locking on ledger so be careful not to use when there's heavy traffic. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetPartitionedStats(context.Background(), tenant, namespace, topic).PerPartition(perPartition).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetPartitionedStats(context.Background(), tenant, namespace, topic).PerPartition(perPartition).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).SubscriptionBacklogSize(subscriptionBacklogSize).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetPartitionedStats``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2995,7 +3297,8 @@ Name | Type | Description  | Notes
 
  **perPartition** | **bool** | Get per partition stats | [default to true]
  **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
- **getPreciseBacklog** | **bool** | Is return precise backlog or imprecise backlog | [default to false]
+ **getPreciseBacklog** | **bool** | If return precise backlog or imprecise backlog | [default to false]
+ **subscriptionBacklogSize** | **bool** | If return backlog size for each subscription, require locking on ledger so be careful not to use when there&#39;s heavy traffic. | [default to false]
 
 ### Return type
 
@@ -3088,7 +3391,7 @@ No authorization required
 
 ## GetPermissionsOnTopic
 
-> map[string]map[string]interface{} GetPermissionsOnTopic(ctx, tenant, namespace, topic).Execute()
+> map[string][]string GetPermissionsOnTopic(ctx, tenant, namespace, topic).Execute()
 
 Get permissions on a topic.
 
@@ -3118,7 +3421,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetPermissionsOnTopic``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPermissionsOnTopic`: map[string]map[string]interface{}
+    // response from `GetPermissionsOnTopic`: map[string][]string
     fmt.Fprintf(os.Stdout, "Response from `PersistentTopicApi.GetPermissionsOnTopic`: %v\n", resp)
 }
 ```
@@ -3146,7 +3449,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+[**map[string][]string**](set.md)
 
 ### Authorization
 
@@ -3164,7 +3467,7 @@ No authorization required
 
 ## GetPersistence
 
-> GetPersistence(ctx, tenant, namespace, topic).Execute()
+> GetPersistence(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get configuration of persistence policies for specified topic.
 
@@ -3184,10 +3487,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetPersistence(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetPersistence(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetPersistence``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3215,6 +3520,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -3236,7 +3543,7 @@ No authorization required
 
 ## GetPublishRate
 
-> GetPublishRate(ctx, tenant, namespace, topic).Execute()
+> GetPublishRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Get publish rate configuration for specified topic.
 
@@ -3256,10 +3563,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetPublishRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetPublishRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetPublishRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3287,6 +3595,83 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetReplicatorDispatchRate
+
+> GetReplicatorDispatchRate(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
+
+Get replicatorDispatchRate config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.GetReplicatorDispatchRate(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetReplicatorDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetReplicatorDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -3308,7 +3693,7 @@ No authorization required
 
 ## GetRetention
 
-> GetRetention(ctx, tenant, namespace, topic).Execute()
+> GetRetention(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get retention configuration for specified topic.
 
@@ -3328,10 +3713,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetRetention(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetRetention(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetRetention``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3359,6 +3746,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -3380,7 +3769,7 @@ No authorization required
 
 ## GetStats
 
-> TopicStats GetStats(ctx, tenant, namespace, topic).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).Execute()
+> TopicStats GetStats(ctx, tenant, namespace, topic).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).SubscriptionBacklogSize(subscriptionBacklogSize).Execute()
 
 Get the stats for the topic.
 
@@ -3401,11 +3790,12 @@ func main() {
     namespace := "namespace_example" // string | Specify the namespace
     topic := "topic_example" // string | Specify topic name
     authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
-    getPreciseBacklog := true // bool | Is return precise backlog or imprecise backlog (optional) (default to false)
+    getPreciseBacklog := true // bool | If return precise backlog or imprecise backlog (optional) (default to false)
+    subscriptionBacklogSize := true // bool | If return backlog size for each subscription, require locking on ledger so be careful not to use when there's heavy traffic. (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetStats(context.Background(), tenant, namespace, topic).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetStats(context.Background(), tenant, namespace, topic).Authoritative(authoritative).GetPreciseBacklog(getPreciseBacklog).SubscriptionBacklogSize(subscriptionBacklogSize).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetStats``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3436,7 +3826,8 @@ Name | Type | Description  | Notes
 
 
  **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
- **getPreciseBacklog** | **bool** | Is return precise backlog or imprecise backlog | [default to false]
+ **getPreciseBacklog** | **bool** | If return precise backlog or imprecise backlog | [default to false]
+ **subscriptionBacklogSize** | **bool** | If return backlog size for each subscription, require locking on ledger so be careful not to use when there&#39;s heavy traffic. | [default to false]
 
 ### Return type
 
@@ -3458,7 +3849,7 @@ No authorization required
 
 ## GetSubscribeRate
 
-> GetSubscribeRate(ctx, tenant, namespace, topic).Execute()
+> GetSubscribeRate(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get subscribe rate configuration for specified topic.
 
@@ -3478,10 +3869,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetSubscribeRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetSubscribeRate(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetSubscribeRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3509,6 +3902,8 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -3530,7 +3925,7 @@ No authorization required
 
 ## GetSubscriptionDispatchRate
 
-> GetSubscriptionDispatchRate(ctx, tenant, namespace, topic).Execute()
+> GetSubscriptionDispatchRate(ctx, tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
 
 Get subscription message dispatch rate configuration for specified topic.
 
@@ -3550,10 +3945,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    applied := true // bool |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.GetSubscriptionDispatchRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.GetSubscriptionDispatchRate(context.Background(), tenant, namespace, topic).Applied(applied).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetSubscriptionDispatchRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3581,6 +3978,82 @@ Name | Type | Description  | Notes
 
 
 
+ **applied** | **bool** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSubscriptionTypesEnabled
+
+> GetSubscriptionTypesEnabled(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Get is enable sub type fors specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.GetSubscriptionTypesEnabled(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.GetSubscriptionTypesEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSubscriptionTypesEnabledRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -3909,7 +4382,7 @@ No authorization required
 
 ## RemoveBacklogQuota
 
-> RemoveBacklogQuota(ctx, tenant, namespace, topic).BacklogQuotaType(backlogQuotaType).Execute()
+> RemoveBacklogQuota(ctx, tenant, namespace, topic).BacklogQuotaType(backlogQuotaType).Authoritative(authoritative).Execute()
 
 Remove a backlog quota policy from a topic.
 
@@ -3930,10 +4403,11 @@ func main() {
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
     backlogQuotaType := "backlogQuotaType_example" // string |  (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveBacklogQuota(context.Background(), tenant, namespace, topic).BacklogQuotaType(backlogQuotaType).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveBacklogQuota(context.Background(), tenant, namespace, topic).BacklogQuotaType(backlogQuotaType).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveBacklogQuota``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -3962,6 +4436,7 @@ Name | Type | Description  | Notes
 
 
  **backlogQuotaType** | **string** |  | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -3983,7 +4458,7 @@ No authorization required
 
 ## RemoveCompactionThreshold
 
-> RemoveCompactionThreshold(ctx, tenant, namespace, topic).Execute()
+> RemoveCompactionThreshold(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove compaction threshold configuration for specified topic.
 
@@ -4003,10 +4478,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveCompactionThreshold(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveCompactionThreshold(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveCompactionThreshold``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4034,6 +4510,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4053,9 +4530,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## RemoveDeduplicationEnabled
+## RemoveDeduplication
 
-> RemoveDeduplicationEnabled(ctx, tenant, namespace, topic).Execute()
+> RemoveDeduplication(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove deduplication configuration for specified topic.
 
@@ -4075,12 +4552,13 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveDeduplicationEnabled(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveDeduplication(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveDeduplicationEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveDeduplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -4098,7 +4576,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRemoveDeduplicationEnabledRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRemoveDeduplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4106,6 +4584,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4127,7 +4606,7 @@ No authorization required
 
 ## RemoveDispatchRate
 
-> RemoveDispatchRate(ctx, tenant, namespace, topic).Execute()
+> RemoveDispatchRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove message dispatch rate configuration for specified topic.
 
@@ -4147,10 +4626,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveDispatchRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveDispatchRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveDispatchRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4178,6 +4658,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4199,7 +4680,7 @@ No authorization required
 
 ## RemoveMaxConsumers
 
-> RemoveMaxConsumers(ctx, tenant, namespace, topic).Execute()
+> RemoveMaxConsumers(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove maxConsumers config for specified topic.
 
@@ -4219,10 +4700,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveMaxConsumers(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveMaxConsumers(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveMaxConsumers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4250,6 +4732,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4271,7 +4754,7 @@ No authorization required
 
 ## RemoveMaxConsumersPerSubscription
 
-> RemoveMaxConsumersPerSubscription(ctx, tenant, namespace, topic).Execute()
+> RemoveMaxConsumersPerSubscription(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove max consumers per subscription configuration for specified topic.
 
@@ -4291,10 +4774,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveMaxConsumersPerSubscription(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveMaxConsumersPerSubscription(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveMaxConsumersPerSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4322,6 +4806,81 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveMaxMessageSize
+
+> RemoveMaxMessageSize(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Remove maxMessageSize config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.RemoveMaxMessageSize(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveMaxMessageSize``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveMaxMessageSizeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4343,7 +4902,7 @@ No authorization required
 
 ## RemoveMaxProducers
 
-> RemoveMaxProducers(ctx, tenant, namespace, topic).Execute()
+> RemoveMaxProducers(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove maxProducers config for specified topic.
 
@@ -4363,10 +4922,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveMaxProducers(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveMaxProducers(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveMaxProducers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4394,6 +4954,81 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveMaxSubscriptionsPerTopic
+
+> RemoveMaxSubscriptionsPerTopic(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Remove maxSubscriptionsPerTopic config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.RemoveMaxSubscriptionsPerTopic(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveMaxSubscriptionsPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveMaxSubscriptionsPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4415,7 +5050,7 @@ No authorization required
 
 ## RemoveMessageTTL
 
-> RemoveMessageTTL(ctx, tenant, namespace, topic).Execute()
+> RemoveMessageTTL(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove message TTL in seconds for a topic
 
@@ -4435,10 +5070,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveMessageTTL(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveMessageTTL(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveMessageTTL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4466,6 +5102,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4487,7 +5124,7 @@ No authorization required
 
 ## RemoveOffloadPolicies
 
-> RemoveOffloadPolicies(ctx, tenant, namespace, topic).Execute()
+> RemoveOffloadPolicies(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Delete offload policies on a topic.
 
@@ -4507,10 +5144,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveOffloadPolicies(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveOffloadPolicies(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveOffloadPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4538,6 +5176,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4559,7 +5198,7 @@ No authorization required
 
 ## RemovePersistence
 
-> RemovePersistence(ctx, tenant, namespace, topic).Execute()
+> RemovePersistence(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove configuration of persistence policies for specified topic.
 
@@ -4579,10 +5218,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemovePersistence(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemovePersistence(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemovePersistence``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4610,6 +5250,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4631,7 +5272,7 @@ No authorization required
 
 ## RemovePublishRate
 
-> RemovePublishRate(ctx, tenant, namespace, topic).Execute()
+> RemovePublishRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove message publish rate configuration for specified topic.
 
@@ -4651,10 +5292,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemovePublishRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemovePublishRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemovePublishRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4682,6 +5324,81 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveReplicatorDispatchRate
+
+> RemoveReplicatorDispatchRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Remove replicatorDispatchRate config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.RemoveReplicatorDispatchRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveReplicatorDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveReplicatorDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4703,7 +5420,7 @@ No authorization required
 
 ## RemoveRetention
 
-> RemoveRetention(ctx, tenant, namespace, topic).Execute()
+> RemoveRetention(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove retention configuration for specified topic.
 
@@ -4723,10 +5440,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveRetention(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveRetention(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveRetention``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4754,6 +5472,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4775,7 +5494,7 @@ No authorization required
 
 ## RemoveSubscribeRate
 
-> RemoveSubscribeRate(ctx, tenant, namespace, topic).Execute()
+> RemoveSubscribeRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Remove subscribe rate configuration for specified topic.
 
@@ -4795,10 +5514,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool |  (optional) (default to false)
+    body := *openapiclient.NewSubscribeRate() // SubscribeRate | Subscribe rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveSubscribeRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveSubscribeRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveSubscribeRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4826,6 +5547,8 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** |  | [default to false]
+ **body** | [**SubscribeRate**](SubscribeRate.md) | Subscribe rate for the specified topic | 
 
 ### Return type
 
@@ -4847,7 +5570,7 @@ No authorization required
 
 ## RemoveSubscriptionDispatchRate
 
-> RemoveSubscriptionDispatchRate(ctx, tenant, namespace, topic).Execute()
+> RemoveSubscriptionDispatchRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
 Remove subscription message dispatch rate configuration for specified topic.
 
@@ -4867,10 +5590,11 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.RemoveSubscriptionDispatchRate(context.Background(), tenant, namespace, topic).Execute()
+    resp, r, err := api_client.PersistentTopicApi.RemoveSubscriptionDispatchRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.RemoveSubscriptionDispatchRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -4898,6 +5622,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -4942,7 +5667,7 @@ func main() {
     namespace := "namespace_example" // string | Specify the namespace
     topic := "topic_example" // string | Specify topic name
     subName := "subName_example" // string | Subscription to reset position on
-    timestamp := int64(789) // int64 | time in minutes to reset back to (or minutes, hours,days,weeks eg:100m, 3h, 2d, 5w)
+    timestamp := int64(789) // int64 | the timestamp to reset back
     authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
@@ -4965,7 +5690,7 @@ Name | Type | Description  | Notes
 **namespace** | **string** | Specify the namespace | 
 **topic** | **string** | Specify topic name | 
 **subName** | **string** | Subscription to reset position on | 
-**timestamp** | **int64** | time in minutes to reset back to (or minutes, hours,days,weeks eg:100m, 3h, 2d, 5w) | 
+**timestamp** | **int64** | the timestamp to reset back | 
 
 ### Other Parameters
 
@@ -5159,7 +5884,7 @@ No authorization required
 
 ## SetBacklogQuota
 
-> SetBacklogQuota(ctx, tenant, namespace, topic).BacklogQuotaType(backlogQuotaType).Execute()
+> SetBacklogQuota(ctx, tenant, namespace, topic).Authoritative(authoritative).BacklogQuotaType(backlogQuotaType).Execute()
 
 Set a backlog quota for a topic.
 
@@ -5179,11 +5904,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     backlogQuotaType := "backlogQuotaType_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetBacklogQuota(context.Background(), tenant, namespace, topic).BacklogQuotaType(backlogQuotaType).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetBacklogQuota(context.Background(), tenant, namespace, topic).Authoritative(authoritative).BacklogQuotaType(backlogQuotaType).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetBacklogQuota``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5211,6 +5937,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **backlogQuotaType** | **string** |  | 
 
 ### Return type
@@ -5233,7 +5960,7 @@ No authorization required
 
 ## SetCompactionThreshold
 
-> SetCompactionThreshold(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetCompactionThreshold(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set compaction threshold configuration for specified topic.
 
@@ -5253,11 +5980,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int64(789) // int64 | Dispatch rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetCompactionThreshold(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetCompactionThreshold(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetCompactionThreshold``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5285,6 +6013,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int64** | Dispatch rate for the specified topic | 
 
 ### Return type
@@ -5305,9 +6034,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## SetDeduplicationEnabled
+## SetDeduplication
 
-> SetDeduplicationEnabled(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetDeduplication(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set deduplication enabled on a topic.
 
@@ -5327,13 +6056,14 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := true // bool | DeduplicationEnabled policies for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetDeduplicationEnabled(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetDeduplication(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetDeduplicationEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetDeduplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -5351,7 +6081,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiSetDeduplicationEnabledRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiSetDeduplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -5359,6 +6089,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **bool** | DeduplicationEnabled policies for the specified topic | 
 
 ### Return type
@@ -5381,7 +6112,7 @@ No authorization required
 
 ## SetDeduplicationSnapshotInterval
 
-> SetDeduplicationSnapshotInterval(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetDeduplicationSnapshotInterval(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set deduplicationSnapshotInterval config on a topic.
 
@@ -5401,11 +6132,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int32(56) // int32 | Interval to take deduplication snapshot for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetDeduplicationSnapshotInterval(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetDeduplicationSnapshotInterval(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetDeduplicationSnapshotInterval``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5433,6 +6165,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int32** | Interval to take deduplication snapshot for the specified topic | 
 
 ### Return type
@@ -5455,7 +6188,7 @@ No authorization required
 
 ## SetDelayedDeliveryPolicies
 
-> SetDelayedDeliveryPolicies(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetDelayedDeliveryPolicies(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set delayed delivery messages config on a topic.
 
@@ -5475,11 +6208,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := *openapiclient.NewDelayedDeliveryPolicies() // DelayedDeliveryPolicies | Delayed delivery policies for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetDelayedDeliveryPolicies(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetDelayedDeliveryPolicies(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetDelayedDeliveryPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5507,6 +6241,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | [**DelayedDeliveryPolicies**](DelayedDeliveryPolicies.md) | Delayed delivery policies for the specified topic | 
 
 ### Return type
@@ -5529,7 +6264,7 @@ No authorization required
 
 ## SetDispatchRate
 
-> SetDispatchRate(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetDispatchRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set message dispatch rate configuration for specified topic.
 
@@ -5549,11 +6284,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
-    body := *openapiclient.NewDispatchRate() // DispatchRate | Dispatch rate for the specified topic (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := *openapiclient.NewDispatchRateImpl() // DispatchRateImpl | Dispatch rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetDispatchRate(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetDispatchRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetDispatchRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5581,7 +6317,8 @@ Name | Type | Description  | Notes
 
 
 
- **body** | [**DispatchRate**](DispatchRate.md) | Dispatch rate for the specified topic | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | [**DispatchRateImpl**](DispatchRateImpl.md) | Dispatch rate for the specified topic | 
 
 ### Return type
 
@@ -5603,7 +6340,7 @@ No authorization required
 
 ## SetInactiveTopicPolicies
 
-> SetInactiveTopicPolicies(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetInactiveTopicPolicies(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set inactive topic policies on a topic.
 
@@ -5623,11 +6360,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := *openapiclient.NewInactiveTopicPolicies() // InactiveTopicPolicies | inactive topic policies for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetInactiveTopicPolicies(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetInactiveTopicPolicies(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetInactiveTopicPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5655,6 +6393,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | [**InactiveTopicPolicies**](InactiveTopicPolicies.md) | inactive topic policies for the specified topic | 
 
 ### Return type
@@ -5677,7 +6416,7 @@ No authorization required
 
 ## SetMaxConsumers
 
-> SetMaxConsumers(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetMaxConsumers(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set maxConsumers config for specified topic.
 
@@ -5697,11 +6436,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int32(56) // int32 | The max consumers of the topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetMaxConsumers(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetMaxConsumers(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxConsumers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5729,6 +6469,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int32** | The max consumers of the topic | 
 
 ### Return type
@@ -5751,7 +6492,7 @@ No authorization required
 
 ## SetMaxConsumersPerSubscription
 
-> SetMaxConsumersPerSubscription(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetMaxConsumersPerSubscription(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set max consumers per subscription configuration for specified topic.
 
@@ -5771,11 +6512,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int32(56) // int32 | Dispatch rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetMaxConsumersPerSubscription(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetMaxConsumersPerSubscription(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxConsumersPerSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5803,7 +6545,84 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int32** | Dispatch rate for the specified topic | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetMaxMessageSize
+
+> SetMaxMessageSize(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+
+Set maxMessageSize config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := int32(56) // int32 | The max message size of the topic (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.SetMaxMessageSize(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxMessageSize``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetMaxMessageSizeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | **int32** | The max message size of the topic | 
 
 ### Return type
 
@@ -5825,7 +6644,7 @@ No authorization required
 
 ## SetMaxProducers
 
-> SetMaxProducers(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetMaxProducers(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set maxProducers config for specified topic.
 
@@ -5845,11 +6664,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int32(56) // int32 | The max producers of the topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetMaxProducers(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetMaxProducers(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxProducers``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5877,7 +6697,84 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int32** | The max producers of the topic | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetMaxSubscriptionsPerTopic
+
+> SetMaxSubscriptionsPerTopic(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+
+Set maxSubscriptionsPerTopic config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := int32(56) // int32 | The max subscriptions of the topic (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.SetMaxSubscriptionsPerTopic(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxSubscriptionsPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetMaxSubscriptionsPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | **int32** | The max subscriptions of the topic | 
 
 ### Return type
 
@@ -5899,7 +6796,7 @@ No authorization required
 
 ## SetMaxUnackedMessagesOnConsumer
 
-> SetMaxUnackedMessagesOnConsumer(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetMaxUnackedMessagesOnConsumer(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set max unacked messages per consumer config on a topic.
 
@@ -5919,11 +6816,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int32(56) // int32 | Max unacked messages on consumer policies for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetMaxUnackedMessagesOnConsumer(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetMaxUnackedMessagesOnConsumer(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxUnackedMessagesOnConsumer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -5951,6 +6849,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int32** | Max unacked messages on consumer policies for the specified topic | 
 
 ### Return type
@@ -5973,7 +6872,7 @@ No authorization required
 
 ## SetMaxUnackedMessagesOnSubscription
 
-> SetMaxUnackedMessagesOnSubscription(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetMaxUnackedMessagesOnSubscription(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set max unacked messages per subscription config on a topic.
 
@@ -5993,11 +6892,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := int32(56) // int32 | Max unacked messages on subscription policies for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetMaxUnackedMessagesOnSubscription(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetMaxUnackedMessagesOnSubscription(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMaxUnackedMessagesOnSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6025,6 +6925,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | **int32** | Max unacked messages on subscription policies for the specified topic | 
 
 ### Return type
@@ -6047,7 +6948,7 @@ No authorization required
 
 ## SetMessageTTL
 
-> SetMessageTTL(ctx, tenant, namespace, topic).MessageTTL(messageTTL).Execute()
+> SetMessageTTL(ctx, tenant, namespace, topic).MessageTTL(messageTTL).Authoritative(authoritative).Execute()
 
 Set message TTL in seconds for a topic
 
@@ -6068,10 +6969,11 @@ func main() {
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
     messageTTL := int32(56) // int32 | TTL in seconds for the specified namespace
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetMessageTTL(context.Background(), tenant, namespace, topic).MessageTTL(messageTTL).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetMessageTTL(context.Background(), tenant, namespace, topic).MessageTTL(messageTTL).Authoritative(authoritative).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetMessageTTL``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6100,6 +7002,7 @@ Name | Type | Description  | Notes
 
 
  **messageTTL** | **int32** | TTL in seconds for the specified namespace | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
 
 ### Return type
 
@@ -6121,7 +7024,7 @@ No authorization required
 
 ## SetOffloadPolicies
 
-> SetOffloadPolicies(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetOffloadPolicies(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set offload policies on a topic.
 
@@ -6141,11 +7044,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
-    body := *openapiclient.NewOffloadPolicies() // OffloadPolicies | Offload policies for the specified topic (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := *openapiclient.NewOffloadPoliciesImpl() // OffloadPoliciesImpl | Offload policies for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetOffloadPolicies(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetOffloadPolicies(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetOffloadPolicies``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6173,7 +7077,8 @@ Name | Type | Description  | Notes
 
 
 
- **body** | [**OffloadPolicies**](OffloadPolicies.md) | Offload policies for the specified topic | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | [**OffloadPoliciesImpl**](OffloadPoliciesImpl.md) | Offload policies for the specified topic | 
 
 ### Return type
 
@@ -6195,7 +7100,7 @@ No authorization required
 
 ## SetPersistence
 
-> SetPersistence(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetPersistence(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set configuration of persistence policies for specified topic.
 
@@ -6215,11 +7120,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := *openapiclient.NewPersistencePolicies() // PersistencePolicies | Bookkeeper persistence policies for specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetPersistence(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetPersistence(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetPersistence``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6247,6 +7153,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | [**PersistencePolicies**](PersistencePolicies.md) | Bookkeeper persistence policies for specified topic | 
 
 ### Return type
@@ -6269,7 +7176,7 @@ No authorization required
 
 ## SetPublishRate
 
-> SetPublishRate(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetPublishRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set message publish rate configuration for specified topic.
 
@@ -6289,11 +7196,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := *openapiclient.NewPublishRate() // PublishRate | Dispatch rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetPublishRate(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetPublishRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetPublishRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6321,7 +7229,163 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | [**PublishRate**](PublishRate.md) | Dispatch rate for the specified topic | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetReplicatedSubscriptionStatus
+
+> SetReplicatedSubscriptionStatus(ctx, tenant, namespace, topic, subName).Body(body).Authoritative(authoritative).Execute()
+
+Enable or disable a replicated subscription on a topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | Specify the tenant
+    namespace := "namespace_example" // string | Specify the namespace
+    topic := "topic_example" // string | Specify topic name
+    subName := "subName_example" // string | Name of subscription
+    body := true // bool | Whether to enable replicated subscription
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.SetReplicatedSubscriptionStatus(context.Background(), tenant, namespace, topic, subName).Body(body).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetReplicatedSubscriptionStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** | Specify the tenant | 
+**namespace** | **string** | Specify the namespace | 
+**topic** | **string** | Specify topic name | 
+**subName** | **string** | Name of subscription | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetReplicatedSubscriptionStatusRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **body** | **bool** | Whether to enable replicated subscription | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetReplicatorDispatchRate
+
+> SetReplicatorDispatchRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+
+Set replicatorDispatchRate config for specified topic.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := *openapiclient.NewDispatchRateImpl() // DispatchRateImpl | Replicator dispatch rate of the topic (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.SetReplicatorDispatchRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetReplicatorDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetReplicatorDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | [**DispatchRateImpl**](DispatchRateImpl.md) | Replicator dispatch rate of the topic | 
 
 ### Return type
 
@@ -6343,7 +7407,7 @@ No authorization required
 
 ## SetRetention
 
-> SetRetention(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetRetention(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set retention configuration for specified topic.
 
@@ -6363,11 +7427,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := *openapiclient.NewRetentionPolicies() // RetentionPolicies | Retention policies for the specified namespace (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetRetention(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetRetention(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetRetention``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6395,6 +7460,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | [**RetentionPolicies**](RetentionPolicies.md) | Retention policies for the specified namespace | 
 
 ### Return type
@@ -6417,7 +7483,7 @@ No authorization required
 
 ## SetSubscribeRate
 
-> SetSubscribeRate(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetSubscribeRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set subscribe rate configuration for specified topic.
 
@@ -6437,11 +7503,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
     body := *openapiclient.NewSubscribeRate() // SubscribeRate | Subscribe rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetSubscribeRate(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetSubscribeRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetSubscribeRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6469,6 +7536,7 @@ Name | Type | Description  | Notes
 
 
 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
  **body** | [**SubscribeRate**](SubscribeRate.md) | Subscribe rate for the specified topic | 
 
 ### Return type
@@ -6491,7 +7559,7 @@ No authorization required
 
 ## SetSubscriptionDispatchRate
 
-> SetSubscriptionDispatchRate(ctx, tenant, namespace, topic).Body(body).Execute()
+> SetSubscriptionDispatchRate(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
 
 Set subscription message dispatch rate configuration for specified topic.
 
@@ -6511,11 +7579,12 @@ func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
     topic := "topic_example" // string | 
-    body := *openapiclient.NewDispatchRate() // DispatchRate | Subscription message dispatch rate for the specified topic (optional)
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := *openapiclient.NewDispatchRateImpl() // DispatchRateImpl | Subscription message dispatch rate for the specified topic (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.PersistentTopicApi.SetSubscriptionDispatchRate(context.Background(), tenant, namespace, topic).Body(body).Execute()
+    resp, r, err := api_client.PersistentTopicApi.SetSubscriptionDispatchRate(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetSubscriptionDispatchRate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -6543,7 +7612,84 @@ Name | Type | Description  | Notes
 
 
 
- **body** | [**DispatchRate**](DispatchRate.md) | Subscription message dispatch rate for the specified topic | 
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | [**DispatchRateImpl**](DispatchRateImpl.md) | Subscription message dispatch rate for the specified topic | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetSubscriptionTypesEnabled
+
+> SetSubscriptionTypesEnabled(ctx, tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+
+Set is enable sub types for specified topic
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    topic := "topic_example" // string | 
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+    body := []string{"Property_example"} // []string | Enable sub types for the specified topic (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.SetSubscriptionTypesEnabled(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.SetSubscriptionTypesEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**topic** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetSubscriptionTypesEnabledRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+ **body** | **[]string** | Enable sub types for the specified topic | 
 
 ### Return type
 
@@ -6726,7 +7872,7 @@ No authorization required
 
 > map[string]interface{} Terminate(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
 
-Terminate a persistent topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
+Terminate a topic. A topic that is terminated will not accept any more messages to be published and will let consumer to drain existing messages in backlog
 
 ### Example
 
@@ -6919,6 +8065,82 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiTriggerOffloadRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **authoritative** | **bool** | Is authentication required to perform this operation | [default to false]
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TruncateTopic
+
+> TruncateTopic(ctx, tenant, namespace, topic).Authoritative(authoritative).Execute()
+
+Truncate a topic.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | Specify the tenant
+    namespace := "namespace_example" // string | Specify the namespace
+    topic := "topic_example" // string | Specify topic name
+    authoritative := true // bool | Is authentication required to perform this operation (optional) (default to false)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.PersistentTopicApi.TruncateTopic(context.Background(), tenant, namespace, topic).Authoritative(authoritative).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PersistentTopicApi.TruncateTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** | Specify the tenant | 
+**namespace** | **string** | Specify the namespace | 
+**topic** | **string** | Specify topic name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTruncateTopicRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

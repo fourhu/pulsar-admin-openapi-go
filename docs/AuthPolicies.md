@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DestinationAuth** | Pointer to [**map[string]map[string][]string**](map.md) |  | [optional] 
-**NamespaceAuth** | Pointer to **map[string][]string** |  | [optional] 
-**SubscriptionAuthRoles** | Pointer to **map[string][]string** |  | [optional] 
+**TopicAuthentication** | Pointer to [**map[string]map[string][]string**](map.md) |  | [optional] 
+**SubscriptionAuthentication** | Pointer to **map[string][]string** |  | [optional] 
+**NamespaceAuthentication** | Pointer to **map[string][]string** |  | [optional] 
 
 ## Methods
 
@@ -27,80 +27,80 @@ NewAuthPoliciesWithDefaults instantiates a new AuthPolicies object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetDestinationAuth
+### GetTopicAuthentication
 
-`func (o *AuthPolicies) GetDestinationAuth() map[string]map[string][]string`
+`func (o *AuthPolicies) GetTopicAuthentication() map[string]map[string][]string`
 
-GetDestinationAuth returns the DestinationAuth field if non-nil, zero value otherwise.
+GetTopicAuthentication returns the TopicAuthentication field if non-nil, zero value otherwise.
 
-### GetDestinationAuthOk
+### GetTopicAuthenticationOk
 
-`func (o *AuthPolicies) GetDestinationAuthOk() (*map[string]map[string][]string, bool)`
+`func (o *AuthPolicies) GetTopicAuthenticationOk() (*map[string]map[string][]string, bool)`
 
-GetDestinationAuthOk returns a tuple with the DestinationAuth field if it's non-nil, zero value otherwise
+GetTopicAuthenticationOk returns a tuple with the TopicAuthentication field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDestinationAuth
+### SetTopicAuthentication
 
-`func (o *AuthPolicies) SetDestinationAuth(v map[string]map[string][]string)`
+`func (o *AuthPolicies) SetTopicAuthentication(v map[string]map[string][]string)`
 
-SetDestinationAuth sets DestinationAuth field to given value.
+SetTopicAuthentication sets TopicAuthentication field to given value.
 
-### HasDestinationAuth
+### HasTopicAuthentication
 
-`func (o *AuthPolicies) HasDestinationAuth() bool`
+`func (o *AuthPolicies) HasTopicAuthentication() bool`
 
-HasDestinationAuth returns a boolean if a field has been set.
+HasTopicAuthentication returns a boolean if a field has been set.
 
-### GetNamespaceAuth
+### GetSubscriptionAuthentication
 
-`func (o *AuthPolicies) GetNamespaceAuth() map[string][]string`
+`func (o *AuthPolicies) GetSubscriptionAuthentication() map[string][]string`
 
-GetNamespaceAuth returns the NamespaceAuth field if non-nil, zero value otherwise.
+GetSubscriptionAuthentication returns the SubscriptionAuthentication field if non-nil, zero value otherwise.
 
-### GetNamespaceAuthOk
+### GetSubscriptionAuthenticationOk
 
-`func (o *AuthPolicies) GetNamespaceAuthOk() (*map[string][]string, bool)`
+`func (o *AuthPolicies) GetSubscriptionAuthenticationOk() (*map[string][]string, bool)`
 
-GetNamespaceAuthOk returns a tuple with the NamespaceAuth field if it's non-nil, zero value otherwise
+GetSubscriptionAuthenticationOk returns a tuple with the SubscriptionAuthentication field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetNamespaceAuth
+### SetSubscriptionAuthentication
 
-`func (o *AuthPolicies) SetNamespaceAuth(v map[string][]string)`
+`func (o *AuthPolicies) SetSubscriptionAuthentication(v map[string][]string)`
 
-SetNamespaceAuth sets NamespaceAuth field to given value.
+SetSubscriptionAuthentication sets SubscriptionAuthentication field to given value.
 
-### HasNamespaceAuth
+### HasSubscriptionAuthentication
 
-`func (o *AuthPolicies) HasNamespaceAuth() bool`
+`func (o *AuthPolicies) HasSubscriptionAuthentication() bool`
 
-HasNamespaceAuth returns a boolean if a field has been set.
+HasSubscriptionAuthentication returns a boolean if a field has been set.
 
-### GetSubscriptionAuthRoles
+### GetNamespaceAuthentication
 
-`func (o *AuthPolicies) GetSubscriptionAuthRoles() map[string][]string`
+`func (o *AuthPolicies) GetNamespaceAuthentication() map[string][]string`
 
-GetSubscriptionAuthRoles returns the SubscriptionAuthRoles field if non-nil, zero value otherwise.
+GetNamespaceAuthentication returns the NamespaceAuthentication field if non-nil, zero value otherwise.
 
-### GetSubscriptionAuthRolesOk
+### GetNamespaceAuthenticationOk
 
-`func (o *AuthPolicies) GetSubscriptionAuthRolesOk() (*map[string][]string, bool)`
+`func (o *AuthPolicies) GetNamespaceAuthenticationOk() (*map[string][]string, bool)`
 
-GetSubscriptionAuthRolesOk returns a tuple with the SubscriptionAuthRoles field if it's non-nil, zero value otherwise
+GetNamespaceAuthenticationOk returns a tuple with the NamespaceAuthentication field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSubscriptionAuthRoles
+### SetNamespaceAuthentication
 
-`func (o *AuthPolicies) SetSubscriptionAuthRoles(v map[string][]string)`
+`func (o *AuthPolicies) SetNamespaceAuthentication(v map[string][]string)`
 
-SetSubscriptionAuthRoles sets SubscriptionAuthRoles field to given value.
+SetNamespaceAuthentication sets NamespaceAuthentication field to given value.
 
-### HasSubscriptionAuthRoles
+### HasNamespaceAuthentication
 
-`func (o *AuthPolicies) HasSubscriptionAuthRoles() bool`
+`func (o *AuthPolicies) HasNamespaceAuthentication() bool`
 
-HasSubscriptionAuthRoles returns a boolean if a field has been set.
+HasNamespaceAuthentication returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -16,28 +16,33 @@ import (
 
 // SubscriptionStats struct for SubscriptionStats
 type SubscriptionStats struct {
-	ActiveConsumerName *string `json:"activeConsumerName,omitempty"`
-	BlockedSubscriptionOnUnackedMsgs *bool `json:"blockedSubscriptionOnUnackedMsgs,omitempty"`
+	Durable *bool `json:"durable,omitempty"`
+	Replicated *bool `json:"replicated,omitempty"`
+	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
+	BacklogSize *int64 `json:"backlogSize,omitempty"`
 	BytesOutCounter *int64 `json:"bytesOutCounter,omitempty"`
-	ChuckedMessageRate *int32 `json:"chuckedMessageRate,omitempty"`
-	Consumers *[]ConsumerStats `json:"consumers,omitempty"`
-	ConsumersAfterMarkDeletePosition *map[string]string `json:"consumersAfterMarkDeletePosition,omitempty"`
-	IsDurable *bool `json:"isDurable,omitempty"`
-	IsReplicated *bool `json:"isReplicated,omitempty"`
-	LastAckedTimestamp *int64 `json:"lastAckedTimestamp,omitempty"`
-	LastConsumedFlowTimestamp *int64 `json:"lastConsumedFlowTimestamp,omitempty"`
-	LastConsumedTimestamp *int64 `json:"lastConsumedTimestamp,omitempty"`
-	LastExpireTimestamp *int64 `json:"lastExpireTimestamp,omitempty"`
-	MsgBacklog *int64 `json:"msgBacklog,omitempty"`
-	MsgBacklogNoDelayed *int64 `json:"msgBacklogNoDelayed,omitempty"`
-	MsgDelayed *int64 `json:"msgDelayed,omitempty"`
 	MsgOutCounter *int64 `json:"msgOutCounter,omitempty"`
-	MsgRateExpired *float64 `json:"msgRateExpired,omitempty"`
+	NonContiguousDeletedMessagesRanges *int32 `json:"nonContiguousDeletedMessagesRanges,omitempty"`
+	NonContiguousDeletedMessagesRangesSerializedSize *int32 `json:"nonContiguousDeletedMessagesRangesSerializedSize,omitempty"`
+	Consumers *[]ConsumerStats `json:"consumers,omitempty"`
 	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
 	MsgRateRedeliver *float64 `json:"msgRateRedeliver,omitempty"`
-	MsgThroughputOut *float64 `json:"msgThroughputOut,omitempty"`
-	Type *string `json:"type,omitempty"`
+	ChunkedMessageRate *int32 `json:"chunkedMessageRate,omitempty"`
+	MsgBacklog *int64 `json:"msgBacklog,omitempty"`
+	MsgBacklogNoDelayed *int64 `json:"msgBacklogNoDelayed,omitempty"`
+	BlockedSubscriptionOnUnackedMsgs *bool `json:"blockedSubscriptionOnUnackedMsgs,omitempty"`
+	MsgDelayed *int64 `json:"msgDelayed,omitempty"`
 	UnackedMessages *int64 `json:"unackedMessages,omitempty"`
+	ActiveConsumerName *string `json:"activeConsumerName,omitempty"`
+	MsgRateExpired *float64 `json:"msgRateExpired,omitempty"`
+	TotalMsgExpired *int64 `json:"totalMsgExpired,omitempty"`
+	LastExpireTimestamp *int64 `json:"lastExpireTimestamp,omitempty"`
+	LastConsumedFlowTimestamp *int64 `json:"lastConsumedFlowTimestamp,omitempty"`
+	LastConsumedTimestamp *int64 `json:"lastConsumedTimestamp,omitempty"`
+	LastAckedTimestamp *int64 `json:"lastAckedTimestamp,omitempty"`
+	LastMarkDeleteAdvancedTimestamp *int64 `json:"lastMarkDeleteAdvancedTimestamp,omitempty"`
+	ConsumersAfterMarkDeletePosition *map[string]string `json:"consumersAfterMarkDeletePosition,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewSubscriptionStats instantiates a new SubscriptionStats object
@@ -57,68 +62,132 @@ func NewSubscriptionStatsWithDefaults() *SubscriptionStats {
 	return &this
 }
 
-// GetActiveConsumerName returns the ActiveConsumerName field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetActiveConsumerName() string {
-	if o == nil || o.ActiveConsumerName == nil {
-		var ret string
-		return ret
-	}
-	return *o.ActiveConsumerName
-}
-
-// GetActiveConsumerNameOk returns a tuple with the ActiveConsumerName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetActiveConsumerNameOk() (*string, bool) {
-	if o == nil || o.ActiveConsumerName == nil {
-		return nil, false
-	}
-	return o.ActiveConsumerName, true
-}
-
-// HasActiveConsumerName returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasActiveConsumerName() bool {
-	if o != nil && o.ActiveConsumerName != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetActiveConsumerName gets a reference to the given string and assigns it to the ActiveConsumerName field.
-func (o *SubscriptionStats) SetActiveConsumerName(v string) {
-	o.ActiveConsumerName = &v
-}
-
-// GetBlockedSubscriptionOnUnackedMsgs returns the BlockedSubscriptionOnUnackedMsgs field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetBlockedSubscriptionOnUnackedMsgs() bool {
-	if o == nil || o.BlockedSubscriptionOnUnackedMsgs == nil {
+// GetDurable returns the Durable field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetDurable() bool {
+	if o == nil || o.Durable == nil {
 		var ret bool
 		return ret
 	}
-	return *o.BlockedSubscriptionOnUnackedMsgs
+	return *o.Durable
 }
 
-// GetBlockedSubscriptionOnUnackedMsgsOk returns a tuple with the BlockedSubscriptionOnUnackedMsgs field value if set, nil otherwise
+// GetDurableOk returns a tuple with the Durable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetBlockedSubscriptionOnUnackedMsgsOk() (*bool, bool) {
-	if o == nil || o.BlockedSubscriptionOnUnackedMsgs == nil {
+func (o *SubscriptionStats) GetDurableOk() (*bool, bool) {
+	if o == nil || o.Durable == nil {
 		return nil, false
 	}
-	return o.BlockedSubscriptionOnUnackedMsgs, true
+	return o.Durable, true
 }
 
-// HasBlockedSubscriptionOnUnackedMsgs returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasBlockedSubscriptionOnUnackedMsgs() bool {
-	if o != nil && o.BlockedSubscriptionOnUnackedMsgs != nil {
+// HasDurable returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasDurable() bool {
+	if o != nil && o.Durable != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetBlockedSubscriptionOnUnackedMsgs gets a reference to the given bool and assigns it to the BlockedSubscriptionOnUnackedMsgs field.
-func (o *SubscriptionStats) SetBlockedSubscriptionOnUnackedMsgs(v bool) {
-	o.BlockedSubscriptionOnUnackedMsgs = &v
+// SetDurable gets a reference to the given bool and assigns it to the Durable field.
+func (o *SubscriptionStats) SetDurable(v bool) {
+	o.Durable = &v
+}
+
+// GetReplicated returns the Replicated field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetReplicated() bool {
+	if o == nil || o.Replicated == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Replicated
+}
+
+// GetReplicatedOk returns a tuple with the Replicated field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetReplicatedOk() (*bool, bool) {
+	if o == nil || o.Replicated == nil {
+		return nil, false
+	}
+	return o.Replicated, true
+}
+
+// HasReplicated returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasReplicated() bool {
+	if o != nil && o.Replicated != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetReplicated gets a reference to the given bool and assigns it to the Replicated field.
+func (o *SubscriptionStats) SetReplicated(v bool) {
+	o.Replicated = &v
+}
+
+// GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetMsgThroughputOut() float64 {
+	if o == nil || o.MsgThroughputOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgThroughputOut
+}
+
+// GetMsgThroughputOutOk returns a tuple with the MsgThroughputOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetMsgThroughputOutOk() (*float64, bool) {
+	if o == nil || o.MsgThroughputOut == nil {
+		return nil, false
+	}
+	return o.MsgThroughputOut, true
+}
+
+// HasMsgThroughputOut returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasMsgThroughputOut() bool {
+	if o != nil && o.MsgThroughputOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
+func (o *SubscriptionStats) SetMsgThroughputOut(v float64) {
+	o.MsgThroughputOut = &v
+}
+
+// GetBacklogSize returns the BacklogSize field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetBacklogSize() int64 {
+	if o == nil || o.BacklogSize == nil {
+		var ret int64
+		return ret
+	}
+	return *o.BacklogSize
+}
+
+// GetBacklogSizeOk returns a tuple with the BacklogSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetBacklogSizeOk() (*int64, bool) {
+	if o == nil || o.BacklogSize == nil {
+		return nil, false
+	}
+	return o.BacklogSize, true
+}
+
+// HasBacklogSize returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasBacklogSize() bool {
+	if o != nil && o.BacklogSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBacklogSize gets a reference to the given int64 and assigns it to the BacklogSize field.
+func (o *SubscriptionStats) SetBacklogSize(v int64) {
+	o.BacklogSize = &v
 }
 
 // GetBytesOutCounter returns the BytesOutCounter field value if set, zero value otherwise.
@@ -153,390 +222,6 @@ func (o *SubscriptionStats) SetBytesOutCounter(v int64) {
 	o.BytesOutCounter = &v
 }
 
-// GetChuckedMessageRate returns the ChuckedMessageRate field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetChuckedMessageRate() int32 {
-	if o == nil || o.ChuckedMessageRate == nil {
-		var ret int32
-		return ret
-	}
-	return *o.ChuckedMessageRate
-}
-
-// GetChuckedMessageRateOk returns a tuple with the ChuckedMessageRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetChuckedMessageRateOk() (*int32, bool) {
-	if o == nil || o.ChuckedMessageRate == nil {
-		return nil, false
-	}
-	return o.ChuckedMessageRate, true
-}
-
-// HasChuckedMessageRate returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasChuckedMessageRate() bool {
-	if o != nil && o.ChuckedMessageRate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetChuckedMessageRate gets a reference to the given int32 and assigns it to the ChuckedMessageRate field.
-func (o *SubscriptionStats) SetChuckedMessageRate(v int32) {
-	o.ChuckedMessageRate = &v
-}
-
-// GetConsumers returns the Consumers field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetConsumers() []ConsumerStats {
-	if o == nil || o.Consumers == nil {
-		var ret []ConsumerStats
-		return ret
-	}
-	return *o.Consumers
-}
-
-// GetConsumersOk returns a tuple with the Consumers field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetConsumersOk() (*[]ConsumerStats, bool) {
-	if o == nil || o.Consumers == nil {
-		return nil, false
-	}
-	return o.Consumers, true
-}
-
-// HasConsumers returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasConsumers() bool {
-	if o != nil && o.Consumers != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConsumers gets a reference to the given []ConsumerStats and assigns it to the Consumers field.
-func (o *SubscriptionStats) SetConsumers(v []ConsumerStats) {
-	o.Consumers = &v
-}
-
-// GetConsumersAfterMarkDeletePosition returns the ConsumersAfterMarkDeletePosition field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetConsumersAfterMarkDeletePosition() map[string]string {
-	if o == nil || o.ConsumersAfterMarkDeletePosition == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.ConsumersAfterMarkDeletePosition
-}
-
-// GetConsumersAfterMarkDeletePositionOk returns a tuple with the ConsumersAfterMarkDeletePosition field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetConsumersAfterMarkDeletePositionOk() (*map[string]string, bool) {
-	if o == nil || o.ConsumersAfterMarkDeletePosition == nil {
-		return nil, false
-	}
-	return o.ConsumersAfterMarkDeletePosition, true
-}
-
-// HasConsumersAfterMarkDeletePosition returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasConsumersAfterMarkDeletePosition() bool {
-	if o != nil && o.ConsumersAfterMarkDeletePosition != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConsumersAfterMarkDeletePosition gets a reference to the given map[string]string and assigns it to the ConsumersAfterMarkDeletePosition field.
-func (o *SubscriptionStats) SetConsumersAfterMarkDeletePosition(v map[string]string) {
-	o.ConsumersAfterMarkDeletePosition = &v
-}
-
-// GetIsDurable returns the IsDurable field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetIsDurable() bool {
-	if o == nil || o.IsDurable == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsDurable
-}
-
-// GetIsDurableOk returns a tuple with the IsDurable field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetIsDurableOk() (*bool, bool) {
-	if o == nil || o.IsDurable == nil {
-		return nil, false
-	}
-	return o.IsDurable, true
-}
-
-// HasIsDurable returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasIsDurable() bool {
-	if o != nil && o.IsDurable != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDurable gets a reference to the given bool and assigns it to the IsDurable field.
-func (o *SubscriptionStats) SetIsDurable(v bool) {
-	o.IsDurable = &v
-}
-
-// GetIsReplicated returns the IsReplicated field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetIsReplicated() bool {
-	if o == nil || o.IsReplicated == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsReplicated
-}
-
-// GetIsReplicatedOk returns a tuple with the IsReplicated field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetIsReplicatedOk() (*bool, bool) {
-	if o == nil || o.IsReplicated == nil {
-		return nil, false
-	}
-	return o.IsReplicated, true
-}
-
-// HasIsReplicated returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasIsReplicated() bool {
-	if o != nil && o.IsReplicated != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsReplicated gets a reference to the given bool and assigns it to the IsReplicated field.
-func (o *SubscriptionStats) SetIsReplicated(v bool) {
-	o.IsReplicated = &v
-}
-
-// GetLastAckedTimestamp returns the LastAckedTimestamp field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetLastAckedTimestamp() int64 {
-	if o == nil || o.LastAckedTimestamp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.LastAckedTimestamp
-}
-
-// GetLastAckedTimestampOk returns a tuple with the LastAckedTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetLastAckedTimestampOk() (*int64, bool) {
-	if o == nil || o.LastAckedTimestamp == nil {
-		return nil, false
-	}
-	return o.LastAckedTimestamp, true
-}
-
-// HasLastAckedTimestamp returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasLastAckedTimestamp() bool {
-	if o != nil && o.LastAckedTimestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastAckedTimestamp gets a reference to the given int64 and assigns it to the LastAckedTimestamp field.
-func (o *SubscriptionStats) SetLastAckedTimestamp(v int64) {
-	o.LastAckedTimestamp = &v
-}
-
-// GetLastConsumedFlowTimestamp returns the LastConsumedFlowTimestamp field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetLastConsumedFlowTimestamp() int64 {
-	if o == nil || o.LastConsumedFlowTimestamp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.LastConsumedFlowTimestamp
-}
-
-// GetLastConsumedFlowTimestampOk returns a tuple with the LastConsumedFlowTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetLastConsumedFlowTimestampOk() (*int64, bool) {
-	if o == nil || o.LastConsumedFlowTimestamp == nil {
-		return nil, false
-	}
-	return o.LastConsumedFlowTimestamp, true
-}
-
-// HasLastConsumedFlowTimestamp returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasLastConsumedFlowTimestamp() bool {
-	if o != nil && o.LastConsumedFlowTimestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastConsumedFlowTimestamp gets a reference to the given int64 and assigns it to the LastConsumedFlowTimestamp field.
-func (o *SubscriptionStats) SetLastConsumedFlowTimestamp(v int64) {
-	o.LastConsumedFlowTimestamp = &v
-}
-
-// GetLastConsumedTimestamp returns the LastConsumedTimestamp field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetLastConsumedTimestamp() int64 {
-	if o == nil || o.LastConsumedTimestamp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.LastConsumedTimestamp
-}
-
-// GetLastConsumedTimestampOk returns a tuple with the LastConsumedTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetLastConsumedTimestampOk() (*int64, bool) {
-	if o == nil || o.LastConsumedTimestamp == nil {
-		return nil, false
-	}
-	return o.LastConsumedTimestamp, true
-}
-
-// HasLastConsumedTimestamp returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasLastConsumedTimestamp() bool {
-	if o != nil && o.LastConsumedTimestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastConsumedTimestamp gets a reference to the given int64 and assigns it to the LastConsumedTimestamp field.
-func (o *SubscriptionStats) SetLastConsumedTimestamp(v int64) {
-	o.LastConsumedTimestamp = &v
-}
-
-// GetLastExpireTimestamp returns the LastExpireTimestamp field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetLastExpireTimestamp() int64 {
-	if o == nil || o.LastExpireTimestamp == nil {
-		var ret int64
-		return ret
-	}
-	return *o.LastExpireTimestamp
-}
-
-// GetLastExpireTimestampOk returns a tuple with the LastExpireTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetLastExpireTimestampOk() (*int64, bool) {
-	if o == nil || o.LastExpireTimestamp == nil {
-		return nil, false
-	}
-	return o.LastExpireTimestamp, true
-}
-
-// HasLastExpireTimestamp returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasLastExpireTimestamp() bool {
-	if o != nil && o.LastExpireTimestamp != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetLastExpireTimestamp gets a reference to the given int64 and assigns it to the LastExpireTimestamp field.
-func (o *SubscriptionStats) SetLastExpireTimestamp(v int64) {
-	o.LastExpireTimestamp = &v
-}
-
-// GetMsgBacklog returns the MsgBacklog field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetMsgBacklog() int64 {
-	if o == nil || o.MsgBacklog == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MsgBacklog
-}
-
-// GetMsgBacklogOk returns a tuple with the MsgBacklog field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetMsgBacklogOk() (*int64, bool) {
-	if o == nil || o.MsgBacklog == nil {
-		return nil, false
-	}
-	return o.MsgBacklog, true
-}
-
-// HasMsgBacklog returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasMsgBacklog() bool {
-	if o != nil && o.MsgBacklog != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgBacklog gets a reference to the given int64 and assigns it to the MsgBacklog field.
-func (o *SubscriptionStats) SetMsgBacklog(v int64) {
-	o.MsgBacklog = &v
-}
-
-// GetMsgBacklogNoDelayed returns the MsgBacklogNoDelayed field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetMsgBacklogNoDelayed() int64 {
-	if o == nil || o.MsgBacklogNoDelayed == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MsgBacklogNoDelayed
-}
-
-// GetMsgBacklogNoDelayedOk returns a tuple with the MsgBacklogNoDelayed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetMsgBacklogNoDelayedOk() (*int64, bool) {
-	if o == nil || o.MsgBacklogNoDelayed == nil {
-		return nil, false
-	}
-	return o.MsgBacklogNoDelayed, true
-}
-
-// HasMsgBacklogNoDelayed returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasMsgBacklogNoDelayed() bool {
-	if o != nil && o.MsgBacklogNoDelayed != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgBacklogNoDelayed gets a reference to the given int64 and assigns it to the MsgBacklogNoDelayed field.
-func (o *SubscriptionStats) SetMsgBacklogNoDelayed(v int64) {
-	o.MsgBacklogNoDelayed = &v
-}
-
-// GetMsgDelayed returns the MsgDelayed field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetMsgDelayed() int64 {
-	if o == nil || o.MsgDelayed == nil {
-		var ret int64
-		return ret
-	}
-	return *o.MsgDelayed
-}
-
-// GetMsgDelayedOk returns a tuple with the MsgDelayed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetMsgDelayedOk() (*int64, bool) {
-	if o == nil || o.MsgDelayed == nil {
-		return nil, false
-	}
-	return o.MsgDelayed, true
-}
-
-// HasMsgDelayed returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasMsgDelayed() bool {
-	if o != nil && o.MsgDelayed != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgDelayed gets a reference to the given int64 and assigns it to the MsgDelayed field.
-func (o *SubscriptionStats) SetMsgDelayed(v int64) {
-	o.MsgDelayed = &v
-}
-
 // GetMsgOutCounter returns the MsgOutCounter field value if set, zero value otherwise.
 func (o *SubscriptionStats) GetMsgOutCounter() int64 {
 	if o == nil || o.MsgOutCounter == nil {
@@ -569,36 +254,100 @@ func (o *SubscriptionStats) SetMsgOutCounter(v int64) {
 	o.MsgOutCounter = &v
 }
 
-// GetMsgRateExpired returns the MsgRateExpired field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetMsgRateExpired() float64 {
-	if o == nil || o.MsgRateExpired == nil {
-		var ret float64
+// GetNonContiguousDeletedMessagesRanges returns the NonContiguousDeletedMessagesRanges field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetNonContiguousDeletedMessagesRanges() int32 {
+	if o == nil || o.NonContiguousDeletedMessagesRanges == nil {
+		var ret int32
 		return ret
 	}
-	return *o.MsgRateExpired
+	return *o.NonContiguousDeletedMessagesRanges
 }
 
-// GetMsgRateExpiredOk returns a tuple with the MsgRateExpired field value if set, nil otherwise
+// GetNonContiguousDeletedMessagesRangesOk returns a tuple with the NonContiguousDeletedMessagesRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetMsgRateExpiredOk() (*float64, bool) {
-	if o == nil || o.MsgRateExpired == nil {
+func (o *SubscriptionStats) GetNonContiguousDeletedMessagesRangesOk() (*int32, bool) {
+	if o == nil || o.NonContiguousDeletedMessagesRanges == nil {
 		return nil, false
 	}
-	return o.MsgRateExpired, true
+	return o.NonContiguousDeletedMessagesRanges, true
 }
 
-// HasMsgRateExpired returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasMsgRateExpired() bool {
-	if o != nil && o.MsgRateExpired != nil {
+// HasNonContiguousDeletedMessagesRanges returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasNonContiguousDeletedMessagesRanges() bool {
+	if o != nil && o.NonContiguousDeletedMessagesRanges != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMsgRateExpired gets a reference to the given float64 and assigns it to the MsgRateExpired field.
-func (o *SubscriptionStats) SetMsgRateExpired(v float64) {
-	o.MsgRateExpired = &v
+// SetNonContiguousDeletedMessagesRanges gets a reference to the given int32 and assigns it to the NonContiguousDeletedMessagesRanges field.
+func (o *SubscriptionStats) SetNonContiguousDeletedMessagesRanges(v int32) {
+	o.NonContiguousDeletedMessagesRanges = &v
+}
+
+// GetNonContiguousDeletedMessagesRangesSerializedSize returns the NonContiguousDeletedMessagesRangesSerializedSize field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetNonContiguousDeletedMessagesRangesSerializedSize() int32 {
+	if o == nil || o.NonContiguousDeletedMessagesRangesSerializedSize == nil {
+		var ret int32
+		return ret
+	}
+	return *o.NonContiguousDeletedMessagesRangesSerializedSize
+}
+
+// GetNonContiguousDeletedMessagesRangesSerializedSizeOk returns a tuple with the NonContiguousDeletedMessagesRangesSerializedSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetNonContiguousDeletedMessagesRangesSerializedSizeOk() (*int32, bool) {
+	if o == nil || o.NonContiguousDeletedMessagesRangesSerializedSize == nil {
+		return nil, false
+	}
+	return o.NonContiguousDeletedMessagesRangesSerializedSize, true
+}
+
+// HasNonContiguousDeletedMessagesRangesSerializedSize returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasNonContiguousDeletedMessagesRangesSerializedSize() bool {
+	if o != nil && o.NonContiguousDeletedMessagesRangesSerializedSize != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetNonContiguousDeletedMessagesRangesSerializedSize gets a reference to the given int32 and assigns it to the NonContiguousDeletedMessagesRangesSerializedSize field.
+func (o *SubscriptionStats) SetNonContiguousDeletedMessagesRangesSerializedSize(v int32) {
+	o.NonContiguousDeletedMessagesRangesSerializedSize = &v
+}
+
+// GetConsumers returns the Consumers field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetConsumers() []ConsumerStats {
+	if o == nil || o.Consumers == nil {
+		var ret []ConsumerStats
+		return ret
+	}
+	return *o.Consumers
+}
+
+// GetConsumersOk returns a tuple with the Consumers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetConsumersOk() (*[]ConsumerStats, bool) {
+	if o == nil || o.Consumers == nil {
+		return nil, false
+	}
+	return o.Consumers, true
+}
+
+// HasConsumers returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasConsumers() bool {
+	if o != nil && o.Consumers != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConsumers gets a reference to the given []ConsumerStats and assigns it to the Consumers field.
+func (o *SubscriptionStats) SetConsumers(v []ConsumerStats) {
+	o.Consumers = &v
 }
 
 // GetMsgRateOut returns the MsgRateOut field value if set, zero value otherwise.
@@ -665,68 +414,164 @@ func (o *SubscriptionStats) SetMsgRateRedeliver(v float64) {
 	o.MsgRateRedeliver = &v
 }
 
-// GetMsgThroughputOut returns the MsgThroughputOut field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetMsgThroughputOut() float64 {
-	if o == nil || o.MsgThroughputOut == nil {
-		var ret float64
+// GetChunkedMessageRate returns the ChunkedMessageRate field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetChunkedMessageRate() int32 {
+	if o == nil || o.ChunkedMessageRate == nil {
+		var ret int32
 		return ret
 	}
-	return *o.MsgThroughputOut
+	return *o.ChunkedMessageRate
 }
 
-// GetMsgThroughputOutOk returns a tuple with the MsgThroughputOut field value if set, nil otherwise
+// GetChunkedMessageRateOk returns a tuple with the ChunkedMessageRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetMsgThroughputOutOk() (*float64, bool) {
-	if o == nil || o.MsgThroughputOut == nil {
+func (o *SubscriptionStats) GetChunkedMessageRateOk() (*int32, bool) {
+	if o == nil || o.ChunkedMessageRate == nil {
 		return nil, false
 	}
-	return o.MsgThroughputOut, true
+	return o.ChunkedMessageRate, true
 }
 
-// HasMsgThroughputOut returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasMsgThroughputOut() bool {
-	if o != nil && o.MsgThroughputOut != nil {
+// HasChunkedMessageRate returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasChunkedMessageRate() bool {
+	if o != nil && o.ChunkedMessageRate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetMsgThroughputOut gets a reference to the given float64 and assigns it to the MsgThroughputOut field.
-func (o *SubscriptionStats) SetMsgThroughputOut(v float64) {
-	o.MsgThroughputOut = &v
+// SetChunkedMessageRate gets a reference to the given int32 and assigns it to the ChunkedMessageRate field.
+func (o *SubscriptionStats) SetChunkedMessageRate(v int32) {
+	o.ChunkedMessageRate = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
-func (o *SubscriptionStats) GetType() string {
-	if o == nil || o.Type == nil {
-		var ret string
+// GetMsgBacklog returns the MsgBacklog field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetMsgBacklog() int64 {
+	if o == nil || o.MsgBacklog == nil {
+		var ret int64
 		return ret
 	}
-	return *o.Type
+	return *o.MsgBacklog
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetMsgBacklogOk returns a tuple with the MsgBacklog field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SubscriptionStats) GetTypeOk() (*string, bool) {
-	if o == nil || o.Type == nil {
+func (o *SubscriptionStats) GetMsgBacklogOk() (*int64, bool) {
+	if o == nil || o.MsgBacklog == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.MsgBacklog, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *SubscriptionStats) HasType() bool {
-	if o != nil && o.Type != nil {
+// HasMsgBacklog returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasMsgBacklog() bool {
+	if o != nil && o.MsgBacklog != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
-func (o *SubscriptionStats) SetType(v string) {
-	o.Type = &v
+// SetMsgBacklog gets a reference to the given int64 and assigns it to the MsgBacklog field.
+func (o *SubscriptionStats) SetMsgBacklog(v int64) {
+	o.MsgBacklog = &v
+}
+
+// GetMsgBacklogNoDelayed returns the MsgBacklogNoDelayed field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetMsgBacklogNoDelayed() int64 {
+	if o == nil || o.MsgBacklogNoDelayed == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MsgBacklogNoDelayed
+}
+
+// GetMsgBacklogNoDelayedOk returns a tuple with the MsgBacklogNoDelayed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetMsgBacklogNoDelayedOk() (*int64, bool) {
+	if o == nil || o.MsgBacklogNoDelayed == nil {
+		return nil, false
+	}
+	return o.MsgBacklogNoDelayed, true
+}
+
+// HasMsgBacklogNoDelayed returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasMsgBacklogNoDelayed() bool {
+	if o != nil && o.MsgBacklogNoDelayed != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgBacklogNoDelayed gets a reference to the given int64 and assigns it to the MsgBacklogNoDelayed field.
+func (o *SubscriptionStats) SetMsgBacklogNoDelayed(v int64) {
+	o.MsgBacklogNoDelayed = &v
+}
+
+// GetBlockedSubscriptionOnUnackedMsgs returns the BlockedSubscriptionOnUnackedMsgs field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetBlockedSubscriptionOnUnackedMsgs() bool {
+	if o == nil || o.BlockedSubscriptionOnUnackedMsgs == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BlockedSubscriptionOnUnackedMsgs
+}
+
+// GetBlockedSubscriptionOnUnackedMsgsOk returns a tuple with the BlockedSubscriptionOnUnackedMsgs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetBlockedSubscriptionOnUnackedMsgsOk() (*bool, bool) {
+	if o == nil || o.BlockedSubscriptionOnUnackedMsgs == nil {
+		return nil, false
+	}
+	return o.BlockedSubscriptionOnUnackedMsgs, true
+}
+
+// HasBlockedSubscriptionOnUnackedMsgs returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasBlockedSubscriptionOnUnackedMsgs() bool {
+	if o != nil && o.BlockedSubscriptionOnUnackedMsgs != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBlockedSubscriptionOnUnackedMsgs gets a reference to the given bool and assigns it to the BlockedSubscriptionOnUnackedMsgs field.
+func (o *SubscriptionStats) SetBlockedSubscriptionOnUnackedMsgs(v bool) {
+	o.BlockedSubscriptionOnUnackedMsgs = &v
+}
+
+// GetMsgDelayed returns the MsgDelayed field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetMsgDelayed() int64 {
+	if o == nil || o.MsgDelayed == nil {
+		var ret int64
+		return ret
+	}
+	return *o.MsgDelayed
+}
+
+// GetMsgDelayedOk returns a tuple with the MsgDelayed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetMsgDelayedOk() (*int64, bool) {
+	if o == nil || o.MsgDelayed == nil {
+		return nil, false
+	}
+	return o.MsgDelayed, true
+}
+
+// HasMsgDelayed returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasMsgDelayed() bool {
+	if o != nil && o.MsgDelayed != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgDelayed gets a reference to the given int64 and assigns it to the MsgDelayed field.
+func (o *SubscriptionStats) SetMsgDelayed(v int64) {
+	o.MsgDelayed = &v
 }
 
 // GetUnackedMessages returns the UnackedMessages field value if set, zero value otherwise.
@@ -761,58 +606,354 @@ func (o *SubscriptionStats) SetUnackedMessages(v int64) {
 	o.UnackedMessages = &v
 }
 
+// GetActiveConsumerName returns the ActiveConsumerName field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetActiveConsumerName() string {
+	if o == nil || o.ActiveConsumerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ActiveConsumerName
+}
+
+// GetActiveConsumerNameOk returns a tuple with the ActiveConsumerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetActiveConsumerNameOk() (*string, bool) {
+	if o == nil || o.ActiveConsumerName == nil {
+		return nil, false
+	}
+	return o.ActiveConsumerName, true
+}
+
+// HasActiveConsumerName returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasActiveConsumerName() bool {
+	if o != nil && o.ActiveConsumerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetActiveConsumerName gets a reference to the given string and assigns it to the ActiveConsumerName field.
+func (o *SubscriptionStats) SetActiveConsumerName(v string) {
+	o.ActiveConsumerName = &v
+}
+
+// GetMsgRateExpired returns the MsgRateExpired field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetMsgRateExpired() float64 {
+	if o == nil || o.MsgRateExpired == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateExpired
+}
+
+// GetMsgRateExpiredOk returns a tuple with the MsgRateExpired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetMsgRateExpiredOk() (*float64, bool) {
+	if o == nil || o.MsgRateExpired == nil {
+		return nil, false
+	}
+	return o.MsgRateExpired, true
+}
+
+// HasMsgRateExpired returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasMsgRateExpired() bool {
+	if o != nil && o.MsgRateExpired != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateExpired gets a reference to the given float64 and assigns it to the MsgRateExpired field.
+func (o *SubscriptionStats) SetMsgRateExpired(v float64) {
+	o.MsgRateExpired = &v
+}
+
+// GetTotalMsgExpired returns the TotalMsgExpired field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetTotalMsgExpired() int64 {
+	if o == nil || o.TotalMsgExpired == nil {
+		var ret int64
+		return ret
+	}
+	return *o.TotalMsgExpired
+}
+
+// GetTotalMsgExpiredOk returns a tuple with the TotalMsgExpired field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetTotalMsgExpiredOk() (*int64, bool) {
+	if o == nil || o.TotalMsgExpired == nil {
+		return nil, false
+	}
+	return o.TotalMsgExpired, true
+}
+
+// HasTotalMsgExpired returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasTotalMsgExpired() bool {
+	if o != nil && o.TotalMsgExpired != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalMsgExpired gets a reference to the given int64 and assigns it to the TotalMsgExpired field.
+func (o *SubscriptionStats) SetTotalMsgExpired(v int64) {
+	o.TotalMsgExpired = &v
+}
+
+// GetLastExpireTimestamp returns the LastExpireTimestamp field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetLastExpireTimestamp() int64 {
+	if o == nil || o.LastExpireTimestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastExpireTimestamp
+}
+
+// GetLastExpireTimestampOk returns a tuple with the LastExpireTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetLastExpireTimestampOk() (*int64, bool) {
+	if o == nil || o.LastExpireTimestamp == nil {
+		return nil, false
+	}
+	return o.LastExpireTimestamp, true
+}
+
+// HasLastExpireTimestamp returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasLastExpireTimestamp() bool {
+	if o != nil && o.LastExpireTimestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastExpireTimestamp gets a reference to the given int64 and assigns it to the LastExpireTimestamp field.
+func (o *SubscriptionStats) SetLastExpireTimestamp(v int64) {
+	o.LastExpireTimestamp = &v
+}
+
+// GetLastConsumedFlowTimestamp returns the LastConsumedFlowTimestamp field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetLastConsumedFlowTimestamp() int64 {
+	if o == nil || o.LastConsumedFlowTimestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastConsumedFlowTimestamp
+}
+
+// GetLastConsumedFlowTimestampOk returns a tuple with the LastConsumedFlowTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetLastConsumedFlowTimestampOk() (*int64, bool) {
+	if o == nil || o.LastConsumedFlowTimestamp == nil {
+		return nil, false
+	}
+	return o.LastConsumedFlowTimestamp, true
+}
+
+// HasLastConsumedFlowTimestamp returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasLastConsumedFlowTimestamp() bool {
+	if o != nil && o.LastConsumedFlowTimestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastConsumedFlowTimestamp gets a reference to the given int64 and assigns it to the LastConsumedFlowTimestamp field.
+func (o *SubscriptionStats) SetLastConsumedFlowTimestamp(v int64) {
+	o.LastConsumedFlowTimestamp = &v
+}
+
+// GetLastConsumedTimestamp returns the LastConsumedTimestamp field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetLastConsumedTimestamp() int64 {
+	if o == nil || o.LastConsumedTimestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastConsumedTimestamp
+}
+
+// GetLastConsumedTimestampOk returns a tuple with the LastConsumedTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetLastConsumedTimestampOk() (*int64, bool) {
+	if o == nil || o.LastConsumedTimestamp == nil {
+		return nil, false
+	}
+	return o.LastConsumedTimestamp, true
+}
+
+// HasLastConsumedTimestamp returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasLastConsumedTimestamp() bool {
+	if o != nil && o.LastConsumedTimestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastConsumedTimestamp gets a reference to the given int64 and assigns it to the LastConsumedTimestamp field.
+func (o *SubscriptionStats) SetLastConsumedTimestamp(v int64) {
+	o.LastConsumedTimestamp = &v
+}
+
+// GetLastAckedTimestamp returns the LastAckedTimestamp field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetLastAckedTimestamp() int64 {
+	if o == nil || o.LastAckedTimestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastAckedTimestamp
+}
+
+// GetLastAckedTimestampOk returns a tuple with the LastAckedTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetLastAckedTimestampOk() (*int64, bool) {
+	if o == nil || o.LastAckedTimestamp == nil {
+		return nil, false
+	}
+	return o.LastAckedTimestamp, true
+}
+
+// HasLastAckedTimestamp returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasLastAckedTimestamp() bool {
+	if o != nil && o.LastAckedTimestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastAckedTimestamp gets a reference to the given int64 and assigns it to the LastAckedTimestamp field.
+func (o *SubscriptionStats) SetLastAckedTimestamp(v int64) {
+	o.LastAckedTimestamp = &v
+}
+
+// GetLastMarkDeleteAdvancedTimestamp returns the LastMarkDeleteAdvancedTimestamp field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetLastMarkDeleteAdvancedTimestamp() int64 {
+	if o == nil || o.LastMarkDeleteAdvancedTimestamp == nil {
+		var ret int64
+		return ret
+	}
+	return *o.LastMarkDeleteAdvancedTimestamp
+}
+
+// GetLastMarkDeleteAdvancedTimestampOk returns a tuple with the LastMarkDeleteAdvancedTimestamp field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetLastMarkDeleteAdvancedTimestampOk() (*int64, bool) {
+	if o == nil || o.LastMarkDeleteAdvancedTimestamp == nil {
+		return nil, false
+	}
+	return o.LastMarkDeleteAdvancedTimestamp, true
+}
+
+// HasLastMarkDeleteAdvancedTimestamp returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasLastMarkDeleteAdvancedTimestamp() bool {
+	if o != nil && o.LastMarkDeleteAdvancedTimestamp != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetLastMarkDeleteAdvancedTimestamp gets a reference to the given int64 and assigns it to the LastMarkDeleteAdvancedTimestamp field.
+func (o *SubscriptionStats) SetLastMarkDeleteAdvancedTimestamp(v int64) {
+	o.LastMarkDeleteAdvancedTimestamp = &v
+}
+
+// GetConsumersAfterMarkDeletePosition returns the ConsumersAfterMarkDeletePosition field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetConsumersAfterMarkDeletePosition() map[string]string {
+	if o == nil || o.ConsumersAfterMarkDeletePosition == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.ConsumersAfterMarkDeletePosition
+}
+
+// GetConsumersAfterMarkDeletePositionOk returns a tuple with the ConsumersAfterMarkDeletePosition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetConsumersAfterMarkDeletePositionOk() (*map[string]string, bool) {
+	if o == nil || o.ConsumersAfterMarkDeletePosition == nil {
+		return nil, false
+	}
+	return o.ConsumersAfterMarkDeletePosition, true
+}
+
+// HasConsumersAfterMarkDeletePosition returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasConsumersAfterMarkDeletePosition() bool {
+	if o != nil && o.ConsumersAfterMarkDeletePosition != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConsumersAfterMarkDeletePosition gets a reference to the given map[string]string and assigns it to the ConsumersAfterMarkDeletePosition field.
+func (o *SubscriptionStats) SetConsumersAfterMarkDeletePosition(v map[string]string) {
+	o.ConsumersAfterMarkDeletePosition = &v
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *SubscriptionStats) GetType() string {
+	if o == nil || o.Type == nil {
+		var ret string
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SubscriptionStats) GetTypeOk() (*string, bool) {
+	if o == nil || o.Type == nil {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *SubscriptionStats) HasType() bool {
+	if o != nil && o.Type != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given string and assigns it to the Type field.
+func (o *SubscriptionStats) SetType(v string) {
+	o.Type = &v
+}
+
 func (o SubscriptionStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ActiveConsumerName != nil {
-		toSerialize["activeConsumerName"] = o.ActiveConsumerName
+	if o.Durable != nil {
+		toSerialize["durable"] = o.Durable
 	}
-	if o.BlockedSubscriptionOnUnackedMsgs != nil {
-		toSerialize["blockedSubscriptionOnUnackedMsgs"] = o.BlockedSubscriptionOnUnackedMsgs
+	if o.Replicated != nil {
+		toSerialize["replicated"] = o.Replicated
+	}
+	if o.MsgThroughputOut != nil {
+		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
+	}
+	if o.BacklogSize != nil {
+		toSerialize["backlogSize"] = o.BacklogSize
 	}
 	if o.BytesOutCounter != nil {
 		toSerialize["bytesOutCounter"] = o.BytesOutCounter
 	}
-	if o.ChuckedMessageRate != nil {
-		toSerialize["chuckedMessageRate"] = o.ChuckedMessageRate
-	}
-	if o.Consumers != nil {
-		toSerialize["consumers"] = o.Consumers
-	}
-	if o.ConsumersAfterMarkDeletePosition != nil {
-		toSerialize["consumersAfterMarkDeletePosition"] = o.ConsumersAfterMarkDeletePosition
-	}
-	if o.IsDurable != nil {
-		toSerialize["isDurable"] = o.IsDurable
-	}
-	if o.IsReplicated != nil {
-		toSerialize["isReplicated"] = o.IsReplicated
-	}
-	if o.LastAckedTimestamp != nil {
-		toSerialize["lastAckedTimestamp"] = o.LastAckedTimestamp
-	}
-	if o.LastConsumedFlowTimestamp != nil {
-		toSerialize["lastConsumedFlowTimestamp"] = o.LastConsumedFlowTimestamp
-	}
-	if o.LastConsumedTimestamp != nil {
-		toSerialize["lastConsumedTimestamp"] = o.LastConsumedTimestamp
-	}
-	if o.LastExpireTimestamp != nil {
-		toSerialize["lastExpireTimestamp"] = o.LastExpireTimestamp
-	}
-	if o.MsgBacklog != nil {
-		toSerialize["msgBacklog"] = o.MsgBacklog
-	}
-	if o.MsgBacklogNoDelayed != nil {
-		toSerialize["msgBacklogNoDelayed"] = o.MsgBacklogNoDelayed
-	}
-	if o.MsgDelayed != nil {
-		toSerialize["msgDelayed"] = o.MsgDelayed
-	}
 	if o.MsgOutCounter != nil {
 		toSerialize["msgOutCounter"] = o.MsgOutCounter
 	}
-	if o.MsgRateExpired != nil {
-		toSerialize["msgRateExpired"] = o.MsgRateExpired
+	if o.NonContiguousDeletedMessagesRanges != nil {
+		toSerialize["nonContiguousDeletedMessagesRanges"] = o.NonContiguousDeletedMessagesRanges
+	}
+	if o.NonContiguousDeletedMessagesRangesSerializedSize != nil {
+		toSerialize["nonContiguousDeletedMessagesRangesSerializedSize"] = o.NonContiguousDeletedMessagesRangesSerializedSize
+	}
+	if o.Consumers != nil {
+		toSerialize["consumers"] = o.Consumers
 	}
 	if o.MsgRateOut != nil {
 		toSerialize["msgRateOut"] = o.MsgRateOut
@@ -820,14 +961,53 @@ func (o SubscriptionStats) MarshalJSON() ([]byte, error) {
 	if o.MsgRateRedeliver != nil {
 		toSerialize["msgRateRedeliver"] = o.MsgRateRedeliver
 	}
-	if o.MsgThroughputOut != nil {
-		toSerialize["msgThroughputOut"] = o.MsgThroughputOut
+	if o.ChunkedMessageRate != nil {
+		toSerialize["chunkedMessageRate"] = o.ChunkedMessageRate
 	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.MsgBacklog != nil {
+		toSerialize["msgBacklog"] = o.MsgBacklog
+	}
+	if o.MsgBacklogNoDelayed != nil {
+		toSerialize["msgBacklogNoDelayed"] = o.MsgBacklogNoDelayed
+	}
+	if o.BlockedSubscriptionOnUnackedMsgs != nil {
+		toSerialize["blockedSubscriptionOnUnackedMsgs"] = o.BlockedSubscriptionOnUnackedMsgs
+	}
+	if o.MsgDelayed != nil {
+		toSerialize["msgDelayed"] = o.MsgDelayed
 	}
 	if o.UnackedMessages != nil {
 		toSerialize["unackedMessages"] = o.UnackedMessages
+	}
+	if o.ActiveConsumerName != nil {
+		toSerialize["activeConsumerName"] = o.ActiveConsumerName
+	}
+	if o.MsgRateExpired != nil {
+		toSerialize["msgRateExpired"] = o.MsgRateExpired
+	}
+	if o.TotalMsgExpired != nil {
+		toSerialize["totalMsgExpired"] = o.TotalMsgExpired
+	}
+	if o.LastExpireTimestamp != nil {
+		toSerialize["lastExpireTimestamp"] = o.LastExpireTimestamp
+	}
+	if o.LastConsumedFlowTimestamp != nil {
+		toSerialize["lastConsumedFlowTimestamp"] = o.LastConsumedFlowTimestamp
+	}
+	if o.LastConsumedTimestamp != nil {
+		toSerialize["lastConsumedTimestamp"] = o.LastConsumedTimestamp
+	}
+	if o.LastAckedTimestamp != nil {
+		toSerialize["lastAckedTimestamp"] = o.LastAckedTimestamp
+	}
+	if o.LastMarkDeleteAdvancedTimestamp != nil {
+		toSerialize["lastMarkDeleteAdvancedTimestamp"] = o.LastMarkDeleteAdvancedTimestamp
+	}
+	if o.ConsumersAfterMarkDeletePosition != nil {
+		toSerialize["consumersAfterMarkDeletePosition"] = o.ConsumersAfterMarkDeletePosition
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return json.Marshal(toSerialize)
 }

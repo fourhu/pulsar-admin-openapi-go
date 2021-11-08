@@ -16,12 +16,13 @@ import (
 
 // ResourceQuota struct for ResourceQuota
 type ResourceQuota struct {
-	BandwidthIn *float64 `json:"bandwidthIn,omitempty"`
-	BandwidthOut *float64 `json:"bandwidthOut,omitempty"`
-	Dynamic *bool `json:"dynamic,omitempty"`
-	Memory *float64 `json:"memory,omitempty"`
 	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
 	MsgRateOut *float64 `json:"msgRateOut,omitempty"`
+	BandwidthIn *float64 `json:"bandwidthIn,omitempty"`
+	BandwidthOut *float64 `json:"bandwidthOut,omitempty"`
+	Memory *float64 `json:"memory,omitempty"`
+	Dynamic *bool `json:"dynamic,omitempty"`
+	Valid *bool `json:"valid,omitempty"`
 }
 
 // NewResourceQuota instantiates a new ResourceQuota object
@@ -39,134 +40,6 @@ func NewResourceQuota() *ResourceQuota {
 func NewResourceQuotaWithDefaults() *ResourceQuota {
 	this := ResourceQuota{}
 	return &this
-}
-
-// GetBandwidthIn returns the BandwidthIn field value if set, zero value otherwise.
-func (o *ResourceQuota) GetBandwidthIn() float64 {
-	if o == nil || o.BandwidthIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.BandwidthIn
-}
-
-// GetBandwidthInOk returns a tuple with the BandwidthIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResourceQuota) GetBandwidthInOk() (*float64, bool) {
-	if o == nil || o.BandwidthIn == nil {
-		return nil, false
-	}
-	return o.BandwidthIn, true
-}
-
-// HasBandwidthIn returns a boolean if a field has been set.
-func (o *ResourceQuota) HasBandwidthIn() bool {
-	if o != nil && o.BandwidthIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBandwidthIn gets a reference to the given float64 and assigns it to the BandwidthIn field.
-func (o *ResourceQuota) SetBandwidthIn(v float64) {
-	o.BandwidthIn = &v
-}
-
-// GetBandwidthOut returns the BandwidthOut field value if set, zero value otherwise.
-func (o *ResourceQuota) GetBandwidthOut() float64 {
-	if o == nil || o.BandwidthOut == nil {
-		var ret float64
-		return ret
-	}
-	return *o.BandwidthOut
-}
-
-// GetBandwidthOutOk returns a tuple with the BandwidthOut field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResourceQuota) GetBandwidthOutOk() (*float64, bool) {
-	if o == nil || o.BandwidthOut == nil {
-		return nil, false
-	}
-	return o.BandwidthOut, true
-}
-
-// HasBandwidthOut returns a boolean if a field has been set.
-func (o *ResourceQuota) HasBandwidthOut() bool {
-	if o != nil && o.BandwidthOut != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBandwidthOut gets a reference to the given float64 and assigns it to the BandwidthOut field.
-func (o *ResourceQuota) SetBandwidthOut(v float64) {
-	o.BandwidthOut = &v
-}
-
-// GetDynamic returns the Dynamic field value if set, zero value otherwise.
-func (o *ResourceQuota) GetDynamic() bool {
-	if o == nil || o.Dynamic == nil {
-		var ret bool
-		return ret
-	}
-	return *o.Dynamic
-}
-
-// GetDynamicOk returns a tuple with the Dynamic field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResourceQuota) GetDynamicOk() (*bool, bool) {
-	if o == nil || o.Dynamic == nil {
-		return nil, false
-	}
-	return o.Dynamic, true
-}
-
-// HasDynamic returns a boolean if a field has been set.
-func (o *ResourceQuota) HasDynamic() bool {
-	if o != nil && o.Dynamic != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDynamic gets a reference to the given bool and assigns it to the Dynamic field.
-func (o *ResourceQuota) SetDynamic(v bool) {
-	o.Dynamic = &v
-}
-
-// GetMemory returns the Memory field value if set, zero value otherwise.
-func (o *ResourceQuota) GetMemory() float64 {
-	if o == nil || o.Memory == nil {
-		var ret float64
-		return ret
-	}
-	return *o.Memory
-}
-
-// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ResourceQuota) GetMemoryOk() (*float64, bool) {
-	if o == nil || o.Memory == nil {
-		return nil, false
-	}
-	return o.Memory, true
-}
-
-// HasMemory returns a boolean if a field has been set.
-func (o *ResourceQuota) HasMemory() bool {
-	if o != nil && o.Memory != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMemory gets a reference to the given float64 and assigns it to the Memory field.
-func (o *ResourceQuota) SetMemory(v float64) {
-	o.Memory = &v
 }
 
 // GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
@@ -233,25 +106,188 @@ func (o *ResourceQuota) SetMsgRateOut(v float64) {
 	o.MsgRateOut = &v
 }
 
+// GetBandwidthIn returns the BandwidthIn field value if set, zero value otherwise.
+func (o *ResourceQuota) GetBandwidthIn() float64 {
+	if o == nil || o.BandwidthIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.BandwidthIn
+}
+
+// GetBandwidthInOk returns a tuple with the BandwidthIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceQuota) GetBandwidthInOk() (*float64, bool) {
+	if o == nil || o.BandwidthIn == nil {
+		return nil, false
+	}
+	return o.BandwidthIn, true
+}
+
+// HasBandwidthIn returns a boolean if a field has been set.
+func (o *ResourceQuota) HasBandwidthIn() bool {
+	if o != nil && o.BandwidthIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBandwidthIn gets a reference to the given float64 and assigns it to the BandwidthIn field.
+func (o *ResourceQuota) SetBandwidthIn(v float64) {
+	o.BandwidthIn = &v
+}
+
+// GetBandwidthOut returns the BandwidthOut field value if set, zero value otherwise.
+func (o *ResourceQuota) GetBandwidthOut() float64 {
+	if o == nil || o.BandwidthOut == nil {
+		var ret float64
+		return ret
+	}
+	return *o.BandwidthOut
+}
+
+// GetBandwidthOutOk returns a tuple with the BandwidthOut field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceQuota) GetBandwidthOutOk() (*float64, bool) {
+	if o == nil || o.BandwidthOut == nil {
+		return nil, false
+	}
+	return o.BandwidthOut, true
+}
+
+// HasBandwidthOut returns a boolean if a field has been set.
+func (o *ResourceQuota) HasBandwidthOut() bool {
+	if o != nil && o.BandwidthOut != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBandwidthOut gets a reference to the given float64 and assigns it to the BandwidthOut field.
+func (o *ResourceQuota) SetBandwidthOut(v float64) {
+	o.BandwidthOut = &v
+}
+
+// GetMemory returns the Memory field value if set, zero value otherwise.
+func (o *ResourceQuota) GetMemory() float64 {
+	if o == nil || o.Memory == nil {
+		var ret float64
+		return ret
+	}
+	return *o.Memory
+}
+
+// GetMemoryOk returns a tuple with the Memory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceQuota) GetMemoryOk() (*float64, bool) {
+	if o == nil || o.Memory == nil {
+		return nil, false
+	}
+	return o.Memory, true
+}
+
+// HasMemory returns a boolean if a field has been set.
+func (o *ResourceQuota) HasMemory() bool {
+	if o != nil && o.Memory != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMemory gets a reference to the given float64 and assigns it to the Memory field.
+func (o *ResourceQuota) SetMemory(v float64) {
+	o.Memory = &v
+}
+
+// GetDynamic returns the Dynamic field value if set, zero value otherwise.
+func (o *ResourceQuota) GetDynamic() bool {
+	if o == nil || o.Dynamic == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Dynamic
+}
+
+// GetDynamicOk returns a tuple with the Dynamic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceQuota) GetDynamicOk() (*bool, bool) {
+	if o == nil || o.Dynamic == nil {
+		return nil, false
+	}
+	return o.Dynamic, true
+}
+
+// HasDynamic returns a boolean if a field has been set.
+func (o *ResourceQuota) HasDynamic() bool {
+	if o != nil && o.Dynamic != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDynamic gets a reference to the given bool and assigns it to the Dynamic field.
+func (o *ResourceQuota) SetDynamic(v bool) {
+	o.Dynamic = &v
+}
+
+// GetValid returns the Valid field value if set, zero value otherwise.
+func (o *ResourceQuota) GetValid() bool {
+	if o == nil || o.Valid == nil {
+		var ret bool
+		return ret
+	}
+	return *o.Valid
+}
+
+// GetValidOk returns a tuple with the Valid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ResourceQuota) GetValidOk() (*bool, bool) {
+	if o == nil || o.Valid == nil {
+		return nil, false
+	}
+	return o.Valid, true
+}
+
+// HasValid returns a boolean if a field has been set.
+func (o *ResourceQuota) HasValid() bool {
+	if o != nil && o.Valid != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetValid gets a reference to the given bool and assigns it to the Valid field.
+func (o *ResourceQuota) SetValid(v bool) {
+	o.Valid = &v
+}
+
 func (o ResourceQuota) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.MsgRateIn != nil {
+		toSerialize["msgRateIn"] = o.MsgRateIn
+	}
+	if o.MsgRateOut != nil {
+		toSerialize["msgRateOut"] = o.MsgRateOut
+	}
 	if o.BandwidthIn != nil {
 		toSerialize["bandwidthIn"] = o.BandwidthIn
 	}
 	if o.BandwidthOut != nil {
 		toSerialize["bandwidthOut"] = o.BandwidthOut
 	}
-	if o.Dynamic != nil {
-		toSerialize["dynamic"] = o.Dynamic
-	}
 	if o.Memory != nil {
 		toSerialize["memory"] = o.Memory
 	}
-	if o.MsgRateIn != nil {
-		toSerialize["msgRateIn"] = o.MsgRateIn
+	if o.Dynamic != nil {
+		toSerialize["dynamic"] = o.Dynamic
 	}
-	if o.MsgRateOut != nil {
-		toSerialize["msgRateOut"] = o.MsgRateOut
+	if o.Valid != nil {
+		toSerialize["valid"] = o.Valid
 	}
 	return json.Marshal(toSerialize)
 }

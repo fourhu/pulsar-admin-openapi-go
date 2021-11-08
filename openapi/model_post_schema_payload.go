@@ -16,9 +16,9 @@ import (
 
 // PostSchemaPayload struct for PostSchemaPayload
 type PostSchemaPayload struct {
-	Properties *map[string]string `json:"properties,omitempty"`
-	Schema *string `json:"schema,omitempty"`
 	Type *string `json:"type,omitempty"`
+	Schema *string `json:"schema,omitempty"`
+	Properties *map[string]string `json:"properties,omitempty"`
 }
 
 // NewPostSchemaPayload instantiates a new PostSchemaPayload object
@@ -36,70 +36,6 @@ func NewPostSchemaPayload() *PostSchemaPayload {
 func NewPostSchemaPayloadWithDefaults() *PostSchemaPayload {
 	this := PostSchemaPayload{}
 	return &this
-}
-
-// GetProperties returns the Properties field value if set, zero value otherwise.
-func (o *PostSchemaPayload) GetProperties() map[string]string {
-	if o == nil || o.Properties == nil {
-		var ret map[string]string
-		return ret
-	}
-	return *o.Properties
-}
-
-// GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostSchemaPayload) GetPropertiesOk() (*map[string]string, bool) {
-	if o == nil || o.Properties == nil {
-		return nil, false
-	}
-	return o.Properties, true
-}
-
-// HasProperties returns a boolean if a field has been set.
-func (o *PostSchemaPayload) HasProperties() bool {
-	if o != nil && o.Properties != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProperties gets a reference to the given map[string]string and assigns it to the Properties field.
-func (o *PostSchemaPayload) SetProperties(v map[string]string) {
-	o.Properties = &v
-}
-
-// GetSchema returns the Schema field value if set, zero value otherwise.
-func (o *PostSchemaPayload) GetSchema() string {
-	if o == nil || o.Schema == nil {
-		var ret string
-		return ret
-	}
-	return *o.Schema
-}
-
-// GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PostSchemaPayload) GetSchemaOk() (*string, bool) {
-	if o == nil || o.Schema == nil {
-		return nil, false
-	}
-	return o.Schema, true
-}
-
-// HasSchema returns a boolean if a field has been set.
-func (o *PostSchemaPayload) HasSchema() bool {
-	if o != nil && o.Schema != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetSchema gets a reference to the given string and assigns it to the Schema field.
-func (o *PostSchemaPayload) SetSchema(v string) {
-	o.Schema = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -134,16 +70,80 @@ func (o *PostSchemaPayload) SetType(v string) {
 	o.Type = &v
 }
 
+// GetSchema returns the Schema field value if set, zero value otherwise.
+func (o *PostSchemaPayload) GetSchema() string {
+	if o == nil || o.Schema == nil {
+		var ret string
+		return ret
+	}
+	return *o.Schema
+}
+
+// GetSchemaOk returns a tuple with the Schema field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSchemaPayload) GetSchemaOk() (*string, bool) {
+	if o == nil || o.Schema == nil {
+		return nil, false
+	}
+	return o.Schema, true
+}
+
+// HasSchema returns a boolean if a field has been set.
+func (o *PostSchemaPayload) HasSchema() bool {
+	if o != nil && o.Schema != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetSchema gets a reference to the given string and assigns it to the Schema field.
+func (o *PostSchemaPayload) SetSchema(v string) {
+	o.Schema = &v
+}
+
+// GetProperties returns the Properties field value if set, zero value otherwise.
+func (o *PostSchemaPayload) GetProperties() map[string]string {
+	if o == nil || o.Properties == nil {
+		var ret map[string]string
+		return ret
+	}
+	return *o.Properties
+}
+
+// GetPropertiesOk returns a tuple with the Properties field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PostSchemaPayload) GetPropertiesOk() (*map[string]string, bool) {
+	if o == nil || o.Properties == nil {
+		return nil, false
+	}
+	return o.Properties, true
+}
+
+// HasProperties returns a boolean if a field has been set.
+func (o *PostSchemaPayload) HasProperties() bool {
+	if o != nil && o.Properties != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProperties gets a reference to the given map[string]string and assigns it to the Properties field.
+func (o *PostSchemaPayload) SetProperties(v map[string]string) {
+	o.Properties = &v
+}
+
 func (o PostSchemaPayload) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Properties != nil {
-		toSerialize["properties"] = o.Properties
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	if o.Schema != nil {
 		toSerialize["schema"] = o.Schema
 	}
-	if o.Type != nil {
-		toSerialize["type"] = o.Type
+	if o.Properties != nil {
+		toSerialize["properties"] = o.Properties
 	}
 	return json.Marshal(toSerialize)
 }

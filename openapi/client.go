@@ -57,6 +57,8 @@ type APIClient struct {
 
 	ClustersApi *ClustersApiService
 
+	DefaultApi *DefaultApiService
+
 	NamespacesApi *NamespacesApiService
 
 	NonPersistentTopicApi *NonPersistentTopicApiService
@@ -64,6 +66,8 @@ type APIClient struct {
 	PersistentTopicApi *PersistentTopicApiService
 
 	ResourceQuotasApi *ResourceQuotasApiService
+
+	ResourcegroupsApi *ResourcegroupsApiService
 
 	SchemasApi *SchemasApiService
 
@@ -90,10 +94,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BrokerStatsApi = (*BrokerStatsApiService)(&c.common)
 	c.BrokersApi = (*BrokersApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
+	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
 	c.NonPersistentTopicApi = (*NonPersistentTopicApiService)(&c.common)
 	c.PersistentTopicApi = (*PersistentTopicApiService)(&c.common)
 	c.ResourceQuotasApi = (*ResourceQuotasApiService)(&c.common)
+	c.ResourcegroupsApi = (*ResourcegroupsApiService)(&c.common)
 	c.SchemasApi = (*SchemasApiService)(&c.common)
 	c.TenantsApi = (*TenantsApiService)(&c.common)
 

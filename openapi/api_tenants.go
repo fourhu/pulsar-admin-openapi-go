@@ -134,8 +134,13 @@ type ApiDeleteTenantRequest struct {
 	ctx _context.Context
 	ApiService *TenantsApiService
 	tenant string
+	force *bool
 }
 
+func (r ApiDeleteTenantRequest) Force(force bool) ApiDeleteTenantRequest {
+	r.force = &force
+	return r
+}
 
 func (r ApiDeleteTenantRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteTenantExecute(r)
@@ -167,6 +172,102 @@ func (a *TenantsApiService) DeleteTenantExecute(r ApiDeleteTenantRequest) (*_net
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.DeleteTenant")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/tenants/{tenant}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.force != nil {
+		localVarQueryParams.Add("force", parameterToString(*r.force, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetTenantAdminRequest struct {
+	ctx _context.Context
+	ApiService *TenantsApiService
+	tenant string
+}
+
+
+func (r ApiGetTenantAdminRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetTenantAdminExecute(r)
+}
+
+/*
+GetTenantAdmin Get the admin configuration for a given tenant.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant The tenant name
+ @return ApiGetTenantAdminRequest
+*/
+func (a *TenantsApiService) GetTenantAdmin(ctx _context.Context, tenant string) ApiGetTenantAdminRequest {
+	return ApiGetTenantAdminRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+	}
+}
+
+// Execute executes the request
+func (a *TenantsApiService) GetTenantAdminExecute(r ApiGetTenantAdminRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.GetTenantAdmin")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
@@ -221,110 +322,6 @@ func (a *TenantsApiService) DeleteTenantExecute(r ApiDeleteTenantRequest) (*_net
 	}
 
 	return localVarHTTPResponse, nil
-}
-
-type ApiGetTenantAdminRequest struct {
-	ctx _context.Context
-	ApiService *TenantsApiService
-	tenant string
-}
-
-
-func (r ApiGetTenantAdminRequest) Execute() (TenantInfo, *_nethttp.Response, error) {
-	return r.ApiService.GetTenantAdminExecute(r)
-}
-
-/*
-GetTenantAdmin Get the admin configuration for a given tenant.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant The tenant name
- @return ApiGetTenantAdminRequest
-*/
-func (a *TenantsApiService) GetTenantAdmin(ctx _context.Context, tenant string) ApiGetTenantAdminRequest {
-	return ApiGetTenantAdminRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-	}
-}
-
-// Execute executes the request
-//  @return TenantInfo
-func (a *TenantsApiService) GetTenantAdminExecute(r ApiGetTenantAdminRequest) (TenantInfo, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  TenantInfo
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TenantsApiService.GetTenantAdmin")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/tenants/{tenant}"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiGetTenantsRequest struct {

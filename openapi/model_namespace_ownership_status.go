@@ -17,8 +17,8 @@ import (
 // NamespaceOwnershipStatus struct for NamespaceOwnershipStatus
 type NamespaceOwnershipStatus struct {
 	BrokerAssignment *string `json:"broker_assignment,omitempty"`
-	IsActive *bool `json:"is_active,omitempty"`
 	IsControlled *bool `json:"is_controlled,omitempty"`
+	IsActive *bool `json:"is_active,omitempty"`
 }
 
 // NewNamespaceOwnershipStatus instantiates a new NamespaceOwnershipStatus object
@@ -70,38 +70,6 @@ func (o *NamespaceOwnershipStatus) SetBrokerAssignment(v string) {
 	o.BrokerAssignment = &v
 }
 
-// GetIsActive returns the IsActive field value if set, zero value otherwise.
-func (o *NamespaceOwnershipStatus) GetIsActive() bool {
-	if o == nil || o.IsActive == nil {
-		var ret bool
-		return ret
-	}
-	return *o.IsActive
-}
-
-// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NamespaceOwnershipStatus) GetIsActiveOk() (*bool, bool) {
-	if o == nil || o.IsActive == nil {
-		return nil, false
-	}
-	return o.IsActive, true
-}
-
-// HasIsActive returns a boolean if a field has been set.
-func (o *NamespaceOwnershipStatus) HasIsActive() bool {
-	if o != nil && o.IsActive != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
-func (o *NamespaceOwnershipStatus) SetIsActive(v bool) {
-	o.IsActive = &v
-}
-
 // GetIsControlled returns the IsControlled field value if set, zero value otherwise.
 func (o *NamespaceOwnershipStatus) GetIsControlled() bool {
 	if o == nil || o.IsControlled == nil {
@@ -134,16 +102,48 @@ func (o *NamespaceOwnershipStatus) SetIsControlled(v bool) {
 	o.IsControlled = &v
 }
 
+// GetIsActive returns the IsActive field value if set, zero value otherwise.
+func (o *NamespaceOwnershipStatus) GetIsActive() bool {
+	if o == nil || o.IsActive == nil {
+		var ret bool
+		return ret
+	}
+	return *o.IsActive
+}
+
+// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NamespaceOwnershipStatus) GetIsActiveOk() (*bool, bool) {
+	if o == nil || o.IsActive == nil {
+		return nil, false
+	}
+	return o.IsActive, true
+}
+
+// HasIsActive returns a boolean if a field has been set.
+func (o *NamespaceOwnershipStatus) HasIsActive() bool {
+	if o != nil && o.IsActive != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+func (o *NamespaceOwnershipStatus) SetIsActive(v bool) {
+	o.IsActive = &v
+}
+
 func (o NamespaceOwnershipStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.BrokerAssignment != nil {
 		toSerialize["broker_assignment"] = o.BrokerAssignment
 	}
-	if o.IsActive != nil {
-		toSerialize["is_active"] = o.IsActive
-	}
 	if o.IsControlled != nil {
 		toSerialize["is_controlled"] = o.IsControlled
+	}
+	if o.IsActive != nil {
+		toSerialize["is_active"] = o.IsActive
 	}
 	return json.Marshal(toSerialize)
 }

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DispatchThrottlingRateInByte** | Pointer to **int64** |  | [optional] 
 **DispatchThrottlingRateInMsg** | Pointer to **int32** |  | [optional] 
-**RatePeriodInSecond** | Pointer to **int32** |  | [optional] 
+**DispatchThrottlingRateInByte** | Pointer to **int64** |  | [optional] 
 **RelativeToPublishRate** | Pointer to **bool** |  | [optional] 
+**RatePeriodInSecond** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -27,31 +27,6 @@ will change when the set of required properties is changed
 NewDispatchRateWithDefaults instantiates a new DispatchRate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetDispatchThrottlingRateInByte
-
-`func (o *DispatchRate) GetDispatchThrottlingRateInByte() int64`
-
-GetDispatchThrottlingRateInByte returns the DispatchThrottlingRateInByte field if non-nil, zero value otherwise.
-
-### GetDispatchThrottlingRateInByteOk
-
-`func (o *DispatchRate) GetDispatchThrottlingRateInByteOk() (*int64, bool)`
-
-GetDispatchThrottlingRateInByteOk returns a tuple with the DispatchThrottlingRateInByte field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDispatchThrottlingRateInByte
-
-`func (o *DispatchRate) SetDispatchThrottlingRateInByte(v int64)`
-
-SetDispatchThrottlingRateInByte sets DispatchThrottlingRateInByte field to given value.
-
-### HasDispatchThrottlingRateInByte
-
-`func (o *DispatchRate) HasDispatchThrottlingRateInByte() bool`
-
-HasDispatchThrottlingRateInByte returns a boolean if a field has been set.
 
 ### GetDispatchThrottlingRateInMsg
 
@@ -78,30 +53,30 @@ SetDispatchThrottlingRateInMsg sets DispatchThrottlingRateInMsg field to given v
 
 HasDispatchThrottlingRateInMsg returns a boolean if a field has been set.
 
-### GetRatePeriodInSecond
+### GetDispatchThrottlingRateInByte
 
-`func (o *DispatchRate) GetRatePeriodInSecond() int32`
+`func (o *DispatchRate) GetDispatchThrottlingRateInByte() int64`
 
-GetRatePeriodInSecond returns the RatePeriodInSecond field if non-nil, zero value otherwise.
+GetDispatchThrottlingRateInByte returns the DispatchThrottlingRateInByte field if non-nil, zero value otherwise.
 
-### GetRatePeriodInSecondOk
+### GetDispatchThrottlingRateInByteOk
 
-`func (o *DispatchRate) GetRatePeriodInSecondOk() (*int32, bool)`
+`func (o *DispatchRate) GetDispatchThrottlingRateInByteOk() (*int64, bool)`
 
-GetRatePeriodInSecondOk returns a tuple with the RatePeriodInSecond field if it's non-nil, zero value otherwise
+GetDispatchThrottlingRateInByteOk returns a tuple with the DispatchThrottlingRateInByte field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRatePeriodInSecond
+### SetDispatchThrottlingRateInByte
 
-`func (o *DispatchRate) SetRatePeriodInSecond(v int32)`
+`func (o *DispatchRate) SetDispatchThrottlingRateInByte(v int64)`
 
-SetRatePeriodInSecond sets RatePeriodInSecond field to given value.
+SetDispatchThrottlingRateInByte sets DispatchThrottlingRateInByte field to given value.
 
-### HasRatePeriodInSecond
+### HasDispatchThrottlingRateInByte
 
-`func (o *DispatchRate) HasRatePeriodInSecond() bool`
+`func (o *DispatchRate) HasDispatchThrottlingRateInByte() bool`
 
-HasRatePeriodInSecond returns a boolean if a field has been set.
+HasDispatchThrottlingRateInByte returns a boolean if a field has been set.
 
 ### GetRelativeToPublishRate
 
@@ -127,6 +102,31 @@ SetRelativeToPublishRate sets RelativeToPublishRate field to given value.
 `func (o *DispatchRate) HasRelativeToPublishRate() bool`
 
 HasRelativeToPublishRate returns a boolean if a field has been set.
+
+### GetRatePeriodInSecond
+
+`func (o *DispatchRate) GetRatePeriodInSecond() int32`
+
+GetRatePeriodInSecond returns the RatePeriodInSecond field if non-nil, zero value otherwise.
+
+### GetRatePeriodInSecondOk
+
+`func (o *DispatchRate) GetRatePeriodInSecondOk() (*int32, bool)`
+
+GetRatePeriodInSecondOk returns a tuple with the RatePeriodInSecond field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRatePeriodInSecond
+
+`func (o *DispatchRate) SetRatePeriodInSecond(v int32)`
+
+SetRatePeriodInSecond sets RatePeriodInSecond field to given value.
+
+### HasRatePeriodInSecond
+
+`func (o *DispatchRate) HasRatePeriodInSecond() bool`
+
+HasRatePeriodInSecond returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

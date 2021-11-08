@@ -16,20 +16,40 @@ import (
 
 // ClusterData The configuration data for a cluster
 type ClusterData struct {
-	// The broker service url (for produce and consume operations)
-	BrokerServiceUrl *string `json:"brokerServiceUrl,omitempty"`
-	// The secured broker service url (for produce and consume operations)
-	BrokerServiceUrlTls *string `json:"brokerServiceUrlTls,omitempty"`
-	// A set of peer cluster names
-	PeerClusterNames *[]string `json:"peerClusterNames,omitempty"`
-	// protocol to decide type of proxy routing eg: SNI-routing
-	ProxyProtocol *string `json:"proxyProtocol,omitempty"`
-	// Proxy-service url when client would like to connect to broker via proxy.
-	ProxyServiceUrl *string `json:"proxyServiceUrl,omitempty"`
 	// The HTTP rest service URL (for admin operations)
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
 	// The HTTPS rest service URL (for admin operations)
 	ServiceUrlTls *string `json:"serviceUrlTls,omitempty"`
+	// The broker service url (for produce and consume operations)
+	BrokerServiceUrl *string `json:"brokerServiceUrl,omitempty"`
+	// The secured broker service url (for produce and consume operations)
+	BrokerServiceUrlTls *string `json:"brokerServiceUrlTls,omitempty"`
+	// Proxy-service url when client would like to connect to broker via proxy.
+	ProxyServiceUrl *string `json:"proxyServiceUrl,omitempty"`
+	// Authentication plugin when client would like to connect to cluster.
+	AuthenticationPlugin *string `json:"authenticationPlugin,omitempty"`
+	// Authentication parameters when client would like to connect to cluster.
+	AuthenticationParameters *string `json:"authenticationParameters,omitempty"`
+	// protocol to decide type of proxy routing eg: SNI-routing
+	ProxyProtocol *string `json:"proxyProtocol,omitempty"`
+	// A set of peer cluster names
+	PeerClusterNames *[]string `json:"peerClusterNames,omitempty"`
+	// Enable TLS when talking with other brokers in the same cluster (admin operation) or different clusters (replication)
+	BrokerClientTlsEnabled *bool `json:"brokerClientTlsEnabled,omitempty"`
+	// Allow TLS connections to servers whose certificate cannot be be verified to have been signed by a trusted certificate authority.
+	TlsAllowInsecureConnection *bool `json:"tlsAllowInsecureConnection,omitempty"`
+	// Whether internal client use KeyStore type to authenticate with other Pulsar brokers
+	BrokerClientTlsEnabledWithKeyStore *bool `json:"brokerClientTlsEnabledWithKeyStore,omitempty"`
+	// TLS TrustStore type configuration for internal client: JKS, PKCS12 used by the internal client to authenticate with Pulsar brokers
+	BrokerClientTlsTrustStoreType *string `json:"brokerClientTlsTrustStoreType,omitempty"`
+	// TLS TrustStore path for internal client used by the internal client to authenticate with Pulsar brokers
+	BrokerClientTlsTrustStore *string `json:"brokerClientTlsTrustStore,omitempty"`
+	// TLS TrustStore password for internal client used by the internal client to authenticate with Pulsar brokers
+	BrokerClientTlsTrustStorePassword *string `json:"brokerClientTlsTrustStorePassword,omitempty"`
+	// Path for the trusted TLS certificate file for outgoing connection to a server (broker)
+	BrokerClientTrustCertsFilePath *string `json:"brokerClientTrustCertsFilePath,omitempty"`
+	// listenerName when client would like to connect to cluster
+	ListenerName *string `json:"listenerName,omitempty"`
 }
 
 // NewClusterData instantiates a new ClusterData object
@@ -47,166 +67,6 @@ func NewClusterData() *ClusterData {
 func NewClusterDataWithDefaults() *ClusterData {
 	this := ClusterData{}
 	return &this
-}
-
-// GetBrokerServiceUrl returns the BrokerServiceUrl field value if set, zero value otherwise.
-func (o *ClusterData) GetBrokerServiceUrl() string {
-	if o == nil || o.BrokerServiceUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.BrokerServiceUrl
-}
-
-// GetBrokerServiceUrlOk returns a tuple with the BrokerServiceUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterData) GetBrokerServiceUrlOk() (*string, bool) {
-	if o == nil || o.BrokerServiceUrl == nil {
-		return nil, false
-	}
-	return o.BrokerServiceUrl, true
-}
-
-// HasBrokerServiceUrl returns a boolean if a field has been set.
-func (o *ClusterData) HasBrokerServiceUrl() bool {
-	if o != nil && o.BrokerServiceUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBrokerServiceUrl gets a reference to the given string and assigns it to the BrokerServiceUrl field.
-func (o *ClusterData) SetBrokerServiceUrl(v string) {
-	o.BrokerServiceUrl = &v
-}
-
-// GetBrokerServiceUrlTls returns the BrokerServiceUrlTls field value if set, zero value otherwise.
-func (o *ClusterData) GetBrokerServiceUrlTls() string {
-	if o == nil || o.BrokerServiceUrlTls == nil {
-		var ret string
-		return ret
-	}
-	return *o.BrokerServiceUrlTls
-}
-
-// GetBrokerServiceUrlTlsOk returns a tuple with the BrokerServiceUrlTls field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterData) GetBrokerServiceUrlTlsOk() (*string, bool) {
-	if o == nil || o.BrokerServiceUrlTls == nil {
-		return nil, false
-	}
-	return o.BrokerServiceUrlTls, true
-}
-
-// HasBrokerServiceUrlTls returns a boolean if a field has been set.
-func (o *ClusterData) HasBrokerServiceUrlTls() bool {
-	if o != nil && o.BrokerServiceUrlTls != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetBrokerServiceUrlTls gets a reference to the given string and assigns it to the BrokerServiceUrlTls field.
-func (o *ClusterData) SetBrokerServiceUrlTls(v string) {
-	o.BrokerServiceUrlTls = &v
-}
-
-// GetPeerClusterNames returns the PeerClusterNames field value if set, zero value otherwise.
-func (o *ClusterData) GetPeerClusterNames() []string {
-	if o == nil || o.PeerClusterNames == nil {
-		var ret []string
-		return ret
-	}
-	return *o.PeerClusterNames
-}
-
-// GetPeerClusterNamesOk returns a tuple with the PeerClusterNames field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterData) GetPeerClusterNamesOk() (*[]string, bool) {
-	if o == nil || o.PeerClusterNames == nil {
-		return nil, false
-	}
-	return o.PeerClusterNames, true
-}
-
-// HasPeerClusterNames returns a boolean if a field has been set.
-func (o *ClusterData) HasPeerClusterNames() bool {
-	if o != nil && o.PeerClusterNames != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetPeerClusterNames gets a reference to the given []string and assigns it to the PeerClusterNames field.
-func (o *ClusterData) SetPeerClusterNames(v []string) {
-	o.PeerClusterNames = &v
-}
-
-// GetProxyProtocol returns the ProxyProtocol field value if set, zero value otherwise.
-func (o *ClusterData) GetProxyProtocol() string {
-	if o == nil || o.ProxyProtocol == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProxyProtocol
-}
-
-// GetProxyProtocolOk returns a tuple with the ProxyProtocol field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterData) GetProxyProtocolOk() (*string, bool) {
-	if o == nil || o.ProxyProtocol == nil {
-		return nil, false
-	}
-	return o.ProxyProtocol, true
-}
-
-// HasProxyProtocol returns a boolean if a field has been set.
-func (o *ClusterData) HasProxyProtocol() bool {
-	if o != nil && o.ProxyProtocol != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProxyProtocol gets a reference to the given string and assigns it to the ProxyProtocol field.
-func (o *ClusterData) SetProxyProtocol(v string) {
-	o.ProxyProtocol = &v
-}
-
-// GetProxyServiceUrl returns the ProxyServiceUrl field value if set, zero value otherwise.
-func (o *ClusterData) GetProxyServiceUrl() string {
-	if o == nil || o.ProxyServiceUrl == nil {
-		var ret string
-		return ret
-	}
-	return *o.ProxyServiceUrl
-}
-
-// GetProxyServiceUrlOk returns a tuple with the ProxyServiceUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ClusterData) GetProxyServiceUrlOk() (*string, bool) {
-	if o == nil || o.ProxyServiceUrl == nil {
-		return nil, false
-	}
-	return o.ProxyServiceUrl, true
-}
-
-// HasProxyServiceUrl returns a boolean if a field has been set.
-func (o *ClusterData) HasProxyServiceUrl() bool {
-	if o != nil && o.ProxyServiceUrl != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProxyServiceUrl gets a reference to the given string and assigns it to the ProxyServiceUrl field.
-func (o *ClusterData) SetProxyServiceUrl(v string) {
-	o.ProxyServiceUrl = &v
 }
 
 // GetServiceUrl returns the ServiceUrl field value if set, zero value otherwise.
@@ -273,28 +133,538 @@ func (o *ClusterData) SetServiceUrlTls(v string) {
 	o.ServiceUrlTls = &v
 }
 
+// GetBrokerServiceUrl returns the BrokerServiceUrl field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerServiceUrl() string {
+	if o == nil || o.BrokerServiceUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerServiceUrl
+}
+
+// GetBrokerServiceUrlOk returns a tuple with the BrokerServiceUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerServiceUrlOk() (*string, bool) {
+	if o == nil || o.BrokerServiceUrl == nil {
+		return nil, false
+	}
+	return o.BrokerServiceUrl, true
+}
+
+// HasBrokerServiceUrl returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerServiceUrl() bool {
+	if o != nil && o.BrokerServiceUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerServiceUrl gets a reference to the given string and assigns it to the BrokerServiceUrl field.
+func (o *ClusterData) SetBrokerServiceUrl(v string) {
+	o.BrokerServiceUrl = &v
+}
+
+// GetBrokerServiceUrlTls returns the BrokerServiceUrlTls field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerServiceUrlTls() string {
+	if o == nil || o.BrokerServiceUrlTls == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerServiceUrlTls
+}
+
+// GetBrokerServiceUrlTlsOk returns a tuple with the BrokerServiceUrlTls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerServiceUrlTlsOk() (*string, bool) {
+	if o == nil || o.BrokerServiceUrlTls == nil {
+		return nil, false
+	}
+	return o.BrokerServiceUrlTls, true
+}
+
+// HasBrokerServiceUrlTls returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerServiceUrlTls() bool {
+	if o != nil && o.BrokerServiceUrlTls != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerServiceUrlTls gets a reference to the given string and assigns it to the BrokerServiceUrlTls field.
+func (o *ClusterData) SetBrokerServiceUrlTls(v string) {
+	o.BrokerServiceUrlTls = &v
+}
+
+// GetProxyServiceUrl returns the ProxyServiceUrl field value if set, zero value otherwise.
+func (o *ClusterData) GetProxyServiceUrl() string {
+	if o == nil || o.ProxyServiceUrl == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProxyServiceUrl
+}
+
+// GetProxyServiceUrlOk returns a tuple with the ProxyServiceUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetProxyServiceUrlOk() (*string, bool) {
+	if o == nil || o.ProxyServiceUrl == nil {
+		return nil, false
+	}
+	return o.ProxyServiceUrl, true
+}
+
+// HasProxyServiceUrl returns a boolean if a field has been set.
+func (o *ClusterData) HasProxyServiceUrl() bool {
+	if o != nil && o.ProxyServiceUrl != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProxyServiceUrl gets a reference to the given string and assigns it to the ProxyServiceUrl field.
+func (o *ClusterData) SetProxyServiceUrl(v string) {
+	o.ProxyServiceUrl = &v
+}
+
+// GetAuthenticationPlugin returns the AuthenticationPlugin field value if set, zero value otherwise.
+func (o *ClusterData) GetAuthenticationPlugin() string {
+	if o == nil || o.AuthenticationPlugin == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthenticationPlugin
+}
+
+// GetAuthenticationPluginOk returns a tuple with the AuthenticationPlugin field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetAuthenticationPluginOk() (*string, bool) {
+	if o == nil || o.AuthenticationPlugin == nil {
+		return nil, false
+	}
+	return o.AuthenticationPlugin, true
+}
+
+// HasAuthenticationPlugin returns a boolean if a field has been set.
+func (o *ClusterData) HasAuthenticationPlugin() bool {
+	if o != nil && o.AuthenticationPlugin != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticationPlugin gets a reference to the given string and assigns it to the AuthenticationPlugin field.
+func (o *ClusterData) SetAuthenticationPlugin(v string) {
+	o.AuthenticationPlugin = &v
+}
+
+// GetAuthenticationParameters returns the AuthenticationParameters field value if set, zero value otherwise.
+func (o *ClusterData) GetAuthenticationParameters() string {
+	if o == nil || o.AuthenticationParameters == nil {
+		var ret string
+		return ret
+	}
+	return *o.AuthenticationParameters
+}
+
+// GetAuthenticationParametersOk returns a tuple with the AuthenticationParameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetAuthenticationParametersOk() (*string, bool) {
+	if o == nil || o.AuthenticationParameters == nil {
+		return nil, false
+	}
+	return o.AuthenticationParameters, true
+}
+
+// HasAuthenticationParameters returns a boolean if a field has been set.
+func (o *ClusterData) HasAuthenticationParameters() bool {
+	if o != nil && o.AuthenticationParameters != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticationParameters gets a reference to the given string and assigns it to the AuthenticationParameters field.
+func (o *ClusterData) SetAuthenticationParameters(v string) {
+	o.AuthenticationParameters = &v
+}
+
+// GetProxyProtocol returns the ProxyProtocol field value if set, zero value otherwise.
+func (o *ClusterData) GetProxyProtocol() string {
+	if o == nil || o.ProxyProtocol == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProxyProtocol
+}
+
+// GetProxyProtocolOk returns a tuple with the ProxyProtocol field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetProxyProtocolOk() (*string, bool) {
+	if o == nil || o.ProxyProtocol == nil {
+		return nil, false
+	}
+	return o.ProxyProtocol, true
+}
+
+// HasProxyProtocol returns a boolean if a field has been set.
+func (o *ClusterData) HasProxyProtocol() bool {
+	if o != nil && o.ProxyProtocol != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProxyProtocol gets a reference to the given string and assigns it to the ProxyProtocol field.
+func (o *ClusterData) SetProxyProtocol(v string) {
+	o.ProxyProtocol = &v
+}
+
+// GetPeerClusterNames returns the PeerClusterNames field value if set, zero value otherwise.
+func (o *ClusterData) GetPeerClusterNames() []string {
+	if o == nil || o.PeerClusterNames == nil {
+		var ret []string
+		return ret
+	}
+	return *o.PeerClusterNames
+}
+
+// GetPeerClusterNamesOk returns a tuple with the PeerClusterNames field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetPeerClusterNamesOk() (*[]string, bool) {
+	if o == nil || o.PeerClusterNames == nil {
+		return nil, false
+	}
+	return o.PeerClusterNames, true
+}
+
+// HasPeerClusterNames returns a boolean if a field has been set.
+func (o *ClusterData) HasPeerClusterNames() bool {
+	if o != nil && o.PeerClusterNames != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetPeerClusterNames gets a reference to the given []string and assigns it to the PeerClusterNames field.
+func (o *ClusterData) SetPeerClusterNames(v []string) {
+	o.PeerClusterNames = &v
+}
+
+// GetBrokerClientTlsEnabled returns the BrokerClientTlsEnabled field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerClientTlsEnabled() bool {
+	if o == nil || o.BrokerClientTlsEnabled == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BrokerClientTlsEnabled
+}
+
+// GetBrokerClientTlsEnabledOk returns a tuple with the BrokerClientTlsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerClientTlsEnabledOk() (*bool, bool) {
+	if o == nil || o.BrokerClientTlsEnabled == nil {
+		return nil, false
+	}
+	return o.BrokerClientTlsEnabled, true
+}
+
+// HasBrokerClientTlsEnabled returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerClientTlsEnabled() bool {
+	if o != nil && o.BrokerClientTlsEnabled != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerClientTlsEnabled gets a reference to the given bool and assigns it to the BrokerClientTlsEnabled field.
+func (o *ClusterData) SetBrokerClientTlsEnabled(v bool) {
+	o.BrokerClientTlsEnabled = &v
+}
+
+// GetTlsAllowInsecureConnection returns the TlsAllowInsecureConnection field value if set, zero value otherwise.
+func (o *ClusterData) GetTlsAllowInsecureConnection() bool {
+	if o == nil || o.TlsAllowInsecureConnection == nil {
+		var ret bool
+		return ret
+	}
+	return *o.TlsAllowInsecureConnection
+}
+
+// GetTlsAllowInsecureConnectionOk returns a tuple with the TlsAllowInsecureConnection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetTlsAllowInsecureConnectionOk() (*bool, bool) {
+	if o == nil || o.TlsAllowInsecureConnection == nil {
+		return nil, false
+	}
+	return o.TlsAllowInsecureConnection, true
+}
+
+// HasTlsAllowInsecureConnection returns a boolean if a field has been set.
+func (o *ClusterData) HasTlsAllowInsecureConnection() bool {
+	if o != nil && o.TlsAllowInsecureConnection != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTlsAllowInsecureConnection gets a reference to the given bool and assigns it to the TlsAllowInsecureConnection field.
+func (o *ClusterData) SetTlsAllowInsecureConnection(v bool) {
+	o.TlsAllowInsecureConnection = &v
+}
+
+// GetBrokerClientTlsEnabledWithKeyStore returns the BrokerClientTlsEnabledWithKeyStore field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerClientTlsEnabledWithKeyStore() bool {
+	if o == nil || o.BrokerClientTlsEnabledWithKeyStore == nil {
+		var ret bool
+		return ret
+	}
+	return *o.BrokerClientTlsEnabledWithKeyStore
+}
+
+// GetBrokerClientTlsEnabledWithKeyStoreOk returns a tuple with the BrokerClientTlsEnabledWithKeyStore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerClientTlsEnabledWithKeyStoreOk() (*bool, bool) {
+	if o == nil || o.BrokerClientTlsEnabledWithKeyStore == nil {
+		return nil, false
+	}
+	return o.BrokerClientTlsEnabledWithKeyStore, true
+}
+
+// HasBrokerClientTlsEnabledWithKeyStore returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerClientTlsEnabledWithKeyStore() bool {
+	if o != nil && o.BrokerClientTlsEnabledWithKeyStore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerClientTlsEnabledWithKeyStore gets a reference to the given bool and assigns it to the BrokerClientTlsEnabledWithKeyStore field.
+func (o *ClusterData) SetBrokerClientTlsEnabledWithKeyStore(v bool) {
+	o.BrokerClientTlsEnabledWithKeyStore = &v
+}
+
+// GetBrokerClientTlsTrustStoreType returns the BrokerClientTlsTrustStoreType field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerClientTlsTrustStoreType() string {
+	if o == nil || o.BrokerClientTlsTrustStoreType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerClientTlsTrustStoreType
+}
+
+// GetBrokerClientTlsTrustStoreTypeOk returns a tuple with the BrokerClientTlsTrustStoreType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerClientTlsTrustStoreTypeOk() (*string, bool) {
+	if o == nil || o.BrokerClientTlsTrustStoreType == nil {
+		return nil, false
+	}
+	return o.BrokerClientTlsTrustStoreType, true
+}
+
+// HasBrokerClientTlsTrustStoreType returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerClientTlsTrustStoreType() bool {
+	if o != nil && o.BrokerClientTlsTrustStoreType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerClientTlsTrustStoreType gets a reference to the given string and assigns it to the BrokerClientTlsTrustStoreType field.
+func (o *ClusterData) SetBrokerClientTlsTrustStoreType(v string) {
+	o.BrokerClientTlsTrustStoreType = &v
+}
+
+// GetBrokerClientTlsTrustStore returns the BrokerClientTlsTrustStore field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerClientTlsTrustStore() string {
+	if o == nil || o.BrokerClientTlsTrustStore == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerClientTlsTrustStore
+}
+
+// GetBrokerClientTlsTrustStoreOk returns a tuple with the BrokerClientTlsTrustStore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerClientTlsTrustStoreOk() (*string, bool) {
+	if o == nil || o.BrokerClientTlsTrustStore == nil {
+		return nil, false
+	}
+	return o.BrokerClientTlsTrustStore, true
+}
+
+// HasBrokerClientTlsTrustStore returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerClientTlsTrustStore() bool {
+	if o != nil && o.BrokerClientTlsTrustStore != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerClientTlsTrustStore gets a reference to the given string and assigns it to the BrokerClientTlsTrustStore field.
+func (o *ClusterData) SetBrokerClientTlsTrustStore(v string) {
+	o.BrokerClientTlsTrustStore = &v
+}
+
+// GetBrokerClientTlsTrustStorePassword returns the BrokerClientTlsTrustStorePassword field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerClientTlsTrustStorePassword() string {
+	if o == nil || o.BrokerClientTlsTrustStorePassword == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerClientTlsTrustStorePassword
+}
+
+// GetBrokerClientTlsTrustStorePasswordOk returns a tuple with the BrokerClientTlsTrustStorePassword field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerClientTlsTrustStorePasswordOk() (*string, bool) {
+	if o == nil || o.BrokerClientTlsTrustStorePassword == nil {
+		return nil, false
+	}
+	return o.BrokerClientTlsTrustStorePassword, true
+}
+
+// HasBrokerClientTlsTrustStorePassword returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerClientTlsTrustStorePassword() bool {
+	if o != nil && o.BrokerClientTlsTrustStorePassword != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerClientTlsTrustStorePassword gets a reference to the given string and assigns it to the BrokerClientTlsTrustStorePassword field.
+func (o *ClusterData) SetBrokerClientTlsTrustStorePassword(v string) {
+	o.BrokerClientTlsTrustStorePassword = &v
+}
+
+// GetBrokerClientTrustCertsFilePath returns the BrokerClientTrustCertsFilePath field value if set, zero value otherwise.
+func (o *ClusterData) GetBrokerClientTrustCertsFilePath() string {
+	if o == nil || o.BrokerClientTrustCertsFilePath == nil {
+		var ret string
+		return ret
+	}
+	return *o.BrokerClientTrustCertsFilePath
+}
+
+// GetBrokerClientTrustCertsFilePathOk returns a tuple with the BrokerClientTrustCertsFilePath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetBrokerClientTrustCertsFilePathOk() (*string, bool) {
+	if o == nil || o.BrokerClientTrustCertsFilePath == nil {
+		return nil, false
+	}
+	return o.BrokerClientTrustCertsFilePath, true
+}
+
+// HasBrokerClientTrustCertsFilePath returns a boolean if a field has been set.
+func (o *ClusterData) HasBrokerClientTrustCertsFilePath() bool {
+	if o != nil && o.BrokerClientTrustCertsFilePath != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBrokerClientTrustCertsFilePath gets a reference to the given string and assigns it to the BrokerClientTrustCertsFilePath field.
+func (o *ClusterData) SetBrokerClientTrustCertsFilePath(v string) {
+	o.BrokerClientTrustCertsFilePath = &v
+}
+
+// GetListenerName returns the ListenerName field value if set, zero value otherwise.
+func (o *ClusterData) GetListenerName() string {
+	if o == nil || o.ListenerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ListenerName
+}
+
+// GetListenerNameOk returns a tuple with the ListenerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterData) GetListenerNameOk() (*string, bool) {
+	if o == nil || o.ListenerName == nil {
+		return nil, false
+	}
+	return o.ListenerName, true
+}
+
+// HasListenerName returns a boolean if a field has been set.
+func (o *ClusterData) HasListenerName() bool {
+	if o != nil && o.ListenerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetListenerName gets a reference to the given string and assigns it to the ListenerName field.
+func (o *ClusterData) SetListenerName(v string) {
+	o.ListenerName = &v
+}
+
 func (o ClusterData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if o.ServiceUrl != nil {
+		toSerialize["serviceUrl"] = o.ServiceUrl
+	}
+	if o.ServiceUrlTls != nil {
+		toSerialize["serviceUrlTls"] = o.ServiceUrlTls
+	}
 	if o.BrokerServiceUrl != nil {
 		toSerialize["brokerServiceUrl"] = o.BrokerServiceUrl
 	}
 	if o.BrokerServiceUrlTls != nil {
 		toSerialize["brokerServiceUrlTls"] = o.BrokerServiceUrlTls
 	}
-	if o.PeerClusterNames != nil {
-		toSerialize["peerClusterNames"] = o.PeerClusterNames
+	if o.ProxyServiceUrl != nil {
+		toSerialize["proxyServiceUrl"] = o.ProxyServiceUrl
+	}
+	if o.AuthenticationPlugin != nil {
+		toSerialize["authenticationPlugin"] = o.AuthenticationPlugin
+	}
+	if o.AuthenticationParameters != nil {
+		toSerialize["authenticationParameters"] = o.AuthenticationParameters
 	}
 	if o.ProxyProtocol != nil {
 		toSerialize["proxyProtocol"] = o.ProxyProtocol
 	}
-	if o.ProxyServiceUrl != nil {
-		toSerialize["proxyServiceUrl"] = o.ProxyServiceUrl
+	if o.PeerClusterNames != nil {
+		toSerialize["peerClusterNames"] = o.PeerClusterNames
 	}
-	if o.ServiceUrl != nil {
-		toSerialize["serviceUrl"] = o.ServiceUrl
+	if o.BrokerClientTlsEnabled != nil {
+		toSerialize["brokerClientTlsEnabled"] = o.BrokerClientTlsEnabled
 	}
-	if o.ServiceUrlTls != nil {
-		toSerialize["serviceUrlTls"] = o.ServiceUrlTls
+	if o.TlsAllowInsecureConnection != nil {
+		toSerialize["tlsAllowInsecureConnection"] = o.TlsAllowInsecureConnection
+	}
+	if o.BrokerClientTlsEnabledWithKeyStore != nil {
+		toSerialize["brokerClientTlsEnabledWithKeyStore"] = o.BrokerClientTlsEnabledWithKeyStore
+	}
+	if o.BrokerClientTlsTrustStoreType != nil {
+		toSerialize["brokerClientTlsTrustStoreType"] = o.BrokerClientTlsTrustStoreType
+	}
+	if o.BrokerClientTlsTrustStore != nil {
+		toSerialize["brokerClientTlsTrustStore"] = o.BrokerClientTlsTrustStore
+	}
+	if o.BrokerClientTlsTrustStorePassword != nil {
+		toSerialize["brokerClientTlsTrustStorePassword"] = o.BrokerClientTlsTrustStorePassword
+	}
+	if o.BrokerClientTrustCertsFilePath != nil {
+		toSerialize["brokerClientTrustCertsFilePath"] = o.BrokerClientTrustCertsFilePath
+	}
+	if o.ListenerName != nil {
+		toSerialize["listenerName"] = o.ListenerName
 	}
 	return json.Marshal(toSerialize)
 }

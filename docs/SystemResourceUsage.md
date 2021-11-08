@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **BandwidthIn** | Pointer to [**ResourceUsage**](ResourceUsage.md) |  | [optional] 
 **BandwidthOut** | Pointer to [**ResourceUsage**](ResourceUsage.md) |  | [optional] 
 **Cpu** | Pointer to [**ResourceUsage**](ResourceUsage.md) |  | [optional] 
-**DirectMemory** | Pointer to [**ResourceUsage**](ResourceUsage.md) |  | [optional] 
 **Memory** | Pointer to [**ResourceUsage**](ResourceUsage.md) |  | [optional] 
+**DirectMemory** | Pointer to [**ResourceUsage**](ResourceUsage.md) |  | [optional] 
 
 ## Methods
 
@@ -104,31 +104,6 @@ SetCpu sets Cpu field to given value.
 
 HasCpu returns a boolean if a field has been set.
 
-### GetDirectMemory
-
-`func (o *SystemResourceUsage) GetDirectMemory() ResourceUsage`
-
-GetDirectMemory returns the DirectMemory field if non-nil, zero value otherwise.
-
-### GetDirectMemoryOk
-
-`func (o *SystemResourceUsage) GetDirectMemoryOk() (*ResourceUsage, bool)`
-
-GetDirectMemoryOk returns a tuple with the DirectMemory field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDirectMemory
-
-`func (o *SystemResourceUsage) SetDirectMemory(v ResourceUsage)`
-
-SetDirectMemory sets DirectMemory field to given value.
-
-### HasDirectMemory
-
-`func (o *SystemResourceUsage) HasDirectMemory() bool`
-
-HasDirectMemory returns a boolean if a field has been set.
-
 ### GetMemory
 
 `func (o *SystemResourceUsage) GetMemory() ResourceUsage`
@@ -153,6 +128,31 @@ SetMemory sets Memory field to given value.
 `func (o *SystemResourceUsage) HasMemory() bool`
 
 HasMemory returns a boolean if a field has been set.
+
+### GetDirectMemory
+
+`func (o *SystemResourceUsage) GetDirectMemory() ResourceUsage`
+
+GetDirectMemory returns the DirectMemory field if non-nil, zero value otherwise.
+
+### GetDirectMemoryOk
+
+`func (o *SystemResourceUsage) GetDirectMemoryOk() (*ResourceUsage, bool)`
+
+GetDirectMemoryOk returns a tuple with the DirectMemory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDirectMemory
+
+`func (o *SystemResourceUsage) SetDirectMemory(v ResourceUsage)`
+
+SetDirectMemory sets DirectMemory field to given value.
+
+### HasDirectMemory
+
+`func (o *SystemResourceUsage) HasDirectMemory() bool`
+
+HasDirectMemory returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

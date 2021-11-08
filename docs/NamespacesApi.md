@@ -9,42 +9,55 @@ Method | HTTP request | Description
 [**ClearNamespaceBundleBacklog**](NamespacesApi.md#ClearNamespaceBundleBacklog) | **Post** /namespaces/{tenant}/{namespace}/{bundle}/clearBacklog | Clear backlog for all topics on a namespace bundle.
 [**ClearNamespaceBundleBacklogForSubscription**](NamespacesApi.md#ClearNamespaceBundleBacklogForSubscription) | **Post** /namespaces/{tenant}/{namespace}/{bundle}/clearBacklog/{subscription} | Clear backlog for a given subscription on all topics on a namespace bundle.
 [**ClearOffloadDeletionLag**](NamespacesApi.md#ClearOffloadDeletionLag) | **Delete** /namespaces/{tenant}/{namespace}/offloadDeletionLagMs | Clear the namespace configured offload deletion lag. The topics in the namespace will fallback to using the default configured deletion lag for the broker
+[**ClearProperties**](NamespacesApi.md#ClearProperties) | **Delete** /namespaces/{tenant}/{namespace}/properties | Get property value for a given key on a namespace.
 [**CreateNamespace**](NamespacesApi.md#CreateNamespace) | **Put** /namespaces/{tenant}/{namespace} | Creates a new namespace with the specified policies
 [**DeleteBookieAffinityGroup**](NamespacesApi.md#DeleteBookieAffinityGroup) | **Delete** /namespaces/{property}/{namespace}/persistence/bookieAffinity | Delete the bookie-affinity-group from namespace-local policy.
+[**DeleteCompactionThreshold**](NamespacesApi.md#DeleteCompactionThreshold) | **Delete** /namespaces/{tenant}/{namespace}/compactionThreshold | Delete maximum number of uncompacted bytes in a topic before compaction is triggered.
+[**DeleteDispatchRate**](NamespacesApi.md#DeleteDispatchRate) | **Delete** /namespaces/{tenant}/{namespace}/dispatchRate | Delete dispatch-rate throttling for all topics of the namespace
 [**DeleteNamespace**](NamespacesApi.md#DeleteNamespace) | **Delete** /namespaces/{tenant}/{namespace} | Delete a namespace and all the topics under it.
 [**DeleteNamespaceBundle**](NamespacesApi.md#DeleteNamespaceBundle) | **Delete** /namespaces/{tenant}/{namespace}/{bundle} | Delete a namespace bundle and all the topics under it.
+[**DeletePersistence**](NamespacesApi.md#DeletePersistence) | **Delete** /namespaces/{tenant}/{namespace}/persistence | Delete the persistence configuration for all topics on a namespace
+[**DeleteSubscribeRate**](NamespacesApi.md#DeleteSubscribeRate) | **Delete** /namespaces/{tenant}/{namespace}/subscribeRate | Delete subscribe-rate throttling for all topics of the namespace
+[**DeleteSubscriptionDispatchRate**](NamespacesApi.md#DeleteSubscriptionDispatchRate) | **Delete** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Delete Subscription dispatch-rate throttling for all topics of the namespace
 [**GetAntiAffinityNamespaces**](NamespacesApi.md#GetAntiAffinityNamespaces) | **Get** /namespaces/{cluster}/antiAffinity/{group} | Get all namespaces that are grouped by given anti-affinity group in a given cluster. api can be only accessed by admin of any of the existing tenant
+[**GetBacklogQuotaMap**](NamespacesApi.md#GetBacklogQuotaMap) | **Get** /namespaces/{tenant}/{namespace}/backlogQuotaMap | Get backlog quota map on a namespace.
 [**GetBookieAffinityGroup**](NamespacesApi.md#GetBookieAffinityGroup) | **Get** /namespaces/{property}/{namespace}/persistence/bookieAffinity | Get the bookie-affinity-group from namespace-local policy.
 [**GetBundlesData**](NamespacesApi.md#GetBundlesData) | **Get** /namespaces/{tenant}/{namespace}/bundles | Get the bundles split data.
+[**GetCompactionThreshold**](NamespacesApi.md#GetCompactionThreshold) | **Get** /namespaces/{tenant}/{namespace}/compactionThreshold | Maximum number of uncompacted bytes in topics before compaction is triggered.
+[**GetDeduplication**](NamespacesApi.md#GetDeduplication) | **Get** /namespaces/{tenant}/{namespace}/deduplication | Get broker side deduplication for all topics in a namespace
+[**GetDeduplicationSnapshotInterval**](NamespacesApi.md#GetDeduplicationSnapshotInterval) | **Get** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a namespace.
+[**GetDelayedDeliveryPolicies**](NamespacesApi.md#GetDelayedDeliveryPolicies) | **Get** /namespaces/{tenant}/{namespace}/delayedDelivery | Get delayed delivery messages config on a namespace.
+[**GetDispatchRate**](NamespacesApi.md#GetDispatchRate) | **Get** /namespaces/{tenant}/{namespace}/dispatchRate | Get dispatch-rate configured for the namespace, -1 represents not configured yet
+[**GetInactiveTopicPolicies**](NamespacesApi.md#GetInactiveTopicPolicies) | **Get** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Get inactive topic policies config on a namespace.
 [**GetIsAllowAutoUpdateSchema**](NamespacesApi.md#GetIsAllowAutoUpdateSchema) | **Get** /namespaces/{tenant}/{namespace}/isAllowAutoUpdateSchema | The flag of whether allow auto update schema
+[**GetMaxConsumersPerSubscription**](NamespacesApi.md#GetMaxConsumersPerSubscription) | **Get** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription | Get maxConsumersPerSubscription config on a namespace.
 [**GetMaxConsumersPerTopic**](NamespacesApi.md#GetMaxConsumersPerTopic) | **Get** /namespaces/{tenant}/{namespace}/maxConsumersPerTopic | Get maxConsumersPerTopic config on a namespace.
 [**GetMaxProducersPerTopic**](NamespacesApi.md#GetMaxProducersPerTopic) | **Get** /namespaces/{tenant}/{namespace}/maxProducersPerTopic | Get maxProducersPerTopic config on a namespace.
+[**GetMaxSubscriptionsPerTopic**](NamespacesApi.md#GetMaxSubscriptionsPerTopic) | **Get** /namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic | Get maxSubscriptionsPerTopic config on a namespace.
+[**GetMaxTopicsPerNamespace**](NamespacesApi.md#GetMaxTopicsPerNamespace) | **Get** /namespaces/{tenant}/{namespace}/maxTopicsPerNamespace | Get maxTopicsPerNamespace config on a namespace.
 [**GetMaxUnackedMessagesPerConsumer**](NamespacesApi.md#GetMaxUnackedMessagesPerConsumer) | **Get** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer | Get maxUnackedMessagesPerConsumer config on a namespace.
 [**GetMaxUnackedmessagesPerSubscription**](NamespacesApi.md#GetMaxUnackedmessagesPerSubscription) | **Get** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription | Get maxUnackedMessagesPerSubscription config on a namespace.
-[**GetNameSpaceBacklogQuotaMap**](NamespacesApi.md#GetNameSpaceBacklogQuotaMap) | **Get** /namespaces/{tenant}/{namespace}/backlogQuotaMap | Get backlog quota map on a namespace.
-[**GetNameSpaceCompactionThreshold**](NamespacesApi.md#GetNameSpaceCompactionThreshold) | **Get** /namespaces/{tenant}/{namespace}/compactionThreshold | Maximum number of uncompacted bytes in topics before compaction is triggered.
-[**GetNameSpaceDeduplicationSnapshotInterval**](NamespacesApi.md#GetNameSpaceDeduplicationSnapshotInterval) | **Get** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Get deduplicationSnapshotInterval config on a namespace.
-[**GetNameSpaceDelayedDeliveryPolicies**](NamespacesApi.md#GetNameSpaceDelayedDeliveryPolicies) | **Get** /namespaces/{tenant}/{namespace}/delayedDelivery | Get delayed delivery messages config on a namespace.
-[**GetNameSpaceDispatchRate**](NamespacesApi.md#GetNameSpaceDispatchRate) | **Get** /namespaces/{tenant}/{namespace}/dispatchRate | Get dispatch-rate configured for the namespace, -1 represents not configured yet
-[**GetNameSpaceInactiveTopicPolicies**](NamespacesApi.md#GetNameSpaceInactiveTopicPolicies) | **Get** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Get inactive topic policies config on a namespace.
-[**GetNameSpaceMaxConsumersPerSubscription**](NamespacesApi.md#GetNameSpaceMaxConsumersPerSubscription) | **Get** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription | Get maxConsumersPerSubscription config on a namespace.
-[**GetNameSpaceOffloadPolicies**](NamespacesApi.md#GetNameSpaceOffloadPolicies) | **Get** /namespaces/{tenant}/{namespace}/offloadPolicies | Get offload configuration on a namespace.
-[**GetNameSpacePersistence**](NamespacesApi.md#GetNameSpacePersistence) | **Get** /namespaces/{tenant}/{namespace}/persistence | Get the persistence configuration for a namespace.
-[**GetNameSpaceRetention**](NamespacesApi.md#GetNameSpaceRetention) | **Get** /namespaces/{tenant}/{namespace}/retention | Get retention config on a namespace.
-[**GetNameSpaceSubscribeRate**](NamespacesApi.md#GetNameSpaceSubscribeRate) | **Get** /namespaces/{tenant}/{namespace}/subscribeRate | Get subscribe-rate configured for the namespace
-[**GetNameSpaceSubscriptionDispatchRate**](NamespacesApi.md#GetNameSpaceSubscriptionDispatchRate) | **Get** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
 [**GetNamespaceAntiAffinityGroup**](NamespacesApi.md#GetNamespaceAntiAffinityGroup) | **Get** /namespaces/{tenant}/{namespace}/antiAffinity | Get anti-affinity group of a namespace.
 [**GetNamespaceMessageTTL**](NamespacesApi.md#GetNamespaceMessageTTL) | **Get** /namespaces/{tenant}/{namespace}/messageTTL | Get the message TTL for the namespace
 [**GetNamespaceReplicationClusters**](NamespacesApi.md#GetNamespaceReplicationClusters) | **Get** /namespaces/{tenant}/{namespace}/replication | Get the replication clusters for a namespace.
+[**GetNamespaceResourceGroup**](NamespacesApi.md#GetNamespaceResourceGroup) | **Get** /namespaces/{tenant}/{namespace}/resourcegroup | Get the resourcegroup attached to the namespace
 [**GetOffloadDeletionLag**](NamespacesApi.md#GetOffloadDeletionLag) | **Get** /namespaces/{tenant}/{namespace}/offloadDeletionLagMs | Number of milliseconds to wait before deleting a ledger segment which has been offloaded from the Pulsar cluster&#39;s local storage (i.e. BookKeeper)
+[**GetOffloadPolicies**](NamespacesApi.md#GetOffloadPolicies) | **Get** /namespaces/{tenant}/{namespace}/offloadPolicies | Get offload configuration on a namespace.
 [**GetOffloadThreshold**](NamespacesApi.md#GetOffloadThreshold) | **Get** /namespaces/{tenant}/{namespace}/offloadThreshold | Maximum number of bytes stored on the pulsar cluster for a topic, before the broker will start offloading to longterm storage
 [**GetPermissions**](NamespacesApi.md#GetPermissions) | **Get** /namespaces/{tenant}/{namespace}/permissions | Retrieve the permissions for a namespace.
+[**GetPersistence**](NamespacesApi.md#GetPersistence) | **Get** /namespaces/{tenant}/{namespace}/persistence | Get the persistence configuration for a namespace.
 [**GetPolicies**](NamespacesApi.md#GetPolicies) | **Get** /namespaces/{tenant}/{namespace} | Get the dump all the policies specified for a namespace.
+[**GetProperties**](NamespacesApi.md#GetProperties) | **Get** /namespaces/{tenant}/{namespace}/properties | Get key value pair properties for a given namespace.
+[**GetProperty**](NamespacesApi.md#GetProperty) | **Get** /namespaces/{tenant}/{namespace}/property/{key} | Get property value for a given key on a namespace.
 [**GetReplicatorDispatchRate**](NamespacesApi.md#GetReplicatorDispatchRate) | **Get** /namespaces/{tenant}/{namespace}/replicatorDispatchRate | Get replicator dispatch-rate configured for the namespace, -1 represents not configured yet
+[**GetRetention**](NamespacesApi.md#GetRetention) | **Get** /namespaces/{tenant}/{namespace}/retention | Get retention config on a namespace.
 [**GetSchemaAutoUpdateCompatibilityStrategy**](NamespacesApi.md#GetSchemaAutoUpdateCompatibilityStrategy) | **Get** /namespaces/{tenant}/{namespace}/schemaAutoUpdateCompatibilityStrategy | The strategy used to check the compatibility of new schemas, provided by producers, before automatically updating the schema
 [**GetSchemaCompatibilityStrategy**](NamespacesApi.md#GetSchemaCompatibilityStrategy) | **Get** /namespaces/{tenant}/{namespace}/schemaCompatibilityStrategy | The strategy of the namespace schema compatibility 
 [**GetSchemaValidtionEnforced**](NamespacesApi.md#GetSchemaValidtionEnforced) | **Get** /namespaces/{tenant}/{namespace}/schemaValidationEnforced | Get schema validation enforced flag for namespace.
+[**GetSubscribeRate**](NamespacesApi.md#GetSubscribeRate) | **Get** /namespaces/{tenant}/{namespace}/subscribeRate | Get subscribe-rate configured for the namespace
+[**GetSubscriptionDispatchRate**](NamespacesApi.md#GetSubscriptionDispatchRate) | **Get** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
 [**GetSubscriptionExpirationTime**](NamespacesApi.md#GetSubscriptionExpirationTime) | **Get** /namespaces/{tenant}/{namespace}/subscriptionExpirationTime | Get the subscription expiration time for the namespace
+[**GetSubscriptionTypesEnabled**](NamespacesApi.md#GetSubscriptionTypesEnabled) | **Get** /namespaces/{tenant}/{namespace}/subscriptionTypesEnabled | The set of whether allow subscription types
 [**GetTenantNamespaces**](NamespacesApi.md#GetTenantNamespaces) | **Get** /namespaces/{tenant} | Get the list of all the namespaces for a certain tenant.
 [**GetTopics**](NamespacesApi.md#GetTopics) | **Get** /namespaces/{tenant}/{namespace}/topics | Get the list of all the topics under a certain namespace.
 [**GrantPermissionOnNamespace**](NamespacesApi.md#GrantPermissionOnNamespace) | **Post** /namespaces/{tenant}/{namespace}/permissions/{role} | Grant a new permission to a role on a namespace.
@@ -52,43 +65,63 @@ Method | HTTP request | Description
 [**ModifyEncryptionRequired**](NamespacesApi.md#ModifyEncryptionRequired) | **Post** /namespaces/{tenant}/{namespace}/encryptionRequired | Message encryption is required or not for all topics in a namespace
 [**RemoveAutoSubscriptionCreation**](NamespacesApi.md#RemoveAutoSubscriptionCreation) | **Delete** /namespaces/{tenant}/{namespace}/autoSubscriptionCreation | Remove override of broker&#39;s allowAutoSubscriptionCreation in a namespace
 [**RemoveAutoTopicCreation**](NamespacesApi.md#RemoveAutoTopicCreation) | **Delete** /namespaces/{tenant}/{namespace}/autoTopicCreation | Remove override of broker&#39;s allowAutoTopicCreation in a namespace
+[**RemoveBacklogQuota**](NamespacesApi.md#RemoveBacklogQuota) | **Delete** /namespaces/{tenant}/{namespace}/backlogQuota | Remove a backlog quota policy from a namespace.
+[**RemoveDeduplication**](NamespacesApi.md#RemoveDeduplication) | **Delete** /namespaces/{tenant}/{namespace}/deduplication | Remove broker side deduplication for all topics in a namespace
+[**RemoveDelayedDeliveryPolicies**](NamespacesApi.md#RemoveDelayedDeliveryPolicies) | **Delete** /namespaces/{tenant}/{namespace}/delayedDelivery | Delete delayed delivery messages config on a namespace.
 [**RemoveInactiveTopicPolicies**](NamespacesApi.md#RemoveInactiveTopicPolicies) | **Delete** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Remove inactive topic policies from a namespace.
-[**RemoveNameSpaceBacklogQuota**](NamespacesApi.md#RemoveNameSpaceBacklogQuota) | **Delete** /namespaces/{tenant}/{namespace}/backlogQuota | Remove a backlog quota policy from a namespace.
-[**RemoveNameSpaceOffloadPolicies**](NamespacesApi.md#RemoveNameSpaceOffloadPolicies) | **Delete** /namespaces/{tenant}/{namespace}/removeOffloadPolicies |  Set offload configuration on a namespace.
+[**RemoveMaxConsumersPerSubscription**](NamespacesApi.md#RemoveMaxConsumersPerSubscription) | **Delete** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription |  Set maxConsumersPerSubscription configuration on a namespace.
+[**RemoveMaxConsumersPerTopic**](NamespacesApi.md#RemoveMaxConsumersPerTopic) | **Delete** /namespaces/{tenant}/{namespace}/maxConsumersPerTopic | Remove maxConsumersPerTopic configuration on a namespace.
+[**RemoveMaxProducersPerTopic**](NamespacesApi.md#RemoveMaxProducersPerTopic) | **Delete** /namespaces/{tenant}/{namespace}/maxProducersPerTopic | Remove maxProducersPerTopic configuration on a namespace.
+[**RemoveMaxSubscriptionsPerTopic**](NamespacesApi.md#RemoveMaxSubscriptionsPerTopic) | **Delete** /namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic | Remove maxSubscriptionsPerTopic configuration on a namespace.
+[**RemoveMaxUnackedmessagesPerConsumer**](NamespacesApi.md#RemoveMaxUnackedmessagesPerConsumer) | **Delete** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer | Remove maxUnackedMessagesPerConsumer config on a namespace.
+[**RemoveMaxUnackedmessagesPerSubscription**](NamespacesApi.md#RemoveMaxUnackedmessagesPerSubscription) | **Delete** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription | Remove maxUnackedMessagesPerSubscription config on a namespace.
 [**RemoveNamespaceAntiAffinityGroup**](NamespacesApi.md#RemoveNamespaceAntiAffinityGroup) | **Delete** /namespaces/{tenant}/{namespace}/antiAffinity | Remove anti-affinity group of a namespace.
 [**RemoveNamespaceMessageTTL**](NamespacesApi.md#RemoveNamespaceMessageTTL) | **Delete** /namespaces/{tenant}/{namespace}/messageTTL | Set message TTL in seconds for namespace
+[**RemoveNamespaceResourceGroup**](NamespacesApi.md#RemoveNamespaceResourceGroup) | **Delete** /namespaces/{tenant}/{namespace}/resourcegroup | Delete resourcegroup for a namespace
+[**RemoveOffloadPolicies**](NamespacesApi.md#RemoveOffloadPolicies) | **Delete** /namespaces/{tenant}/{namespace}/removeOffloadPolicies |  Set offload configuration on a namespace.
+[**RemoveProperty**](NamespacesApi.md#RemoveProperty) | **Delete** /namespaces/{tenant}/{namespace}/property/{key} | Get property value for a given key on a namespace.
+[**RemoveReplicatorDispatchRate**](NamespacesApi.md#RemoveReplicatorDispatchRate) | **Delete** /namespaces/{tenant}/{namespace}/replicatorDispatchRate | Remove replicator dispatch-rate throttling for all topics of the namespace
+[**RemoveRetention**](NamespacesApi.md#RemoveRetention) | **Delete** /namespaces/{tenant}/{namespace}/retention |  Remove retention configuration on a namespace.
+[**RemoveSubscriptionExpirationTime**](NamespacesApi.md#RemoveSubscriptionExpirationTime) | **Delete** /namespaces/{tenant}/{namespace}/subscriptionExpirationTime | Remove subscription expiration time for namespace
 [**RevokePermissionsOnNamespace**](NamespacesApi.md#RevokePermissionsOnNamespace) | **Delete** /namespaces/{tenant}/{namespace}/permissions/{role} | Revoke all permissions to a role on a namespace.
 [**SetAutoSubscriptionCreation**](NamespacesApi.md#SetAutoSubscriptionCreation) | **Post** /namespaces/{tenant}/{namespace}/autoSubscriptionCreation | Override broker&#39;s allowAutoSubscriptionCreation setting for a namespace
 [**SetAutoTopicCreation**](NamespacesApi.md#SetAutoTopicCreation) | **Post** /namespaces/{tenant}/{namespace}/autoTopicCreation | Override broker&#39;s allowAutoTopicCreation setting for a namespace
+[**SetBacklogQuota**](NamespacesApi.md#SetBacklogQuota) | **Post** /namespaces/{tenant}/{namespace}/backlogQuota |  Set a backlog quota for all the topics on a namespace.
 [**SetBookieAffinityGroup**](NamespacesApi.md#SetBookieAffinityGroup) | **Post** /namespaces/{tenant}/{namespace}/persistence/bookieAffinity | Set the bookie-affinity-group to namespace-persistent policy.
+[**SetCompactionThreshold**](NamespacesApi.md#SetCompactionThreshold) | **Put** /namespaces/{tenant}/{namespace}/compactionThreshold | Set maximum number of uncompacted bytes in a topic before compaction is triggered.
+[**SetDeduplicationSnapshotInterval**](NamespacesApi.md#SetDeduplicationSnapshotInterval) | **Post** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a namespace.
+[**SetDelayedDeliveryPolicies**](NamespacesApi.md#SetDelayedDeliveryPolicies) | **Post** /namespaces/{tenant}/{namespace}/delayedDelivery | Set delayed delivery messages config on a namespace.
+[**SetDispatchRate**](NamespacesApi.md#SetDispatchRate) | **Post** /namespaces/{tenant}/{namespace}/dispatchRate | Set dispatch-rate throttling for all topics of the namespace
+[**SetInactiveTopicPolicies**](NamespacesApi.md#SetInactiveTopicPolicies) | **Post** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Set inactive topic policies config on a namespace.
+[**SetInactiveTopicPolicies_0**](NamespacesApi.md#SetInactiveTopicPolicies_0) | **Post** /namespaces/{tenant}/{namespace}/maxTopicsPerNamespace | Set maxTopicsPerNamespace config on a namespace.
+[**SetInactiveTopicPolicies_1**](NamespacesApi.md#SetInactiveTopicPolicies_1) | **Delete** /namespaces/{tenant}/{namespace}/maxTopicsPerNamespace | Set maxTopicsPerNamespace config on a namespace.
 [**SetIsAllowAutoUpdateSchema**](NamespacesApi.md#SetIsAllowAutoUpdateSchema) | **Post** /namespaces/{tenant}/{namespace}/isAllowAutoUpdateSchema | Update flag of whether allow auto update schema
+[**SetMaxConsumersPerSubscription**](NamespacesApi.md#SetMaxConsumersPerSubscription) | **Post** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription |  Set maxConsumersPerSubscription configuration on a namespace.
 [**SetMaxConsumersPerTopic**](NamespacesApi.md#SetMaxConsumersPerTopic) | **Post** /namespaces/{tenant}/{namespace}/maxConsumersPerTopic |  Set maxConsumersPerTopic configuration on a namespace.
 [**SetMaxProducersPerTopic**](NamespacesApi.md#SetMaxProducersPerTopic) | **Post** /namespaces/{tenant}/{namespace}/maxProducersPerTopic |  Set maxProducersPerTopic configuration on a namespace.
+[**SetMaxSubscriptionsPerTopic**](NamespacesApi.md#SetMaxSubscriptionsPerTopic) | **Post** /namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic |  Set maxSubscriptionsPerTopic configuration on a namespace.
 [**SetMaxUnackedMessagesPerConsumer**](NamespacesApi.md#SetMaxUnackedMessagesPerConsumer) | **Post** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer |  Set maxConsumersPerTopic configuration on a namespace.
 [**SetMaxUnackedMessagesPerSubscription**](NamespacesApi.md#SetMaxUnackedMessagesPerSubscription) | **Post** /namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription |  Set maxUnackedMessagesPerSubscription configuration on a namespace.
-[**SetNameSpaceBacklogQuota**](NamespacesApi.md#SetNameSpaceBacklogQuota) | **Post** /namespaces/{tenant}/{namespace}/backlogQuota |  Set a backlog quota for all the topics on a namespace.
-[**SetNameSpaceCompactionThreshold**](NamespacesApi.md#SetNameSpaceCompactionThreshold) | **Put** /namespaces/{tenant}/{namespace}/compactionThreshold | Set maximum number of uncompacted bytes in a topic before compaction is triggered.
-[**SetNameSpaceDeduplicationSnapshotInterval**](NamespacesApi.md#SetNameSpaceDeduplicationSnapshotInterval) | **Post** /namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval | Set deduplicationSnapshotInterval config on a namespace.
-[**SetNameSpaceDelayedDeliveryPolicies**](NamespacesApi.md#SetNameSpaceDelayedDeliveryPolicies) | **Post** /namespaces/{tenant}/{namespace}/delayedDelivery | Set delayed delivery messages config on a namespace.
-[**SetNameSpaceDispatchRate**](NamespacesApi.md#SetNameSpaceDispatchRate) | **Post** /namespaces/{tenant}/{namespace}/dispatchRate | Set dispatch-rate throttling for all topics of the namespace
-[**SetNameSpaceInactiveTopicPolicies**](NamespacesApi.md#SetNameSpaceInactiveTopicPolicies) | **Post** /namespaces/{tenant}/{namespace}/inactiveTopicPolicies | Set inactive topic policies config on a namespace.
-[**SetNameSpaceMaxConsumersPerSubscription**](NamespacesApi.md#SetNameSpaceMaxConsumersPerSubscription) | **Post** /namespaces/{tenant}/{namespace}/maxConsumersPerSubscription |  Set maxConsumersPerSubscription configuration on a namespace.
-[**SetNameSpaceOffloadPolicies**](NamespacesApi.md#SetNameSpaceOffloadPolicies) | **Post** /namespaces/{tenant}/{namespace}/offloadPolicies |  Set offload configuration on a namespace.
-[**SetNameSpacePersistence**](NamespacesApi.md#SetNameSpacePersistence) | **Post** /namespaces/{tenant}/{namespace}/persistence | Set the persistence configuration for all the topics on a namespace.
-[**SetNameSpaceRetention**](NamespacesApi.md#SetNameSpaceRetention) | **Post** /namespaces/{tenant}/{namespace}/retention |  Set retention configuration on a namespace.
-[**SetNameSpaceSubscribeRate**](NamespacesApi.md#SetNameSpaceSubscribeRate) | **Post** /namespaces/{tenant}/{namespace}/subscribeRate | Set subscribe-rate throttling for all topics of the namespace
-[**SetNameSpaceSubscriptionDispatchRate**](NamespacesApi.md#SetNameSpaceSubscriptionDispatchRate) | **Post** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Set Subscription dispatch-rate throttling for all topics of the namespace
 [**SetNamespaceAntiAffinityGroup**](NamespacesApi.md#SetNamespaceAntiAffinityGroup) | **Post** /namespaces/{tenant}/{namespace}/antiAffinity | Set anti-affinity group for a namespace
 [**SetNamespaceMessageTTL**](NamespacesApi.md#SetNamespaceMessageTTL) | **Post** /namespaces/{tenant}/{namespace}/messageTTL | Set message TTL in seconds for namespace
 [**SetNamespaceReplicationClusters**](NamespacesApi.md#SetNamespaceReplicationClusters) | **Post** /namespaces/{tenant}/{namespace}/replication | Set the replication clusters for a namespace.
+[**SetNamespaceResourceGroup**](NamespacesApi.md#SetNamespaceResourceGroup) | **Post** /namespaces/{tenant}/{namespace}/resourcegroup | Set resourcegroup for a namespace
 [**SetOffloadDeletionLag**](NamespacesApi.md#SetOffloadDeletionLag) | **Put** /namespaces/{tenant}/{namespace}/offloadDeletionLagMs | Set number of milliseconds to wait before deleting a ledger segment which has been offloaded from the Pulsar cluster&#39;s local storage (i.e. BookKeeper)
+[**SetOffloadPolicies**](NamespacesApi.md#SetOffloadPolicies) | **Post** /namespaces/{tenant}/{namespace}/offloadPolicies |  Set offload configuration on a namespace.
 [**SetOffloadThreshold**](NamespacesApi.md#SetOffloadThreshold) | **Put** /namespaces/{tenant}/{namespace}/offloadThreshold | Set maximum number of bytes stored on the pulsar cluster for a topic, before the broker will start offloading to longterm storage
+[**SetPersistence**](NamespacesApi.md#SetPersistence) | **Post** /namespaces/{tenant}/{namespace}/persistence | Set the persistence configuration for all the topics on a namespace.
+[**SetProperties**](NamespacesApi.md#SetProperties) | **Put** /namespaces/{tenant}/{namespace}/properties | Put key value pairs property on a namespace.
+[**SetProperty**](NamespacesApi.md#SetProperty) | **Put** /namespaces/{tenant}/{namespace}/property/{key}/{value} | Put a key value pair property on a namespace.
 [**SetReplicatorDispatchRate**](NamespacesApi.md#SetReplicatorDispatchRate) | **Post** /namespaces/{tenant}/{namespace}/replicatorDispatchRate | Set replicator dispatch-rate throttling for all topics of the namespace
+[**SetRetention**](NamespacesApi.md#SetRetention) | **Post** /namespaces/{tenant}/{namespace}/retention |  Set retention configuration on a namespace.
 [**SetSchemaAutoUpdateCompatibilityStrategy**](NamespacesApi.md#SetSchemaAutoUpdateCompatibilityStrategy) | **Put** /namespaces/{tenant}/{namespace}/schemaAutoUpdateCompatibilityStrategy | Update the strategy used to check the compatibility of new schemas, provided by producers, before automatically updating the schema
 [**SetSchemaCompatibilityStrategy**](NamespacesApi.md#SetSchemaCompatibilityStrategy) | **Put** /namespaces/{tenant}/{namespace}/schemaCompatibilityStrategy | Update the strategy used to check the compatibility of new schema
 [**SetSchemaValidtionEnforced**](NamespacesApi.md#SetSchemaValidtionEnforced) | **Post** /namespaces/{tenant}/{namespace}/schemaValidationEnforced | Set schema validation enforced flag on namespace.
+[**SetSubscribeRate**](NamespacesApi.md#SetSubscribeRate) | **Post** /namespaces/{tenant}/{namespace}/subscribeRate | Set subscribe-rate throttling for all topics of the namespace
 [**SetSubscriptionAuthMode**](NamespacesApi.md#SetSubscriptionAuthMode) | **Post** /namespaces/{tenant}/{namespace}/subscriptionAuthMode |  Set a subscription auth mode for all the topics on a namespace.
+[**SetSubscriptionDispatchRate**](NamespacesApi.md#SetSubscriptionDispatchRate) | **Post** /namespaces/{tenant}/{namespace}/subscriptionDispatchRate | Set Subscription dispatch-rate throttling for all topics of the namespace
 [**SetSubscriptionExpirationTime**](NamespacesApi.md#SetSubscriptionExpirationTime) | **Post** /namespaces/{tenant}/{namespace}/subscriptionExpirationTime | Set subscription expiration time in minutes for namespace
+[**SetSubscriptionTypesEnabled**](NamespacesApi.md#SetSubscriptionTypesEnabled) | **Post** /namespaces/{tenant}/{namespace}/subscriptionTypesEnabled | Update set of whether allow share sub type
 [**SplitNamespaceBundle**](NamespacesApi.md#SplitNamespaceBundle) | **Put** /namespaces/{tenant}/{namespace}/{bundle}/split | Split a namespace bundle
 [**UnloadNamespace**](NamespacesApi.md#UnloadNamespace) | **Put** /namespaces/{tenant}/{namespace}/unload | Unload namespace
 [**UnloadNamespaceBundle**](NamespacesApi.md#UnloadNamespaceBundle) | **Put** /namespaces/{tenant}/{namespace}/{bundle}/unload | Unload a namespace bundle
@@ -462,6 +495,75 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ClearProperties
+
+> ClearProperties(ctx, tenant, namespace).Execute()
+
+Get property value for a given key on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.ClearProperties(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.ClearProperties``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiClearPropertiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## CreateNamespace
 
 > CreateNamespace(ctx, tenant, namespace).Body(body).Execute()
@@ -577,6 +679,146 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteBookieAffinityGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteCompactionThreshold
+
+> DeleteCompactionThreshold(ctx, tenant, namespace).Execute()
+
+Delete maximum number of uncompacted bytes in a topic before compaction is triggered.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.DeleteCompactionThreshold(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.DeleteCompactionThreshold``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCompactionThresholdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteDispatchRate
+
+> DeleteDispatchRate(ctx, tenant, namespace).Execute()
+
+Delete dispatch-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.DeleteDispatchRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.DeleteDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteDispatchRateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -751,9 +993,216 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## DeletePersistence
+
+> DeletePersistence(ctx, tenant, namespace).Execute()
+
+Delete the persistence configuration for all topics on a namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.DeletePersistence(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.DeletePersistence``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePersistenceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSubscribeRate
+
+> DeleteSubscribeRate(ctx, tenant, namespace).Execute()
+
+Delete subscribe-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.DeleteSubscribeRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.DeleteSubscribeRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSubscribeRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteSubscriptionDispatchRate
+
+> DeleteSubscriptionDispatchRate(ctx, tenant, namespace).Execute()
+
+Delete Subscription dispatch-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.DeleteSubscriptionDispatchRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.DeleteSubscriptionDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteSubscriptionDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAntiAffinityNamespaces
 
-> []map[string]interface{} GetAntiAffinityNamespaces(ctx, cluster, group).Tenant(tenant).Execute()
+> []string GetAntiAffinityNamespaces(ctx, cluster, group).Tenant(tenant).Execute()
 
 Get all namespaces that are grouped by given anti-affinity group in a given cluster. api can be only accessed by admin of any of the existing tenant
 
@@ -781,7 +1230,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetAntiAffinityNamespaces``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetAntiAffinityNamespaces`: []map[string]interface{}
+    // response from `GetAntiAffinityNamespaces`: []string
     fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetAntiAffinityNamespaces`: %v\n", resp)
 }
 ```
@@ -808,7 +1257,78 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]map[string]interface{}**
+**[]string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBacklogQuotaMap
+
+> map[string]BacklogQuota GetBacklogQuotaMap(ctx, tenant, namespace).Execute()
+
+Get backlog quota map on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetBacklogQuotaMap(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetBacklogQuotaMap``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetBacklogQuotaMap`: map[string]BacklogQuota
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetBacklogQuotaMap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBacklogQuotaMapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**map[string]BacklogQuota**](BacklogQuota.md)
 
 ### Authorization
 
@@ -966,6 +1486,434 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetCompactionThreshold
+
+> int64 GetCompactionThreshold(ctx, tenant, namespace).Execute()
+
+Maximum number of uncompacted bytes in topics before compaction is triggered.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetCompactionThreshold(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetCompactionThreshold``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCompactionThreshold`: int64
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetCompactionThreshold`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCompactionThresholdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**int64**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDeduplication
+
+> bool GetDeduplication(ctx, tenant, namespace).Execute()
+
+Get broker side deduplication for all topics in a namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetDeduplication(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetDeduplication``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDeduplication`: bool
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetDeduplication`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDeduplicationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDeduplicationSnapshotInterval
+
+> int32 GetDeduplicationSnapshotInterval(ctx, tenant, namespace).Execute()
+
+Get deduplicationSnapshotInterval config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetDeduplicationSnapshotInterval(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetDeduplicationSnapshotInterval``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDeduplicationSnapshotInterval`: int32
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetDeduplicationSnapshotInterval`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDeduplicationSnapshotIntervalRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**int32**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDelayedDeliveryPolicies
+
+> DelayedDeliveryPolicies GetDelayedDeliveryPolicies(ctx, tenant, namespace).Execute()
+
+Get delayed delivery messages config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetDelayedDeliveryPolicies(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetDelayedDeliveryPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDelayedDeliveryPolicies`: DelayedDeliveryPolicies
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetDelayedDeliveryPolicies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDelayedDeliveryPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**DelayedDeliveryPolicies**](DelayedDeliveryPolicies.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDispatchRate
+
+> DispatchRate GetDispatchRate(ctx, tenant, namespace).Execute()
+
+Get dispatch-rate configured for the namespace, -1 represents not configured yet
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetDispatchRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDispatchRate`: DispatchRate
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetDispatchRate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**DispatchRate**](DispatchRate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetInactiveTopicPolicies
+
+> InactiveTopicPolicies GetInactiveTopicPolicies(ctx, tenant, namespace).Execute()
+
+Get inactive topic policies config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetInactiveTopicPolicies(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetInactiveTopicPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetInactiveTopicPolicies`: InactiveTopicPolicies
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetInactiveTopicPolicies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInactiveTopicPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**InactiveTopicPolicies**](InactiveTopicPolicies.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetIsAllowAutoUpdateSchema
 
 > bool GetIsAllowAutoUpdateSchema(ctx, tenant, namespace).Execute()
@@ -1022,6 +1970,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **bool**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMaxConsumersPerSubscription
+
+> int32 GetMaxConsumersPerSubscription(ctx, tenant, namespace).Execute()
+
+Get maxConsumersPerSubscription config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetMaxConsumersPerSubscription(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetMaxConsumersPerSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMaxConsumersPerSubscription`: int32
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetMaxConsumersPerSubscription`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMaxConsumersPerSubscriptionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**int32**
 
 ### Authorization
 
@@ -1179,6 +2198,148 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetMaxSubscriptionsPerTopic
+
+> int32 GetMaxSubscriptionsPerTopic(ctx, tenant, namespace).Execute()
+
+Get maxSubscriptionsPerTopic config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetMaxSubscriptionsPerTopic(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetMaxSubscriptionsPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMaxSubscriptionsPerTopic`: int32
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetMaxSubscriptionsPerTopic`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMaxSubscriptionsPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**int32**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetMaxTopicsPerNamespace
+
+> int32 GetMaxTopicsPerNamespace(ctx, tenant, namespace).Execute()
+
+Get maxTopicsPerNamespace config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetMaxTopicsPerNamespace(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetMaxTopicsPerNamespace``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetMaxTopicsPerNamespace`: int32
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetMaxTopicsPerNamespace`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetMaxTopicsPerNamespaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**int32**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetMaxUnackedMessagesPerConsumer
 
 > int32 GetMaxUnackedMessagesPerConsumer(ctx, tenant, namespace).Execute()
@@ -1306,860 +2467,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **int32**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceBacklogQuotaMap
-
-> map[string]map[string]interface{} GetNameSpaceBacklogQuotaMap(ctx, tenant, namespace).Execute()
-
-Get backlog quota map on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceBacklogQuotaMap(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceBacklogQuotaMap``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceBacklogQuotaMap`: map[string]map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceBacklogQuotaMap`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceBacklogQuotaMapRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**map[string]map[string]interface{}**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceCompactionThreshold
-
-> int64 GetNameSpaceCompactionThreshold(ctx, tenant, namespace).Execute()
-
-Maximum number of uncompacted bytes in topics before compaction is triggered.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceCompactionThreshold(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceCompactionThreshold``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceCompactionThreshold`: int64
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceCompactionThreshold`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceCompactionThresholdRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**int64**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceDeduplicationSnapshotInterval
-
-> int32 GetNameSpaceDeduplicationSnapshotInterval(ctx, tenant, namespace).Execute()
-
-Get deduplicationSnapshotInterval config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceDeduplicationSnapshotInterval(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceDeduplicationSnapshotInterval``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceDeduplicationSnapshotInterval`: int32
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceDeduplicationSnapshotInterval`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceDeduplicationSnapshotIntervalRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**int32**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceDelayedDeliveryPolicies
-
-> DelayedDeliveryPolicies GetNameSpaceDelayedDeliveryPolicies(ctx, tenant, namespace).Execute()
-
-Get delayed delivery messages config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceDelayedDeliveryPolicies(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceDelayedDeliveryPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceDelayedDeliveryPolicies`: DelayedDeliveryPolicies
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceDelayedDeliveryPolicies`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceDelayedDeliveryPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**DelayedDeliveryPolicies**](DelayedDeliveryPolicies.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceDispatchRate
-
-> DispatchRate GetNameSpaceDispatchRate(ctx, tenant, namespace).Execute()
-
-Get dispatch-rate configured for the namespace, -1 represents not configured yet
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceDispatchRate(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceDispatchRate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceDispatchRate`: DispatchRate
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceDispatchRate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceDispatchRateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**DispatchRate**](DispatchRate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceInactiveTopicPolicies
-
-> InactiveTopicPolicies GetNameSpaceInactiveTopicPolicies(ctx, tenant, namespace).Execute()
-
-Get inactive topic policies config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceInactiveTopicPolicies(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceInactiveTopicPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceInactiveTopicPolicies`: InactiveTopicPolicies
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceInactiveTopicPolicies`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceInactiveTopicPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**InactiveTopicPolicies**](InactiveTopicPolicies.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceMaxConsumersPerSubscription
-
-> int32 GetNameSpaceMaxConsumersPerSubscription(ctx, tenant, namespace).Execute()
-
-Get maxConsumersPerSubscription config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceMaxConsumersPerSubscription(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceMaxConsumersPerSubscription``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceMaxConsumersPerSubscription`: int32
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceMaxConsumersPerSubscription`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceMaxConsumersPerSubscriptionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-**int32**
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceOffloadPolicies
-
-> OffloadPolicies GetNameSpaceOffloadPolicies(ctx, tenant, namespace).Execute()
-
-Get offload configuration on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceOffloadPolicies(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceOffloadPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceOffloadPolicies`: OffloadPolicies
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceOffloadPolicies`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceOffloadPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**OffloadPolicies**](OffloadPolicies.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpacePersistence
-
-> PersistencePolicies GetNameSpacePersistence(ctx, tenant, namespace).Execute()
-
-Get the persistence configuration for a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpacePersistence(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpacePersistence``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpacePersistence`: PersistencePolicies
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpacePersistence`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpacePersistenceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**PersistencePolicies**](PersistencePolicies.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceRetention
-
-> RetentionPolicies GetNameSpaceRetention(ctx, tenant, namespace).Execute()
-
-Get retention config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceRetention(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceRetention``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceRetention`: RetentionPolicies
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceRetention`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceRetentionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**RetentionPolicies**](RetentionPolicies.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceSubscribeRate
-
-> SubscribeRate GetNameSpaceSubscribeRate(ctx, tenant, namespace).Execute()
-
-Get subscribe-rate configured for the namespace
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceSubscribeRate(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceSubscribeRate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceSubscribeRate`: SubscribeRate
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceSubscribeRate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceSubscribeRateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**SubscribeRate**](SubscribeRate.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetNameSpaceSubscriptionDispatchRate
-
-> DispatchRate GetNameSpaceSubscriptionDispatchRate(ctx, tenant, namespace).Execute()
-
-Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.GetNameSpaceSubscriptionDispatchRate(context.Background(), tenant, namespace).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNameSpaceSubscriptionDispatchRate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetNameSpaceSubscriptionDispatchRate`: DispatchRate
-    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNameSpaceSubscriptionDispatchRate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetNameSpaceSubscriptionDispatchRateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**DispatchRate**](DispatchRate.md)
 
 ### Authorization
 
@@ -2388,6 +2695,77 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetNamespaceResourceGroup
+
+> string GetNamespaceResourceGroup(ctx, tenant, namespace).Execute()
+
+Get the resourcegroup attached to the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetNamespaceResourceGroup(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetNamespaceResourceGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetNamespaceResourceGroup`: string
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetNamespaceResourceGroup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNamespaceResourceGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetOffloadDeletionLag
 
 > int64 GetOffloadDeletionLag(ctx, tenant, namespace).Execute()
@@ -2446,6 +2824,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **int64**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOffloadPolicies
+
+> OffloadPoliciesImpl GetOffloadPolicies(ctx, tenant, namespace).Execute()
+
+Get offload configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetOffloadPolicies(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetOffloadPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOffloadPolicies`: OffloadPoliciesImpl
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetOffloadPolicies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOffloadPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OffloadPoliciesImpl**](OffloadPoliciesImpl.md)
 
 ### Authorization
 
@@ -2536,7 +2985,7 @@ No authorization required
 
 ## GetPermissions
 
-> map[string]map[string]interface{} GetPermissions(ctx, tenant, namespace).Execute()
+> map[string][]string GetPermissions(ctx, tenant, namespace).Execute()
 
 Retrieve the permissions for a namespace.
 
@@ -2563,7 +3012,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetPermissions``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetPermissions`: map[string]map[string]interface{}
+    // response from `GetPermissions`: map[string][]string
     fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetPermissions`: %v\n", resp)
 }
 ```
@@ -2589,7 +3038,78 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+[**map[string][]string**](set.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetPersistence
+
+> PersistencePolicies GetPersistence(ctx, tenant, namespace).Execute()
+
+Get the persistence configuration for a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetPersistence(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetPersistence``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPersistence`: PersistencePolicies
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetPersistence`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPersistenceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**PersistencePolicies**](PersistencePolicies.md)
 
 ### Authorization
 
@@ -2676,6 +3196,147 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetProperties
+
+> GetProperties(ctx, tenant, namespace).Execute()
+
+Get key value pair properties for a given namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetProperties(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetProperties``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPropertiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetProperty
+
+> GetProperty(ctx, tenant, namespace, key).Execute()
+
+Get property value for a given key on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    key := "key_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetProperty(context.Background(), tenant, namespace, key).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetProperty``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**key** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetPropertyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetReplicatorDispatchRate
 
 > DispatchRate GetReplicatorDispatchRate(ctx, tenant, namespace).Execute()
@@ -2732,6 +3393,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DispatchRate**](DispatchRate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRetention
+
+> RetentionPolicies GetRetention(ctx, tenant, namespace).Execute()
+
+Get retention config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetRetention(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetRetention``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetRetention`: RetentionPolicies
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetRetention`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRetentionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**RetentionPolicies**](RetentionPolicies.md)
 
 ### Authorization
 
@@ -2964,6 +3696,148 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## GetSubscribeRate
+
+> SubscribeRate GetSubscribeRate(ctx, tenant, namespace).Execute()
+
+Get subscribe-rate configured for the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetSubscribeRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetSubscribeRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSubscribeRate`: SubscribeRate
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetSubscribeRate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSubscribeRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**SubscribeRate**](SubscribeRate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSubscriptionDispatchRate
+
+> DispatchRate GetSubscriptionDispatchRate(ctx, tenant, namespace).Execute()
+
+Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetSubscriptionDispatchRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetSubscriptionDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSubscriptionDispatchRate`: DispatchRate
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetSubscriptionDispatchRate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSubscriptionDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**DispatchRate**](DispatchRate.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetSubscriptionExpirationTime
 
 > int32 GetSubscriptionExpirationTime(ctx, tenant, namespace).Execute()
@@ -3020,6 +3894,77 @@ Name | Type | Description  | Notes
 ### Return type
 
 **int32**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSubscriptionTypesEnabled
+
+> []string GetSubscriptionTypesEnabled(ctx, tenant, namespace).Execute()
+
+The set of whether allow subscription types
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.GetSubscriptionTypesEnabled(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.GetSubscriptionTypesEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetSubscriptionTypesEnabled`: []string
+    fmt.Fprintf(os.Stdout, "Response from `NamespacesApi.GetSubscriptionTypesEnabled`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSubscriptionTypesEnabledRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**[]string**
 
 ### Authorization
 
@@ -3530,6 +4475,215 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## RemoveBacklogQuota
+
+> RemoveBacklogQuota(ctx, tenant, namespace).BacklogQuotaType(backlogQuotaType).Execute()
+
+Remove a backlog quota policy from a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    backlogQuotaType := "backlogQuotaType_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveBacklogQuota(context.Background(), tenant, namespace).BacklogQuotaType(backlogQuotaType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveBacklogQuota``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveBacklogQuotaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **backlogQuotaType** | **string** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveDeduplication
+
+> RemoveDeduplication(ctx, tenant, namespace).Execute()
+
+Remove broker side deduplication for all topics in a namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveDeduplication(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveDeduplication``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveDeduplicationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveDelayedDeliveryPolicies
+
+> RemoveDelayedDeliveryPolicies(ctx, tenant, namespace).Execute()
+
+Delete delayed delivery messages config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveDelayedDeliveryPolicies(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveDelayedDeliveryPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveDelayedDeliveryPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RemoveInactiveTopicPolicies
 
 > RemoveInactiveTopicPolicies(ctx, tenant, namespace).Execute()
@@ -3599,11 +4753,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## RemoveNameSpaceBacklogQuota
+## RemoveMaxConsumersPerSubscription
 
-> RemoveNameSpaceBacklogQuota(ctx, tenant, namespace).BacklogQuotaType(backlogQuotaType).Execute()
+> RemoveMaxConsumersPerSubscription(ctx, tenant, namespace).Execute()
 
-Remove a backlog quota policy from a namespace.
+ Set maxConsumersPerSubscription configuration on a namespace.
 
 ### Example
 
@@ -3620,13 +4774,12 @@ import (
 func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
-    backlogQuotaType := "backlogQuotaType_example" // string |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.RemoveNameSpaceBacklogQuota(context.Background(), tenant, namespace).BacklogQuotaType(backlogQuotaType).Execute()
+    resp, r, err := api_client.NamespacesApi.RemoveMaxConsumersPerSubscription(context.Background(), tenant, namespace).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveNameSpaceBacklogQuota``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveMaxConsumersPerSubscription``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -3643,14 +4796,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRemoveNameSpaceBacklogQuotaRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRemoveMaxConsumersPerSubscriptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **backlogQuotaType** | **string** |  | 
 
 ### Return type
 
@@ -3670,11 +4822,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## RemoveNameSpaceOffloadPolicies
+## RemoveMaxConsumersPerTopic
 
-> RemoveNameSpaceOffloadPolicies(ctx, tenant, namespace).Execute()
+> RemoveMaxConsumersPerTopic(ctx, tenant, namespace).Execute()
 
- Set offload configuration on a namespace.
+Remove maxConsumersPerTopic configuration on a namespace.
 
 ### Example
 
@@ -3694,9 +4846,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.RemoveNameSpaceOffloadPolicies(context.Background(), tenant, namespace).Execute()
+    resp, r, err := api_client.NamespacesApi.RemoveMaxConsumersPerTopic(context.Background(), tenant, namespace).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveNameSpaceOffloadPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveMaxConsumersPerTopic``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -3713,7 +4865,283 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRemoveNameSpaceOffloadPoliciesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRemoveMaxConsumersPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveMaxProducersPerTopic
+
+> RemoveMaxProducersPerTopic(ctx, tenant, namespace).Execute()
+
+Remove maxProducersPerTopic configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveMaxProducersPerTopic(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveMaxProducersPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveMaxProducersPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveMaxSubscriptionsPerTopic
+
+> RemoveMaxSubscriptionsPerTopic(ctx, tenant, namespace).Execute()
+
+Remove maxSubscriptionsPerTopic configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveMaxSubscriptionsPerTopic(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveMaxSubscriptionsPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveMaxSubscriptionsPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveMaxUnackedmessagesPerConsumer
+
+> RemoveMaxUnackedmessagesPerConsumer(ctx, tenant, namespace).Execute()
+
+Remove maxUnackedMessagesPerConsumer config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveMaxUnackedmessagesPerConsumer(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveMaxUnackedmessagesPerConsumer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveMaxUnackedmessagesPerConsumerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveMaxUnackedmessagesPerSubscription
+
+> RemoveMaxUnackedmessagesPerSubscription(ctx, tenant, namespace).Execute()
+
+Remove maxUnackedMessagesPerSubscription config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveMaxUnackedmessagesPerSubscription(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveMaxUnackedmessagesPerSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveMaxUnackedmessagesPerSubscriptionRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -3852,6 +5280,425 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiRemoveNamespaceMessageTTLRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveNamespaceResourceGroup
+
+> RemoveNamespaceResourceGroup(ctx, tenant, namespace).Execute()
+
+Delete resourcegroup for a namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveNamespaceResourceGroup(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveNamespaceResourceGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveNamespaceResourceGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveOffloadPolicies
+
+> RemoveOffloadPolicies(ctx, tenant, namespace).Execute()
+
+ Set offload configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveOffloadPolicies(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveOffloadPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveOffloadPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveProperty
+
+> RemoveProperty(ctx, tenant, namespace, key).Execute()
+
+Get property value for a given key on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    key := "key_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveProperty(context.Background(), tenant, namespace, key).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveProperty``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**key** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemovePropertyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveReplicatorDispatchRate
+
+> RemoveReplicatorDispatchRate(ctx, tenant, namespace).Execute()
+
+Remove replicator dispatch-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveReplicatorDispatchRate(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveReplicatorDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveReplicatorDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveRetention
+
+> RemoveRetention(ctx, tenant, namespace).Body(body).Execute()
+
+ Remove retention configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewRetentionPolicies() // RetentionPolicies | Retention policies for the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveRetention(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveRetention``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveRetentionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**RetentionPolicies**](RetentionPolicies.md) | Retention policies for the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RemoveSubscriptionExpirationTime
+
+> RemoveSubscriptionExpirationTime(ctx, tenant, namespace).Execute()
+
+Remove subscription expiration time for namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.RemoveSubscriptionExpirationTime(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.RemoveSubscriptionExpirationTime``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRemoveSubscriptionExpirationTimeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -4091,6 +5938,79 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetBacklogQuota
+
+> SetBacklogQuota(ctx, tenant, namespace).BacklogQuotaType(backlogQuotaType).Body(body).Execute()
+
+ Set a backlog quota for all the topics on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    backlogQuotaType := "backlogQuotaType_example" // string |  (optional)
+    body := *openapiclient.NewBacklogQuota() // BacklogQuota | Backlog quota for all topics of the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetBacklogQuota(context.Background(), tenant, namespace).BacklogQuotaType(backlogQuotaType).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetBacklogQuota``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetBacklogQuotaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **backlogQuotaType** | **string** |  | 
+ **body** | [**BacklogQuota**](BacklogQuota.md) | Backlog quota for all topics of the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetBookieAffinityGroup
 
 > SetBookieAffinityGroup(ctx, tenant, namespace).Body(body).Execute()
@@ -4162,6 +6082,503 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetCompactionThreshold
+
+> SetCompactionThreshold(ctx, tenant, namespace).Body(body).Execute()
+
+Set maximum number of uncompacted bytes in a topic before compaction is triggered.
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := int64(789) // int64 | Maximum number of uncompacted bytes in a topic of the specified namespace
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetCompactionThreshold(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetCompactionThreshold``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetCompactionThresholdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **int64** | Maximum number of uncompacted bytes in a topic of the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetDeduplicationSnapshotInterval
+
+> SetDeduplicationSnapshotInterval(ctx, tenant, namespace).Body(body).Execute()
+
+Set deduplicationSnapshotInterval config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := int32(56) // int32 | Interval to take deduplication snapshot per topic
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetDeduplicationSnapshotInterval(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetDeduplicationSnapshotInterval``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetDeduplicationSnapshotIntervalRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **int32** | Interval to take deduplication snapshot per topic | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetDelayedDeliveryPolicies
+
+> SetDelayedDeliveryPolicies(ctx, tenant, namespace).Body(body).Execute()
+
+Set delayed delivery messages config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewDelayedDeliveryPolicies() // DelayedDeliveryPolicies | Delayed delivery policies for the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetDelayedDeliveryPolicies(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetDelayedDeliveryPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetDelayedDeliveryPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**DelayedDeliveryPolicies**](DelayedDeliveryPolicies.md) | Delayed delivery policies for the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetDispatchRate
+
+> SetDispatchRate(ctx, tenant, namespace).Body(body).Execute()
+
+Set dispatch-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewDispatchRateImpl() // DispatchRateImpl | Dispatch rate for all topics of the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetDispatchRate(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**DispatchRateImpl**](DispatchRateImpl.md) | Dispatch rate for all topics of the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetInactiveTopicPolicies
+
+> SetInactiveTopicPolicies(ctx, tenant, namespace).Body(body).Execute()
+
+Set inactive topic policies config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewInactiveTopicPolicies() // InactiveTopicPolicies | Inactive topic policies for the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetInactiveTopicPolicies(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetInactiveTopicPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetInactiveTopicPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**InactiveTopicPolicies**](InactiveTopicPolicies.md) | Inactive topic policies for the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetInactiveTopicPolicies_0
+
+> SetInactiveTopicPolicies_0(ctx, tenant, namespace).Body(body).Execute()
+
+Set maxTopicsPerNamespace config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := int32(56) // int32 | Number of maximum topics for specific namespace
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetInactiveTopicPolicies_0(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetInactiveTopicPolicies_0``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetInactiveTopicPolicies_1Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **int32** | Number of maximum topics for specific namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetInactiveTopicPolicies_1
+
+> SetInactiveTopicPolicies_1(ctx, tenant, namespace).Execute()
+
+Set maxTopicsPerNamespace config on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetInactiveTopicPolicies_1(context.Background(), tenant, namespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetInactiveTopicPolicies_1``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetInactiveTopicPolicies_2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetIsAllowAutoUpdateSchema
 
 > SetIsAllowAutoUpdateSchema(ctx, tenant, namespace).Body(body).Execute()
@@ -4214,6 +6631,77 @@ Name | Type | Description  | Notes
 
 
  **body** | **bool** | Flag of whether to allow auto update schema | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetMaxConsumersPerSubscription
+
+> SetMaxConsumersPerSubscription(ctx, tenant, namespace).Body(body).Execute()
+
+ Set maxConsumersPerSubscription configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := int32(56) // int32 | Number of maximum consumers per subscription
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetMaxConsumersPerSubscription(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetMaxConsumersPerSubscription``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetMaxConsumersPerSubscriptionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **int32** | Number of maximum consumers per subscription | 
 
 ### Return type
 
@@ -4375,6 +6863,77 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetMaxSubscriptionsPerTopic
+
+> SetMaxSubscriptionsPerTopic(ctx, tenant, namespace).Body(body).Execute()
+
+ Set maxSubscriptionsPerTopic configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := int32(56) // int32 | Number of maximum subscriptions per topic
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetMaxSubscriptionsPerTopic(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetMaxSubscriptionsPerTopic``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetMaxSubscriptionsPerTopicRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **int32** | Number of maximum subscriptions per topic | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetMaxUnackedMessagesPerConsumer
 
 > SetMaxUnackedMessagesPerConsumer(ctx, tenant, namespace).Body(body).Execute()
@@ -4498,862 +7057,6 @@ Name | Type | Description  | Notes
 
 
  **body** | **int32** | Number of maximum unacked messages per subscription | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceBacklogQuota
-
-> SetNameSpaceBacklogQuota(ctx, tenant, namespace).BacklogQuotaType(backlogQuotaType).Body(body).Execute()
-
- Set a backlog quota for all the topics on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    backlogQuotaType := "backlogQuotaType_example" // string |  (optional)
-    body := *openapiclient.NewBacklogQuota() // BacklogQuota | Backlog quota for all topics of the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceBacklogQuota(context.Background(), tenant, namespace).BacklogQuotaType(backlogQuotaType).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceBacklogQuota``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceBacklogQuotaRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **backlogQuotaType** | **string** |  | 
- **body** | [**BacklogQuota**](BacklogQuota.md) | Backlog quota for all topics of the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceCompactionThreshold
-
-> SetNameSpaceCompactionThreshold(ctx, tenant, namespace).Body(body).Execute()
-
-Set maximum number of uncompacted bytes in a topic before compaction is triggered.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := int64(789) // int64 | Maximum number of uncompacted bytes in a topic of the specified namespace
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceCompactionThreshold(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceCompactionThreshold``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceCompactionThresholdRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **int64** | Maximum number of uncompacted bytes in a topic of the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceDeduplicationSnapshotInterval
-
-> SetNameSpaceDeduplicationSnapshotInterval(ctx, tenant, namespace).Body(body).Execute()
-
-Set deduplicationSnapshotInterval config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := int32(56) // int32 | Interval to take deduplication snapshot per topic
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceDeduplicationSnapshotInterval(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceDeduplicationSnapshotInterval``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceDeduplicationSnapshotIntervalRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **int32** | Interval to take deduplication snapshot per topic | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceDelayedDeliveryPolicies
-
-> SetNameSpaceDelayedDeliveryPolicies(ctx, tenant, namespace).Body(body).Execute()
-
-Set delayed delivery messages config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewDelayedDeliveryPolicies() // DelayedDeliveryPolicies | Delayed delivery policies for the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceDelayedDeliveryPolicies(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceDelayedDeliveryPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceDelayedDeliveryPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**DelayedDeliveryPolicies**](DelayedDeliveryPolicies.md) | Delayed delivery policies for the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceDispatchRate
-
-> SetNameSpaceDispatchRate(ctx, tenant, namespace).Body(body).Execute()
-
-Set dispatch-rate throttling for all topics of the namespace
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewDispatchRate() // DispatchRate | Dispatch rate for all topics of the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceDispatchRate(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceDispatchRate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceDispatchRateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**DispatchRate**](DispatchRate.md) | Dispatch rate for all topics of the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceInactiveTopicPolicies
-
-> SetNameSpaceInactiveTopicPolicies(ctx, tenant, namespace).Body(body).Execute()
-
-Set inactive topic policies config on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewInactiveTopicPolicies() // InactiveTopicPolicies | Inactive topic policies for the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceInactiveTopicPolicies(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceInactiveTopicPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceInactiveTopicPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**InactiveTopicPolicies**](InactiveTopicPolicies.md) | Inactive topic policies for the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceMaxConsumersPerSubscription
-
-> SetNameSpaceMaxConsumersPerSubscription(ctx, tenant, namespace).Body(body).Execute()
-
- Set maxConsumersPerSubscription configuration on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := int32(56) // int32 | Number of maximum consumers per subscription
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceMaxConsumersPerSubscription(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceMaxConsumersPerSubscription``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceMaxConsumersPerSubscriptionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | **int32** | Number of maximum consumers per subscription | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceOffloadPolicies
-
-> SetNameSpaceOffloadPolicies(ctx, tenant, namespace).Body(body).Execute()
-
- Set offload configuration on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewOffloadPolicies() // OffloadPolicies | Offload policies for the specified namespace
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceOffloadPolicies(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceOffloadPolicies``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceOffloadPoliciesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**OffloadPolicies**](OffloadPolicies.md) | Offload policies for the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpacePersistence
-
-> SetNameSpacePersistence(ctx, tenant, namespace).Body(body).Execute()
-
-Set the persistence configuration for all the topics on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewPersistencePolicies() // PersistencePolicies | Persistence policies for the specified namespace
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpacePersistence(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpacePersistence``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpacePersistenceRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**PersistencePolicies**](PersistencePolicies.md) | Persistence policies for the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceRetention
-
-> SetNameSpaceRetention(ctx, tenant, namespace).Body(body).Execute()
-
- Set retention configuration on a namespace.
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewRetentionPolicies() // RetentionPolicies | Retention policies for the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceRetention(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceRetention``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceRetentionRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**RetentionPolicies**](RetentionPolicies.md) | Retention policies for the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceSubscribeRate
-
-> SetNameSpaceSubscribeRate(ctx, tenant, namespace).Body(body).Execute()
-
-Set subscribe-rate throttling for all topics of the namespace
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewSubscribeRate() // SubscribeRate | Subscribe rate for all topics of the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceSubscribeRate(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceSubscribeRate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceSubscribeRateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**SubscribeRate**](SubscribeRate.md) | Subscribe rate for all topics of the specified namespace | 
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## SetNameSpaceSubscriptionDispatchRate
-
-> SetNameSpaceSubscriptionDispatchRate(ctx, tenant, namespace).Body(body).Execute()
-
-Set Subscription dispatch-rate throttling for all topics of the namespace
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "./openapi"
-)
-
-func main() {
-    tenant := "tenant_example" // string | 
-    namespace := "namespace_example" // string | 
-    body := *openapiclient.NewDispatchRate() // DispatchRate | Subscription dispatch rate for all topics of the specified namespace (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.NamespacesApi.SetNameSpaceSubscriptionDispatchRate(context.Background(), tenant, namespace).Body(body).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNameSpaceSubscriptionDispatchRate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenant** | **string** |  | 
-**namespace** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiSetNameSpaceSubscriptionDispatchRateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **body** | [**DispatchRate**](DispatchRate.md) | Subscription dispatch rate for all topics of the specified namespace | 
 
 ### Return type
 
@@ -5586,6 +7289,77 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetNamespaceResourceGroup
+
+> SetNamespaceResourceGroup(ctx, tenant, namespace).Body(body).Execute()
+
+Set resourcegroup for a namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := "body_example" // string | Name of resourcegroup
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetNamespaceResourceGroup(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetNamespaceResourceGroup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetNamespaceResourceGroupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **string** | Name of resourcegroup | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetOffloadDeletionLag
 
 > SetOffloadDeletionLag(ctx, tenant, namespace).Body(body).Execute()
@@ -5640,6 +7414,77 @@ Name | Type | Description  | Notes
 
 
  **body** | **int64** | New number of milliseconds to wait before deleting a ledger segment which has been offloaded | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetOffloadPolicies
+
+> SetOffloadPolicies(ctx, tenant, namespace).Body(body).Execute()
+
+ Set offload configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewOffloadPoliciesImpl() // OffloadPoliciesImpl | Offload policies for the specified namespace
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetOffloadPolicies(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetOffloadPolicies``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetOffloadPoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**OffloadPoliciesImpl**](OffloadPoliciesImpl.md) | Offload policies for the specified namespace | 
 
 ### Return type
 
@@ -5732,6 +7577,223 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetPersistence
+
+> SetPersistence(ctx, tenant, namespace).Body(body).Execute()
+
+Set the persistence configuration for all the topics on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewPersistencePolicies() // PersistencePolicies | Persistence policies for the specified namespace
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetPersistence(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetPersistence``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetPersistenceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**PersistencePolicies**](PersistencePolicies.md) | Persistence policies for the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetProperties
+
+> SetProperties(ctx, tenant, namespace).Body(body).Execute()
+
+Put key value pairs property on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := map[string]string{"key": "Inner_example"} // map[string]string | Key value pair properties for the namespace
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetProperties(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetProperties``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetPropertiesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **map[string]string** | Key value pair properties for the namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetProperty
+
+> SetProperty(ctx, tenant, namespace, key, value).Execute()
+
+Put a key value pair property on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    key := "key_example" // string | 
+    value := "value_example" // string | 
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetProperty(context.Background(), tenant, namespace, key, value).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetProperty``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+**key** | **string** |  | 
+**value** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetPropertyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetReplicatorDispatchRate
 
 > SetReplicatorDispatchRate(ctx, tenant, namespace).Body(body).Execute()
@@ -5753,7 +7815,7 @@ import (
 func main() {
     tenant := "tenant_example" // string | 
     namespace := "namespace_example" // string | 
-    body := *openapiclient.NewDispatchRate() // DispatchRate | Replicator dispatch rate for all topics of the specified namespace (optional)
+    body := *openapiclient.NewDispatchRateImpl() // DispatchRateImpl | Replicator dispatch rate for all topics of the specified namespace (optional)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
@@ -5783,7 +7845,78 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **body** | [**DispatchRate**](DispatchRate.md) | Replicator dispatch rate for all topics of the specified namespace | 
+ **body** | [**DispatchRateImpl**](DispatchRateImpl.md) | Replicator dispatch rate for all topics of the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetRetention
+
+> SetRetention(ctx, tenant, namespace).Body(body).Execute()
+
+ Set retention configuration on a namespace.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewRetentionPolicies() // RetentionPolicies | Retention policies for the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetRetention(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetRetention``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetRetentionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**RetentionPolicies**](RetentionPolicies.md) | Retention policies for the specified namespace | 
 
 ### Return type
 
@@ -6020,6 +8153,77 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetSubscribeRate
+
+> SetSubscribeRate(ctx, tenant, namespace).Body(body).Execute()
+
+Set subscribe-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewSubscribeRate() // SubscribeRate | Subscribe rate for all topics of the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetSubscribeRate(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetSubscribeRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetSubscribeRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**SubscribeRate**](SubscribeRate.md) | Subscribe rate for all topics of the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetSubscriptionAuthMode
 
 > SetSubscriptionAuthMode(ctx, tenant, namespace).Body(body).Execute()
@@ -6091,6 +8295,77 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SetSubscriptionDispatchRate
+
+> SetSubscriptionDispatchRate(ctx, tenant, namespace).Body(body).Execute()
+
+Set Subscription dispatch-rate throttling for all topics of the namespace
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := *openapiclient.NewDispatchRateImpl() // DispatchRateImpl | Subscription dispatch rate for all topics of the specified namespace (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetSubscriptionDispatchRate(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetSubscriptionDispatchRate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetSubscriptionDispatchRateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | [**DispatchRateImpl**](DispatchRateImpl.md) | Subscription dispatch rate for all topics of the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SetSubscriptionExpirationTime
 
 > SetSubscriptionExpirationTime(ctx, tenant, namespace).Body(body).Execute()
@@ -6143,6 +8418,77 @@ Name | Type | Description  | Notes
 
 
  **body** | **int32** | Expiration time in minutes for the specified namespace | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SetSubscriptionTypesEnabled
+
+> SetSubscriptionTypesEnabled(ctx, tenant, namespace).Body(body).Execute()
+
+Update set of whether allow share sub type
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    tenant := "tenant_example" // string | 
+    namespace := "namespace_example" // string | 
+    body := []string{"Property_example"} // []string | Set of whether allow subscription types
+
+    configuration := openapiclient.NewConfiguration()
+    api_client := openapiclient.NewAPIClient(configuration)
+    resp, r, err := api_client.NamespacesApi.SetSubscriptionTypesEnabled(context.Background(), tenant, namespace).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `NamespacesApi.SetSubscriptionTypesEnabled``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**tenant** | **string** |  | 
+**namespace** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSetSubscriptionTypesEnabledRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **[]string** | Set of whether allow subscription types | 
 
 ### Return type
 

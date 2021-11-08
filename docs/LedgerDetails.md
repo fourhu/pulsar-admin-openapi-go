@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Entries** | Pointer to **int64** |  | [optional] 
-**LedgerId** | Pointer to **int64** |  | [optional] 
-**Size** | Pointer to **int64** |  | [optional] 
 **Timestamp** | Pointer to **int64** |  | [optional] 
+**Size** | Pointer to **int64** |  | [optional] 
+**LedgerId** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -53,30 +53,30 @@ SetEntries sets Entries field to given value.
 
 HasEntries returns a boolean if a field has been set.
 
-### GetLedgerId
+### GetTimestamp
 
-`func (o *LedgerDetails) GetLedgerId() int64`
+`func (o *LedgerDetails) GetTimestamp() int64`
 
-GetLedgerId returns the LedgerId field if non-nil, zero value otherwise.
+GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
-### GetLedgerIdOk
+### GetTimestampOk
 
-`func (o *LedgerDetails) GetLedgerIdOk() (*int64, bool)`
+`func (o *LedgerDetails) GetTimestampOk() (*int64, bool)`
 
-GetLedgerIdOk returns a tuple with the LedgerId field if it's non-nil, zero value otherwise
+GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLedgerId
+### SetTimestamp
 
-`func (o *LedgerDetails) SetLedgerId(v int64)`
+`func (o *LedgerDetails) SetTimestamp(v int64)`
 
-SetLedgerId sets LedgerId field to given value.
+SetTimestamp sets Timestamp field to given value.
 
-### HasLedgerId
+### HasTimestamp
 
-`func (o *LedgerDetails) HasLedgerId() bool`
+`func (o *LedgerDetails) HasTimestamp() bool`
 
-HasLedgerId returns a boolean if a field has been set.
+HasTimestamp returns a boolean if a field has been set.
 
 ### GetSize
 
@@ -103,30 +103,30 @@ SetSize sets Size field to given value.
 
 HasSize returns a boolean if a field has been set.
 
-### GetTimestamp
+### GetLedgerId
 
-`func (o *LedgerDetails) GetTimestamp() int64`
+`func (o *LedgerDetails) GetLedgerId() int64`
 
-GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
+GetLedgerId returns the LedgerId field if non-nil, zero value otherwise.
 
-### GetTimestampOk
+### GetLedgerIdOk
 
-`func (o *LedgerDetails) GetTimestampOk() (*int64, bool)`
+`func (o *LedgerDetails) GetLedgerIdOk() (*int64, bool)`
 
-GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
+GetLedgerIdOk returns a tuple with the LedgerId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTimestamp
+### SetLedgerId
 
-`func (o *LedgerDetails) SetTimestamp(v int64)`
+`func (o *LedgerDetails) SetLedgerId(v int64)`
 
-SetTimestamp sets Timestamp field to given value.
+SetLedgerId sets LedgerId field to given value.
 
-### HasTimestamp
+### HasLedgerId
 
-`func (o *LedgerDetails) HasTimestamp() bool`
+`func (o *LedgerDetails) HasLedgerId() bool`
 
-HasTimestamp returns a boolean if a field has been set.
+HasLedgerId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

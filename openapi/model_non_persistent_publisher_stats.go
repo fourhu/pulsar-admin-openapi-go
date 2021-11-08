@@ -16,17 +16,18 @@ import (
 
 // NonPersistentPublisherStats struct for NonPersistentPublisherStats
 type NonPersistentPublisherStats struct {
-	Address *string `json:"address,omitempty"`
+	MsgDropRate *float64 `json:"msgDropRate,omitempty"`
+	ProducerName *string `json:"producerName,omitempty"`
+	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
+	AccessMode *string `json:"accessMode,omitempty"`
 	AverageMsgSize *float64 `json:"averageMsgSize,omitempty"`
+	ConnectedSince *string `json:"connectedSince,omitempty"`
+	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
 	ChunkedMessageRate *float64 `json:"chunkedMessageRate,omitempty"`
 	ClientVersion *string `json:"clientVersion,omitempty"`
-	ConnectedSince *string `json:"connectedSince,omitempty"`
-	Metadata *map[string]string `json:"metadata,omitempty"`
-	MsgDropRate *float64 `json:"msgDropRate,omitempty"`
-	MsgRateIn *float64 `json:"msgRateIn,omitempty"`
-	MsgThroughputIn *float64 `json:"msgThroughputIn,omitempty"`
 	ProducerId *int64 `json:"producerId,omitempty"`
-	ProducerName *string `json:"producerName,omitempty"`
+	Metadata *map[string]string `json:"metadata,omitempty"`
+	Address *string `json:"address,omitempty"`
 }
 
 // NewNonPersistentPublisherStats instantiates a new NonPersistentPublisherStats object
@@ -46,36 +47,132 @@ func NewNonPersistentPublisherStatsWithDefaults() *NonPersistentPublisherStats {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetAddress() string {
-	if o == nil || o.Address == nil {
-		var ret string
+// GetMsgDropRate returns the MsgDropRate field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetMsgDropRate() float64 {
+	if o == nil || o.MsgDropRate == nil {
+		var ret float64
 		return ret
 	}
-	return *o.Address
+	return *o.MsgDropRate
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetMsgDropRateOk returns a tuple with the MsgDropRate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetAddressOk() (*string, bool) {
-	if o == nil || o.Address == nil {
+func (o *NonPersistentPublisherStats) GetMsgDropRateOk() (*float64, bool) {
+	if o == nil || o.MsgDropRate == nil {
 		return nil, false
 	}
-	return o.Address, true
+	return o.MsgDropRate, true
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasAddress() bool {
-	if o != nil && o.Address != nil {
+// HasMsgDropRate returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasMsgDropRate() bool {
+	if o != nil && o.MsgDropRate != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given string and assigns it to the Address field.
-func (o *NonPersistentPublisherStats) SetAddress(v string) {
-	o.Address = &v
+// SetMsgDropRate gets a reference to the given float64 and assigns it to the MsgDropRate field.
+func (o *NonPersistentPublisherStats) SetMsgDropRate(v float64) {
+	o.MsgDropRate = &v
+}
+
+// GetProducerName returns the ProducerName field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetProducerName() string {
+	if o == nil || o.ProducerName == nil {
+		var ret string
+		return ret
+	}
+	return *o.ProducerName
+}
+
+// GetProducerNameOk returns a tuple with the ProducerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentPublisherStats) GetProducerNameOk() (*string, bool) {
+	if o == nil || o.ProducerName == nil {
+		return nil, false
+	}
+	return o.ProducerName, true
+}
+
+// HasProducerName returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasProducerName() bool {
+	if o != nil && o.ProducerName != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetProducerName gets a reference to the given string and assigns it to the ProducerName field.
+func (o *NonPersistentPublisherStats) SetProducerName(v string) {
+	o.ProducerName = &v
+}
+
+// GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetMsgThroughputIn() float64 {
+	if o == nil || o.MsgThroughputIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgThroughputIn
+}
+
+// GetMsgThroughputInOk returns a tuple with the MsgThroughputIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentPublisherStats) GetMsgThroughputInOk() (*float64, bool) {
+	if o == nil || o.MsgThroughputIn == nil {
+		return nil, false
+	}
+	return o.MsgThroughputIn, true
+}
+
+// HasMsgThroughputIn returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasMsgThroughputIn() bool {
+	if o != nil && o.MsgThroughputIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgThroughputIn gets a reference to the given float64 and assigns it to the MsgThroughputIn field.
+func (o *NonPersistentPublisherStats) SetMsgThroughputIn(v float64) {
+	o.MsgThroughputIn = &v
+}
+
+// GetAccessMode returns the AccessMode field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetAccessMode() string {
+	if o == nil || o.AccessMode == nil {
+		var ret string
+		return ret
+	}
+	return *o.AccessMode
+}
+
+// GetAccessModeOk returns a tuple with the AccessMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentPublisherStats) GetAccessModeOk() (*string, bool) {
+	if o == nil || o.AccessMode == nil {
+		return nil, false
+	}
+	return o.AccessMode, true
+}
+
+// HasAccessMode returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasAccessMode() bool {
+	if o != nil && o.AccessMode != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessMode gets a reference to the given string and assigns it to the AccessMode field.
+func (o *NonPersistentPublisherStats) SetAccessMode(v string) {
+	o.AccessMode = &v
 }
 
 // GetAverageMsgSize returns the AverageMsgSize field value if set, zero value otherwise.
@@ -108,6 +205,70 @@ func (o *NonPersistentPublisherStats) HasAverageMsgSize() bool {
 // SetAverageMsgSize gets a reference to the given float64 and assigns it to the AverageMsgSize field.
 func (o *NonPersistentPublisherStats) SetAverageMsgSize(v float64) {
 	o.AverageMsgSize = &v
+}
+
+// GetConnectedSince returns the ConnectedSince field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetConnectedSince() string {
+	if o == nil || o.ConnectedSince == nil {
+		var ret string
+		return ret
+	}
+	return *o.ConnectedSince
+}
+
+// GetConnectedSinceOk returns a tuple with the ConnectedSince field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentPublisherStats) GetConnectedSinceOk() (*string, bool) {
+	if o == nil || o.ConnectedSince == nil {
+		return nil, false
+	}
+	return o.ConnectedSince, true
+}
+
+// HasConnectedSince returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasConnectedSince() bool {
+	if o != nil && o.ConnectedSince != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectedSince gets a reference to the given string and assigns it to the ConnectedSince field.
+func (o *NonPersistentPublisherStats) SetConnectedSince(v string) {
+	o.ConnectedSince = &v
+}
+
+// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetMsgRateIn() float64 {
+	if o == nil || o.MsgRateIn == nil {
+		var ret float64
+		return ret
+	}
+	return *o.MsgRateIn
+}
+
+// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NonPersistentPublisherStats) GetMsgRateInOk() (*float64, bool) {
+	if o == nil || o.MsgRateIn == nil {
+		return nil, false
+	}
+	return o.MsgRateIn, true
+}
+
+// HasMsgRateIn returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasMsgRateIn() bool {
+	if o != nil && o.MsgRateIn != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
+func (o *NonPersistentPublisherStats) SetMsgRateIn(v float64) {
+	o.MsgRateIn = &v
 }
 
 // GetChunkedMessageRate returns the ChunkedMessageRate field value if set, zero value otherwise.
@@ -174,36 +335,36 @@ func (o *NonPersistentPublisherStats) SetClientVersion(v string) {
 	o.ClientVersion = &v
 }
 
-// GetConnectedSince returns the ConnectedSince field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetConnectedSince() string {
-	if o == nil || o.ConnectedSince == nil {
-		var ret string
+// GetProducerId returns the ProducerId field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetProducerId() int64 {
+	if o == nil || o.ProducerId == nil {
+		var ret int64
 		return ret
 	}
-	return *o.ConnectedSince
+	return *o.ProducerId
 }
 
-// GetConnectedSinceOk returns a tuple with the ConnectedSince field value if set, nil otherwise
+// GetProducerIdOk returns a tuple with the ProducerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetConnectedSinceOk() (*string, bool) {
-	if o == nil || o.ConnectedSince == nil {
+func (o *NonPersistentPublisherStats) GetProducerIdOk() (*int64, bool) {
+	if o == nil || o.ProducerId == nil {
 		return nil, false
 	}
-	return o.ConnectedSince, true
+	return o.ProducerId, true
 }
 
-// HasConnectedSince returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasConnectedSince() bool {
-	if o != nil && o.ConnectedSince != nil {
+// HasProducerId returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasProducerId() bool {
+	if o != nil && o.ProducerId != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetConnectedSince gets a reference to the given string and assigns it to the ConnectedSince field.
-func (o *NonPersistentPublisherStats) SetConnectedSince(v string) {
-	o.ConnectedSince = &v
+// SetProducerId gets a reference to the given int64 and assigns it to the ProducerId field.
+func (o *NonPersistentPublisherStats) SetProducerId(v int64) {
+	o.ProducerId = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -238,173 +399,60 @@ func (o *NonPersistentPublisherStats) SetMetadata(v map[string]string) {
 	o.Metadata = &v
 }
 
-// GetMsgDropRate returns the MsgDropRate field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetMsgDropRate() float64 {
-	if o == nil || o.MsgDropRate == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgDropRate
-}
-
-// GetMsgDropRateOk returns a tuple with the MsgDropRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetMsgDropRateOk() (*float64, bool) {
-	if o == nil || o.MsgDropRate == nil {
-		return nil, false
-	}
-	return o.MsgDropRate, true
-}
-
-// HasMsgDropRate returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasMsgDropRate() bool {
-	if o != nil && o.MsgDropRate != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgDropRate gets a reference to the given float64 and assigns it to the MsgDropRate field.
-func (o *NonPersistentPublisherStats) SetMsgDropRate(v float64) {
-	o.MsgDropRate = &v
-}
-
-// GetMsgRateIn returns the MsgRateIn field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetMsgRateIn() float64 {
-	if o == nil || o.MsgRateIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgRateIn
-}
-
-// GetMsgRateInOk returns a tuple with the MsgRateIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetMsgRateInOk() (*float64, bool) {
-	if o == nil || o.MsgRateIn == nil {
-		return nil, false
-	}
-	return o.MsgRateIn, true
-}
-
-// HasMsgRateIn returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasMsgRateIn() bool {
-	if o != nil && o.MsgRateIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgRateIn gets a reference to the given float64 and assigns it to the MsgRateIn field.
-func (o *NonPersistentPublisherStats) SetMsgRateIn(v float64) {
-	o.MsgRateIn = &v
-}
-
-// GetMsgThroughputIn returns the MsgThroughputIn field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetMsgThroughputIn() float64 {
-	if o == nil || o.MsgThroughputIn == nil {
-		var ret float64
-		return ret
-	}
-	return *o.MsgThroughputIn
-}
-
-// GetMsgThroughputInOk returns a tuple with the MsgThroughputIn field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetMsgThroughputInOk() (*float64, bool) {
-	if o == nil || o.MsgThroughputIn == nil {
-		return nil, false
-	}
-	return o.MsgThroughputIn, true
-}
-
-// HasMsgThroughputIn returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasMsgThroughputIn() bool {
-	if o != nil && o.MsgThroughputIn != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetMsgThroughputIn gets a reference to the given float64 and assigns it to the MsgThroughputIn field.
-func (o *NonPersistentPublisherStats) SetMsgThroughputIn(v float64) {
-	o.MsgThroughputIn = &v
-}
-
-// GetProducerId returns the ProducerId field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetProducerId() int64 {
-	if o == nil || o.ProducerId == nil {
-		var ret int64
-		return ret
-	}
-	return *o.ProducerId
-}
-
-// GetProducerIdOk returns a tuple with the ProducerId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetProducerIdOk() (*int64, bool) {
-	if o == nil || o.ProducerId == nil {
-		return nil, false
-	}
-	return o.ProducerId, true
-}
-
-// HasProducerId returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasProducerId() bool {
-	if o != nil && o.ProducerId != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetProducerId gets a reference to the given int64 and assigns it to the ProducerId field.
-func (o *NonPersistentPublisherStats) SetProducerId(v int64) {
-	o.ProducerId = &v
-}
-
-// GetProducerName returns the ProducerName field value if set, zero value otherwise.
-func (o *NonPersistentPublisherStats) GetProducerName() string {
-	if o == nil || o.ProducerName == nil {
+// GetAddress returns the Address field value if set, zero value otherwise.
+func (o *NonPersistentPublisherStats) GetAddress() string {
+	if o == nil || o.Address == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProducerName
+	return *o.Address
 }
 
-// GetProducerNameOk returns a tuple with the ProducerName field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NonPersistentPublisherStats) GetProducerNameOk() (*string, bool) {
-	if o == nil || o.ProducerName == nil {
+func (o *NonPersistentPublisherStats) GetAddressOk() (*string, bool) {
+	if o == nil || o.Address == nil {
 		return nil, false
 	}
-	return o.ProducerName, true
+	return o.Address, true
 }
 
-// HasProducerName returns a boolean if a field has been set.
-func (o *NonPersistentPublisherStats) HasProducerName() bool {
-	if o != nil && o.ProducerName != nil {
+// HasAddress returns a boolean if a field has been set.
+func (o *NonPersistentPublisherStats) HasAddress() bool {
+	if o != nil && o.Address != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetProducerName gets a reference to the given string and assigns it to the ProducerName field.
-func (o *NonPersistentPublisherStats) SetProducerName(v string) {
-	o.ProducerName = &v
+// SetAddress gets a reference to the given string and assigns it to the Address field.
+func (o *NonPersistentPublisherStats) SetAddress(v string) {
+	o.Address = &v
 }
 
 func (o NonPersistentPublisherStats) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Address != nil {
-		toSerialize["address"] = o.Address
+	if o.MsgDropRate != nil {
+		toSerialize["msgDropRate"] = o.MsgDropRate
+	}
+	if o.ProducerName != nil {
+		toSerialize["producerName"] = o.ProducerName
+	}
+	if o.MsgThroughputIn != nil {
+		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
+	}
+	if o.AccessMode != nil {
+		toSerialize["accessMode"] = o.AccessMode
 	}
 	if o.AverageMsgSize != nil {
 		toSerialize["averageMsgSize"] = o.AverageMsgSize
+	}
+	if o.ConnectedSince != nil {
+		toSerialize["connectedSince"] = o.ConnectedSince
+	}
+	if o.MsgRateIn != nil {
+		toSerialize["msgRateIn"] = o.MsgRateIn
 	}
 	if o.ChunkedMessageRate != nil {
 		toSerialize["chunkedMessageRate"] = o.ChunkedMessageRate
@@ -412,26 +460,14 @@ func (o NonPersistentPublisherStats) MarshalJSON() ([]byte, error) {
 	if o.ClientVersion != nil {
 		toSerialize["clientVersion"] = o.ClientVersion
 	}
-	if o.ConnectedSince != nil {
-		toSerialize["connectedSince"] = o.ConnectedSince
+	if o.ProducerId != nil {
+		toSerialize["producerId"] = o.ProducerId
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.MsgDropRate != nil {
-		toSerialize["msgDropRate"] = o.MsgDropRate
-	}
-	if o.MsgRateIn != nil {
-		toSerialize["msgRateIn"] = o.MsgRateIn
-	}
-	if o.MsgThroughputIn != nil {
-		toSerialize["msgThroughputIn"] = o.MsgThroughputIn
-	}
-	if o.ProducerId != nil {
-		toSerialize["producerId"] = o.ProducerId
-	}
-	if o.ProducerName != nil {
-		toSerialize["producerName"] = o.ProducerName
+	if o.Address != nil {
+		toSerialize["address"] = o.Address
 	}
 	return json.Marshal(toSerialize)
 }

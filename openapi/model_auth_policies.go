@@ -16,9 +16,9 @@ import (
 
 // AuthPolicies struct for AuthPolicies
 type AuthPolicies struct {
-	DestinationAuth *map[string]map[string][]string `json:"destination_auth,omitempty"`
-	NamespaceAuth *map[string][]string `json:"namespace_auth,omitempty"`
-	SubscriptionAuthRoles *map[string][]string `json:"subscription_auth_roles,omitempty"`
+	TopicAuthentication *map[string]map[string][]string `json:"topicAuthentication,omitempty"`
+	SubscriptionAuthentication *map[string][]string `json:"subscriptionAuthentication,omitempty"`
+	NamespaceAuthentication *map[string][]string `json:"namespaceAuthentication,omitempty"`
 }
 
 // NewAuthPolicies instantiates a new AuthPolicies object
@@ -38,112 +38,112 @@ func NewAuthPoliciesWithDefaults() *AuthPolicies {
 	return &this
 }
 
-// GetDestinationAuth returns the DestinationAuth field value if set, zero value otherwise.
-func (o *AuthPolicies) GetDestinationAuth() map[string]map[string][]string {
-	if o == nil || o.DestinationAuth == nil {
+// GetTopicAuthentication returns the TopicAuthentication field value if set, zero value otherwise.
+func (o *AuthPolicies) GetTopicAuthentication() map[string]map[string][]string {
+	if o == nil || o.TopicAuthentication == nil {
 		var ret map[string]map[string][]string
 		return ret
 	}
-	return *o.DestinationAuth
+	return *o.TopicAuthentication
 }
 
-// GetDestinationAuthOk returns a tuple with the DestinationAuth field value if set, nil otherwise
+// GetTopicAuthenticationOk returns a tuple with the TopicAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthPolicies) GetDestinationAuthOk() (*map[string]map[string][]string, bool) {
-	if o == nil || o.DestinationAuth == nil {
+func (o *AuthPolicies) GetTopicAuthenticationOk() (*map[string]map[string][]string, bool) {
+	if o == nil || o.TopicAuthentication == nil {
 		return nil, false
 	}
-	return o.DestinationAuth, true
+	return o.TopicAuthentication, true
 }
 
-// HasDestinationAuth returns a boolean if a field has been set.
-func (o *AuthPolicies) HasDestinationAuth() bool {
-	if o != nil && o.DestinationAuth != nil {
+// HasTopicAuthentication returns a boolean if a field has been set.
+func (o *AuthPolicies) HasTopicAuthentication() bool {
+	if o != nil && o.TopicAuthentication != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetDestinationAuth gets a reference to the given map[string]map[string][]string and assigns it to the DestinationAuth field.
-func (o *AuthPolicies) SetDestinationAuth(v map[string]map[string][]string) {
-	o.DestinationAuth = &v
+// SetTopicAuthentication gets a reference to the given map[string]map[string][]string and assigns it to the TopicAuthentication field.
+func (o *AuthPolicies) SetTopicAuthentication(v map[string]map[string][]string) {
+	o.TopicAuthentication = &v
 }
 
-// GetNamespaceAuth returns the NamespaceAuth field value if set, zero value otherwise.
-func (o *AuthPolicies) GetNamespaceAuth() map[string][]string {
-	if o == nil || o.NamespaceAuth == nil {
+// GetSubscriptionAuthentication returns the SubscriptionAuthentication field value if set, zero value otherwise.
+func (o *AuthPolicies) GetSubscriptionAuthentication() map[string][]string {
+	if o == nil || o.SubscriptionAuthentication == nil {
 		var ret map[string][]string
 		return ret
 	}
-	return *o.NamespaceAuth
+	return *o.SubscriptionAuthentication
 }
 
-// GetNamespaceAuthOk returns a tuple with the NamespaceAuth field value if set, nil otherwise
+// GetSubscriptionAuthenticationOk returns a tuple with the SubscriptionAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthPolicies) GetNamespaceAuthOk() (*map[string][]string, bool) {
-	if o == nil || o.NamespaceAuth == nil {
+func (o *AuthPolicies) GetSubscriptionAuthenticationOk() (*map[string][]string, bool) {
+	if o == nil || o.SubscriptionAuthentication == nil {
 		return nil, false
 	}
-	return o.NamespaceAuth, true
+	return o.SubscriptionAuthentication, true
 }
 
-// HasNamespaceAuth returns a boolean if a field has been set.
-func (o *AuthPolicies) HasNamespaceAuth() bool {
-	if o != nil && o.NamespaceAuth != nil {
+// HasSubscriptionAuthentication returns a boolean if a field has been set.
+func (o *AuthPolicies) HasSubscriptionAuthentication() bool {
+	if o != nil && o.SubscriptionAuthentication != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespaceAuth gets a reference to the given map[string][]string and assigns it to the NamespaceAuth field.
-func (o *AuthPolicies) SetNamespaceAuth(v map[string][]string) {
-	o.NamespaceAuth = &v
+// SetSubscriptionAuthentication gets a reference to the given map[string][]string and assigns it to the SubscriptionAuthentication field.
+func (o *AuthPolicies) SetSubscriptionAuthentication(v map[string][]string) {
+	o.SubscriptionAuthentication = &v
 }
 
-// GetSubscriptionAuthRoles returns the SubscriptionAuthRoles field value if set, zero value otherwise.
-func (o *AuthPolicies) GetSubscriptionAuthRoles() map[string][]string {
-	if o == nil || o.SubscriptionAuthRoles == nil {
+// GetNamespaceAuthentication returns the NamespaceAuthentication field value if set, zero value otherwise.
+func (o *AuthPolicies) GetNamespaceAuthentication() map[string][]string {
+	if o == nil || o.NamespaceAuthentication == nil {
 		var ret map[string][]string
 		return ret
 	}
-	return *o.SubscriptionAuthRoles
+	return *o.NamespaceAuthentication
 }
 
-// GetSubscriptionAuthRolesOk returns a tuple with the SubscriptionAuthRoles field value if set, nil otherwise
+// GetNamespaceAuthenticationOk returns a tuple with the NamespaceAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AuthPolicies) GetSubscriptionAuthRolesOk() (*map[string][]string, bool) {
-	if o == nil || o.SubscriptionAuthRoles == nil {
+func (o *AuthPolicies) GetNamespaceAuthenticationOk() (*map[string][]string, bool) {
+	if o == nil || o.NamespaceAuthentication == nil {
 		return nil, false
 	}
-	return o.SubscriptionAuthRoles, true
+	return o.NamespaceAuthentication, true
 }
 
-// HasSubscriptionAuthRoles returns a boolean if a field has been set.
-func (o *AuthPolicies) HasSubscriptionAuthRoles() bool {
-	if o != nil && o.SubscriptionAuthRoles != nil {
+// HasNamespaceAuthentication returns a boolean if a field has been set.
+func (o *AuthPolicies) HasNamespaceAuthentication() bool {
+	if o != nil && o.NamespaceAuthentication != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionAuthRoles gets a reference to the given map[string][]string and assigns it to the SubscriptionAuthRoles field.
-func (o *AuthPolicies) SetSubscriptionAuthRoles(v map[string][]string) {
-	o.SubscriptionAuthRoles = &v
+// SetNamespaceAuthentication gets a reference to the given map[string][]string and assigns it to the NamespaceAuthentication field.
+func (o *AuthPolicies) SetNamespaceAuthentication(v map[string][]string) {
+	o.NamespaceAuthentication = &v
 }
 
 func (o AuthPolicies) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.DestinationAuth != nil {
-		toSerialize["destination_auth"] = o.DestinationAuth
+	if o.TopicAuthentication != nil {
+		toSerialize["topicAuthentication"] = o.TopicAuthentication
 	}
-	if o.NamespaceAuth != nil {
-		toSerialize["namespace_auth"] = o.NamespaceAuth
+	if o.SubscriptionAuthentication != nil {
+		toSerialize["subscriptionAuthentication"] = o.SubscriptionAuthentication
 	}
-	if o.SubscriptionAuthRoles != nil {
-		toSerialize["subscription_auth_roles"] = o.SubscriptionAuthRoles
+	if o.NamespaceAuthentication != nil {
+		toSerialize["namespaceAuthentication"] = o.NamespaceAuthentication
 	}
 	return json.Marshal(toSerialize)
 }

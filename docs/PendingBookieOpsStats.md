@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CursorLedgerCloseOp** | Pointer to **int64** |  | [optional] 
-**CursorLedgerCreateOp** | Pointer to **int64** |  | [optional] 
-**CursorLedgerDeleteOp** | Pointer to **int64** |  | [optional] 
-**CursorLedgerOpenOp** | Pointer to **int64** |  | [optional] 
+**DataLedgerOpenOp** | Pointer to **int64** |  | [optional] 
 **DataLedgerCloseOp** | Pointer to **int64** |  | [optional] 
 **DataLedgerCreateOp** | Pointer to **int64** |  | [optional] 
 **DataLedgerDeleteOp** | Pointer to **int64** |  | [optional] 
-**DataLedgerOpenOp** | Pointer to **int64** |  | [optional] 
+**CursorLedgerOpenOp** | Pointer to **int64** |  | [optional] 
+**CursorLedgerCloseOp** | Pointer to **int64** |  | [optional] 
+**CursorLedgerCreateOp** | Pointer to **int64** |  | [optional] 
+**CursorLedgerDeleteOp** | Pointer to **int64** |  | [optional] 
 
 ## Methods
 
@@ -32,105 +32,30 @@ NewPendingBookieOpsStatsWithDefaults instantiates a new PendingBookieOpsStats ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetCursorLedgerCloseOp
+### GetDataLedgerOpenOp
 
-`func (o *PendingBookieOpsStats) GetCursorLedgerCloseOp() int64`
+`func (o *PendingBookieOpsStats) GetDataLedgerOpenOp() int64`
 
-GetCursorLedgerCloseOp returns the CursorLedgerCloseOp field if non-nil, zero value otherwise.
+GetDataLedgerOpenOp returns the DataLedgerOpenOp field if non-nil, zero value otherwise.
 
-### GetCursorLedgerCloseOpOk
+### GetDataLedgerOpenOpOk
 
-`func (o *PendingBookieOpsStats) GetCursorLedgerCloseOpOk() (*int64, bool)`
+`func (o *PendingBookieOpsStats) GetDataLedgerOpenOpOk() (*int64, bool)`
 
-GetCursorLedgerCloseOpOk returns a tuple with the CursorLedgerCloseOp field if it's non-nil, zero value otherwise
+GetDataLedgerOpenOpOk returns a tuple with the DataLedgerOpenOp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetCursorLedgerCloseOp
+### SetDataLedgerOpenOp
 
-`func (o *PendingBookieOpsStats) SetCursorLedgerCloseOp(v int64)`
+`func (o *PendingBookieOpsStats) SetDataLedgerOpenOp(v int64)`
 
-SetCursorLedgerCloseOp sets CursorLedgerCloseOp field to given value.
+SetDataLedgerOpenOp sets DataLedgerOpenOp field to given value.
 
-### HasCursorLedgerCloseOp
+### HasDataLedgerOpenOp
 
-`func (o *PendingBookieOpsStats) HasCursorLedgerCloseOp() bool`
+`func (o *PendingBookieOpsStats) HasDataLedgerOpenOp() bool`
 
-HasCursorLedgerCloseOp returns a boolean if a field has been set.
-
-### GetCursorLedgerCreateOp
-
-`func (o *PendingBookieOpsStats) GetCursorLedgerCreateOp() int64`
-
-GetCursorLedgerCreateOp returns the CursorLedgerCreateOp field if non-nil, zero value otherwise.
-
-### GetCursorLedgerCreateOpOk
-
-`func (o *PendingBookieOpsStats) GetCursorLedgerCreateOpOk() (*int64, bool)`
-
-GetCursorLedgerCreateOpOk returns a tuple with the CursorLedgerCreateOp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCursorLedgerCreateOp
-
-`func (o *PendingBookieOpsStats) SetCursorLedgerCreateOp(v int64)`
-
-SetCursorLedgerCreateOp sets CursorLedgerCreateOp field to given value.
-
-### HasCursorLedgerCreateOp
-
-`func (o *PendingBookieOpsStats) HasCursorLedgerCreateOp() bool`
-
-HasCursorLedgerCreateOp returns a boolean if a field has been set.
-
-### GetCursorLedgerDeleteOp
-
-`func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOp() int64`
-
-GetCursorLedgerDeleteOp returns the CursorLedgerDeleteOp field if non-nil, zero value otherwise.
-
-### GetCursorLedgerDeleteOpOk
-
-`func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOpOk() (*int64, bool)`
-
-GetCursorLedgerDeleteOpOk returns a tuple with the CursorLedgerDeleteOp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCursorLedgerDeleteOp
-
-`func (o *PendingBookieOpsStats) SetCursorLedgerDeleteOp(v int64)`
-
-SetCursorLedgerDeleteOp sets CursorLedgerDeleteOp field to given value.
-
-### HasCursorLedgerDeleteOp
-
-`func (o *PendingBookieOpsStats) HasCursorLedgerDeleteOp() bool`
-
-HasCursorLedgerDeleteOp returns a boolean if a field has been set.
-
-### GetCursorLedgerOpenOp
-
-`func (o *PendingBookieOpsStats) GetCursorLedgerOpenOp() int64`
-
-GetCursorLedgerOpenOp returns the CursorLedgerOpenOp field if non-nil, zero value otherwise.
-
-### GetCursorLedgerOpenOpOk
-
-`func (o *PendingBookieOpsStats) GetCursorLedgerOpenOpOk() (*int64, bool)`
-
-GetCursorLedgerOpenOpOk returns a tuple with the CursorLedgerOpenOp field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCursorLedgerOpenOp
-
-`func (o *PendingBookieOpsStats) SetCursorLedgerOpenOp(v int64)`
-
-SetCursorLedgerOpenOp sets CursorLedgerOpenOp field to given value.
-
-### HasCursorLedgerOpenOp
-
-`func (o *PendingBookieOpsStats) HasCursorLedgerOpenOp() bool`
-
-HasCursorLedgerOpenOp returns a boolean if a field has been set.
+HasDataLedgerOpenOp returns a boolean if a field has been set.
 
 ### GetDataLedgerCloseOp
 
@@ -207,30 +132,105 @@ SetDataLedgerDeleteOp sets DataLedgerDeleteOp field to given value.
 
 HasDataLedgerDeleteOp returns a boolean if a field has been set.
 
-### GetDataLedgerOpenOp
+### GetCursorLedgerOpenOp
 
-`func (o *PendingBookieOpsStats) GetDataLedgerOpenOp() int64`
+`func (o *PendingBookieOpsStats) GetCursorLedgerOpenOp() int64`
 
-GetDataLedgerOpenOp returns the DataLedgerOpenOp field if non-nil, zero value otherwise.
+GetCursorLedgerOpenOp returns the CursorLedgerOpenOp field if non-nil, zero value otherwise.
 
-### GetDataLedgerOpenOpOk
+### GetCursorLedgerOpenOpOk
 
-`func (o *PendingBookieOpsStats) GetDataLedgerOpenOpOk() (*int64, bool)`
+`func (o *PendingBookieOpsStats) GetCursorLedgerOpenOpOk() (*int64, bool)`
 
-GetDataLedgerOpenOpOk returns a tuple with the DataLedgerOpenOp field if it's non-nil, zero value otherwise
+GetCursorLedgerOpenOpOk returns a tuple with the CursorLedgerOpenOp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDataLedgerOpenOp
+### SetCursorLedgerOpenOp
 
-`func (o *PendingBookieOpsStats) SetDataLedgerOpenOp(v int64)`
+`func (o *PendingBookieOpsStats) SetCursorLedgerOpenOp(v int64)`
 
-SetDataLedgerOpenOp sets DataLedgerOpenOp field to given value.
+SetCursorLedgerOpenOp sets CursorLedgerOpenOp field to given value.
 
-### HasDataLedgerOpenOp
+### HasCursorLedgerOpenOp
 
-`func (o *PendingBookieOpsStats) HasDataLedgerOpenOp() bool`
+`func (o *PendingBookieOpsStats) HasCursorLedgerOpenOp() bool`
 
-HasDataLedgerOpenOp returns a boolean if a field has been set.
+HasCursorLedgerOpenOp returns a boolean if a field has been set.
+
+### GetCursorLedgerCloseOp
+
+`func (o *PendingBookieOpsStats) GetCursorLedgerCloseOp() int64`
+
+GetCursorLedgerCloseOp returns the CursorLedgerCloseOp field if non-nil, zero value otherwise.
+
+### GetCursorLedgerCloseOpOk
+
+`func (o *PendingBookieOpsStats) GetCursorLedgerCloseOpOk() (*int64, bool)`
+
+GetCursorLedgerCloseOpOk returns a tuple with the CursorLedgerCloseOp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCursorLedgerCloseOp
+
+`func (o *PendingBookieOpsStats) SetCursorLedgerCloseOp(v int64)`
+
+SetCursorLedgerCloseOp sets CursorLedgerCloseOp field to given value.
+
+### HasCursorLedgerCloseOp
+
+`func (o *PendingBookieOpsStats) HasCursorLedgerCloseOp() bool`
+
+HasCursorLedgerCloseOp returns a boolean if a field has been set.
+
+### GetCursorLedgerCreateOp
+
+`func (o *PendingBookieOpsStats) GetCursorLedgerCreateOp() int64`
+
+GetCursorLedgerCreateOp returns the CursorLedgerCreateOp field if non-nil, zero value otherwise.
+
+### GetCursorLedgerCreateOpOk
+
+`func (o *PendingBookieOpsStats) GetCursorLedgerCreateOpOk() (*int64, bool)`
+
+GetCursorLedgerCreateOpOk returns a tuple with the CursorLedgerCreateOp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCursorLedgerCreateOp
+
+`func (o *PendingBookieOpsStats) SetCursorLedgerCreateOp(v int64)`
+
+SetCursorLedgerCreateOp sets CursorLedgerCreateOp field to given value.
+
+### HasCursorLedgerCreateOp
+
+`func (o *PendingBookieOpsStats) HasCursorLedgerCreateOp() bool`
+
+HasCursorLedgerCreateOp returns a boolean if a field has been set.
+
+### GetCursorLedgerDeleteOp
+
+`func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOp() int64`
+
+GetCursorLedgerDeleteOp returns the CursorLedgerDeleteOp field if non-nil, zero value otherwise.
+
+### GetCursorLedgerDeleteOpOk
+
+`func (o *PendingBookieOpsStats) GetCursorLedgerDeleteOpOk() (*int64, bool)`
+
+GetCursorLedgerDeleteOpOk returns a tuple with the CursorLedgerDeleteOp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCursorLedgerDeleteOp
+
+`func (o *PendingBookieOpsStats) SetCursorLedgerDeleteOp(v int64)`
+
+SetCursorLedgerDeleteOp sets CursorLedgerDeleteOp field to given value.
+
+### HasCursorLedgerDeleteOp
+
+`func (o *PendingBookieOpsStats) HasCursorLedgerDeleteOp() bool`
+
+HasCursorLedgerDeleteOp returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

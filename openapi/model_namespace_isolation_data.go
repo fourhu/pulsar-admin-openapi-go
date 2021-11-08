@@ -16,11 +16,11 @@ import (
 
 // NamespaceIsolationData The data of namespace isolation configuration
 type NamespaceIsolationData struct {
-	AutoFailoverPolicy *AutoFailoverPolicyData `json:"auto_failover_policy,omitempty"`
 	// The list of namespaces to apply this namespace isolation data
 	Namespaces *[]string `json:"namespaces,omitempty"`
 	// The list of secondary brokers for serving the list of namespaces in this isolation policy
 	Primary *[]string `json:"primary,omitempty"`
+	AutoFailoverPolicy *AutoFailoverPolicyData `json:"auto_failover_policy,omitempty"`
 }
 
 // NewNamespaceIsolationData instantiates a new NamespaceIsolationData object
@@ -38,38 +38,6 @@ func NewNamespaceIsolationData() *NamespaceIsolationData {
 func NewNamespaceIsolationDataWithDefaults() *NamespaceIsolationData {
 	this := NamespaceIsolationData{}
 	return &this
-}
-
-// GetAutoFailoverPolicy returns the AutoFailoverPolicy field value if set, zero value otherwise.
-func (o *NamespaceIsolationData) GetAutoFailoverPolicy() AutoFailoverPolicyData {
-	if o == nil || o.AutoFailoverPolicy == nil {
-		var ret AutoFailoverPolicyData
-		return ret
-	}
-	return *o.AutoFailoverPolicy
-}
-
-// GetAutoFailoverPolicyOk returns a tuple with the AutoFailoverPolicy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *NamespaceIsolationData) GetAutoFailoverPolicyOk() (*AutoFailoverPolicyData, bool) {
-	if o == nil || o.AutoFailoverPolicy == nil {
-		return nil, false
-	}
-	return o.AutoFailoverPolicy, true
-}
-
-// HasAutoFailoverPolicy returns a boolean if a field has been set.
-func (o *NamespaceIsolationData) HasAutoFailoverPolicy() bool {
-	if o != nil && o.AutoFailoverPolicy != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoFailoverPolicy gets a reference to the given AutoFailoverPolicyData and assigns it to the AutoFailoverPolicy field.
-func (o *NamespaceIsolationData) SetAutoFailoverPolicy(v AutoFailoverPolicyData) {
-	o.AutoFailoverPolicy = &v
 }
 
 // GetNamespaces returns the Namespaces field value if set, zero value otherwise.
@@ -136,16 +104,48 @@ func (o *NamespaceIsolationData) SetPrimary(v []string) {
 	o.Primary = &v
 }
 
+// GetAutoFailoverPolicy returns the AutoFailoverPolicy field value if set, zero value otherwise.
+func (o *NamespaceIsolationData) GetAutoFailoverPolicy() AutoFailoverPolicyData {
+	if o == nil || o.AutoFailoverPolicy == nil {
+		var ret AutoFailoverPolicyData
+		return ret
+	}
+	return *o.AutoFailoverPolicy
+}
+
+// GetAutoFailoverPolicyOk returns a tuple with the AutoFailoverPolicy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *NamespaceIsolationData) GetAutoFailoverPolicyOk() (*AutoFailoverPolicyData, bool) {
+	if o == nil || o.AutoFailoverPolicy == nil {
+		return nil, false
+	}
+	return o.AutoFailoverPolicy, true
+}
+
+// HasAutoFailoverPolicy returns a boolean if a field has been set.
+func (o *NamespaceIsolationData) HasAutoFailoverPolicy() bool {
+	if o != nil && o.AutoFailoverPolicy != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoFailoverPolicy gets a reference to the given AutoFailoverPolicyData and assigns it to the AutoFailoverPolicy field.
+func (o *NamespaceIsolationData) SetAutoFailoverPolicy(v AutoFailoverPolicyData) {
+	o.AutoFailoverPolicy = &v
+}
+
 func (o NamespaceIsolationData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AutoFailoverPolicy != nil {
-		toSerialize["auto_failover_policy"] = o.AutoFailoverPolicy
-	}
 	if o.Namespaces != nil {
 		toSerialize["namespaces"] = o.Namespaces
 	}
 	if o.Primary != nil {
 		toSerialize["primary"] = o.Primary
+	}
+	if o.AutoFailoverPolicy != nil {
+		toSerialize["auto_failover_policy"] = o.AutoFailoverPolicy
 	}
 	return json.Marshal(toSerialize)
 }

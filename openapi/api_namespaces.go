@@ -560,6 +560,103 @@ func (a *NamespacesApiService) ClearOffloadDeletionLagExecute(r ApiClearOffloadD
 	return localVarHTTPResponse, nil
 }
 
+type ApiClearPropertiesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiClearPropertiesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.ClearPropertiesExecute(r)
+}
+
+/*
+ClearProperties Get property value for a given key on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiClearPropertiesRequest
+*/
+func (a *NamespacesApiService) ClearProperties(ctx _context.Context, tenant string, namespace string) ApiClearPropertiesRequest {
+	return ApiClearPropertiesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) ClearPropertiesExecute(r ApiClearPropertiesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.ClearProperties")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/properties"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiCreateNamespaceRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -711,6 +808,202 @@ func (a *NamespacesApiService) DeleteBookieAffinityGroupExecute(r ApiDeleteBooki
 
 	localVarPath := localBasePath + "/namespaces/{property}/{namespace}/persistence/bookieAffinity"
 	localVarPath = strings.Replace(localVarPath, "{"+"property"+"}", _neturl.PathEscape(parameterToString(r.property, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteCompactionThresholdRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiDeleteCompactionThresholdRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteCompactionThresholdExecute(r)
+}
+
+/*
+DeleteCompactionThreshold Delete maximum number of uncompacted bytes in a topic before compaction is triggered.
+
+The backlog size is compared to the threshold periodically. A threshold of 0 disabled automatic compaction
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiDeleteCompactionThresholdRequest
+*/
+func (a *NamespacesApiService) DeleteCompactionThreshold(ctx _context.Context, tenant string, namespace string) ApiDeleteCompactionThresholdRequest {
+	return ApiDeleteCompactionThresholdRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) DeleteCompactionThresholdExecute(r ApiDeleteCompactionThresholdRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.DeleteCompactionThreshold")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/compactionThreshold"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiDeleteDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteDispatchRateExecute(r)
+}
+
+/*
+DeleteDispatchRate Delete dispatch-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiDeleteDispatchRateRequest
+*/
+func (a *NamespacesApiService) DeleteDispatchRate(ctx _context.Context, tenant string, namespace string) ApiDeleteDispatchRateRequest {
+	return ApiDeleteDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) DeleteDispatchRateExecute(r ApiDeleteDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.DeleteDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/dispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -992,6 +1285,297 @@ func (a *NamespacesApiService) DeleteNamespaceBundleExecute(r ApiDeleteNamespace
 	return localVarHTTPResponse, nil
 }
 
+type ApiDeletePersistenceRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiDeletePersistenceRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeletePersistenceExecute(r)
+}
+
+/*
+DeletePersistence Delete the persistence configuration for all topics on a namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiDeletePersistenceRequest
+*/
+func (a *NamespacesApiService) DeletePersistence(ctx _context.Context, tenant string, namespace string) ApiDeletePersistenceRequest {
+	return ApiDeletePersistenceRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) DeletePersistenceExecute(r ApiDeletePersistenceRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.DeletePersistence")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/persistence"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteSubscribeRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiDeleteSubscribeRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteSubscribeRateExecute(r)
+}
+
+/*
+DeleteSubscribeRate Delete subscribe-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiDeleteSubscribeRateRequest
+*/
+func (a *NamespacesApiService) DeleteSubscribeRate(ctx _context.Context, tenant string, namespace string) ApiDeleteSubscribeRateRequest {
+	return ApiDeleteSubscribeRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) DeleteSubscribeRateExecute(r ApiDeleteSubscribeRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.DeleteSubscribeRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscribeRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteSubscriptionDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiDeleteSubscriptionDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.DeleteSubscriptionDispatchRateExecute(r)
+}
+
+/*
+DeleteSubscriptionDispatchRate Delete Subscription dispatch-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiDeleteSubscriptionDispatchRateRequest
+*/
+func (a *NamespacesApiService) DeleteSubscriptionDispatchRate(ctx _context.Context, tenant string, namespace string) ApiDeleteSubscriptionDispatchRateRequest {
+	return ApiDeleteSubscriptionDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) DeleteSubscriptionDispatchRateExecute(r ApiDeleteSubscriptionDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.DeleteSubscriptionDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetAntiAffinityNamespacesRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -1005,7 +1589,7 @@ func (r ApiGetAntiAffinityNamespacesRequest) Tenant(tenant string) ApiGetAntiAff
 	return r
 }
 
-func (r ApiGetAntiAffinityNamespacesRequest) Execute() ([]map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiGetAntiAffinityNamespacesRequest) Execute() ([]string, *_nethttp.Response, error) {
 	return r.ApiService.GetAntiAffinityNamespacesExecute(r)
 }
 
@@ -1027,15 +1611,15 @@ func (a *NamespacesApiService) GetAntiAffinityNamespaces(ctx _context.Context, c
 }
 
 // Execute executes the request
-//  @return []map[string]interface{}
-func (a *NamespacesApiService) GetAntiAffinityNamespacesExecute(r ApiGetAntiAffinityNamespacesRequest) ([]map[string]interface{}, *_nethttp.Response, error) {
+//  @return []string
+func (a *NamespacesApiService) GetAntiAffinityNamespacesExecute(r ApiGetAntiAffinityNamespacesRequest) ([]string, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  []map[string]interface{}
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetAntiAffinityNamespaces")
@@ -1054,6 +1638,114 @@ func (a *NamespacesApiService) GetAntiAffinityNamespacesExecute(r ApiGetAntiAffi
 	if r.tenant != nil {
 		localVarQueryParams.Add("tenant", parameterToString(*r.tenant, ""))
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetBacklogQuotaMapRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetBacklogQuotaMapRequest) Execute() (map[string]BacklogQuota, *_nethttp.Response, error) {
+	return r.ApiService.GetBacklogQuotaMapExecute(r)
+}
+
+/*
+GetBacklogQuotaMap Get backlog quota map on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetBacklogQuotaMapRequest
+*/
+func (a *NamespacesApiService) GetBacklogQuotaMap(ctx _context.Context, tenant string, namespace string) ApiGetBacklogQuotaMapRequest {
+	return ApiGetBacklogQuotaMapRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return map[string]BacklogQuota
+func (a *NamespacesApiService) GetBacklogQuotaMapExecute(r ApiGetBacklogQuotaMapRequest) (map[string]BacklogQuota, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  map[string]BacklogQuota
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetBacklogQuotaMap")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/backlogQuotaMap"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1324,6 +2016,656 @@ func (a *NamespacesApiService) GetBundlesDataExecute(r ApiGetBundlesDataRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetCompactionThresholdRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetCompactionThresholdRequest) Execute() (int64, *_nethttp.Response, error) {
+	return r.ApiService.GetCompactionThresholdExecute(r)
+}
+
+/*
+GetCompactionThreshold Maximum number of uncompacted bytes in topics before compaction is triggered.
+
+The backlog size is compared to the threshold periodically. A threshold of 0 disabled automatic compaction
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetCompactionThresholdRequest
+*/
+func (a *NamespacesApiService) GetCompactionThreshold(ctx _context.Context, tenant string, namespace string) ApiGetCompactionThresholdRequest {
+	return ApiGetCompactionThresholdRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return int64
+func (a *NamespacesApiService) GetCompactionThresholdExecute(r ApiGetCompactionThresholdRequest) (int64, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  int64
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetCompactionThreshold")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/compactionThreshold"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDeduplicationRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetDeduplicationRequest) Execute() (bool, *_nethttp.Response, error) {
+	return r.ApiService.GetDeduplicationExecute(r)
+}
+
+/*
+GetDeduplication Get broker side deduplication for all topics in a namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetDeduplicationRequest
+*/
+func (a *NamespacesApiService) GetDeduplication(ctx _context.Context, tenant string, namespace string) ApiGetDeduplicationRequest {
+	return ApiGetDeduplicationRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return bool
+func (a *NamespacesApiService) GetDeduplicationExecute(r ApiGetDeduplicationRequest) (bool, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  bool
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetDeduplication")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/deduplication"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDeduplicationSnapshotIntervalRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetDeduplicationSnapshotIntervalRequest) Execute() (int32, *_nethttp.Response, error) {
+	return r.ApiService.GetDeduplicationSnapshotIntervalExecute(r)
+}
+
+/*
+GetDeduplicationSnapshotInterval Get deduplicationSnapshotInterval config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetDeduplicationSnapshotIntervalRequest
+*/
+func (a *NamespacesApiService) GetDeduplicationSnapshotInterval(ctx _context.Context, tenant string, namespace string) ApiGetDeduplicationSnapshotIntervalRequest {
+	return ApiGetDeduplicationSnapshotIntervalRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return int32
+func (a *NamespacesApiService) GetDeduplicationSnapshotIntervalExecute(r ApiGetDeduplicationSnapshotIntervalRequest) (int32, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  int32
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetDeduplicationSnapshotInterval")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDelayedDeliveryPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetDelayedDeliveryPoliciesRequest) Execute() (DelayedDeliveryPolicies, *_nethttp.Response, error) {
+	return r.ApiService.GetDelayedDeliveryPoliciesExecute(r)
+}
+
+/*
+GetDelayedDeliveryPolicies Get delayed delivery messages config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetDelayedDeliveryPoliciesRequest
+*/
+func (a *NamespacesApiService) GetDelayedDeliveryPolicies(ctx _context.Context, tenant string, namespace string) ApiGetDelayedDeliveryPoliciesRequest {
+	return ApiGetDelayedDeliveryPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return DelayedDeliveryPolicies
+func (a *NamespacesApiService) GetDelayedDeliveryPoliciesExecute(r ApiGetDelayedDeliveryPoliciesRequest) (DelayedDeliveryPolicies, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DelayedDeliveryPolicies
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetDelayedDeliveryPolicies")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/delayedDelivery"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetDispatchRateRequest) Execute() (DispatchRate, *_nethttp.Response, error) {
+	return r.ApiService.GetDispatchRateExecute(r)
+}
+
+/*
+GetDispatchRate Get dispatch-rate configured for the namespace, -1 represents not configured yet
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetDispatchRateRequest
+*/
+func (a *NamespacesApiService) GetDispatchRate(ctx _context.Context, tenant string, namespace string) ApiGetDispatchRateRequest {
+	return ApiGetDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return DispatchRate
+func (a *NamespacesApiService) GetDispatchRateExecute(r ApiGetDispatchRateRequest) (DispatchRate, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DispatchRate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetDispatchRate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/dispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetInactiveTopicPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetInactiveTopicPoliciesRequest) Execute() (InactiveTopicPolicies, *_nethttp.Response, error) {
+	return r.ApiService.GetInactiveTopicPoliciesExecute(r)
+}
+
+/*
+GetInactiveTopicPolicies Get inactive topic policies config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetInactiveTopicPoliciesRequest
+*/
+func (a *NamespacesApiService) GetInactiveTopicPolicies(ctx _context.Context, tenant string, namespace string) ApiGetInactiveTopicPoliciesRequest {
+	return ApiGetInactiveTopicPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return InactiveTopicPolicies
+func (a *NamespacesApiService) GetInactiveTopicPoliciesExecute(r ApiGetInactiveTopicPoliciesRequest) (InactiveTopicPolicies, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  InactiveTopicPolicies
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetInactiveTopicPolicies")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/inactiveTopicPolicies"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetIsAllowAutoUpdateSchemaRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -1371,6 +2713,114 @@ func (a *NamespacesApiService) GetIsAllowAutoUpdateSchemaExecute(r ApiGetIsAllow
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/isAllowAutoUpdateSchema"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetMaxConsumersPerSubscriptionRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetMaxConsumersPerSubscriptionRequest) Execute() (int32, *_nethttp.Response, error) {
+	return r.ApiService.GetMaxConsumersPerSubscriptionExecute(r)
+}
+
+/*
+GetMaxConsumersPerSubscription Get maxConsumersPerSubscription config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetMaxConsumersPerSubscriptionRequest
+*/
+func (a *NamespacesApiService) GetMaxConsumersPerSubscription(ctx _context.Context, tenant string, namespace string) ApiGetMaxConsumersPerSubscriptionRequest {
+	return ApiGetMaxConsumersPerSubscriptionRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return int32
+func (a *NamespacesApiService) GetMaxConsumersPerSubscriptionExecute(r ApiGetMaxConsumersPerSubscriptionRequest) (int32, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  int32
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetMaxConsumersPerSubscription")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxConsumersPerSubscription"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -1648,6 +3098,222 @@ func (a *NamespacesApiService) GetMaxProducersPerTopicExecute(r ApiGetMaxProduce
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetMaxSubscriptionsPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetMaxSubscriptionsPerTopicRequest) Execute() (int32, *_nethttp.Response, error) {
+	return r.ApiService.GetMaxSubscriptionsPerTopicExecute(r)
+}
+
+/*
+GetMaxSubscriptionsPerTopic Get maxSubscriptionsPerTopic config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetMaxSubscriptionsPerTopicRequest
+*/
+func (a *NamespacesApiService) GetMaxSubscriptionsPerTopic(ctx _context.Context, tenant string, namespace string) ApiGetMaxSubscriptionsPerTopicRequest {
+	return ApiGetMaxSubscriptionsPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return int32
+func (a *NamespacesApiService) GetMaxSubscriptionsPerTopicExecute(r ApiGetMaxSubscriptionsPerTopicRequest) (int32, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  int32
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetMaxSubscriptionsPerTopic")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetMaxTopicsPerNamespaceRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetMaxTopicsPerNamespaceRequest) Execute() (int32, *_nethttp.Response, error) {
+	return r.ApiService.GetMaxTopicsPerNamespaceExecute(r)
+}
+
+/*
+GetMaxTopicsPerNamespace Get maxTopicsPerNamespace config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetMaxTopicsPerNamespaceRequest
+*/
+func (a *NamespacesApiService) GetMaxTopicsPerNamespace(ctx _context.Context, tenant string, namespace string) ApiGetMaxTopicsPerNamespaceRequest {
+	return ApiGetMaxTopicsPerNamespaceRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return int32
+func (a *NamespacesApiService) GetMaxTopicsPerNamespaceExecute(r ApiGetMaxTopicsPerNamespaceRequest) (int32, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  int32
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetMaxTopicsPerNamespace")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxTopicsPerNamespace"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetMaxUnackedMessagesPerConsumerRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -1803,1304 +3469,6 @@ func (a *NamespacesApiService) GetMaxUnackedmessagesPerSubscriptionExecute(r Api
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceBacklogQuotaMapRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceBacklogQuotaMapRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceBacklogQuotaMapExecute(r)
-}
-
-/*
-GetNameSpaceBacklogQuotaMap Get backlog quota map on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceBacklogQuotaMapRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceBacklogQuotaMap(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceBacklogQuotaMapRequest {
-	return ApiGetNameSpaceBacklogQuotaMapRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *NamespacesApiService) GetNameSpaceBacklogQuotaMapExecute(r ApiGetNameSpaceBacklogQuotaMapRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  map[string]map[string]interface{}
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceBacklogQuotaMap")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/backlogQuotaMap"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceCompactionThresholdRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceCompactionThresholdRequest) Execute() (int64, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceCompactionThresholdExecute(r)
-}
-
-/*
-GetNameSpaceCompactionThreshold Maximum number of uncompacted bytes in topics before compaction is triggered.
-
-The backlog size is compared to the threshold periodically. A threshold of 0 disabled automatic compaction
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceCompactionThresholdRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceCompactionThreshold(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceCompactionThresholdRequest {
-	return ApiGetNameSpaceCompactionThresholdRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return int64
-func (a *NamespacesApiService) GetNameSpaceCompactionThresholdExecute(r ApiGetNameSpaceCompactionThresholdRequest) (int64, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  int64
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceCompactionThreshold")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/compactionThreshold"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceDeduplicationSnapshotIntervalRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceDeduplicationSnapshotIntervalRequest) Execute() (int32, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceDeduplicationSnapshotIntervalExecute(r)
-}
-
-/*
-GetNameSpaceDeduplicationSnapshotInterval Get deduplicationSnapshotInterval config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceDeduplicationSnapshotIntervalRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceDeduplicationSnapshotInterval(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceDeduplicationSnapshotIntervalRequest {
-	return ApiGetNameSpaceDeduplicationSnapshotIntervalRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return int32
-func (a *NamespacesApiService) GetNameSpaceDeduplicationSnapshotIntervalExecute(r ApiGetNameSpaceDeduplicationSnapshotIntervalRequest) (int32, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  int32
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceDeduplicationSnapshotInterval")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceDelayedDeliveryPoliciesRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceDelayedDeliveryPoliciesRequest) Execute() (DelayedDeliveryPolicies, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceDelayedDeliveryPoliciesExecute(r)
-}
-
-/*
-GetNameSpaceDelayedDeliveryPolicies Get delayed delivery messages config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceDelayedDeliveryPoliciesRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceDelayedDeliveryPolicies(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceDelayedDeliveryPoliciesRequest {
-	return ApiGetNameSpaceDelayedDeliveryPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return DelayedDeliveryPolicies
-func (a *NamespacesApiService) GetNameSpaceDelayedDeliveryPoliciesExecute(r ApiGetNameSpaceDelayedDeliveryPoliciesRequest) (DelayedDeliveryPolicies, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DelayedDeliveryPolicies
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceDelayedDeliveryPolicies")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/delayedDelivery"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceDispatchRateRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceDispatchRateRequest) Execute() (DispatchRate, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceDispatchRateExecute(r)
-}
-
-/*
-GetNameSpaceDispatchRate Get dispatch-rate configured for the namespace, -1 represents not configured yet
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceDispatchRateRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceDispatchRate(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceDispatchRateRequest {
-	return ApiGetNameSpaceDispatchRateRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return DispatchRate
-func (a *NamespacesApiService) GetNameSpaceDispatchRateExecute(r ApiGetNameSpaceDispatchRateRequest) (DispatchRate, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DispatchRate
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceDispatchRate")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/dispatchRate"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceInactiveTopicPoliciesRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceInactiveTopicPoliciesRequest) Execute() (InactiveTopicPolicies, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceInactiveTopicPoliciesExecute(r)
-}
-
-/*
-GetNameSpaceInactiveTopicPolicies Get inactive topic policies config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceInactiveTopicPoliciesRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceInactiveTopicPolicies(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceInactiveTopicPoliciesRequest {
-	return ApiGetNameSpaceInactiveTopicPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return InactiveTopicPolicies
-func (a *NamespacesApiService) GetNameSpaceInactiveTopicPoliciesExecute(r ApiGetNameSpaceInactiveTopicPoliciesRequest) (InactiveTopicPolicies, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InactiveTopicPolicies
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceInactiveTopicPolicies")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/inactiveTopicPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceMaxConsumersPerSubscriptionRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceMaxConsumersPerSubscriptionRequest) Execute() (int32, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceMaxConsumersPerSubscriptionExecute(r)
-}
-
-/*
-GetNameSpaceMaxConsumersPerSubscription Get maxConsumersPerSubscription config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceMaxConsumersPerSubscriptionRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceMaxConsumersPerSubscription(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceMaxConsumersPerSubscriptionRequest {
-	return ApiGetNameSpaceMaxConsumersPerSubscriptionRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return int32
-func (a *NamespacesApiService) GetNameSpaceMaxConsumersPerSubscriptionExecute(r ApiGetNameSpaceMaxConsumersPerSubscriptionRequest) (int32, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  int32
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceMaxConsumersPerSubscription")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxConsumersPerSubscription"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceOffloadPoliciesRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceOffloadPoliciesRequest) Execute() (OffloadPolicies, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceOffloadPoliciesExecute(r)
-}
-
-/*
-GetNameSpaceOffloadPolicies Get offload configuration on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceOffloadPoliciesRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceOffloadPolicies(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceOffloadPoliciesRequest {
-	return ApiGetNameSpaceOffloadPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return OffloadPolicies
-func (a *NamespacesApiService) GetNameSpaceOffloadPoliciesExecute(r ApiGetNameSpaceOffloadPoliciesRequest) (OffloadPolicies, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  OffloadPolicies
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceOffloadPolicies")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/offloadPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpacePersistenceRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpacePersistenceRequest) Execute() (PersistencePolicies, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpacePersistenceExecute(r)
-}
-
-/*
-GetNameSpacePersistence Get the persistence configuration for a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpacePersistenceRequest
-*/
-func (a *NamespacesApiService) GetNameSpacePersistence(ctx _context.Context, tenant string, namespace string) ApiGetNameSpacePersistenceRequest {
-	return ApiGetNameSpacePersistenceRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return PersistencePolicies
-func (a *NamespacesApiService) GetNameSpacePersistenceExecute(r ApiGetNameSpacePersistenceRequest) (PersistencePolicies, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  PersistencePolicies
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpacePersistence")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/persistence"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceRetentionRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceRetentionRequest) Execute() (RetentionPolicies, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceRetentionExecute(r)
-}
-
-/*
-GetNameSpaceRetention Get retention config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceRetentionRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceRetention(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceRetentionRequest {
-	return ApiGetNameSpaceRetentionRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return RetentionPolicies
-func (a *NamespacesApiService) GetNameSpaceRetentionExecute(r ApiGetNameSpaceRetentionRequest) (RetentionPolicies, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  RetentionPolicies
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceRetention")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/retention"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceSubscribeRateRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceSubscribeRateRequest) Execute() (SubscribeRate, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceSubscribeRateExecute(r)
-}
-
-/*
-GetNameSpaceSubscribeRate Get subscribe-rate configured for the namespace
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceSubscribeRateRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceSubscribeRate(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceSubscribeRateRequest {
-	return ApiGetNameSpaceSubscribeRateRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return SubscribeRate
-func (a *NamespacesApiService) GetNameSpaceSubscribeRateExecute(r ApiGetNameSpaceSubscribeRateRequest) (SubscribeRate, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  SubscribeRate
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceSubscribeRate")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscribeRate"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiGetNameSpaceSubscriptionDispatchRateRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-}
-
-
-func (r ApiGetNameSpaceSubscriptionDispatchRateRequest) Execute() (DispatchRate, *_nethttp.Response, error) {
-	return r.ApiService.GetNameSpaceSubscriptionDispatchRateExecute(r)
-}
-
-/*
-GetNameSpaceSubscriptionDispatchRate Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiGetNameSpaceSubscriptionDispatchRateRequest
-*/
-func (a *NamespacesApiService) GetNameSpaceSubscriptionDispatchRate(ctx _context.Context, tenant string, namespace string) ApiGetNameSpaceSubscriptionDispatchRateRequest {
-	return ApiGetNameSpaceSubscriptionDispatchRateRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-//  @return DispatchRate
-func (a *NamespacesApiService) GetNameSpaceSubscriptionDispatchRateExecute(r ApiGetNameSpaceSubscriptionDispatchRateRequest) (DispatchRate, *_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  DispatchRate
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNameSpaceSubscriptionDispatchRate")
-	if err != nil {
-		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionDispatchRate"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -3486,6 +3854,114 @@ func (a *NamespacesApiService) GetNamespaceReplicationClustersExecute(r ApiGetNa
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetNamespaceResourceGroupRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetNamespaceResourceGroupRequest) Execute() (string, *_nethttp.Response, error) {
+	return r.ApiService.GetNamespaceResourceGroupExecute(r)
+}
+
+/*
+GetNamespaceResourceGroup Get the resourcegroup attached to the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetNamespaceResourceGroupRequest
+*/
+func (a *NamespacesApiService) GetNamespaceResourceGroup(ctx _context.Context, tenant string, namespace string) ApiGetNamespaceResourceGroupRequest {
+	return ApiGetNamespaceResourceGroupRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return string
+func (a *NamespacesApiService) GetNamespaceResourceGroupExecute(r ApiGetNamespaceResourceGroupRequest) (string, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetNamespaceResourceGroup")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/resourcegroup"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetOffloadDeletionLagRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -3535,6 +4011,114 @@ func (a *NamespacesApiService) GetOffloadDeletionLagExecute(r ApiGetOffloadDelet
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/offloadDeletionLagMs"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetOffloadPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetOffloadPoliciesRequest) Execute() (OffloadPoliciesImpl, *_nethttp.Response, error) {
+	return r.ApiService.GetOffloadPoliciesExecute(r)
+}
+
+/*
+GetOffloadPolicies Get offload configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetOffloadPoliciesRequest
+*/
+func (a *NamespacesApiService) GetOffloadPolicies(ctx _context.Context, tenant string, namespace string) ApiGetOffloadPoliciesRequest {
+	return ApiGetOffloadPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return OffloadPoliciesImpl
+func (a *NamespacesApiService) GetOffloadPoliciesExecute(r ApiGetOffloadPoliciesRequest) (OffloadPoliciesImpl, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  OffloadPoliciesImpl
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetOffloadPolicies")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/offloadPolicies"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -3714,7 +4298,7 @@ type ApiGetPermissionsRequest struct {
 }
 
 
-func (r ApiGetPermissionsRequest) Execute() (map[string]map[string]interface{}, *_nethttp.Response, error) {
+func (r ApiGetPermissionsRequest) Execute() (map[string][]string, *_nethttp.Response, error) {
 	return r.ApiService.GetPermissionsExecute(r)
 }
 
@@ -3736,15 +4320,15 @@ func (a *NamespacesApiService) GetPermissions(ctx _context.Context, tenant strin
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *NamespacesApiService) GetPermissionsExecute(r ApiGetPermissionsRequest) (map[string]map[string]interface{}, *_nethttp.Response, error) {
+//  @return map[string][]string
+func (a *NamespacesApiService) GetPermissionsExecute(r ApiGetPermissionsRequest) (map[string][]string, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  map[string][]string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetPermissions")
@@ -3753,6 +4337,114 @@ func (a *NamespacesApiService) GetPermissionsExecute(r ApiGetPermissionsRequest)
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/permissions"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetPersistenceRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetPersistenceRequest) Execute() (PersistencePolicies, *_nethttp.Response, error) {
+	return r.ApiService.GetPersistenceExecute(r)
+}
+
+/*
+GetPersistence Get the persistence configuration for a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetPersistenceRequest
+*/
+func (a *NamespacesApiService) GetPersistence(ctx _context.Context, tenant string, namespace string) ApiGetPersistenceRequest {
+	return ApiGetPersistenceRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return PersistencePolicies
+func (a *NamespacesApiService) GetPersistenceExecute(r ApiGetPersistenceRequest) (PersistencePolicies, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  PersistencePolicies
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetPersistence")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/persistence"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -3922,6 +4614,204 @@ func (a *NamespacesApiService) GetPoliciesExecute(r ApiGetPoliciesRequest) (Poli
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetPropertiesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetPropertiesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetPropertiesExecute(r)
+}
+
+/*
+GetProperties Get key value pair properties for a given namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetPropertiesRequest
+*/
+func (a *NamespacesApiService) GetProperties(ctx _context.Context, tenant string, namespace string) ApiGetPropertiesRequest {
+	return ApiGetPropertiesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) GetPropertiesExecute(r ApiGetPropertiesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetProperties")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/properties"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiGetPropertyRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	key string
+}
+
+
+func (r ApiGetPropertyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.GetPropertyExecute(r)
+}
+
+/*
+GetProperty Get property value for a given key on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param key
+ @return ApiGetPropertyRequest
+*/
+func (a *NamespacesApiService) GetProperty(ctx _context.Context, tenant string, namespace string, key string) ApiGetPropertyRequest {
+	return ApiGetPropertyRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		key: key,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) GetPropertyExecute(r ApiGetPropertyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetProperty")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/property/{key}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", _neturl.PathEscape(parameterToString(r.key, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetReplicatorDispatchRateRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -3969,6 +4859,114 @@ func (a *NamespacesApiService) GetReplicatorDispatchRateExecute(r ApiGetReplicat
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/replicatorDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetRetentionRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetRetentionRequest) Execute() (RetentionPolicies, *_nethttp.Response, error) {
+	return r.ApiService.GetRetentionExecute(r)
+}
+
+/*
+GetRetention Get retention config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetRetentionRequest
+*/
+func (a *NamespacesApiService) GetRetention(ctx _context.Context, tenant string, namespace string) ApiGetRetentionRequest {
+	return ApiGetRetentionRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return RetentionPolicies
+func (a *NamespacesApiService) GetRetentionExecute(r ApiGetRetentionRequest) (RetentionPolicies, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  RetentionPolicies
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetRetention")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/retention"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -4358,6 +5356,222 @@ func (a *NamespacesApiService) GetSchemaValidtionEnforcedExecute(r ApiGetSchemaV
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetSubscribeRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetSubscribeRateRequest) Execute() (SubscribeRate, *_nethttp.Response, error) {
+	return r.ApiService.GetSubscribeRateExecute(r)
+}
+
+/*
+GetSubscribeRate Get subscribe-rate configured for the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetSubscribeRateRequest
+*/
+func (a *NamespacesApiService) GetSubscribeRate(ctx _context.Context, tenant string, namespace string) ApiGetSubscribeRateRequest {
+	return ApiGetSubscribeRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return SubscribeRate
+func (a *NamespacesApiService) GetSubscribeRateExecute(r ApiGetSubscribeRateRequest) (SubscribeRate, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  SubscribeRate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetSubscribeRate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscribeRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetSubscriptionDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetSubscriptionDispatchRateRequest) Execute() (DispatchRate, *_nethttp.Response, error) {
+	return r.ApiService.GetSubscriptionDispatchRateExecute(r)
+}
+
+/*
+GetSubscriptionDispatchRate Get Subscription dispatch-rate configured for the namespace, -1 represents not configured yet
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetSubscriptionDispatchRateRequest
+*/
+func (a *NamespacesApiService) GetSubscriptionDispatchRate(ctx _context.Context, tenant string, namespace string) ApiGetSubscriptionDispatchRateRequest {
+	return ApiGetSubscriptionDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return DispatchRate
+func (a *NamespacesApiService) GetSubscriptionDispatchRateExecute(r ApiGetSubscriptionDispatchRateRequest) (DispatchRate, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  DispatchRate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetSubscriptionDispatchRate")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetSubscriptionExpirationTimeRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -4405,6 +5619,114 @@ func (a *NamespacesApiService) GetSubscriptionExpirationTimeExecute(r ApiGetSubs
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionExpirationTime"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetSubscriptionTypesEnabledRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiGetSubscriptionTypesEnabledRequest) Execute() ([]string, *_nethttp.Response, error) {
+	return r.ApiService.GetSubscriptionTypesEnabledExecute(r)
+}
+
+/*
+GetSubscriptionTypesEnabled The set of whether allow subscription types
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiGetSubscriptionTypesEnabledRequest
+*/
+func (a *NamespacesApiService) GetSubscriptionTypesEnabled(ctx _context.Context, tenant string, namespace string) ApiGetSubscriptionTypesEnabledRequest {
+	return ApiGetSubscriptionTypesEnabledRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+//  @return []string
+func (a *NamespacesApiService) GetSubscriptionTypesEnabledExecute(r ApiGetSubscriptionTypesEnabledRequest) ([]string, *_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodGet
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+		localVarReturnValue  []string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.GetSubscriptionTypesEnabled")
+	if err != nil {
+		return localVarReturnValue, nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionTypesEnabled"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -5205,6 +6527,305 @@ func (a *NamespacesApiService) RemoveAutoTopicCreationExecute(r ApiRemoveAutoTop
 	return localVarHTTPResponse, nil
 }
 
+type ApiRemoveBacklogQuotaRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	backlogQuotaType *string
+}
+
+func (r ApiRemoveBacklogQuotaRequest) BacklogQuotaType(backlogQuotaType string) ApiRemoveBacklogQuotaRequest {
+	r.backlogQuotaType = &backlogQuotaType
+	return r
+}
+
+func (r ApiRemoveBacklogQuotaRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveBacklogQuotaExecute(r)
+}
+
+/*
+RemoveBacklogQuota Remove a backlog quota policy from a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveBacklogQuotaRequest
+*/
+func (a *NamespacesApiService) RemoveBacklogQuota(ctx _context.Context, tenant string, namespace string) ApiRemoveBacklogQuotaRequest {
+	return ApiRemoveBacklogQuotaRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveBacklogQuotaExecute(r ApiRemoveBacklogQuotaRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveBacklogQuota")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/backlogQuota"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.backlogQuotaType != nil {
+		localVarQueryParams.Add("backlogQuotaType", parameterToString(*r.backlogQuotaType, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveDeduplicationRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveDeduplicationRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveDeduplicationExecute(r)
+}
+
+/*
+RemoveDeduplication Remove broker side deduplication for all topics in a namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveDeduplicationRequest
+*/
+func (a *NamespacesApiService) RemoveDeduplication(ctx _context.Context, tenant string, namespace string) ApiRemoveDeduplicationRequest {
+	return ApiRemoveDeduplicationRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveDeduplicationExecute(r ApiRemoveDeduplicationRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveDeduplication")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/deduplication"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveDelayedDeliveryPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveDelayedDeliveryPoliciesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveDelayedDeliveryPoliciesExecute(r)
+}
+
+/*
+RemoveDelayedDeliveryPolicies Delete delayed delivery messages config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveDelayedDeliveryPoliciesRequest
+*/
+func (a *NamespacesApiService) RemoveDelayedDeliveryPolicies(ctx _context.Context, tenant string, namespace string) ApiRemoveDelayedDeliveryPoliciesRequest {
+	return ApiRemoveDelayedDeliveryPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveDelayedDeliveryPoliciesExecute(r ApiRemoveDelayedDeliveryPoliciesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveDelayedDeliveryPolicies")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/delayedDelivery"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiRemoveInactiveTopicPoliciesRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -5302,33 +6923,28 @@ func (a *NamespacesApiService) RemoveInactiveTopicPoliciesExecute(r ApiRemoveIna
 	return localVarHTTPResponse, nil
 }
 
-type ApiRemoveNameSpaceBacklogQuotaRequest struct {
+type ApiRemoveMaxConsumersPerSubscriptionRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
 	tenant string
 	namespace string
-	backlogQuotaType *string
 }
 
-func (r ApiRemoveNameSpaceBacklogQuotaRequest) BacklogQuotaType(backlogQuotaType string) ApiRemoveNameSpaceBacklogQuotaRequest {
-	r.backlogQuotaType = &backlogQuotaType
-	return r
-}
 
-func (r ApiRemoveNameSpaceBacklogQuotaRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.RemoveNameSpaceBacklogQuotaExecute(r)
+func (r ApiRemoveMaxConsumersPerSubscriptionRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxConsumersPerSubscriptionExecute(r)
 }
 
 /*
-RemoveNameSpaceBacklogQuota Remove a backlog quota policy from a namespace.
+RemoveMaxConsumersPerSubscription  Set maxConsumersPerSubscription configuration on a namespace.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant
  @param namespace
- @return ApiRemoveNameSpaceBacklogQuotaRequest
+ @return ApiRemoveMaxConsumersPerSubscriptionRequest
 */
-func (a *NamespacesApiService) RemoveNameSpaceBacklogQuota(ctx _context.Context, tenant string, namespace string) ApiRemoveNameSpaceBacklogQuotaRequest {
-	return ApiRemoveNameSpaceBacklogQuotaRequest{
+func (a *NamespacesApiService) RemoveMaxConsumersPerSubscription(ctx _context.Context, tenant string, namespace string) ApiRemoveMaxConsumersPerSubscriptionRequest {
+	return ApiRemoveMaxConsumersPerSubscriptionRequest{
 		ApiService: a,
 		ctx: ctx,
 		tenant: tenant,
@@ -5337,7 +6953,7 @@ func (a *NamespacesApiService) RemoveNameSpaceBacklogQuota(ctx _context.Context,
 }
 
 // Execute executes the request
-func (a *NamespacesApiService) RemoveNameSpaceBacklogQuotaExecute(r ApiRemoveNameSpaceBacklogQuotaRequest) (*_nethttp.Response, error) {
+func (a *NamespacesApiService) RemoveMaxConsumersPerSubscriptionExecute(r ApiRemoveMaxConsumersPerSubscriptionRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -5346,12 +6962,12 @@ func (a *NamespacesApiService) RemoveNameSpaceBacklogQuotaExecute(r ApiRemoveNam
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveNameSpaceBacklogQuota")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveMaxConsumersPerSubscription")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/backlogQuota"
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxConsumersPerSubscription"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -5359,9 +6975,6 @@ func (a *NamespacesApiService) RemoveNameSpaceBacklogQuotaExecute(r ApiRemoveNam
 	localVarQueryParams := _neturl.Values{}
 	localVarFormParams := _neturl.Values{}
 
-	if r.backlogQuotaType != nil {
-		localVarQueryParams.Add("backlogQuotaType", parameterToString(*r.backlogQuotaType, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5407,7 +7020,7 @@ func (a *NamespacesApiService) RemoveNameSpaceBacklogQuotaExecute(r ApiRemoveNam
 	return localVarHTTPResponse, nil
 }
 
-type ApiRemoveNameSpaceOffloadPoliciesRequest struct {
+type ApiRemoveMaxConsumersPerTopicRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
 	tenant string
@@ -5415,20 +7028,20 @@ type ApiRemoveNameSpaceOffloadPoliciesRequest struct {
 }
 
 
-func (r ApiRemoveNameSpaceOffloadPoliciesRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.RemoveNameSpaceOffloadPoliciesExecute(r)
+func (r ApiRemoveMaxConsumersPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxConsumersPerTopicExecute(r)
 }
 
 /*
-RemoveNameSpaceOffloadPolicies  Set offload configuration on a namespace.
+RemoveMaxConsumersPerTopic Remove maxConsumersPerTopic configuration on a namespace.
 
  @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tenant
  @param namespace
- @return ApiRemoveNameSpaceOffloadPoliciesRequest
+ @return ApiRemoveMaxConsumersPerTopicRequest
 */
-func (a *NamespacesApiService) RemoveNameSpaceOffloadPolicies(ctx _context.Context, tenant string, namespace string) ApiRemoveNameSpaceOffloadPoliciesRequest {
-	return ApiRemoveNameSpaceOffloadPoliciesRequest{
+func (a *NamespacesApiService) RemoveMaxConsumersPerTopic(ctx _context.Context, tenant string, namespace string) ApiRemoveMaxConsumersPerTopicRequest {
+	return ApiRemoveMaxConsumersPerTopicRequest{
 		ApiService: a,
 		ctx: ctx,
 		tenant: tenant,
@@ -5437,7 +7050,7 @@ func (a *NamespacesApiService) RemoveNameSpaceOffloadPolicies(ctx _context.Conte
 }
 
 // Execute executes the request
-func (a *NamespacesApiService) RemoveNameSpaceOffloadPoliciesExecute(r ApiRemoveNameSpaceOffloadPoliciesRequest) (*_nethttp.Response, error) {
+func (a *NamespacesApiService) RemoveMaxConsumersPerTopicExecute(r ApiRemoveMaxConsumersPerTopicRequest) (*_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodDelete
 		localVarPostBody     interface{}
@@ -5446,12 +7059,400 @@ func (a *NamespacesApiService) RemoveNameSpaceOffloadPoliciesExecute(r ApiRemove
 		localVarFileBytes    []byte
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveNameSpaceOffloadPolicies")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveMaxConsumersPerTopic")
 	if err != nil {
 		return nil, GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/removeOffloadPolicies"
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxConsumersPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveMaxProducersPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveMaxProducersPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxProducersPerTopicExecute(r)
+}
+
+/*
+RemoveMaxProducersPerTopic Remove maxProducersPerTopic configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveMaxProducersPerTopicRequest
+*/
+func (a *NamespacesApiService) RemoveMaxProducersPerTopic(ctx _context.Context, tenant string, namespace string) ApiRemoveMaxProducersPerTopicRequest {
+	return ApiRemoveMaxProducersPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveMaxProducersPerTopicExecute(r ApiRemoveMaxProducersPerTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveMaxProducersPerTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxProducersPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveMaxSubscriptionsPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveMaxSubscriptionsPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxSubscriptionsPerTopicExecute(r)
+}
+
+/*
+RemoveMaxSubscriptionsPerTopic Remove maxSubscriptionsPerTopic configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveMaxSubscriptionsPerTopicRequest
+*/
+func (a *NamespacesApiService) RemoveMaxSubscriptionsPerTopic(ctx _context.Context, tenant string, namespace string) ApiRemoveMaxSubscriptionsPerTopicRequest {
+	return ApiRemoveMaxSubscriptionsPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveMaxSubscriptionsPerTopicExecute(r ApiRemoveMaxSubscriptionsPerTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveMaxSubscriptionsPerTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveMaxUnackedmessagesPerConsumerRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveMaxUnackedmessagesPerConsumerRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxUnackedmessagesPerConsumerExecute(r)
+}
+
+/*
+RemoveMaxUnackedmessagesPerConsumer Remove maxUnackedMessagesPerConsumer config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveMaxUnackedmessagesPerConsumerRequest
+*/
+func (a *NamespacesApiService) RemoveMaxUnackedmessagesPerConsumer(ctx _context.Context, tenant string, namespace string) ApiRemoveMaxUnackedmessagesPerConsumerRequest {
+	return ApiRemoveMaxUnackedmessagesPerConsumerRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveMaxUnackedmessagesPerConsumerExecute(r ApiRemoveMaxUnackedmessagesPerConsumerRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveMaxUnackedmessagesPerConsumer")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxUnackedMessagesPerConsumer"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveMaxUnackedmessagesPerSubscriptionRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveMaxUnackedmessagesPerSubscriptionRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveMaxUnackedmessagesPerSubscriptionExecute(r)
+}
+
+/*
+RemoveMaxUnackedmessagesPerSubscription Remove maxUnackedMessagesPerSubscription config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveMaxUnackedmessagesPerSubscriptionRequest
+*/
+func (a *NamespacesApiService) RemoveMaxUnackedmessagesPerSubscription(ctx _context.Context, tenant string, namespace string) ApiRemoveMaxUnackedmessagesPerSubscriptionRequest {
+	return ApiRemoveMaxUnackedmessagesPerSubscriptionRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveMaxUnackedmessagesPerSubscriptionExecute(r ApiRemoveMaxUnackedmessagesPerSubscriptionRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveMaxUnackedmessagesPerSubscription")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxUnackedMessagesPerSubscription"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -5646,6 +7647,600 @@ func (a *NamespacesApiService) RemoveNamespaceMessageTTLExecute(r ApiRemoveNames
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/messageTTL"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveNamespaceResourceGroupRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveNamespaceResourceGroupRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveNamespaceResourceGroupExecute(r)
+}
+
+/*
+RemoveNamespaceResourceGroup Delete resourcegroup for a namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveNamespaceResourceGroupRequest
+*/
+func (a *NamespacesApiService) RemoveNamespaceResourceGroup(ctx _context.Context, tenant string, namespace string) ApiRemoveNamespaceResourceGroupRequest {
+	return ApiRemoveNamespaceResourceGroupRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveNamespaceResourceGroupExecute(r ApiRemoveNamespaceResourceGroupRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveNamespaceResourceGroup")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/resourcegroup"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveOffloadPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveOffloadPoliciesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveOffloadPoliciesExecute(r)
+}
+
+/*
+RemoveOffloadPolicies  Set offload configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveOffloadPoliciesRequest
+*/
+func (a *NamespacesApiService) RemoveOffloadPolicies(ctx _context.Context, tenant string, namespace string) ApiRemoveOffloadPoliciesRequest {
+	return ApiRemoveOffloadPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveOffloadPoliciesExecute(r ApiRemoveOffloadPoliciesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveOffloadPolicies")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/removeOffloadPolicies"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemovePropertyRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	key string
+}
+
+
+func (r ApiRemovePropertyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemovePropertyExecute(r)
+}
+
+/*
+RemoveProperty Get property value for a given key on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param key
+ @return ApiRemovePropertyRequest
+*/
+func (a *NamespacesApiService) RemoveProperty(ctx _context.Context, tenant string, namespace string, key string) ApiRemovePropertyRequest {
+	return ApiRemovePropertyRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		key: key,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemovePropertyExecute(r ApiRemovePropertyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveProperty")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/property/{key}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", _neturl.PathEscape(parameterToString(r.key, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveReplicatorDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveReplicatorDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveReplicatorDispatchRateExecute(r)
+}
+
+/*
+RemoveReplicatorDispatchRate Remove replicator dispatch-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveReplicatorDispatchRateRequest
+*/
+func (a *NamespacesApiService) RemoveReplicatorDispatchRate(ctx _context.Context, tenant string, namespace string) ApiRemoveReplicatorDispatchRateRequest {
+	return ApiRemoveReplicatorDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveReplicatorDispatchRateExecute(r ApiRemoveReplicatorDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveReplicatorDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/replicatorDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveRetentionRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *RetentionPolicies
+}
+
+// Retention policies for the specified namespace
+func (r ApiRemoveRetentionRequest) Body(body RetentionPolicies) ApiRemoveRetentionRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiRemoveRetentionRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveRetentionExecute(r)
+}
+
+/*
+RemoveRetention  Remove retention configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveRetentionRequest
+*/
+func (a *NamespacesApiService) RemoveRetention(ctx _context.Context, tenant string, namespace string) ApiRemoveRetentionRequest {
+	return ApiRemoveRetentionRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveRetentionExecute(r ApiRemoveRetentionRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveRetention")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/retention"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiRemoveSubscriptionExpirationTimeRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiRemoveSubscriptionExpirationTimeRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.RemoveSubscriptionExpirationTimeExecute(r)
+}
+
+/*
+RemoveSubscriptionExpirationTime Remove subscription expiration time for namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiRemoveSubscriptionExpirationTimeRequest
+*/
+func (a *NamespacesApiService) RemoveSubscriptionExpirationTime(ctx _context.Context, tenant string, namespace string) ApiRemoveSubscriptionExpirationTimeRequest {
+	return ApiRemoveSubscriptionExpirationTimeRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) RemoveSubscriptionExpirationTimeExecute(r ApiRemoveSubscriptionExpirationTimeRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.RemoveSubscriptionExpirationTime")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionExpirationTime"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -6012,6 +8607,119 @@ func (a *NamespacesApiService) SetAutoTopicCreationExecute(r ApiSetAutoTopicCrea
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetBacklogQuotaRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	backlogQuotaType *string
+	body *BacklogQuota
+}
+
+func (r ApiSetBacklogQuotaRequest) BacklogQuotaType(backlogQuotaType string) ApiSetBacklogQuotaRequest {
+	r.backlogQuotaType = &backlogQuotaType
+	return r
+}
+// Backlog quota for all topics of the specified namespace
+func (r ApiSetBacklogQuotaRequest) Body(body BacklogQuota) ApiSetBacklogQuotaRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetBacklogQuotaRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetBacklogQuotaExecute(r)
+}
+
+/*
+SetBacklogQuota  Set a backlog quota for all the topics on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetBacklogQuotaRequest
+*/
+func (a *NamespacesApiService) SetBacklogQuota(ctx _context.Context, tenant string, namespace string) ApiSetBacklogQuotaRequest {
+	return ApiSetBacklogQuotaRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetBacklogQuotaExecute(r ApiSetBacklogQuotaRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetBacklogQuota")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/backlogQuota"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	if r.backlogQuotaType != nil {
+		localVarQueryParams.Add("backlogQuotaType", parameterToString(*r.backlogQuotaType, ""))
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetBookieAffinityGroupRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -6117,6 +8825,744 @@ func (a *NamespacesApiService) SetBookieAffinityGroupExecute(r ApiSetBookieAffin
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetCompactionThresholdRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *int64
+}
+
+// Maximum number of uncompacted bytes in a topic of the specified namespace
+func (r ApiSetCompactionThresholdRequest) Body(body int64) ApiSetCompactionThresholdRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetCompactionThresholdRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetCompactionThresholdExecute(r)
+}
+
+/*
+SetCompactionThreshold Set maximum number of uncompacted bytes in a topic before compaction is triggered.
+
+The backlog size is compared to the threshold periodically. A threshold of 0 disabled automatic compaction
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetCompactionThresholdRequest
+*/
+func (a *NamespacesApiService) SetCompactionThreshold(ctx _context.Context, tenant string, namespace string) ApiSetCompactionThresholdRequest {
+	return ApiSetCompactionThresholdRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetCompactionThresholdExecute(r ApiSetCompactionThresholdRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetCompactionThreshold")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/compactionThreshold"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetDeduplicationSnapshotIntervalRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *int32
+}
+
+// Interval to take deduplication snapshot per topic
+func (r ApiSetDeduplicationSnapshotIntervalRequest) Body(body int32) ApiSetDeduplicationSnapshotIntervalRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetDeduplicationSnapshotIntervalRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetDeduplicationSnapshotIntervalExecute(r)
+}
+
+/*
+SetDeduplicationSnapshotInterval Set deduplicationSnapshotInterval config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetDeduplicationSnapshotIntervalRequest
+*/
+func (a *NamespacesApiService) SetDeduplicationSnapshotInterval(ctx _context.Context, tenant string, namespace string) ApiSetDeduplicationSnapshotIntervalRequest {
+	return ApiSetDeduplicationSnapshotIntervalRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetDeduplicationSnapshotIntervalExecute(r ApiSetDeduplicationSnapshotIntervalRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetDeduplicationSnapshotInterval")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetDelayedDeliveryPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *DelayedDeliveryPolicies
+}
+
+// Delayed delivery policies for the specified namespace
+func (r ApiSetDelayedDeliveryPoliciesRequest) Body(body DelayedDeliveryPolicies) ApiSetDelayedDeliveryPoliciesRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetDelayedDeliveryPoliciesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetDelayedDeliveryPoliciesExecute(r)
+}
+
+/*
+SetDelayedDeliveryPolicies Set delayed delivery messages config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetDelayedDeliveryPoliciesRequest
+*/
+func (a *NamespacesApiService) SetDelayedDeliveryPolicies(ctx _context.Context, tenant string, namespace string) ApiSetDelayedDeliveryPoliciesRequest {
+	return ApiSetDelayedDeliveryPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetDelayedDeliveryPoliciesExecute(r ApiSetDelayedDeliveryPoliciesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetDelayedDeliveryPolicies")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/delayedDelivery"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *DispatchRateImpl
+}
+
+// Dispatch rate for all topics of the specified namespace
+func (r ApiSetDispatchRateRequest) Body(body DispatchRateImpl) ApiSetDispatchRateRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetDispatchRateExecute(r)
+}
+
+/*
+SetDispatchRate Set dispatch-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetDispatchRateRequest
+*/
+func (a *NamespacesApiService) SetDispatchRate(ctx _context.Context, tenant string, namespace string) ApiSetDispatchRateRequest {
+	return ApiSetDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetDispatchRateExecute(r ApiSetDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/dispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetInactiveTopicPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *InactiveTopicPolicies
+}
+
+// Inactive topic policies for the specified namespace
+func (r ApiSetInactiveTopicPoliciesRequest) Body(body InactiveTopicPolicies) ApiSetInactiveTopicPoliciesRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetInactiveTopicPoliciesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetInactiveTopicPoliciesExecute(r)
+}
+
+/*
+SetInactiveTopicPolicies Set inactive topic policies config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetInactiveTopicPoliciesRequest
+*/
+func (a *NamespacesApiService) SetInactiveTopicPolicies(ctx _context.Context, tenant string, namespace string) ApiSetInactiveTopicPoliciesRequest {
+	return ApiSetInactiveTopicPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetInactiveTopicPoliciesExecute(r ApiSetInactiveTopicPoliciesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetInactiveTopicPolicies")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/inactiveTopicPolicies"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetInactiveTopicPolicies_0Request struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *int32
+}
+
+// Number of maximum topics for specific namespace
+func (r ApiSetInactiveTopicPolicies_0Request) Body(body int32) ApiSetInactiveTopicPolicies_0Request {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetInactiveTopicPolicies_0Request) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetInactiveTopicPolicies_1Execute(r)
+}
+
+/*
+SetInactiveTopicPolicies_0 Set maxTopicsPerNamespace config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetInactiveTopicPolicies_0Request
+*/
+func (a *NamespacesApiService) SetInactiveTopicPolicies_1(ctx _context.Context, tenant string, namespace string) ApiSetInactiveTopicPolicies_0Request {
+	return ApiSetInactiveTopicPolicies_0Request{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetInactiveTopicPolicies_1Execute(r ApiSetInactiveTopicPolicies_0Request) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetInactiveTopicPolicies_1")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxTopicsPerNamespace"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetInactiveTopicPolicies_1Request struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+}
+
+
+func (r ApiSetInactiveTopicPolicies_1Request) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetInactiveTopicPolicies_2Execute(r)
+}
+
+/*
+SetInactiveTopicPolicies_1 Set maxTopicsPerNamespace config on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetInactiveTopicPolicies_1Request
+*/
+func (a *NamespacesApiService) SetInactiveTopicPolicies_2(ctx _context.Context, tenant string, namespace string) ApiSetInactiveTopicPolicies_1Request {
+	return ApiSetInactiveTopicPolicies_1Request{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetInactiveTopicPolicies_2Execute(r ApiSetInactiveTopicPolicies_1Request) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodDelete
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetInactiveTopicPolicies_2")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxTopicsPerNamespace"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetIsAllowAutoUpdateSchemaRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -6168,6 +9614,114 @@ func (a *NamespacesApiService) SetIsAllowAutoUpdateSchemaExecute(r ApiSetIsAllow
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/isAllowAutoUpdateSchema"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetMaxConsumersPerSubscriptionRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *int32
+}
+
+// Number of maximum consumers per subscription
+func (r ApiSetMaxConsumersPerSubscriptionRequest) Body(body int32) ApiSetMaxConsumersPerSubscriptionRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetMaxConsumersPerSubscriptionRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetMaxConsumersPerSubscriptionExecute(r)
+}
+
+/*
+SetMaxConsumersPerSubscription  Set maxConsumersPerSubscription configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetMaxConsumersPerSubscriptionRequest
+*/
+func (a *NamespacesApiService) SetMaxConsumersPerSubscription(ctx _context.Context, tenant string, namespace string) ApiSetMaxConsumersPerSubscriptionRequest {
+	return ApiSetMaxConsumersPerSubscriptionRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetMaxConsumersPerSubscriptionExecute(r ApiSetMaxConsumersPerSubscriptionRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetMaxConsumersPerSubscription")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxConsumersPerSubscription"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -6441,6 +9995,114 @@ func (a *NamespacesApiService) SetMaxProducersPerTopicExecute(r ApiSetMaxProduce
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetMaxSubscriptionsPerTopicRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *int32
+}
+
+// Number of maximum subscriptions per topic
+func (r ApiSetMaxSubscriptionsPerTopicRequest) Body(body int32) ApiSetMaxSubscriptionsPerTopicRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetMaxSubscriptionsPerTopicRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetMaxSubscriptionsPerTopicExecute(r)
+}
+
+/*
+SetMaxSubscriptionsPerTopic  Set maxSubscriptionsPerTopic configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetMaxSubscriptionsPerTopicRequest
+*/
+func (a *NamespacesApiService) SetMaxSubscriptionsPerTopic(ctx _context.Context, tenant string, namespace string) ApiSetMaxSubscriptionsPerTopicRequest {
+	return ApiSetMaxSubscriptionsPerTopicRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetMaxSubscriptionsPerTopicExecute(r ApiSetMaxSubscriptionsPerTopicRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetMaxSubscriptionsPerTopic")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxSubscriptionsPerTopic"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetMaxUnackedMessagesPerConsumerRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -6609,1291 +10271,6 @@ func (a *NamespacesApiService) SetMaxUnackedMessagesPerSubscriptionExecute(r Api
 	if r.body == nil {
 		return nil, reportError("body is required and must be specified")
 	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceBacklogQuotaRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	backlogQuotaType *string
-	body *BacklogQuota
-}
-
-func (r ApiSetNameSpaceBacklogQuotaRequest) BacklogQuotaType(backlogQuotaType string) ApiSetNameSpaceBacklogQuotaRequest {
-	r.backlogQuotaType = &backlogQuotaType
-	return r
-}
-// Backlog quota for all topics of the specified namespace
-func (r ApiSetNameSpaceBacklogQuotaRequest) Body(body BacklogQuota) ApiSetNameSpaceBacklogQuotaRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceBacklogQuotaRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceBacklogQuotaExecute(r)
-}
-
-/*
-SetNameSpaceBacklogQuota  Set a backlog quota for all the topics on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceBacklogQuotaRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceBacklogQuota(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceBacklogQuotaRequest {
-	return ApiSetNameSpaceBacklogQuotaRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceBacklogQuotaExecute(r ApiSetNameSpaceBacklogQuotaRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceBacklogQuota")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/backlogQuota"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	if r.backlogQuotaType != nil {
-		localVarQueryParams.Add("backlogQuotaType", parameterToString(*r.backlogQuotaType, ""))
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceCompactionThresholdRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *int64
-}
-
-// Maximum number of uncompacted bytes in a topic of the specified namespace
-func (r ApiSetNameSpaceCompactionThresholdRequest) Body(body int64) ApiSetNameSpaceCompactionThresholdRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceCompactionThresholdRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceCompactionThresholdExecute(r)
-}
-
-/*
-SetNameSpaceCompactionThreshold Set maximum number of uncompacted bytes in a topic before compaction is triggered.
-
-The backlog size is compared to the threshold periodically. A threshold of 0 disabled automatic compaction
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceCompactionThresholdRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceCompactionThreshold(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceCompactionThresholdRequest {
-	return ApiSetNameSpaceCompactionThresholdRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceCompactionThresholdExecute(r ApiSetNameSpaceCompactionThresholdRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPut
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceCompactionThreshold")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/compactionThreshold"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceDeduplicationSnapshotIntervalRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *int32
-}
-
-// Interval to take deduplication snapshot per topic
-func (r ApiSetNameSpaceDeduplicationSnapshotIntervalRequest) Body(body int32) ApiSetNameSpaceDeduplicationSnapshotIntervalRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceDeduplicationSnapshotIntervalRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceDeduplicationSnapshotIntervalExecute(r)
-}
-
-/*
-SetNameSpaceDeduplicationSnapshotInterval Set deduplicationSnapshotInterval config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceDeduplicationSnapshotIntervalRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceDeduplicationSnapshotInterval(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceDeduplicationSnapshotIntervalRequest {
-	return ApiSetNameSpaceDeduplicationSnapshotIntervalRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceDeduplicationSnapshotIntervalExecute(r ApiSetNameSpaceDeduplicationSnapshotIntervalRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceDeduplicationSnapshotInterval")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/deduplicationSnapshotInterval"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceDelayedDeliveryPoliciesRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *DelayedDeliveryPolicies
-}
-
-// Delayed delivery policies for the specified namespace
-func (r ApiSetNameSpaceDelayedDeliveryPoliciesRequest) Body(body DelayedDeliveryPolicies) ApiSetNameSpaceDelayedDeliveryPoliciesRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceDelayedDeliveryPoliciesRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceDelayedDeliveryPoliciesExecute(r)
-}
-
-/*
-SetNameSpaceDelayedDeliveryPolicies Set delayed delivery messages config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceDelayedDeliveryPoliciesRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceDelayedDeliveryPolicies(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceDelayedDeliveryPoliciesRequest {
-	return ApiSetNameSpaceDelayedDeliveryPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceDelayedDeliveryPoliciesExecute(r ApiSetNameSpaceDelayedDeliveryPoliciesRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceDelayedDeliveryPolicies")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/delayedDelivery"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceDispatchRateRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *DispatchRate
-}
-
-// Dispatch rate for all topics of the specified namespace
-func (r ApiSetNameSpaceDispatchRateRequest) Body(body DispatchRate) ApiSetNameSpaceDispatchRateRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceDispatchRateRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceDispatchRateExecute(r)
-}
-
-/*
-SetNameSpaceDispatchRate Set dispatch-rate throttling for all topics of the namespace
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceDispatchRateRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceDispatchRate(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceDispatchRateRequest {
-	return ApiSetNameSpaceDispatchRateRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceDispatchRateExecute(r ApiSetNameSpaceDispatchRateRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceDispatchRate")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/dispatchRate"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceInactiveTopicPoliciesRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *InactiveTopicPolicies
-}
-
-// Inactive topic policies for the specified namespace
-func (r ApiSetNameSpaceInactiveTopicPoliciesRequest) Body(body InactiveTopicPolicies) ApiSetNameSpaceInactiveTopicPoliciesRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceInactiveTopicPoliciesRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceInactiveTopicPoliciesExecute(r)
-}
-
-/*
-SetNameSpaceInactiveTopicPolicies Set inactive topic policies config on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceInactiveTopicPoliciesRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceInactiveTopicPolicies(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceInactiveTopicPoliciesRequest {
-	return ApiSetNameSpaceInactiveTopicPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceInactiveTopicPoliciesExecute(r ApiSetNameSpaceInactiveTopicPoliciesRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceInactiveTopicPolicies")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/inactiveTopicPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceMaxConsumersPerSubscriptionRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *int32
-}
-
-// Number of maximum consumers per subscription
-func (r ApiSetNameSpaceMaxConsumersPerSubscriptionRequest) Body(body int32) ApiSetNameSpaceMaxConsumersPerSubscriptionRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceMaxConsumersPerSubscriptionRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceMaxConsumersPerSubscriptionExecute(r)
-}
-
-/*
-SetNameSpaceMaxConsumersPerSubscription  Set maxConsumersPerSubscription configuration on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceMaxConsumersPerSubscriptionRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceMaxConsumersPerSubscription(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceMaxConsumersPerSubscriptionRequest {
-	return ApiSetNameSpaceMaxConsumersPerSubscriptionRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceMaxConsumersPerSubscriptionExecute(r ApiSetNameSpaceMaxConsumersPerSubscriptionRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceMaxConsumersPerSubscription")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/maxConsumersPerSubscription"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceOffloadPoliciesRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *OffloadPolicies
-}
-
-// Offload policies for the specified namespace
-func (r ApiSetNameSpaceOffloadPoliciesRequest) Body(body OffloadPolicies) ApiSetNameSpaceOffloadPoliciesRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceOffloadPoliciesRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceOffloadPoliciesExecute(r)
-}
-
-/*
-SetNameSpaceOffloadPolicies  Set offload configuration on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceOffloadPoliciesRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceOffloadPolicies(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceOffloadPoliciesRequest {
-	return ApiSetNameSpaceOffloadPoliciesRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceOffloadPoliciesExecute(r ApiSetNameSpaceOffloadPoliciesRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceOffloadPolicies")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/offloadPolicies"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpacePersistenceRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *PersistencePolicies
-}
-
-// Persistence policies for the specified namespace
-func (r ApiSetNameSpacePersistenceRequest) Body(body PersistencePolicies) ApiSetNameSpacePersistenceRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpacePersistenceRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpacePersistenceExecute(r)
-}
-
-/*
-SetNameSpacePersistence Set the persistence configuration for all the topics on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpacePersistenceRequest
-*/
-func (a *NamespacesApiService) SetNameSpacePersistence(ctx _context.Context, tenant string, namespace string) ApiSetNameSpacePersistenceRequest {
-	return ApiSetNameSpacePersistenceRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpacePersistenceExecute(r ApiSetNameSpacePersistenceRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpacePersistence")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/persistence"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceRetentionRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *RetentionPolicies
-}
-
-// Retention policies for the specified namespace
-func (r ApiSetNameSpaceRetentionRequest) Body(body RetentionPolicies) ApiSetNameSpaceRetentionRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceRetentionRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceRetentionExecute(r)
-}
-
-/*
-SetNameSpaceRetention  Set retention configuration on a namespace.
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceRetentionRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceRetention(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceRetentionRequest {
-	return ApiSetNameSpaceRetentionRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceRetentionExecute(r ApiSetNameSpaceRetentionRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceRetention")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/retention"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceSubscribeRateRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *SubscribeRate
-}
-
-// Subscribe rate for all topics of the specified namespace
-func (r ApiSetNameSpaceSubscribeRateRequest) Body(body SubscribeRate) ApiSetNameSpaceSubscribeRateRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceSubscribeRateRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceSubscribeRateExecute(r)
-}
-
-/*
-SetNameSpaceSubscribeRate Set subscribe-rate throttling for all topics of the namespace
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceSubscribeRateRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceSubscribeRate(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceSubscribeRateRequest {
-	return ApiSetNameSpaceSubscribeRateRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceSubscribeRateExecute(r ApiSetNameSpaceSubscribeRateRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceSubscribeRate")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscribeRate"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiSetNameSpaceSubscriptionDispatchRateRequest struct {
-	ctx _context.Context
-	ApiService *NamespacesApiService
-	tenant string
-	namespace string
-	body *DispatchRate
-}
-
-// Subscription dispatch rate for all topics of the specified namespace
-func (r ApiSetNameSpaceSubscriptionDispatchRateRequest) Body(body DispatchRate) ApiSetNameSpaceSubscriptionDispatchRateRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiSetNameSpaceSubscriptionDispatchRateRequest) Execute() (*_nethttp.Response, error) {
-	return r.ApiService.SetNameSpaceSubscriptionDispatchRateExecute(r)
-}
-
-/*
-SetNameSpaceSubscriptionDispatchRate Set Subscription dispatch-rate throttling for all topics of the namespace
-
- @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param tenant
- @param namespace
- @return ApiSetNameSpaceSubscriptionDispatchRateRequest
-*/
-func (a *NamespacesApiService) SetNameSpaceSubscriptionDispatchRate(ctx _context.Context, tenant string, namespace string) ApiSetNameSpaceSubscriptionDispatchRateRequest {
-	return ApiSetNameSpaceSubscriptionDispatchRateRequest{
-		ApiService: a,
-		ctx: ctx,
-		tenant: tenant,
-		namespace: namespace,
-	}
-}
-
-// Execute executes the request
-func (a *NamespacesApiService) SetNameSpaceSubscriptionDispatchRateExecute(r ApiSetNameSpaceSubscriptionDispatchRateRequest) (*_nethttp.Response, error) {
-	var (
-		localVarHTTPMethod   = _nethttp.MethodPost
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNameSpaceSubscriptionDispatchRate")
-	if err != nil {
-		return nil, GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionDispatchRate"
-	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := _neturl.Values{}
-	localVarFormParams := _neturl.Values{}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -8266,6 +10643,114 @@ func (a *NamespacesApiService) SetNamespaceReplicationClustersExecute(r ApiSetNa
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetNamespaceResourceGroupRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *string
+}
+
+// Name of resourcegroup
+func (r ApiSetNamespaceResourceGroupRequest) Body(body string) ApiSetNamespaceResourceGroupRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetNamespaceResourceGroupRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetNamespaceResourceGroupExecute(r)
+}
+
+/*
+SetNamespaceResourceGroup Set resourcegroup for a namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetNamespaceResourceGroupRequest
+*/
+func (a *NamespacesApiService) SetNamespaceResourceGroup(ctx _context.Context, tenant string, namespace string) ApiSetNamespaceResourceGroupRequest {
+	return ApiSetNamespaceResourceGroupRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetNamespaceResourceGroupExecute(r ApiSetNamespaceResourceGroupRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetNamespaceResourceGroup")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/resourcegroup"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetOffloadDeletionLagRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -8319,6 +10804,114 @@ func (a *NamespacesApiService) SetOffloadDeletionLagExecute(r ApiSetOffloadDelet
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/offloadDeletionLagMs"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetOffloadPoliciesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *OffloadPoliciesImpl
+}
+
+// Offload policies for the specified namespace
+func (r ApiSetOffloadPoliciesRequest) Body(body OffloadPoliciesImpl) ApiSetOffloadPoliciesRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetOffloadPoliciesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetOffloadPoliciesExecute(r)
+}
+
+/*
+SetOffloadPolicies  Set offload configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetOffloadPoliciesRequest
+*/
+func (a *NamespacesApiService) SetOffloadPolicies(ctx _context.Context, tenant string, namespace string) ApiSetOffloadPoliciesRequest {
+	return ApiSetOffloadPoliciesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetOffloadPoliciesExecute(r ApiSetOffloadPoliciesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetOffloadPolicies")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/offloadPolicies"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -8486,16 +11079,337 @@ func (a *NamespacesApiService) SetOffloadThresholdExecute(r ApiSetOffloadThresho
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetPersistenceRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *PersistencePolicies
+}
+
+// Persistence policies for the specified namespace
+func (r ApiSetPersistenceRequest) Body(body PersistencePolicies) ApiSetPersistenceRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetPersistenceRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetPersistenceExecute(r)
+}
+
+/*
+SetPersistence Set the persistence configuration for all the topics on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetPersistenceRequest
+*/
+func (a *NamespacesApiService) SetPersistence(ctx _context.Context, tenant string, namespace string) ApiSetPersistenceRequest {
+	return ApiSetPersistenceRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetPersistenceExecute(r ApiSetPersistenceRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetPersistence")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/persistence"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetPropertiesRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *map[string]string
+}
+
+// Key value pair properties for the namespace
+func (r ApiSetPropertiesRequest) Body(body map[string]string) ApiSetPropertiesRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetPropertiesRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetPropertiesExecute(r)
+}
+
+/*
+SetProperties Put key value pairs property on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetPropertiesRequest
+*/
+func (a *NamespacesApiService) SetProperties(ctx _context.Context, tenant string, namespace string) ApiSetPropertiesRequest {
+	return ApiSetPropertiesRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetPropertiesExecute(r ApiSetPropertiesRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetProperties")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/properties"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetPropertyRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	key string
+	value string
+}
+
+
+func (r ApiSetPropertyRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetPropertyExecute(r)
+}
+
+/*
+SetProperty Put a key value pair property on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @param key
+ @param value
+ @return ApiSetPropertyRequest
+*/
+func (a *NamespacesApiService) SetProperty(ctx _context.Context, tenant string, namespace string, key string, value string) ApiSetPropertyRequest {
+	return ApiSetPropertyRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+		key: key,
+		value: value,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetPropertyExecute(r ApiSetPropertyRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPut
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetProperty")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/property/{key}/{value}"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"key"+"}", _neturl.PathEscape(parameterToString(r.key, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"value"+"}", _neturl.PathEscape(parameterToString(r.value, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetReplicatorDispatchRateRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
 	tenant string
 	namespace string
-	body *DispatchRate
+	body *DispatchRateImpl
 }
 
 // Replicator dispatch rate for all topics of the specified namespace
-func (r ApiSetReplicatorDispatchRateRequest) Body(body DispatchRate) ApiSetReplicatorDispatchRateRequest {
+func (r ApiSetReplicatorDispatchRateRequest) Body(body DispatchRateImpl) ApiSetReplicatorDispatchRateRequest {
 	r.body = &body
 	return r
 }
@@ -8537,6 +11451,111 @@ func (a *NamespacesApiService) SetReplicatorDispatchRateExecute(r ApiSetReplicat
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/replicatorDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetRetentionRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *RetentionPolicies
+}
+
+// Retention policies for the specified namespace
+func (r ApiSetRetentionRequest) Body(body RetentionPolicies) ApiSetRetentionRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetRetentionRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetRetentionExecute(r)
+}
+
+/*
+SetRetention  Set retention configuration on a namespace.
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetRetentionRequest
+*/
+func (a *NamespacesApiService) SetRetention(ctx _context.Context, tenant string, namespace string) ApiSetRetentionRequest {
+	return ApiSetRetentionRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetRetentionExecute(r ApiSetRetentionRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetRetention")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/retention"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 
@@ -8913,6 +11932,111 @@ func (a *NamespacesApiService) SetSchemaValidtionEnforcedExecute(r ApiSetSchemaV
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetSubscribeRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *SubscribeRate
+}
+
+// Subscribe rate for all topics of the specified namespace
+func (r ApiSetSubscribeRateRequest) Body(body SubscribeRate) ApiSetSubscribeRateRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetSubscribeRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetSubscribeRateExecute(r)
+}
+
+/*
+SetSubscribeRate Set subscribe-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetSubscribeRateRequest
+*/
+func (a *NamespacesApiService) SetSubscribeRate(ctx _context.Context, tenant string, namespace string) ApiSetSubscribeRateRequest {
+	return ApiSetSubscribeRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetSubscribeRateExecute(r ApiSetSubscribeRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetSubscribeRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscribeRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetSubscriptionAuthModeRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -9018,6 +12142,111 @@ func (a *NamespacesApiService) SetSubscriptionAuthModeExecute(r ApiSetSubscripti
 	return localVarHTTPResponse, nil
 }
 
+type ApiSetSubscriptionDispatchRateRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *DispatchRateImpl
+}
+
+// Subscription dispatch rate for all topics of the specified namespace
+func (r ApiSetSubscriptionDispatchRateRequest) Body(body DispatchRateImpl) ApiSetSubscriptionDispatchRateRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetSubscriptionDispatchRateRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetSubscriptionDispatchRateExecute(r)
+}
+
+/*
+SetSubscriptionDispatchRate Set Subscription dispatch-rate throttling for all topics of the namespace
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetSubscriptionDispatchRateRequest
+*/
+func (a *NamespacesApiService) SetSubscriptionDispatchRate(ctx _context.Context, tenant string, namespace string) ApiSetSubscriptionDispatchRateRequest {
+	return ApiSetSubscriptionDispatchRateRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetSubscriptionDispatchRateExecute(r ApiSetSubscriptionDispatchRateRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetSubscriptionDispatchRate")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionDispatchRate"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiSetSubscriptionExpirationTimeRequest struct {
 	ctx _context.Context
 	ApiService *NamespacesApiService
@@ -9069,6 +12298,114 @@ func (a *NamespacesApiService) SetSubscriptionExpirationTimeExecute(r ApiSetSubs
 	}
 
 	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionExpirationTime"
+	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := _neturl.Values{}
+	localVarFormParams := _neturl.Values{}
+	if r.body == nil {
+		return nil, reportError("body is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.body
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := _ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = _ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiSetSubscriptionTypesEnabledRequest struct {
+	ctx _context.Context
+	ApiService *NamespacesApiService
+	tenant string
+	namespace string
+	body *[]string
+}
+
+// Set of whether allow subscription types
+func (r ApiSetSubscriptionTypesEnabledRequest) Body(body []string) ApiSetSubscriptionTypesEnabledRequest {
+	r.body = &body
+	return r
+}
+
+func (r ApiSetSubscriptionTypesEnabledRequest) Execute() (*_nethttp.Response, error) {
+	return r.ApiService.SetSubscriptionTypesEnabledExecute(r)
+}
+
+/*
+SetSubscriptionTypesEnabled Update set of whether allow share sub type
+
+ @param ctx _context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param tenant
+ @param namespace
+ @return ApiSetSubscriptionTypesEnabledRequest
+*/
+func (a *NamespacesApiService) SetSubscriptionTypesEnabled(ctx _context.Context, tenant string, namespace string) ApiSetSubscriptionTypesEnabledRequest {
+	return ApiSetSubscriptionTypesEnabledRequest{
+		ApiService: a,
+		ctx: ctx,
+		tenant: tenant,
+		namespace: namespace,
+	}
+}
+
+// Execute executes the request
+func (a *NamespacesApiService) SetSubscriptionTypesEnabledExecute(r ApiSetSubscriptionTypesEnabledRequest) (*_nethttp.Response, error) {
+	var (
+		localVarHTTPMethod   = _nethttp.MethodPost
+		localVarPostBody     interface{}
+		localVarFormFileName string
+		localVarFileName     string
+		localVarFileBytes    []byte
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NamespacesApiService.SetSubscriptionTypesEnabled")
+	if err != nil {
+		return nil, GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/namespaces/{tenant}/{namespace}/subscriptionTypesEnabled"
 	localVarPath = strings.Replace(localVarPath, "{"+"tenant"+"}", _neturl.PathEscape(parameterToString(r.tenant, "")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"namespace"+"}", _neturl.PathEscape(parameterToString(r.namespace, "")), -1)
 

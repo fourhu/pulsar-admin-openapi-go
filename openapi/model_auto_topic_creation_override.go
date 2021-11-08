@@ -16,9 +16,9 @@ import (
 
 // AutoTopicCreationOverride struct for AutoTopicCreationOverride
 type AutoTopicCreationOverride struct {
-	AllowAutoTopicCreation *bool `json:"allowAutoTopicCreation,omitempty"`
-	DefaultNumPartitions *int32 `json:"defaultNumPartitions,omitempty"`
 	TopicType *string `json:"topicType,omitempty"`
+	DefaultNumPartitions *int32 `json:"defaultNumPartitions,omitempty"`
+	AllowAutoTopicCreation *bool `json:"allowAutoTopicCreation,omitempty"`
 }
 
 // NewAutoTopicCreationOverride instantiates a new AutoTopicCreationOverride object
@@ -36,70 +36,6 @@ func NewAutoTopicCreationOverride() *AutoTopicCreationOverride {
 func NewAutoTopicCreationOverrideWithDefaults() *AutoTopicCreationOverride {
 	this := AutoTopicCreationOverride{}
 	return &this
-}
-
-// GetAllowAutoTopicCreation returns the AllowAutoTopicCreation field value if set, zero value otherwise.
-func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreation() bool {
-	if o == nil || o.AllowAutoTopicCreation == nil {
-		var ret bool
-		return ret
-	}
-	return *o.AllowAutoTopicCreation
-}
-
-// GetAllowAutoTopicCreationOk returns a tuple with the AllowAutoTopicCreation field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreationOk() (*bool, bool) {
-	if o == nil || o.AllowAutoTopicCreation == nil {
-		return nil, false
-	}
-	return o.AllowAutoTopicCreation, true
-}
-
-// HasAllowAutoTopicCreation returns a boolean if a field has been set.
-func (o *AutoTopicCreationOverride) HasAllowAutoTopicCreation() bool {
-	if o != nil && o.AllowAutoTopicCreation != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowAutoTopicCreation gets a reference to the given bool and assigns it to the AllowAutoTopicCreation field.
-func (o *AutoTopicCreationOverride) SetAllowAutoTopicCreation(v bool) {
-	o.AllowAutoTopicCreation = &v
-}
-
-// GetDefaultNumPartitions returns the DefaultNumPartitions field value if set, zero value otherwise.
-func (o *AutoTopicCreationOverride) GetDefaultNumPartitions() int32 {
-	if o == nil || o.DefaultNumPartitions == nil {
-		var ret int32
-		return ret
-	}
-	return *o.DefaultNumPartitions
-}
-
-// GetDefaultNumPartitionsOk returns a tuple with the DefaultNumPartitions field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AutoTopicCreationOverride) GetDefaultNumPartitionsOk() (*int32, bool) {
-	if o == nil || o.DefaultNumPartitions == nil {
-		return nil, false
-	}
-	return o.DefaultNumPartitions, true
-}
-
-// HasDefaultNumPartitions returns a boolean if a field has been set.
-func (o *AutoTopicCreationOverride) HasDefaultNumPartitions() bool {
-	if o != nil && o.DefaultNumPartitions != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultNumPartitions gets a reference to the given int32 and assigns it to the DefaultNumPartitions field.
-func (o *AutoTopicCreationOverride) SetDefaultNumPartitions(v int32) {
-	o.DefaultNumPartitions = &v
 }
 
 // GetTopicType returns the TopicType field value if set, zero value otherwise.
@@ -134,16 +70,80 @@ func (o *AutoTopicCreationOverride) SetTopicType(v string) {
 	o.TopicType = &v
 }
 
+// GetDefaultNumPartitions returns the DefaultNumPartitions field value if set, zero value otherwise.
+func (o *AutoTopicCreationOverride) GetDefaultNumPartitions() int32 {
+	if o == nil || o.DefaultNumPartitions == nil {
+		var ret int32
+		return ret
+	}
+	return *o.DefaultNumPartitions
+}
+
+// GetDefaultNumPartitionsOk returns a tuple with the DefaultNumPartitions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AutoTopicCreationOverride) GetDefaultNumPartitionsOk() (*int32, bool) {
+	if o == nil || o.DefaultNumPartitions == nil {
+		return nil, false
+	}
+	return o.DefaultNumPartitions, true
+}
+
+// HasDefaultNumPartitions returns a boolean if a field has been set.
+func (o *AutoTopicCreationOverride) HasDefaultNumPartitions() bool {
+	if o != nil && o.DefaultNumPartitions != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultNumPartitions gets a reference to the given int32 and assigns it to the DefaultNumPartitions field.
+func (o *AutoTopicCreationOverride) SetDefaultNumPartitions(v int32) {
+	o.DefaultNumPartitions = &v
+}
+
+// GetAllowAutoTopicCreation returns the AllowAutoTopicCreation field value if set, zero value otherwise.
+func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreation() bool {
+	if o == nil || o.AllowAutoTopicCreation == nil {
+		var ret bool
+		return ret
+	}
+	return *o.AllowAutoTopicCreation
+}
+
+// GetAllowAutoTopicCreationOk returns a tuple with the AllowAutoTopicCreation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AutoTopicCreationOverride) GetAllowAutoTopicCreationOk() (*bool, bool) {
+	if o == nil || o.AllowAutoTopicCreation == nil {
+		return nil, false
+	}
+	return o.AllowAutoTopicCreation, true
+}
+
+// HasAllowAutoTopicCreation returns a boolean if a field has been set.
+func (o *AutoTopicCreationOverride) HasAllowAutoTopicCreation() bool {
+	if o != nil && o.AllowAutoTopicCreation != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowAutoTopicCreation gets a reference to the given bool and assigns it to the AllowAutoTopicCreation field.
+func (o *AutoTopicCreationOverride) SetAllowAutoTopicCreation(v bool) {
+	o.AllowAutoTopicCreation = &v
+}
+
 func (o AutoTopicCreationOverride) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AllowAutoTopicCreation != nil {
-		toSerialize["allowAutoTopicCreation"] = o.AllowAutoTopicCreation
+	if o.TopicType != nil {
+		toSerialize["topicType"] = o.TopicType
 	}
 	if o.DefaultNumPartitions != nil {
 		toSerialize["defaultNumPartitions"] = o.DefaultNumPartitions
 	}
-	if o.TopicType != nil {
-		toSerialize["topicType"] = o.TopicType
+	if o.AllowAutoTopicCreation != nil {
+		toSerialize["allowAutoTopicCreation"] = o.AllowAutoTopicCreation
 	}
 	return json.Marshal(toSerialize)
 }

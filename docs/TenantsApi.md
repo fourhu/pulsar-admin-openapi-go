@@ -84,7 +84,7 @@ No authorization required
 
 ## DeleteTenant
 
-> DeleteTenant(ctx, tenant).Execute()
+> DeleteTenant(ctx, tenant).Force(force).Execute()
 
 Delete a tenant and all namespaces and topics under it.
 
@@ -102,10 +102,11 @@ import (
 
 func main() {
     tenant := "tenant_example" // string | The tenant name
+    force := true // bool |  (optional) (default to false)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.TenantsApi.DeleteTenant(context.Background(), tenant).Execute()
+    resp, r, err := api_client.TenantsApi.DeleteTenant(context.Background(), tenant).Force(force).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.DeleteTenant``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -129,6 +130,7 @@ Other parameters are passed through a pointer to a apiDeleteTenantRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **force** | **bool** |  | [default to false]
 
 ### Return type
 
@@ -150,7 +152,7 @@ No authorization required
 
 ## GetTenantAdmin
 
-> TenantInfo GetTenantAdmin(ctx, tenant).Execute()
+> GetTenantAdmin(ctx, tenant).Execute()
 
 Get the admin configuration for a given tenant.
 
@@ -176,8 +178,6 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `TenantsApi.GetTenantAdmin``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetTenantAdmin`: TenantInfo
-    fmt.Fprintf(os.Stdout, "Response from `TenantsApi.GetTenantAdmin`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TenantInfo**](TenantInfo.md)
+ (empty response body)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

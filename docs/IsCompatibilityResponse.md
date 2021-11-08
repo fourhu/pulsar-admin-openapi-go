@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Compatibility** | Pointer to **bool** |  | [optional] 
 **SchemaCompatibilityStrategy** | Pointer to **string** |  | [optional] 
+**Compatibility** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -25,31 +25,6 @@ will change when the set of required properties is changed
 NewIsCompatibilityResponseWithDefaults instantiates a new IsCompatibilityResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetCompatibility
-
-`func (o *IsCompatibilityResponse) GetCompatibility() bool`
-
-GetCompatibility returns the Compatibility field if non-nil, zero value otherwise.
-
-### GetCompatibilityOk
-
-`func (o *IsCompatibilityResponse) GetCompatibilityOk() (*bool, bool)`
-
-GetCompatibilityOk returns a tuple with the Compatibility field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCompatibility
-
-`func (o *IsCompatibilityResponse) SetCompatibility(v bool)`
-
-SetCompatibility sets Compatibility field to given value.
-
-### HasCompatibility
-
-`func (o *IsCompatibilityResponse) HasCompatibility() bool`
-
-HasCompatibility returns a boolean if a field has been set.
 
 ### GetSchemaCompatibilityStrategy
 
@@ -75,6 +50,31 @@ SetSchemaCompatibilityStrategy sets SchemaCompatibilityStrategy field to given v
 `func (o *IsCompatibilityResponse) HasSchemaCompatibilityStrategy() bool`
 
 HasSchemaCompatibilityStrategy returns a boolean if a field has been set.
+
+### GetCompatibility
+
+`func (o *IsCompatibilityResponse) GetCompatibility() bool`
+
+GetCompatibility returns the Compatibility field if non-nil, zero value otherwise.
+
+### GetCompatibilityOk
+
+`func (o *IsCompatibilityResponse) GetCompatibilityOk() (*bool, bool)`
+
+GetCompatibilityOk returns a tuple with the Compatibility field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCompatibility
+
+`func (o *IsCompatibilityResponse) SetCompatibility(v bool)`
+
+SetCompatibility sets Compatibility field to given value.
+
+### HasCompatibility
+
+`func (o *IsCompatibilityResponse) HasCompatibility() bool`
+
+HasCompatibility returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

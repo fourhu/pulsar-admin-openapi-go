@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BrokerName** | Pointer to **string** | The broker name | [optional] 
-**IsPrimary** | Pointer to **bool** | Is Primary broker | [optional] 
-**NamespaceRegex** | Pointer to **[]string** | The namespace-isolation policies attached to this broker | [optional] 
 **PolicyName** | Pointer to **string** | Policy name | [optional] 
+**NamespaceRegex** | Pointer to **[]string** | The namespace-isolation policies attached to this broker | [optional] 
+**Primary** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -53,30 +53,30 @@ SetBrokerName sets BrokerName field to given value.
 
 HasBrokerName returns a boolean if a field has been set.
 
-### GetIsPrimary
+### GetPolicyName
 
-`func (o *BrokerNamespaceIsolationData) GetIsPrimary() bool`
+`func (o *BrokerNamespaceIsolationData) GetPolicyName() string`
 
-GetIsPrimary returns the IsPrimary field if non-nil, zero value otherwise.
+GetPolicyName returns the PolicyName field if non-nil, zero value otherwise.
 
-### GetIsPrimaryOk
+### GetPolicyNameOk
 
-`func (o *BrokerNamespaceIsolationData) GetIsPrimaryOk() (*bool, bool)`
+`func (o *BrokerNamespaceIsolationData) GetPolicyNameOk() (*string, bool)`
 
-GetIsPrimaryOk returns a tuple with the IsPrimary field if it's non-nil, zero value otherwise
+GetPolicyNameOk returns a tuple with the PolicyName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIsPrimary
+### SetPolicyName
 
-`func (o *BrokerNamespaceIsolationData) SetIsPrimary(v bool)`
+`func (o *BrokerNamespaceIsolationData) SetPolicyName(v string)`
 
-SetIsPrimary sets IsPrimary field to given value.
+SetPolicyName sets PolicyName field to given value.
 
-### HasIsPrimary
+### HasPolicyName
 
-`func (o *BrokerNamespaceIsolationData) HasIsPrimary() bool`
+`func (o *BrokerNamespaceIsolationData) HasPolicyName() bool`
 
-HasIsPrimary returns a boolean if a field has been set.
+HasPolicyName returns a boolean if a field has been set.
 
 ### GetNamespaceRegex
 
@@ -103,30 +103,30 @@ SetNamespaceRegex sets NamespaceRegex field to given value.
 
 HasNamespaceRegex returns a boolean if a field has been set.
 
-### GetPolicyName
+### GetPrimary
 
-`func (o *BrokerNamespaceIsolationData) GetPolicyName() string`
+`func (o *BrokerNamespaceIsolationData) GetPrimary() bool`
 
-GetPolicyName returns the PolicyName field if non-nil, zero value otherwise.
+GetPrimary returns the Primary field if non-nil, zero value otherwise.
 
-### GetPolicyNameOk
+### GetPrimaryOk
 
-`func (o *BrokerNamespaceIsolationData) GetPolicyNameOk() (*string, bool)`
+`func (o *BrokerNamespaceIsolationData) GetPrimaryOk() (*bool, bool)`
 
-GetPolicyNameOk returns a tuple with the PolicyName field if it's non-nil, zero value otherwise
+GetPrimaryOk returns a tuple with the Primary field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPolicyName
+### SetPrimary
 
-`func (o *BrokerNamespaceIsolationData) SetPolicyName(v string)`
+`func (o *BrokerNamespaceIsolationData) SetPrimary(v bool)`
 
-SetPolicyName sets PolicyName field to given value.
+SetPrimary sets Primary field to given value.
 
-### HasPolicyName
+### HasPrimary
 
-`func (o *BrokerNamespaceIsolationData) HasPolicyName() bool`
+`func (o *BrokerNamespaceIsolationData) HasPrimary() bool`
 
-HasPolicyName returns a boolean if a field has been set.
+HasPrimary returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
