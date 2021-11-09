@@ -28,10 +28,9 @@ var (
 type BrokersApiService service
 
 type ApiBacklogQuotaCheckRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiBacklogQuotaCheckRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.BacklogQuotaCheckExecute(r)
@@ -46,7 +45,7 @@ BacklogQuotaCheck An REST endpoint to trigger backlogQuotaCheck
 func (a *BrokersApiService) BacklogQuotaCheck(ctx _context.Context) ApiBacklogQuotaCheckRequest {
 	return ApiBacklogQuotaCheckRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -117,11 +116,10 @@ func (a *BrokersApiService) BacklogQuotaCheckExecute(r ApiBacklogQuotaCheckReque
 }
 
 type ApiDeleteDynamicConfigurationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 	configName string
 }
-
 
 func (r ApiDeleteDynamicConfigurationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteDynamicConfigurationExecute(r)
@@ -137,7 +135,7 @@ DeleteDynamicConfiguration Delete dynamic serviceconfiguration into zk only. Thi
 func (a *BrokersApiService) DeleteDynamicConfiguration(ctx _context.Context, configName string) ApiDeleteDynamicConfigurationRequest {
 	return ApiDeleteDynamicConfigurationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 		configName: configName,
 	}
 }
@@ -210,11 +208,10 @@ func (a *BrokersApiService) DeleteDynamicConfigurationExecute(r ApiDeleteDynamic
 }
 
 type ApiGetActiveBrokersRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiGetActiveBrokersRequest) Execute() ([]string, *_nethttp.Response, error) {
 	return r.ApiService.GetActiveBrokersExecute(r)
@@ -230,8 +227,8 @@ GetActiveBrokers Get the list of active brokers (web service addresses) in the c
 func (a *BrokersApiService) GetActiveBrokers(ctx _context.Context, cluster string) ApiGetActiveBrokersRequest {
 	return ApiGetActiveBrokersRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -314,10 +311,9 @@ func (a *BrokersApiService) GetActiveBrokersExecute(r ApiGetActiveBrokersRequest
 }
 
 type ApiGetAllDynamicConfigurationsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiGetAllDynamicConfigurationsRequest) Execute() (map[string]string, *_nethttp.Response, error) {
 	return r.ApiService.GetAllDynamicConfigurationsExecute(r)
@@ -332,7 +328,7 @@ GetAllDynamicConfigurations Get value of all dynamic configurations' value overr
 func (a *BrokersApiService) GetAllDynamicConfigurations(ctx _context.Context) ApiGetAllDynamicConfigurationsRequest {
 	return ApiGetAllDynamicConfigurationsRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -414,10 +410,9 @@ func (a *BrokersApiService) GetAllDynamicConfigurationsExecute(r ApiGetAllDynami
 }
 
 type ApiGetDynamicConfigurationNameRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiGetDynamicConfigurationNameRequest) Execute() ([]string, *_nethttp.Response, error) {
 	return r.ApiService.GetDynamicConfigurationNameExecute(r)
@@ -432,7 +427,7 @@ GetDynamicConfigurationName Get all updatable dynamic configurations's name
 func (a *BrokersApiService) GetDynamicConfigurationName(ctx _context.Context) ApiGetDynamicConfigurationNameRequest {
 	return ApiGetDynamicConfigurationNameRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -514,10 +509,9 @@ func (a *BrokersApiService) GetDynamicConfigurationNameExecute(r ApiGetDynamicCo
 }
 
 type ApiGetInternalConfigurationDataRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiGetInternalConfigurationDataRequest) Execute() (InternalConfigurationData, *_nethttp.Response, error) {
 	return r.ApiService.GetInternalConfigurationDataExecute(r)
@@ -532,7 +526,7 @@ GetInternalConfigurationData Get the internal configuration data
 func (a *BrokersApiService) GetInternalConfigurationData(ctx _context.Context) ApiGetInternalConfigurationDataRequest {
 	return ApiGetInternalConfigurationDataRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -614,10 +608,9 @@ func (a *BrokersApiService) GetInternalConfigurationDataExecute(r ApiGetInternal
 }
 
 type ApiGetLeaderBrokerRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiGetLeaderBrokerRequest) Execute() (BrokerInfo, *_nethttp.Response, error) {
 	return r.ApiService.GetLeaderBrokerExecute(r)
@@ -632,7 +625,7 @@ GetLeaderBroker Get the information of the leader broker.
 func (a *BrokersApiService) GetLeaderBroker(ctx _context.Context) ApiGetLeaderBrokerRequest {
 	return ApiGetLeaderBrokerRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -714,12 +707,11 @@ func (a *BrokersApiService) GetLeaderBrokerExecute(r ApiGetLeaderBrokerRequest) 
 }
 
 type ApiGetOwnedNamespacesRequest struct {
-	ctx _context.Context
-	ApiService *BrokersApiService
-	clusterName string
+	ctx                 _context.Context
+	ApiService          *BrokersApiService
+	clusterName         string
 	brokerWebserviceurl string
 }
-
 
 func (r ApiGetOwnedNamespacesRequest) Execute() (map[string]NamespaceOwnershipStatus, *_nethttp.Response, error) {
 	return r.ApiService.GetOwnedNamespacesExecute(r)
@@ -735,9 +727,9 @@ GetOwnedNamespaces Get the list of namespaces served by the specific broker
 */
 func (a *BrokersApiService) GetOwnedNamespaces(ctx _context.Context, clusterName string, brokerWebserviceurl string) ApiGetOwnedNamespacesRequest {
 	return ApiGetOwnedNamespacesRequest{
-		ApiService: a,
-		ctx: ctx,
-		clusterName: clusterName,
+		ApiService:          a,
+		ctx:                 ctx,
+		clusterName:         clusterName,
 		brokerWebserviceurl: brokerWebserviceurl,
 	}
 }
@@ -822,10 +814,9 @@ func (a *BrokersApiService) GetOwnedNamespacesExecute(r ApiGetOwnedNamespacesReq
 }
 
 type ApiGetRuntimeConfigurationRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiGetRuntimeConfigurationRequest) Execute() (map[string]string, *_nethttp.Response, error) {
 	return r.ApiService.GetRuntimeConfigurationExecute(r)
@@ -840,7 +831,7 @@ GetRuntimeConfiguration Get all runtime configurations. This operation requires 
 func (a *BrokersApiService) GetRuntimeConfiguration(ctx _context.Context) ApiGetRuntimeConfigurationRequest {
 	return ApiGetRuntimeConfigurationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -922,10 +913,9 @@ func (a *BrokersApiService) GetRuntimeConfigurationExecute(r ApiGetRuntimeConfig
 }
 
 type ApiHealthcheckRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiHealthcheckRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.HealthcheckExecute(r)
@@ -940,7 +930,7 @@ Healthcheck Run a healthcheck against the broker
 func (a *BrokersApiService) Healthcheck(ctx _context.Context) ApiHealthcheckRequest {
 	return ApiHealthcheckRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1011,10 +1001,9 @@ func (a *BrokersApiService) HealthcheckExecute(r ApiHealthcheckRequest) (*_netht
 }
 
 type ApiIsReadyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiIsReadyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.IsReadyExecute(r)
@@ -1029,7 +1018,7 @@ IsReady Check if the broker is fully initialized
 func (a *BrokersApiService) IsReady(ctx _context.Context) ApiIsReadyRequest {
 	return ApiIsReadyRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -1100,12 +1089,11 @@ func (a *BrokersApiService) IsReadyExecute(r ApiIsReadyRequest) (*_nethttp.Respo
 }
 
 type ApiUpdateDynamicConfigurationRequest struct {
-	ctx _context.Context
-	ApiService *BrokersApiService
-	configName string
+	ctx         _context.Context
+	ApiService  *BrokersApiService
+	configName  string
 	configValue string
 }
-
 
 func (r ApiUpdateDynamicConfigurationRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.UpdateDynamicConfigurationExecute(r)
@@ -1121,9 +1109,9 @@ UpdateDynamicConfiguration Update dynamic serviceconfiguration into zk only. Thi
 */
 func (a *BrokersApiService) UpdateDynamicConfiguration(ctx _context.Context, configName string, configValue string) ApiUpdateDynamicConfigurationRequest {
 	return ApiUpdateDynamicConfigurationRequest{
-		ApiService: a,
-		ctx: ctx,
-		configName: configName,
+		ApiService:  a,
+		ctx:         ctx,
+		configName:  configName,
 		configValue: configValue,
 	}
 }
@@ -1197,10 +1185,9 @@ func (a *BrokersApiService) UpdateDynamicConfigurationExecute(r ApiUpdateDynamic
 }
 
 type ApiVersionRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *BrokersApiService
 }
-
 
 func (r ApiVersionRequest) Execute() (string, *_nethttp.Response, error) {
 	return r.ApiService.VersionExecute(r)
@@ -1215,7 +1202,7 @@ Version Get version of current broker
 func (a *BrokersApiService) Version(ctx _context.Context) ApiVersionRequest {
 	return ApiVersionRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
