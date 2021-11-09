@@ -51,19 +51,11 @@ type APIClient struct {
 
 	BookiesApi *BookiesApiService
 
-	BrokerStatsApi *BrokerStatsApiService
-
 	BrokersApi *BrokersApiService
 
 	ClustersApi *ClustersApiService
 
-	DefaultApi *DefaultApiService
-
 	NamespacesApi *NamespacesApiService
-
-	NonPersistentTopicApi *NonPersistentTopicApiService
-
-	PersistentTopicApi *PersistentTopicApiService
 
 	ResourceQuotasApi *ResourceQuotasApiService
 
@@ -91,13 +83,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.BookiesApi = (*BookiesApiService)(&c.common)
-	c.BrokerStatsApi = (*BrokerStatsApiService)(&c.common)
 	c.BrokersApi = (*BrokersApiService)(&c.common)
 	c.ClustersApi = (*ClustersApiService)(&c.common)
-	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.NamespacesApi = (*NamespacesApiService)(&c.common)
-	c.NonPersistentTopicApi = (*NonPersistentTopicApiService)(&c.common)
-	c.PersistentTopicApi = (*PersistentTopicApiService)(&c.common)
 	c.ResourceQuotasApi = (*ResourceQuotasApiService)(&c.common)
 	c.ResourcegroupsApi = (*ResourcegroupsApiService)(&c.common)
 	c.SchemasApi = (*SchemasApiService)(&c.common)

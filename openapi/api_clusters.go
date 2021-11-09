@@ -28,10 +28,10 @@ var (
 type ClustersApiService service
 
 type ApiCreateClusterRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
-	body *ClusterData
+	cluster    string
+	body       *ClusterData
 }
 
 // The cluster data
@@ -56,8 +56,8 @@ This operation requires Pulsar superuser privileges, and the name cannot contain
 func (a *ClustersApiService) CreateCluster(ctx _context.Context, cluster string) ApiCreateClusterRequest {
 	return ApiCreateClusterRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -134,11 +134,10 @@ func (a *ClustersApiService) CreateClusterExecute(r ApiCreateClusterRequest) (*_
 }
 
 type ApiDeleteClusterRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiDeleteClusterRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteClusterExecute(r)
@@ -156,8 +155,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) DeleteCluster(ctx _context.Context, cluster string) ApiDeleteClusterRequest {
 	return ApiDeleteClusterRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -229,12 +228,11 @@ func (a *ClustersApiService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*_
 }
 
 type ApiDeleteFailureDomainRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 	domainName string
 }
-
 
 func (r ApiDeleteFailureDomainRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteFailureDomainExecute(r)
@@ -253,8 +251,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) DeleteFailureDomain(ctx _context.Context, cluster string, domainName string) ApiDeleteFailureDomainRequest {
 	return ApiDeleteFailureDomainRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 		domainName: domainName,
 	}
 }
@@ -328,12 +326,11 @@ func (a *ClustersApiService) DeleteFailureDomainExecute(r ApiDeleteFailureDomain
 }
 
 type ApiDeleteNamespaceIsolationPolicyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 	policyName string
 }
-
 
 func (r ApiDeleteNamespaceIsolationPolicyRequest) Execute() (*_nethttp.Response, error) {
 	return r.ApiService.DeleteNamespaceIsolationPolicyExecute(r)
@@ -352,8 +349,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) DeleteNamespaceIsolationPolicy(ctx _context.Context, cluster string, policyName string) ApiDeleteNamespaceIsolationPolicyRequest {
 	return ApiDeleteNamespaceIsolationPolicyRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 		policyName: policyName,
 	}
 }
@@ -427,12 +424,11 @@ func (a *ClustersApiService) DeleteNamespaceIsolationPolicyExecute(r ApiDeleteNa
 }
 
 type ApiGetBrokerWithNamespaceIsolationPolicyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
-	broker string
+	cluster    string
+	broker     string
 }
-
 
 func (r ApiGetBrokerWithNamespaceIsolationPolicyRequest) Execute() (BrokerNamespaceIsolationData, *_nethttp.Response, error) {
 	return r.ApiService.GetBrokerWithNamespaceIsolationPolicyExecute(r)
@@ -451,9 +447,9 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetBrokerWithNamespaceIsolationPolicy(ctx _context.Context, cluster string, broker string) ApiGetBrokerWithNamespaceIsolationPolicyRequest {
 	return ApiGetBrokerWithNamespaceIsolationPolicyRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
-		broker: broker,
+		ctx:        ctx,
+		cluster:    cluster,
+		broker:     broker,
 	}
 }
 
@@ -537,11 +533,10 @@ func (a *ClustersApiService) GetBrokerWithNamespaceIsolationPolicyExecute(r ApiG
 }
 
 type ApiGetBrokersWithNamespaceIsolationPolicyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiGetBrokersWithNamespaceIsolationPolicyRequest) Execute() ([]BrokerNamespaceIsolationData, *_nethttp.Response, error) {
 	return r.ApiService.GetBrokersWithNamespaceIsolationPolicyExecute(r)
@@ -559,8 +554,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetBrokersWithNamespaceIsolationPolicy(ctx _context.Context, cluster string) ApiGetBrokersWithNamespaceIsolationPolicyRequest {
 	return ApiGetBrokersWithNamespaceIsolationPolicyRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -643,11 +638,10 @@ func (a *ClustersApiService) GetBrokersWithNamespaceIsolationPolicyExecute(r Api
 }
 
 type ApiGetClusterRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiGetClusterRequest) Execute() (ClusterData, *_nethttp.Response, error) {
 	return r.ApiService.GetClusterExecute(r)
@@ -665,8 +659,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetCluster(ctx _context.Context, cluster string) ApiGetClusterRequest {
 	return ApiGetClusterRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -749,10 +743,9 @@ func (a *ClustersApiService) GetClusterExecute(r ApiGetClusterRequest) (ClusterD
 }
 
 type ApiGetClustersRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
 }
-
 
 func (r ApiGetClustersRequest) Execute() ([]string, *_nethttp.Response, error) {
 	return r.ApiService.GetClustersExecute(r)
@@ -767,7 +760,7 @@ GetClusters Get the list of all the Pulsar clusters.
 func (a *ClustersApiService) GetClusters(ctx _context.Context) ApiGetClustersRequest {
 	return ApiGetClustersRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
@@ -849,12 +842,11 @@ func (a *ClustersApiService) GetClustersExecute(r ApiGetClustersRequest) ([]stri
 }
 
 type ApiGetDomainRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 	domainName string
 }
-
 
 func (r ApiGetDomainRequest) Execute() (FailureDomain, *_nethttp.Response, error) {
 	return r.ApiService.GetDomainExecute(r)
@@ -873,8 +865,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetDomain(ctx _context.Context, cluster string, domainName string) ApiGetDomainRequest {
 	return ApiGetDomainRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 		domainName: domainName,
 	}
 }
@@ -959,11 +951,10 @@ func (a *ClustersApiService) GetDomainExecute(r ApiGetDomainRequest) (FailureDom
 }
 
 type ApiGetFailureDomainsRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiGetFailureDomainsRequest) Execute() (map[string]FailureDomain, *_nethttp.Response, error) {
 	return r.ApiService.GetFailureDomainsExecute(r)
@@ -981,8 +972,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetFailureDomains(ctx _context.Context, cluster string) ApiGetFailureDomainsRequest {
 	return ApiGetFailureDomainsRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -1065,11 +1056,10 @@ func (a *ClustersApiService) GetFailureDomainsExecute(r ApiGetFailureDomainsRequ
 }
 
 type ApiGetNamespaceIsolationPoliciesRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiGetNamespaceIsolationPoliciesRequest) Execute() (map[string]NamespaceIsolationData, *_nethttp.Response, error) {
 	return r.ApiService.GetNamespaceIsolationPoliciesExecute(r)
@@ -1087,8 +1077,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetNamespaceIsolationPolicies(ctx _context.Context, cluster string) ApiGetNamespaceIsolationPoliciesRequest {
 	return ApiGetNamespaceIsolationPoliciesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -1171,12 +1161,11 @@ func (a *ClustersApiService) GetNamespaceIsolationPoliciesExecute(r ApiGetNamesp
 }
 
 type ApiGetNamespaceIsolationPolicyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 	policyName string
 }
-
 
 func (r ApiGetNamespaceIsolationPolicyRequest) Execute() (NamespaceIsolationData, *_nethttp.Response, error) {
 	return r.ApiService.GetNamespaceIsolationPolicyExecute(r)
@@ -1195,8 +1184,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetNamespaceIsolationPolicy(ctx _context.Context, cluster string, policyName string) ApiGetNamespaceIsolationPolicyRequest {
 	return ApiGetNamespaceIsolationPolicyRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 		policyName: policyName,
 	}
 }
@@ -1281,11 +1270,10 @@ func (a *ClustersApiService) GetNamespaceIsolationPolicyExecute(r ApiGetNamespac
 }
 
 type ApiGetPeerClusterRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 }
-
 
 func (r ApiGetPeerClusterRequest) Execute() ([]string, *_nethttp.Response, error) {
 	return r.ApiService.GetPeerClusterExecute(r)
@@ -1303,8 +1291,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) GetPeerCluster(ctx _context.Context, cluster string) ApiGetPeerClusterRequest {
 	return ApiGetPeerClusterRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -1387,11 +1375,11 @@ func (a *ClustersApiService) GetPeerClusterExecute(r ApiGetPeerClusterRequest) (
 }
 
 type ApiSetFailureDomainRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 	domainName string
-	body *FailureDomain
+	body       *FailureDomain
 }
 
 // The configuration data of a failure domain
@@ -1417,8 +1405,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) SetFailureDomain(ctx _context.Context, cluster string, domainName string) ApiSetFailureDomainRequest {
 	return ApiSetFailureDomainRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 		domainName: domainName,
 	}
 }
@@ -1497,11 +1485,11 @@ func (a *ClustersApiService) SetFailureDomainExecute(r ApiSetFailureDomainReques
 }
 
 type ApiSetNamespaceIsolationPolicyRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
+	cluster    string
 	policyName string
-	body *NamespaceIsolationData
+	body       *NamespaceIsolationData
 }
 
 // The namespace isolation policy data
@@ -1527,8 +1515,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) SetNamespaceIsolationPolicy(ctx _context.Context, cluster string, policyName string) ApiSetNamespaceIsolationPolicyRequest {
 	return ApiSetNamespaceIsolationPolicyRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 		policyName: policyName,
 	}
 }
@@ -1607,10 +1595,10 @@ func (a *ClustersApiService) SetNamespaceIsolationPolicyExecute(r ApiSetNamespac
 }
 
 type ApiSetPeerClusterNamesRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
-	body *[]string
+	cluster    string
+	body       *[]string
 }
 
 // The list of peer cluster names
@@ -1635,8 +1623,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) SetPeerClusterNames(ctx _context.Context, cluster string) ApiSetPeerClusterNamesRequest {
 	return ApiSetPeerClusterNamesRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
@@ -1713,10 +1701,10 @@ func (a *ClustersApiService) SetPeerClusterNamesExecute(r ApiSetPeerClusterNames
 }
 
 type ApiUpdateClusterRequest struct {
-	ctx _context.Context
+	ctx        _context.Context
 	ApiService *ClustersApiService
-	cluster string
-	body *ClusterData
+	cluster    string
+	body       *ClusterData
 }
 
 // The cluster data
@@ -1741,8 +1729,8 @@ This operation requires Pulsar superuser privileges.
 func (a *ClustersApiService) UpdateCluster(ctx _context.Context, cluster string) ApiUpdateClusterRequest {
 	return ApiUpdateClusterRequest{
 		ApiService: a,
-		ctx: ctx,
-		cluster: cluster,
+		ctx:        ctx,
+		cluster:    cluster,
 	}
 }
 
